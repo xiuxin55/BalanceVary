@@ -1,0 +1,219 @@
+﻿<UserControl x:Class="BalanceReport.Views.DepartmentReportUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+               xmlns:tool="clr-namespace:BalanceReport.Tools"
+             xmlns:usercontrol="clr-namespace:BalanceReport.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="406" d:DesignWidth="1165" Background="White">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary   Source="/StyleTemplate/ControlStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary  Source="/StyleTemplate/ButtonStyle.xaml"></ResourceDictionary>
+                
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="16" />
+            <RowDefinition Height="54" />
+            <RowDefinition Height="0" />
+            <RowDefinition Height="44" />
+            <RowDefinition Height="174*" />
+            <RowDefinition Height="12" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7" />
+            <ColumnDefinition Width="0" />
+            <ColumnDefinition Width="8" />
+            <ColumnDefinition Width="1019*" />
+            <ColumnDefinition Width="18" />
+        </Grid.ColumnDefinitions>
+        <usercontrol:UserControlLoading Grid.Row="1" Grid.RowSpan="4" Grid.Column="3" x:Name="LoadUserControl"></usercontrol:UserControlLoading>
+        <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" CornerRadius="2" BorderThickness="1" BorderBrush="DodgerBlue"></Border>
+        <StackPanel Grid.Column="3" Grid.Row="1"  Name="stackPanel" Orientation="Horizontal" Background="White">
+            <TextBlock Height="23" Name="textBlock1" Text="活期比:" FontSize="15" Visibility="Collapsed" />
+            <TextBlock Height="23" Name="Rate" Text="" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Visibility="Collapsed" />
+            <DatePicker Name="starttime" Height="25" Width="115" Margin="15,0,0,0" />
+            <TextBlock  Text="至" HorizontalAlignment="Center" FontSize="15" VerticalAlignment="Center"  Margin="8,0,0,0"></TextBlock>
+            <DatePicker  Name="endtime" Height="25"  Width="115" Margin="15,0,0,0" />
+            <ComboBox Name="Displaystate" Height="25"  Width="85" Margin="15,0,0,0" SelectionChanged="ComboBox_SelectionChanged" Background="White">
+                <ComboBoxItem Content="日期内每日余额" />
+                <ComboBoxItem Content="日期内每日变动（相较前一天）" />
+                <ComboBoxItem Content="两个日期点余额变动" />
+                <ComboBoxItem Content="日期内日均余额" />
+            </ComboBox>
+            
+            
+            <TextBlock  Width="50"   Text="部门选择:" VerticalAlignment="Center" Margin="10,0,0,0" />
+            <ComboBox Name="txt_websitename" Height="25"  Width="85" Margin="15,0,0,0" ItemsSource="{Binding WebsiteInfoModelList}" DisplayMemberPath="WebsiteName" SelectedValue="WebsiteName" Background="White">
+                
+            </ComboBox>
+            <!--<TextBox  Width="100" Height="25" Name="txt_websitename"  HorizontalContentAlignment="Left" Margin="6,0,0,0" />-->
+            <!--<TextBlock  Width="50"   Text="公司名称:" VerticalAlignment="Center" Margin="6,0,0,0" Visibility="Hidden" />
+            <TextBox  Width="100" Height="25" Name="txt_companyname"  HorizontalContentAlignment="Left" Margin="6,0,0,0" Visibility="Hidden" />-->
+            <TextBlock  Width="30"   Text="账号:" VerticalAlignment="Center" Margin="6,0,0,0" />
+            <TextBox  Width="100" Height="25" Name="txt_accountname"  HorizontalContentAlignment="Left" Margin="6,0,0,0" />
+
+            <CheckBox Content="忽略0项" Margin="3,0,0,0" Click="checkBox1_Click" Height="16" Name="checkBox1" Width="62" HorizontalContentAlignment="Center" IsChecked="True" />
+            <Button Name="SearchWebsite" Width="49"  Content="查询" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Background="#FF85C3FF" Click="SearchWebsite_Click" Margin="3,0,0,0" Height="25" />
+            <Button Name="button33" Width="49"  Content="导出" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Background="#FF85C3FF" Click="button3_Click" Margin="6,0,0,0" Height="25" />
+        </StackPanel>
+        <Border BorderBrush="DodgerBlue"   Grid.RowSpan="3" Grid.Column="3" Grid.Row="2"   BorderThickness="1"  CornerRadius="5">
+        <Grid Name="grid1">
+                <!--<WebBrowser Name="webbrowser"  SizeChanged="WebBrowser_SizeChanged" Navigating="WebBrowserMain_Navigating" />-->
+                <Grid >
+                    
+                    <DataGrid  AutoGenerateColumns="False" BorderBrush="Transparent" HorizontalGridLinesBrush="#eee" IsReadOnly="True" Name="TreeGrid"  VerticalGridLinesBrush="#eee" Background="White" CanUserSortColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="名称/账号" Width="180">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Border Width="{Binding MarginLeft}" />
+                                            <ToggleButton IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="ExpanderButton" Visibility="{Binding IsVisible}">
+                                                <ToggleButton.Template>
+                                                    <ControlTemplate TargetType="ToggleButton">
+                                                        <Grid Background="Transparent" Name="Root">
+                                                            <VisualStateManager.VisualStateGroups>
+                                                                <VisualStateGroup Name="CommonStates">
+                                                                    <VisualState Name="Normal" />
+                                                                    <VisualState Name="MouseOver">
+                                                                        <VisualState.Storyboard>
+                                                                            <Storyboard>
+                                                                                <ColorAnimation Duration="0" Storyboard.TargetName="UncheckedVisual" Storyboard.TargetProperty="(Path.Stroke).Color" To="#FF1BBBFA" />
+                                                                            </Storyboard>
+                                                                        </VisualState.Storyboard>
+                                                                    </VisualState>
+                                                                    <VisualState Name="Disabled">
+                                                                        <VisualState.Storyboard>
+                                                                            <Storyboard>
+                                                                                <DoubleAnimation Duration="0" Storyboard.TargetName="Root" Storyboard.TargetProperty="Opacity" To=".7" />
+                                                                            </Storyboard>
+                                                                        </VisualState.Storyboard>
+                                                                    </VisualState>
+                                                                </VisualStateGroup>
+                                                                <VisualStateGroup Name="CheckStates">
+                                                                    <VisualState Name="Unchecked" />
+                                                                    <VisualState Name="Checked">
+                                                                        <VisualState.Storyboard>
+                                                                            <Storyboard>
+                                                                                <DoubleAnimation Duration="0" Storyboard.TargetName="UncheckedVisual" Storyboard.TargetProperty="Opacity" To="0" />
+                                                                                <DoubleAnimation Duration="0" Storyboard.TargetName="CheckedVisual" Storyboard.TargetProperty="Opacity" To="1" />
+                                                                            </Storyboard>
+                                                                        </VisualState.Storyboard>
+                                                                    </VisualState>
+                                                                </VisualStateGroup>
+                                                            </VisualStateManager.VisualStateGroups>
+                                                            <Grid HorizontalAlignment="Right" Margin="2 2 5 2">
+                                                                <Path Data="M 0,0 L 0,9 L 5,4.5 Z" Fill="#FFFFFFFF" Height="9" HorizontalAlignment="Right" Name="UncheckedVisual" Stroke="#FF989898" StrokeLineJoin="Miter" StrokeThickness="1" VerticalAlignment="Center" Width="6" />
+                                                                <Path Data="M 6,0 L 6,6 L 0,6 Z" Fill="#FF262626" Height="6" HorizontalAlignment="Center" Name="CheckedVisual" Opacity="0" StrokeLineJoin="Miter" VerticalAlignment="Center" Width="6" />
+                                                            </Grid>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </ToggleButton.Template>
+                                            </ToggleButton>
+                                            <TextBlock Text="{Binding Name}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Binding="{Binding DifferWebsite}" Header="部门/公司/子账号" />
+                            <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="80"/>
+                            <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="80"/>
+                            <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="80"/>
+                            <DataGridTextColumn Binding="{Binding Rate}" Header="活期比"  Width="80"/>
+                            <DataGridTextColumn Binding="{Binding WebsiteManager}" Header="客户经理" />
+                            <DataGridTextColumn Binding="{Binding ManagerTelphone}" Header="客户经理电话"   Width="100"/>
+                            <DataGridTextColumn Binding="{Binding BalanceTime}" Header="时间"   Width="80"/> 
+                        </DataGrid.Columns>
+                        <DataGrid.Resources>
+                            <SolidColorBrush Color="Transparent" x:Key="NormalSolidColor" />
+                            <SolidColorBrush Color="DeepSkyBlue" x:Key="MoveSolidColor" />
+                            <SolidColorBrush Color="SteelBlue" x:Key="ClickSolidColor" />
+                            <SolidColorBrush Color="SteelBlue" x:Key="{x:Static DataGrid.FocusBorderBrushKey}" />
+                        </DataGrid.Resources>
+                    </DataGrid>
+
+                    <DataGrid  AutoGenerateColumns="False" BorderBrush="Transparent" HorizontalGridLinesBrush="#eee" IsReadOnly="True" Name="TreeGridAverage"  VerticalGridLinesBrush="#eee" Background="White" Visibility="Collapsed" CanUserSortColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="名称/账号" Width="180">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Border Width="{Binding MarginLeft}" />
+                                            <ToggleButton IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Name="ExpanderButton" Visibility="{Binding IsVisible}">
+                                                <ToggleButton.Template>
+                                                    <ControlTemplate TargetType="ToggleButton">
+                                                        <Grid Background="Transparent" Name="Root">
+                                                            <VisualStateManager.VisualStateGroups>
+                                                                <VisualStateGroup Name="CommonStates">
+                                                                    <VisualState Name="Normal" />
+                                                                    <VisualState Name="MouseOver">
+                                                                        <VisualState.Storyboard>
+                                                                            <Storyboard>
+                                                                                <ColorAnimation Duration="0" Storyboard.TargetName="UncheckedVisual" Storyboard.TargetProperty="(Path.Stroke).Color" To="#FF1BBBFA" />
+                                                                            </Storyboard>
+                                                                        </VisualState.Storyboard>
+                                                                    </VisualState>
+                                                                    <VisualState Name="Disabled">
+                                                                        <VisualState.Storyboard>
+                                                                            <Storyboard>
+                                                                                <DoubleAnimation Duration="0" Storyboard.TargetName="Root" Storyboard.TargetProperty="Opacity" To=".7" />
+                                                                            </Storyboard>
+                                                                        </VisualState.Storyboard>
+                                                                    </VisualState>
+                                                                </VisualStateGroup>
+                                                                <VisualStateGroup Name="CheckStates">
+                                                                    <VisualState Name="Unchecked" />
+                                                                    <VisualState Name="Checked">
+                                                                        <VisualState.Storyboard>
+                                                                            <Storyboard>
+                                                                                <DoubleAnimation Duration="0" Storyboard.TargetName="UncheckedVisual" Storyboard.TargetProperty="Opacity" To="0" />
+                                                                                <DoubleAnimation Duration="0" Storyboard.TargetName="CheckedVisual" Storyboard.TargetProperty="Opacity" To="1" />
+                                                                            </Storyboard>
+                                                                        </VisualState.Storyboard>
+                                                                    </VisualState>
+                                                                </VisualStateGroup>
+                                                            </VisualStateManager.VisualStateGroups>
+                                                            <Grid HorizontalAlignment="Right" Margin="2 2 5 2">
+                                                                <Path Data="M 0,0 L 0,9 L 5,4.5 Z" Fill="#FFFFFFFF" Height="9" HorizontalAlignment="Right" Name="UncheckedVisual" Stroke="#FF989898" StrokeLineJoin="Miter" StrokeThickness="1" VerticalAlignment="Center" Width="6" />
+                                                                <Path Data="M 6,0 L 6,6 L 0,6 Z" Fill="#FF262626" Height="6" HorizontalAlignment="Center" Name="CheckedVisual" Opacity="0" StrokeLineJoin="Miter" VerticalAlignment="Center" Width="6" />
+                                                            </Grid>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </ToggleButton.Template>
+                                            </ToggleButton>
+                                            <TextBlock Text="{Binding Name}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Binding="{Binding DifferWebsite}" Header="部门/子账号" />
+                            <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="80"/>
+                            <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="80"/>
+                            <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="80"/>
+                            <DataGridTextColumn Binding="{Binding AverageBalance}" Header="日均余额"  Width="80"/>
+                            <!--<DataGridTextColumn Binding="{Binding WebsiteAddress}" Header="网点地址"  Width="180"/>
+                            <DataGridTextColumn Binding="{Binding WebsiteTel}" Header="网点电话"   Width="100"/>
+                            <DataGridTextColumn Binding="{Binding WebsiteManager}" Header="网点经理" />
+                            <DataGridTextColumn Binding="{Binding ManagerTelphone}" Header="网点经理电话"   Width="100"/>
+                            <DataGridTextColumn Binding="{Binding BalanceTime}" Header="时间"   Width="80"/>-->
+                        </DataGrid.Columns>
+                        <DataGrid.Resources>
+                            <SolidColorBrush Color="Transparent" x:Key="NormalSolidColor" />
+                            <SolidColorBrush Color="DeepSkyBlue" x:Key="MoveSolidColor" />
+                            <SolidColorBrush Color="SteelBlue" x:Key="ClickSolidColor" />
+                            <SolidColorBrush Color="SteelBlue" x:Key="{x:Static DataGrid.FocusBorderBrushKey}" />
+                        </DataGrid.Resources>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+        </Border>
+     
+    </Grid>
+</UserControl>

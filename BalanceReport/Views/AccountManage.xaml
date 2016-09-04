@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="BalanceReport.Views.AccountManage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:tool="clr-namespace:BalanceReport.Tools"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             mc:Ignorable="d" 
+             x:Name="Managers"
+             d:DesignHeight="300" d:DesignWidth="785">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/StyleTemplate/ControlStyle.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="265*" />
+        </Grid.RowDefinitions>
+        <ToolBar  Background="{DynamicResource BackGroundBrush4}" Style="{StaticResource ToolBarStyle1}"  Name="toolBar1" Height="25">
+            <ToolBar.Items>
+                <Button Width="0"></Button>
+                <!--<Button Name="AddAccount" Width="60" Content="新增" Command="{Binding AddAccountCommand}" HorizontalAlignment="Center" HorizontalContentAlignment="Left" />-->
+                <Button Name="UpdateAccount" Width="60"  Content="修改" Command="{Binding UpdateAccountCommand}" HorizontalContentAlignment="Left" />
+                <Button Name="DeleteAccount" Width="60"  Content="删除" Command="{Binding DeleteAccountCommand}" HorizontalContentAlignment="Left" />
+                <TextBlock  Width="60"   Text="账号:" VerticalAlignment="Center" />
+                <TextBox  Width="100" Text="{Binding SearchAccountInfoModel.AccountID}"  HorizontalContentAlignment="Left" />
+                <TextBlock  Width="60"   Text="账户名称:" VerticalAlignment="Center" />
+                <TextBox  Width="100" Text="{Binding SearchAccountInfoModel.AccountName}"  HorizontalContentAlignment="Left" />
+                <TextBlock  Width="70"   Text="是否已关联:" VerticalAlignment="Center" />
+                <ComboBox   Width="100" Text="{Binding  SearchAccountInfoModel.CorrelationState}"  Name="comboBox1"  Background="White" VerticalContentAlignment="Center" VerticalAlignment="Stretch" FontSize="12">
+                    <ComboBoxItem Content="全部" />
+                    <ComboBoxItem Content="已关联" />
+                    <ComboBoxItem Content="未关联" />
+                </ComboBox>
+             
+                <Button Name="SearchAccount" Width="60"  Content="查询" Command="{Binding SearchAccountCommand}" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" VerticalAlignment="Center" />
+                <Button Name="Link" Width="60"  Content="批量关联" Command="{Binding ManyLinkCommand}" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" VerticalAlignment="Center" />
+            </ToolBar.Items>
+        </ToolBar>
+        <tool:GridLineDecorator GridLineBrush="{StaticResource ResourceKey=col}" Grid.Row="1" >
+            <ListView  Name="listView1" ItemsSource="{Binding AccountInfoList}" SelectedItem="{Binding SelectedAccountInfoModel}">
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource GridViewHeaderStyle}">
+                        <GridViewColumn Header="  " >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox  >
+                                        <i:Interaction.Triggers>
+                                            
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding DataContext.CheckCommand, Mode=OneWay,ElementName=Managers}" CommandParameter="{Binding}"/>
+                                            </i:EventTrigger>
+                                           
+                                        </i:Interaction.Triggers>
+                                    </CheckBox>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                     </GridViewColumn>
+                            <GridViewColumn Width="150" Header="账号" DisplayMemberBinding="{Binding AccountID}" tool:ListViewBehavior.SortField="AccountID" />
+                    
+                        <GridViewColumn Width="50"  Header="子账号" DisplayMemberBinding="{Binding SubAccountNumber}" tool:ListViewBehavior.SortField="SubAccountNumber"/>
+                        <GridViewColumn Width="200"  Header="账户名称" DisplayMemberBinding="{Binding AccountName}" tool:ListViewBehavior.SortField="AccountName"/>
+                        <GridViewColumn  Width="100" Header="定活类型" DisplayMemberBinding="{Binding AccountType}" tool:ListViewBehavior.SortField="AccountType"/>
+                        <GridViewColumn Width="100"  Header="网点号" DisplayMemberBinding="{Binding WebsiteID}" tool:ListViewBehavior.SortField="WebsiteID"/>
+                        <GridViewColumn Width="150"  Header="网点名称" DisplayMemberBinding="{Binding WebsiteInfoObj.WebsiteName}" tool:ListViewBehavior.SortField="WebsiteInfoObj.WebsiteName"/>
+                        <GridViewColumn Width="100"  Header="客户经理号" DisplayMemberBinding="{Binding ManagerID}" tool:ListViewBehavior.SortField="ManagerID" />
+                        <GridViewColumn Width="80"  Header="客户经理名称" DisplayMemberBinding="{Binding ManagersInfoObj.ManagerName}" tool:ListViewBehavior.SortField="ManagersInfoObj.ManagerName" />
+                        <GridViewColumn Width="80"  Header="关联状态" DisplayMemberBinding="{Binding CorrelationState}" tool:ListViewBehavior.SortField="CorrelationState" />
+                    </GridView>
+            </ListView.View>
+            <!--<ListView.ItemTemplate>
+                <DataTemplate >
+                    
+                </DataTemplate>
+            </ListView.ItemTemplate>-->
+        </ListView>
+        </tool:GridLineDecorator>
+    </Grid>
+        
+</UserControl>

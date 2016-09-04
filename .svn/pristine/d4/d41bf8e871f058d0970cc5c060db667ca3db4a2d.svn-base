@@ -1,0 +1,888 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                                 xmlns:Helper="clr-namespace:BalanceReport.Tools">
+    <Helper:Byte__ToBitmapImageConverter x:Key="ByteToImageConverter" />
+    
+    <Style x:Key="RadioButtonlistVericalCC" TargetType="{x:Type RadioButton}">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0" />
+                    <GradientStop Color="#FF85C3FF" Offset="1" />
+                    <GradientStop Color="#FF85C3FF" Offset="0.754" />
+                    <GradientStop Color="#FF85C3FF" Offset="0.254" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin" Value="0,0,10,0"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="IsChecked" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid>
+                        <Border x:Name="border" BorderThickness="0" BorderBrush="#5A95CF" CornerRadius="0">
+                            <Rectangle x:Name="rectangle" Stroke="#5A95CF" StrokeThickness="1" Margin="2" Fill="{TemplateBinding Background}" RadiusX="2" RadiusY="2"/>
+                        </Border>
+                        <TextBlock x:Name="txtblock" Text="{TemplateBinding ContentControl.Content}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#B7EBC907">
+                                
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="#B7EBC907">
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="RadioButtonlistVericalCCtemp" TargetType="{x:Type RadioButton}">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0" />
+                    <GradientStop Color="#FF85C3FF" Offset="1" />
+                    <GradientStop Color="#FF85C3FF" Offset="0.754" />
+                    <GradientStop Color="#FF85C3FF" Offset="0.254" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin" Value="0,0,10,0"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="IsChecked" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid>
+                        <Border x:Name="border" BorderThickness="0" BorderBrush="#5A95CF" CornerRadius="0">
+                            <Rectangle  Stroke="#5A95CF" StrokeThickness="1" Margin="2" Fill="{TemplateBinding Background}" RadiusX="2" RadiusY="2"/>
+                        </Border>
+                        <TextBlock Text="{TemplateBinding ContentControl.Content}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#B7EBC907">
+
+                            </Setter>
+                        </Trigger>
+                       
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="btnZhuCeStyle2" TargetType="RadioButton">
+        <Style.Setters>
+            <Setter Property="Focusable" Value="False"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock x:Name="txtblock" Text="{TemplateBinding Content}" FontSize="14"  Foreground="#ff6317"  Margin="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Grid.Row="1"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="txtblock"  Property ="TextBlock.TextDecorations" >
+                                    <Setter.Value>
+                                        <TextDecorationCollection>
+                                            <TextDecoration  Location="Underline" />
+                                        </TextDecorationCollection>
+                                    </Setter.Value>
+                                </Setter >
+                            </Trigger>
+                            <!--<Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="txtblock"  Property ="TextBlock.TextDecorations" >
+                                    <Setter.Value>
+                                        <TextDecorationCollection>
+                                            <TextDecoration  Location="Underline" />
+                                        </TextDecorationCollection>
+                                    </Setter.Value>
+                                </Setter >
+                            </Trigger>-->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+    
+
+    
+   
+    <!--方角查询-->
+    <Style x:Key="ButtonStyleT" TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#016ec1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border x:Name="border" BorderThickness="0,0,0,0" CornerRadius="0">
+                            <Rectangle x:Name="rectangle" Stroke="White" StrokeThickness="0" Margin="2" Fill="{TemplateBinding Background}"/>
+                        </Border>
+                        <TextBlock x:Name="txtblock" Text="{TemplateBinding ContentControl.Content}" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter  Property="Background" Value="#015798" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+  
+   
+
+   
+    <LinearGradientBrush x:Key="WindowTitle" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FF2C7AD6" Offset="1" />
+        <GradientStop Color="#FF3FCDE0" Offset="0" />
+    </LinearGradientBrush>
+
+    <Style TargetType="Button" x:Key="btuCommonStyle">
+        <Setter Property="Width" Value="90"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="{StaticResource WindowTitle}"/>
+    </Style>
+
+ 
+   
+
+    <!--关闭窗体按钮的样式-->
+    <Style x:Key="XButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border x:Name="border" BorderBrush="#80000000" BorderThickness="0,0,0.5,0.5" CornerRadius="0,5,5,0">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#B2FFFFFF" Offset="0"/>
+                                    <GradientStop Offset="0.043"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Rectangle Stroke="Black" StrokeThickness="0" Margin="0">
+                                <Rectangle.Fill>
+                                    <ImageBrush ImageSource="/ICOS/Buttons/x1.png" Stretch="Uniform"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True">
+                            <Setter Property="Focusable" Value="False"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#87A58686" Offset="0"/>
+                                        <GradientStop Color="#FF702323" Offset="0.047"/>
+                                        <GradientStop Color="#01FFFFFF" Offset="0.884"/>
+                                        <GradientStop Color="#46FCFAFA" Offset="1"/>
+                                        <GradientStop Color="#33905454" Offset="0.862"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Focusable" Value="False"></Setter>
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#87A58686" Offset="0"/>
+                                        <GradientStop Color="#FF702323" Offset="0.047"/>
+                                        <GradientStop Color="#01FFFFFF" Offset="0.884"/>
+                                        <GradientStop Color="#46FCFAFA" Offset="1"/>
+                                        <GradientStop Color="#33905454" Offset="0.862"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False"/>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--窗体最小化最大化Buttton 的样式-->
+    <Style x:Key="MaxButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Focusable" Value="False"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border x:Name="border" BorderThickness="0,0,0,0.5" CornerRadius="0" BorderBrush="#80000000">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#B2FFFFFF" Offset="0"/>
+                                    <GradientStop Offset="0.043"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Rectangle x:Name="rectangle" Stroke="Black" StrokeThickness="0" Margin="2" Fill="{TemplateBinding Background}"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#66FFFFFF" Offset="0"/>
+                                        <GradientStop Offset="0.379" Color="#24FFFFFF"/>
+                                        <GradientStop Color="#13FFFFFF" Offset="0.741"/>
+                                        <GradientStop Color="Transparent" Offset="0.879"/>
+                                        <GradientStop Color="#47FFFFFF" Offset="0.978"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#66FFFFFF" Offset="0"/>
+                                        <GradientStop Offset="0.379" Color="#24FFFFFF"/>
+                                        <GradientStop Color="#13FFFFFF" Offset="0.741"/>
+                                        <GradientStop Color="Transparent" Offset="0.879"/>
+                                        <GradientStop Color="#47FFFFFF" Offset="0.978"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Opacity" TargetName="rectangle" Value="0.67"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False"/>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+<!--导入数据Buttton 的样式-->
+    <Style x:Key="ImportButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Focusable" Value="False"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border x:Name="border" BorderThickness="0,0,0,0.5" CornerRadius="0" BorderBrush="#80000000">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#B2FFFFFF" Offset="0"/>
+                                    <GradientStop Offset="0.043"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Label Content="{TemplateBinding  Content}" x:Name="rectangle"  Background="{TemplateBinding Background}">
+
+                            </Label>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#66FFFFFF" Offset="0"/>
+                                        <GradientStop Offset="0.379" Color="#24FFFFFF"/>
+                                        <GradientStop Color="#13FFFFFF" Offset="0.741"/>
+                                        <GradientStop Color="Transparent" Offset="0.879"/>
+                                        <GradientStop Color="#47FFFFFF" Offset="0.978"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#66FFFFFF" Offset="0"/>
+                                        <GradientStop Offset="0.379" Color="#24FFFFFF"/>
+                                        <GradientStop Color="#13FFFFFF" Offset="0.741"/>
+                                        <GradientStop Color="Transparent" Offset="0.879"/>
+                                        <GradientStop Color="#47FFFFFF" Offset="0.978"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Opacity" TargetName="rectangle" Value="0.67"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False"/>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--窗体Menu Buttton 的样式-->
+    <Style x:Key="MButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Focusable" Value="False"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border x:Name="border" BorderThickness="0.5,0,0,0.5" CornerRadius="0,0,0,3" BorderBrush="#80000000">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#B2FFFFFF" Offset="0"/>
+                                    <GradientStop Offset="0.043"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Rectangle x:Name="rectangle" Stroke="Black" StrokeThickness="0" Margin="2" Fill="{TemplateBinding Background}"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#66FFFFFF" Offset="0"/>
+                                        <GradientStop Offset="0.379" Color="#24FFFFFF"/>
+                                        <GradientStop Color="#13FFFFFF" Offset="0.741"/>
+                                        <GradientStop Color="Transparent" Offset="0.897"/>
+                                        <GradientStop Color="#46FFFFFF" Offset="0.983"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF00527E" Offset="0"/>
+                                        <GradientStop Offset="1" Color="#FF00527E"/>
+                                        <GradientStop Color="#001C69A5" Offset="0.504"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Opacity" TargetName="rectangle" Value="0.67"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False"/>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--ListBox横向滚动Button的样式-->
+    <Style x:Key="MyButton1" TargetType="{x:Type Button}">
+        <Setter Property="Focusable" Value="False"></Setter>
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Rectangle x:Name="fg" Stroke="Black" StrokeThickness="0" Visibility="Hidden" RadiusX="0" RadiusY="0" Fill="LightBlue">
+
+                        </Rectangle>
+
+                        <!--<Rectangle x:Name="bg" Stroke="Black" StrokeThickness="0" Visibility="Visible" RadiusX="0" RadiusY="0">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White" Offset="0" />
+                                    <GradientStop Color="#FF9DD9F1" Offset="1" />
+                                    <GradientStop Color="#FF43B4FB" Offset="0.754" />
+                                    <GradientStop Color="#FF6DBAE1" Offset="0.254" />
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>-->
+                        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="{TemplateBinding Content}"  VerticalAlignment="Center" Foreground="#FF020F5C"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Foreground" TargetName="textBlock" Value="#FF161616"/>
+                        </Trigger>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter	Property="Visibility" TargetName="fg" Value="Visible"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsPressed" Value="True"/>
+                        <Trigger Property="IsEnabled" Value="True"/>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MyButton" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="fore" BorderThickness="0" CornerRadius="0" BorderBrush="#5555">
+                        <Button  x:Name="fg" VerticalAlignment="Center"  Content="{Binding Name}"
+                               Command="{Binding Path=DataContext.BtuProductClickCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" CommandParameter="{Binding ID}">
+                            <!--<TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="{TemplateBinding Content}"  VerticalAlignment="Center" Foreground="#FF020F5C"/>-->
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White" Offset="0" />
+                                    <GradientStop Color="#FF9DD9F1" Offset="1" />
+                                    <GradientStop Color="#FF43B4FB" Offset="0.754" />
+                                    <GradientStop Color="#FF6DBAE1" Offset="0.254" />
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <!--<Setter Property="Foreground" TargetName="textBlock" Value="#FF161616"/>-->
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter	Property="Background" TargetName="fg" >
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White" Offset="0" />
+                                        <GradientStop Color="#FFDE8C42" Offset="1" />
+                                        <GradientStop Color="#FFF5CB7E" Offset="0.32" />
+                                        <GradientStop Color="#FFDEA933" Offset="0.615" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--20140504添加-->
+    <Style x:Key="MyButtonVertical" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="fore" BorderThickness="0" CornerRadius="0" BorderBrush="#5555">
+                        <Button  x:Name="fg" VerticalAlignment="Center"  Content="{Binding Name}"
+                               Command="{Binding Path=DataContext.BtuTopClickCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" CommandParameter="{Binding ID}">
+                            <!--<TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="{TemplateBinding Content}"  VerticalAlignment="Center" Foreground="#FF020F5C"/>-->
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White" Offset="0" />
+                                    <GradientStop Color="#FF9DD9F1" Offset="1" />
+                                    <GradientStop Color="#FF43B4FB" Offset="0.754" />
+                                    <GradientStop Color="#FF6DBAE1" Offset="0.254" />
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <!--<Setter Property="Foreground" TargetName="textBlock" Value="#FF161616"/>-->
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter	Property="Background" TargetName="fg" >
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White" Offset="0" />
+                                        <GradientStop Color="#FFDE8C42" Offset="1" />
+                                        <GradientStop Color="#FFF5CB7E" Offset="0.32" />
+                                        <GradientStop Color="#FFDEA933" Offset="0.615" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--20140514产品类别的样式-->
+    <Style x:Key="MyButtonProType" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="fore" BorderThickness="0" CornerRadius="0" BorderBrush="#5555">
+                        <Button  x:Name="fg" VerticalAlignment="Center"  Content="{Binding TypeName}"
+                               Command="{Binding Path=DataContext.BtuProductClickCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" CommandParameter="{Binding ID}">
+                            <!--<TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="{TemplateBinding Content}"  VerticalAlignment="Center" Foreground="#FF020F5C"/>-->
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White" Offset="0" />
+                                    <GradientStop Color="#FF9DD9F1" Offset="1" />
+                                    <GradientStop Color="#FF43B4FB" Offset="0.754" />
+                                    <GradientStop Color="#FF6DBAE1" Offset="0.254" />
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <!--<Setter Property="Foreground" TargetName="textBlock" Value="#FF161616"/>-->
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter	Property="Background" TargetName="fg" >
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White" Offset="0" />
+                                        <GradientStop Color="#FFDE8C42" Offset="1" />
+                                        <GradientStop Color="#FFF5CB7E" Offset="0.32" />
+                                        <GradientStop Color="#FFDEA933" Offset="0.615" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+  
+
+
+
+    
+    <!--ListBox纵向滚动Button的样式-->
+    <Style x:Key="ButtonlistVerical" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Button  x:Name="fg" VerticalAlignment="Center" FontSize="14"  
+                             Width="190" Height="40" Content="{Binding Name}"
+                             Command="{Binding Path=DataContext.BtuProductClickCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" CommandParameter="{Binding ID}">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White" Offset="0" />
+                                <GradientStop Color="#FF9DD9F1" Offset="1" />
+                                <GradientStop Color="#FF43B4FB" Offset="0.754" />
+                                <GradientStop Color="#FF6DBAE1" Offset="0.254" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter	Property="Background" TargetName="fg" >
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White" Offset="0" />
+                                        <GradientStop Color="#FFDE8C42" Offset="1" />
+                                        <GradientStop Color="#FFF5CB7E" Offset="0.32" />
+                                        <GradientStop Color="#FFDEA933" Offset="0.615" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
+
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--ListBox纵向滚动Button的样式2-->
+    <Style x:Key="ButtonlistVerical1" TargetType="{x:Type RadioButton}">
+        <Style.Setters>
+            <Setter Property="Focusable" Value="False"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Image x:Name="radioBtn"/>
+                            <TextBlock x:Name="txtblock" Text="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="radioBtn" Property="Source" Value="ICOS/Images/hover_51.gif" />
+                                <Setter TargetName="txtblock" Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Source" TargetName="radioBtn" Value="ICOS/Images/hover_5.gif" />
+                                <Setter TargetName="txtblock" Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="ButtonlistVericalCC" TargetType="{x:Type RadioButton}">
+        <Style.Setters>
+            <Setter Property="Focusable" Value="False"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Image x:Name="radioBtn"/>
+                            <TextBlock x:Name="txtblock" Text="{TemplateBinding ContentControl.Content}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="radioBtn" Property="Source" Value="ICOS/Images/hover_51.gif" />
+                                <Setter TargetName="txtblock" Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Source" TargetName="radioBtn" Value="ICOS/Images/hover_5.gif" />
+                                <Setter TargetName="txtblock" Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+
+
+    <!--<Style x:Key="btnLiuYanBanR" TargetType="RadioButton">
+        <Style.Setters>
+            <Setter Property="Focusable" Value="False"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            <Image x:Name="BB" Source="ICOS/Buttons/ly.gif" Margin="2" Width="35" Height="35"/>
+                            <TextBlock x:Name="txtblock" Text="查看留言" Margin="0" VerticalAlignment="Bottom" Grid.Row="1" HorizontalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="BB" Property="Source" Value="ICOS/Buttons/ly_hover.gif" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Source" TargetName="BB" Value="ICOS/Buttons/ly_hover.gif" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>-->
+
+
+
+
+    <!--ListBox纵向滚动Button的样式2-->
+    <Style x:Key="ButtonlistVerical2" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="g">
+                        <Border x:Name="border" BorderThickness="0,0,0,0" CornerRadius="0">
+                            <Rectangle x:Name="rectangle" Stroke="Black" StrokeThickness="0" Margin="2" Fill="{TemplateBinding Background}"/>
+                        </Border>
+                        <Button  x:Name="fg" VerticalAlignment="Center" FontSize="14"  
+                             Width="200" Height="49" Content="{Binding Name}"
+                             Command="{Binding Path=DataContext.BtuProductClickCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" CommandParameter="{Binding ID}">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="White" Offset="0" />
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Border x:Name="border" BorderThickness="0" CornerRadius="0">
+                                            <Rectangle x:Name="rectangle" Stroke="Black" StrokeThickness="0" Margin="2" Fill="{TemplateBinding Background}"/>
+                                        </Border>
+                                        <TextBlock x:Name="txtblock" Text="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="13"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter	Property="Background" TargetName="fg" >
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/ICOS/Images/hover_5.gif" />
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--无边框按钮-->
+    <Style x:Key="BtnWithout" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="fore" BorderThickness="0" CornerRadius="3" BorderBrush="#5555" Background="Transparent">
+                        <ContentPresenter x:Name="content" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" Content="{TemplateBinding  Content}">
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="WithouttButton" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <!--<Grid>
+                        <Ellipse>
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding IconShow}"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>-->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--水晶效果按钮-->
+    <Style x:Key="BeautifulButton" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="fore" BorderThickness="0" CornerRadius="3" BorderBrush="#5555" Background="Transparent">
+                        <ContentPresenter x:Name="content" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" Content="{TemplateBinding  Content}">
+                        </ContentPresenter>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="fore">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#66FFFFFF" Offset="0"/>
+                                        <GradientStop Offset="0.379" Color="#24FFFFFF"/>
+                                        <GradientStop Color="#13FFFFFF" Offset="0.741"/>
+                                        <GradientStop Color="Transparent" Offset="0.879"/>
+                                        <GradientStop Color="#47FFFFFF" Offset="0.978"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="fore">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#66FFFFFF" Offset="0"/>
+                                        <GradientStop Offset="0.379" Color="#24FFFFFF"/>
+                                        <GradientStop Color="#13FFFFFF" Offset="0.741"/>
+                                        <GradientStop Color="Transparent" Offset="0.879"/>
+                                        <GradientStop Color="#47FFFFFF" Offset="0.978"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--20140514产品类别-->
+    <Style x:Key="ProTypeButtonlist" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Button  x:Name="fg" VerticalAlignment="Center" FontSize="14"  
+                             Width="190" Height="40" Content="{Binding TypeName}"
+                             >
+                        <!--Command="{Binding Path=DataContext.BtuProductClickCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" CommandParameter="{Binding ID}"-->
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White" Offset="0" />
+                                <GradientStop Color="#FF9DD9F1" Offset="1" />
+                                <GradientStop Color="#FF43B4FB" Offset="0.754" />
+                                <GradientStop Color="#FF6DBAE1" Offset="0.254" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter	Property="Background" TargetName="fg" >
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White" Offset="0" />
+                                        <GradientStop Color="#FFDE8C42" Offset="1" />
+                                        <GradientStop Color="#FFF5CB7E" Offset="0.32" />
+                                        <GradientStop Color="#FFDEA933" Offset="0.615" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
+
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

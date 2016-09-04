@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="BalanceReport.Views.ManagersList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:tool="clr-namespace:BalanceReport.Tools"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="620">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/StyleTemplate/ControlStyle.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="265*" />
+        </Grid.RowDefinitions>
+        <ToolBar  Background="{DynamicResource BackGroundBrush4}" Style="{StaticResource ToolBarStyle1}"  Name="toolBar1" Height="25">
+            <ToolBar.Items>
+                <Button Width="0"></Button>
+                <Button Name="AddManagers" Width="60" Content="新增" Command="{Binding AddManagersCommand}" HorizontalAlignment="Center" HorizontalContentAlignment="Left" />
+                <Button Name="UpdateManagers" Width="60"  Content="修改" Command="{Binding UpdateManagersCommand}" HorizontalContentAlignment="Left" />
+                <Button Name="DeleteManagers" Width="60"  Content="删除" Command="{Binding DeleteManagersCommand}" HorizontalContentAlignment="Left" />
+                <TextBlock  Width="65"   Text="客户经理号:" VerticalAlignment="Center" />
+                <TextBox  Width="100" Text="{Binding SearchManagersInfoModel.ManagerID}"  HorizontalContentAlignment="Left" />
+                <TextBlock  Width="65"   Text="客户经理名:" VerticalAlignment="Center" />
+                <TextBox  Width="100" Text="{Binding SearchManagersInfoModel.ManagerName}"  HorizontalContentAlignment="Left" />
+                <Button Name="SearchWebsite" Width="60"  Content="查询" Command="{Binding SearchManagersCommand}" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" VerticalAlignment="Center" />
+            </ToolBar.Items>
+        </ToolBar>
+        <tool:GridLineDecorator GridLineBrush="{StaticResource ResourceKey=col}" Grid.Row="1" >
+            <ListView  Name="listView1" ItemsSource="{Binding ManagersInfoList}" SelectedItem="{Binding SelectedManagersInfoModel}">
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource GridViewHeaderStyle}">
+                        <GridViewColumn Width="150"  Header="客户经理号" DisplayMemberBinding="{Binding ManagerID}" tool:ListViewBehavior.SortField="ManagerID"/>
+                        <GridViewColumn Width="100" Header="客户经理姓名" DisplayMemberBinding="{Binding ManagerName}" tool:ListViewBehavior.SortField="ManagerName" />
+                        <GridViewColumn Width="200"  Header="电话号码" DisplayMemberBinding="{Binding ManagerTelphone}" tool:ListViewBehavior.SortField="ManagerTelphone"/>
+                        <GridViewColumn  Width="100" Header="邮箱" DisplayMemberBinding="{Binding ManagerEmail}" tool:ListViewBehavior.SortField="ManagerEmail"/>
+                        <GridViewColumn Width="100"  Header="所属网点" DisplayMemberBinding="{Binding WebsiteName}" tool:ListViewBehavior.SortField="WebsiteName" />
+                        <GridViewColumn Width="100"  Header="网点电话" DisplayMemberBinding="{Binding WebsiteTel}" tool:ListViewBehavior.SortField="WebsiteTel"/>
+                    <GridViewColumn Width="100"  Header="所属机构" DisplayMemberBinding="{Binding Institution}" tool:ListViewBehavior.SortField="Institution"/>
+                </GridView>
+            </ListView.View>
+                
+            <!--<ListView.ItemTemplate>
+                <DataTemplate >
+                    
+                </DataTemplate>
+            </ListView.ItemTemplate>-->
+        </ListView>
+        </tool:GridLineDecorator>
+    </Grid>
+</UserControl>
