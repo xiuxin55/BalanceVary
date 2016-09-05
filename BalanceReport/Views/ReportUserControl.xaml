@@ -1,26 +1,19 @@
-﻿<UserControl x:Class="BalanceReport.Views.ReportUserControl"
+﻿<Controls:TransitioningContentControl x:Class="BalanceReport.Views.ReportUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
-               xmlns:tool="clr-namespace:BalanceReport.Tools"
+             xmlns:tool="clr-namespace:BalanceReport.Tools"
              xmlns:usercontrol="clr-namespace:BalanceReport.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="1165" Background="White">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary   Source="/StyleTemplate/ControlStyle.xaml"></ResourceDictionary>
-                <ResourceDictionary  Source="/StyleTemplate/ButtonStyle.xaml"></ResourceDictionary>
-                
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
+    
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="16" />
-            <RowDefinition Height="54" />
+            <RowDefinition Height="32" />
             <RowDefinition Height="0" />
             <RowDefinition Height="44" />
             <RowDefinition Height="174*" />
@@ -34,43 +27,46 @@
             <ColumnDefinition Width="18" />
         </Grid.ColumnDefinitions>
         <usercontrol:UserControlLoading Grid.Row="1" Grid.RowSpan="4" Grid.Column="3" x:Name="LoadUserControl"></usercontrol:UserControlLoading>
-        <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" CornerRadius="2" BorderThickness="1" BorderBrush="DodgerBlue">
-            <StackPanel >
-                <RadioButton Style="{StaticResource RadioButtonlistVericalCC}"  Content="市行" Grid.Column="1" Grid.Row="1" Height="30" HorizontalAlignment="Left" Margin="1,10,0,0" Name="button1" VerticalAlignment="Top" Width="110"   Click="button1_Click" />
-                <RadioButton  Style="{StaticResource RadioButtonlistVericalCC}"  Content="县行" Height="30" HorizontalAlignment="Left" Margin="1,13,0,0" Name="button2" VerticalAlignment="Top" Width="110" Grid.Column="1" Grid.Row="3"   Click="button2_Click" />
-                <Border >
-                <!--<RadioButton   Style="{StaticResource RadioButtonlistVericalCCtemp}"    Content="导出" Height="30" HorizontalAlignment="Left" Margin="1,13,0,0" Name="button33" VerticalAlignment="Top" Width="110" Grid.Column="1"  Click="button3_Click" />-->
-                </Border>
-            </StackPanel>
+        <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" CornerRadius="2" >
+            <ListBox>
+                <ListBoxItem Content="市行" Selected="button1_Click"></ListBoxItem>
+                <ListBoxItem Content="县行"  Selected="button2_Click"></ListBoxItem>
+            </ListBox>
+          
         </Border>
-        <StackPanel Grid.Column="3" Grid.Row="1"  Name="stackPanel" Orientation="Horizontal" Background="White">
-            <TextBlock Height="23" Name="textBlock1" Text="活期比:" FontSize="15" Visibility="Collapsed" />
-            <TextBlock Height="23" Name="Rate" Text="" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Visibility="Collapsed" />
-            <DatePicker Name="starttime" Height="25" Width="115" Margin="15,0,0,0" />
-            <TextBlock  Text="至" HorizontalAlignment="Center" FontSize="15" VerticalAlignment="Center"  Margin="8,0,0,0"></TextBlock>
-            <DatePicker  Name="endtime" Height="25"  Width="115" Margin="15,0,0,0" />
-            <ComboBox Name="Displaystate" Height="25"  Width="85" Margin="15,0,0,0" SelectionChanged="ComboBox_SelectionChanged" Background="White">
-                <ComboBoxItem Content="日期内每日余额" />
-                <ComboBoxItem Content="日期内每日变动（相较前一天）" />
-                <ComboBoxItem Content="两个日期点余额变动" />
-                <ComboBoxItem Content="日期内日均余额" />
-            </ComboBox>
-            
-            
-            <TextBlock  Width="50"   Text="网点选择:" VerticalAlignment="Center" Margin="10,0,0,0" />
-            <ComboBox Name="txt_websitename" Height="25"  Width="85" Margin="15,0,0,0" ItemsSource="{Binding WebsiteInfoModelList}" DisplayMemberPath="WebsiteName" SelectedValue="WebsiteName" Background="White">
-                
-            </ComboBox>
-            <!--<TextBox  Width="100" Height="25" Name="txt_websitename"  HorizontalContentAlignment="Left" Margin="6,0,0,0" />-->
-            <TextBlock  Width="50"   Text="公司名称:" VerticalAlignment="Center" Margin="6,0,0,0" />
-            <TextBox  Width="100" Height="25" Name="txt_companyname"  HorizontalContentAlignment="Left" Margin="6,0,0,0" />
-            <TextBlock  Width="30"   Text="账号:" VerticalAlignment="Center" Margin="6,0,0,0" />
-            <TextBox  Width="100" Height="25" Name="txt_accountname"  HorizontalContentAlignment="Left" Margin="6,0,0,0" />
+        <ToolBar    Name="toolBar1" Grid.Column="3" Grid.Row="1" >
+            <ToolBar.Items>
+                <Button Width="0"></Button>
+                <TextBlock Height="23" Name="textBlock1" Text="活期比:" FontSize="15" Visibility="Collapsed" />
+                <TextBlock Height="23" Name="Rate" Text="" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Visibility="Collapsed" />
+                <DatePicker Name="starttime" Height="25" Width="115" Margin="15,0,0,0" />
+                <TextBlock  Text="至" HorizontalAlignment="Center" FontSize="15" VerticalAlignment="Center"  Margin="8,0,0,0"></TextBlock>
+                <DatePicker  Name="endtime" Height="25"  Width="115" Margin="15,0,0,0" />
+                <ComboBox Name="Displaystate" Height="25"  Width="85" Margin="15,0,0,0" SelectionChanged="ComboBox_SelectionChanged" Background="White">
+                    <ComboBoxItem Content="日期内每日余额" />
+                    <ComboBoxItem Content="日期内每日变动（相较前一天）" />
+                    <ComboBoxItem Content="两个日期点余额变动" />
+                    <ComboBoxItem Content="日期内日均余额" />
+                </ComboBox>
 
-            <CheckBox Content="忽略0项" Margin="3,0,0,0" Click="checkBox1_Click" Height="16" Name="checkBox1" Width="62" HorizontalContentAlignment="Center" IsChecked="True" />
-            <Button Name="SearchWebsite" Width="49"  Content="查询" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Background="#FF85C3FF" Click="SearchWebsite_Click" Margin="3,0,0,0" Height="25" />
-            <Button Name="button33" Width="49"  Content="导出" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Background="#FF85C3FF" Click="button3_Click" Margin="6,0,0,0" Height="25" />
-        </StackPanel>
+
+                <TextBlock  Width="50"   Text="网点选择:" VerticalAlignment="Center" Margin="10,0,0,0" />
+                <ComboBox Name="txt_websitename" Height="25"  Width="100" Margin="15,0,0,0" ItemsSource="{Binding WebsiteInfoModelList}" DisplayMemberPath="WebsiteName" SelectedValue="WebsiteName" Background="White">
+
+                </ComboBox>
+                <!--<TextBox  Width="100" Height="25" Name="txt_websitename"  HorizontalContentAlignment="Left" Margin="6,0,0,0" />-->
+                <TextBlock  Width="50"   Text="公司名称:" VerticalAlignment="Center" Margin="6,0,0,0" />
+                <TextBox  Width="120" Height="25" Name="txt_companyname"  HorizontalContentAlignment="Left" Margin="6,0,0,0" />
+                <TextBlock  Width="30"   Text="账号:" VerticalAlignment="Center" Margin="6,0,0,0" />
+                <TextBox  Width="120" Height="25" Name="txt_accountname"  HorizontalContentAlignment="Left" Margin="6,0,0,0" />
+
+                <CheckBox Content="忽略0项" Margin="3,0,0,0" Click="checkBox1_Click" Height="25" Name="checkBox1" Width="70" HorizontalContentAlignment="Center" IsChecked="True" />
+                <Button Name="SearchWebsite" Width="49"  Content="查询" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"  Click="SearchWebsite_Click" Margin="3,0,0,0" Height="25" />
+                <Button Name="button33" Width="49"  Content="导出" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"  Click="button3_Click" Margin="6,0,0,0" Height="25" />
+            </ToolBar.Items>
+        </ToolBar>
+      
+
         <Border BorderBrush="DodgerBlue"   Grid.RowSpan="3" Grid.Column="3" Grid.Row="2"   BorderThickness="1"  CornerRadius="5">
         <Grid Name="grid1">
                 <!--<WebBrowser Name="webbrowser"  SizeChanged="WebBrowser_SizeChanged" Navigating="WebBrowserMain_Navigating" />-->
@@ -226,4 +222,4 @@
         </Border>
      
     </Grid>
-</UserControl>
+</Controls:TransitioningContentControl>

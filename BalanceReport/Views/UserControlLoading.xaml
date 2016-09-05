@@ -881,7 +881,7 @@
 
     </UserControl.Triggers>
 
-    <DockPanel  Background="#B5EEEEEE" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+    <DockPanel   VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
 
         <Canvas x:Name="LayoutRoot" VerticalAlignment="Center" HorizontalAlignment="Center" Height="88" Width="88" Panel.ZIndex="99">
 

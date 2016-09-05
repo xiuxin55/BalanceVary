@@ -8,39 +8,37 @@
              mc:Ignorable="d" 
              x:Name="Managers"
              d:DesignHeight="300" d:DesignWidth="785">
-    <UserControl.Resources>
-        <ResourceDictionary Source="/StyleTemplate/ControlStyle.xaml"/>
-    </UserControl.Resources>
+   
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32" />
             <RowDefinition Height="265*" />
         </Grid.RowDefinitions>
-        <ToolBar  Background="{DynamicResource BackGroundBrush4}" Style="{StaticResource ToolBarStyle1}"  Name="toolBar1" Height="25">
+        <ToolBar    Name="toolBar1" >
             <ToolBar.Items>
                 <Button Width="0"></Button>
                 <!--<Button Name="AddAccount" Width="60" Content="新增" Command="{Binding AddAccountCommand}" HorizontalAlignment="Center" HorizontalContentAlignment="Left" />-->
                 <Button Name="UpdateAccount" Width="60"  Content="修改" Command="{Binding UpdateAccountCommand}" HorizontalContentAlignment="Left" />
                 <Button Name="DeleteAccount" Width="60"  Content="删除" Command="{Binding DeleteAccountCommand}" HorizontalContentAlignment="Left" />
-                <TextBlock  Width="60"   Text="账号:" VerticalAlignment="Center" />
-                <TextBox  Width="100" Text="{Binding SearchAccountInfoModel.AccountID}"  HorizontalContentAlignment="Left" />
+                <TextBlock  Width="40"   Text="账号:" VerticalAlignment="Center" />
+                <TextBox  Width="120" Text="{Binding SearchAccountInfoModel.AccountID}"  HorizontalContentAlignment="Left" />
                 <TextBlock  Width="60"   Text="账户名称:" VerticalAlignment="Center" />
-                <TextBox  Width="100" Text="{Binding SearchAccountInfoModel.AccountName}"  HorizontalContentAlignment="Left" />
+                <TextBox  Width="120" Text="{Binding SearchAccountInfoModel.AccountName}"  HorizontalContentAlignment="Left" />
                 <TextBlock  Width="70"   Text="是否已关联:" VerticalAlignment="Center" />
-                <ComboBox   Width="100" Text="{Binding  SearchAccountInfoModel.CorrelationState}"  Name="comboBox1"  Background="White" VerticalContentAlignment="Center" VerticalAlignment="Stretch" FontSize="12">
+                <ComboBox   Width="120" Text="{Binding  SearchAccountInfoModel.CorrelationState}"  Name="comboBox1"  Background="White" VerticalContentAlignment="Center" VerticalAlignment="Stretch" FontSize="12">
                     <ComboBoxItem Content="全部" />
                     <ComboBoxItem Content="已关联" />
                     <ComboBoxItem Content="未关联" />
                 </ComboBox>
              
-                <Button Name="SearchAccount" Width="60"  Content="查询" Command="{Binding SearchAccountCommand}" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" VerticalAlignment="Center" />
-                <Button Name="Link" Width="60"  Content="批量关联" Command="{Binding ManyLinkCommand}" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" VerticalAlignment="Center" />
+                <Button Name="SearchAccount" Width="60"  Content="查询" Command="{Binding SearchAccountCommand}" HorizontalContentAlignment="Left"  />
+                <Button Name="Link" Width="60"  Content="批量关联" Command="{Binding ManyLinkCommand}" HorizontalContentAlignment="Left"   />
             </ToolBar.Items>
         </ToolBar>
-        <tool:GridLineDecorator GridLineBrush="{StaticResource ResourceKey=col}" Grid.Row="1" >
+        <tool:GridLineDecorator Grid.Row="1" >
             <ListView  Name="listView1" ItemsSource="{Binding AccountInfoList}" SelectedItem="{Binding SelectedAccountInfoModel}">
             <ListView.View>
-                <GridView ColumnHeaderContainerStyle="{StaticResource GridViewHeaderStyle}">
+                <GridView >
                         <GridViewColumn Header="  " >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>

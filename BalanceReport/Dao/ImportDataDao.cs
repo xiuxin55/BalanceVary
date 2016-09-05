@@ -217,7 +217,7 @@ namespace BalanceReport.Dao
 
                     App.Current.Dispatcher.Invoke(new Action(delegate()
                     {
-                        MainWindow MW = (MainWindow)App.Current.MainWindow;
+                        BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                         MW.pro.progressBar.Value = MW.pro.progressBar.Value + 1;
                         jinDu = MW.pro.progressBar.Value / MW.pro.progressBar.Maximum * 100;
                         MW.pro.jinDu.Text = "当前进度:" + jinDu.ToString("#0.00") + "%";
@@ -258,7 +258,7 @@ namespace BalanceReport.Dao
             {
                 App.Current.Dispatcher.Invoke(new Action(delegate()
                 {
-                    MainWindow MW = (MainWindow)App.Current.MainWindow;
+                    BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                     MW.pro.Visibility = Visibility.Collapsed;
                 }));
             }
@@ -373,7 +373,7 @@ namespace BalanceReport.Dao
                     }
                     App.Current.Dispatcher.Invoke(new Action(delegate()
                     {
-                        MainWindow MW = (MainWindow)App.Current.MainWindow;
+                        BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                         MW.pro.progressBar.Value = MW.pro.progressBar.Value + 1;
                         jinDu = MW.pro.progressBar.Value / MW.pro.progressBar.Maximum * 100;
                         MW.pro.jinDu.Text = "当前进度:" + jinDu.ToString("#0.00") + "%";
@@ -414,7 +414,7 @@ namespace BalanceReport.Dao
             {
                 App.Current.Dispatcher.Invoke(new Action(delegate()
                 {
-                    MainWindow MW = (MainWindow)App.Current.MainWindow;
+                    BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                     MW.pro.Visibility = Visibility.Collapsed;
                 }));
             }
@@ -501,7 +501,7 @@ namespace BalanceReport.Dao
                     //cmdtxts.Add(sqlBalanceInfo);
                     App.Current.Dispatcher.Invoke(new Action(delegate()
                     {
-                        MainWindow MW = (MainWindow)App.Current.MainWindow;
+                        BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                         MW.pro.progressBar.Value = MW.pro.progressBar.Value + 1;
                         jinDu = MW.pro.progressBar.Value / MW.pro.progressBar.Maximum * 100;
                         MW.pro.jinDu.Text = "当前进度:" + jinDu.ToString("#0.00") + "%";
@@ -527,7 +527,7 @@ namespace BalanceReport.Dao
             {
                 App.Current.Dispatcher.Invoke(new Action(delegate()
                 {
-                    MainWindow MW = (MainWindow)App.Current.MainWindow;
+                    BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                     MW.pro.Visibility = Visibility.Collapsed;
                 }));
             }
@@ -558,7 +558,7 @@ namespace BalanceReport.Dao
                     }
                     App.Current.Dispatcher.Invoke(new Action(delegate()
                     {
-                        MainWindow MW = (MainWindow)App.Current.MainWindow;
+                        BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                         MW.pro.progressBar.Value = MW.pro.progressBar.Value + 1;
                         jinDu = MW.pro.progressBar.Value / MW.pro.progressBar.Maximum * 100;
                         MW.pro.jinDu.Text = "当前进度:" + jinDu.ToString("#0.00") + "%";
@@ -587,7 +587,7 @@ namespace BalanceReport.Dao
             {
                 App.Current.Dispatcher.Invoke(new Action(delegate()
                 {
-                    MainWindow MW = (MainWindow)App.Current.MainWindow;
+                    BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                     MW.pro.Visibility = Visibility.Collapsed;
                 }));
                 //return result;

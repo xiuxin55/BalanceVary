@@ -4,7 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              d:DesignHeight="88" d:DesignWidth="327" OpacityMask="{x:Null}" Opacity="80" Name="pro">
-    <Border CornerRadius="5" Background="#C3A9A9A9" >
+    <Border CornerRadius="5"  >
        
         <Grid>
             <Grid.ColumnDefinitions>
@@ -15,7 +15,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="20"/>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="8"/>
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition/>

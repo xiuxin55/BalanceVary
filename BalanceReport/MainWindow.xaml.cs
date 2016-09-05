@@ -17,15 +17,16 @@ using System.Threading;
 using BalanceReport.Views;
 using BalanceReport.Common;
 using BalanceReport.Models;
+using MahApps.Metro.Controls;
 
 namespace BalanceReport
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class BalanceWindow :  MetroWindow
     {
-        public MainWindow()
+        public BalanceWindow()
         {
             InitializeComponent();
         

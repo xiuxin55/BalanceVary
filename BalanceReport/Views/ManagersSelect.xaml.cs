@@ -12,13 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BalanceReport.ViewModels;
 using BalanceReport.Models;
+using MahApps.Metro.Controls;
 
 namespace BalanceReport.Views
 {
     /// <summary>
     /// WebsiteAdd.xaml 的交互逻辑
     /// </summary>
-    public partial class ManagersSelect : Window
+    public partial class ManagersSelect : MetroWindow
     {
         public ManagersSelectVM WSVM { get; set; }
         public ManagersSelect()

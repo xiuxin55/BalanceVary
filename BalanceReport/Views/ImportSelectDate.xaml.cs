@@ -12,13 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BalanceReport.ViewModels;
 using BalanceReport.Models;
+using MahApps.Metro.Controls;
 
 namespace BalanceReport.Views
 {
     /// <summary>
     /// ManagerAdd.xaml 的交互逻辑
     /// </summary>
-    public partial class ImportSelectDate : Window
+    public partial class ImportSelectDate : MetroWindow
     {
         public ImportSelectDate()
         {

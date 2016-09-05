@@ -82,7 +82,7 @@ namespace BalanceReport.Common
                 double jinDu = 0;
                 App.Current.Dispatcher.Invoke(new Action(delegate()
                 {
-                    MainWindow MW = (MainWindow)App.Current.MainWindow;
+                    BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
 
                     MW.pro.progressBar.Maximum = cmdtxts.Count;
 
@@ -101,7 +101,7 @@ namespace BalanceReport.Common
                     cmd.ExecuteNonQuery();
                     App.Current.Dispatcher.Invoke(new Action(delegate()
                     {
-                        MainWindow MW = (MainWindow)App.Current.MainWindow;
+                        BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                         MW.pro.progressBar.Value = MW.pro.progressBar.Value + 1;
                         jinDu = MW.pro.progressBar.Value / MW.pro.progressBar.Maximum * 100;
                         MW.pro.jinDu.Text = "当前进度:" + jinDu.ToString("#0.00") + "%";
@@ -124,7 +124,7 @@ namespace BalanceReport.Common
              {
                  App.Current.Dispatcher.Invoke(new Action(delegate()
                  {
-                     MainWindow MW = (MainWindow)App.Current.MainWindow;
+                     BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
 
                      MW.pro.progressBar.Maximum = listtable.Count +cmdtxts.Count;
 
@@ -145,7 +145,7 @@ namespace BalanceReport.Common
                      }
                      App.Current.Dispatcher.Invoke(new Action(delegate()
                      {
-                         MainWindow MW = (MainWindow)App.Current.MainWindow;
+                         BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                          MW.pro.progressBar.Value = MW.pro.progressBar.Value + 1;
                          double jinDu = MW.pro.progressBar.Value / MW.pro.progressBar.Maximum * 100;
                          MW.pro.jinDu.Text = "当前进度:" + jinDu.ToString("#0.00") + "%";
@@ -177,7 +177,7 @@ namespace BalanceReport.Common
                     cmd.ExecuteNonQuery();
                     App.Current.Dispatcher.Invoke(new Action(delegate()
                     {
-                        MainWindow MW = (MainWindow)App.Current.MainWindow;
+                        BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                         MW.pro.progressBar.Value = MW.pro.progressBar.Value + 1;
                         double jinDu = MW.pro.progressBar.Value / MW.pro.progressBar.Maximum * 100;
                         MW.pro.jinDu.Text = "当前进度:" + jinDu.ToString("#0.00") + "%";

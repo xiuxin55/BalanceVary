@@ -87,62 +87,62 @@ namespace BalanceReport.Dao
             }
             return list;
         }
-        public List<BalanceSrv.BalanceVaryModel> GetBalanceVary(string starttime, string endtime, string Insitusation, string WebsiteName, string Company, string Account, string Displaystate, string except0)
-        {
-            BalanceSrv.BalanceSrv BalanceSrvClient = new BalanceSrv.BalanceSrv();
-            BalanceSrvClient.Url = Common.CommonData.Instance.WebUrlStr.Trim() + BalanceSrvClient.Url.Substring(BalanceSrvClient.Url.LastIndexOf('/'));
+        //public List<BalanceSrv.BalanceVaryModel> GetBalanceVary(string starttime, string endtime, string Insitusation, string WebsiteName, string Company, string Account, string Displaystate, string except0)
+        //{
+        //    BalanceSrv.BalanceSrv BalanceSrvClient = new BalanceSrv.BalanceSrv();
+        //    BalanceSrvClient.Url = Common.CommonData.Instance.WebUrlStr.Trim() + BalanceSrvClient.Url.Substring(BalanceSrvClient.Url.LastIndexOf('/'));
 
-            List<BalanceSrv.BalanceVaryModel> InfoList = BalanceSrvClient.GetBalanceVary(starttime, endtime, Insitusation, WebsiteName, Company, Account, Displaystate, except0).ToList<BalanceSrv.BalanceVaryModel>();
-            List<BalanceSrv.BalanceVaryModel> temp = (from i in InfoList where i.DifferWebsite != "公司" && i.DifferWebsite != "网点" select i).ToList<BalanceSrv.BalanceVaryModel>();
+        //    List<BalanceSrv.BalanceVaryModel> InfoList = BalanceSrvClient.GetBalanceVary(starttime, endtime, Insitusation, WebsiteName, Company, Account, Displaystate, except0).ToList<BalanceSrv.BalanceVaryModel>();
+        //    List<BalanceSrv.BalanceVaryModel> temp = (from i in InfoList where i.DifferWebsite != "公司" && i.DifferWebsite != "网点" select i).ToList<BalanceSrv.BalanceVaryModel>();
 
-            return temp;
-        }
+        //    return temp;
+        //}
 
-        public List<BalanceSrv.BalanceVaryModel> GetCompanyBalanceVary(string starttime, string endtime, string Insitusation, string WebsiteName, string Company, string Account, string Displaystate, string except0)
-        {
-            BalanceSrv.BalanceSrv BalanceSrvClient = new BalanceSrv.BalanceSrv();
-            BalanceSrvClient.Url = Common.CommonData.Instance.WebUrlStr.Trim() + BalanceSrvClient.Url.Substring(BalanceSrvClient.Url.LastIndexOf('/'));
+        //public List<BalanceSrv.BalanceVaryModel> GetCompanyBalanceVary(string starttime, string endtime, string Insitusation, string WebsiteName, string Company, string Account, string Displaystate, string except0)
+        //{
+        //    BalanceSrv.BalanceSrv BalanceSrvClient = new BalanceSrv.BalanceSrv();
+        //    BalanceSrvClient.Url = Common.CommonData.Instance.WebUrlStr.Trim() + BalanceSrvClient.Url.Substring(BalanceSrvClient.Url.LastIndexOf('/'));
 
-            List<BalanceSrv.BalanceVaryModel> InfoList = BalanceSrvClient.GetBalanceVary(starttime, endtime, Insitusation, WebsiteName, Company, Account, Displaystate, except0).ToList<BalanceSrv.BalanceVaryModel>();
-            List<BalanceSrv.BalanceVaryModel> temp = (from i in InfoList where i.DifferWebsite == "公司"  select i).ToList<BalanceSrv.BalanceVaryModel>();
+        //    List<BalanceSrv.BalanceVaryModel> InfoList = BalanceSrvClient.GetBalanceVary(starttime, endtime, Insitusation, WebsiteName, Company, Account, Displaystate, except0).ToList<BalanceSrv.BalanceVaryModel>();
+        //    List<BalanceSrv.BalanceVaryModel> temp = (from i in InfoList where i.DifferWebsite == "公司"  select i).ToList<BalanceSrv.BalanceVaryModel>();
 
-            return temp;
-        }
-        public List<BalanceSrv.BalanceVaryModel> GetWebsiteBalanceVary(string starttime, string endtime, string Insitusation, string WebsiteName, string Company, string Account, string Displaystate, string except0)
-        {
-            BalanceSrv.BalanceSrv BalanceSrvClient = new BalanceSrv.BalanceSrv();
-            BalanceSrvClient.Url = Common.CommonData.Instance.WebUrlStr.Trim() + BalanceSrvClient.Url.Substring(BalanceSrvClient.Url.LastIndexOf('/'));
+        //    return temp;
+        //}
+        //public List<BalanceSrv.BalanceVaryModel> GetWebsiteBalanceVary(string starttime, string endtime, string Insitusation, string WebsiteName, string Company, string Account, string Displaystate, string except0)
+        //{
+        //    BalanceSrv.BalanceSrv BalanceSrvClient = new BalanceSrv.BalanceSrv();
+        //    BalanceSrvClient.Url = Common.CommonData.Instance.WebUrlStr.Trim() + BalanceSrvClient.Url.Substring(BalanceSrvClient.Url.LastIndexOf('/'));
 
-            List<BalanceSrv.BalanceVaryModel> InfoList = BalanceSrvClient.GetBalanceVary(starttime, endtime, Insitusation, WebsiteName, Company, Account, Displaystate, except0).ToList<BalanceSrv.BalanceVaryModel>();
-            List<BalanceSrv.BalanceVaryModel> temp = (from i in InfoList where  i.DifferWebsite == "网点" select i).ToList<BalanceSrv.BalanceVaryModel>();
+        //    List<BalanceSrv.BalanceVaryModel> InfoList = BalanceSrvClient.GetBalanceVary(starttime, endtime, Insitusation, WebsiteName, Company, Account, Displaystate, except0).ToList<BalanceSrv.BalanceVaryModel>();
+        //    List<BalanceSrv.BalanceVaryModel> temp = (from i in InfoList where  i.DifferWebsite == "网点" select i).ToList<BalanceSrv.BalanceVaryModel>();
 
-            return temp;
-        }
+        //    return temp;
+        //}
 
-        public ObservableCollection<BalanceVaryModel> GetBalanceVaryModelConverter(List<BalanceSrv.BalanceVaryModel> InfoList)
-        {
+        //public ObservableCollection<BalanceVaryModel> GetBalanceVaryModelConverter(List<BalanceSrv.BalanceVaryModel> InfoList)
+        //{
 
-            List<BalanceVaryModel> temp = new List<BalanceVaryModel>();
-            foreach (BalanceSrv.BalanceVaryModel item in InfoList)
-            {
-                BalanceVaryModel newmodel = new BalanceVaryModel();
-                newmodel.ID = item.ID;
-                newmodel.Name = item.Name;
-                newmodel.DifferWebsite = item.DifferWebsite;
-                newmodel.RegularMoney = item.RegularMoney;
-                newmodel.UnRegularMoney = item.UnRegularMoney;
-                newmodel.AmountMoney = item.AmountMoney;
-                newmodel.WebsiteID = item.WebsiteID;
-                newmodel.WebsiteAddress = item.WebsiteAddress;
-                newmodel.WebsiteManager = item.WebsiteManager;
-                newmodel.WebsiteTel = item.WebsiteTel;
-                newmodel.BalanceTime = item.BalanceTime;
-                newmodel.ParentID = item.ParentID;
-                temp.Add(newmodel);
-            }
-            temp.Sort();
-            return new ObservableCollection<BalanceVaryModel>(temp);
-        }
+        //    List<BalanceVaryModel> temp = new List<BalanceVaryModel>();
+        //    foreach (BalanceSrv.BalanceVaryModel item in InfoList)
+        //    {
+        //        BalanceVaryModel newmodel = new BalanceVaryModel();
+        //        newmodel.ID = item.ID;
+        //        newmodel.Name = item.Name;
+        //        newmodel.DifferWebsite = item.DifferWebsite;
+        //        newmodel.RegularMoney = item.RegularMoney;
+        //        newmodel.UnRegularMoney = item.UnRegularMoney;
+        //        newmodel.AmountMoney = item.AmountMoney;
+        //        newmodel.WebsiteID = item.WebsiteID;
+        //        newmodel.WebsiteAddress = item.WebsiteAddress;
+        //        newmodel.WebsiteManager = item.WebsiteManager;
+        //        newmodel.WebsiteTel = item.WebsiteTel;
+        //        newmodel.BalanceTime = item.BalanceTime;
+        //        newmodel.ParentID = item.ParentID;
+        //        temp.Add(newmodel);
+        //    }
+        //    temp.Sort();
+        //    return new ObservableCollection<BalanceVaryModel>(temp);
+        //}
         public List<BalanceVaryModel> GetBalanceVaryFromDate(string starttime, string endtime, string Insitusation, string WebsiteName, string Company, string Account, string Displaystate, string except0)
         {
               

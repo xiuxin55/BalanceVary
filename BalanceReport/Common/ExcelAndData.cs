@@ -325,7 +325,7 @@ namespace BalanceReport.Common
                 double jinDu = 0.00;
                 App.Current.Dispatcher.Invoke(new Action(delegate()
                 {
-                    MainWindow MW = (MainWindow)App.Current.MainWindow;
+                    BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
 
                     MW.pro.progressBar.Maximum = sheet.LastRowNum * 2;
                     MW.pro.FileName = strFileName;
@@ -378,7 +378,7 @@ namespace BalanceReport.Common
                     dt.Rows.Add(dataRow);
                     App.Current.Dispatcher.Invoke(new Action(delegate()
                     {
-                        MainWindow MW = (MainWindow)App.Current.MainWindow;
+                        BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                         MW.pro.progressBar.Value = MW.pro.progressBar.Value + 1;
                         jinDu = MW.pro.progressBar.Value / MW.pro.progressBar.Maximum * 100;
                         MW.pro.jinDu.Text = "当前进度:" + jinDu.ToString("#0.00") + "%";
@@ -408,7 +408,7 @@ namespace BalanceReport.Common
                 double jinDu = 0.00;
                 App.Current.Dispatcher.Invoke(new Action(delegate()
                 {
-                    MainWindow MW = (MainWindow)App.Current.MainWindow;
+                    BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
 
                     MW.pro.progressBar.Maximum = sheet.LastRowNum * 2;
                     MW.pro.FileName = strFileName;
@@ -444,7 +444,7 @@ namespace BalanceReport.Common
                     dt.Rows.Add(dataRow);
                     App.Current.Dispatcher.Invoke(new Action(delegate()
                     {
-                        MainWindow MW = (MainWindow)App.Current.MainWindow;
+                        BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                         MW.pro.progressBar.Value = MW.pro.progressBar.Value + 1;
                         jinDu = MW.pro.progressBar.Value / MW.pro.progressBar.Maximum * 100;
                         MW.pro.jinDu.Text = "当前进度:" + jinDu.ToString("#0.00") + "%";
@@ -477,7 +477,7 @@ namespace BalanceReport.Common
                 double jinDu = 0.00;
                 App.Current.Dispatcher.Invoke(new Action(delegate()
                 {
-                    MainWindow MW = (MainWindow)App.Current.MainWindow;
+                    BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
 
                     MW.pro.progressBar.Maximum = sheet.LastRowNum*2;
                     MW.pro.FileName = strFileName;
@@ -530,7 +530,7 @@ namespace BalanceReport.Common
                     dt.Rows.Add(dataRow);
                     App.Current.Dispatcher.Invoke(new Action(delegate()
                     {
-                        MainWindow MW = (MainWindow)App.Current.MainWindow;
+                        BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                         MW.pro.progressBar.Value = MW.pro.progressBar.Value + 1;
                         jinDu = MW.pro.progressBar.Value / MW.pro.progressBar.Maximum * 100;
                         MW.pro.jinDu.Text = "当前进度:" + jinDu.ToString("#0.00") + "%";
@@ -560,7 +560,7 @@ namespace BalanceReport.Common
                 double jinDu = 0.00;
                 App.Current.Dispatcher.Invoke(new Action(delegate()
                 {
-                    MainWindow MW = (MainWindow)App.Current.MainWindow;
+                    BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
 
                     MW.pro.progressBar.Maximum = sheet.LastRowNum * 2;
                     MW.pro.FileName = strFileName;
@@ -596,7 +596,7 @@ namespace BalanceReport.Common
                     dt.Rows.Add(dataRow);
                     App.Current.Dispatcher.Invoke(new Action(delegate()
                     {
-                        MainWindow MW = (MainWindow)App.Current.MainWindow;
+                        BalanceWindow MW = (BalanceWindow)App.Current.MainWindow;
                         MW.pro.progressBar.Value = MW.pro.progressBar.Value + 1;
                         jinDu = MW.pro.progressBar.Value / MW.pro.progressBar.Maximum * 100;
                         MW.pro.jinDu.Text = "当前进度:" + jinDu.ToString("#0.00") + "%";

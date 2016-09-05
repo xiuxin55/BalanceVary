@@ -18,14 +18,14 @@ using System.Collections.ObjectModel;
 using BalanceReport.Models;
 using System.Threading;
 using BalanceReport.ViewModels;
-
+using MahApps.Metro.Controls;
 
 namespace BalanceReport.Views
 {
     /// <summary>
     /// ReportUserControl.xaml 的交互逻辑
     /// </summary>
-    public partial class ReportUserControl : UserControl
+    public partial class ReportUserControl : TransitioningContentControl
     {
         private ReportUserControlVM VM;
         public ReportUserControl()
