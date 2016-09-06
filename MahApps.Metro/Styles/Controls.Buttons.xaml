@@ -353,6 +353,7 @@
                                 CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(Controls:ControlsHelper.CornerRadius), Mode=OneWay}"
                                 IsHitTestVisible="False"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                 
                         <Controls:ContentControlEx x:Name="PART_ContentPresenter"
                                                    Padding="{TemplateBinding Padding}"
                                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"

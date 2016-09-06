@@ -213,7 +213,7 @@
                             </ToggleButton>
 
                             <Thumb x:Name="ToolBarThumb"
-                                   Width="10"
+                                   Width="0"
                                    Style="{StaticResource ToolBarThumbStyle}" />
 
                             <ToolBarPanel x:Name="PART_ToolBarPanel"

@@ -198,7 +198,6 @@ E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\bin\Debug\MahApps.Metro.
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\bin\Debug\MahApps.Metro.pdb
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\bin\Debug\System.Windows.Interactivity.dll
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\bin\Debug\System.Windows.Interactivity.xml
-E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\bin\Debug\JetBrains.Annotations.xml
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\bin\Debug\de\System.Windows.Interactivity.resources.dll
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\bin\Debug\en\System.Windows.Interactivity.resources.dll
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\bin\Debug\es\System.Windows.Interactivity.resources.dll

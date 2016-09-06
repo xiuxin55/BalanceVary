@@ -539,3 +539,7 @@ E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\App.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceReport.dll
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\MahApps.Metro.pdb
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\MahApps.Metro.xml
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\SearchWindow.baml
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\SearchWindow.g.cs
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\VaryGridControl.g.cs
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\VaryGridControl.baml

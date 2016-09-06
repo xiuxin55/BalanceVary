@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-18230754241
+20307723932
 
-57-1780080050
+59147552982
 33-1936870729
-App.xaml;MainWindow.xaml;Views\CoverUserControl.xaml;Views\DepartmentReportUserControl.xaml;Views\ManagersAdd.xaml;Views\MyCalendar.xaml;Views\ProgressBarWindow.xaml;Views\ReportUserControl.xaml;Views\UserControlLoading.xaml;Views\WebsiteAdd.xaml;Views\WebsiteManage.xaml;Views\ManagersList.xaml;Views\WebsiteSelect.xaml;Views\ManagersSelect.xaml;Views\AccountManage.xaml;Views\AccountAdd.xaml;Views\AccountLink.xaml;Views\ImportSelectDate.xaml;
+App.xaml;MainWindow.xaml;Views\CoverUserControl.xaml;Views\DepartmentReportUserControl.xaml;Views\ManagersAdd.xaml;Views\MyCalendar.xaml;Views\ProgressBarWindow.xaml;Views\ReportUserControl.xaml;Views\SearchWindow.xaml;Views\UserControlLoading.xaml;Views\VaryGridControl.xaml;Views\WebsiteAdd.xaml;Views\WebsiteManage.xaml;Views\ManagersList.xaml;Views\WebsiteSelect.xaml;Views\ManagersSelect.xaml;Views\AccountManage.xaml;Views\AccountAdd.xaml;Views\AccountLink.xaml;Views\ImportSelectDate.xaml;
 
-False
+True
 

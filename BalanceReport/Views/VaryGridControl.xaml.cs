@@ -11,24 +11,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BalanceReport.Dao;
-using System.Web;
-using System.Reflection;
-using System.Collections.ObjectModel;
-using BalanceReport.Models;
-using System.Threading;
-using BalanceReport.ViewModels;
-using MahApps.Metro.Controls;
 
 namespace BalanceReport.Views
 {
     /// <summary>
-    /// ReportUserControl.xaml 的交互逻辑
+    /// VaryGridControl.xaml 的交互逻辑
     /// </summary>
-    public partial class ReportUserControl : TransitioningContentControl
+    public partial class VaryGridControl : UserControl
     {
-        private ReportUserControlVM VM;
-        public ReportUserControl()
+        public VaryGridControl()
         {
             InitializeComponent();
         }

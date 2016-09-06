@@ -168,8 +168,14 @@
     <Compile Include="Views\ReportUserControl.xaml.cs">
       <DependentUpon>ReportUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SearchWindow.xaml.cs">
+      <DependentUpon>SearchWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControlLoading.xaml.cs">
       <DependentUpon>UserControlLoading.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VaryGridControl.xaml.cs">
+      <DependentUpon>VaryGridControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WebsiteAdd.xaml.cs">
       <DependentUpon>WebsiteAdd.xaml</DependentUpon>
@@ -234,7 +240,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\SearchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UserControlLoading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VaryGridControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
