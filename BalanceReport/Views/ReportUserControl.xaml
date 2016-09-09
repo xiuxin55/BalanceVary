@@ -6,6 +6,7 @@
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
              xmlns:tool="clr-namespace:BalanceReport.Tools"
+             xmlns:datagrid="clr-namespace:BalanceReport.Views.ReportDataGrid"
              xmlns:usercontrol="clr-namespace:BalanceReport.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="1165" Background="White">
@@ -20,24 +21,24 @@
             <TabControl Grid.Row="1" Margin="3,0" TabStripPlacement="Bottom" Controls:TabControlHelper.IsUnderlined="True" >
                 <TabItem  Header="市行情况" >
                     <Grid >
-                        <ListBox>
-                            
-                        </ListBox>
+                        <datagrid:CityDataGrid/>
+                        <datagrid:CityWebsiteDataGrid />
                     </Grid>
                 </TabItem>
                 <TabItem  Header="县行情况" >
                     <Grid >
-
+                        <datagrid:CountyDataGrid/>
+                        <datagrid:CountyWebsiteDataGrid />
                     </Grid>
                 </TabItem>
-                <TabItem Header="网点-公司情况" >
+                <TabItem Header="市行网点-公司情况" >
                     <Grid >
-                        
+                        <datagrid:CityCompanyDataGrid/>
                     </Grid>
                 </TabItem>
-                <TabItem Header="网点-公司情况" >
+                <TabItem Header="县行网点-公司情况" >
                     <Grid >
-
+                        <datagrid:CountyCompanyDataGrid />
                     </Grid>
                 </TabItem>
             </TabControl>

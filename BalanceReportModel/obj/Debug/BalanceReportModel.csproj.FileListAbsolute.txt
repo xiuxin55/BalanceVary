@@ -22,3 +22,7 @@ C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\Balan
 C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\BalanceReportModel\bin\Debug\BalanceReportModel.pdb
 C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\BalanceReportModel\obj\Debug\BalanceReportModel.dll
 C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\BalanceReportModel\obj\Debug\BalanceReportModel.pdb
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReportModel\bin\Debug\BalanceReportModel.dll
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReportModel\bin\Debug\BalanceReportModel.pdb
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReportModel\obj\Debug\BalanceReportModel.dll
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReportModel\obj\Debug\BalanceReportModel.pdb

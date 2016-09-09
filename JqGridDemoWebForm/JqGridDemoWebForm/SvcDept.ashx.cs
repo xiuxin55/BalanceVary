@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Text;
 using System.Web.Script.Serialization;
-using BalanceReportModel;
+using BalanceModel;
 namespace JqGridDemoWebForm
 {
     /// <summary>

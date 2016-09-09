@@ -126,14 +126,6 @@
     <Compile Include="Dao\WebsiteInfoDao.cs" />
     <Compile Include="Dao\ManagersInfoDao.cs" />
     <Compile Include="Dao\BalanceInfoDao.cs" />
-    <Compile Include="Models\AccountInfoModel.cs" />
-    <Compile Include="Models\BalanceInfoModel.cs" />
-    <Compile Include="Models\BalanceVaryModel.cs" />
-    <Compile Include="Models\DateTimeModel.cs" />
-    <Compile Include="Models\ImportDataModel.cs" />
-    <Compile Include="Models\ManagersInfoModel.cs" />
-    <Compile Include="Models\ReportModel.cs" />
-    <Compile Include="Models\WebsiteInfoModel.cs" />
     <Compile Include="Tools\Byte[]ToBitmapImageConverter.cs" />
     <Compile Include="Tools\GridLineDecorator.cs" />
     <Compile Include="Tools\ListSortDecorator.cs" />
@@ -164,6 +156,24 @@
     </Compile>
     <Compile Include="Views\ProgressBarWindow.xaml.cs">
       <DependentUpon>ProgressBarWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportDataGrid\CountyCompanyDataGrid.xaml.cs">
+      <DependentUpon>CountyCompanyDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportDataGrid\CityCompanyDataGrid.xaml.cs">
+      <DependentUpon>CityCompanyDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportDataGrid\CountyDataGrid.xaml.cs">
+      <DependentUpon>CountyDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportDataGrid\CityDataGrid.xaml.cs">
+      <DependentUpon>CityDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportDataGrid\CountyWebsiteDataGrid.xaml.cs">
+      <DependentUpon>CountyWebsiteDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportDataGrid\CityWebsiteDataGrid.xaml.cs">
+      <DependentUpon>CityWebsiteDataGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ReportUserControl.xaml.cs">
       <DependentUpon>ReportUserControl.xaml</DependentUpon>
@@ -235,6 +245,30 @@
     <Page Include="Views\ProgressBarWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ReportDataGrid\CountyCompanyDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ReportDataGrid\CityCompanyDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ReportDataGrid\CountyDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ReportDataGrid\CityDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReportDataGrid\CountyWebsiteDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ReportDataGrid\CityWebsiteDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ReportUserControl.xaml">
       <SubType>Designer</SubType>
@@ -340,9 +374,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Config\Config.csproj">
+    <ProjectReference Include="..\Config\Configure.csproj">
       <Project>{46c7dbd4-3821-4579-995d-0e88bff6beac}</Project>
-      <Name>Config</Name>
+      <Name>Configure</Name>
     </ProjectReference>
     <ProjectReference Include="..\MahApps.Metro\MahApps.Metro.csproj">
       <Project>{5b1710d2-5dc8-4754-91b2-19165de49b3d}</Project>

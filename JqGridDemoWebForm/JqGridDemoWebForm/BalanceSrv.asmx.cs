@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using BalanceReportDao.Common;
-using BalanceReportModel;
+using BalanceModel;
 using BalanceReportDao.Dao;
 
 namespace JqGridDemoWebForm

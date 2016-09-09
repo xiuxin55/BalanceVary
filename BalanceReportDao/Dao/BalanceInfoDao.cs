@@ -5,7 +5,7 @@ using System.Text;
 using System.Data;
 using System.Collections.ObjectModel;
 using BalanceReportDao.Common;
-using BalanceReportModel;
+using BalanceModel;
 
 namespace BalanceReportDao.Dao
 {
