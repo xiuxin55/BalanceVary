@@ -1,6 +1,0 @@
-E:\个人\GitHub_余额变动\BalanceVary\Config\bin\Debug\Config.xml
-E:\个人\GitHub_余额变动\BalanceVary\Config\bin\Debug\Config.dll
-E:\个人\GitHub_余额变动\BalanceVary\Config\bin\Debug\Config.pdb
-E:\个人\GitHub_余额变动\BalanceVary\Config\obj\Debug\Config.dll
-E:\个人\GitHub_余额变动\BalanceVary\Config\obj\Debug\Config.pdb
-E:\个人\GitHub_余额变动\BalanceVary\Config\obj\Debug\Config.csprojResolveAssemblyReference.cache
