@@ -5,7 +5,6 @@ namespace MahApps.Metro.Controls
     using System.Globalization;
     using System.Linq;
     using System.Reflection;
-    using System.Text.RegularExpressions;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Controls.Primitives;
@@ -147,21 +146,18 @@ namespace MahApps.Metro.Controls
                                             }
                                         }));
 
-        [Obsolete(@"This property will be deleted in the next release. You should use TextBoxHelper.SelectAllOnFocus instead.")]
         public static readonly DependencyProperty SelectAllOnFocusProperty = DependencyProperty.Register(
             "SelectAllOnFocus",
             typeof(bool),
             typeof(NumericUpDown),
-            new PropertyMetadata(true, (o, e) => TextBoxHelper.SetSelectAllOnFocus(o, (bool)e.NewValue)));
+            new PropertyMetadata(true));
 
         public static readonly DependencyProperty HasDecimalsProperty = DependencyProperty.Register(
             "HasDecimals",
             typeof(bool), 
             typeof(NumericUpDown),
             new FrameworkPropertyMetadata(true, OnHasDecimalsChanged));
-
-        private static readonly Regex RegexStringFormatHexadecimal = new Regex(@"^(?<complexHEX>.*{\d:X\d+}.*)?(?<simpleHEX>X\d+)?$", RegexOptions.Compiled);
-
+        
         private const double DefaultInterval = 1d;
         private const int DefaultDelay = 500;
         private const string ElementNumericDown = "PART_NumericDown";
@@ -360,7 +356,6 @@ namespace MahApps.Metro.Controls
             set { SetValue(IntervalProperty, value); }
         }
 
-        [Obsolete(@"This property will be deleted in the next release. You should use Controls:TextBoxHelper.SelectAllOnFocus instead.")]
         [Bindable(true)]
         [Category("Behavior")]
         [DefaultValue(true)]
@@ -476,20 +471,20 @@ namespace MahApps.Metro.Controls
             // If we're an editable NumericUpDown, forward focus to the TextBox element
             if (!e.Handled)
             {
-                if ((numericUpDown.InterceptManualEnter || numericUpDown.IsReadOnly) && numericUpDown.Focusable && numericUpDown._valueTextBox != null)
+                if ((numericUpDown.InterceptManualEnter || numericUpDown.IsReadOnly) && numericUpDown._valueTextBox != null)
                 {
                     if (e.OriginalSource == numericUpDown)
                     {
-                        // MoveFocus takes a TraversalRequest as its argument.
-                        var request = new TraversalRequest((Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift ? FocusNavigationDirection.Previous : FocusNavigationDirection.Next);
-                        // Gets the element with keyboard focus.
-                        var elementWithFocus = Keyboard.FocusedElement as UIElement;
-                        // Change keyboard focus.
-                        elementWithFocus?.MoveFocus(request);
+                        numericUpDown._valueTextBox.Focus();
                         e.Handled = true;
+                    }
+                    else if (e.OriginalSource == numericUpDown._valueTextBox && numericUpDown.SelectAllOnFocus)
+                    {
+                        numericUpDown._valueTextBox.SelectAll();
                     }
                 }
             }
+            
         }
 
         /// <summary>
@@ -860,7 +855,6 @@ namespace MahApps.Metro.Controls
             var numericUpDown = (NumericUpDown)d;
 
             numericUpDown.CoerceValue(ValueProperty);
-            numericUpDown.Value = (double?)CoerceValue(numericUpDown, numericUpDown.Value);
             numericUpDown.OnMaximumChanged((double)e.OldValue, (double)e.NewValue);
             numericUpDown.EnableDisableUpDown();
         }
@@ -871,7 +865,6 @@ namespace MahApps.Metro.Controls
 
             numericUpDown.CoerceValue(ValueProperty);
             numericUpDown.CoerceValue(MaximumProperty);
-            numericUpDown.Value = (double?)CoerceValue(numericUpDown, numericUpDown.Value);
             numericUpDown.OnMinimumChanged((double)e.OldValue, (double)e.NewValue);
             numericUpDown.EnableDisableUpDown();
         }
@@ -893,7 +886,6 @@ namespace MahApps.Metro.Controls
             {
                 nud.InternalSetText(nud.Value);
             }
-            nud.HasDecimals = !RegexStringFormatHexadecimal.IsMatch((string)e.NewValue);
         }
 
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -932,43 +924,19 @@ namespace MahApps.Metro.Controls
             {
                 _valueTextBox.Text = newValue.Value.ToString(culture);
             }
+            else if (!StringFormat.Contains("{")) 
+            {
+                // then we may have a StringFormat of e.g. "N0"
+                _valueTextBox.Text = newValue.Value.ToString(StringFormat, culture);
+            }
             else
             {
-                FormatValue(newValue, culture);
+                _valueTextBox.Text = string.Format(culture, StringFormat, newValue.Value);
             }
 
             if ((bool)GetValue(TextBoxHelper.IsMonitoringProperty))
             {
                 SetValue(TextBoxHelper.TextLengthProperty, _valueTextBox.Text.Length);
-            }
-        }
-
-        private void FormatValue(double? newValue, CultureInfo culture)
-        {
-            var match = RegexStringFormatHexadecimal.Match(StringFormat);
-            if (match.Success)
-            {
-                if (match.Groups["simpleHEX"].Success)
-                {
-                    // HEX DOES SUPPORT INT ONLY.
-                    _valueTextBox.Text = ((int)newValue.Value).ToString(match.Groups["simpleHEX"].Value, culture);
-                }
-                else if (match.Groups["complexHEX"].Success)
-                {
-                    _valueTextBox.Text = string.Format(culture, match.Groups["complexHEX"].Value, (int)newValue.Value);
-                }
-            }
-            else
-            {
-                if (!StringFormat.Contains("{"))
-                {
-                    // then we may have a StringFormat of e.g. "N0"
-                    _valueTextBox.Text = newValue.Value.ToString(StringFormat, culture);
-                }
-                else
-                {
-                    _valueTextBox.Text = string.Format(culture, StringFormat, newValue.Value);
-                }
             }
         }
 
@@ -1064,23 +1032,6 @@ namespace MahApps.Metro.Controls
         private void OnTextBoxKeyDown(object sender, KeyEventArgs e)
         {
             _manualChange = true;
-
-            if (HasDecimals && (e.Key == Key.Decimal || e.Key == Key.OemPeriod))
-            {
-                TextBox textBox = sender as TextBox;
-
-                if (textBox.Text.Contains(this.SpecificCultureInfo.NumberFormat.NumberDecimalSeparator) == false)
-                {
-                    //the control doesn't contai the decimal separator
-                    //so we get the current caret index to insert the current culture decimal separator
-                    var caret = textBox.CaretIndex;
-                    //update the control text
-                    textBox.Text = textBox.Text.Insert(caret, this.SpecificCultureInfo.NumberFormat.CurrencyDecimalSeparator);
-                    //move the caret to the correct position
-                    textBox.CaretIndex = caret + 1;
-                }
-                e.Handled = true;
-            }
         }
 
         private void OnTextBoxLostFocus(object sender, RoutedEventArgs e)
@@ -1163,7 +1114,7 @@ namespace MahApps.Metro.Controls
 
             var text = e.SourceDataObject.GetData(DataFormats.Text) as string;
 
-            string newText = string.Concat(textPresent.Substring(0, textBox.SelectionStart), text, textPresent.Substring(textBox.SelectionStart + textBox.SelectionLength));
+            string newText = string.Concat(textPresent.Substring(0, textBox.SelectionStart), text, textPresent.Substring(textBox.SelectionStart));
             double number;
             if (!ValidateText(newText, out number))
             {

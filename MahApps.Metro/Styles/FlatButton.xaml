@@ -5,6 +5,7 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.Buttons.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style BasedOn="{StaticResource MetroFlatButton}" TargetType="{x:Type Button}" />
+    <Style TargetType="{x:Type Button}"
+           BasedOn="{StaticResource MetroFlatButton}" />
 
 </ResourceDictionary>

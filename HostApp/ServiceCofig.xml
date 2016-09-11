@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+<service assembly="WebsiteInfoService"  class="WcfBalanceServiceLibrary.WebsiteInfoService"  describe="网点管理服务"/>
+
+</config>
+
+
+

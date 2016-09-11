@@ -6,11 +6,9 @@ namespace Microsoft.Windows.Shell
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
     using System.Windows.Data;
-    using MahApps.Metro;
     using Standard;
 
     public enum ResizeGripDirection
@@ -37,10 +35,6 @@ namespace Microsoft.Windows.Shell
         Bottom = 8,
 
         Office = Left | Right | Bottom,
-
-        // Don't use "All" - Handling WM_NCCALCSIZE with a client rect shrunk in all directions implicitly creates a 
-        // normal sized caption area that doesn't actually properly participate with the rest of the implementation...
-        // All = Left | Top | Right | Bottom,
     }
 
     public class WindowChrome : Freezable
@@ -92,7 +86,6 @@ namespace Microsoft.Windows.Shell
             chromeWorker.SetWindowChrome(newChrome);
         }
 
-        [Category(AppName.MahApps)]
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static WindowChrome GetWindowChrome(Window window)
@@ -115,7 +108,6 @@ namespace Microsoft.Windows.Shell
             typeof(WindowChrome),
             new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
 
-        [Category(AppName.MahApps)]
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static bool GetIsHitTestVisibleInChrome(IInputElement inputElement)
@@ -148,7 +140,6 @@ namespace Microsoft.Windows.Shell
             typeof(WindowChrome),
             new FrameworkPropertyMetadata(ResizeGripDirection.None, FrameworkPropertyMetadataOptions.Inherits));
 
-        [Category(AppName.MahApps)]
         [SuppressMessage("Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0")]
         [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
         public static ResizeGripDirection GetResizeGripDirection(IInputElement inputElement)
@@ -247,17 +238,12 @@ namespace Microsoft.Windows.Shell
             set { SetValue(UseAeroCaptionButtonsProperty, value); }
         }
 
-        /// <summary>Dependency property for IgnoreTaskbarOnMaximize</summary>
         public static readonly DependencyProperty IgnoreTaskbarOnMaximizeProperty = DependencyProperty.Register(
             "IgnoreTaskbarOnMaximize",
             typeof(bool),
             typeof(WindowChrome),
             new FrameworkPropertyMetadata(false, (d, e) => ((WindowChrome)d)._OnPropertyChangedThatRequiresRepaint()));
 
-        /// <summary>
-        /// If this property is true and the attached window's WindowStyle=None then when the window is maximized it will cover the entire
-        /// monitor, including the taskbar.
-        /// </summary>
         public bool IgnoreTaskbarOnMaximize
         {
             get { return (bool)GetValue(IgnoreTaskbarOnMaximizeProperty); }

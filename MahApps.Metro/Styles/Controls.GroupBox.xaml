@@ -5,17 +5,28 @@
 
     <Converters:ThicknessBindingConverter x:Key="ThicknessBindingConverter" />
 
-    <Style x:Key="MetroGroupBox" TargetType="{x:Type GroupBox}">
-        <Setter Property="Foreground" Value="{DynamicResource BlackBrush}" />
-        <Setter Property="Background" Value="{DynamicResource AccentColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Controls:ControlsHelper.ContentCharacterCasing" Value="Upper" />
-        <Setter Property="Controls:ControlsHelper.HeaderFontSize" Value="{DynamicResource ContentFontSize}" />
-        <Setter Property="Controls:GroupBoxHelper.HeaderForeground" Value="{x:Null}" />
-        <Setter Property="Margin" Value="5" />
-        <Setter Property="Padding" Value="5" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
+    <Style x:Key="MetroGroupBox"
+           TargetType="{x:Type GroupBox}">
+        <Setter Property="Controls:ControlsHelper.ContentCharacterCasing"
+                Value="Upper" />
+        <Setter Property="Margin"
+                Value="5" />
+        <Setter Property="Padding"
+                Value="5" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource BlackBrush}" />
+        <Setter Property="Background"
+                Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="Controls:ControlsHelper.HeaderFontSize"
+                Value="{DynamicResource ContentFontSize}" />
+        <Setter Property="Controls:GroupBoxHelper.HeaderForeground"
+                Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GroupBox}">
@@ -28,47 +39,65 @@
                                 Grid.Row="0"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                UseLayoutRounding="True">
-                            <Controls:ContentControlEx x:Name="HeaderContent"
-                                                       Padding="{TemplateBinding Padding}"
-                                                       FontSize="{TemplateBinding Controls:ControlsHelper.HeaderFontSize}"
-                                                       FontWeight="{TemplateBinding Controls:ControlsHelper.HeaderFontWeight}"
-                                                       FontStretch="{TemplateBinding Controls:ControlsHelper.HeaderFontStretch}"
-                                                       Content="{TemplateBinding Header}"
-                                                       ContentCharacterCasing="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(Controls:ControlsHelper.ContentCharacterCasing)}"
-                                                       ContentStringFormat="{TemplateBinding HeaderStringFormat}"
-                                                       ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                                       ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
-                                                       RecognizesAccessKey="True"
-                                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                       UseLayoutRounding="False">
+                                UseLayoutRounding="True"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter x:Name="HeaderContent"
+                                              Margin="{TemplateBinding Padding}"
+                                              UseLayoutRounding="False"
+                                              Content="{TemplateBinding Header}"
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                              ContentStringFormat="{TemplateBinding HeaderStringFormat}"
+                                              TextElement.FontSize="{TemplateBinding Controls:ControlsHelper.HeaderFontSize}"
+                                              TextElement.FontStretch="{TemplateBinding Controls:ControlsHelper.HeaderFontStretch}"
+                                              TextElement.FontWeight="{TemplateBinding Controls:ControlsHelper.HeaderFontWeight}"
+                                              RecognizesAccessKey="True">
                                 <TextElement.Foreground>
                                     <MultiBinding Converter="{x:Static Converters:BackgroundToForegroundConverter.Instance}">
-                                        <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                        <Binding Mode="OneWay"
                                                  Path="Background"
-                                                 Mode="OneWay" />
-                                        <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                                        <Binding Mode="OneWay"
                                                  Path="(Controls:GroupBoxHelper.HeaderForeground)"
-                                                 Mode="OneWay" />
+                                                 RelativeSource="{RelativeSource TemplatedParent}" />
                                     </MultiBinding>
                                 </TextElement.Foreground>
-                            </Controls:ContentControlEx>
+                            </ContentPresenter>
                         </Border>
                         <Border Grid.Row="1"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                UseLayoutRounding="True"
                                 Background="Transparent"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Converter={StaticResource ThicknessBindingConverter}, ConverterParameter={x:Static Converters:IgnoreThicknessSideType.Top}}"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                UseLayoutRounding="True">
-                            <ContentPresenter Margin="{TemplateBinding Padding}"
+                                BorderThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness, Converter={StaticResource ThicknessBindingConverter}, ConverterParameter={x:Static Converters:IgnoreThicknessSideType.Top}}">
+                            <ContentPresenter UseLayoutRounding="False"
+                                              Margin="{TemplateBinding Padding}"
                                               Content="{TemplateBinding Content}"
                                               ContentTemplate="{TemplateBinding ContentTemplate}"
-                                              Cursor="{TemplateBinding Cursor}"
-                                              UseLayoutRounding="False" />
+                                              Cursor="{TemplateBinding Cursor}" />
                         </Border>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Controls:ControlsHelper.ContentCharacterCasing"
+                                 Value="Normal">
+                            <Setter TargetName="HeaderContent"
+                                    Property="Content"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Header}" />
+                        </Trigger >
+                        <Trigger Property="Controls:ControlsHelper.ContentCharacterCasing"
+                                 Value="Upper">
+                            <Setter TargetName="HeaderContent"
+                                    Property="Content"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Header, Converter={Converters:ToUpperConverter}}" />
+                        </Trigger>
+                        <Trigger Property="Controls:ControlsHelper.ContentCharacterCasing"
+                                 Value="Lower">
+                            <Setter TargetName="HeaderContent"
+                                    Property="Content"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Header, Converter={Converters:ToLowerConverter}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

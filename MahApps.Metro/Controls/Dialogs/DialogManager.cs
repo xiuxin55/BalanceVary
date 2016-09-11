@@ -24,7 +24,10 @@ namespace MahApps.Metro.Controls.Dialogs
             {
                 return (Task<LoginDialogData>)window.Dispatcher.Invoke(new Func<Task<LoginDialogData>>(() =>
                 {
-                    settings = settings ?? new LoginDialogSettings();
+                    if (settings == null)
+                    {
+                        settings = new LoginDialogSettings();
+                    }
 
                     //create the dialog control
                     LoginDialog dialog = new LoginDialog(window, settings)
@@ -32,8 +35,6 @@ namespace MahApps.Metro.Controls.Dialogs
                         Title = title,
                         Message = message
                     };
-
-                    SetDialogFontSizes(settings, dialog);
 
                     SizeChangedEventHandler sizeHandler = SetupAndOpenDialog(window, dialog);
                     dialog.SizeChangedHandler = sizeHandler;
@@ -90,17 +91,16 @@ namespace MahApps.Metro.Controls.Dialogs
             {
                 return (Task<string>)window.Dispatcher.Invoke(new Func<Task<string>>(() =>
                 {
-                    settings = settings ?? window.MetroDialogOptions;
+                    if (settings == null)
+                        settings = window.MetroDialogOptions;
 
                     //create the dialog control
                     var dialog = new InputDialog(window, settings)
                     {
                         Title = title,
                         Message = message,
-                        Input = settings.DefaultText,
+                        Input = settings.DefaultText
                     };
-
-                    SetDialogFontSizes(settings, dialog);
 
                     SizeChangedEventHandler sizeHandler = SetupAndOpenDialog(window, dialog);
                     dialog.SizeChangedHandler = sizeHandler;
@@ -140,7 +140,6 @@ namespace MahApps.Metro.Controls.Dialogs
                 }));
             }).Unwrap();
         }
-       
         /// <summary>
         /// Creates a MessageDialog inside of the current window.
         /// </summary>
@@ -157,7 +156,10 @@ namespace MahApps.Metro.Controls.Dialogs
             {
                 return (Task<MessageDialogResult>)window.Dispatcher.Invoke(new Func<Task<MessageDialogResult>>(() =>
                 {
-                    settings = settings ?? window.MetroDialogOptions;
+                    if (settings == null)
+                    {
+                        settings = window.MetroDialogOptions;
+                    }
 
                     //create the dialog control
                     var dialog = new MessageDialog(window, settings)
@@ -166,8 +168,6 @@ namespace MahApps.Metro.Controls.Dialogs
                         Title = title,
                         ButtonStyle = style
                     };
-
-                    SetDialogFontSizes(settings, dialog);
 
                     SizeChangedEventHandler sizeHandler = SetupAndOpenDialog(window, dialog);
                     dialog.SizeChangedHandler = sizeHandler;
@@ -225,17 +225,19 @@ namespace MahApps.Metro.Controls.Dialogs
             {
                 return ((Task<ProgressDialogController>)window.Dispatcher.Invoke(new Func<Task<ProgressDialogController>>(() =>
                 {
-                    settings = settings ?? window.MetroDialogOptions;
-
-                    //create the dialog control
-                    var dialog = new ProgressDialog(window, settings)
+                    var dialog = new ProgressDialog(window)
                     {
-                        Title = title,
                         Message = message,
+                        Title = title,
                         IsCancelable = isCancelable
                     };
 
-                    SetDialogFontSizes(settings, dialog);
+                    if (settings == null)
+                    {
+                        settings = window.MetroDialogOptions;
+                    }
+
+                    dialog.NegativeButtonText = settings.NegativeButtonText;
 
                     SizeChangedEventHandler sizeHandler = SetupAndOpenDialog(window, dialog);
                     dialog.SizeChangedHandler = sizeHandler;
@@ -276,7 +278,7 @@ namespace MahApps.Metro.Controls.Dialogs
 
         private static Task HandleOverlayOnHide(MetroDialogSettings settings, MetroWindow window)
         {
-            if (!window.metroActiveDialogContainer.Children.OfType<BaseMetroDialog>().Any())
+            if (window.metroActiveDialogContainer.Children.Count == 0)
             {
                 return (settings == null || settings.AnimateHide ? window.HideOverlayAsync() : Task.Factory.StartNew(() => window.Dispatcher.Invoke(new Action(window.HideOverlay))));
             }
@@ -290,7 +292,7 @@ namespace MahApps.Metro.Controls.Dialogs
 
         private static Task HandleOverlayOnShow(MetroDialogSettings settings, MetroWindow window)
         {
-            if (!window.metroActiveDialogContainer.Children.OfType<BaseMetroDialog>().Any())
+            if (window.metroActiveDialogContainer.Children.Count == 0)
             {
                 return (settings == null || settings.AnimateShow ? window.ShowOverlayAsync() : Task.Factory.StartNew(() => window.Dispatcher.Invoke(new Action(window.ShowOverlay))));
             }
@@ -321,27 +323,24 @@ namespace MahApps.Metro.Controls.Dialogs
 
             return HandleOverlayOnShow(settings, window).ContinueWith(z =>
             {
-                return (Task)window.Dispatcher.Invoke(new Func<Task>(() =>
+                dialog.Dispatcher.Invoke(new Action(() =>
                 {
-                    settings = settings ?? window.MetroDialogOptions;
-
-                    SetDialogFontSizes(settings, dialog);
-
                     SizeChangedEventHandler sizeHandler = SetupAndOpenDialog(window, dialog);
                     dialog.SizeChangedHandler = sizeHandler;
-
-                    return dialog.WaitForLoadAsync().ContinueWith(x =>
-                    {
-                        dialog.OnShown();
-
-                        if (DialogOpened != null)
-                        {
-                            window.Dispatcher.BeginInvoke(new Action(() => DialogOpened(window, new DialogStateChangedEventArgs())));
-                        }
-                    });
                 }));
-            }).Unwrap();
+            }).ContinueWith(y =>
+                ((Task)dialog.Dispatcher.Invoke(new Func<Task>(() => dialog.WaitForLoadAsync().ContinueWith(x =>
+                {
+                    dialog.OnShown();
+
+                    if (DialogOpened != null)
+                    {
+                        DialogOpened(window, new DialogStateChangedEventArgs());
+                    }
+                })))));
         }
+
+
 
         /// <summary>
         /// Hides a visible Metro Dialog instance.
@@ -382,7 +381,7 @@ namespace MahApps.Metro.Controls.Dialogs
         }
 
         /// <summary>
-        /// Gets the current shown dialog in async way.
+        /// Gets the current shown dialog.
         /// </summary>
         /// <param name="window">The dialog owner.</param>
         public static Task<TDialog> GetCurrentDialogAsync<TDialog>(this MetroWindow window) where TDialog : BaseMetroDialog
@@ -391,7 +390,7 @@ namespace MahApps.Metro.Controls.Dialogs
             var t = new TaskCompletionSource<TDialog>();
             window.Dispatcher.Invoke((Action)(() =>
             {
-                TDialog dialog = window.metroActiveDialogContainer?.Children.OfType<TDialog>().LastOrDefault();
+                TDialog dialog = window.metroActiveDialogContainer.Children.OfType<TDialog>().LastOrDefault();
                 t.TrySetResult(dialog);
             }));
             return t.Task;
@@ -420,8 +419,6 @@ namespace MahApps.Metro.Controls.Dialogs
 
         private static void AddDialog(this MetroWindow window, BaseMetroDialog dialog)
         {
-            window.StoreFocus();
-
             // if there's already an active dialog, move to the background
             var activeDialog = window.metroActiveDialogContainer.Children.Cast<UIElement>().SingleOrDefault();
             if (activeDialog != null)
@@ -451,11 +448,6 @@ namespace MahApps.Metro.Controls.Dialogs
             {
                 window.metroInactiveDialogContainer.Children.Remove(dialog);
             }
-
-            if (window.metroActiveDialogContainer.Children.Count == 0)
-            {
-                window.RestoreFocus();
-            }
         }
 
         public static BaseMetroDialog ShowDialogExternally(this BaseMetroDialog dialog)
@@ -478,9 +470,9 @@ namespace MahApps.Metro.Controls.Dialogs
             return dialog;
         }
 
-        private static Window CreateExternalWindow()
+        private static Window SetupExternalDialogWindow(BaseMetroDialog dialog)
         {
-            return new MetroWindow
+            var win = new MetroWindow
             {
                 ShowInTaskbar = false,
                 ShowActivated = true,
@@ -492,11 +484,6 @@ namespace MahApps.Metro.Controls.Dialogs
                 ShowCloseButton = false,
                 WindowTransitionsEnabled = false
             };
-        }
-
-        private static Window SetupExternalDialogWindow(BaseMetroDialog dialog)
-        {
-            var win = CreateExternalWindow();
 
             try
             {
@@ -525,154 +512,6 @@ namespace MahApps.Metro.Controls.Dialogs
             win.Closed += closedHandler;
 
             return win;
-        }
-
-        private static Window CreateModalExternalWindow(MetroWindow window)
-        {
-            var win = CreateExternalWindow();
-            win.Owner = window;
-            win.Topmost = false; //It is not necessary here because the owner is setted
-            win.WindowStartupLocation = WindowStartupLocation.CenterOwner; //WindowStartupLocation should be CenterOwner
-
-            //Set Width and Height maximum according Owner
-            win.Width = window.ActualWidth;
-            win.MaxHeight = window.ActualHeight;
-            win.SizeToContent = SizeToContent.Height;
-            
-            return win;
-        }
-
-        /// <summary>
-        /// Creates a LoginDialog outside of the current window.
-        /// </summary>
-        /// <param name="window">The window that is the parent of the dialog.</param>
-        /// <param name="title">The title of the LoginDialog.</param>
-        /// <param name="message">The message contained within the LoginDialog.</param>
-        /// <param name="settings">Optional settings that override the global metro dialog settings.</param>
-        /// <returns>The text that was entered or null (Nothing in Visual Basic) if the user cancelled the operation.</returns>
-        public static LoginDialogData ShowModalLoginExternal(this MetroWindow window, string title, string message, LoginDialogSettings settings = null)
-        {
-            var win = CreateModalExternalWindow(window);
-
-            settings = settings ?? new LoginDialogSettings();
-
-            //create the dialog control
-            LoginDialog dialog = new LoginDialog(window, settings)
-            {
-                Title = title,
-                Message = message
-            };
-
-            SetDialogFontSizes(settings, dialog);
-            
-            win.Content = dialog;
-
-            LoginDialogData result = null;
-            dialog.WaitForButtonPressAsync().ContinueWith(task =>
-            {
-                result = task.Result;
-                win.Invoke(win.Close);
-            });
-
-            HandleOverlayOnShow(settings, window);
-            win.ShowDialog();
-            HandleOverlayOnHide(settings, window);
-            return result;
-        }
-
-        /// <summary>
-        /// Creates a InputDialog outside of the current window.
-        /// </summary>
-        /// <param name="window">The MetroWindow</param>
-        /// <param name="title">The title of the MessageDialog.</param>
-        /// <param name="message">The message contained within the MessageDialog.</param>
-        /// <param name="settings">Optional settings that override the global metro dialog settings.</param>
-        /// <returns>The text that was entered or null (Nothing in Visual Basic) if the user cancelled the operation.</returns>
-        public static string ShowModalInputExternal(this MetroWindow window, string title, string message, MetroDialogSettings settings = null)
-        {
-            var win = CreateModalExternalWindow(window);
-
-            settings = settings ?? window.MetroDialogOptions;
-
-            //create the dialog control
-            var dialog = new InputDialog(window, settings)
-            {
-                Message = message,
-                Title = title,
-                Input = settings.DefaultText
-            };
-
-            SetDialogFontSizes(settings, dialog);
-
-            win.Content = dialog;
-
-            string result = null;
-            dialog.WaitForButtonPressAsync().ContinueWith(task =>
-            {
-                result = task.Result;
-                win.Invoke(win.Close);
-            });
-
-            HandleOverlayOnShow(settings, window);
-            win.ShowDialog();
-            HandleOverlayOnHide(settings, window);
-            return result;
-        }
-
-        /// <summary>
-        /// Creates a MessageDialog ouside of the current window.
-        /// </summary>
-        /// <param name="window">The MetroWindow</param>
-        /// <param name="title">The title of the MessageDialog.</param>
-        /// <param name="message">The message contained within the MessageDialog.</param>
-        /// <param name="style">The type of buttons to use.</param>
-        /// <param name="settings">Optional settings that override the global metro dialog settings.</param>
-        /// <returns>A task promising the result of which button was pressed.</returns>
-        public static MessageDialogResult ShowModalMessageExternal(this MetroWindow window, string title, string message, MessageDialogStyle style = MessageDialogStyle.Affirmative, MetroDialogSettings settings = null)
-        {
-            var win = CreateModalExternalWindow(window);
-
-            settings = settings ?? window.MetroDialogOptions;
-
-            //create the dialog control
-            var dialog = new MessageDialog(window, settings)
-            {
-                Message = message,
-                Title = title,
-                ButtonStyle = style
-            };
-
-            SetDialogFontSizes(settings, dialog);
-
-            win.Content = dialog;
-
-            MessageDialogResult result = MessageDialogResult.Affirmative;
-            dialog.WaitForButtonPressAsync().ContinueWith(task =>
-            {
-                result = task.Result;
-                win.Invoke(win.Close);
-            });
-
-            HandleOverlayOnShow(settings, window);
-            win.ShowDialog();
-            HandleOverlayOnHide(settings, window);
-            return result;
-        }
-
-        private static void SetDialogFontSizes(MetroDialogSettings settings, BaseMetroDialog dialog)
-        {
-            if (settings == null)
-            {
-                return;
-            }
-            if (!double.IsNaN(settings.DialogTitleFontSize))
-            {
-                dialog.DialogTitleFontSize = settings.DialogTitleFontSize;
-            }
-            if (!double.IsNaN(settings.DialogMessageFontSize))
-            {
-                dialog.DialogMessageFontSize = settings.DialogMessageFontSize;
-            }
         }
 
         public static event EventHandler<DialogStateChangedEventArgs> DialogOpened;

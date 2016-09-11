@@ -5,7 +5,7 @@
         Title="WebsiteAdd" Height="555" Width="566"
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None"
-        MouseLeftButtonDown="Window_MouseLeftButtonDown" ResizeMode="NoResize"
+        ResizeMode="NoResize"
         >
     <Border BorderBrush="Black" BorderThickness="1" Margin="0" CornerRadius="5">
         <Grid>
@@ -22,7 +22,7 @@
             </Grid.RowDefinitions>
         <Border Grid.ColumnSpan="4" CornerRadius="5" Background="{DynamicResource WindowTitle}"/>
         <StackPanel  Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Right" >
-            <Button Style="{DynamicResource MaxButtonStyle}" HorizontalAlignment="Right" Margin="0,-2,0,0" Height="25" Width="41.5" Name="mniButton" Focusable="False" ButtonBase.Click="mniButton_Click">
+            <Button Style="{DynamicResource MaxButtonStyle}" HorizontalAlignment="Right" Margin="0,-2,0,0" Height="25" Width="41.5" Name="mniButton" Focusable="False" >
                 <Button.Background>
                     <ImageBrush ImageSource="/ICOS/Buttons/MNI.png" Stretch="Uniform"/>
                 </Button.Background>
@@ -37,7 +37,7 @@
                         <ImageBrush ImageSource="/ICOS/Buttons/MAX.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>-->
-            <Button Style="{DynamicResource XButtonStyle}" HorizontalAlignment="Right" Margin="0,-2,0,0" Height="25" Width="44.315" Name="closeButton" Click="closeButton_Click" Focusable="False">
+            <Button Style="{DynamicResource XButtonStyle}" HorizontalAlignment="Right" Margin="0,-2,0,0" Height="25" Width="44.315" Name="closeButton"  Focusable="False">
             </Button>
         </StackPanel>
             <ToolBar Grid.Row="1" Grid.ColumnSpan="3" Background="{DynamicResource BackGroundBrush4}" Style="{StaticResource ToolBarStyle1}"  Name="toolBar1" Height="25">

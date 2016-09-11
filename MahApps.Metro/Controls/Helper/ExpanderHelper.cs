@@ -3,8 +3,6 @@ using System.Windows.Controls;
 
 namespace MahApps.Metro.Controls
 {
-    using System.ComponentModel;
-
     /// <summary>
     /// A helper class that provides various attached properties for the Expander control.
     /// <see cref="Expander"/>
@@ -16,7 +14,6 @@ namespace MahApps.Metro.Controls
         /// <summary>
         /// Gets the toggle button style used for the ExpandDirection Up.
         /// </summary>
-        [Category(AppName.MahApps)]
         [AttachedPropertyBrowsableForType(typeof(Expander))]
         public static Style GetHeaderUpStyle(UIElement element)
         {
@@ -36,7 +33,6 @@ namespace MahApps.Metro.Controls
         /// <summary>
         /// Gets the toggle button style used for the ExpandDirection Down.
         /// </summary>
-        [Category(AppName.MahApps)]
         [AttachedPropertyBrowsableForType(typeof(Expander))]
         public static Style GetHeaderDownStyle(UIElement element)
         {
@@ -56,7 +52,6 @@ namespace MahApps.Metro.Controls
         /// <summary>
         /// Gets the toggle button style used for the ExpandDirection Left.
         /// </summary>
-        [Category(AppName.MahApps)]
         [AttachedPropertyBrowsableForType(typeof(Expander))]
         public static Style GetHeaderLeftStyle(UIElement element)
         {
@@ -76,7 +71,6 @@ namespace MahApps.Metro.Controls
         /// <summary>
         /// Gets the toggle button style used for the ExpandDirection Right.
         /// </summary>
-        [Category(AppName.MahApps)]
         [AttachedPropertyBrowsableForType(typeof(Expander))]
         public static Style GetHeaderRightStyle(UIElement element)
         {

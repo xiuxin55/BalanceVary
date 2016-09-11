@@ -9,7 +9,6 @@
         ShowTitleBar="True"
         ShowMaxRestoreButton="False"
         WindowStartupLocation="CenterScreen"
-        MouseLeftButtonDown="Window_MouseLeftButtonDown" 
         >
 
     <Grid >
@@ -50,8 +49,8 @@
             <ComboBoxItem Content="活期" />
             <ComboBoxItem Content="定期" />
         </ComboBox>
-        <TextBox Text="{Binding AddAccountInfoModel.WebsiteID}"  Grid.Column="2" Margin="0,7,1,11" Name="textBox4" Grid.Row="5" FontSize="18"  GotFocus="textBox4_GotFocus"  />
-        <TextBox  Text="{Binding AddAccountInfoModel.ManagerID}" Grid.Column="2" Margin="0,8,0,10" Name="textBox2" Grid.Row="6" FontSize="18"  GotFocus="textBox2_GotFocus" VerticalContentAlignment="Center" />
+        <TextBox Text="{Binding AddAccountInfoModel.WebsiteID}"  Grid.Column="2" Margin="0,7,1,11" Name="textBox4" Grid.Row="5" FontSize="18"    />
+        <TextBox  Text="{Binding AddAccountInfoModel.ManagerID}" Grid.Column="2" Margin="0,8,0,10" Name="textBox2" Grid.Row="6" FontSize="18" VerticalContentAlignment="Center" />
         <!--<TextBox  Text="{Binding AddAccountInfoModel.ManagerTelphone}" Grid.Column="2" Margin="0,5" Name="textBox3" Grid.Row="3" FontSize="18" />-->
 
 
@@ -62,7 +61,7 @@
         </ComboBox>
         <StackPanel Grid.Column="1" Grid.Row="8" Height="48" HorizontalAlignment="Left" Margin="64,9,0,0" Name="stackPanel1" VerticalAlignment="Top" Width="244" Grid.ColumnSpan="2" Orientation="Horizontal">
             <Button Content="确定" Height="23" Name="button1" Command="{Binding OkAccountCommand}" Width="75" Margin="28,0,0,0" />
-            <Button Content="取消" Height="23" Name="button2"  Command="{Binding CancelAccountCommand}" Width="75" Margin="28,0,0,0" Click="closeButton_Click"   />
+            <Button Content="取消" Height="23" Name="button2"  Command="{Binding CancelAccountCommand}" Width="75" Margin="28,0,0,0"   />
         </StackPanel>
     </Grid>
 </Controls:MetroWindow>

@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Threading;
 using MahApps.Metro.Native;
 
 namespace MahApps.Metro.Controls
@@ -117,58 +116,58 @@ namespace MahApps.Metro.Controls
             ((WindowButtonCommands)d).ApplyTheme();
         }
 
-        public static readonly DependencyProperty MinimizeProperty =
-            DependencyProperty.Register("Minimize", typeof(string), typeof(WindowButtonCommands),
-                                        new PropertyMetadata(null));
-
-        /// <summary>
-        /// Gets or sets the minimize button tooltip.
-        /// </summary>
         public string Minimize
         {
-            get { return (string)GetValue(MinimizeProperty); }
-            set { SetValue(MinimizeProperty, value); }
+            get
+            {
+                if (string.IsNullOrEmpty(minimize))
+                {
+                    minimize = GetCaption(900);
+                }
+                return minimize;
+            }
         }
 
-        public static readonly DependencyProperty MaximizeProperty =
-            DependencyProperty.Register("Maximize", typeof(string), typeof(WindowButtonCommands),
-                                        new PropertyMetadata(null));
-
-        /// <summary>
-        /// Gets or sets the maximize button tooltip.
-        /// </summary>
         public string Maximize
         {
-            get { return (string)GetValue(MaximizeProperty); }
-            set { SetValue(MaximizeProperty, value); }
+            get
+            {
+                if (string.IsNullOrEmpty(maximize))
+                {
+                    maximize = GetCaption(901);
+                }
+                return maximize;
+            }
         }
 
-        public static readonly DependencyProperty CloseProperty =
-            DependencyProperty.Register("Close", typeof(string), typeof(WindowButtonCommands),
-                                        new PropertyMetadata(null));
-
-        /// <summary>
-        /// Gets or sets the close button tooltip.
-        /// </summary>
         public string Close
         {
-            get { return (string)GetValue(CloseProperty); }
-            set { SetValue(CloseProperty, value); }
+            get
+            {
+                if (string.IsNullOrEmpty(closeText))
+                {
+                    closeText = GetCaption(905);
+                }
+                return closeText;
+            }
         }
 
-        public static readonly DependencyProperty RestoreProperty =
-            DependencyProperty.Register("Restore", typeof(string), typeof(WindowButtonCommands),
-                                        new PropertyMetadata(null));
-
-        /// <summary>
-        /// Gets or sets the restore button tooltip.
-        /// </summary>
         public string Restore
         {
-            get { return (string)GetValue(RestoreProperty); }
-            set { SetValue(RestoreProperty, value); }
+            get
+            {
+                if (string.IsNullOrEmpty(restore))
+                {
+                    restore = GetCaption(903);
+                }
+                return restore;
+            }
         }
 
+        private static string minimize;
+        private static string maximize;
+        private static string closeText;
+        private static string restore;
         private Button min;
         private Button max;
         private Button close;
@@ -181,25 +180,17 @@ namespace MahApps.Metro.Controls
 
         public WindowButtonCommands()
         {
-            this.Dispatcher.BeginInvoke(DispatcherPriority.Loaded,
-                                        new Action(() => {
-                                                       if (string.IsNullOrWhiteSpace(this.Minimize))
-                                                       {
-                                                           this.Minimize = GetCaption(900);
-                                                       }
-                                                       if (string.IsNullOrWhiteSpace(this.Maximize))
-                                                       {
-                                                           this.Maximize = GetCaption(901);
-                                                       }
-                                                       if (string.IsNullOrWhiteSpace(this.Close))
-                                                       {
-                                                           this.Close = GetCaption(905);
-                                                       }
-                                                       if (string.IsNullOrWhiteSpace(this.Restore))
-                                                       {
-                                                           this.Restore = GetCaption(903);
-                                                       }
-                                                   }));
+            this.Loaded += WindowButtonCommands_Loaded;
+        }
+
+        private void WindowButtonCommands_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Loaded -= WindowButtonCommands_Loaded;
+            var parentWindow = this.ParentWindow;
+            if (null == parentWindow)
+            {
+                this.ParentWindow = this.TryFindParent<MetroWindow>();
+            }
         }
 
         private string GetCaption(int id)
@@ -220,7 +211,7 @@ namespace MahApps.Metro.Controls
             if (close != null)
             {
                 // TODO: Delete this if statement once WindowCloseButtonStyle property is deleted from MetroWindow!
-                if (ParentWindow?.WindowCloseButtonStyle != null)
+                if ((ParentWindow != null) && (ParentWindow.WindowCloseButtonStyle != null))
                 {
                     close.Style = ParentWindow.WindowCloseButtonStyle;
                 }
@@ -232,7 +223,7 @@ namespace MahApps.Metro.Controls
             if (max != null)
             {
                 // TODO: Delete this if statement once WindowMaxButtonStyle property is deleted from MetroWindow!
-                if (ParentWindow?.WindowMaxButtonStyle != null)
+                if ((ParentWindow != null) && (ParentWindow.WindowMaxButtonStyle != null))
                 {
                     max.Style = ParentWindow.WindowMaxButtonStyle;
                 }
@@ -244,7 +235,7 @@ namespace MahApps.Metro.Controls
             if (min != null)
             {
                 // TODO: Delete this if statement once WindowMinButtonStyle property is deleted from MetroWindow!
-                if (ParentWindow?.WindowMinButtonStyle != null)
+                if ((ParentWindow != null) && (ParentWindow.WindowMinButtonStyle != null))
                 {
                     min.Style = ParentWindow.WindowMinButtonStyle;
                 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Media3D;
 
 namespace MahApps.Metro.Controls
 {
@@ -62,25 +61,19 @@ namespace MahApps.Metro.Controls
                 {
                     // recursively drill down the tree
                     foundChild = FindChild<T>(child, childName);
+
                     // If the child is found, break so we do not overwrite the found child. 
                     if (foundChild != null) break;
                 }
                 else if (!string.IsNullOrEmpty(childName))
                 {
-                    var frameworkInputElement = child as IFrameworkInputElement;
+                    var frameworkElement = child as FrameworkElement;
                     // If the child's name is set for search
-                    if (frameworkInputElement != null && frameworkInputElement.Name == childName)
+                    if (frameworkElement != null && frameworkElement.Name == childName)
                     {
                         // if the child's name is of the request name
                         foundChild = (T)child;
                         break;
-                    }
-                    else
-                    {
-                        // recursively drill down the tree
-                        foundChild = FindChild<T>(child, childName);
-                        // If the child is found, break so we do not overwrite the found child. 
-                        if (foundChild != null) break;
                     }
                 }
                 else
@@ -153,7 +146,7 @@ namespace MahApps.Metro.Controls
                     }
 
                     //recurse tree
-                    foreach (T descendant in FindChildren<T>(child, forceUsingTheVisualTreeHelper))
+                    foreach (T descendant in FindChildren<T>(child))
                     {
                         yield return descendant;
                     }
@@ -183,7 +176,7 @@ namespace MahApps.Metro.Controls
                     if (depObj != null) yield return (DependencyObject)obj;
                 }
             }
-            else if (parent is Visual || parent is Visual3D)
+            else
             {
                 //use the visual tree per default
                 int count = VisualTreeHelper.GetChildrenCount(parent);

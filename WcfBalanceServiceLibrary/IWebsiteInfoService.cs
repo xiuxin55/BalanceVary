@@ -14,8 +14,11 @@ namespace WcfBalanceServiceLibrary
     {
         [OperationContract]
         bool Add(WebsiteInfo info);
+        [OperationContract]
         bool Update(WebsiteInfo info);
+        [OperationContract]
         bool Delete(WebsiteInfo info);
+        [OperationContract]
         List<WebsiteInfo> Select(WebsiteInfo info);
 
     }

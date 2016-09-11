@@ -9,7 +9,6 @@
         ShowTitleBar="True"
         ShowMaxRestoreButton="False"
         WindowStartupLocation="CenterScreen"
-        MouseLeftButtonDown="Window_MouseLeftButtonDown" 
         >
     <Grid>
         <Grid.ColumnDefinitions>
@@ -34,7 +33,7 @@
 
         <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="9" Height="40" HorizontalAlignment="Left" Margin="92,1,0,0" Name="stackPanel1" VerticalAlignment="Top" Width="200" Orientation="Horizontal">
             <Button Content="确认" Height="25" Name="button1" Width="75" Margin="10,0,0,0" Command="{Binding  OkWebsiteCommand}"  />
-            <Button Content="取消" Height="25" Name="button2" Width="75" Margin="10,0,0,0"  Click="closeButton_Click"  Command="{Binding  CancelWebsiteCommand}" />
+            <Button Content="取消" Height="25" Name="button2" Width="75" Margin="10,0,0,0"   Command="{Binding  CancelWebsiteCommand}" />
         </StackPanel>
         <Label Content="网点号" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
         <Label Content="网点名称" Grid.Column="1" Margin="0,0,0,2" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />

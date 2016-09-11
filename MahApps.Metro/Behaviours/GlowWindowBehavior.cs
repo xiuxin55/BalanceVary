@@ -22,7 +22,7 @@ namespace MahApps.Metro.Behaviours
             get
             {
                 var metroWindow = this.AssociatedObject as MetroWindow;
-                return metroWindow != null && metroWindow.GlowBrush == null;
+                return metroWindow != null && (metroWindow.UseNoneWindowStyle || metroWindow.GlowBrush == null);
             }
         }
 
@@ -39,88 +39,100 @@ namespace MahApps.Metro.Behaviours
         {
             base.OnAttached();
 
-            this.AssociatedObject.SourceInitialized += (o, args) =>
+            this.AssociatedObject.SourceInitialized += (o, args) => {
+                // No glow effect if UseNoneWindowStyle is true or GlowBrush not set.
+                if (this.IsGlowDisabled)
                 {
-                    this.handle = new WindowInteropHelper(this.AssociatedObject).Handle;
-                    var hwndSource = HwndSource.FromHwnd(this.handle);
-                    hwndSource?.AddHook(this.AssociatedObjectWindowProc);
-                };
-            this.AssociatedObject.Loaded += this.AssociatedObjectOnLoaded;
-            this.AssociatedObject.Unloaded += this.AssociatedObjectUnloaded;
+                    return;
+                }
+                handle = new WindowInteropHelper(this.AssociatedObject).Handle;
+                var hwndSource = HwndSource.FromHwnd(handle);
+                if (hwndSource != null)
+                {
+                    hwndSource.AddHook(AssociatedObjectWindowProc);
+                }
+            };
+            this.AssociatedObject.Loaded += AssociatedObjectOnLoaded;
+            this.AssociatedObject.Unloaded += AssociatedObjectUnloaded;
         }
 
-        private void AssociatedObjectStateChanged(object sender, EventArgs e)
+        void AssociatedObjectStateChanged(object sender, EventArgs e)
         {
-            this.makeGlowVisibleTimer?.Stop();
-            if(this.AssociatedObject.WindowState == WindowState.Normal)
+            if (makeGlowVisibleTimer != null)
+            {
+                makeGlowVisibleTimer.Stop();
+            }
+            if(AssociatedObject.WindowState == WindowState.Normal)
             {
                 var metroWindow = this.AssociatedObject as MetroWindow;
                 var ignoreTaskBar = metroWindow != null && metroWindow.IgnoreTaskbarOnMaximize;
-                if (this.makeGlowVisibleTimer != null && SystemParameters.MinimizeAnimation && !ignoreTaskBar)
+                if (makeGlowVisibleTimer != null && SystemParameters.MinimizeAnimation && !ignoreTaskBar)
                 {
-                    this.makeGlowVisibleTimer.Start();
+                    makeGlowVisibleTimer.Start();
                 }
                 else
                 {
-                    this.RestoreGlow();
+                    RestoreGlow();
                 }
             }
             else
             {
-                this.HideGlow();
+                HideGlow();
             }
         }
 
-        private void AssociatedObjectUnloaded(object sender, RoutedEventArgs e)
+        void AssociatedObjectUnloaded(object sender, RoutedEventArgs e)
         {
-            if (this.makeGlowVisibleTimer == null)
+            if(makeGlowVisibleTimer != null)
             {
-                return;
+                makeGlowVisibleTimer.Stop();
+                makeGlowVisibleTimer.Tick -= makeGlowVisibleTimer_Tick;
+                makeGlowVisibleTimer = null;
             }
-            this.makeGlowVisibleTimer.Stop();
-            this.makeGlowVisibleTimer.Tick -= this.GlowVisibleTimerOnTick;
-            this.makeGlowVisibleTimer = null;
         }
 
-        private void GlowVisibleTimerOnTick(object sender, EventArgs e)
+        private void makeGlowVisibleTimer_Tick(object sender, EventArgs e)
         {
-            this.makeGlowVisibleTimer?.Stop();
-            this.RestoreGlow();
+            if(makeGlowVisibleTimer != null)
+            {
+                makeGlowVisibleTimer.Stop();
+            }
+            RestoreGlow();
         }
 
         private void RestoreGlow()
         {
-            if (this.left != null) this.left.IsGlowing = true;
-            if (this.top != null) this.top.IsGlowing = true;
-            if (this.right != null) this.right.IsGlowing = true;
-            if (this.bottom != null) this.bottom.IsGlowing = true;
-            this.Update();
+            if (left != null) left.IsGlowing = true;
+            if (top != null) top.IsGlowing = true;
+            if (right != null) right.IsGlowing = true;
+            if (bottom != null) bottom.IsGlowing = true;
+            Update();
         }
 
         private void HideGlow()
         {
-            if (this.left != null) this.left.IsGlowing = false;
-            if (this.top != null) this.top.IsGlowing = false;
-            if (this.right != null) this.right.IsGlowing = false;
-            if (this.bottom != null) this.bottom.IsGlowing = false;
-            this.Update();
+            if (left != null) left.IsGlowing = false;
+            if (top != null) top.IsGlowing = false;
+            if (right != null) right.IsGlowing = false;
+            if (bottom != null) bottom.IsGlowing = false;
+            Update();
         }
 
         private void AssociatedObjectOnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
-            // No glow effect if GlowBrush not set.
+            // No glow effect if UseNoneWindowStyle is true or GlowBrush not set.
             if (this.IsGlowDisabled)
             {
                 return;
             }
 
-            this.AssociatedObject.StateChanged -= this.AssociatedObjectStateChanged;
-            this.AssociatedObject.StateChanged += this.AssociatedObjectStateChanged;
+            this.AssociatedObject.StateChanged -= AssociatedObjectStateChanged;
+            this.AssociatedObject.StateChanged += AssociatedObjectStateChanged;
 
-            if (this.makeGlowVisibleTimer == null)
+            if (makeGlowVisibleTimer == null)
             {
-                this.makeGlowVisibleTimer = new DispatcherTimer { Interval = GlowTimerDelay };
-                this.makeGlowVisibleTimer.Tick += this.GlowVisibleTimerOnTick;
+                makeGlowVisibleTimer = new DispatcherTimer { Interval = GlowTimerDelay };
+                makeGlowVisibleTimer.Tick += makeGlowVisibleTimer_Tick;
             }
 
             this.left = new GlowWindow(this.AssociatedObject, GlowDirection.Left);
@@ -153,7 +165,7 @@ namespace MahApps.Metro.Behaviours
             }
         }
 
-        private WINDOWPOS prevWindowPos;
+        private WINDOWPOS _previousWP;
 
         private IntPtr AssociatedObjectWindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
@@ -163,11 +175,11 @@ namespace MahApps.Metro.Behaviours
                 case WM.WINDOWPOSCHANGING:
                     Assert.IsNotDefault(lParam);
                     var wp = (WINDOWPOS)Marshal.PtrToStructure(lParam, typeof(WINDOWPOS));
-                    if (!wp.Equals(this.prevWindowPos))
+                    if (!wp.Equals(_previousWP))
                     {
                         this.UpdateCore();
                     }
-                    this.prevWindowPos = wp;
+                    _previousWP = wp;
                     break;
                 case WM.SIZE:
                 case WM.SIZING:
@@ -195,21 +207,21 @@ namespace MahApps.Metro.Behaviours
         /// </summary>
         private void Update()
         {
-            this.left?.Update();
-            this.right?.Update();
-            this.top?.Update();
-            this.bottom?.Update();
+            if (left != null) left.Update();
+            if (right != null) right.Update();
+            if (top != null) top.Update();
+            if (bottom != null) bottom.Update();
         }
 
         private void UpdateCore()
         {
-            Native.RECT rect;
-            if (this.handle != IntPtr.Zero && Native.UnsafeNativeMethods.GetWindowRect(this.handle, out rect))
+            MahApps.Metro.Native.RECT rect;
+            if (handle != IntPtr.Zero && MahApps.Metro.Native.UnsafeNativeMethods.GetWindowRect(handle, out rect))
             {
-                this.left?.UpdateCore(rect);
-                this.right?.UpdateCore(rect);
-                this.top?.UpdateCore(rect);
-                this.bottom?.UpdateCore(rect);
+                if (left != null) left.UpdateCore(rect);
+                if (right != null) right.UpdateCore(rect);
+                if (top != null) top.UpdateCore(rect);
+                if (bottom != null) bottom.UpdateCore(rect);
             }
         }
 
@@ -218,10 +230,10 @@ namespace MahApps.Metro.Behaviours
         /// </summary>
         private void SetOpacityTo(double newOpacity)
         {
-            if (this.left != null) this.left.Opacity = newOpacity;
-            if (this.right != null) this.right.Opacity = newOpacity;
-            if (this.top != null) this.top.Opacity = newOpacity;
-            if (this.bottom != null) this.bottom.Opacity = newOpacity;
+            if (left != null) left.Opacity = newOpacity;
+            if (right != null) right.Opacity = newOpacity;
+            if (top != null) top.Opacity = newOpacity;
+            if (bottom != null) bottom.Opacity = newOpacity;
         }
 
         /// <summary>
@@ -229,10 +241,10 @@ namespace MahApps.Metro.Behaviours
         /// </summary>
         private void StartOpacityStoryboard()
         {
-            if (this.left?.OpacityStoryboard != null) this.left.BeginStoryboard(this.left.OpacityStoryboard);
-            if (this.right?.OpacityStoryboard != null) this.right.BeginStoryboard(this.right.OpacityStoryboard);
-            if (this.top?.OpacityStoryboard != null) this.top.BeginStoryboard(this.top.OpacityStoryboard);
-            if (this.bottom?.OpacityStoryboard != null) this.bottom.BeginStoryboard(this.bottom.OpacityStoryboard);
+            if (left != null && this.left.OpacityStoryboard != null) left.BeginStoryboard(this.left.OpacityStoryboard);
+            if (right != null && this.right.OpacityStoryboard != null) right.BeginStoryboard(this.right.OpacityStoryboard);
+            if (top != null && this.top.OpacityStoryboard != null) top.BeginStoryboard(this.top.OpacityStoryboard);
+            if (bottom != null && this.bottom.OpacityStoryboard != null) bottom.BeginStoryboard(this.bottom.OpacityStoryboard);
         }
 
         /// <summary>
@@ -240,10 +252,10 @@ namespace MahApps.Metro.Behaviours
         /// </summary>
         private void Show()
         {
-            this.left?.Show();
-            this.right?.Show();
-            this.top?.Show();
-            this.bottom?.Show();
+            if (left != null) left.Show();
+            if (right != null) right.Show();
+            if (top != null) top.Show();
+            if (bottom != null) bottom.Show();
         }
     }
 }

@@ -11,7 +11,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BalanceReport.ViewModels;
-using BalanceReport.Models;
 
 namespace BalanceReport.Views
 {
@@ -20,37 +19,37 @@ namespace BalanceReport.Views
     /// </summary>
     public partial class WebsiteSelect : Window
     {
-        public WebsiteSelectVM WSVM { get; set; }
-        public WebsiteSelect()
-        {
-            InitializeComponent();
-            WSVM = new WebsiteSelectVM();
-            WSVM.WebsiteSelectUI = this;
-            this.DataContext = WSVM;
-        }
-        #region 窗口基本按键方法
-        private void closeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = false  ;
-        }
+        //public WebsiteSelectVM WSVM { get; set; }
+        //public WebsiteSelect()
+        //{
+        //    InitializeComponent();
+        //    WSVM = new WebsiteSelectVM();
+        //    WSVM.WebsiteSelectUI = this;
+        //    this.DataContext = WSVM;
+        //}
+        //#region 窗口基本按键方法
+        //private void closeButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.DialogResult = false  ;
+        //}
 
-        private void mniButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
+        //private void mniButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.WindowState = WindowState.Minimized;
+        //}
 
-        private void maxButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (WindowState == WindowState.Normal)
-                WindowState = WindowState.Maximized;
-            else
-                WindowState = WindowState.Normal;
-        }
+        //private void maxButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (WindowState == WindowState.Normal)
+        //        WindowState = WindowState.Maximized;
+        //    else
+        //        WindowState = WindowState.Normal;
+        //}
 
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
-        #endregion
+        //private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    this.DragMove();
+        //}
+        //#endregion
     }
 }

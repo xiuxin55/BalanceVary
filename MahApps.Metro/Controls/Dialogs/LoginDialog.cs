@@ -10,21 +10,15 @@ namespace MahApps.Metro.Controls.Dialogs
         private const string DefaultUsernameWatermark = "Username...";
         private const string DefaultPasswordWatermark = "Password...";
         private const Visibility DefaultNegativeButtonVisibility = Visibility.Collapsed;
-        private const bool DefaultShouldHideUsername = false;
         private const bool DefaultEnablePasswordPreview = false;
-        private const Visibility DefaultRememberCheckBoxVisibility = Visibility.Collapsed;
-        private const string DefaultRememberCheckBoxText = "Remember";
 
         public LoginDialogSettings()
         {
             UsernameWatermark = DefaultUsernameWatermark;
             PasswordWatermark = DefaultPasswordWatermark;
             NegativeButtonVisibility = DefaultNegativeButtonVisibility;
-            ShouldHideUsername = DefaultShouldHideUsername;
             AffirmativeButtonText = "Login";
             EnablePasswordPreview = DefaultEnablePasswordPreview;
-            RememberCheckBoxVisibility = DefaultRememberCheckBoxVisibility;
-            RememberCheckBoxText = DefaultRememberCheckBoxText;
         }
 
         public string InitialUsername { get; set; }
@@ -33,24 +27,17 @@ namespace MahApps.Metro.Controls.Dialogs
 
         public string UsernameWatermark { get; set; }
 
-        public bool ShouldHideUsername { get; set; }
-
         public string PasswordWatermark { get; set; }
 
         public Visibility NegativeButtonVisibility { get; set; }
 
         public bool EnablePasswordPreview { get; set; }
-
-        public Visibility RememberCheckBoxVisibility { get; set; }
-
-        public string RememberCheckBoxText { get; set; }
     }
 
     public class LoginDialogData
     {
-        public string Username { get; internal set; }
-        public string Password { get; internal set; }
-        public bool ShouldRemember { get; internal set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 
     public partial class LoginDialog : BaseMetroDialog
@@ -69,9 +56,6 @@ namespace MahApps.Metro.Controls.Dialogs
             UsernameWatermark = settings.UsernameWatermark;
             PasswordWatermark = settings.PasswordWatermark;
             NegativeButtonButtonVisibility = settings.NegativeButtonVisibility;
-            ShouldHideUsername = settings.ShouldHideUsername;
-            RememberCheckBoxVisibility = settings.RememberCheckBoxVisibility;
-            RememberCheckBoxText = settings.RememberCheckBoxText;
         }
 
         internal Task<LoginDialogData> WaitForButtonPressAsync()
@@ -79,7 +63,7 @@ namespace MahApps.Metro.Controls.Dialogs
             Dispatcher.BeginInvoke(new Action(() =>
             {
                 this.Focus();
-                if (string.IsNullOrEmpty(PART_TextBox.Text) && !ShouldHideUsername)
+                if (string.IsNullOrEmpty(PART_TextBox.Text))
                 {
                     PART_TextBox.Focus();
                 }
@@ -147,7 +131,7 @@ namespace MahApps.Metro.Controls.Dialogs
                 if (e.Key == Key.Enter)
                 {
                     cleanUpHandlers();
-                    tcs.TrySetResult(new LoginDialogData { Username = Username, Password = PART_TextBox2.Password, ShouldRemember = RememberCheckBoxChecked });
+                    tcs.TrySetResult(new LoginDialogData { Username = Username, Password = PART_TextBox2.Password });
                 }
             };
 
@@ -164,7 +148,7 @@ namespace MahApps.Metro.Controls.Dialogs
             {
                 cleanUpHandlers();
 
-                tcs.TrySetResult(new LoginDialogData { Username = Username, Password = PART_TextBox2.Password, ShouldRemember = RememberCheckBoxChecked });
+                tcs.TrySetResult(new LoginDialogData { Username = Username, Password = PART_TextBox2.Password });
 
                 e.Handled = true;
             };
@@ -216,10 +200,6 @@ namespace MahApps.Metro.Controls.Dialogs
         public static readonly DependencyProperty AffirmativeButtonTextProperty = DependencyProperty.Register("AffirmativeButtonText", typeof(string), typeof(LoginDialog), new PropertyMetadata("OK"));
         public static readonly DependencyProperty NegativeButtonTextProperty = DependencyProperty.Register("NegativeButtonText", typeof(string), typeof(LoginDialog), new PropertyMetadata("Cancel"));
         public static readonly DependencyProperty NegativeButtonButtonVisibilityProperty = DependencyProperty.Register("NegativeButtonButtonVisibility", typeof(Visibility), typeof(LoginDialog), new PropertyMetadata(Visibility.Collapsed));
-        public static readonly DependencyProperty ShouldHideUsernameProperty = DependencyProperty.Register("ShouldHideUsername", typeof(bool), typeof(LoginDialog), new PropertyMetadata(false));
-        public static readonly DependencyProperty RememberCheckBoxVisibilityProperty = DependencyProperty.Register("RememberCheckBoxVisibility", typeof(Visibility), typeof(LoginDialog), new PropertyMetadata(Visibility.Collapsed));
-        public static readonly DependencyProperty RememberCheckBoxTextProperty = DependencyProperty.Register("RememberCheckBoxText", typeof(string), typeof(LoginDialog), new PropertyMetadata("Remember"));
-        public static readonly DependencyProperty RememberCheckBoxCheckedProperty = DependencyProperty.Register("RememberCheckBoxChecked", typeof(bool), typeof(LoginDialog), new PropertyMetadata(false));
 
         public string Message
         {
@@ -267,30 +247,6 @@ namespace MahApps.Metro.Controls.Dialogs
         {
             get { return (Visibility)GetValue(NegativeButtonButtonVisibilityProperty); }
             set { SetValue(NegativeButtonButtonVisibilityProperty, value); }
-        }
-
-        public bool ShouldHideUsername
-        {
-            get { return (bool)GetValue(ShouldHideUsernameProperty); }
-            set { SetValue(ShouldHideUsernameProperty, value); }
-        }
-
-        public Visibility RememberCheckBoxVisibility
-        {
-            get { return (Visibility)GetValue(RememberCheckBoxVisibilityProperty); }
-            set { SetValue(RememberCheckBoxVisibilityProperty, value); }
-        }
-
-        public string RememberCheckBoxText
-        {
-            get { return (string)GetValue(RememberCheckBoxTextProperty); }
-            set { SetValue(RememberCheckBoxTextProperty, value); }
-        }
-
-        public bool RememberCheckBoxChecked
-        {
-            get { return (bool)GetValue(RememberCheckBoxCheckedProperty); }
-            set { SetValue(RememberCheckBoxCheckedProperty, value); }
         }
     }
 }

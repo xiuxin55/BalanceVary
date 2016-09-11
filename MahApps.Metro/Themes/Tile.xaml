@@ -4,77 +4,88 @@
                     xmlns:converters="clr-namespace:MahApps.Metro.Converters">
 
     <Style TargetType="Controls:Tile">
-        <Setter Property="Background" Value="{DynamicResource AccentColorBrush}" />
-        <Setter Property="Controls:ControlsHelper.MouseOverBorderBrush" Value="{x:Null}" />
-        <Setter Property="CountFontSize" Value="28" />
-        <Setter Property="Foreground" Value="{DynamicResource IdealForegroundColorBrush}" />
-        <Setter Property="Height" Value="140" />
-        <Setter Property="Width" Value="140" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Margin" Value="3" />
-        <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
-        <Setter Property="TitleFontSize" Value="16" />
+        <Setter Property="Width"
+                Value="140" />
+        <Setter Property="Height"
+                Value="140" />
+        <Setter Property="Margin"
+                Value="3" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource IdealForegroundColorBrush}" />
+        <Setter Property="Background"
+                Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="RenderTransformOrigin"
+                Value="0.5,0.5" />
+        <Setter Property="TitleFontSize"
+                Value="16" />
+        <Setter Property="CountFontSize"
+                Value="28" />
+        <Setter Property="Controls:ControlsHelper.MouseOverBorderBrush"
+                Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Controls:Tile">
                     <Grid>
                         <Border x:Name="PART_Border"
-                                Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                            <Grid>
-                                <StackPanel HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid Background="{TemplateBinding Background}">
+                                <StackPanel VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                             Orientation="Horizontal">
                                     <ContentPresenter RecognizesAccessKey="True" />
-                                    <TextBlock VerticalAlignment="Center"
-                                               FontSize="{TemplateBinding CountFontSize}"
-                                               Text="{TemplateBinding Count}" />
+                                    <TextBlock Text="{TemplateBinding Count}"
+                                               FontSize="{Binding CountFontSize, RelativeSource={RelativeSource TemplatedParent}}"
+                                               VerticalAlignment="Center" />
                                 </StackPanel>
-                                <Label HorizontalAlignment="{TemplateBinding HorizontalTitleAlignment}"
-                                       VerticalAlignment="{TemplateBinding VerticalTitleAlignment}"
+
+                                <Label HorizontalAlignment="Left"
+                                       VerticalAlignment="Bottom"
                                        Foreground="{TemplateBinding Foreground}">
-                                    <AccessText Margin="3"
+                                    <AccessText Text="{Binding Title, RelativeSource={RelativeSource TemplatedParent}}"
                                                 Foreground="{TemplateBinding Foreground}"
-                                                FontSize="{TemplateBinding TitleFontSize}"
-                                                Text="{TemplateBinding Title}"
-                                                TextWrapping="Wrap" />
+                                                TextWrapping="Wrap"
+                                                FontSize="{Binding TitleFontSize, RelativeSource={RelativeSource TemplatedParent}}"
+                                                Margin="3" />
                                 </Label>
                             </Grid>
                         </Border>
                         <Border x:Name="PART_HoverBorder"
-                                BorderBrush="{TemplateBinding Controls:ControlsHelper.MouseOverBorderBrush}"
                                 BorderThickness="2"
-                                Opacity="0"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(Controls:ControlsHelper.MouseOverBorderBrush), Mode=OneWay}"
+                                Opacity="0" />
                     </Grid>
+
                     <ControlTemplate.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:ControlsHelper.MouseOverBorderBrush), Mode=OneWay, Converter={x:Static converters:IsNullConverter.Instance}}" Value="False" />
-                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver, Mode=OneWay}" Value="True" />
+                                <Condition Value="False"
+                                           Binding="{Binding RelativeSource={RelativeSource Self}, Path=(Controls:ControlsHelper.MouseOverBorderBrush), Mode=OneWay, Converter={x:Static converters:IsNullConverter.Instance}}" />
+                                <Condition Value="True"
+                                           Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver, Mode=OneWay}" />
                             </MultiDataTrigger.Conditions>
-                            <Setter TargetName="PART_HoverBorder" Property="Opacity" Value="0.6" />
+                            <Setter Property="Opacity"
+                                    TargetName="PART_HoverBorder"
+                                    Value="0.6" />
                         </MultiDataTrigger>
-                        <Trigger Property="Button.IsPressed" Value="True">
+                        <Trigger Property="Button.IsPressed"
+                                 Value="True">
                             <Setter Property="RenderTransform">
                                 <Setter.Value>
-                                    <ScaleTransform CenterX="0.5"
-                                                    CenterY="0.5"
-                                                    ScaleX="0.98"
-                                                    ScaleY="0.98" />
+                                    <ScaleTransform ScaleX="0.98"
+                                                    ScaleY="0.98"
+                                                    CenterX="0.5"
+                                                    CenterY="0.5" />
                                 </Setter.Value>
                             </Setter>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value=".55" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
 </ResourceDictionary>

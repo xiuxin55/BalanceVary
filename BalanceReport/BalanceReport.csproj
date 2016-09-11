@@ -115,17 +115,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\CommonData.cs" />
-    <Compile Include="Common\CommonLog.cs" />
-    <Compile Include="Common\CommonSql.cs" />
-    <Compile Include="Common\ConfigReader.cs" />
-    <Compile Include="Common\ExcelAndData.cs" />
-    <Compile Include="Dao\AccountInfoDao.cs" />
-    <Compile Include="Dao\DisplayBalance.cs" />
-    <Compile Include="Dao\ImportDataDao.cs" />
-    <Compile Include="Dao\WebsiteInfoDao.cs" />
-    <Compile Include="Dao\ManagersInfoDao.cs" />
-    <Compile Include="Dao\BalanceInfoDao.cs" />
+    <Compile Include="Service References\WebsiteInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Tools\Byte[]ToBitmapImageConverter.cs" />
     <Compile Include="Tools\GridLineDecorator.cs" />
     <Compile Include="Tools\ListSortDecorator.cs" />
@@ -347,6 +341,19 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\WebsiteInfoService\BalanceReport.WebsiteInfoService.WebsiteInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebsiteInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteInfoService\WebsiteInfoService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\13.ico" />
@@ -374,14 +381,28 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Config\Configure.csproj">
-      <Project>{46c7dbd4-3821-4579-995d-0e88bff6beac}</Project>
-      <Name>Configure</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MahApps.Metro\MahApps.Metro.csproj">
       <Project>{5b1710d2-5dc8-4754-91b2-19165de49b3d}</Project>
       <Name>MahApps.Metro</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WebsiteInfoService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

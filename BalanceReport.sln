@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalanceReport", "BalanceReport\BalanceReport.csproj", "{5C397F56-6126-4F15-B6EC-7391BB0C13EB}"
 EndProject
@@ -52,6 +52,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{49CC37A0-302E-43C4-ADED-8D79F652242E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlMaps", "SqlMaps\SqlMaps.csproj", "{E19A6DC8-30F3-45D5-8B67-584C5A034212}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostApp", "HostApp\HostApp.csproj", "{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -223,6 +225,16 @@ Global
 		{E19A6DC8-30F3-45D5-8B67-584C5A034212}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E19A6DC8-30F3-45D5-8B67-584C5A034212}.Release|x86.ActiveCfg = Release|Any CPU
 		{E19A6DC8-30F3-45D5-8B67-584C5A034212}.Release|x86.Build.0 = Release|Any CPU
+		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -242,5 +254,6 @@ Global
 		{55635394-4F80-40C9-8C79-5A958CF2C219} = {B4F617A1-F662-4852-B4F8-C6278B8285A4}
 		{49CC37A0-302E-43C4-ADED-8D79F652242E} = {243C537A-01F9-4D21-AED0-7C61BBF8EBEA}
 		{E19A6DC8-30F3-45D5-8B67-584C5A034212} = {243C537A-01F9-4D21-AED0-7C61BBF8EBEA}
+		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7} = {773DE8C3-C719-4853-A0A4-8F765551E6EA}
 	EndGlobalSection
 EndGlobal

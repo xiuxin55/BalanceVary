@@ -5,32 +5,47 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/VS/Colors.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="StandardButton" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource BackgroundNormal}" />
-        <Setter Property="BorderBrush" Value="{StaticResource BorderBrushNormal}" />
-        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
+    <Style x:Key="StandardButton"
+           TargetType="Button">
+        <Setter Property="Visibility"
+                Value="Visible" />
+        <Setter Property="Foreground"
+                Value="{StaticResource Foreground}" />
+        <Setter Property="Background"
+                Value="{StaticResource BackgroundNormal}" />
+        <Setter Property="BorderBrush"
+                Value="{StaticResource BorderBrushNormal}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
+                    <Border SnapsToDevicePixels="True"
                             BorderThickness="1"
-                            SnapsToDevicePixels="True">
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}">
                         <Grid>
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{StaticResource BackgroundHighlighted}" />
-                            <Setter Property="BorderBrush" Value="{StaticResource BorderBrushHighlighted}" />
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="BorderBrush"
+                                    Value="{StaticResource BorderBrushHighlighted}" />
+                            <Setter Property="Background"
+                                    Value="{StaticResource BackgroundHighlighted}" />
                         </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="{StaticResource BackgroundSelected}" />
-                            <Setter Property="BorderBrush" Value="{StaticResource BorderBrushSelected}" />
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    Value="{StaticResource BackgroundSelected}" />
+                            <Setter Property="BorderBrush"
+                                    Value="{StaticResource BorderBrushSelected}" />
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" Value="Transparent" />
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter Property="Background"
+                                    Value="Transparent" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -38,21 +53,24 @@
         </Setter>
     </Style>
 
-    <Style x:Key="LinkButton" TargetType="Button">
-        <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Foreground" Value="{StaticResource LinkButtonForeground}" />
+    <Style x:Key="LinkButton"
+           TargetType="Button">
+        <Setter Property="Cursor"
+                Value="Hand" />
+        <Setter Property="Foreground"
+                Value="{StaticResource LinkButtonForeground}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <TextBlock>
-                        <ContentPresenter />
-                    </TextBlock>
+                    <TextBlock><ContentPresenter /></TextBlock>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Foreground" Value="{StaticResource LinkButtonForegroundHighlighted}" />
+            <Trigger Property="IsMouseOver"
+                     Value="true">
+                <Setter Property="Foreground"
+                        Value="{StaticResource LinkButtonForegroundHighlighted}" />
             </Trigger>
         </Style.Triggers>
     </Style>

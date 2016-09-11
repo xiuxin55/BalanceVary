@@ -3,8 +3,6 @@ using System.Windows.Controls;
 
 namespace MahApps.Metro.Controls
 {
-    using System.ComponentModel;
-
     public static class TabControlHelper
     {
         /// <summary>
@@ -13,9 +11,7 @@ namespace MahApps.Metro.Controls
         public static readonly DependencyProperty IsUnderlinedProperty =
             DependencyProperty.RegisterAttached("IsUnderlined", typeof(bool), typeof(TabControlHelper), new PropertyMetadata(false));
 
-        [Category(AppName.MahApps)]
         [AttachedPropertyBrowsableForType(typeof(TabControl))]
-        [AttachedPropertyBrowsableForType(typeof(TabItem))]
         public static bool GetIsUnderlined(UIElement element)
         {
             return (bool)element.GetValue(IsUnderlinedProperty);
@@ -33,7 +29,6 @@ namespace MahApps.Metro.Controls
             DependencyProperty.RegisterAttached("Transition", typeof(TransitionType), typeof(TabControlHelper),
                                                 new FrameworkPropertyMetadata(TransitionType.Default, FrameworkPropertyMetadataOptions.AffectsArrange | FrameworkPropertyMetadataOptions.Inherits));
 
-        [Category(AppName.MahApps)]
         public static TransitionType GetTransition(DependencyObject obj)
         {
             return (TransitionType)obj.GetValue(TransitionProperty);

@@ -10,7 +10,6 @@
         ShowTitleBar="True"
         ShowMaxRestoreButton="False"
         WindowStartupLocation="CenterScreen"
-        MouseLeftButtonDown="Window_MouseLeftButtonDown" 
         >
     <Grid>
         <Grid.ColumnDefinitions>

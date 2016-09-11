@@ -35,7 +35,7 @@
             <DatePicker Name="starttime" Height="25" Width="115" Margin="15,0,0,0" />
             <TextBlock  Text="至" HorizontalAlignment="Center" FontSize="15" VerticalAlignment="Center"  Margin="8,0,0,0"></TextBlock>
             <DatePicker  Name="endtime" Height="25"  Width="115" Margin="15,0,0,0" />
-            <ComboBox Name="Displaystate" Height="25"  Width="100" Margin="15,0,0,0" SelectionChanged="ComboBox_SelectionChanged" Background="White">
+            <ComboBox Name="Displaystate" Height="25"  Width="100" Margin="15,0,0,0"  Background="White">
                 <ComboBoxItem Content="日期内每日余额" />
                 <ComboBoxItem Content="日期内每日变动（相较前一天）" />
                 <ComboBoxItem Content="两个日期点余额变动" />
@@ -53,9 +53,9 @@
             <TextBlock  Width="30"   Text="账号:" VerticalAlignment="Center" Margin="6,0,0,0" />
             <TextBox  Width="100" Height="25" Name="txt_accountname"  HorizontalContentAlignment="Left" Margin="6,0,0,0" />
 
-            <CheckBox Content="忽略0项" Margin="3,0,0,0" Click="checkBox1_Click" Height="25" Name="checkBox1" Width="70" HorizontalContentAlignment="Center" IsChecked="True" />
-            <Button Name="SearchWebsite" Width="49"  Content="查询" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Click="SearchWebsite_Click" Margin="3,0,0,0" Height="25" />
-            <Button Name="button33" Width="49"  Content="导出" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"  Click="button3_Click" Margin="6,0,0,0" Height="25" />
+            <CheckBox Content="忽略0项" Margin="3,0,0,0" Height="25" Name="checkBox1" Width="70" HorizontalContentAlignment="Center" IsChecked="True" />
+            <Button Name="SearchWebsite" Width="49"  Content="查询" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="3,0,0,0" Height="25" />
+            <Button Name="button33" Width="49"  Content="导出" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center"      Margin="6,0,0,0" Height="25" />
             </ToolBar.Items>
         </ToolBar>
         <Border BorderBrush="DodgerBlue"   Grid.RowSpan="3" Grid.Column="3" Grid.Row="2"   BorderThickness="1"  CornerRadius="5">
