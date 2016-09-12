@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace BalanceReport.ViewModels
 {
-    public class ManagersAddVM : NotificationObject
+    public class CustomerManagerAddVM : NotificationObject
     {
         //public ManagersAddVM(bool IsAdd)
         //{

@@ -71,3 +71,4 @@ C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\JqGri
 C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.dll
 C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.pdb
+E:\个人\GitHub_余额变动\BalanceVary\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.csprojResolveAssemblyReference.cache

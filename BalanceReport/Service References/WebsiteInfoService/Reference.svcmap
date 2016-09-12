@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2bade65b-8683-4b5c-add5-7cd84d9b15f4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ebaa19f9-2914-4fe8-b48b-09845f481b16" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,13 +18,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/WcfBalanceServiceLibrary/WebsiteInfoService/?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost/WcfBalanceServiceLibrary/WebsiteInfoService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="WebsiteInfoService.wsdl" MetadataType="Wsdl" ID="03529ec1-948f-4fa9-a667-ace52450ae63" SourceId="1" SourceUrl="http://localhost/WcfBalanceServiceLibrary/WebsiteInfoService/?wsdl" />
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="7c61f424-591d-49b4-88e4-71ffb881c6bc" SourceId="1" SourceUrl="http://localhost/WcfBalanceServiceLibrary/WebsiteInfoService/?xsd=xsd0" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="99593900-a984-497b-b392-b001031fecdb" SourceId="1" SourceUrl="http://localhost/WcfBalanceServiceLibrary/WebsiteInfoService/?xsd=xsd1" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="f34bb6ff-22ec-4be2-b1d7-c6237ee11307" SourceId="1" SourceUrl="http://localhost/WcfBalanceServiceLibrary/WebsiteInfoService/?xsd=xsd2" />
+    <MetadataFile FileName="WebsiteInfoService.wsdl" MetadataType="Wsdl" ID="4ec74e39-4b2d-4341-a268-dfb9239f71e7" SourceId="1" SourceUrl="http://localhost/WcfBalanceServiceLibrary/WebsiteInfoService/?wsdl" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="92998917-24ff-4acb-a7ff-65fdcefaafd5" SourceId="1" SourceUrl="http://localhost/WcfBalanceServiceLibrary/WebsiteInfoService/?xsd=xsd0" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="62a6a1b5-60cb-45d7-b06a-d693a7c70a09" SourceId="1" SourceUrl="http://localhost/WcfBalanceServiceLibrary/WebsiteInfoService/?xsd=xsd1" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="9268aa4c-cb43-4c72-8e04-8646a5d5dec8" SourceId="1" SourceUrl="http://localhost/WcfBalanceServiceLibrary/WebsiteInfoService/?xsd=xsd2" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="9f22d171-9262-4e38-a98e-69b5a8d4ab2a" SourceId="1" SourceUrl="http://localhost/WcfBalanceServiceLibrary/WebsiteInfoService/?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

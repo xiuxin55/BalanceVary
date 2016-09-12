@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="BaseDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomerManagerDAL.cs" />
+    <Compile Include="AccountInfoDAL.cs" />
     <Compile Include="WebsiteInfoDAL.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -60,7 +60,7 @@ namespace BalanceReport
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            //this.DragMove();
         }
         #endregion
         ///// <summary>

@@ -18,7 +18,7 @@ namespace BalanceReport.Views
     /// <summary>
     /// ManagerAdd.xaml 的交互逻辑
     /// </summary>
-    public partial class ManagersAdd : MetroWindow
+    public partial class CustomerManagerAdd : MetroWindow
     {
         //public ManagersAdd(bool IsAdd,ManagersInfoModel MIM)
         //{

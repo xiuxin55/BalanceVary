@@ -39,18 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="database.config" />
-    <Content Include="providers.config" />
-    <Content Include="sqlmap.config" />
+    <EmbeddedResource Include="database.config" />
+    <EmbeddedResource Include="providers.config" />
+    <EmbeddedResource Include="sqlmap.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BalanceMapping\BalanceMapping.csproj">

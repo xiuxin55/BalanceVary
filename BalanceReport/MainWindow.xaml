@@ -71,7 +71,7 @@
             </TabItem>
                 <TabItem Header="客户经理信息管理" Name="ManagerTab" >
                 <Grid >
-                        <localcontrol:ManagersList x:Name="ManagersList" />
+                        <localcontrol:CustomerManagerList x:Name="CustomerManagerList" />
                 </Grid>
             </TabItem>
                 <TabItem Header="账户管理" Name="AccountManageTab" >

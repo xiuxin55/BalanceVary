@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BalanceReport.ViewModels;
 using MahApps.Metro.Controls;
+using BalanceReport.AccountInfoService;
 
 namespace BalanceReport.Views
 {
@@ -20,69 +21,69 @@ namespace BalanceReport.Views
     /// </summary>
     public partial class AccountAdd : MetroWindow
     {
-        //public AccountAdd(bool IsAdd,AccountInfoModel MIM)
-        //{
-        //    InitializeComponent();
-        //    AccountAddVM wa = new AccountAddVM(IsAdd);
-        //    wa.AccountAddUI = this;
-        //    if (MIM != null)
-        //    {
-        //        wa.AddAccountInfoModel = MIM;
-        //        wa.OldAccountInfoModel = new AccountInfoModel();
-        //        wa.OldAccountInfoModel.AccountID = MIM.AccountID;
-        //    }
-        //    this.DataContext = wa;
-        //}
-        //#region 窗口基本按键方法
-        //private void closeButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Close();
-        //}
+        public AccountAdd(bool IsAdd, AccountInfo MIM)
+        {
+            InitializeComponent();
+            AccountAddVM wa = new AccountAddVM(IsAdd);
+            wa.AccountAddUI = this;
+            if (MIM != null)
+            {
+                wa.AddAccountInfo = MIM;
+                wa.OldAccountInfo = new AccountInfo();
+                wa.OldAccountInfo.AccountID = MIM.AccountID;
+            }
+            this.DataContext = wa;
+        }
+        #region 窗口基本按键方法
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
-        //private void mniButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.WindowState = WindowState.Minimized;
-        //}
+        private void mniButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
 
-        //private void maxButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (WindowState == WindowState.Normal)
-        //        WindowState = WindowState.Maximized;
-        //    else
-        //        WindowState = WindowState.Normal;
-        //}
+        private void maxButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Normal)
+                WindowState = WindowState.Maximized;
+            else
+                WindowState = WindowState.Normal;
+        }
 
-        //private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    this.DragMove();
-        //}
-        //#endregion
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+        #endregion
 
-        //private void textBox4_GotFocus(object sender, RoutedEventArgs e)
-        //{
-        //   WebsiteSelect ws = new WebsiteSelect();
-        //    if ((bool)ws.ShowDialog())
-        //    {
-        //        this.textBox4.Text = ws.WSVM.SelectedWebsiteInfoModel.WebsiteID;
-             
-        //    }
-        //    this.button1.Focus();
-        //}
+        private void textBox4_GotFocus(object sender, RoutedEventArgs e)
+        {
+            WebsiteSelect ws = new WebsiteSelect();
+            if ((bool)ws.ShowDialog())
+            {
+               // this.textBox4.Text = ws.WSVM.SelectedWebsiteInfoModel.WebsiteID;
 
-        //private void textBox2_GotFocus(object sender, RoutedEventArgs e)
-        //{
-        //     ManagersSelect ws = new ManagersSelect();
-        //    if ((bool)ws.ShowDialog())
-        //    {
-        //        this.textBox2.Text = ws.WSVM.SelectedManagersInfoModel.ManagerID;
-                
+            }
+            this.button1.Focus();
+        }
 
-        //    }
-        //    this.button1.Focus();
-        //}
+        private void textBox2_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ManagersSelect ws = new ManagersSelect();
+            if ((bool)ws.ShowDialog())
+            {
+               // this.textBox2.Text = ws.WSVM.SelectedManagersInfoModel.ManagerID;
 
 
-  
-      
+            }
+            this.button1.Focus();
+        }
+
+
+
+
     }
 }

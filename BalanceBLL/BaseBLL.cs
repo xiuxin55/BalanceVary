@@ -6,12 +6,12 @@ using System.Text;
 
 namespace BalanceBLL
 {
-    public abstract class BaseBLL<T,S> where T:new()
+    public abstract class BaseBLL<T,S> where T:new() where S:BaseDAL<T>,new()
     {
-        private BaseDAL<T, S> dal ;
+        private BaseDAL<T> dal ;
         public BaseBLL()
         {
-            dal = new BaseDAL<T, S>();
+            dal =new S();
         }
         public bool Add(T t)
         {

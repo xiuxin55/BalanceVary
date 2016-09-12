@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Common
 {
     public class LogHelper
     {
+        static LogHelper()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            System.IO.Stream stream = assembly.GetManifestResourceStream("Common.log4net_config.xml");
+            log4net.Config.XmlConfigurator.Configure(stream);
+        }
         /// <summary>
         /// 输出日志到Log4Net
         /// </summary>

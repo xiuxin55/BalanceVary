@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalanceReport", "BalanceReport\BalanceReport.csproj", "{5C397F56-6126-4F15-B6EC-7391BB0C13EB}"
 EndProject
@@ -54,6 +54,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlMaps", "SqlMaps\SqlMaps.csproj", "{E19A6DC8-30F3-45D5-8B67-584C5A034212}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostApp", "HostApp\HostApp.csproj", "{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControlLibrary", "PagingDataGrid\CustomControlLibrary\CustomControlLibrary.csproj", "{AD060C8A-12AF-4C1B-89CF-9B41A1EDD31B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls", "CustomControls\CustomControls.csproj", "{E6703634-362A-4E62-A951-614922B7C045}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -235,6 +239,30 @@ Global
 		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}.Release|x86.ActiveCfg = Release|Any CPU
+		{AD060C8A-12AF-4C1B-89CF-9B41A1EDD31B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD060C8A-12AF-4C1B-89CF-9B41A1EDD31B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD060C8A-12AF-4C1B-89CF-9B41A1EDD31B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AD060C8A-12AF-4C1B-89CF-9B41A1EDD31B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AD060C8A-12AF-4C1B-89CF-9B41A1EDD31B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AD060C8A-12AF-4C1B-89CF-9B41A1EDD31B}.Debug|x86.Build.0 = Debug|Any CPU
+		{AD060C8A-12AF-4C1B-89CF-9B41A1EDD31B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD060C8A-12AF-4C1B-89CF-9B41A1EDD31B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD060C8A-12AF-4C1B-89CF-9B41A1EDD31B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AD060C8A-12AF-4C1B-89CF-9B41A1EDD31B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AD060C8A-12AF-4C1B-89CF-9B41A1EDD31B}.Release|x86.ActiveCfg = Release|Any CPU
+		{AD060C8A-12AF-4C1B-89CF-9B41A1EDD31B}.Release|x86.Build.0 = Release|Any CPU
+		{E6703634-362A-4E62-A951-614922B7C045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6703634-362A-4E62-A951-614922B7C045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6703634-362A-4E62-A951-614922B7C045}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E6703634-362A-4E62-A951-614922B7C045}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E6703634-362A-4E62-A951-614922B7C045}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E6703634-362A-4E62-A951-614922B7C045}.Debug|x86.Build.0 = Debug|Any CPU
+		{E6703634-362A-4E62-A951-614922B7C045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6703634-362A-4E62-A951-614922B7C045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6703634-362A-4E62-A951-614922B7C045}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E6703634-362A-4E62-A951-614922B7C045}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E6703634-362A-4E62-A951-614922B7C045}.Release|x86.ActiveCfg = Release|Any CPU
+		{E6703634-362A-4E62-A951-614922B7C045}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -255,5 +283,7 @@ Global
 		{49CC37A0-302E-43C4-ADED-8D79F652242E} = {243C537A-01F9-4D21-AED0-7C61BBF8EBEA}
 		{E19A6DC8-30F3-45D5-8B67-584C5A034212} = {243C537A-01F9-4D21-AED0-7C61BBF8EBEA}
 		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7} = {773DE8C3-C719-4853-A0A4-8F765551E6EA}
+		{AD060C8A-12AF-4C1B-89CF-9B41A1EDD31B} = {BB7EC56F-7505-4058-B7CA-16085EC2739A}
+		{E6703634-362A-4E62-A951-614922B7C045} = {BB7EC56F-7505-4058-B7CA-16085EC2739A}
 	EndGlobalSection
 EndGlobal

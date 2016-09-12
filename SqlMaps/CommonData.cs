@@ -7,6 +7,6 @@ namespace SqlMaps
 {
     public class CommonData
     {
-        public  const string  BalanceSqlConfig= @"BalanceMapping.sqlmap.config";
+        public  const string  BalanceSqlConfig= @"Configure.sqlmap.config";
     }
 }

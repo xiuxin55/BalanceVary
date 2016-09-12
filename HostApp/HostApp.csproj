@@ -113,9 +113,25 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BalanceMapping\BalanceMapping.csproj">
+      <Project>{9f97d256-7446-41c6-a499-c52227f4b82c}</Project>
+      <Name>BalanceMapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BalanceReportModel\BalanceModel.csproj">
+      <Project>{48881a94-14f8-4abe-a924-b3fd047dd557}</Project>
+      <Name>BalanceModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{49cc37a0-302e-43c4-aded-8d79f652242e}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Config\Configure.csproj">
+      <Project>{46c7dbd4-3821-4579-995d-0e88bff6beac}</Project>
+      <Name>Configure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SqlMaps\SqlMaps.csproj">
+      <Project>{e19a6dc8-30f3-45d5-8b67-584c5a034212}</Project>
+      <Name>SqlMaps</Name>
     </ProjectReference>
     <ProjectReference Include="..\WcfBalanceServiceLibrary\WcfBalanceServiceLibrary.csproj">
       <Project>{96315950-b9e3-4ec9-ac4f-b6e10b77b422}</Project>

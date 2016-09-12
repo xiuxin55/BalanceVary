@@ -26,5 +26,10 @@ namespace HostApp
             InitializeComponent();
             this.DataContext = new HostManageVM();
         }
+
+        private void cbxheader_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

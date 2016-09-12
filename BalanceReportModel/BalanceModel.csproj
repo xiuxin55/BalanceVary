@@ -63,7 +63,7 @@
     <Compile Include="BaseModel.cs" />
     <Compile Include="DateTimeModel.cs" />
     <Compile Include="ImportDataInfo.cs" />
-    <Compile Include="ManagersInfo.cs" />
+    <Compile Include="CustomerManagerInfo.cs" />
     <Compile Include="ReportModel.cs" />
     <Compile Include="WebsiteInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

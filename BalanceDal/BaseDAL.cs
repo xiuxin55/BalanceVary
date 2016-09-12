@@ -11,27 +11,8 @@ namespace BalanceDAL
     /// 父DAO
     /// </summary>
     /// <typeparam name="T">实体类型</typeparam>
-    public  class BaseDAL<T,S> where T : new()
+    public  class BaseDAL<T> where T : new()
     {
-        private static object obj;
-        private static S _instance;
-        public static S Instance
-        {
-            get
-            {
-                lock (obj)
-                {
-                    if (_instance == null)
-                        _instance = default(S);
-                }
-
-                return _instance;
-            }
-        }
-        public BaseDAL()
-        {
-            DefaultKey = typeof(S).Name;
-        }
         /// <summary>
         /// 默认Key
         /// </summary>
@@ -47,30 +28,36 @@ namespace BalanceDAL
         /// </summary>
         /// <param name="t">添加的对象</param>
         /// <returns>是否成功</returns>
-        public virtual bool Add(T t) { throw new NotFiniteNumberException(); }
+        public virtual bool Add(T t)
+        {
+            return i(t);
+        }
         /// <summary>
         /// 更新数据
         /// </summary>
         /// <param name="t">修改的对象</param>
         /// <returns>是否成功</returns>
-        public virtual bool Update(T t) { throw new NotFiniteNumberException(); }
+        public virtual bool Update(T t) { return u(t); }
         /// <summary>
         /// 删除数据
         /// </summary>
         /// <param name="t">删除的筛选对象</param>
         /// <returns>是否成功</returns>
-        public virtual bool Delete(T t) { throw new NotFiniteNumberException(); }
+        public virtual bool Delete(T t) { return d(t); }
         /// <summary>
         /// 查看全部
         /// </summary>
         /// <returns>所有数据集合</returns>
-        public virtual IList<T> Selects() { throw new NotFiniteNumberException(); }
+        public virtual IList<T> Selects() { return ss(); }
         /// <summary>
         /// 查看筛选数据
         /// </summary>
         /// <param name="t">筛选对象</param>
         /// <returns>特定数据集合</returns>
-        public virtual IList<T> Select(T t) { throw new NotFiniteNumberException(); }
+        public virtual IList<T> Select(T t)
+        {
+            return s(t);
+        }
         #endregion
 
         #region 帮助方法

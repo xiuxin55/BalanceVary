@@ -4,10 +4,10 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
 
   <alias>
-    <typeAlias alias="WebsiteInfoModel" type="BalanceModel.WebsiteInfoModel,BalanceModel" />
+    <typeAlias alias="WebsiteInfo" type="BalanceModel.WebsiteInfo,BalanceModel" />
   </alias>
   <resultMaps>
-    <resultMap id="WebsiteInfoModelMap" class="WebsiteInfoModel">
+    <resultMap id="WebsiteInfoMap" class="WebsiteInfo">
       <result property="RowNumber" column="RowNumber"/>
       <result property="ID" column="ID"/>
       <result property="WebsiteID" column="WebsiteID"/>
@@ -20,7 +20,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     </resultMap>
   </resultMaps>
   <statements>
-    <sql id="SelectWebsiteInfo">
+    <select id="SelectWebsiteInfo"  resultMap="WebsiteInfoMap"  parameterClass="WebsiteInfo">
       select row_number() over(order by WebsiteID asc) as RowNumber,*  from WebsiteInfo where 1=1
       <dynamic>
         <isParameterPresent>
@@ -34,6 +34,47 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
           <isNotEmpty prepend="and" property="Institution">Institution=#Institution#</isNotEmpty>
         </isParameterPresent>
       </dynamic>
-    </sql>
+    </select>
+    <update id="UpdateWebsiteInfo"  parameterClass="WebsiteInfo">
+      UPDATE WebsiteInfo
+      SET
+      ID = #ID#
+      <isNotEmpty prepend ="," property="WebsiteID">
+        WebsiteID = #WebsiteID#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="WebsiteName">
+        WebsiteName = #WebsiteName#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="WebsiteAddress">
+        WebsiteAddress = #WebsiteAddress#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="WebsiteTel">
+        WebsiteTel = #WebsiteTel#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="WebsiteManager">
+        WebsiteManager = #WebsiteManager#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="ManagerTelphone">
+        ManagerTelphone = #ManagerTelphone#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="Institution">
+        Institution = #Institution#
+      </isNotEmpty>
+      WHERE ID = #ID#
+    </update>
+    <insert id="AddWebsiteInfo" parameterClass="WebsiteInfo">
+      INSERT INTO WebsiteInfo (ID,
+      WebsiteID,
+      WebsiteName,
+      WebsiteAddress,
+      WebsiteTel,
+      WebsiteManager,
+      ManagerTelphone,
+      Institution)
+      VALUES (#ID#,#WebsiteID#,#WebsiteName#,#WebsiteAddress#,#WebsiteTel#,#WebsiteManager#,#ManagerTelphone#,#Institution#);
+    </insert>
+    <delete id="DeleteWebsiteInfo" parameterClass="WebsiteInfo">
+      DELETE WebsiteInfo WHERE ID = #ID#
+    </delete>
   </statements>
 </sqlMap>

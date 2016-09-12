@@ -25,12 +25,5 @@ namespace BalanceReport.Views
             InitializeComponent();
             this.DataContext = new AccountManageVM();
         }
-
-        private void AddWebsite_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-       
     }
 }

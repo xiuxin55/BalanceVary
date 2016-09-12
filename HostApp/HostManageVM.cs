@@ -8,6 +8,7 @@ using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using System.Reflection;
 using WcfBalanceServiceLibrary;
+using Common;
 
 namespace HostApp
 {
@@ -18,7 +19,14 @@ namespace HostApp
             StartServiceCommand = new DelegateCommand(StartServiceExecute);
             StopServiceCommand = new DelegateCommand(StopServiceExecute);
             CheckBoxClickCommand = new DelegateCommand<object>(CheckBoxClickExecute);
-            ServiceList = new ObservableCollection<ServiceModel>(AppConfigManager.GetServiceList());
+            try
+            {
+                ServiceList = new ObservableCollection<ServiceModel>(AppConfigManager.GetServiceList());
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(HostManageVM), ex);
+            }
             //SearchWebsiteCommand = new DelegateCommand(SearchWebsiteExecute);
             //SearchWebsiteExecute();
         }
@@ -73,31 +81,52 @@ namespace HostApp
         //#region 命令执行方法
         private void StartServiceExecute()
         {
-            foreach (var item in ServiceList)
+            try
             {
-                if(item.IsSelected)
+                foreach (var item in ServiceList)
                 {
-                    Type result = Type.GetType(item.ClassName, false);
-                    ManageService.Instance.StartService(item.ClassName, result);
-                    item.IsStart = "已启动";
+                    if (item.IsSelected && item.IsStart == "未启动")
+                    {
+                        Assembly ass = Assembly.Load(item.AssemblyName);
+
+                        Type result = ass.GetType(item.ClassName);
+                        ManageService.Instance.StartService(item.ClassName, result);
+                        item.IsStart = "已启动";
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(HostManageVM), ex);
+            }
+            
         }
             
         private void StopServiceExecute()
         {
-            foreach (var item in ServiceList)
+            try
             {
-                if (item.IsSelected && item.IsStart=="未启动")
+                foreach (var item in ServiceList)
                 {
-                    ManageService.Instance.CloseService(item.ClassName);
-                    item.IsStart = "未启动";
+                    if (item.IsSelected && item.IsStart == "已启动")
+                    {
+                        ManageService.Instance.CloseService(item.ClassName);
+                        item.IsStart = "未启动";
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(HostManageVM), ex);
+            }
         }
-        private void CheckBoxClickExecute(object obj)
+        private void CheckBoxClickExecute(object  obj)
         {
             
+            foreach (var item in ServiceList)
+            {
+                item.IsSelected = obj == null ? false:(bool)obj ;
+            }
         }
         //private void SearchWebsiteExecute()
         //{

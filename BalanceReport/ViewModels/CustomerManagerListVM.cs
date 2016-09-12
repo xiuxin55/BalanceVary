@@ -9,7 +9,7 @@ using System.Windows;
 using BalanceReport.Views;
 namespace BalanceReport.ViewModels
 {
-    public class ManagersListVM : NotificationObject
+    public class CustomerManagerListVM : NotificationObject
     {
         //public ManagersListVM()
         //{

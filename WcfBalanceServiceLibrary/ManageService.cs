@@ -9,7 +9,7 @@ namespace WcfBalanceServiceLibrary
     public class ManageService
     {
         private static ManageService _instance;
-        private static object lockobj;
+        private static object lockobj=new object();
         public static ManageService Instance
         {
             get
@@ -27,11 +27,12 @@ namespace WcfBalanceServiceLibrary
 
         private Dictionary<string, ServiceHost> ServiceHostManager = new Dictionary<string, ServiceHost>();
 
-        public void StartService(string classname,Type t)
+        public bool StartService(string classname,Type t)
         {
             ServiceHost host = new ServiceHost(t);
             host.Open();
             ServiceHostManager[classname] = host;
+            return true;
         }
 
         public void CloseService(string classname)

@@ -6,11 +6,12 @@ using System.Text;
 
 namespace BalanceDAL
 {
-    public class WebsiteInfoDAL: BaseDAL<WebsiteInfo, WebsiteInfoDAL>
+    public class WebsiteInfoDAL: BaseDAL<WebsiteInfo>
     {
         public  WebsiteInfoDAL()
         {
             DefaultKey = "WebsiteInfo";
         }
+      
     }
 }

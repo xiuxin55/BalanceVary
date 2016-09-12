@@ -115,6 +115,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Service References\AccountInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\WebsiteInfoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -130,8 +135,8 @@
     <Compile Include="ViewModels\ReportUserControlVM.cs" />
     <Compile Include="ViewModels\WebsiteAddVM.cs" />
     <Compile Include="ViewModels\WebsiteManageVM.cs" />
-    <Compile Include="ViewModels\ManagersListVM.cs" />
-    <Compile Include="ViewModels\ManagersAddVM.cs" />
+    <Compile Include="ViewModels\CustomerManagerListVM.cs" />
+    <Compile Include="ViewModels\CustomerManagerAddVM.cs" />
     <Compile Include="ViewModels\WebsiteSelectVM.cs" />
     <Compile Include="ViewModels\ManagersSelectVM.cs" />
     <Compile Include="ViewModels\AccountManageVM.cs" />
@@ -142,8 +147,8 @@
     <Compile Include="Views\DepartmentReportUserControl.xaml.cs">
       <DependentUpon>DepartmentReportUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ManagersAdd.xaml.cs">
-      <DependentUpon>ManagersAdd.xaml</DependentUpon>
+    <Compile Include="Views\CustomerManagerAdd.xaml.cs">
+      <DependentUpon>CustomerManagerAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MyCalendar.xaml.cs">
       <DependentUpon>MyCalendar.xaml</DependentUpon>
@@ -187,8 +192,8 @@
     <Compile Include="Views\WebsiteManage.xaml.cs">
       <DependentUpon>WebsiteManage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ManagersList.xaml.cs">
-      <DependentUpon>ManagersList.xaml</DependentUpon>
+    <Compile Include="Views\CustomerManagerList.xaml.cs">
+      <DependentUpon>CustomerManagerList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WebsiteSelect.xaml.cs">
       <DependentUpon>WebsiteSelect.xaml</DependentUpon>
@@ -228,7 +233,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\ManagersAdd.xaml">
+    <Page Include="Views\CustomerManagerAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -288,7 +293,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ManagersList.xaml">
+    <Page Include="Views\CustomerManagerList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -341,6 +346,19 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\AccountInfoService\AccountInfoService.wsdl" />
+    <None Include="Service References\AccountInfoService\BalanceReport.AccountInfoService.AccountInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\WebsiteInfoService\BalanceReport.WebsiteInfoService.WebsiteInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -381,16 +399,28 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{49cc37a0-302e-43c4-aded-8d79f652242e}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MahApps.Metro\MahApps.Metro.csproj">
       <Project>{5b1710d2-5dc8-4754-91b2-19165de49b3d}</Project>
       <Name>MahApps.Metro</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PagingDataGrid\CustomControlLibrary\CustomControlLibrary.csproj">
+      <Project>{ad060c8a-12af-4c1b-89cf-9b41a1edd31b}</Project>
+      <Name>CustomControlLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AccountInfoService\" />
     <WCFMetadataStorage Include="Service References\WebsiteInfoService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteInfoService\item.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WebsiteInfoService\configuration91.svcinfo" />
@@ -400,6 +430,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WebsiteInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountInfoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

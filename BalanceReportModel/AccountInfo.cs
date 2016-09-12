@@ -23,7 +23,7 @@ namespace BalanceModel
         /// </summary>
         public string CorrelationState { get; set; }
         public string SubAccountNumber { get; set; }
-        public ManagersInfo ManagersInfoObj { get; set; }
+        public CustomerManagerInfo ManagersInfoObj { get; set; }
         public WebsiteInfo WebsiteInfoObj { get; set; }
     }
 
