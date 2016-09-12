@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:tool="clr-namespace:BalanceReport.Tools"
-             xmlns:page="clr-namespace:CustomControlLibrary;assembly=CustomControlLibrary"
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cc="clr-namespace:CustomControls;assembly=CustomControls" 
              mc:Ignorable="d" 
              x:Name="Managers"
              d:DesignHeight="300" d:DesignWidth="785">
@@ -14,7 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="32" />
             <RowDefinition Height="265*" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="25" />
         </Grid.RowDefinitions>
         <ToolBar    Name="toolBar1" >
             <ToolBar.Items>
@@ -75,10 +75,11 @@
             </ListView.ItemTemplate>-->
         </ListView>
         </tool:GridLineDecorator>
-        <page:DataPager Grid.Row="2" Name="dataPager" PageSizeList="10,20,30"
-                       ItemsSource="{Binding Path=Result.Students,Mode=TwoWay,ElementName=self}"
-                       Total="{Binding Path=Result.Total,ElementName=self}"
-                       PageChanged="dataPager_PageChanged" />
+        <cc:UCPage Grid.Row="2" FirstPageCommand="{Binding FirstPageCommand}" PrePageCommand="{Binding PrePageCommand}"
+                   NextPageCommand="{Binding NextPageCommand}" LastPageCommand="{Binding NextPageCommand}"
+                   TotalItem="{Binding Total}"
+                   />
+
     </Grid>
         
 </UserControl>

@@ -92,6 +92,7 @@ namespace HostApp
                         Type result = ass.GetType(item.ClassName);
                         ManageService.Instance.StartService(item.ClassName, result);
                         item.IsStart = "已启动";
+                        item.StartTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
                     }
                 }
             }
@@ -112,6 +113,7 @@ namespace HostApp
                     {
                         ManageService.Instance.CloseService(item.ClassName);
                         item.IsStart = "未启动";
+                        item.StopTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
                     }
                 }
             }

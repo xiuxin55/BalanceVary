@@ -96,6 +96,10 @@
       <Project>{5c397f56-6126-4f15-b6ec-7391bb0c13eb}</Project>
       <Name>BalanceReport</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CustomControls\CustomControls.csproj">
+      <Project>{e6703634-362a-4e62-a951-614922b7c045}</Project>
+      <Name>CustomControls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MahApps.Metro\MahApps.Metro.csproj">
       <Project>{5b1710d2-5dc8-4754-91b2-19165de49b3d}</Project>
       <Name>MahApps.Metro</Name>

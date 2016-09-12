@@ -403,13 +403,13 @@
       <Project>{49cc37a0-302e-43c4-aded-8d79f652242e}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CustomControls\CustomControls.csproj">
+      <Project>{e6703634-362a-4e62-a951-614922b7c045}</Project>
+      <Name>CustomControls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MahApps.Metro\MahApps.Metro.csproj">
       <Project>{5b1710d2-5dc8-4754-91b2-19165de49b3d}</Project>
       <Name>MahApps.Metro</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PagingDataGrid\CustomControlLibrary\CustomControlLibrary.csproj">
-      <Project>{ad060c8a-12af-4c1b-89cf-9b41a1edd31b}</Project>
-      <Name>CustomControlLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
