@@ -20,5 +20,7 @@ namespace WcfBalanceServiceLibrary
         bool Delete(AccountInfo info);
         [OperationContract]
         List<AccountInfo> Select(AccountInfo info);
+        [OperationContract]
+        int SelectCount(AccountInfo info);
     }
 }

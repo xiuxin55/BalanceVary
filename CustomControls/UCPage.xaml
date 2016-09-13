@@ -6,25 +6,27 @@
              xmlns:local="clr-namespace:CustomControls"
              mc:Ignorable="d" 
              Name="ucpage"
-             d:DesignHeight="25" d:DesignWidth="300">
+             d:DesignHeight="25" d:DesignWidth="500">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="13"/>
             <ColumnDefinition Width="217*"/>
             <ColumnDefinition Width="83*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Column="0">
+        <StackPanel Orientation="Horizontal" Grid.Column="1">
             <Button Name="btnFirstPage" Content="首页"  Click="btnFirstPage_Click"></Button>
-            <Button Name="btnPrePage"  Content="上一页" Margin="10,0,0,0" Click="btnPrePage_Click"></Button>
-            <TextBox Width="40" TextAlignment="Center"  Margin="10,0,0,0" Padding="2" Text="{Binding ElementName=ucpage,Path=PageIndex}"></TextBox>
-            <Button  Name="btnNestPage"  Content="下一页"  Margin="10,0,0,0" Click="btnNestPage_Click"></Button>
-            <Button  Name="btnLastPage"  Content="尾页"  Margin="10,0,0,0"  Click="btnLastPage_Click"></Button>
+            <Button Name="btnPrePage"  Content="上一页" Margin="20,0,0,0" Click="btnPrePage_Click"></Button>
+            <TextBox Width="40" TextAlignment="Center"  Margin="20,0,0,0"  Text="{Binding ElementName=ucpage,Path=CurrentPage}" BorderBrush="Black"></TextBox>
+            <Button  Name="btnJumpPage"  Content="跳转"  Margin="20,0,0,0" Click="btnJumpPage_Click"></Button>
+            <Button  Name="btnNestPage"  Content="下一页"  Margin="20,0,0,0" Click="btnNestPage_Click"></Button>
+            <Button  Name="btnLastPage"  Content="尾页"  Margin="20,0,0,0"  Click="btnLastPage_Click"></Button>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
             <TextBlock Text="共 "/>
             <TextBlock Text="{Binding Path=PageCount,ElementName=ucpage}"/>
             <TextBlock Text="  页"/>
             <TextBlock Text="/共 "/>
-            <TextBlock Text="{Binding TotalItem}"/>
+            <TextBlock Text="{Binding  Path=Items,ElementName=ucpage }"/>
             <TextBlock Text="  条"/>
         </StackPanel>
     </Grid>

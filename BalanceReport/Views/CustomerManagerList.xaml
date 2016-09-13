@@ -12,7 +12,7 @@
             <RowDefinition Height="32" />
             <RowDefinition Height="265*" />
         </Grid.RowDefinitions>
-        <ToolBar    Name="toolBar1" Height="25">
+        <ToolBar    Name="toolBar1">
             <ToolBar.Items>
                 <Button Width="0"></Button>
                 <Button Name="AddManagers" Width="60" Content="新增" Command="{Binding AddManagersCommand}" HorizontalAlignment="Center" HorizontalContentAlignment="Left" />
@@ -27,24 +27,18 @@
         </ToolBar>
         <tool:GridLineDecorator Grid.Row="1" >
             <ListView  Name="listView1" ItemsSource="{Binding ManagersInfoList}" SelectedItem="{Binding SelectedManagersInfoModel}">
-            <ListView.View>
-                <GridView >
+                <ListView.View>
+                    <GridView >
                         <GridViewColumn Width="150"  Header="客户经理号" DisplayMemberBinding="{Binding ManagerID}" tool:ListViewBehavior.SortField="ManagerID"/>
                         <GridViewColumn Width="100" Header="客户经理姓名" DisplayMemberBinding="{Binding ManagerName}" tool:ListViewBehavior.SortField="ManagerName" />
                         <GridViewColumn Width="200"  Header="电话号码" DisplayMemberBinding="{Binding ManagerTelphone}" tool:ListViewBehavior.SortField="ManagerTelphone"/>
                         <GridViewColumn  Width="100" Header="邮箱" DisplayMemberBinding="{Binding ManagerEmail}" tool:ListViewBehavior.SortField="ManagerEmail"/>
                         <GridViewColumn Width="100"  Header="所属网点" DisplayMemberBinding="{Binding WebsiteName}" tool:ListViewBehavior.SortField="WebsiteName" />
                         <GridViewColumn Width="100"  Header="网点电话" DisplayMemberBinding="{Binding WebsiteTel}" tool:ListViewBehavior.SortField="WebsiteTel"/>
-                    <GridViewColumn Width="100"  Header="所属机构" DisplayMemberBinding="{Binding Institution}" tool:ListViewBehavior.SortField="Institution"/>
-                </GridView>
-            </ListView.View>
-                
-            <!--<ListView.ItemTemplate>
-                <DataTemplate >
-                    
-                </DataTemplate>
-            </ListView.ItemTemplate>-->
-        </ListView>
+                        <GridViewColumn Width="100"  Header="所属机构" DisplayMemberBinding="{Binding Institution}" tool:ListViewBehavior.SortField="Institution"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </tool:GridLineDecorator>
     </Grid>
 </UserControl>

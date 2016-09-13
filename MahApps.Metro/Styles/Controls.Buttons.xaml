@@ -355,7 +355,7 @@
         <Setter Property="Controls:ButtonHelper.CornerRadius"
                 Value="3" />
         <Setter Property="MinHeight"
-                Value="25" />
+                Value="20" />
         <Setter Property="FontWeight"
                 Value="Bold" />
         <Setter Property="FontSize"

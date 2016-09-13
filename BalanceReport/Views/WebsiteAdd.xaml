@@ -1,7 +1,7 @@
 ﻿<Controls:MetroWindow x:Class="BalanceReport.Views.WebsiteAdd"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WebsiteAdd" Height="486" Width="384"
+        Title="新增/编辑网点" Height="486" Width="384"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         GlowBrush="{DynamicResource AccentColorBrush}"
         NonActiveGlowBrush="#CDFF0000"

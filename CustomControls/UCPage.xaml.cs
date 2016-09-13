@@ -23,6 +23,7 @@ namespace CustomControls
         public UCPage()
         {
             InitializeComponent();
+            CurrentPage = 1;
         }
         #region 依赖属性
         public int PageSize
@@ -34,19 +35,6 @@ namespace CustomControls
         // Using a DependencyProperty as the backing store for PageSize.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PageSizeProperty =
             DependencyProperty.Register("PageSize", typeof(int), typeof(UCPage), new UIPropertyMetadata(20));
-
-
-
-        //public int Total
-        //{
-        //    get { return (int)GetValue(TotalProperty); }
-        //    set { SetValue(TotalProperty, value); }
-        //}
-
-        //// Using a DependencyProperty as the backing store for Total.  This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty TotalProperty =
-        //    DependencyProperty.Register("Total", typeof(int), typeof(UCPage), new UIPropertyMetadata(0));
-
         public int TotalItem
         {
             get { return (int)GetValue(TotalItemProperty); }
@@ -62,146 +50,53 @@ namespace CustomControls
             UCPage uc = sender as UCPage;
             int newvalue = e.NewValue != null ? (int)e.NewValue : 0;
             uc.PageCount = newvalue % uc.PageSize == 0 ? newvalue / uc.PageSize : newvalue / uc.PageSize + 1;
+            uc.Items = newvalue;
         }
-        public int PageIndex
-        {
-            get { return (int)GetValue(PageIndexProperty); }
-            set { SetValue(PageIndexProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for PageIndex.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty PageIndexProperty =
-            DependencyProperty.Register("PageIndex", typeof(int), typeof(UCPage), new UIPropertyMetadata(1));
-
-        //public int PageItems
-        //{
-        //    get { return (int)GetValue(PageItemsProperty); }
-        //    set { SetValue(PageItemsProperty, value); }
-        //}
-
-        //// Using a DependencyProperty as the backing store for PageIndex.  This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty PageItemsProperty =
-        //    DependencyProperty.Register("PageItems", typeof(int), typeof(UCPage), new UIPropertyMetadata(0,new PropertyChangedCallback(PageItemsChangedCallback)));
-
-        //private  static void PageItemsChangedCallback(DependencyObject sender,DependencyPropertyChangedEventArgs e)
-        //{
-        //    UCPage uc = sender as UCPage;
-        //    int newvalue=e.NewValue!=null? (int)e.NewValue:0;
-        //    uc.PageCount = newvalue % uc.PageSize == 0 ? newvalue / uc.PageSize : newvalue / uc.PageSize + 1;
-        //}
         #region 依赖属性-命令
-        public ICommand NextPageCommand
+        public ICommand PageChangedCommand
         {
-            get { return (ICommand)GetValue(NextPageCommandProperty); }
-            set { SetValue(NextPageCommandProperty, value); }
+            get { return (ICommand)GetValue(PageChangedCommandProperty); }
+            set { SetValue(PageChangedCommandProperty, value); }
         }
 
-        public static readonly DependencyProperty NextPageCommandProperty =
-            DependencyProperty.Register("NextPageCommand", typeof(ICommand), typeof(UCPage), new PropertyMetadata(null));
-        public static readonly DependencyProperty NextPageCommandParameterProperty =
-          DependencyProperty.Register("NextPageCommandParameter",
+        public static readonly DependencyProperty PageChangedCommandProperty =
+            DependencyProperty.Register("PageChangedCommand", typeof(ICommand), typeof(UCPage), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty PageChangedCommandParameterProperty =
+          DependencyProperty.Register("PageChangedCommandParameter",
                                       typeof(object),
                                       typeof(UCPage),
                                       new PropertyMetadata(null));
 
         /// <summary>
-        /// Gets/sets the command parameter which is passed to the close button command.
+        /// 跳转命令参数
         /// </summary>
-        public object NextPageCommandParameter
+        public object PageChangedCommandParameter
         {
-            get { return GetValue(NextPageCommandParameterProperty); }
-            set { SetValue(NextPageCommandParameterProperty, value); }
+            get { return GetValue(PageChangedCommandParameterProperty); }
+            set { SetValue(PageChangedCommandParameterProperty, value); }
         }
 
 
-        public ICommand PrePageCommand
-        {
-            get { return (ICommand)GetValue(PrePageCommandProperty); }
-            set { SetValue(PrePageCommandProperty, value); }
-        }
-
-        public static readonly DependencyProperty PrePageCommandProperty =
-            DependencyProperty.Register("PrePageCommand", typeof(ICommand), typeof(UCPage), new PropertyMetadata(null));
-        public static readonly DependencyProperty PrePageCommandParameterProperty =
-          DependencyProperty.Register("PrePageCommandParameter",
-                                      typeof(object),
-                                      typeof(UCPage),
-                                      new PropertyMetadata(null));
-
-        /// <summary>
-        /// Gets/sets the command parameter which is passed to the close button command.
-        /// </summary>
-        public object PrePageCommandParameter
-        {
-            get { return GetValue(PrePageCommandParameterProperty); }
-            set { SetValue(PrePageCommandParameterProperty, value); }
-        }
-
-
-        public ICommand FirstPageCommand
-        {
-            get { return (ICommand)GetValue(FirstPageCommandProperty); }
-            set { SetValue(FirstPageCommandProperty, value); }
-        }
-
-        public static readonly DependencyProperty FirstPageCommandProperty =
-            DependencyProperty.Register("FirstPageCommand", typeof(ICommand), typeof(UCPage), new PropertyMetadata(null));
-        public static readonly DependencyProperty FirstPageCommandParameterProperty =
-          DependencyProperty.Register("FirstPageCommandParameter",
-                                      typeof(object),
-                                      typeof(UCPage),
-                                      new PropertyMetadata(null));
-
-        /// <summary>
-        /// Gets/sets the command parameter which is passed to the close button command.
-        /// </summary>
-        public object FirstPageCommandParameter
-        {
-            get { return GetValue(FirstPageCommandParameterProperty); }
-            set { SetValue(FirstPageCommandParameterProperty, value); }
-        }
-
-        public ICommand LastPageCommand
-        {
-            get { return (ICommand)GetValue(LastPageCommandProperty); }
-            set { SetValue(LastPageCommandProperty, value); }
-        }
-
-        public static readonly DependencyProperty LastPageCommandProperty =
-            DependencyProperty.Register("LastPageCommand", typeof(ICommand), typeof(UCPage), new PropertyMetadata(null));
-        public static readonly DependencyProperty LastPageCommandParameterProperty =
-          DependencyProperty.Register("LastPageCommandParameter",
-                                      typeof(object),
-                                      typeof(UCPage),
-                                      new PropertyMetadata(null));
-
-        /// <summary>
-        /// Gets/sets the command parameter which is passed to the close button command.
-        /// </summary>
-        public object LastPageCommandParameter
-        {
-            get { return GetValue(LastPageCommandParameterProperty); }
-            set { SetValue(LastPageCommandParameterProperty, value); }
-        } 
         #endregion
         #endregion
         #region 属性
-        //private int _currentPage;
-        ///// <summary>
-        ///// 总页数
-        ///// </summary>
-        //public int CurrentPage
-        //{
-        //    get { return _currentPage; }
-        //    set
-        //    {
-        //        if (_currentPage != value)
-        //        {
-        //            _currentPage = value;
-        //            RaisePropertyChanged("CurrentPage");
-        //        }
-        //    }
-        //}
+        private int _Items;
+        /// <summary>
+        /// 总条数
+        /// </summary>
+        public int Items
+        {
+            get { return _Items; }
+            set
+            {
+                if (_Items != value)
+                {
+                    _Items = value;
+                    RaisePropertyChanged("Items");
+                }
+            }
+        }
 
         private int _pageCount;
         /// <summary>
@@ -220,22 +115,22 @@ namespace CustomControls
             }
         }
 
-        //private int _pageItems;
-        ///// <summary>
-        ///// 总条数
-        ///// </summary>
-        //public int PageItems
-        //{
-        //    get { return _pageItems; }
-        //    set
-        //    {
-        //        if (_pageItems != value)
-        //        {
-        //            _pageItems = value;
-        //            RaisePropertyChanged("PageItems");
-        //        }
-        //    }
-        //}
+        private int _currentPage;
+        /// <summary>
+        /// 总条数
+        /// </summary>
+        public int CurrentPage
+        {
+            get { return _currentPage; }
+            set
+            {
+                if (_currentPage != value)
+                {
+                    _currentPage = value;
+                    RaisePropertyChanged("CurrentPage");
+                }
+            }
+        }
         #endregion
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -250,48 +145,59 @@ namespace CustomControls
 
         private void btnPrePage_Click(object sender, RoutedEventArgs e)
         {
-            if(PageIndex>1)
+            if(CurrentPage >1)
             {
-                PageIndex--;
-                if(PrePageCommand!=null)
+                CurrentPage--;
+                if(PageChangedCommand != null)
                 {
-                    PrePageCommand.Execute(PrePageCommandParameter);
+                    PageChangedCommand.Execute(PageChangedCommandParameter ?? CurrentPage);
                 }
             }
         }
 
         private void btnFirstPage_Click(object sender, RoutedEventArgs e)
         {
-            if (PageIndex > 1)
+            if (CurrentPage > 1)
             {
-                PageIndex=1;
-                if (FirstPageCommand != null)
+                CurrentPage = 1;
+                if (PageChangedCommand != null)
                 {
-                    FirstPageCommand.Execute(FirstPageCommandParameter);
+                    PageChangedCommand.Execute(PageChangedCommandParameter ?? CurrentPage);
                 }
             }
         }
 
         private void btnNestPage_Click(object sender, RoutedEventArgs e)
         {
-            if (PageIndex < PageCount)
+            if (CurrentPage < PageCount)
             {
-                PageIndex ++;
-                if (NextPageCommand != null)
+                CurrentPage++;
+                if (PageChangedCommand != null)
                 {
-                    NextPageCommand.Execute(NextPageCommandParameter);
+                    PageChangedCommand.Execute(PageChangedCommandParameter ?? CurrentPage);
                 }
             }
         }
 
         private void btnLastPage_Click(object sender, RoutedEventArgs e)
         {
-            if (PageIndex < PageCount)
+            if (CurrentPage < PageCount)
             {
-                PageIndex = PageCount;
-                if (LastPageCommand != null)
+                CurrentPage = PageCount;
+                if (PageChangedCommand != null)
                 {
-                    LastPageCommand.Execute(LastPageCommandParameter);
+                    PageChangedCommand.Execute(PageChangedCommandParameter ?? CurrentPage);
+                }
+            }
+        }
+
+        private void btnJumpPage_Click(object sender, RoutedEventArgs e)
+        {
+            if (CurrentPage < PageCount)
+            {
+                if (PageChangedCommand != null)
+                {
+                    PageChangedCommand.Execute(PageChangedCommandParameter ?? CurrentPage);
                 }
             }
         }

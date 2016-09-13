@@ -382,7 +382,6 @@ E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\Styles\Co
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\MahApps.Metro.g.resources
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\MahApps.Metro.dll
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\MahApps.Metro.pdb
-E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\MahApps.Metro.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\MahApps.Metro.XML
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\MahApps.Metro.dll
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\MahApps.Metro.pdb
@@ -517,3 +516,4 @@ C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\obj\NET4\D
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\MahApps.Metro.g.resources
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\MahApps.Metro.dll
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\MahApps.Metro.pdb
+E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\MahApps.Metro.csprojResolveAssemblyReference.cache

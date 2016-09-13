@@ -8,7 +8,7 @@ namespace BalanceBLL
 {
     public abstract class BaseBLL<T,S> where T:new() where S:BaseDAL<T>,new()
     {
-        private BaseDAL<T> dal ;
+        protected  BaseDAL<T> dal ;
         public BaseBLL()
         {
             dal =new S();
@@ -28,6 +28,11 @@ namespace BalanceBLL
         public List<T> Select(T t)
         {
             return dal.Select(t).ToList();
+        }
+
+       public int SelectCount(T t)
+        {
+            return dal.SelectCount(t);
         }
     }
 }

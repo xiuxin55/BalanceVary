@@ -27,7 +27,7 @@
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="MinHeight"
-                Value="26" />
+                Value="20" />
         <Setter Property="Background"
                 Value="{DynamicResource ControlBackgroundBrush}" />
         <Setter Property="Foreground"

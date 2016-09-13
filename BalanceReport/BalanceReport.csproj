@@ -120,6 +120,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\CustomerManagerInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\WebsiteInfoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -359,6 +364,19 @@
     <None Include="Service References\AccountInfoService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\CustomerManagerInfoService\BalanceReport.CustomerManagerInfoService.CustomerManagerInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CustomerManagerInfoService\CustomerManagerInfoService.wsdl" />
+    <None Include="Service References\CustomerManagerInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CustomerManagerInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CustomerManagerInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\WebsiteInfoService\BalanceReport.WebsiteInfoService.WebsiteInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -411,12 +429,17 @@
       <Project>{5b1710d2-5dc8-4754-91b2-19165de49b3d}</Project>
       <Name>MahApps.Metro</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{33c58cb0-1338-455f-a678-9d5be412d468}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AccountInfoService\" />
+    <WCFMetadataStorage Include="Service References\CustomerManagerInfoService\" />
     <WCFMetadataStorage Include="Service References\WebsiteInfoService\" />
   </ItemGroup>
   <ItemGroup>
@@ -445,6 +468,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\AccountInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerInfoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

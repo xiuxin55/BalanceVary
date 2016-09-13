@@ -14,7 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="32" />
             <RowDefinition Height="265*" />
-            <RowDefinition Height="25" />
+            <RowDefinition Height="24" />
         </Grid.RowDefinitions>
         <ToolBar    Name="toolBar1" >
             <ToolBar.Items>
@@ -56,7 +56,8 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                      </GridViewColumn>
-                            <GridViewColumn Width="150" Header="账号" DisplayMemberBinding="{Binding AccountID}" tool:ListViewBehavior.SortField="AccountID" />
+                        <GridViewColumn Width="50" Header="序号" DisplayMemberBinding="{Binding RowNumber}" tool:ListViewBehavior.SortField="RowNumber" />
+                        <GridViewColumn Width="150" Header="账号" DisplayMemberBinding="{Binding AccountID}" tool:ListViewBehavior.SortField="AccountID" />
                     
                         <GridViewColumn Width="50"  Header="子账号" DisplayMemberBinding="{Binding SubAccountNumber}" tool:ListViewBehavior.SortField="SubAccountNumber"/>
                         <GridViewColumn Width="200"  Header="账户名称" DisplayMemberBinding="{Binding AccountName}" tool:ListViewBehavior.SortField="AccountName"/>
@@ -75,9 +76,8 @@
             </ListView.ItemTemplate>-->
         </ListView>
         </tool:GridLineDecorator>
-        <cc:UCPage Grid.Row="2" FirstPageCommand="{Binding FirstPageCommand}" PrePageCommand="{Binding PrePageCommand}"
-                   NextPageCommand="{Binding NextPageCommand}" LastPageCommand="{Binding NextPageCommand}"
-                   TotalItem="{Binding Total}"
+        <cc:UCPage Background="White" Grid.Row="2" PageChangedCommand="{Binding PageChangedCommand}" 
+                   TotalItem="{Binding Total}" 
                    />
 
     </Grid>

@@ -58,6 +58,14 @@ namespace BalanceDAL
         {
             return s(t);
         }
+        /// <summary>
+        /// 查询总条数
+        /// </summary>
+        /// <returns>条数</returns>
+        public virtual int SelectCount(T t)
+        {
+            return sc(t);
+        }
         #endregion
 
         #region 帮助方法
@@ -99,6 +107,11 @@ namespace BalanceDAL
         {
             return SqlMap.QueryForList<T>(Key, t);
         }
+
+        protected virtual int  sc(string Key,T t)
+        {
+            return SqlMap.QueryForObject<int>(Key,t);
+        } 
         protected virtual IList<T> ss(string Key)
         {
             return SqlMap.QueryForList<T>(Key, null);
@@ -122,10 +135,16 @@ namespace BalanceDAL
         {
             return s(GetKeyExp(KeyFlag.Select), t);
         }
+
         protected IList<T> ss()
         {
             return ss(GetKeyExp(KeyFlag.Select));
-        } 
+        }
+
+        protected int sc(T t)
+        {
+            return sc(GetKeyExp(KeyFlag.Select)+"Count",t);
+        }
         #endregion
 
         /// <summary>

@@ -9,6 +9,6 @@ namespace BalanceBLL
 {
     public class AccountInfoBLL : BaseBLL<AccountInfo, AccountInfoDAL>
     {
-
+       
     }
 }

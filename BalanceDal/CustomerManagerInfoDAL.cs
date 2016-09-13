@@ -6,9 +6,9 @@ using System.Text;
 
 namespace BalanceDAL
 {
-    public class CustomerManagerDAL : BaseDAL<CustomerManagerInfo>
+    public class CustomerManagerInfoDAL : BaseDAL<CustomerManagerInfo>
     {
-        public CustomerManagerDAL()
+        public CustomerManagerInfoDAL()
         {
             DefaultKey = "CustomerManagerInfo";
         }

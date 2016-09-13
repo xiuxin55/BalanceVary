@@ -8,10 +8,11 @@ using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using BalanceReport.Views;
 using BalanceReport.AccountInfoService;
+using Utility;
 
 namespace BalanceReport.ViewModels
 {
-    public class AccountManageVM:NotificationObject
+    public class AccountManageVM: BaseVM
     {
         private AccountInfoService.AccountInfoServiceClient client = new AccountInfoServiceClient();
         public AccountManageVM()
@@ -125,7 +126,10 @@ namespace BalanceReport.ViewModels
             }
             if (SearchAccountInfoModel.CorrelationState == "全部")
                  SearchAccountInfoModel.CorrelationState = null;
-            AccountInfoList =new ObservableCollection<AccountInfo>( client.Select(SearchAccountInfoModel));
+            SearchAccountInfoModel.StartIndex = 1;
+            SearchAccountInfoModel.EndIndex = PageSize;
+            AccountInfoList =new ObservableCollection<AccountInfo>(client.Select(SearchAccountInfoModel));
+            Total = client.SelectCount(SearchAccountInfoModel);
         }
         /// <summary>
         /// 复选框的选中的方法
@@ -174,9 +178,19 @@ namespace BalanceReport.ViewModels
             //}
             //SearchAccountExecute();
         }
+
         #endregion
         #region 内部方法
 
+        #endregion
+
+        #region 分页抽象方法
+        public override void LoadPageData(int startindex, int endindex)
+        {
+            SearchAccountInfoModel.StartIndex = startindex;
+            SearchAccountInfoModel.EndIndex = endindex;
+            AccountInfoList = new ObservableCollection<AccountInfo>(client.Select(SearchAccountInfoModel));
+        }
         #endregion
     }
 }

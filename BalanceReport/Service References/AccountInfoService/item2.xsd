@@ -21,9 +21,9 @@
   <xs:element name="AccountInfo" nillable="true" type="tns:AccountInfo" />
   <xs:complexType name="BaseModel">
     <xs:sequence>
-      <xs:element minOccurs="0" name="PageCount" type="xs:int" />
-      <xs:element minOccurs="0" name="PageNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="EndIndex" type="xs:int" />
       <xs:element minOccurs="0" name="RowNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BaseModel" nillable="true" type="tns:BaseModel" />

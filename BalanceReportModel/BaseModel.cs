@@ -11,30 +11,11 @@ namespace BalanceModel
         /// <summary>
         /// 本页第一条索引
         /// </summary>
-        public int StartIndex
-        {
-            get
-            {
-                return (PageNumber - 1) * PageCount;
-            }
-        }
+        public int StartIndex { get; set; }
         /// <summary>
         /// 本页最后一条索引
         /// </summary>
-        public int EndIndex
-        {
-            get
-            {
-                return PageNumber* PageCount;
-            }
-        }
-        /// <summary>
-        /// 查看的第几页的数据
-        /// </summary>
-        public int PageNumber { get; set; }
-        /// <summary>
-        /// 一页显示的行数
-        /// </summary>
-        public int PageCount { get; set; }
+        public int EndIndex{ get; set; }
+        
     }
 }

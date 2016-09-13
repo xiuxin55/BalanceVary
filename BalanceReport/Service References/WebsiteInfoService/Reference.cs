@@ -24,13 +24,13 @@ namespace BalanceReport.WebsiteInfoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PageCountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PageNumberField;
+        private int EndIndexField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int RowNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StartIndexField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -43,27 +43,14 @@ namespace BalanceReport.WebsiteInfoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PageCount {
+        public int EndIndex {
             get {
-                return this.PageCountField;
+                return this.EndIndexField;
             }
             set {
-                if ((this.PageCountField.Equals(value) != true)) {
-                    this.PageCountField = value;
-                    this.RaisePropertyChanged("PageCount");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PageNumber {
-            get {
-                return this.PageNumberField;
-            }
-            set {
-                if ((this.PageNumberField.Equals(value) != true)) {
-                    this.PageNumberField = value;
-                    this.RaisePropertyChanged("PageNumber");
+                if ((this.EndIndexField.Equals(value) != true)) {
+                    this.EndIndexField = value;
+                    this.RaisePropertyChanged("EndIndex");
                 }
             }
         }
@@ -77,6 +64,19 @@ namespace BalanceReport.WebsiteInfoService {
                 if ((this.RowNumberField.Equals(value) != true)) {
                     this.RowNumberField = value;
                     this.RaisePropertyChanged("RowNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StartIndex {
+            get {
+                return this.StartIndexField;
+            }
+            set {
+                if ((this.StartIndexField.Equals(value) != true)) {
+                    this.StartIndexField = value;
+                    this.RaisePropertyChanged("StartIndex");
                 }
             }
         }

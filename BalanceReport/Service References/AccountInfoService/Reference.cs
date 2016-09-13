@@ -26,13 +26,13 @@ namespace BalanceReport.AccountInfoService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PageCountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PageNumberField;
+        private int EndIndexField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int RowNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StartIndexField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -45,27 +45,14 @@ namespace BalanceReport.AccountInfoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PageCount {
+        public int EndIndex {
             get {
-                return this.PageCountField;
+                return this.EndIndexField;
             }
             set {
-                if ((this.PageCountField.Equals(value) != true)) {
-                    this.PageCountField = value;
-                    this.RaisePropertyChanged("PageCount");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PageNumber {
-            get {
-                return this.PageNumberField;
-            }
-            set {
-                if ((this.PageNumberField.Equals(value) != true)) {
-                    this.PageNumberField = value;
-                    this.RaisePropertyChanged("PageNumber");
+                if ((this.EndIndexField.Equals(value) != true)) {
+                    this.EndIndexField = value;
+                    this.RaisePropertyChanged("EndIndex");
                 }
             }
         }
@@ -79,6 +66,19 @@ namespace BalanceReport.AccountInfoService {
                 if ((this.RowNumberField.Equals(value) != true)) {
                     this.RowNumberField = value;
                     this.RaisePropertyChanged("RowNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StartIndex {
+            get {
+                return this.StartIndexField;
+            }
+            set {
+                if ((this.StartIndexField.Equals(value) != true)) {
+                    this.StartIndexField = value;
+                    this.RaisePropertyChanged("StartIndex");
                 }
             }
         }
@@ -561,6 +561,9 @@ namespace BalanceReport.AccountInfoService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountInfoService/Select", ReplyAction="http://tempuri.org/IAccountInfoService/SelectResponse")]
         BalanceReport.AccountInfoService.AccountInfo[] Select(BalanceReport.AccountInfoService.AccountInfo info);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountInfoService/SelectCount", ReplyAction="http://tempuri.org/IAccountInfoService/SelectCountResponse")]
+        int SelectCount(BalanceReport.AccountInfoService.AccountInfo info);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -604,6 +607,10 @@ namespace BalanceReport.AccountInfoService {
         
         public BalanceReport.AccountInfoService.AccountInfo[] Select(BalanceReport.AccountInfoService.AccountInfo info) {
             return base.Channel.Select(info);
+        }
+        
+        public int SelectCount(BalanceReport.AccountInfoService.AccountInfo info) {
+            return base.Channel.SelectCount(info);
         }
     }
 }

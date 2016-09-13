@@ -7,101 +7,107 @@ using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using BalanceReport.Views;
+using BalanceReport.CustomerManagerInfoService;
+
 namespace BalanceReport.ViewModels
 {
     public class CustomerManagerListVM : NotificationObject
     {
-        //public ManagersListVM()
-        //{
-        //    AddManagersCommand = new DelegateCommand(AddManagersExecute);
-        //    UpdateManagersCommand = new DelegateCommand(UpdateManagersExecute);
-        //    DeleteManagersCommand = new DelegateCommand(DeleteManagersExecute);
-        //    SearchManagersCommand = new DelegateCommand(SearchManagersExecute);
-        //    SearchManagersExecute();
-        //}
-        //#region 属性
-        //private ManagersInfoModel _searchManagersInfoModel;
-        ///// <summary>
-        ///// 查询
-        ///// </summary>
-        //public ManagersInfoModel SearchManagersInfoModel
-        //{
-        //    get { return _searchManagersInfoModel; }
-        //    set
-        //    {
-        //        _searchManagersInfoModel = value;
-        //        this.RaisePropertyChanged("SearchManagersInfoModel");
-        //    }
-        //}
-        // private ManagersInfoModel _selectedManagersInfoModel;
-        ///// <summary>
-        ///// 被选中的行
-        ///// </summary>
-        //public ManagersInfoModel SelectedManagersInfoModel
-        //{
-        //    get { return _selectedManagersInfoModel; }
-        //    set { _selectedManagersInfoModel = value;
-        //    this.RaisePropertyChanged("SelectedManagersInfoModel");
-        //    }
-        //}
-        //private ObservableCollection<ManagersInfoModel> _ManagersInfoList;
-        ///// <summary>
-        ///// 网点集合
-        ///// </summary>
-        //public ObservableCollection<ManagersInfoModel> ManagersInfoList
-        //{
-        //    get { return _ManagersInfoList; }
-        //    set { _ManagersInfoList = value;
-        //    this.RaisePropertyChanged("ManagersInfoList");
-        //    }
-        //}
-       
-        //#endregion
-        //#region 命令
-        //public DelegateCommand AddManagersCommand{get;set;}
-        //public DelegateCommand UpdateManagersCommand { get; set; }
-        //public DelegateCommand DeleteManagersCommand { get; set; }
-        //public DelegateCommand SearchManagersCommand { get; set; }
-        //#endregion
-        //#region 命令执行方法
-        //private void AddManagersExecute()
-        //{
-        //    ManagersAdd waui=new ManagersAdd(true,null);
-            
-        //    waui.ShowDialog();
-        //    SearchManagersExecute();
-        //}
-        //private void UpdateManagersExecute()
-        //{
-        //    if (SelectedManagersInfoModel != null)
-        //    {
-        //        ManagersAdd waui = new ManagersAdd(false, SelectedManagersInfoModel);
-        //        waui.ShowDialog();
-        //        SearchManagersExecute();
-        //    }
-        //}
-        //private void DeleteManagersExecute()
-        //{
-        //    if (SelectedManagersInfoModel != null && SelectedManagersInfoModel.ID != null)
-        //    {
-        //        if (MessageBox.Show("是否删除", "消息提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes && ManagersInfoDao.Instance.Delete(SelectedManagersInfoModel))
-        //        {
-        //            MessageBox.Show("删除成功");
-        //            SearchManagersExecute();
-        //        }
-        //    }
-        //}
-        //private void SearchManagersExecute()
-        //{
-        //    if (SearchManagersInfoModel == null)
-        //    {
-        //        SearchManagersInfoModel = new ManagersInfoModel();
-        //    }
-        //    ManagersInfoList = ManagersInfoDao.Instance.GetManagersFromObject(SearchManagersInfoModel);
-        //}
-        //#endregion
-        //#region 内部方法
-        
-        //#endregion
+        private CustomerManagerInfoService.CustomerManagerInfoServiceClient client = new CustomerManagerInfoServiceClient();
+        public CustomerManagerListVM()
+        {
+            AddManagersCommand = new DelegateCommand(AddManagersExecute);
+            UpdateManagersCommand = new DelegateCommand(UpdateManagersExecute);
+            DeleteManagersCommand = new DelegateCommand(DeleteManagersExecute);
+            SearchManagersCommand = new DelegateCommand(SearchManagersExecute);
+            SearchManagersExecute();
+        }
+        #region 属性
+        private CustomerManagerInfo _searchCustomerManagerInfo;
+        /// <summary>
+        /// 查询
+        /// </summary>
+        public CustomerManagerInfo SearchCustomerManagerInfo
+        {
+            get { return _searchCustomerManagerInfo; }
+            set
+            {
+                _searchCustomerManagerInfo = value;
+                this.RaisePropertyChanged("SearchCustomerManagerInfo");
+            }
+        }
+        private CustomerManagerInfo _selectedCustomerManagerInfo;
+        /// <summary>
+        /// 被选中的行
+        /// </summary>
+        public CustomerManagerInfo SelectedCustomerManagerInfo
+        {
+            get { return _selectedCustomerManagerInfo; }
+            set
+            {
+                _selectedCustomerManagerInfo = value;
+                this.RaisePropertyChanged("SelectedCustomerManagerInfo");
+            }
+        }
+        private ObservableCollection<CustomerManagerInfo> _ManagersInfoList;
+        /// <summary>
+        /// 网点集合
+        /// </summary>
+        public ObservableCollection<CustomerManagerInfo> ManagersInfoList
+        {
+            get { return _ManagersInfoList; }
+            set
+            {
+                _ManagersInfoList = value;
+                this.RaisePropertyChanged("ManagersInfoList");
+            }
+        }
+
+        #endregion
+        #region 命令
+        public DelegateCommand AddManagersCommand { get; set; }
+        public DelegateCommand UpdateManagersCommand { get; set; }
+        public DelegateCommand DeleteManagersCommand { get; set; }
+        public DelegateCommand SearchManagersCommand { get; set; }
+        #endregion
+        #region 命令执行方法
+        private void AddManagersExecute()
+        {
+            CustomerManagerAdd waui = new CustomerManagerAdd(true, null);
+            waui.ShowDialog();
+            SearchManagersExecute();
+        }
+        private void UpdateManagersExecute()
+        {
+            if (SelectedCustomerManagerInfo != null)
+            {
+                CustomerManagerAdd waui = new CustomerManagerAdd(false, SelectedCustomerManagerInfo);
+                waui.ShowDialog();
+                SearchManagersExecute();
+            }
+        }
+        private void DeleteManagersExecute()
+        {
+            if (SelectedCustomerManagerInfo != null && SelectedCustomerManagerInfo.ID != null)
+            {
+                if (MessageBox.Show("是否删除", "消息提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes && client.Delete(SelectedCustomerManagerInfo))
+                {
+                    MessageBox.Show("删除成功");
+                    SearchManagersExecute();
+                }
+            }
+        }
+        private void SearchManagersExecute()
+        {
+            if (SearchCustomerManagerInfo == null)
+            {
+                SearchCustomerManagerInfo = new CustomerManagerInfo();
+            }
+            ManagersInfoList =new ObservableCollection<CustomerManagerInfo>( client.Select(SearchCustomerManagerInfo));
+        }
+        #endregion
+        #region 内部方法
+
+        #endregion
     }
 }

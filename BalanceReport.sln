@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalanceReport", "BalanceReport\BalanceReport.csproj", "{5C397F56-6126-4F15-B6EC-7391BB0C13EB}"
 EndProject
@@ -56,6 +56,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostApp", "HostApp\HostApp.csproj", "{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls", "CustomControls\CustomControls.csproj", "{E6703634-362A-4E62-A951-614922B7C045}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{33C58CB0-1338-455F-A678-9D5BE412D468}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -249,6 +251,18 @@ Global
 		{E6703634-362A-4E62-A951-614922B7C045}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E6703634-362A-4E62-A951-614922B7C045}.Release|x86.ActiveCfg = Release|Any CPU
 		{E6703634-362A-4E62-A951-614922B7C045}.Release|x86.Build.0 = Release|Any CPU
+		{33C58CB0-1338-455F-A678-9D5BE412D468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33C58CB0-1338-455F-A678-9D5BE412D468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33C58CB0-1338-455F-A678-9D5BE412D468}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{33C58CB0-1338-455F-A678-9D5BE412D468}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{33C58CB0-1338-455F-A678-9D5BE412D468}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{33C58CB0-1338-455F-A678-9D5BE412D468}.Debug|x86.Build.0 = Debug|Any CPU
+		{33C58CB0-1338-455F-A678-9D5BE412D468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33C58CB0-1338-455F-A678-9D5BE412D468}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33C58CB0-1338-455F-A678-9D5BE412D468}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{33C58CB0-1338-455F-A678-9D5BE412D468}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{33C58CB0-1338-455F-A678-9D5BE412D468}.Release|x86.ActiveCfg = Release|Any CPU
+		{33C58CB0-1338-455F-A678-9D5BE412D468}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -270,5 +284,6 @@ Global
 		{E19A6DC8-30F3-45D5-8B67-584C5A034212} = {243C537A-01F9-4D21-AED0-7C61BBF8EBEA}
 		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7} = {773DE8C3-C719-4853-A0A4-8F765551E6EA}
 		{E6703634-362A-4E62-A951-614922B7C045} = {BB7EC56F-7505-4058-B7CA-16085EC2739A}
+		{33C58CB0-1338-455F-A678-9D5BE412D468} = {243C537A-01F9-4D21-AED0-7C61BBF8EBEA}
 	EndGlobalSection
 EndGlobal

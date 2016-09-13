@@ -37,7 +37,19 @@ namespace WcfBalanceServiceLibrary
             }
            
         }
+        public int SelectCount(AccountInfo info)
+        {
+            try
+            {
+                return bll.SelectCount(info);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(AccountInfoService), ex);
+                return 0;
+            }
 
+        }
         public bool Update(AccountInfo info)
         {
             return bll.Update(info);
