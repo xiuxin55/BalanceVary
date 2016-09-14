@@ -7,20 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="600">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30*"/>
-            <ColumnDefinition Width="90*"/>
-        </Grid.ColumnDefinitions>
-        <ListBox></ListBox>
+
         <DataGrid Grid.Column="1" Name="ZoneWebsiteDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True" >
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="80"/>
-                <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="80"/>
-                <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="80"/>
-                <DataGridTextColumn Binding="{Binding Rate}" Header="活期比"  Width="80"/>
-                <DataGridTextColumn Binding="{Binding WebsiteAddress}" Header="网点地址"  Width="180"/>
-                <DataGridTextColumn Binding="{Binding WebsiteTel}" Header="网点电话"   Width="100"/>
-                <DataGridTextColumn Binding="{Binding BalanceTime}" Header="时间"   Width="80"/>
+                <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding Rate}" Header="活期比"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding WebsiteAddress}" Header="网点地址"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding WebsiteTel}" Header="网点电话"   Width="*"/>
+                <DataGridTextColumn Binding="{Binding BalanceTime}" Header="时间"   Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

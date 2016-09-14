@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BalanceBLL
 {
-    public class CustomerManagerInfoBLL : BaseBLL<CustomerManagerInfo, CustomerManagerInfoDAL>
+    public class CustomerManagerInfoBLL : BalanceBaseBLL<CustomerManagerInfo, CustomerManagerInfoDAL>
     {
 
     }

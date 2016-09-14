@@ -1,4 +1,4 @@
-﻿using BalanceModel;
+﻿using SqlMaps;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +7,11 @@ using Utility;
 
 namespace BalanceDAL
 {
-    public class AccountInfoDAL : BalanceDAL<AccountInfo>
+    public  class BalanceDAL<T>: BaseDAL<T> where T:new()
     {
-        public AccountInfoDAL()
+        static BalanceDAL()
         {
-            DefaultKey = "AccountInfo";
+            SqlMap = BalanceBatis.Batis;
         }
-      
     }
 }

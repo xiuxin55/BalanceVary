@@ -8,18 +8,28 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="15*"/>
             <ColumnDefinition Width="90*"/>
         </Grid.ColumnDefinitions>
-        <ListBox></ListBox>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="293*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="1" Background="{StaticResource WindowTitleColorBrush}">
+            <TextBlock  Width="auto" Text="网点" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            </Border>
+            <ListBox   Grid.Row="2"  ItemsSource="{Binding WebsiteInfoList}" DisplayMemberPath="WebsiteName" SelectedItem="{Binding SelectedWebsiteInfoModel}" Grid.RowSpan="2"></ListBox>
+        </Grid>
         <DataGrid Grid.Column="1" Name="WebsiteCompanyDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="公司名称" Width="180"/>
-                <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="80"/>
-                <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="80"/>
-                <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="80"/>
-                <DataGridTextColumn Binding="{Binding Rate}" Header="活期比"  Width="80"/>
-                <DataGridTextColumn Binding="{Binding BalanceTime}" Header="时间"   Width="80"/>
+                <DataGridTextColumn Header="公司名称" Width="*"/>
+                <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding Rate}" Header="活期比"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding BalanceTime}" Header="时间"   Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -89,6 +89,10 @@
       <Project>{e19a6dc8-30f3-45d5-8b67-584c5a034212}</Project>
       <Name>SqlMaps</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{33c58cb0-1338-455f-a678-9d5be412d468}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

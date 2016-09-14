@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseBLL.cs" />
+    <Compile Include="BalanceBaseBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomerManagerInfoBLL.cs" />
     <Compile Include="AccountInfoBLL.cs" />
@@ -53,6 +53,10 @@
     <ProjectReference Include="..\BalanceReportModel\BalanceModel.csproj">
       <Project>{48881a94-14f8-4abe-a924-b3fd047dd557}</Project>
       <Name>BalanceModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{33c58cb0-1338-455f-a678-9d5be412d468}</Project>
+      <Name>Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

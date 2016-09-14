@@ -137,6 +137,8 @@
     <Compile Include="Tools\SortInfo.cs" />
     <Compile Include="Tools\UIElementAdorner.cs" />
     <Compile Include="ViewModels\DepartmentReportUserControlVM.cs" />
+    <Compile Include="ViewModels\ReportDataGridVM\CountyCompanyDataGridVM.cs" />
+    <Compile Include="ViewModels\ReportDataGridVM\CityCompanyDataGridVM.cs" />
     <Compile Include="ViewModels\ReportUserControlVM.cs" />
     <Compile Include="ViewModels\WebsiteAddVM.cs" />
     <Compile Include="ViewModels\WebsiteManageVM.cs" />

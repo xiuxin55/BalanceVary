@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BalanceDAL
+namespace Utility
 {
     /// <summary>
     /// 父DAO
@@ -20,8 +20,7 @@ namespace BalanceDAL
         /// <summary>
         /// SqlMap帮助对象
         /// </summary>
-        protected static ISqlMapper SqlMap = BalanceBatis.Batis;
-
+        protected static ISqlMapper SqlMap = null;
         #region 抽象方法
         /// <summary>
         /// 添加数据
@@ -155,7 +154,7 @@ namespace BalanceDAL
         /// <returns>SQL拼接后的语句</returns>
         public string ShowSQL(string Key,object o)
         {
-            return BalanceBatis.QueryForSql(Key, o);
+            return BaseBatis.QueryForSql(Key, o);
         }
         /// <summary>
         /// 获得DataTable
@@ -165,7 +164,7 @@ namespace BalanceDAL
         /// <returns>数据表</returns>
         public System.Data.DataTable GetTable(string key,Object o)
         {
-            return BalanceBatis.QueryForDataTable(key, o);
+            return BaseBatis.QueryForDataTable(key, o);
         }
 
         #endregion

@@ -1,10 +1,10 @@
-﻿using BalanceDAL;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BalanceBLL
+namespace Utility
 {
     public abstract class BaseBLL<T,S> where T:new() where S:BaseDAL<T>,new()
     {

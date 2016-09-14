@@ -19,24 +19,24 @@
                 <ListBoxItem Content="县行"  Selected="button2_Click"></ListBoxItem>
             </ListBox>-->
             <TabControl Grid.Row="1" Margin="3,0" TabStripPlacement="Bottom" Controls:TabControlHelper.IsUnderlined="True" >
-                <TabItem  Header="市行情况" >
+                <TabItem  Header="市行情况"  Controls:ControlsHelper.HeaderFontSize="18">
                     <Grid >
                         <datagrid:CityDataGrid/>
                         <datagrid:CityWebsiteDataGrid />
                     </Grid>
                 </TabItem>
-                <TabItem  Header="县行情况" >
+                <TabItem  Header="县行情况"  Controls:ControlsHelper.HeaderFontSize="18">
                     <Grid >
                         <datagrid:CountyDataGrid/>
                         <datagrid:CountyWebsiteDataGrid />
                     </Grid>
                 </TabItem>
-                <TabItem Header="市行网点-公司情况" >
+                <TabItem Header="市行网点-公司情况"  Controls:ControlsHelper.HeaderFontSize="18">
                     <Grid >
                         <datagrid:CityCompanyDataGrid/>
                     </Grid>
                 </TabItem>
-                <TabItem Header="县行网点-公司情况" >
+                <TabItem Header="县行网点-公司情况"  Controls:ControlsHelper.HeaderFontSize="18">
                     <Grid >
                         <datagrid:CountyCompanyDataGrid />
                     </Grid>

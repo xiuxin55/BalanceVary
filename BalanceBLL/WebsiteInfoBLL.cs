@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BalanceBLL
 {
-    public class WebsiteInfoBLL: BaseBLL<WebsiteInfo, WebsiteInfoDAL>
+    public class WebsiteInfoBLL: BalanceBaseBLL<WebsiteInfo, WebsiteInfoDAL>
     {
 
     }

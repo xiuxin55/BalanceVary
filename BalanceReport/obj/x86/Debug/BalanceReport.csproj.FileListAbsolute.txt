@@ -642,3 +642,7 @@ E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\CustomControls
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\CustomControls.pdb
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\Utility.dll
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\Utility.pdb
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\IBatisNet.DataMapper.dll
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\SqlMaps.dll
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\IBatisNet.Common.dll
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\SqlMaps.pdb

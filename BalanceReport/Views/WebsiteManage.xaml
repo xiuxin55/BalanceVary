@@ -29,7 +29,7 @@
                     <GridView >
                         <GridViewColumn Width="100" Header="网点号" DisplayMemberBinding="{Binding WebsiteID}" tool:ListViewBehavior.SortField="WebsiteID" />
                         <GridViewColumn Width="200"  Header="网点名称" DisplayMemberBinding="{Binding WebsiteName}" tool:ListViewBehavior.SortField="WebsiteName"/>
-                        <GridViewColumn  Width="100" Header="网点地址" DisplayMemberBinding="{Binding WebsiteAddress}" tool:ListViewBehavior.SortField="WebsiteAddress"/>
+                        <GridViewColumn Width="260" Header="网点地址" DisplayMemberBinding="{Binding WebsiteAddress}" tool:ListViewBehavior.SortField="WebsiteAddress"/>
                         <GridViewColumn Width="150"  Header="网点电话" DisplayMemberBinding="{Binding WebsiteTel}" tool:ListViewBehavior.SortField="WebsiteTel"/>
                         <GridViewColumn Width="100"  Header="网点负责人" DisplayMemberBinding="{Binding WebsiteManager}" tool:ListViewBehavior.SortField="WebsiteManager" />
                         <GridViewColumn Width="100"  Header="负责人电话" DisplayMemberBinding="{Binding ManagerTelphone}" tool:ListViewBehavior.SortField="ManagerTelphone"/>
