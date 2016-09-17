@@ -28,17 +28,17 @@
                 <!--<Button x:Name="menuButton"  HorizontalAlignment="Right" Margin="0,-2,0,0" Height="25" Width="31.833" Click="menuButton_Click">
                    
                 </Button>-->
-                <Popup x:Name="Menu" AllowsTransparency="True" Margin="0,-1,0,1" PlacementTarget="{Binding ElementName=menuButton}" StaysOpen="False" PopupAnimation="Scroll">
+                <Popup x:Name="Menu" AllowsTransparency="True" Margin="0,-1,0,1"  StaysOpen="False" PopupAnimation="Scroll" Placement="MousePoint">
                     <Grid  HorizontalAlignment="Left">
                         <Border BorderThickness="1" CornerRadius="3" Background="#FFEFEFEF" Margin="3">
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="0" Opacity="0.495"/>
                             </Border.Effect>
                             <StackPanel Margin="0,4">
-                                <MenuItem x:Name="ImportButton" Header="账户按日导入"  />
-                                <MenuItem x:Name="MonthImportButton" Header="账户按月份导入" />
-                                <MenuItem x:Name="ManagersImportButton" Header="客户经理信息导入"  />
-                                <MenuItem x:Name="LinkImportButton" Header="客户经理帐号关联"  />
+                                <MenuItem x:Name="ImportButton" Header="账户按日导入" Click="ImportButton_Click"  />
+                                <MenuItem x:Name="MonthImportButton" Header="账户按月份导入" Click="MonthImportButton_Click" />
+                                <MenuItem x:Name="ManagersImportButton" Header="客户经理信息导入" Click="ManagersImportButton_Click"  />
+                                <MenuItem x:Name="LinkImportButton" Header="客户经理帐号关联" Click="LinkImportButton_Click"  />
                                 <!--<MenuItem x:Name="menubtnChangePWD" Header="修改密码" Click="menubtnChangePWD_Click"/>-->
                                 <!--<MenuItem Header="更 新"/>-->
                                 <!--<MenuItem Header="关 于"/>

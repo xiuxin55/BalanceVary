@@ -46,6 +46,8 @@ namespace MahApps.Metro.Controls
 
         public static readonly DependencyProperty ShowMinButtonProperty = DependencyProperty.Register("ShowMinButton", typeof(bool), typeof(MetroWindow), new PropertyMetadata(true));
         public static readonly DependencyProperty ShowMaxRestoreButtonProperty = DependencyProperty.Register("ShowMaxRestoreButton", typeof(bool), typeof(MetroWindow), new PropertyMetadata(true));
+        public static readonly DependencyProperty ShowMenuRestoreButtonProperty = DependencyProperty.Register("ShowMenuRestoreButton", typeof(bool), typeof(MetroWindow), new PropertyMetadata(true));
+        
         public static readonly DependencyProperty ShowCloseButtonProperty = DependencyProperty.Register("ShowCloseButton", typeof(bool), typeof(MetroWindow), new PropertyMetadata(true));
 
         public static readonly DependencyProperty IsMinButtonEnabledProperty = DependencyProperty.Register("IsMinButtonEnabled", typeof(bool), typeof(MetroWindow), new PropertyMetadata(true));
@@ -442,6 +444,15 @@ namespace MahApps.Metro.Controls
             set { SetValue(ShowMaxRestoreButtonProperty, value); }
         }
 
+        /// <summary>
+        /// 是否显示菜单
+        /// </summary>
+        public bool ShowMenuRestoreButton
+        {
+            get { return (bool)GetValue(ShowMenuRestoreButtonProperty); }
+            set { SetValue(ShowMenuRestoreButtonProperty, value); }
+        }
+        
         /// <summary>
         /// Gets/sets if the close button is visible.
         /// </summary>

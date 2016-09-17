@@ -4,6 +4,8 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using MahApps.Metro.Native;
+using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace MahApps.Metro.Controls
 {
@@ -168,6 +170,7 @@ namespace MahApps.Metro.Controls
         private static string maximize;
         private static string closeText;
         private static string restore;
+        private Button menu;
         private Button min;
         private Button max;
         private Button close;
@@ -244,6 +247,18 @@ namespace MahApps.Metro.Controls
                     min.Style = (Theme == Theme.Light) ? LightMinButtonStyle : DarkMinButtonStyle;
                 }
             }
+            if (menu != null)
+            {
+                // TODO: Delete this if statement once WindowMinButtonStyle property is deleted from MetroWindow!
+                if ((ParentWindow != null) && (ParentWindow.WindowMinButtonStyle != null))
+                {
+                    menu.Style = ParentWindow.WindowMinButtonStyle;
+                }
+                else
+                {
+                    menu.Style = (Theme == Theme.Light) ? LightMinButtonStyle : DarkMinButtonStyle;
+                }
+            }
         }
 
         public override void OnApplyTemplate()
@@ -268,6 +283,11 @@ namespace MahApps.Metro.Controls
                 min.Click += MinimizeClick;
             }
 
+            menu = Template.FindName("PART_Menu", this) as Button;
+            if (min != null)
+            {
+                menu.Click += MenuClick;
+            }
             ApplyTheme();
         }
 
@@ -279,7 +299,33 @@ namespace MahApps.Metro.Controls
                 handler(this, args);
             }
         }
+        private void MenuClick(object sender, RoutedEventArgs e)
+        {
+            if (null == this.ParentWindow) return;
+            Popup p = GetDesendentChild<Popup>(this.ParentWindow);
+            if (p != null)
+            {
+                p.IsOpen = true;
+            }
+        }
+        public static T GetDesendentChild<T>(DependencyObject target)
+           where T : DependencyObject
+        {
+            var childCount = VisualTreeHelper.GetChildrenCount(target);
+            if (childCount == 0) return null;
 
+            for (int i = 0; i < childCount; i++)
+            {
+                var current = VisualTreeHelper.GetChild(target, i);
+                if (current is T)
+                    return (T)current;
+
+                var desendent = GetDesendentChild<T>(current);
+                if (desendent != null)
+                    return desendent;
+            }
+            return null;
+        }
         private void MinimizeClick(object sender, RoutedEventArgs e)
         {
             if (null == this.ParentWindow) return;

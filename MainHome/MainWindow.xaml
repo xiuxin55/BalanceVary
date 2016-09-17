@@ -11,6 +11,7 @@
         ShowTitleBar="True"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
+        ShowMenuRestoreButton="False" 
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Button x:Name="button" Content="测试" HorizontalAlignment="Left" Height="41" Margin="177,104,0,0" VerticalAlignment="Top" Width="122" Click="button_Click"/>

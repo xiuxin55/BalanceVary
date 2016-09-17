@@ -530,3 +530,17 @@ E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\bin\Debug\ja\Microsoft.E
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\bin\Debug\ko\Microsoft.Expression.Interactions.resources.dll
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\bin\Debug\zh-Hans\Microsoft.Expression.Interactions.resources.dll
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\bin\Debug\zh-Hant\Microsoft.Expression.Interactions.resources.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\Microsoft.Expression.Interactions.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\Microsoft.Expression.Drawing.xml
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\Microsoft.Expression.Interactions.xml
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\de\Microsoft.Expression.Interactions.resources.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\en\Microsoft.Expression.Interactions.resources.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\es\Microsoft.Expression.Interactions.resources.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\fr\Microsoft.Expression.Interactions.resources.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\it\Microsoft.Expression.Interactions.resources.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\ja\Microsoft.Expression.Interactions.resources.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\ko\Microsoft.Expression.Interactions.resources.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\zh-Hans\Microsoft.Expression.Interactions.resources.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\bin\Debug\zh-Hant\Microsoft.Expression.Interactions.resources.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\MahApps.Metro.csprojResolveAssemblyReference.cache

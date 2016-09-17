@@ -125,6 +125,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceFile\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\WebsiteInfoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -136,6 +141,7 @@
     <Compile Include="Tools\ListViewBehavior.cs" />
     <Compile Include="Tools\SortInfo.cs" />
     <Compile Include="Tools\UIElementAdorner.cs" />
+    <Compile Include="Helper\UploadFile.cs" />
     <Compile Include="ViewModels\DepartmentReportUserControlVM.cs" />
     <Compile Include="ViewModels\ReportDataGridVM\CountyCompanyDataGridVM.cs" />
     <Compile Include="ViewModels\ReportDataGridVM\CityCompanyDataGridVM.cs" />
@@ -379,6 +385,19 @@
     <None Include="Service References\CustomerManagerInfoService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ServiceFile\BalanceReport.ServiceFile.CustomFileInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceFile\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceFile\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceFile\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceFile\ServiceFile.wsdl" />
     <None Include="Service References\WebsiteInfoService\BalanceReport.WebsiteInfoService.WebsiteInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -442,6 +461,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AccountInfoService\" />
     <WCFMetadataStorage Include="Service References\CustomerManagerInfoService\" />
+    <WCFMetadataStorage Include="Service References\ServiceFile\" />
     <WCFMetadataStorage Include="Service References\WebsiteInfoService\" />
   </ItemGroup>
   <ItemGroup>
@@ -485,6 +505,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\CustomerManagerInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceFile\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceFile\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceFile\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceFile\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
