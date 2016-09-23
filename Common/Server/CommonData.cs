@@ -8,7 +8,7 @@ namespace Common.Server
     /// <summary>
     /// 服务端常量
     /// </summary>
-    public class CommonData
+    public class CommonDataServer
     {
         public  static string UploadFileServerPath = AppDomain.CurrentDomain.BaseDirectory + "UpLoadFile\\";
     }

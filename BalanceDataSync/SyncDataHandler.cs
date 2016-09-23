@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Common.Server;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -9,7 +11,10 @@ namespace BalanceDataSync
     {
         public void ReadData()
         {
+            if (Directory.Exists(CommonDataServer.UploadFileServerPath))
+            {
 
+            }
         }
         /// <summary>
         /// 导入日数据

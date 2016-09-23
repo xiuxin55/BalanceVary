@@ -23,13 +23,9 @@ namespace WcfBalanceServiceLibrary
             try
             {
                 // 获取服务器文件上传路径
-                string fileUpLoadPath = CommonData.UploadFileServerPath;
+                string fileUpLoadPath = CommonDataServer.UploadFileServerPath;
                 // 如需指定新的文件夹，需要进行创建操作。
                 // 创建FileStream对象
-                //if (!File.Exists(fileUpLoadPath + fileInfo.Name))
-                //{
-                //    File.Create(fileUpLoadPath + fileInfo.Name);
-                //}
                 if (!Directory.Exists(fileUpLoadPath))
                 {
                     Directory.CreateDirectory(fileUpLoadPath);
@@ -57,7 +53,7 @@ namespace WcfBalanceServiceLibrary
 
         public CustomFileInfo GetFileInfo(string fileName)
         {
-            string filePath = CommonData.UploadFileServerPath + fileName;
+            string filePath = CommonDataServer.UploadFileServerPath + fileName;
             if (File.Exists(filePath))
             {
                 var fs = new FileStream(filePath, FileMode.OpenOrCreate);
