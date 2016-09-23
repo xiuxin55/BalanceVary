@@ -11,6 +11,9 @@ using System.Text;
 namespace WcfBalanceServiceLibrary
 {
     // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码和配置文件中的类名“AccountInfoService”。
+    /// <summary>
+    /// 账户管理服务
+    /// </summary>
     public class AccountInfoService : IAccountInfoService
     {
         AccountInfoBLL bll = new AccountInfoBLL();

@@ -6,6 +6,9 @@ using System.Text;
 
 namespace WcfBalanceServiceLibrary
 {
+    /// <summary>
+    /// 服务管理
+    /// </summary>
     public class ManageService
     {
         private static ManageService _instance;

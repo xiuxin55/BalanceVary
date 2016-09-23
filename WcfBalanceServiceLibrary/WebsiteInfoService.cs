@@ -10,6 +10,9 @@ using BalanceBLL;
 namespace WcfBalanceServiceLibrary
 {
     // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码和配置文件中的类名“WebsiteInfoService”。
+    /// <summary>
+    /// 网点管理服务
+    /// </summary>
     public class WebsiteInfoService : IWebsiteInfoService
     {
         WebsiteInfoBLL bll = new WebsiteInfoBLL();

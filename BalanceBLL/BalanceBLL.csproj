@@ -43,6 +43,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomerManagerInfoBLL.cs" />
     <Compile Include="AccountInfoBLL.cs" />
+    <Compile Include="ImportDataBLL.cs" />
     <Compile Include="WebsiteInfoBLL.cs" />
   </ItemGroup>
   <ItemGroup>

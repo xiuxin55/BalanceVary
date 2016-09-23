@@ -12,6 +12,10 @@ namespace HostApp
 {
     public class AppConfigManager
     {
+        /// <summary>
+        /// 通过ServiceCofig.xml 读取服务
+        /// </summary>
+        /// <returns></returns>
         public static List<ServiceModel> GetServiceList()
         {
             ArrayList contentarray = ConfigReader.GetServiceString(@"ServiceCofig.xml", "config/service");

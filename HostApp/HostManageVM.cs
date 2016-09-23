@@ -12,6 +12,9 @@ using Common;
 
 namespace HostApp
 {
+    /// <summary>
+    /// 宿主VM
+    /// </summary>
     public class HostManageVM:NotificationObject
     {
         public HostManageVM()

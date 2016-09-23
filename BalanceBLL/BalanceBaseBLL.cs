@@ -9,9 +9,6 @@ namespace BalanceBLL
 {
     public  class BalanceBaseBLL<T,S>: BaseBLL<T, S> where T:new() where S:BalanceDAL<T>,new()
     {
-        public BalanceBaseBLL()
-        {
-            dal = new S();
-        }
+
     }
 }

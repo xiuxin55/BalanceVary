@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace HostApp
 {
+    /// <summary>
+    /// 服务实体类
+    /// </summary>
     public class ServiceModel: NotificationObject
     {
         private  string _Name;

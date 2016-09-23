@@ -59,6 +59,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls", "CustomCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{33C58CB0-1338-455F-A678-9D5BE412D468}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalanceDataSync", "BalanceDataSync\BalanceDataSync.csproj", "{C57D8718-263E-4A5A-AEFB-76A19F8898D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -263,6 +265,18 @@ Global
 		{33C58CB0-1338-455F-A678-9D5BE412D468}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{33C58CB0-1338-455F-A678-9D5BE412D468}.Release|x86.ActiveCfg = Release|Any CPU
 		{33C58CB0-1338-455F-A678-9D5BE412D468}.Release|x86.Build.0 = Release|Any CPU
+		{C57D8718-263E-4A5A-AEFB-76A19F8898D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C57D8718-263E-4A5A-AEFB-76A19F8898D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C57D8718-263E-4A5A-AEFB-76A19F8898D1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C57D8718-263E-4A5A-AEFB-76A19F8898D1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C57D8718-263E-4A5A-AEFB-76A19F8898D1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C57D8718-263E-4A5A-AEFB-76A19F8898D1}.Debug|x86.Build.0 = Debug|Any CPU
+		{C57D8718-263E-4A5A-AEFB-76A19F8898D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C57D8718-263E-4A5A-AEFB-76A19F8898D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C57D8718-263E-4A5A-AEFB-76A19F8898D1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C57D8718-263E-4A5A-AEFB-76A19F8898D1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C57D8718-263E-4A5A-AEFB-76A19F8898D1}.Release|x86.ActiveCfg = Release|Any CPU
+		{C57D8718-263E-4A5A-AEFB-76A19F8898D1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -285,5 +299,6 @@ Global
 		{A68FB29A-1A80-44F5-A75D-86F7FE0A31F7} = {773DE8C3-C719-4853-A0A4-8F765551E6EA}
 		{E6703634-362A-4E62-A951-614922B7C045} = {BB7EC56F-7505-4058-B7CA-16085EC2739A}
 		{33C58CB0-1338-455F-A678-9D5BE412D468} = {243C537A-01F9-4D21-AED0-7C61BBF8EBEA}
+		{C57D8718-263E-4A5A-AEFB-76A19F8898D1} = {773DE8C3-C719-4853-A0A4-8F765551E6EA}
 	EndGlobalSection
 EndGlobal

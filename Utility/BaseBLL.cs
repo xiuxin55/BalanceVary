@@ -8,7 +8,7 @@ namespace Utility
 {
     public abstract class BaseBLL<T,S> where T:new() where S:BaseDAL<T>,new()
     {
-        protected  BaseDAL<T> dal ;
+        protected  S dal ;
         public BaseBLL()
         {
             dal =new S();
