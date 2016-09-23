@@ -22,7 +22,6 @@ namespace WcfBalanceServiceLibrary
         {
             try
             {
-
                 // 获取服务器文件上传路径
                 string fileUpLoadPath = CommonData.UploadFileServerPath;
                 // 如需指定新的文件夹，需要进行创建操作。
