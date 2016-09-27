@@ -1,4 +1,5 @@
-﻿using Common.Server;
+﻿using BalanceModel;
+using Common.Server;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +14,8 @@ namespace BalanceDataSync
         {
             if (Directory.Exists(CommonDataServer.UploadFileServerPath))
             {
-
+                string[] files = Directory.GetFiles(CommonDataServer.UploadFileServerPath);
+                List<ImportDataInfo> ImportDataList = new List<ImportDataInfo>();
             }
         }
         /// <summary>

@@ -53,6 +53,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Calculate\CalculateAccount.cs" />
+    <Compile Include="Calculate\CalculateCompany.cs" />
+    <Compile Include="Calculate\CalculateWebsite.cs" />
+    <Compile Include="Calculate\CalculateZone.cs" />
+    <Compile Include="Calculate\ICalculateBalance.cs" />
     <Compile Include="ISyncDataHandler.cs" />
     <Compile Include="SyncDataHandler.cs" />
     <Page Include="MainWindow.xaml">
@@ -93,6 +98,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BalanceReportModel\BalanceModel.csproj">
+      <Project>{48881a94-14f8-4abe-a924-b3fd047dd557}</Project>
+      <Name>BalanceModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{49cc37a0-302e-43c4-aded-8d79f652242e}</Project>
       <Name>Common</Name>
