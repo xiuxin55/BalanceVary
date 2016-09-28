@@ -64,9 +64,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseBLL.cs" />
-    <Compile Include="BaseDAL.cs" />
-    <Compile Include="BaseVM.cs" />
+    <Compile Include="BaseClass\BaseBLL.cs" />
+    <Compile Include="BaseClass\BaseDAL.cs" />
+    <Compile Include="BaseClass\BaseVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -80,6 +80,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Task\MultiTask.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

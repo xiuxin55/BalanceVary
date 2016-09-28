@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BalanceDataSync
+namespace Common.Server
 {
-    public interface ICalculateBalance
+    public  enum  LogType
     {
+        ImportDayExcel,
+        ImportMonthExcel
     }
 }

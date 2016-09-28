@@ -10,20 +10,15 @@ namespace BalanceDataSync
 {
     public class SyncDataHandler : ISyncDataHandler
     {
-        public void ReadData()
-        {
-            if (Directory.Exists(CommonDataServer.UploadFileServerPath))
-            {
-                string[] files = Directory.GetFiles(CommonDataServer.UploadFileServerPath);
-                List<ImportDataInfo> ImportDataList = new List<ImportDataInfo>();
-            }
-        }
+        List<ImportDataInfo> ImportDataList = new List<ImportDataInfo>();
+       
         /// <summary>
         /// 导入日数据
         /// </summary>
         public  void ImportDayData()
         {
 
+            CalculateData();
         }
         /// <summary>
         /// 导入月数据
@@ -31,6 +26,18 @@ namespace BalanceDataSync
         public  void ImportMonthData()
         {
 
+            CalculateData();
+        }
+        private void CalculateData()
+        {
+            ABCalculateBalance cz = new CalculateZone(ImportDataList);
+            ABCalculateBalance cw = new CalculateWebsite(ImportDataList);
+            ABCalculateBalance cc = new CalculateCompany(ImportDataList);
+            ABCalculateBalance ca = new CalculateAccount(ImportDataList);
+            ca.Caculate();
+            cw.Caculate();
+            cz.Caculate();
+            cc.Caculate();
         }
     }
 }

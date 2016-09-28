@@ -46,6 +46,7 @@
     <Compile Include="LogHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\CommonData.cs" />
+    <Compile Include="Server\LogType.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="log4net_config.xml" />

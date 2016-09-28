@@ -34,8 +34,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NPOI">
+      <HintPath>..\ReferenceDLL\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>..\ReferenceDLL\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>..\ReferenceDLL\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats">
+      <HintPath>..\ReferenceDLL\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,8 +70,10 @@
     <Compile Include="Calculate\CalculateCompany.cs" />
     <Compile Include="Calculate\CalculateWebsite.cs" />
     <Compile Include="Calculate\CalculateZone.cs" />
-    <Compile Include="Calculate\ICalculateBalance.cs" />
+    <Compile Include="Calculate\ABCalculateBalance.cs" />
+    <Compile Include="ExcelAndData.cs" />
     <Compile Include="ISyncDataHandler.cs" />
+    <Compile Include="ReadExcel.cs" />
     <Compile Include="SyncDataHandler.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

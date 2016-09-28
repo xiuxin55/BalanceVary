@@ -12,6 +12,7 @@ namespace BalanceModel
     {
         public string  ID { get; set; }
         public string  CustomerNumber { get; set; }
+        public string AccountID { get; set; }
         public string  SubAccountNumber { get; set; }
         /// <summary>
         /// 账户类型 0定期1活期

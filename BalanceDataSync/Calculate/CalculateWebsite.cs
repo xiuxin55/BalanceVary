@@ -7,19 +7,9 @@ using System.Text;
 
 namespace BalanceDataSync
 {
-    public class CalculateWebsite: ICalculateBalance
+    public class CalculateWebsite: ABCalculateBalance
     {
-        List<ImportDataInfo> ImportDataList = new List<ImportDataInfo>();
-        DateTime MinTime;
-        DateTime MaxTime;
-        /// <summary>
-        /// 获取数据中最大和最小时间
-        /// </summary>
-        public void GetMinMaxTime()
-        {
-            MinTime = ImportDataList.Min(p => p.DataTime);
-            MaxTime = ImportDataList.Max(p => p.DataTime);
-        }
+       
         /// <summary>
         /// 网点集合
         /// </summary>
@@ -28,13 +18,17 @@ namespace BalanceDataSync
         /// 网点变动结果
         /// </summary>
         public Dictionary<string, List<WebsiteBalance>> WebsiteBalanceVary =new  Dictionary<string, List<WebsiteBalance>>();
-  
+
+        public CalculateWebsite(List<ImportDataInfo> importDataList) : base(importDataList)
+        {
+        }
+
         /// <summary>
         /// 计算市行、县行余额变动
         /// </summary>
-        public void Caculate()
+        public override void Caculate()
         {
-            
+            base.Caculate();
             for (int i = 0; i < (MaxTime.Day - MinTime.Day); i++)
             {
                 WebsiteBalance wb = new WebsiteBalance();
@@ -88,6 +82,11 @@ namespace BalanceDataSync
                     }
                 }
             }
+        }
+
+        public override void ClearData()
+        {
+            WebsiteBalanceVary.Clear();
         }
     }
 }

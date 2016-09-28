@@ -7,19 +7,9 @@ using System.Text;
 
 namespace BalanceDataSync
 {
-    public class CalculateZone:ICalculateBalance
+    public class CalculateZone: ABCalculateBalance
     {
-        List<ImportDataInfo> ImportDataList=new List<ImportDataInfo>();
-        DateTime MinTime;
-        DateTime MaxTime;
-        /// <summary>
-        /// 获取数据中最大和最小时间
-        /// </summary>
-        public void GetMinMaxTime()
-        {
-            MinTime = ImportDataList.Min(p => p.DataTime);
-            MaxTime = ImportDataList.Max(p => p.DataTime);
-        }
+       
         /// <summary>
         /// 网点集合
         /// </summary>
@@ -32,11 +22,17 @@ namespace BalanceDataSync
         /// 县行变动结果
         /// </summary>
         public List<ZoneBalance> CountyZoneBalanceVary = new List<ZoneBalance>();
+
+        public CalculateZone(List<ImportDataInfo> importDataList) : base(importDataList)
+        {
+        }
+
         /// <summary>
         /// 计算市行、县行余额变动
         /// </summary>
-        public void Caculate()
+        public override  void Caculate()
         {
+            base.Caculate();
             for (int i = 0; i < (MaxTime.Day- MinTime.Day); i++)
             {
                 ZoneBalance zb = new ZoneBalance();
@@ -98,6 +94,12 @@ namespace BalanceDataSync
                     item.UnRegularMoneyVary = item.UnRegularMoney - pre.UnRegularMoney;
                 }
             }
+        }
+
+        public override void ClearData()
+        {
+            CityZoneBalanceVary.Clear();
+            CountyZoneBalanceVary.Clear();
         }
     }
 }
