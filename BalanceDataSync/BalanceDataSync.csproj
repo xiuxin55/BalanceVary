@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C57D8718-263E-4A5A-AEFB-76A19F8898D1}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BalanceDataSync</RootNamespace>
     <AssemblyName>BalanceDataSync</AssemblyName>
@@ -33,7 +33,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\ReferenceDLL\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
     <Reference Include="NPOI">
       <HintPath>..\ReferenceDLL\NPOI.dll</HintPath>
     </Reference>
@@ -49,6 +55,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -62,31 +69,21 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
     <Compile Include="Calculate\CalculateAccount.cs" />
     <Compile Include="Calculate\CalculateCompany.cs" />
     <Compile Include="Calculate\CalculateWebsite.cs" />
     <Compile Include="Calculate\CalculateZone.cs" />
     <Compile Include="Calculate\ABCalculateBalance.cs" />
+    <Compile Include="Converters\FileTypeConverter.cs" />
+    <Compile Include="Converters\FileStateConverter.cs" />
     <Compile Include="ExcelAndData.cs" />
     <Compile Include="ISyncDataHandler.cs" />
     <Compile Include="ReadExcel.cs" />
     <Compile Include="SyncDataHandler.cs" />
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="UCUploadFile.xaml.cs">
+      <DependentUpon>UCUploadFile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="UCUploadFileVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -113,6 +110,18 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BalanceBLL\BalanceBLL.csproj">
+      <Project>{3beda392-d2b0-425c-b8d6-d132ff4d3356}</Project>
+      <Name>BalanceBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BalanceDal\BalanceDAL.csproj">
+      <Project>{55635394-4f80-40c9-8c79-5a958cf2c219}</Project>
+      <Name>BalanceDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BalanceMapping\BalanceMapping.csproj">
+      <Project>{9f97d256-7446-41c6-a499-c52227f4b82c}</Project>
+      <Name>BalanceMapping</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BalanceReportModel\BalanceModel.csproj">
       <Project>{48881a94-14f8-4abe-a924-b3fd047dd557}</Project>
       <Name>BalanceModel</Name>
@@ -121,6 +130,32 @@
       <Project>{49cc37a0-302e-43c4-aded-8d79f652242e}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Config\Configure.csproj">
+      <Project>{46c7dbd4-3821-4579-995d-0e88bff6beac}</Project>
+      <Name>Configure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomControls\CustomControls.csproj">
+      <Project>{e6703634-362a-4e62-a951-614922b7c045}</Project>
+      <Name>CustomControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MahApps.Metro\MahApps.Metro.csproj">
+      <Project>{5b1710d2-5dc8-4754-91b2-19165de49b3d}</Project>
+      <Name>MahApps.Metro</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SqlMaps\SqlMaps.csproj">
+      <Project>{e19a6dc8-30f3-45d5-8b67-584c5a034212}</Project>
+      <Name>SqlMaps</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{33c58cb0-1338-455f-a678-9d5be412d468}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="UCUploadFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

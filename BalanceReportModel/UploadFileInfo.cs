@@ -26,5 +26,19 @@ namespace BalanceModel
         /// </summary>
         public bool IsOverride { get; set; }
 
+        private bool _IsSelected;
+        public bool IsSelected
+        {
+            get
+            {
+                return _IsSelected;
+            }
+            set
+            {
+                _IsSelected = value;
+                this.RaisePropertyChanged("IsSelected");
+            }
+        }
+
     }
 }

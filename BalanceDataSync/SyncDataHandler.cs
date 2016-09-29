@@ -11,22 +11,31 @@ namespace BalanceDataSync
     public class SyncDataHandler : ISyncDataHandler
     {
         List<ImportDataInfo> ImportDataList = new List<ImportDataInfo>();
-       
+        List<UploadFileInfo> UploadFileInfoList = new List<UploadFileInfo>();
         /// <summary>
         /// 导入日数据
         /// </summary>
         public  void ImportDayData()
         {
-
-            CalculateData();
+            IEnumerable<UploadFileInfo> filelist= UploadFileInfoList.Where(p => p.FileName.ToLower().Contains("day"));
+            foreach (var item in filelist)
+            {
+                ReadExcel.ReadDayData(item.FilePath+item.FileName,item.FileDateTime.Value);
+                CalculateData();
+            }
+           
         }
         /// <summary>
         /// 导入月数据
         /// </summary>
         public  void ImportMonthData()
         {
-            ReadExcel.ReadMonthData();
-            CalculateData();
+            IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.ToLower().Contains("month"));
+            foreach (var item in filelist)
+            {
+                ReadExcel.ReadMonthData(item.FilePath + item.FileName, item.FileDateTime.Value);
+                CalculateData();
+            }
         }
         private void CalculateData()
         {

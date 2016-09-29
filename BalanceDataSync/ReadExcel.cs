@@ -11,29 +11,22 @@ namespace BalanceDataSync
 {
     public class ReadExcel
     {
-        public static List<ImportDataInfo> ReadDayData()
+        
+        public static List<ImportDataInfo> ReadDayData(string filename, DateTime dtime)
         {
-            if (Directory.Exists(CommonDataServer.UploadFileServerPath))
+            if (File.Exists(filename))
             {
-                string[] files = Directory.GetFiles(CommonDataServer.UploadFileServerPath);
-
+                FileInfo fi = new FileInfo(filename);
+                return ImportDayData(fi.FullName,  dtime);
             }
             return null;
         }
-
-        public static List<ImportDataInfo> ReadMonthData()
+        public static List<ImportDataInfo> ReadMonthData(string filename, DateTime dtime)
         {
-            if (Directory.Exists(CommonDataServer.UploadFileServerPath))
+            if (File.Exists(filename))
             {
-                string[] files = Directory.GetFiles(CommonDataServer.UploadFileServerPath);
-                foreach (var item in files)
-                {
-                    FileInfo fi = new FileInfo(item);
-                    if(fi.Extension.ToLower().Contains("month"))
-                    {
-                        return ImportData(fi.FullName);
-                    }
-                }
+                FileInfo fi = new FileInfo(filename);
+                return ImportMonthData(fi.FullName,  dtime);
             }
             return null;
         }
@@ -66,7 +59,7 @@ namespace BalanceDataSync
             return null;
         }
 
-        public static List<ImportDataInfo> ImportData(string filename)
+        public static List<ImportDataInfo> ImportDayData(string filename,DateTime dtime)
         {
             try
             {
@@ -77,6 +70,7 @@ namespace BalanceDataSync
                 {
                     ImportDataInfo dm = new ImportDataInfo();
                     dm.ID = Guid.NewGuid().ToString();
+                    dm.DataTime = dtime;
                     try
                     {
                         dm.AccountID = item["客户账号"].ToString().Trim();
@@ -110,13 +104,12 @@ namespace BalanceDataSync
             }
 
         }
-        public static List<ImportDataInfo> MonthImportData(string filename)
+        public static List<ImportDataInfo> ImportMonthData(string filename, DateTime dtime)
         {
             try
             {
                 List<ImportDataInfo> list = new List<ImportDataInfo>();
                 DataTable dt = NPOIHelper.Instance.ImportMonth(filename);
-                DateTime dtime = DateTime.Now;//DateTime.Parse(CommonData.Instance.ImportTime);
                 int days = (dtime.AddMonths(1) - dtime).Days;
                 for (int j = 2; j < dt.Rows.Count; j++)
                 {
