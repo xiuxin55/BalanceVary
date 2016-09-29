@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="UploadFileInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <alias>
+    <typeAlias alias="UploadFileInfo" type="BalanceModel.UploadFileInfo,BalanceModel" />
+  </alias>
+  <resultMaps>
+    <resultMap id="UploadFileInfoMap" class="UploadFileInfo">
+      <result property="RowNumber" column="RowNumber"/>
+      <result property="ID" column="ID"/>
+      <result property="FileName" column="FileName"/>
+      <result property="FileType" column="FileType"/>
+      <result property="FileDateTime" column="FileDateTime"/>
+      <result property="FileUploadTime" column="FileUploadTime"/>
+      <result property="FileState" column="FileState"/>
+      <result property="FileException" column="FileException"/>
+      <result property="FilePath" column="FilePath"/>
+      <result property="FileMD5" column="FileMD5"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <select id="SelectUploadFileInfo"  resultMap="UploadFileInfoMap"  parameterClass="UploadFileInfo">
+      select row_number() over(order by FileUploadTime desc) as RowNumber,*  from UploadFileInfo where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="FileName">FileName=#FileName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="FileType">FileType=#FileType#</isNotEmpty>
+          <isNotEmpty prepend="and" property="FileDateTime">FileDateTime=#FileDateTime#</isNotEmpty>
+          <isNotEmpty prepend="and" property="FileUploadTime">FileUploadTime=#FileUploadTime#</isNotEmpty>
+          <isNotEmpty prepend="and" property="FileState">FileState=#FileState#</isNotEmpty>
+          <isNotEmpty prepend="and" property="FileException">FileException=#FileException#</isNotEmpty>
+          <isNotEmpty prepend="and" property="FilePath">FilePath=#FilePath#</isNotEmpty>
+          <isNotEmpty prepend="and" property="FileMD5">FileMD5=#FileMD5#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
+    <update id="UpdateUploadFileInfo"  parameterClass="UploadFileInfo">
+      UPDATE UploadFileInfo
+      SET
+      ID = #ID#
+      <isNotEmpty prepend ="," property="FileName">
+        FileName = #FileName#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="FileType">
+        FileType = #FileType#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="FileDateTime">
+        FileDateTime = #FileDateTime#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="FileUploadTime">
+        FileUploadTime = #FileUploadTime#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="FileState">
+        FileState = #FileState#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="FileException">
+        FileException = #FileException#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="FilePath">
+        FilePath = #FilePath#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="FileMD5">
+        FileMD5 = #FileMD5#
+      </isNotEmpty>
+      
+      WHERE ID = #ID#
+    </update>
+    <insert id="AddUploadFileInfo" parameterClass="UploadFileInfo">
+      INSERT INTO UploadFileInfo (ID,
+      FileName,
+      FileType,
+      FileDateTime,
+      FileUploadTime,
+      FileState,
+      FileException,
+      FilePath,FileMD5)
+      VALUES (#ID#,#FileName#,#FileType#,#FileDateTime#,#FileUploadTime#,#FileState#,#FileException#,#FilePath#,#FileMD5#);
+    </insert>
+    <delete id="DeleteUploadFileInfo" parameterClass="UploadFileInfo">
+      DELETE UploadFileInfo WHERE ID = #ID#
+    </delete>
+  </statements>
+</sqlMap>

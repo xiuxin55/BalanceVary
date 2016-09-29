@@ -17,6 +17,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <result property="WebsiteManager" column="WebsiteManager"/>
       <result property="ManagerTelphone" column="ManagerTelphone"/>
       <result property="Institution" column="Institution"/>
+      
+      
     </resultMap>
   </resultMaps>
   <statements>

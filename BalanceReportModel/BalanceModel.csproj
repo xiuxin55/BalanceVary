@@ -66,10 +66,12 @@
     <Compile Include="BalanceModel\ZoneBalance.cs" />
     <Compile Include="BalanceVaryInfo.cs" />
     <Compile Include="BaseModel.cs" />
+    <Compile Include="CustomFileInfo.cs" />
     <Compile Include="DateTimeModel.cs" />
     <Compile Include="ImportDataInfo.cs" />
     <Compile Include="CustomerManagerInfo.cs" />
     <Compile Include="ReportModel.cs" />
+    <Compile Include="UploadFileInfo.cs" />
     <Compile Include="WebsiteInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

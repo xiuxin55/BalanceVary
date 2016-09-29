@@ -15,7 +15,7 @@ namespace BalanceReport.ServiceFile {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CustomFileInfo", Namespace="http://schemas.datacontract.org/2004/07/WcfBalanceServiceLibrary")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomFileInfo", Namespace="http://schemas.datacontract.org/2004/07/BalanceModel")]
     [System.SerializableAttribute()]
     public partial class CustomFileInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -23,7 +23,7 @@ namespace BalanceReport.ServiceFile {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BalanceReport.ServiceFile.FileType ImportTypeField;
+        private string ImportTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private long LengthField;
@@ -48,12 +48,12 @@ namespace BalanceReport.ServiceFile {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public BalanceReport.ServiceFile.FileType ImportType {
+        public string ImportType {
             get {
                 return this.ImportTypeField;
             }
             set {
-                if ((this.ImportTypeField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.ImportTypeField, value) != true)) {
                     this.ImportTypeField = value;
                     this.RaisePropertyChanged("ImportType");
                 }
@@ -122,18 +122,249 @@ namespace BalanceReport.ServiceFile {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FileType", Namespace="http://schemas.datacontract.org/2004/07/WcfBalanceServiceLibrary")]
-    public enum FileType : int {
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseModel", Namespace="http://schemas.datacontract.org/2004/07/BalanceModel")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BalanceReport.ServiceFile.UploadFileInfo))]
+    public partial class BaseModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Day = 0,
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Month = 1,
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int EndIndexField;
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Manager = 2,
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RowNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StartIndexField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int EndIndex {
+            get {
+                return this.EndIndexField;
+            }
+            set {
+                if ((this.EndIndexField.Equals(value) != true)) {
+                    this.EndIndexField = value;
+                    this.RaisePropertyChanged("EndIndex");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RowNumber {
+            get {
+                return this.RowNumberField;
+            }
+            set {
+                if ((this.RowNumberField.Equals(value) != true)) {
+                    this.RowNumberField = value;
+                    this.RaisePropertyChanged("RowNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StartIndex {
+            get {
+                return this.StartIndexField;
+            }
+            set {
+                if ((this.StartIndexField.Equals(value) != true)) {
+                    this.StartIndexField = value;
+                    this.RaisePropertyChanged("StartIndex");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UploadFileInfo", Namespace="http://schemas.datacontract.org/2004/07/BalanceModel")]
+    [System.SerializableAttribute()]
+    public partial class UploadFileInfo : BalanceReport.ServiceFile.BaseModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> FileDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileExceptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileMD5Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FilePathField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FileStateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> FileUploadTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsOverrideField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> FileDateTime {
+            get {
+                return this.FileDateTimeField;
+            }
+            set {
+                if ((this.FileDateTimeField.Equals(value) != true)) {
+                    this.FileDateTimeField = value;
+                    this.RaisePropertyChanged("FileDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileException {
+            get {
+                return this.FileExceptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileExceptionField, value) != true)) {
+                    this.FileExceptionField = value;
+                    this.RaisePropertyChanged("FileException");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileMD5 {
+            get {
+                return this.FileMD5Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileMD5Field, value) != true)) {
+                    this.FileMD5Field = value;
+                    this.RaisePropertyChanged("FileMD5");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileName {
+            get {
+                return this.FileNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileNameField, value) != true)) {
+                    this.FileNameField = value;
+                    this.RaisePropertyChanged("FileName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FilePath {
+            get {
+                return this.FilePathField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FilePathField, value) != true)) {
+                    this.FilePathField = value;
+                    this.RaisePropertyChanged("FilePath");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FileState {
+            get {
+                return this.FileStateField;
+            }
+            set {
+                if ((this.FileStateField.Equals(value) != true)) {
+                    this.FileStateField = value;
+                    this.RaisePropertyChanged("FileState");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileType {
+            get {
+                return this.FileTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileTypeField, value) != true)) {
+                    this.FileTypeField = value;
+                    this.RaisePropertyChanged("FileType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> FileUploadTime {
+            get {
+                return this.FileUploadTimeField;
+            }
+            set {
+                if ((this.FileUploadTimeField.Equals(value) != true)) {
+                    this.FileUploadTimeField = value;
+                    this.RaisePropertyChanged("FileUploadTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IDField, value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsOverride {
+            get {
+                return this.IsOverrideField;
+            }
+            set {
+                if ((this.IsOverrideField.Equals(value) != true)) {
+                    this.IsOverrideField = value;
+                    this.RaisePropertyChanged("IsOverride");
+                }
+            }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -144,7 +375,10 @@ namespace BalanceReport.ServiceFile {
         BalanceReport.ServiceFile.CustomFileInfo UpLoadFileInfo(BalanceReport.ServiceFile.CustomFileInfo fileInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceFile/GetFileInfo", ReplyAction="http://tempuri.org/IServiceFile/GetFileInfoResponse")]
-        BalanceReport.ServiceFile.CustomFileInfo GetFileInfo(string fileName);
+        BalanceReport.ServiceFile.UploadFileInfo GetFileInfo(BalanceReport.ServiceFile.UploadFileInfo uploadfileinfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceFile/StoreUpLoadResult", ReplyAction="http://tempuri.org/IServiceFile/StoreUpLoadResultResponse")]
+        bool StoreUpLoadResult(BalanceReport.ServiceFile.UploadFileInfo uploadfileinfo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -178,8 +412,12 @@ namespace BalanceReport.ServiceFile {
             return base.Channel.UpLoadFileInfo(fileInfo);
         }
         
-        public BalanceReport.ServiceFile.CustomFileInfo GetFileInfo(string fileName) {
-            return base.Channel.GetFileInfo(fileName);
+        public BalanceReport.ServiceFile.UploadFileInfo GetFileInfo(BalanceReport.ServiceFile.UploadFileInfo uploadfileinfo) {
+            return base.Channel.GetFileInfo(uploadfileinfo);
+        }
+        
+        public bool StoreUpLoadResult(BalanceReport.ServiceFile.UploadFileInfo uploadfileinfo) {
+            return base.Channel.StoreUpLoadResult(uploadfileinfo);
         }
     }
 }

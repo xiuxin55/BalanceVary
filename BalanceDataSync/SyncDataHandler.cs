@@ -25,7 +25,7 @@ namespace BalanceDataSync
         /// </summary>
         public  void ImportMonthData()
         {
-
+            ReadExcel.ReadMonthData();
             CalculateData();
         }
         private void CalculateData()

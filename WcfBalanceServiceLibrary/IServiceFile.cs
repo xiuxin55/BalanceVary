@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BalanceModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -25,50 +26,16 @@ namespace WcfBalanceServiceLibrary
         /// <param name="fileName"></param>
         /// <returns></returns>
         [OperationContract]
-        CustomFileInfo GetFileInfo(string fileName);
+        UploadFileInfo GetFileInfo(UploadFileInfo uploadfileinfo);
+        /// <summary>
+        /// 存储上传结果
+        /// </summary>
+        /// <param name="uploadfileinfo"></param>
+        /// <returns></returns>
+        [OperationContract]
+        bool StoreUpLoadResult(UploadFileInfo uploadfileinfo);
     }
 
-    /// <summary>
-    /// 自定义文件属性类
-    /// </summary>
-    [DataContract]
-    public class CustomFileInfo
-    {
-        /// <summary>
-        /// 文件名称
-        /// </summary>
-        [DataMember]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// 文件大小
-        /// </summary>
-        [DataMember]
-        public long Length { get; set; }
-
-        /// <summary>
-        /// 文件偏移量
-        /// </summary>
-        [DataMember]
-        public long OffSet { get; set; }
-
-        /// <summary>
-        /// 发送的字节
-        /// </summary>
-        [DataMember]
-        public byte[] SendByte { get; set; }
-        /// <summary>
-        /// 文件类型
-        /// </summary>
-        [DataMember]
-        public FileType ImportType { get; set; }
-
-    }
-
-    public enum FileType
-    {
-        Day,
-        Month,
-        Manager
-    }
+   
+   
 }

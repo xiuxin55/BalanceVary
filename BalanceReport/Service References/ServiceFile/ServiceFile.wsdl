@@ -4,7 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost/WcfBalanceServiceLibrary/ServiceFile/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost/WcfBalanceServiceLibrary/ServiceFile/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost/WcfBalanceServiceLibrary/ServiceFile/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfBalanceServiceLibrary" />
+      <xsd:import schemaLocation="http://localhost/WcfBalanceServiceLibrary/ServiceFile/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BalanceModel" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServiceFile_UpLoadFileInfo_InputMessage">
@@ -19,6 +19,12 @@
   <wsdl:message name="IServiceFile_GetFileInfo_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetFileInfoResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceFile_StoreUpLoadResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:StoreUpLoadResult" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFile_StoreUpLoadResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StoreUpLoadResultResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceFile">
     <wsdl:operation name="UpLoadFileInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceFile/UpLoadFileInfo" message="tns:IServiceFile_UpLoadFileInfo_InputMessage" />
@@ -27,6 +33,10 @@
     <wsdl:operation name="GetFileInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceFile/GetFileInfo" message="tns:IServiceFile_GetFileInfo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceFile/GetFileInfoResponse" message="tns:IServiceFile_GetFileInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StoreUpLoadResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceFile/StoreUpLoadResult" message="tns:IServiceFile_StoreUpLoadResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceFile/StoreUpLoadResultResponse" message="tns:IServiceFile_StoreUpLoadResult_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceFile" type="tns:IServiceFile">
@@ -42,6 +52,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetFileInfo">
       <soap:operation soapAction="http://tempuri.org/IServiceFile/GetFileInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StoreUpLoadResult">
+      <soap:operation soapAction="http://tempuri.org/IServiceFile/StoreUpLoadResult" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -27,10 +27,10 @@
         </Grid.RowDefinitions>
         <Label Content="导入日期：" Grid.Column="1" Name="label5" Grid.Row="2" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" />
         <StackPanel Grid.Column="1" Grid.Row="4" Height="48" HorizontalAlignment="Left" Margin="54,0,0,0" Name="stackPanel1" VerticalAlignment="Top" Width="244" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <Button Content="确定" Height="23" Name="button1" Command="{Binding OkAccountCommand}" Width="75" Margin="28,0,0,0"   />
-            <Button Content="取消" Height="23" Name="button2"  Command="{Binding CancelAccountCommand}" Width="75" Margin="28,0,0,0"   />
+            <Button Content="确定" Click="Confirm_Click" Height="23" Name="button1"  Width="75" Margin="28,0,0,0"   />
+            <Button Content="取消" Click="closeButton_Click" Height="23" Name="button2"   Width="75" Margin="28,0,0,0"   />
         </StackPanel>
-        <DatePicker Grid.Column="2" Grid.Row="2" Height="27" HorizontalAlignment="Left" Margin="12,20,0,0" Name="datePicker_import" VerticalAlignment="Top" Width="222" DisplayDate="5/1/2015" />
+        <DatePicker Grid.Column="2" Grid.Row="2" Height="27" HorizontalAlignment="Left" Margin="12,20,0,0" Name="datePicker_import" VerticalAlignment="Top" Width="222"  />
         <TextBlock Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Height="26" HorizontalAlignment="Left" Margin="28,14,0,4" Name="txt_Remark" Text="按月份选择:仅需选择月份中任意一天即可" VerticalAlignment="Center" Width="296" TextAlignment="Center" FontSize="14" Foreground="#FFE22828" />
     </Grid>
 </Controls:MetroWindow>

@@ -31,7 +31,7 @@ namespace BalanceDataSync
                     FileInfo fi = new FileInfo(item);
                     if(fi.Extension.ToLower().Contains("month"))
                     {
-
+                        return ImportData(fi.FullName);
                     }
                 }
             }
@@ -66,7 +66,7 @@ namespace BalanceDataSync
             return null;
         }
 
-        public List<ImportDataInfo> ImportData(string filename)
+        public static List<ImportDataInfo> ImportData(string filename)
         {
             try
             {
@@ -110,11 +110,10 @@ namespace BalanceDataSync
             }
 
         }
-        public List<ImportDataInfo> MonthImportData(string filename)
+        public static List<ImportDataInfo> MonthImportData(string filename)
         {
             try
             {
-
                 List<ImportDataInfo> list = new List<ImportDataInfo>();
                 DataTable dt = NPOIHelper.Instance.ImportMonth(filename);
                 DateTime dtime = DateTime.Now;//DateTime.Parse(CommonData.Instance.ImportTime);
@@ -138,7 +137,6 @@ namespace BalanceDataSync
                         dm.CurrentBalance =decimal.Parse(item[10 + i].ToString().Trim());
                         list.Add(dm);
                     }
-                   
                 }
                 return list;
             }

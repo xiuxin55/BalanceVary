@@ -20,61 +20,62 @@ namespace BalanceReport.Views
     /// </summary>
     public partial class ImportSelectDate : MetroWindow
     {
-        //public ImportSelectDate()
-        //{
-        //    InitializeComponent();
-            
-            
-        //}
-        //public string   DateStr { get; set; }
-     
-        //#region 窗口基本按键方法
-        //private void closeButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.DialogResult = false;
-        //}
+        public ImportSelectDate()
+        {
+            InitializeComponent();
+            this.datePicker_import.DisplayDate = DateTime.Now;
 
-        //private void mniButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.WindowState = WindowState.Minimized;
-        //}
+        }
+        public string DateStr { get; set; }
 
-        //private void maxButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (WindowState == WindowState.Normal)
-        //        WindowState = WindowState.Maximized;
-        //    else
-        //        WindowState = WindowState.Normal;
-        //}
+        #region 窗口基本按键方法
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+        }
 
-        //private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    this.DragMove();
-        //}
-        //#endregion
+        private void mniButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
 
-       
-        ///// <summary>
-        ///// 确定
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void button1_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (this.datePicker_import.SelectedDate == null)
-        //    {
-        //        MessageBox.Show("未选择日期");
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        BalanceReport.Common.CommonData.Instance.ImportTime = this.datePicker_import.SelectedDate.Value.ToString("yyyy-MM-dd");
-        //    }
-        //    this.DialogResult = true;
-        //}
+        private void maxButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Normal)
+                WindowState = WindowState.Maximized;
+            else
+                WindowState = WindowState.Normal;
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+        #endregion
 
 
-  
-      
+        /// <summary>
+        /// 确定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Confirm_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.datePicker_import.SelectedDate == null)
+            {
+                MessageBox.Show("未选择日期");
+                return;
+            }
+            else
+            {
+                ImportTime =DateTime.Parse( this.datePicker_import.SelectedDate.Value.ToString("yyyy-MM-dd"));
+            }
+            this.DialogResult = true;
+        }
+
+        public DateTime ImportTime { get; set; }
+
+
+
     }
 }

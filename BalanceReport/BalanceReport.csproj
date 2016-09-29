@@ -388,13 +388,16 @@
     <None Include="Service References\ServiceFile\BalanceReport.ServiceFile.CustomFileInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceFile\BalanceReport.ServiceFile.UploadFileInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceFile\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceFile\item1.xsd">
+    <None Include="Service References\ServiceFile\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceFile\item2.xsd">
+    <None Include="Service References\ServiceFile\item3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceFile\ServiceFile.wsdl" />
@@ -453,6 +456,10 @@
     <ProjectReference Include="..\Utility\Utility.csproj">
       <Project>{33c58cb0-1338-455f-a678-9d5be412d468}</Project>
       <Name>Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WcfBalanceServiceLibrary\WcfBalanceServiceLibrary.csproj">
+      <Project>{96315950-B9E3-4EC9-AC4F-B6E10B77B422}</Project>
+      <Name>WcfBalanceServiceLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

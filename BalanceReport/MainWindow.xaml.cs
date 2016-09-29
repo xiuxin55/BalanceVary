@@ -15,6 +15,7 @@ using Microsoft.Win32;
 using System.Threading;
 using BalanceReport.Views;
 using MahApps.Metro.Controls;
+using Common.Client;
 
 namespace BalanceReport
 {
@@ -64,34 +65,28 @@ namespace BalanceReport
         }
         #endregion
         /// <summary>
-        /// 导入数据
+        ///按照日导入 导入数据
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ImportButton_Click(object sender, RoutedEventArgs e)
         {
-            //ImportSelectDate s = new ImportSelectDate();
-            ////s.txt_Remark.Visibility = Visibility.Collapsed;
-            //if ((bool)s.ShowDialog() == false)
-            //{
-            //    return;
-            //}
+            ImportSelectDate s = new ImportSelectDate();
+            if ((bool)s.ShowDialog() == false)
+            {
+                return;
+            }
             OpenFileDialog op = new OpenFileDialog();
             if ((bool)op.ShowDialog())
             {
-                UploadFile.Upload(op.FileName,ServiceFile.FileType.Day);
+                UploadFile.Upload(op.FileName,FileType.Day,s.ImportTime);
             }
         }
- 
-
-        private void ManagersImportButton_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog op = new OpenFileDialog();
-            if ((bool)op.ShowDialog())
-            {
-                UploadFile.Upload(op.FileName, ServiceFile.FileType.Manager);
-            }
-        }
+        /// <summary>
+        /// 按照月份导入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MonthImportButton_Click(object sender, RoutedEventArgs e)
         {
             ImportSelectDate s = new ImportSelectDate();
@@ -102,9 +97,19 @@ namespace BalanceReport
             OpenFileDialog op = new OpenFileDialog();
             if ((bool)op.ShowDialog())
             {
-                UploadFile.Upload(op.FileName, ServiceFile.FileType.Month);
+                UploadFile.Upload(op.FileName, FileType.Month, s.ImportTime);
             }
         }
+
+        private void ManagersImportButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog op = new OpenFileDialog();
+            if ((bool)op.ShowDialog())
+            {
+                //UploadFile.Upload(op.FileName, ServiceFile.FileType.Manager);
+            }
+        }
+       
         /// <summary>
         /// 客户经理关联导入
         /// </summary>
@@ -116,7 +121,7 @@ namespace BalanceReport
             if ((bool)op.ShowDialog())
             {
                 //this.WebsiteManageTab.IsSelected = true;
-                UploadFile.Upload(op.FileName, ServiceFile.FileType.Manager); ;
+                //UploadFile.Upload(op.FileName, ServiceFile.FileType.Manager); ;
             }
         }
   

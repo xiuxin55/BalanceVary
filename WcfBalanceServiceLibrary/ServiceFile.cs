@@ -1,4 +1,6 @@
-﻿using Common;
+﻿using BalanceBLL;
+using BalanceModel;
+using Common;
 using Common.Server;
 using System;
 using System.Collections.Generic;
@@ -17,25 +19,26 @@ namespace WcfBalanceServiceLibrary
     /// </summary>
     public class ServiceFile : IServiceFile
     {
-      
+        UploadFileInfoBLL bll = new UploadFileInfoBLL();
         public CustomFileInfo UpLoadFileInfo(CustomFileInfo fileInfo)
         {
             try
             {
                 // 获取服务器文件上传路径
                 string fileUpLoadPath = CommonDataServer.UploadFileServerPath;
+                string filename = fileUpLoadPath + fileInfo.Name ;
+                
                 // 如需指定新的文件夹，需要进行创建操作。
                 // 创建FileStream对象
                 if (!Directory.Exists(fileUpLoadPath))
                 {
                     Directory.CreateDirectory(fileUpLoadPath);
                 }
-                FileStream fs = new FileStream(fileUpLoadPath + fileInfo.Name, FileMode.OpenOrCreate);
+                FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
 
                 long offSet = fileInfo.OffSet;
                 // 使用提供的流创建BinaryWriter对象
                 var binaryWriter = new BinaryWriter(fs, Encoding.UTF8);
-
                 binaryWriter.Seek((int)offSet, SeekOrigin.Begin);
                 binaryWriter.Write(fileInfo.SendByte);
                 fileInfo.OffSet = fs.Length;
@@ -51,21 +54,34 @@ namespace WcfBalanceServiceLibrary
             }
         }
 
-        public CustomFileInfo GetFileInfo(string fileName)
+        public bool  StoreUpLoadResult(UploadFileInfo uploadfileinfo)
         {
-            string filePath = CommonDataServer.UploadFileServerPath + fileName;
-            if (File.Exists(filePath))
+            try
             {
-                var fs = new FileStream(filePath, FileMode.OpenOrCreate);
-                CustomFileInfo fileInfo = new CustomFileInfo
-                {
-                    Name = fileName,
-                    OffSet = fs.Length,
-                };
-                fs.Close();
-                return fileInfo;
+                uploadfileinfo.FilePath =  CommonDataServer.UploadFileServerPath;
+                uploadfileinfo.FileUploadTime = DateTime.Now;
+                bool result = uploadfileinfo.IsOverride ? bll.Update(uploadfileinfo) : bll.Add(uploadfileinfo);
+                return true;
             }
-            return null;
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(ServiceFile), ex);
+                return false;
+            }
+        }
+
+        public UploadFileInfo GetFileInfo(UploadFileInfo uploadfileinfo)
+        {
+            try
+            {
+                List<UploadFileInfo> list = bll.Select(uploadfileinfo);
+                return list.Count > 0 ? list[0] : null;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(ServiceFile), ex);
+                return null;
+            }
         }
     }
 }

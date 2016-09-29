@@ -53,6 +53,7 @@
     <Compile Include="CustomerManagerInfoDAL.cs" />
     <Compile Include="AccountInfoDAL.cs" />
     <Compile Include="ImportDataDAL.cs" />
+    <Compile Include="UploadFileInfoDAL.cs" />
     <Compile Include="WebsiteInfoDAL.cs" />
   </ItemGroup>
   <ItemGroup>
