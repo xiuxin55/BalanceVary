@@ -28,8 +28,12 @@
             <DataGrid.Columns>
                 <DataGridTemplateColumn >
                     <DataGridTemplateColumn.Header>
-                        <CheckBox  IsChecked="{Binding  DataContext.IsSelectedAll,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ElementName=upload }"  >
-                           
+                        <CheckBox Name="cbxheader"  >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding DataContext.CheckBoxClickCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl} }" CommandParameter="{Binding ElementName=cbxheader,Path=IsChecked}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                         </CheckBox>
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>

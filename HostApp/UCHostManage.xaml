@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="HostApp.UCHostManage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                 
+              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:local="clr-namespace:HostApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="239*"/>
+        </Grid.RowDefinitions>
+        <Button Content="启动服务" HorizontalAlignment="Left" Height="28" Margin="5,0,0,0" VerticalAlignment="Center" Width="90" Command="{Binding StartServiceCommand}"/>
+        <Button Content="停止服务" HorizontalAlignment="Left" Height="28" Margin="105,0,0,0" VerticalAlignment="Center" Width="90" Command="{Binding StopServiceCommand}"/>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding ServiceList}" AutoGenerateColumns="False" CanUserAddRows="False" >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn >
+                    <DataGridTemplateColumn.Header>
+                        <CheckBox Name="cbxheader"  >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding DataContext.CheckBoxClickCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl} }" CommandParameter="{Binding ElementName=cbxheader,Path=IsChecked}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </CheckBox>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox  IsChecked="{Binding IsSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="服务名称" Binding="{Binding Name}" Width="1*" IsReadOnly="True"  />
+                <DataGridTextColumn Header="状态" Binding="{Binding IsStart}" Width="1*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="服务描述" Binding="{Binding Describe}"  Width="2*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="服务启动时间" Binding="{Binding StartTime}"  Width="1*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="服务停止时间" Binding="{Binding StopTime}" Width="1*" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
