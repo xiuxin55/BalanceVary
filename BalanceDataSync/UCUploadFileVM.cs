@@ -6,8 +6,10 @@ using Microsoft.Practices.Prism.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using Utility;
 
 namespace BalanceDataSync
@@ -104,7 +106,14 @@ namespace BalanceDataSync
                 {
                     if (item.IsSelected)
                     {
-                        bll.Delete(item);
+                        if (bll.Delete(item))
+                        {
+                            if(File.Exists(item.FilePath+item.FileName))
+                            {
+                                File.Delete(item.FilePath + item.FileName);
+                            }
+                            MessageBox.Show("删除成功");
+                        }
                     }
                 }
                 SearchExecute();

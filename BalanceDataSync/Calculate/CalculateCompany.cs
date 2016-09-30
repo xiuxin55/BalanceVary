@@ -16,6 +16,7 @@ namespace BalanceDataSync
 
         public CalculateCompany(List<ImportDataInfo> importDataList) : base(importDataList)
         {
+
         }
 
         /// <summary>

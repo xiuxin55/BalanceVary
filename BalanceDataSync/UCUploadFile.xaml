@@ -27,11 +27,11 @@
             <DataGrid.Columns>
                 <DataGridTemplateColumn >
                     <DataGridTemplateColumn.Header>
-                        <CheckBox IsChecked="{Binding DataContext.IsSelectedAll,ElementName=uploaddg}"  Click="CheckBox_Click" />
+                        <CheckBox IsChecked="{Binding DataContext.IsSelectedAll,ElementName=uploaddg, UpdateSourceTrigger=PropertyChanged}"  Click="CheckBox_Click" />
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox  IsChecked="{Binding IsSelected,Mode=TwoWay}"/>
+                            <CheckBox  IsChecked="{Binding IsSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
