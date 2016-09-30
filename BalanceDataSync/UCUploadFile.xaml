@@ -3,8 +3,7 @@
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:local="clr-namespace:BalanceDataSync"
               xmlns:converters="clr-namespace:BalanceDataSync.Converters"
-              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"   
-             Name="upload"
+             
             >
     <UserControl.Resources>
         <converters:FileStateConverter x:Key="FileStateConverter"/>
@@ -24,21 +23,15 @@
                 <ComboBoxItem Content="处理异常"/>
             </ComboBox>
         </StackPanel>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding UploadFileList}" AutoGenerateColumns="False" CanUserAddRows="False" >
+        <DataGrid Grid.Row="1" ItemsSource="{Binding UploadFileList}" AutoGenerateColumns="False" CanUserAddRows="False" x:Name="uploaddg">
             <DataGrid.Columns>
                 <DataGridTemplateColumn >
                     <DataGridTemplateColumn.Header>
-                        <CheckBox Name="cbxheader"  >
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <i:InvokeCommandAction Command="{Binding DataContext.CheckBoxClickCommand,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl} }" CommandParameter="{Binding ElementName=cbxheader,Path=IsChecked}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </CheckBox>
+                        <CheckBox IsChecked="{Binding DataContext.IsSelectedAll,ElementName=uploaddg}"  Click="CheckBox_Click" />
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox  IsChecked="{Binding IsSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox  IsChecked="{Binding IsSelected,Mode=TwoWay}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

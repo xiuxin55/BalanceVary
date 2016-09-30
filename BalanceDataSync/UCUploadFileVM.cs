@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using Utility;
 
 namespace BalanceDataSync
 {
@@ -18,7 +19,7 @@ namespace BalanceDataSync
         {
             HandleFileCommand = new DelegateCommand(HandleFileExecute);
             DeleteFileCommand = new DelegateCommand(DeleteFileExecute);
-            CheckBoxClickCommand = new DelegateCommand<object>(CheckBoxClickExecute);
+    
             SearchCommand = new DelegateCommand(SearchExecute);
             SearchExecute();
         }
@@ -67,7 +68,7 @@ namespace BalanceDataSync
         #region 命令
         public DelegateCommand HandleFileCommand { get; set; }
         public DelegateCommand DeleteFileCommand { get; set; }
-        public DelegateCommand<object> CheckBoxClickCommand { get; set; }
+
         public DelegateCommand SearchCommand { get; set; }
         #endregion
         //#region 命令执行方法
@@ -78,10 +79,13 @@ namespace BalanceDataSync
         {
             try
             {
-                foreach (var item in UploadFileList)
+                if (UploadFileList==null || UploadFileList.Count==0)
                 {
-                    
+                    return;
                 }
+                SyncDataHandler syn = new SyncDataHandler(UploadFileList.Where(e => e.IsSelected).ToList());
+                //MultiTask.TaskDispatcherWithUI(new Action(syn.ImportDayData),null,null ,null);
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), null, null, null);
             }
             catch (Exception ex)
             {
@@ -100,9 +104,10 @@ namespace BalanceDataSync
                 {
                     if (item.IsSelected)
                     {
-                        bll.Equals(item);
+                        bll.Delete(item);
                     }
                 }
+                SearchExecute();
             }
             catch (Exception ex)
             {
@@ -119,15 +124,16 @@ namespace BalanceDataSync
             set
             {
                 _isSelectedAll = value;
+                CheckBoxClickExecute(value);
                 this.RaisePropertyChanged("IsSelectedAll");
             }
         }
-        private void CheckBoxClickExecute(object obj)
+        private void CheckBoxClickExecute(bool  obj)
         {
 
             foreach (var item in UploadFileList)
             {
-                item.IsSelected = obj == null ? false : (bool)obj;
+                item.IsSelected = obj;
             }
         }
         private void SearchExecute()

@@ -2,16 +2,21 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:HostApp"
-         xmlns:datasync="clr-namespace:BalanceDataSync;assembly=BalanceDataSync"
+        xmlns:datasync="clr-namespace:BalanceDataSync;assembly=BalanceDataSync"
         Title="MainWindow" Height="650" Width="825">
     <Grid>
-        <TabControl >
+
+        <TabControl  >
             <TabItem Header="服务管理">
-                <local:UCHostManage/>
+                <Grid>
+                    <local:UCHostManage/>
+                </Grid>
             </TabItem>
 
             <TabItem Header="数据导入管理">
-                <datasync:UCUploadFile/>
+                <Grid>
+                    <datasync:UCUploadFile/>
+                </Grid>
             </TabItem>
         </TabControl>
         

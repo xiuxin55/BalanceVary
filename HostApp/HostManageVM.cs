@@ -21,7 +21,6 @@ namespace HostApp
         {
             StartServiceCommand = new DelegateCommand(StartServiceExecute);
             StopServiceCommand = new DelegateCommand(StopServiceExecute);
-            CheckBoxClickCommand = new DelegateCommand<object>(CheckBoxClickExecute);
             try
             {
                 ServiceList = new ObservableCollection<ServiceModel>(AppConfigManager.GetServiceList());
@@ -78,7 +77,6 @@ namespace HostApp
         #region 命令
         public DelegateCommand StartServiceCommand { get; set; }
         public DelegateCommand StopServiceCommand { get; set; }
-        public DelegateCommand<object> CheckBoxClickCommand { get; set; }
         public DelegateCommand SearchWebsiteCommand { get; set; }
         #endregion
         //#region 命令执行方法
@@ -125,12 +123,26 @@ namespace HostApp
                 LogHelper.WriteLog(typeof(HostManageVM), ex);
             }
         }
-        private void CheckBoxClickExecute(object  obj)
+        private bool _isSelectedAll;
+        public bool IsSelectedAll
+        {
+            get
+            {
+                return _isSelectedAll;
+            }
+            set
+            {
+                _isSelectedAll = value;
+                CheckBoxClickExecute(value);
+                this.RaisePropertyChanged("IsSelectedAll");
+            }
+        }
+        private void CheckBoxClickExecute(bool  obj)
         {
             
             foreach (var item in ServiceList)
             {
-                item.IsSelected = obj == null ? false:(bool)obj ;
+                item.IsSelected = obj ;
             }
         }
         //private void SearchWebsiteExecute()

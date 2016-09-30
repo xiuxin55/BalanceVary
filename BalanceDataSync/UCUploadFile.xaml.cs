@@ -22,7 +22,15 @@ namespace BalanceDataSync
         public UCUploadFile()
         {
             InitializeComponent();
-            this.DataContext = new UCUploadFileVM();
+            VM  = new UCUploadFileVM();
+            this.DataContext = VM;
+        }
+        public UCUploadFileVM VM { get; set; }
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+
+            CheckBox cb = sender as CheckBox;
+            VM.IsSelectedAll = cb.IsChecked==null? false:cb.IsChecked.Value;
         }
     }
 }

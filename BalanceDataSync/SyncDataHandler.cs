@@ -10,8 +10,13 @@ namespace BalanceDataSync
 {
     public class SyncDataHandler : ISyncDataHandler
     {
+
         List<ImportDataInfo> ImportDataList = new List<ImportDataInfo>();
         List<UploadFileInfo> UploadFileInfoList = new List<UploadFileInfo>();
+        public SyncDataHandler(List<UploadFileInfo> uploadFileInfoList)
+        {
+            this.UploadFileInfoList = uploadFileInfoList;
+        }
         /// <summary>
         /// 导入日数据
         /// </summary>
@@ -33,7 +38,11 @@ namespace BalanceDataSync
             IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.ToLower().Contains("month"));
             foreach (var item in filelist)
             {
-                ReadExcel.ReadMonthData(item.FilePath + item.FileName, item.FileDateTime.Value);
+                ImportDataList=ReadExcel.ReadMonthData(item.FilePath + item.FileName, item.FileDateTime.Value);
+                if (ImportDataList == null || ImportDataList.Count == 0)
+                {
+                    return;
+                }
                 CalculateData();
             }
         }
@@ -43,10 +52,10 @@ namespace BalanceDataSync
             ABCalculateBalance cw = new CalculateWebsite(ImportDataList);
             ABCalculateBalance cc = new CalculateCompany(ImportDataList);
             ABCalculateBalance ca = new CalculateAccount(ImportDataList);
-            ca.Caculate();
-            cw.Caculate();
             cz.Caculate();
+            cw.Caculate();
             cc.Caculate();
+            ca.Caculate();
         }
     }
 }

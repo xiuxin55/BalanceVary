@@ -24,5 +24,7 @@ namespace HostApp
             InitializeComponent();
             this.DataContext = new HostManageVM();
         }
+
+       
     }
 }

@@ -1,4 +1,5 @@
-﻿using BalanceModel;
+﻿using BalanceBLL;
+using BalanceModel;
 using Common.Server;
 using System;
 using System.Collections.Generic;
@@ -29,26 +30,30 @@ namespace BalanceDataSync
         public override void Caculate()
         {
             base.Caculate();
-            for (int i = 0; i < (MaxTime.Day - MinTime.Day); i++)
+            WebsiteInfoBLL bll = new WebsiteInfoBLL();
+            WebsiteList = bll.Select(null);
+            for (int i = 0; i <= (MaxTime.Day - MinTime.Day); i++)
             {
-                WebsiteBalance wb = new WebsiteBalance();
-                wb.BalanceTime = MinTime.AddDays(i);
                 foreach (var item in WebsiteList)
                 {
+                    WebsiteBalance wb = new WebsiteBalance();
+                    wb.BalanceTime = MinTime.AddDays(i);
                     List<WebsiteBalance> temp;
-                    WebsiteBalanceVary.TryGetValue(item.ID, out temp);
+                    WebsiteBalanceVary.TryGetValue(item.WebsiteID, out temp);
                     if (temp == null)
                     {
-                        WebsiteBalanceVary[item.ID] = new List<WebsiteBalance>();
+                        WebsiteBalanceVary[item.WebsiteID] = new List<WebsiteBalance>();
                     }
-                    WebsiteBalanceVary[item.ID].Add(wb);
+                    wb.WebsiteID = item.WebsiteID;
+                   WebsiteBalanceVary[item.WebsiteID].Add(wb);
                 }
             }
+           
             foreach (var item in ImportDataList)
             {
-                var site = WebsiteList.Find(e => e.ID == item.WebsiteID);
+                var site = WebsiteList.Find(e => e.WebsiteID == item.WebsiteID);
                 List<WebsiteBalance> wblist;
-                WebsiteBalanceVary.TryGetValue(item.ID, out wblist);
+                WebsiteBalanceVary.TryGetValue(item.WebsiteID, out wblist);
                 if (wblist == null) { return; }
                 WebsiteBalance wb = wblist.Find(e => e.BalanceTime == item.DataTime);
                 if (item.AccountType == CommonDataServer.AccountTypeRegular)

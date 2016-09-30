@@ -1,4 +1,5 @@
-﻿using BalanceModel;
+﻿using BalanceBLL;
+using BalanceModel;
 using Common.Server;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace BalanceDataSync
 
         public CalculateZone(List<ImportDataInfo> importDataList) : base(importDataList)
         {
+
         }
 
         /// <summary>
@@ -33,7 +35,7 @@ namespace BalanceDataSync
         public override  void Caculate()
         {
             base.Caculate();
-            for (int i = 0; i < (MaxTime.Day- MinTime.Day); i++)
+            for (int i = 0; i <= (MaxTime.Day- MinTime.Day); i++)
             {
                 ZoneBalance zb = new ZoneBalance();
                 zb.BalanceTime = MinTime.AddDays(i);
@@ -42,9 +44,12 @@ namespace BalanceDataSync
                 zb.BalanceTime = MinTime.AddDays(i);
                 CountyZoneBalanceVary.Add(zb2);
             }
+            WebsiteInfoBLL bll = new WebsiteInfoBLL();
+            WebsiteList= bll.Select(null);
             foreach (var item in ImportDataList)
             {
-                var site = WebsiteList.Find(e => e.ID == item.WebsiteID);
+                var site = WebsiteList.Find(e => e.WebsiteID == item.WebsiteID);
+                if (site == null) { return; }
                 ZoneBalance zb = null;
                 if (site!=null && site.Institution== CommonDataServer.CityZoneCode)
                 {

@@ -26,9 +26,6 @@ namespace HostApp
             InitializeComponent();
         }
 
-        private void cbxheader_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
     }
 }

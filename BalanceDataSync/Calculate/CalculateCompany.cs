@@ -31,7 +31,7 @@ namespace BalanceDataSync
                     CompanyBalanceVary.Add(item.AccountName, new List<CompanyBalance>());
                 }
             }
-            for (int i = 0; i < (MaxTime.Day - MinTime.Day); i++)
+            for (int i = 0; i <= (MaxTime.Day - MinTime.Day); i++)
             {
                 CompanyBalance cb = new CompanyBalance();
                 cb.BalanceTime = MinTime.AddDays(i);
