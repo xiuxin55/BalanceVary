@@ -13,7 +13,6 @@ namespace BalanceDataSync
         /// 账户变动结果
         /// </summary>
         public List<AccountBalance> AccountBalanceVary = new List<AccountBalance>();
-
         public CalculateAccount(List<ImportDataInfo> importDataList) : base(importDataList)
         {
         }
@@ -48,7 +47,6 @@ namespace BalanceDataSync
                 AccountBalanceVary.Add(ab);
             }
         }
-
         public override void ClearData()
         {
             AccountBalanceVary.Clear();
