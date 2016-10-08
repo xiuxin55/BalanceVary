@@ -86,6 +86,7 @@ namespace BalanceDataSync
                         CompanyBalance pre = cblist[index - 1];
                         item.RegularMoneyVary = item.RegularMoney - pre.RegularMoney;
                         item.UnRegularMoneyVary = item.UnRegularMoney - pre.UnRegularMoney;
+                        item.AmountMoneyVary= item.AmountMoney - pre.AmountMoney;
                     }
                 }
             }
@@ -96,9 +97,9 @@ namespace BalanceDataSync
             foreach (var item in preList)
             {
                 CompanyBalance firstwb = CompanyBalanceVary[item.CompanyName + "+" + item.WebsiteID][0];
-                firstwb.RegularMoneyVary = firstwb.RegularMoneyVary - item.RegularMoneyVary;
-                firstwb.UnRegularMoneyVary = firstwb.UnRegularMoneyVary - item.UnRegularMoneyVary;
-                firstwb.AmountMoneyVary = firstwb.AmountMoneyVary - item.AmountMoneyVary;
+                firstwb.RegularMoneyVary = firstwb.RegularMoney - item.RegularMoney;
+                firstwb.UnRegularMoneyVary = firstwb.UnRegularMoney - item.UnRegularMoney;
+                firstwb.AmountMoneyVary = firstwb.AmountMoney - item.AmountMoney;
                 firstwb.Rate = firstwb.UnRegularMoney == 0 ? "0" : (firstwb.RegularMoney / firstwb.UnRegularMoney) * 100 + "%";
             }
             List<CompanyBalance> insertResult = new List<CompanyBalance>();

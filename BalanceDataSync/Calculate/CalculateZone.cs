@@ -91,6 +91,7 @@ namespace BalanceDataSync
                     ZoneBalance pre = CityZoneBalanceVary[index - 1];
                     item.RegularMoneyVary = item.RegularMoney - pre.RegularMoney;
                     item.UnRegularMoneyVary = item.UnRegularMoney - pre.UnRegularMoney;
+                    item.AmountMoneyVary = item.AmountMoney - pre.AmountMoney;
                 }
             }
             //计算县行余额变动
@@ -110,11 +111,10 @@ namespace BalanceDataSync
             List<ZoneBalance> preDayList = bllzone.Select(s);
             foreach (var item in preDayList)
             {
-                ZoneBalance prezb = preDayList.Find(e => e.ZoneType == item.ZoneType);
                 ZoneBalance firstzb = item.ZoneType=="市行"? CityZoneBalanceVary[0]:CountyZoneBalanceVary[0];
-                firstzb.RegularMoneyVary = firstzb.RegularMoneyVary - prezb.RegularMoneyVary;
-                firstzb.UnRegularMoneyVary = firstzb.UnRegularMoneyVary - prezb.UnRegularMoneyVary;
-                firstzb.AmountMoneyVary = firstzb.AmountMoneyVary - prezb.AmountMoneyVary;
+                firstzb.RegularMoneyVary = firstzb.RegularMoney - item.RegularMoney;
+                firstzb.UnRegularMoneyVary = firstzb.UnRegularMoney - item.UnRegularMoney;
+                firstzb.AmountMoneyVary = firstzb.AmountMoney - item.AmountMoney;
                 firstzb.Rate = firstzb.UnRegularMoney == 0 ? "0" : (firstzb.RegularMoney / firstzb.UnRegularMoney) * 100 + "%";
             }
             List<ZoneBalance> temp = new List<ZoneBalance>();
