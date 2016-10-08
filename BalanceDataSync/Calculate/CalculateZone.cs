@@ -38,14 +38,19 @@ namespace BalanceDataSync
             for (int i = 0; i <= (MaxTime.Day- MinTime.Day); i++)
             {
                 ZoneBalance zb = new ZoneBalance();
+                zb.ID = Guid.NewGuid().ToString();
                 zb.BalanceTime = MinTime.AddDays(i);
+                zb.ZoneType = "市行";
                 CityZoneBalanceVary.Add(zb);
+
                 ZoneBalance zb2 = new ZoneBalance();
-                zb.BalanceTime = MinTime.AddDays(i);
+                zb2.ID = Guid.NewGuid().ToString();
+                zb2.BalanceTime = MinTime.AddDays(i);
+                zb2.ZoneType = "县行";
                 CountyZoneBalanceVary.Add(zb2);
             }
-            WebsiteInfoBLL bll = new WebsiteInfoBLL();
-            WebsiteList= bll.Select(null);
+            WebsiteInfoBLL bllwb = new WebsiteInfoBLL();
+            WebsiteList= bllwb.Select(null);
             foreach (var item in ImportDataList)
             {
                 var site = WebsiteList.Find(e => e.WebsiteID == item.WebsiteID);
@@ -99,6 +104,23 @@ namespace BalanceDataSync
                     item.UnRegularMoneyVary = item.UnRegularMoney - pre.UnRegularMoney;
                 }
             }
+            ZoneBalanceBLL bllzone = new ZoneBalanceBLL();
+            ZoneBalance s = new ZoneBalance();
+            s.BalanceTime = MinTime.AddDays(-1);
+            List<ZoneBalance> preDayList = bllzone.Select(s);
+            foreach (var item in preDayList)
+            {
+                ZoneBalance prezb = preDayList.Find(e => e.ZoneType == item.ZoneType);
+                ZoneBalance firstzb = item.ZoneType=="市行"? CityZoneBalanceVary[0]:CountyZoneBalanceVary[0];
+                firstzb.RegularMoneyVary = firstzb.RegularMoneyVary - prezb.RegularMoneyVary;
+                firstzb.UnRegularMoneyVary = firstzb.UnRegularMoneyVary - prezb.UnRegularMoneyVary;
+                firstzb.AmountMoneyVary = firstzb.AmountMoneyVary - prezb.AmountMoneyVary;
+                firstzb.Rate = firstzb.UnRegularMoney == 0 ? "0" : (firstzb.RegularMoney / firstzb.UnRegularMoney) * 100 + "%";
+            }
+            List<ZoneBalance> temp = new List<ZoneBalance>();
+            temp.AddRange(CityZoneBalanceVary);
+            temp.AddRange(CountyZoneBalanceVary);
+            bllzone.BatchInsert(temp);
         }
 
         public override void ClearData()

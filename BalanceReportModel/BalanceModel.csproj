@@ -59,11 +59,11 @@
   <ItemGroup>
     <Compile Include="AccountInfo.cs" />
     <Compile Include="BalanceInfo.cs" />
-    <Compile Include="BalanceModel\BalanceModel.cs" />
-    <Compile Include="BalanceModel\AccountBalance.cs" />
-    <Compile Include="BalanceModel\CompanyBalance.cs" />
-    <Compile Include="BalanceModel\WebsiteBalance.cs" />
-    <Compile Include="BalanceModel\ZoneBalance.cs" />
+    <Compile Include="BalanceVaryModel\BalanceModel.cs" />
+    <Compile Include="BalanceVaryModel\AccountBalance.cs" />
+    <Compile Include="BalanceVaryModel\CompanyBalance.cs" />
+    <Compile Include="BalanceVaryModel\WebsiteBalance.cs" />
+    <Compile Include="BalanceVaryModel\ZoneBalance.cs" />
     <Compile Include="BalanceVaryInfo.cs" />
     <Compile Include="BaseModel.cs" />
     <Compile Include="CustomFileInfo.cs" />

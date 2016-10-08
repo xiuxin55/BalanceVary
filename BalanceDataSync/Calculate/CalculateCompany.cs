@@ -1,4 +1,5 @@
-﻿using BalanceModel;
+﻿using BalanceBLL;
+using BalanceModel;
 using Common.Server;
 using System;
 using System.Collections.Generic;
@@ -20,32 +21,44 @@ namespace BalanceDataSync
         }
 
         /// <summary>
-        /// 计算账户余额变动
+        /// 计算公司余额变动
         /// </summary>
         public override void Caculate()
         {
             base.Caculate();
             foreach (var item in ImportDataList)
             {
-                if (!CompanyBalanceVary.Keys.Contains(item.AccountName))
+                if (!CompanyBalanceVary.Keys.Contains(item.AccountName + "+" + item.WebsiteID))
                 {
-                    CompanyBalanceVary.Add(item.AccountName, new List<CompanyBalance>());
+                    CompanyBalanceVary.Add(item.AccountName+"+"+item.WebsiteID, new List<CompanyBalance>());
                 }
             }
             for (int i = 0; i <= (MaxTime.Day - MinTime.Day); i++)
             {
-                CompanyBalance cb = new CompanyBalance();
-                cb.BalanceTime = MinTime.AddDays(i);
+               
                 foreach (var item in CompanyBalanceVary.Keys)
                 {
+                    CompanyBalance cb = new CompanyBalance();
+                    cb.BalanceTime = MinTime.AddDays(i);
+                    cb.ID = Guid.NewGuid().ToString();
+                    cb.CompanyName = item.Split('+')[0];
+                    cb.WebsiteID = item.Split('+')[1];
                     CompanyBalanceVary[item].Add(cb);
                 }
             }
             foreach (var item in ImportDataList)
             {
 
-                List<CompanyBalance> list=CompanyBalanceVary[item.AccountName];
+                List<CompanyBalance> list=CompanyBalanceVary[item.AccountName + "+" + item.WebsiteID];
                 CompanyBalance cb = list.Find(e => e.BalanceTime == item.DataTime);
+                if(cb!=null)
+                {
+                   
+                }
+                else
+                {
+                    continue;
+                }
                 if (item.AccountType == CommonDataServer.AccountTypeRegular)
                 {
                     //定期
@@ -76,6 +89,24 @@ namespace BalanceDataSync
                     }
                 }
             }
+            CompanyBalanceBLL cbbll = new CompanyBalanceBLL();
+            CompanyBalance cbs = new CompanyBalance();
+            cbs.BalanceTime = MinTime.AddDays(-1);
+            List<CompanyBalance> preList = cbbll.Select(cbs);
+            foreach (var item in preList)
+            {
+                CompanyBalance firstwb = CompanyBalanceVary[item.CompanyName + "+" + item.WebsiteID][0];
+                firstwb.RegularMoneyVary = firstwb.RegularMoneyVary - item.RegularMoneyVary;
+                firstwb.UnRegularMoneyVary = firstwb.UnRegularMoneyVary - item.UnRegularMoneyVary;
+                firstwb.AmountMoneyVary = firstwb.AmountMoneyVary - item.AmountMoneyVary;
+                firstwb.Rate = firstwb.UnRegularMoney == 0 ? "0" : (firstwb.RegularMoney / firstwb.UnRegularMoney) * 100 + "%";
+            }
+            List<CompanyBalance> insertResult = new List<CompanyBalance>();
+            foreach (var item in CompanyBalanceVary.Values)
+            {
+                insertResult.AddRange(item);
+            }
+            cbbll.BatchInsert(insertResult);
         }
 
         public override void ClearData()

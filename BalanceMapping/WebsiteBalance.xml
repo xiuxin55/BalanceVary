@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="WebsiteBalance" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <alias>
+    <typeAlias alias="WebsiteBalance" type="BalanceModel.WebsiteBalance,BalanceModel" />
+  </alias>
+  <resultMaps>
+    <resultMap id="WebsiteBalanceMap" class="WebsiteBalance">
+      <result property="RowNumber" column="RowNumber"/>
+      <result property="ID" column="ID"/>
+      <result property="WebsiteID" column="WebsiteID"/>
+      <result property="ZoneType" column="ZoneType"/>
+      <result property="RegularMoney" column="RegularMoney"/>
+      <result property="UnRegularMoney" column="UnRegularMoney"/>
+      <result property="AmountMoney" column="AmountMoney"/>
+      <result property="RegularMoneyVary" column="RegularMoneyVary"/>
+      <result property="UnRegularMoneyVary" column="UnRegularMoneyVary"/>
+      <result property="AmountMoneyVary" column="AmountMoneyVary"/>
+      <result property="Rate" column="Rate"/>
+      <result property="BalanceTime" column="BalanceTime"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <select id="SelectWebsiteBalance"  resultMap="WebsiteBalanceMap"  parameterClass="WebsiteBalance">
+      select row_number() over(order by BalanceTime desc) as RowNumber,*  from WebsiteBalanceVary where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ZoneType">ZoneType=#ZoneType#</isNotEmpty>
+          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
+    <insert id="BatchInsertWebsiteBalance" parameterClass="ArrayList">
+      insert WebsiteBalanceVary(ID,WebsiteID,ZoneType,RegularMoney,UnRegularMoney,AmountMoney,RegularMoneyVary,UnRegularMoneyVary,AmountMoneyVary,Rate ,BalanceTime)
+      values
+      <iterate conjunction=",">
+        ( #[].ID#,
+        #[].WebsiteID#,
+        #[].ZoneType#,
+        #[].RegularMoney#,
+        #[].UnRegularMoney#,
+        #[].AmountMoney#,
+        #[].RegularMoneyVary#,
+        #[].UnRegularMoneyVary#,
+        #[].AmountMoneyVary#,
+        #[].Rate#,
+        #[].BalanceTime#
+        )
+      </iterate>
+    </insert>
+
+    <delete id="BatchDeleteWebsiteBalance" parameterClass="ArrayList">
+      DELETE FROM WebsiteBalanceVary WHERE
+      BalanceTime IN
+      (
+      <iterate conjunction=",">
+        #[].BalanceTime#
+      </iterate> 
+      )
+    </delete>
+  </statements>
+</sqlMap>

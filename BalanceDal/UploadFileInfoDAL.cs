@@ -13,6 +13,22 @@ namespace BalanceDAL
         {
             DefaultKey = "UploadFileInfo";
         }
-      
+        public void BatchUpdate(List<UploadFileInfo> list)
+        {
+            try
+            {
+                SqlMap.BeginTransaction();
+                foreach (var item in list)
+                {
+                    Update(item);
+                }
+                SqlMap.CommitTransaction();
+            }
+            catch (Exception)
+            {
+                SqlMap.RollBackTransaction();
+            }
+            
+        }
     }
 }

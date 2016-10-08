@@ -51,7 +51,16 @@
     <EmbeddedResource Include="AccountInfo.xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ZoneBalance.xml" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="UploadFileInfo.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebsiteBalance.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CompanyBalance.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

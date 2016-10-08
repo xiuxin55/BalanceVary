@@ -18,7 +18,10 @@ namespace Utility
                     if (ar == null) return;
                     Action ac = ar.AsyncState as Action;
                     ac.EndInvoke(ar);
-                    dispatcher.Invoke(complete, param);
+                    if (complete!=null)
+                    {
+                        dispatcher.Invoke(complete, param);
+                    }
                 }
                 ), doWork);
         }

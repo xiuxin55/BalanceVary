@@ -54,6 +54,9 @@
     <Compile Include="AccountInfoDAL.cs" />
     <Compile Include="ImportDataDAL.cs" />
     <Compile Include="UploadFileInfoDAL.cs" />
+    <Compile Include="Vary\CompanyBalanceDAL.cs" />
+    <Compile Include="Vary\WebsiteBalanceDAL.cs" />
+    <Compile Include="Vary\ZoneBalanceDAL.cs" />
     <Compile Include="WebsiteInfoDAL.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -44,8 +44,10 @@ namespace BalanceDataSync
                     {
                         WebsiteBalanceVary[item.WebsiteID] = new List<WebsiteBalance>();
                     }
+                    wb.ID = Guid.NewGuid().ToString();
                     wb.WebsiteID = item.WebsiteID;
-                   WebsiteBalanceVary[item.WebsiteID].Add(wb);
+                    wb.ZoneType = item.Institution;
+                    WebsiteBalanceVary[item.WebsiteID].Add(wb);
                 }
             }
            
@@ -87,6 +89,24 @@ namespace BalanceDataSync
                     }
                 }
             }
+             WebsiteBalanceBLL wbbll = new WebsiteBalanceBLL();
+            WebsiteBalance w = new WebsiteBalance();
+            w.BalanceTime = MinTime.AddDays(-1);
+            List<WebsiteBalance> preList= wbbll.Select(w);
+            foreach (var item in preList)
+            {
+                WebsiteBalance firstwb = WebsiteBalanceVary[item.WebsiteID][0];
+                firstwb.RegularMoneyVary = firstwb.RegularMoneyVary - item.RegularMoneyVary;
+                firstwb.UnRegularMoneyVary = firstwb.UnRegularMoneyVary - item.UnRegularMoneyVary;
+                firstwb.AmountMoneyVary = firstwb.AmountMoneyVary - item.AmountMoneyVary;
+                firstwb.Rate = firstwb.UnRegularMoney == 0 ? "0" : (firstwb.RegularMoney / firstwb.UnRegularMoney) * 100 + "%";
+            }
+            List<WebsiteBalance> insertResult = new List<WebsiteBalance>();
+            foreach (var item in WebsiteBalanceVary.Values)
+            {
+                insertResult.AddRange(item);
+            }
+            wbbll.BatchInsert(insertResult);
         }
 
         public override void ClearData()

@@ -86,8 +86,7 @@ namespace BalanceDataSync
                     return;
                 }
                 SyncDataHandler syn = new SyncDataHandler(UploadFileList.Where(e => e.IsSelected).ToList());
-                //MultiTask.TaskDispatcherWithUI(new Action(syn.ImportDayData),null,null ,null);
-                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), null, null, null);
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), this.SynComplete, UploadFileList, Application.Current.MainWindow.Dispatcher);
             }
             catch (Exception ex)
             {
@@ -160,5 +159,13 @@ namespace BalanceDataSync
         //#region 内部方法
 
         //#endregion
+        /// <summary>
+        /// 同步数据完成
+        /// </summary>
+        public void SynComplete(object obj)
+        {
+            ObservableCollection<UploadFileInfo> ufiList = obj as ObservableCollection<UploadFileInfo>;
+            bll.BatchUpdate(ufiList.ToList());
+        }
     }
 }

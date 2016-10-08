@@ -9,6 +9,9 @@ namespace BalanceBLL
 {
     public class UploadFileInfoBLL : BalanceBaseBLL<UploadFileInfo, UploadFileInfoDAL>
     {
-
+        public void BatchUpdate(List<UploadFileInfo> list)
+        {
+            dal.BatchUpdate(list);
+        }
     }
 }

@@ -7,6 +7,9 @@ namespace BalanceModel
 {
     public class ZoneBalance:BalanceBaseModel 
     {
-
+        /// <summary>
+        /// 网点类型县行还是市行
+        /// </summary>
+        public string ZoneType { get; set; }
     }
 }

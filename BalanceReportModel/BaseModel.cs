@@ -8,6 +8,7 @@ namespace BalanceModel
 {
     public class BaseModel: INotifyPropertyChanged
     {
+   
         public int RowNumber { get; set; }
         /// <summary>
         /// 本页第一条索引

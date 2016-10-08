@@ -7,6 +7,7 @@ namespace BalanceModel
 {
     public class BalanceBaseModel: BaseModel
     {
+        public string ID { get; set; }
         /// <summary>
         /// 定期余额
         /// </summary>

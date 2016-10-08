@@ -38,12 +38,22 @@ namespace BalanceDataSync
             IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.ToLower().Contains("month"));
             foreach (var item in filelist)
             {
-                ImportDataList=ReadExcel.ReadMonthData(item.FilePath + item.FileName, item.FileDateTime.Value);
-                if (ImportDataList == null || ImportDataList.Count == 0)
+                try
                 {
-                    return;
+                    ImportDataList = ReadExcel.ReadMonthData(item.FilePath + item.FileName, item.FileDateTime.Value);
+                    if (ImportDataList == null || ImportDataList.Count == 0)
+                    {
+                        return;
+                    }
+                    CalculateData();
+                    item.FileState = 1;
                 }
-                CalculateData();
+                catch (Exception ex)
+                {
+
+                    item.FileState = 2;
+                    item.FileException = ex.Message + ":\n" + ex.StackTrace;
+                }
             }
         }
         private void CalculateData()
@@ -55,7 +65,7 @@ namespace BalanceDataSync
             cz.Caculate();
             cw.Caculate();
             ca.Caculate();
-          //cc.Caculate();
+            cc.Caculate();
           
         }
     }

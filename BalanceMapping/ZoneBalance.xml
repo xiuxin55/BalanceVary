@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="ZoneBalance" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <alias>
+    <typeAlias alias="ZoneBalance" type="BalanceModel.ZoneBalance,BalanceModel" />
+  </alias>
+  <resultMaps>
+    <resultMap id="ZoneBalanceMap" class="ZoneBalance">
+      <result property="RowNumber" column="RowNumber"/>
+      <result property="ID" column="ID"/>
+      <result property="ZoneType" column="ZoneType"/>
+      <result property="RegularMoney" column="RegularMoney"/>
+      <result property="UnRegularMoney" column="UnRegularMoney"/>
+      <result property="AmountMoney" column="AmountMoney"/>
+      <result property="RegularMoneyVary" column="RegularMoneyVary"/>
+      <result property="UnRegularMoneyVary" column="UnRegularMoneyVary"/>
+      <result property="AmountMoneyVary" column="AmountMoneyVary"/>
+      <result property="Rate" column="Rate"/>
+      <result property="BalanceTime" column="BalanceTime"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <select id="SelectZoneBalance"  resultMap="ZoneBalanceMap"  parameterClass="ZoneBalance">
+      select row_number() over(order by BalanceTime desc) as RowNumber,*  from ZoneBalanceVary where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ZoneType">ZoneType=#ZoneType#</isNotEmpty>
+          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
+    <insert id="BatchInsertZoneBalance" parameterClass="ArrayList">
+      insert ZoneBalanceVary(ID,ZoneType,RegularMoney,UnRegularMoney,AmountMoney,RegularMoneyVary,UnRegularMoneyVary,AmountMoneyVary,Rate ,BalanceTime)
+      values
+      <iterate conjunction=",">
+        ( #[].ID#,
+        #[].ZoneType#,
+        #[].RegularMoney#,
+        #[].UnRegularMoney#,
+        #[].AmountMoney#,
+        #[].RegularMoneyVary#,
+        #[].UnRegularMoneyVary#,
+        #[].AmountMoneyVary#,
+        #[].Rate#,
+        #[].BalanceTime#
+        )
+      </iterate>
+    </insert>
+
+    <delete id="BatchDeleteZoneBalance" parameterClass="ArrayList">
+      DELETE FROM ZoneBalanceVary WHERE
+      BalanceTime IN
+      (
+      <iterate conjunction=",">
+        #[].BalanceTime#
+      </iterate> 
+      )
+    </delete>
+  </statements>
+</sqlMap>
