@@ -64,8 +64,8 @@ namespace BalanceDataSync
             ABCalculateBalance ca = new CalculateAccount(ImportDataList);
             cz.Caculate();
             cw.Caculate();
-            ca.Caculate();
             cc.Caculate();
+         //   ca.Caculate();
           
         }
     }

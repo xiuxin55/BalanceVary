@@ -114,13 +114,17 @@ namespace BalanceDataSync
                 for (int j = 2; j < dt.Rows.Count; j++)
                 {
                     DataRow item = dt.Rows[j];
+                    if (string.IsNullOrWhiteSpace(item[0].ToString()))
+                    {
+                        continue;
+                    }
                     for (int i = 0; i < days; i++)
                     {
                         ImportDataInfo dm = new ImportDataInfo();
                         dm.ID = Guid.NewGuid().ToString();
                         dm.WebsiteID = item[0].ToString().Trim();
                         dm.CustomerNumber = item[3].ToString().Trim();
-                        dm.AccountName = item[4].ToString().Trim();
+                        dm.AccountName = item[2].ToString().Trim();
                         dm.AccountID = item[5].ToString().Trim();
                         dm.SubAccountNumber = item[6].ToString().Trim();
                         dm.AccountType = item[7].ToString().Trim().Contains("活期") ? 1 : 0;

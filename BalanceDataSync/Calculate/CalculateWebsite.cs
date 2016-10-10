@@ -32,6 +32,8 @@ namespace BalanceDataSync
             base.Caculate();
             WebsiteInfoBLL bll = new WebsiteInfoBLL();
             WebsiteList = bll.Select(null);
+
+            List<DateTime> ImportTimeList = new List<DateTime>();
             for (int i = 0; i <= (MaxTime.Day - MinTime.Day); i++)
             {
                 foreach (var item in WebsiteList)
@@ -49,6 +51,7 @@ namespace BalanceDataSync
                     wb.ZoneType = item.Institution;
                     WebsiteBalanceVary[item.WebsiteID].Add(wb);
                 }
+                ImportTimeList.Add(MinTime.AddDays(i));
             }
            
             foreach (var item in ImportDataList)
@@ -56,7 +59,7 @@ namespace BalanceDataSync
                 var site = WebsiteList.Find(e => e.WebsiteID == item.WebsiteID);
                 List<WebsiteBalance> wblist;
                 WebsiteBalanceVary.TryGetValue(item.WebsiteID, out wblist);
-                if (wblist == null) { return; }
+                if (wblist == null) { continue; }
                 WebsiteBalance wb = wblist.Find(e => e.BalanceTime == item.DataTime);
                 if (item.AccountType == CommonDataServer.AccountTypeRegular)
                 {
@@ -70,7 +73,7 @@ namespace BalanceDataSync
                 }
                 if (wb != null)
                 {
-                    wb.Rate = wb.UnRegularMoney == 0 ? "0" : (wb.RegularMoney / wb.UnRegularMoney) * 100 + "%";
+                    wb.Rate = wb.UnRegularMoney == 0 ? "0" : ((wb.RegularMoney / wb.UnRegularMoney) * 100).ToString("f2") + "%";
                     wb.AmountMoney = wb.AmountMoney + item.CurrentBalance;
                 }
             }
@@ -100,14 +103,15 @@ namespace BalanceDataSync
                 firstwb.RegularMoneyVary = firstwb.RegularMoney - item.RegularMoney;
                 firstwb.UnRegularMoneyVary = firstwb.UnRegularMoney - item.UnRegularMoney;
                 firstwb.AmountMoneyVary = firstwb.AmountMoney -item.AmountMoney ;
-                firstwb.Rate = firstwb.UnRegularMoney == 0 ? "0" : (firstwb.RegularMoney / firstwb.UnRegularMoney) * 100 + "%";
-            }
+                firstwb.Rate = firstwb.UnRegularMoney == 0 ? "0" : ((firstwb.RegularMoney / firstwb.UnRegularMoney) * 100).ToString("f2") + "%";
+                }
             List<WebsiteBalance> insertResult = new List<WebsiteBalance>();
             foreach (var item in WebsiteBalanceVary.Values)
             {
                 insertResult.AddRange(item);
             }
-            wbbll.BatchInsert(insertResult);
+            wbbll.BatchInsert(insertResult,ImportTimeList);
+
         }
 
         public override void ClearData()

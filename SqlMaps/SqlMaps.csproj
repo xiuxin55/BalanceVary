@@ -64,6 +64,7 @@
     <Compile Include="BaseBatis.cs" />
     <Compile Include="CommonData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLServerDB\SQLServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Config\Configure.csproj">

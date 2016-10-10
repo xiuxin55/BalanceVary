@@ -23,6 +23,7 @@ namespace BalanceDataSync
         public override void Caculate()
         {
             base.Caculate();
+            List<DateTime> ImportTimeList = new List<DateTime>();
             foreach (var item in ImportDataList)
             {
                 ImportDataInfo import = ImportDataList.Find(e => e.AccountID == item.AccountID && e.SubAccountNumber == item.SubAccountNumber&&e.DataTime==item.DataTime.AddDays(-1));
@@ -45,6 +46,10 @@ namespace BalanceDataSync
                     ab.UnRegularMoneyVary = item.CurrentBalance - import.CurrentBalance;
                 }
                 AccountBalanceVary.Add(ab);
+                if (!ImportTimeList.Contains(item.DataTime))
+                {
+                    ImportTimeList.Add(item.DataTime);
+                }
             }
         }
         public override void ClearData()

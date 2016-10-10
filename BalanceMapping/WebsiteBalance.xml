@@ -58,7 +58,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       BalanceTime IN
       (
       <iterate conjunction=",">
-        #[].BalanceTime#
+        #[]#
       </iterate> 
       )
     </delete>

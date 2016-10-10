@@ -54,7 +54,7 @@ namespace BalanceDataSync
             foreach (var item in ImportDataList)
             {
                 var site = WebsiteList.Find(e => e.WebsiteID == item.WebsiteID);
-                if (site == null) { return; }
+                if (site == null) { continue; }
                 ZoneBalance zb = null;
                 if (site!=null && site.Institution== CommonDataServer.CityZoneCode)
                 {
@@ -77,7 +77,7 @@ namespace BalanceDataSync
                 }
                 if(zb!=null)
                 {
-                    zb.Rate = zb.UnRegularMoney == 0 ? "0" : (zb.RegularMoney / zb.UnRegularMoney) * 100 + "%";
+                    zb.Rate = zb.UnRegularMoney == 0 ? "0" : ((zb.RegularMoney / zb.UnRegularMoney) * 100).ToString("f2") + "%";
                     zb.AmountMoney = zb.AmountMoney + item.CurrentBalance;
                 }
             }
@@ -115,7 +115,7 @@ namespace BalanceDataSync
                 firstzb.RegularMoneyVary = firstzb.RegularMoney - item.RegularMoney;
                 firstzb.UnRegularMoneyVary = firstzb.UnRegularMoney - item.UnRegularMoney;
                 firstzb.AmountMoneyVary = firstzb.AmountMoney - item.AmountMoney;
-                firstzb.Rate = firstzb.UnRegularMoney == 0 ? "0" : (firstzb.RegularMoney / firstzb.UnRegularMoney) * 100 + "%";
+                firstzb.Rate = firstzb.UnRegularMoney == 0 ? "0" : ((firstzb.RegularMoney / firstzb.UnRegularMoney) * 100).ToString("f2") + "%";
             }
             List<ZoneBalance> temp = new List<ZoneBalance>();
             temp.AddRange(CityZoneBalanceVary);

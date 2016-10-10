@@ -13,9 +13,9 @@ namespace BalanceBLL
         /// 批量插入,在插入前删除重复项
         /// </summary>
         /// <param name="list"></param>
-        public void BatchInsert(List<WebsiteBalance> list)
+        public void BatchInsert(List<WebsiteBalance> list, List<DateTime> ImportTimeList)
         {
-            dal.BatchInsert(list);
+            dal.BatchInsert(list, ImportTimeList);
         }
     }
 }

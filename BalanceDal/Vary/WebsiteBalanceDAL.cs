@@ -13,6 +13,22 @@ namespace BalanceDAL
         {
             DefaultKey = "WebsiteBalance";
         }
-      
+        /// <summary>
+        /// 批量插入数据
+        /// </summary>
+        /// <param name="list"></param>
+        public void BatchInsert(List<WebsiteBalance> list, List<DateTime> ImportTimeList)
+        {
+            try
+            {
+                SqlMap.Delete("BatchDelete" + DefaultKey, ImportTimeList.ToArray());
+                BatchInsertSQLServer bs = new BatchInsertSQLServer();
+                bs.BatchInsertWebsiteBalance(list);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

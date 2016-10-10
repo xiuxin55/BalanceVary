@@ -38,7 +38,7 @@ namespace SqlMaps
                             Stream stream = assembly.GetManifestResourceStream(sqlconfig);
                             DomSqlMapBuilder builder = new DomSqlMapBuilder();
                             SqlMap = builder.Configure(stream);
-
+                            CommonData.DBConnetionString = SqlMap.DataSource.ConnectionString;
                         }
                         catch (Exception e)
                         {
@@ -49,6 +49,8 @@ namespace SqlMaps
             }
 
         }
+
+
 
 
         #region QueryForSql/QueryForDataTable

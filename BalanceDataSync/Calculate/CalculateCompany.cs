@@ -26,6 +26,7 @@ namespace BalanceDataSync
         public override void Caculate()
         {
             base.Caculate();
+
             foreach (var item in ImportDataList)
             {
                 if (!CompanyBalanceVary.Keys.Contains(item.AccountName + "+" + item.WebsiteID))
@@ -33,6 +34,7 @@ namespace BalanceDataSync
                     CompanyBalanceVary.Add(item.AccountName+"+"+item.WebsiteID, new List<CompanyBalance>());
                 }
             }
+            List<DateTime> ImportTimeList = new List<DateTime>();
             for (int i = 0; i <= (MaxTime.Day - MinTime.Day); i++)
             {
                
@@ -45,6 +47,7 @@ namespace BalanceDataSync
                     cb.WebsiteID = item.Split('+')[1];
                     CompanyBalanceVary[item].Add(cb);
                 }
+                ImportTimeList.Add(MinTime.AddDays(i));
             }
             foreach (var item in ImportDataList)
             {
@@ -71,7 +74,7 @@ namespace BalanceDataSync
                 }
                 if (cb != null)
                 {
-                    cb.Rate = cb.UnRegularMoney == 0 ? "0" : (cb.RegularMoney / cb.UnRegularMoney) * 100 + "%";
+                    cb.Rate = cb.UnRegularMoney == 0 ? "0" : ((cb.RegularMoney / cb.UnRegularMoney) * 100).ToString("f2") + "%";
                     cb.AmountMoney = cb.AmountMoney + item.CurrentBalance;
                 }
             }
@@ -100,14 +103,14 @@ namespace BalanceDataSync
                 firstwb.RegularMoneyVary = firstwb.RegularMoney - item.RegularMoney;
                 firstwb.UnRegularMoneyVary = firstwb.UnRegularMoney - item.UnRegularMoney;
                 firstwb.AmountMoneyVary = firstwb.AmountMoney - item.AmountMoney;
-                firstwb.Rate = firstwb.UnRegularMoney == 0 ? "0" : (firstwb.RegularMoney / firstwb.UnRegularMoney) * 100 + "%";
+                firstwb.Rate = firstwb.UnRegularMoney == 0 ? "0" : ((firstwb.RegularMoney / firstwb.UnRegularMoney) * 100).ToString("f2") + "%";
             }
             List<CompanyBalance> insertResult = new List<CompanyBalance>();
             foreach (var item in CompanyBalanceVary.Values)
             {
                 insertResult.AddRange(item);
             }
-            cbbll.BatchInsert(insertResult);
+            cbbll.BatchInsert(insertResult,ImportTimeList);
         }
 
         public override void ClearData()
