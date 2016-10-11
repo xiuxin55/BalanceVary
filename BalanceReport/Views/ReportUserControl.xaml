@@ -8,42 +8,60 @@
              xmlns:tool="clr-namespace:BalanceReport.Tools"
              xmlns:datagrid="clr-namespace:BalanceReport.Views.ReportDataGrid"
              xmlns:usercontrol="clr-namespace:BalanceReport.Views"
+             xmlns:cc="clr-namespace:CustomControls;assembly=CustomControls" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="1165" Background="White">
 
     <Grid ShowGridLines="False">
-        <usercontrol:UserControlLoading Grid.Row="1" Grid.RowSpan="4" Grid.Column="3" x:Name="LoadUserControl"></usercontrol:UserControlLoading>
-        <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" CornerRadius="2" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="24" />
+        </Grid.RowDefinitions>
+        <usercontrol:UserControlLoading  x:Name="LoadUserControl"></usercontrol:UserControlLoading>
+        <Border  Grid.Row="0" CornerRadius="2" >
             <!--<ListBox>
                 <ListBoxItem Content="市行" Selected="button1_Click"></ListBoxItem>
                 <ListBoxItem Content="县行"  Selected="button2_Click"></ListBoxItem>
             </ListBox>-->
-            <TabControl Grid.Row="1" Margin="3,0" TabStripPlacement="Bottom" Controls:TabControlHelper.IsUnderlined="True" >
+            <TabControl Grid.Row="1" Margin="3,0" TabStripPlacement="Bottom" Controls:TabControlHelper.IsUnderlined="True"  SelectionChanged="TabControl_SelectionChanged">
                 <TabItem  Header="市行情况"  Controls:ControlsHelper.HeaderFontSize="18">
                     <Grid >
-                        <datagrid:CityDataGrid/>
-                        <datagrid:CityWebsiteDataGrid />
+                        <datagrid:CityDataGrid x:Name="CityDataGrid"/>
+                        <!--<datagrid:CityWebsiteDataGrid />-->
                     </Grid>
                 </TabItem>
-                <TabItem  Header="县行情况"  Controls:ControlsHelper.HeaderFontSize="18">
+                <TabItem    Header="县行情况"  Controls:ControlsHelper.HeaderFontSize="18">
                     <Grid >
-                        <datagrid:CountyDataGrid/>
-                        <datagrid:CountyWebsiteDataGrid />
+                        <datagrid:CountyDataGrid x:Name="CountyDataGrid"/>
+                        <!--<datagrid:CountyWebsiteDataGrid />-->
                     </Grid>
                 </TabItem>
-                <TabItem Header="市行网点-公司情况"  Controls:ControlsHelper.HeaderFontSize="18">
+                <TabItem   Header="市行网点情况"  Controls:ControlsHelper.HeaderFontSize="18">
                     <Grid >
-                        <datagrid:CityCompanyDataGrid/>
+                        <datagrid:CityWebsiteDataGrid  x:Name="CityWebsiteDataGrid"/>
                     </Grid>
                 </TabItem>
-                <TabItem Header="县行网点-公司情况"  Controls:ControlsHelper.HeaderFontSize="18">
+                <TabItem   Header="县行网点情况"  Controls:ControlsHelper.HeaderFontSize="18">
                     <Grid >
-                        <datagrid:CountyCompanyDataGrid />
+                        <datagrid:CountyWebsiteDataGrid  x:Name="CountyWebsiteDataGrid"/>
+                    </Grid>
+                </TabItem>
+                <TabItem   Header="市行网点-公司情况"  Controls:ControlsHelper.HeaderFontSize="18">
+                    <Grid >
+                        <datagrid:CityCompanyDataGrid  x:Name="CityCompanyDataGrid"/>
+                    </Grid>
+                </TabItem>
+                <TabItem   Header="县行网点-公司情况"  Controls:ControlsHelper.HeaderFontSize="18">
+                    <Grid >
+                        <datagrid:CountyCompanyDataGrid  x:Name="CountyCompanyDataGrid"/>
                     </Grid>
                 </TabItem>
             </TabControl>
         </Border>
-       
-     
+        <cc:UCPage Name="page" Background="White" Grid.Row="1" PageChangedCommand="{Binding PageChangedCommand}" 
+                   TotalItem="{Binding Total}" 
+                   />
+
+
     </Grid>
 </Controls:TransitioningContentControl>

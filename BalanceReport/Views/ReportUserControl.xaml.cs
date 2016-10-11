@@ -30,5 +30,56 @@ namespace BalanceReport.Views
         {
             InitializeComponent();
         }
+
+
+
+        private void CityDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.page.DataContext = this.CityDataGrid.DataContext;
+        }
+
+        private void CountyDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.page.DataContext = this.CountyDataGrid.DataContext;
+        }
+
+        private void CityCompanyDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.page.DataContext = this.CityCompanyDataGrid.DataContext;
+        }
+
+        private void CountyCompanyDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.page.DataContext = this.CountyCompanyDataGrid.DataContext;
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TabControl tc = sender as TabControl;
+            if(tc.SelectedIndex==0)
+            {
+                this.page.DataContext = this.CityDataGrid.DataContext;
+            }
+            if (tc.SelectedIndex == 1)
+            {
+                this.page.DataContext = this.CountyDataGrid.DataContext;
+            }
+            if (tc.SelectedIndex == 2)
+            {
+                this.page.DataContext = this.CityWebsiteDataGrid.DataContext;
+            }
+            if (tc.SelectedIndex == 3)
+            {
+                this.page.DataContext = this.CountyWebsiteDataGrid.DataContext;
+            }
+            if (tc.SelectedIndex == 4)
+            {
+                this.page.DataContext = this.CityCompanyDataGrid.DataContext;
+            }
+            if (tc.SelectedIndex == 5)
+            {
+                this.page.DataContext = this.CountyCompanyDataGrid.DataContext;
+            }
+        }
     }
 }

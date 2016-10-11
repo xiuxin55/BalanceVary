@@ -4,16 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BalanceReport.Views.ReportDataGrid"
+               xmlns:tool="clr-namespace:BalanceReport.Tools"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <tool:TimeConverter x:Key="TimeConverter" />
+    </UserControl.Resources>
     <Grid>
-        <DataGrid Name="ZoneDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True" >
+        <DataGrid Name="ZoneDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True"  ItemsSource="{Binding ZoneBalanceList}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*"/>
-                <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"/>
-                <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"/>
+                <DataGridTextColumn Width="48" Header="序号" Binding="{Binding RowNumber}"  />
+                <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"  Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding RegularMoneyVary}" Header="定期余额变化"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding UnRegularMoneyVary}" Header="活期余额变化"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding AmountMoneyVary}" Header="总余额变化"  Width="*"/>
                 <DataGridTextColumn Binding="{Binding Rate}" Header="活期比"  Width="*"/>
-                <DataGridTextColumn Binding="{Binding BalanceTime}" Header="时间"   Width="*"/>
+                <DataGridTextColumn Binding="{Binding BalanceTime,Converter={StaticResource TimeConverter} }" Header="时间"   Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

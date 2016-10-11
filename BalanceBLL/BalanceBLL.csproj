@@ -46,6 +46,7 @@
     <Compile Include="ImportDataBLL.cs" />
     <Compile Include="UploadFileInfoBLL.cs" />
     <Compile Include="Vary\CompanyBalanceBLL.cs" />
+    <Compile Include="Vary\AccountBalanceBLL.cs" />
     <Compile Include="Vary\WebsiteBalanceBLL.cs" />
     <Compile Include="Vary\ZoneBalanceBLL.cs" />
     <Compile Include="WebsiteInfoBLL.cs" />

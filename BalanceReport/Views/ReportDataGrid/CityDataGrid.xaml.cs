@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BalanceReport.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace BalanceReport.Views.ReportDataGrid
         public CityDataGrid()
         {
             InitializeComponent();
+            this.DataContext = new CityDataGridVM();
         }
     }
 }

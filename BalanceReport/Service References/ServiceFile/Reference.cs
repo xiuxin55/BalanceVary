@@ -136,6 +136,9 @@ namespace BalanceReport.ServiceFile {
         private int EndIndexField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderbyColomnNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int RowNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -160,6 +163,19 @@ namespace BalanceReport.ServiceFile {
                 if ((this.EndIndexField.Equals(value) != true)) {
                     this.EndIndexField = value;
                     this.RaisePropertyChanged("EndIndex");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderbyColomnName {
+            get {
+                return this.OrderbyColomnNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderbyColomnNameField, value) != true)) {
+                    this.OrderbyColomnNameField = value;
+                    this.RaisePropertyChanged("OrderbyColomnName");
                 }
             }
         }
@@ -235,6 +251,9 @@ namespace BalanceReport.ServiceFile {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsOverrideField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsSelectedField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<System.DateTime> FileDateTime {
@@ -362,6 +381,19 @@ namespace BalanceReport.ServiceFile {
                 if ((this.IsOverrideField.Equals(value) != true)) {
                     this.IsOverrideField = value;
                     this.RaisePropertyChanged("IsOverride");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsSelected {
+            get {
+                return this.IsSelectedField;
+            }
+            set {
+                if ((this.IsSelectedField.Equals(value) != true)) {
+                    this.IsSelectedField = value;
+                    this.RaisePropertyChanged("IsSelected");
                 }
             }
         }

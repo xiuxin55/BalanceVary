@@ -3,20 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:BalanceReport.Views.ReportDataGrid"
+              xmlns:local="clr-namespace:BalanceReport.Views.ReportDataGrid"
+                 xmlns:tool="clr-namespace:BalanceReport.Tools"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="600">
+    <UserControl.Resources>
+        <tool:TimeConverter x:Key="TimeConverter" />
+    </UserControl.Resources>
     <Grid>
-        
-        <DataGrid Grid.Column="1" Name="ZoneWebsiteDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="90*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="293*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="1" Background="{StaticResource WindowTitleColorBrush}">
+                <TextBlock  Width="auto" Text="网点" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            </Border>
+            <ListBox   Grid.Row="2"  ItemsSource="{Binding WebsiteInfoList}" DisplayMemberPath="WebsiteName" SelectedItem="{Binding SelectedWebsiteInfoModel}" Grid.RowSpan="2"></ListBox>
+        </Grid>
+
+        <DataGrid Grid.Column="1" Name="ZoneWebsiteDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True"  ItemsSource="{Binding WebsiteBalanceList}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*"/>
-                <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"/>
-                <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"/>
+                <DataGridTextColumn Width="48" Header="序号" Binding="{Binding RowNumber}"  />
+                <DataGridTextColumn Binding="{Binding WebsiteName}" Header="网点名称"  Width="1.3*"/>
+                <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"  Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding RegularMoneyVary}" Header="定期余额变化"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding UnRegularMoneyVary}" Header="活期余额变化"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding AmountMoneyVary}" Header="总余额变化"  Width="*"/>
                 <DataGridTextColumn Binding="{Binding Rate}" Header="活期比"  Width="*"/>
-                <DataGridTextColumn Binding="{Binding WebsiteAddress}" Header="网点地址"  Width="*"/>
-                <DataGridTextColumn Binding="{Binding WebsiteTel}" Header="网点电话"   Width="*"/>
-                <DataGridTextColumn Binding="{Binding BalanceTime}" Header="时间"   Width="*"/>
+                <DataGridTextColumn Binding="{Binding WebsiteInfoObj.WebsiteAddress}" Header="网点地址"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding WebsiteInfoObj.WebsiteTel}" Header="网点电话"   Width="*"/>
+                <DataGridTextColumn Binding="{Binding BalanceTime,Converter={StaticResource TimeConverter} }" Header="时间"   Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

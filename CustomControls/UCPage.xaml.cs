@@ -51,6 +51,7 @@ namespace CustomControls
             int newvalue = e.NewValue != null ? (int)e.NewValue : 0;
             uc.PageCount = newvalue % uc.PageSize == 0 ? newvalue / uc.PageSize : newvalue / uc.PageSize + 1;
             uc.Items = newvalue;
+            uc.CurrentPage = 1;
         }
         #region 依赖属性-命令
         public ICommand PageChangedCommand

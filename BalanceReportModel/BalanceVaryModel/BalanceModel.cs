@@ -39,6 +39,6 @@ namespace BalanceModel
         /// <summary>
         /// 时间
         /// </summary>
-        public DateTime BalanceTime { get; set; }
+        public DateTime? BalanceTime { get; set; }
     }
 }

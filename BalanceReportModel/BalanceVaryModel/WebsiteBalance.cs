@@ -11,8 +11,10 @@ namespace BalanceModel
         /// 网点编号
         /// </summary>
         public string WebsiteID { get; set; }
+        public string WebsiteName { get; set; }
         /// 网点类型县行还是市行
         /// </summary>
         public string ZoneType { get; set; }
+        public WebsiteInfo WebsiteInfoObj { get; set; }
     }
 }

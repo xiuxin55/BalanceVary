@@ -22,13 +22,32 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     </resultMap>
   </resultMaps>
   <statements>
-    <select id="SelectZoneBalance"  resultMap="ZoneBalanceMap"  parameterClass="ZoneBalance">
-      select row_number() over(order by BalanceTime desc) as RowNumber,*  from ZoneBalanceVary where 1=1
+    <select id="SelectZoneBalanceCount"  resultClass="int"   parameterClass="ZoneBalance">
+      select count(*) from ZoneBalanceVary where 1=1
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
           <isNotEmpty prepend="and" property="ZoneType">ZoneType=#ZoneType#</isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
+    <select id="SelectZoneBalance"  resultMap="ZoneBalanceMap"  parameterClass="ZoneBalance">
+      select * from (
+      select row_number() over(order by $OrderbyColomnName$  desc) as RowNumber,*  from ZoneBalanceVary where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ZoneType">ZoneType=#ZoneType#</isNotEmpty>
+          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+      )as result
+      where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="StartIndex"><![CDATA[result.RowNumber>=#StartIndex#]]></isNotEmpty>
+          <isNotEmpty prepend="and" property="EndIndex"><![CDATA[result.RowNumber<=#EndIndex#]]></isNotEmpty>
         </isParameterPresent>
       </dynamic>
     </select>

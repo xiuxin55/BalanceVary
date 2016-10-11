@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BalanceModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BalanceModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="AccountBalance">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BalanceBaseModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AccountName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AccountType" type="xs:int" />
+          <xs:element minOccurs="0" name="SubAccountNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WebsiteID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AccountBalance" nillable="true" type="tns:AccountBalance" />
+  <xs:complexType name="BalanceBaseModel">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AmountMoney" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AmountMoneyVary" type="xs:decimal" />
+          <xs:element minOccurs="0" name="BalanceTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Rate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RegularMoney" type="xs:decimal" />
+          <xs:element minOccurs="0" name="RegularMoneyVary" type="xs:decimal" />
+          <xs:element minOccurs="0" name="UnRegularMoney" type="xs:decimal" />
+          <xs:element minOccurs="0" name="UnRegularMoneyVary" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BalanceBaseModel" nillable="true" type="tns:BalanceBaseModel" />
+  <xs:complexType name="BaseModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="OrderbyColomnName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseModel" nillable="true" type="tns:BaseModel" />
+  <xs:complexType name="ArrayOfAccountBalance">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AccountBalance" nillable="true" type="tns:AccountBalance" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccountBalance" nillable="true" type="tns:ArrayOfAccountBalance" />
+</xs:schema>

@@ -24,8 +24,21 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     </resultMap>
   </resultMaps>
   <statements>
+    <select id="SelectCompanyBalanceCount"  resultClass="int"   parameterClass="CompanyBalance">
+      select count(*) from CompanyBalanceVary where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="CompanyName">CompanyName=#CompanyName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ZoneType">ZoneType=#ZoneType#</isNotEmpty>
+          <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
     <select id="SelectCompanyBalance"  resultMap="CompanyBalanceMap"  parameterClass="CompanyBalance">
-      select row_number() over(order by BalanceTime desc) as RowNumber,*  from CompanyBalanceVary where 1=1
+      select * from (
+      select row_number() over(order by  $OrderbyColomnName$  desc) as RowNumber,*  from CompanyBalanceVary where 1=1
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
@@ -33,6 +46,14 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
           <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
           <isNotEmpty prepend="and" property="ZoneType">ZoneType=#ZoneType#</isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+      )as result
+      where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="StartIndex"><![CDATA[result.RowNumber>=#StartIndex#]]></isNotEmpty>
+          <isNotEmpty prepend="and" property="EndIndex"><![CDATA[result.RowNumber<=#EndIndex#]]></isNotEmpty>
         </isParameterPresent>
       </dynamic>
     </select>

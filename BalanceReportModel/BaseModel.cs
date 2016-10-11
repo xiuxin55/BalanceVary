@@ -14,10 +14,34 @@ namespace BalanceModel
         /// 本页第一条索引
         /// </summary>
         public int StartIndex { get; set; }
+
+        private int _EndIndex=int.MaxValue;
         /// <summary>
         /// 本页最后一条索引
         /// </summary>
-        public int EndIndex{ get; set; }
+        public int EndIndex
+        {
+            get
+            {
+                return _EndIndex;
+            }
+            set
+            {
+                _EndIndex = value;
+            }
+        }
+        private string _OrderbyColomnName= "BalanceTime";
+        public string OrderbyColomnName
+        {
+            get
+            {
+                return _OrderbyColomnName;
+            }
+            set
+            {
+                _OrderbyColomnName = value;
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void RaisePropertyChanged(string propertyname)

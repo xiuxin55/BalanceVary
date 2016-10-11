@@ -27,6 +27,9 @@ namespace BalanceReport.CustomerManagerInfoService {
         private int EndIndexField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderbyColomnNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int RowNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -51,6 +54,19 @@ namespace BalanceReport.CustomerManagerInfoService {
                 if ((this.EndIndexField.Equals(value) != true)) {
                     this.EndIndexField = value;
                     this.RaisePropertyChanged("EndIndex");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderbyColomnName {
+            get {
+                return this.OrderbyColomnNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderbyColomnNameField, value) != true)) {
+                    this.OrderbyColomnNameField = value;
+                    this.RaisePropertyChanged("OrderbyColomnName");
                 }
             }
         }

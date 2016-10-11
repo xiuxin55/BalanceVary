@@ -24,6 +24,7 @@
           <xs:element minOccurs="0" name="FileUploadTime" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IsOverride" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsSelected" type="xs:boolean" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -32,6 +33,7 @@
   <xs:complexType name="BaseModel">
     <xs:sequence>
       <xs:element minOccurs="0" name="EndIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="OrderbyColomnName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RowNumber" type="xs:int" />
       <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
     </xs:sequence>

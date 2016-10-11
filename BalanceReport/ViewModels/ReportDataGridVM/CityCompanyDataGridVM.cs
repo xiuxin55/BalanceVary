@@ -9,16 +9,20 @@ using System.Windows;
 using BalanceReport.Views;
 using BalanceReport.WebsiteInfoService;
 using Common;
+using BalanceReport.CompanyBalanceService;
+using Utility;
 
 namespace BalanceReport.ViewModels
 {
-    public class CityCompanyDataGridVM : NotificationObject
+    public class CityCompanyDataGridVM : BaseVM
     {
-        private WebsiteInfoService.WebsiteInfoServiceClient client = new WebsiteInfoServiceClient();
+        private WebsiteInfoService.WebsiteInfoServiceClient clientwebsite = new WebsiteInfoServiceClient();
+        private CompanyBalanceServiceClient clientcompanybalance = new CompanyBalanceServiceClient();
         public CityCompanyDataGridVM()
         {
             SearchWebsiteCommand = new DelegateCommand(SearchWebsiteExecute);
-            SearchWebsiteExecute();
+            LoadData();
+          //  SearchWebsiteExecute();
         }
         #region 属性
         private WebsiteInfo _selectedWebsiteInfoModel;
@@ -31,22 +35,24 @@ namespace BalanceReport.ViewModels
             set
             {
                 _selectedWebsiteInfoModel = value;
+                SearchWebsiteExecute();
                 this.RaisePropertyChanged("SelectedWebsiteInfoModel");
             }
         }
 
 
-        private WebsiteInfo _searchWebsiteInfoModel;
+        private CompanyBalance _searchCompanyBalanceModel;
         /// <summary>
         /// 查询
         /// </summary>
-        public WebsiteInfo SearchWebsiteInfoModel
+        public CompanyBalance SearchCompanyBalanceoModel
         {
-            get { return _searchWebsiteInfoModel; }
+            get { return _searchCompanyBalanceModel; }
             set
             {
-                _searchWebsiteInfoModel = value;
-                this.RaisePropertyChanged("SearchWebsiteInfoModel");
+                _searchCompanyBalanceModel = value;
+                
+                this.RaisePropertyChanged("SearchCompanyBalanceoModel");
             }
         }
         private ObservableCollection<WebsiteInfo> _websiteInfoList;
@@ -63,6 +69,22 @@ namespace BalanceReport.ViewModels
             }
         }
 
+
+        private ObservableCollection<CompanyBalance> _CompanyBalanceList;
+        /// <summary>
+        /// 集合
+        /// </summary>
+        public ObservableCollection<CompanyBalance> CompanyBalanceList
+        {
+            get { return _CompanyBalanceList; }
+            set
+            {
+                _CompanyBalanceList = value;
+                this.RaisePropertyChanged("CompanyBalanceList");
+            }
+        }
+
+
         #endregion
         #region 命令
         public DelegateCommand SearchWebsiteCommand { get; set; }
@@ -70,20 +92,35 @@ namespace BalanceReport.ViewModels
         #region 命令执行方法
         private void SearchWebsiteExecute()
         {
-            if (SearchWebsiteInfoModel == null)
-            {
-                SearchWebsiteInfoModel = new WebsiteInfo();
-            }
+            SearchCompanyBalanceoModel = new CompanyBalance();
+            SearchCompanyBalanceoModel.EndIndex = int.MaxValue;
+            SearchCompanyBalanceoModel.OrderbyColomnName = "BalanceTime";
+            SearchCompanyBalanceoModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
+            SearchCompanyBalanceoModel.StartIndex = 1;
+            SearchCompanyBalanceoModel.EndIndex = PageSize;
+            CompanyBalanceList = new ObservableCollection<CompanyBalance>(clientcompanybalance.Select(SearchCompanyBalanceoModel));
+            Total = clientcompanybalance.SelectCount(SearchCompanyBalanceoModel);
+        }
+
+        private void LoadData()
+        {
             try
             {
-                SearchWebsiteInfoModel.Institution = "市行";
-                WebsiteInfoList = new ObservableCollection<WebsiteInfo>(client.Select(SearchWebsiteInfoModel));
+                WebsiteInfo model = new WebsiteInfo();
+                model.Institution = "市行";
+                WebsiteInfoList = new ObservableCollection<WebsiteInfo>(clientwebsite.Select(model));
             }
             catch (Exception ex)
             {
-                LogHelper.WriteLog(typeof(WebsiteManageVM), ex);
+                LogHelper.WriteLog(typeof(CityCompanyDataGridVM), ex);
             }
-            
+        }
+
+        public override void LoadPageData(int startindex, int endindex)
+        {
+            SearchCompanyBalanceoModel.StartIndex = startindex;
+            SearchCompanyBalanceoModel.EndIndex = endindex;
+            CompanyBalanceList = new ObservableCollection<CompanyBalance>(clientcompanybalance.Select(SearchCompanyBalanceoModel));
         }
         #endregion
         #region 内部方法

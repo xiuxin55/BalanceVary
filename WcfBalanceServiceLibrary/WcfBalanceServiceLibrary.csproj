@@ -55,11 +55,19 @@
     <Compile Include="IAccountInfoService.cs" />
     <Compile Include="IService1.cs" />
     <Compile Include="IServiceFile.cs" />
+    <Compile Include="ICompanyBalanceService.cs" />
+    <Compile Include="IAccountBalanceService.cs" />
+    <Compile Include="IZoneBalanceService.cs" />
+    <Compile Include="IWebsiteBalanceService.cs" />
     <Compile Include="IWebsiteInfoService.cs" />
     <Compile Include="ManageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service1.cs" />
     <Compile Include="ServiceFile.cs" />
+    <Compile Include="CompanyBalanceService.cs" />
+    <Compile Include="AccountBalanceService.cs" />
+    <Compile Include="ZoneBalanceService.cs" />
+    <Compile Include="WebsiteBalanceService.cs" />
     <Compile Include="WebsiteInfoService.cs" />
   </ItemGroup>
   <ItemGroup>

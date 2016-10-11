@@ -21,5 +21,6 @@ namespace WcfBalanceServiceLibrary
         [OperationContract]
         List<WebsiteInfo> Select(WebsiteInfo info);
 
+
     }
 }

@@ -65,8 +65,7 @@ namespace BalanceDataSync
             cz.Caculate();
             cw.Caculate();
             cc.Caculate();
-         //   ca.Caculate();
-          
+            ca.Caculate();
         }
     }
 }

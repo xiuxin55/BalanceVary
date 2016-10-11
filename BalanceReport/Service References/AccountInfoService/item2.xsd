@@ -22,6 +22,7 @@
   <xs:complexType name="BaseModel">
     <xs:sequence>
       <xs:element minOccurs="0" name="EndIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="OrderbyColomnName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RowNumber" type="xs:int" />
       <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
     </xs:sequence>

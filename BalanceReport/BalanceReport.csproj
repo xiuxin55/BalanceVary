@@ -115,7 +115,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Service References\AccountBalanceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\AccountInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CompanyBalanceService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -130,12 +140,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\WebsiteBalanceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\WebsiteInfoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ZoneBalanceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Tools\Byte[]ToBitmapImageConverter.cs" />
+    <Compile Include="Tools\TimeConverter.cs" />
     <Compile Include="Tools\GridLineDecorator.cs" />
     <Compile Include="Tools\ListSortDecorator.cs" />
     <Compile Include="Tools\ListViewBehavior.cs" />
@@ -143,6 +164,10 @@
     <Compile Include="Tools\UIElementAdorner.cs" />
     <Compile Include="Helper\UploadFile.cs" />
     <Compile Include="ViewModels\DepartmentReportUserControlVM.cs" />
+    <Compile Include="ViewModels\ReportDataGridVM\CountyWebsiteDataGridVM.cs" />
+    <Compile Include="ViewModels\ReportDataGridVM\CityWebsiteDataGridVM.cs" />
+    <Compile Include="ViewModels\ReportDataGridVM\CountyDataGridVM.cs" />
+    <Compile Include="ViewModels\ReportDataGridVM\CityDataGridVM.cs" />
     <Compile Include="ViewModels\ReportDataGridVM\CountyCompanyDataGridVM.cs" />
     <Compile Include="ViewModels\ReportDataGridVM\CityCompanyDataGridVM.cs" />
     <Compile Include="ViewModels\ReportUserControlVM.cs" />
@@ -359,6 +384,19 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\AccountBalanceService\AccountBalanceService.wsdl" />
+    <None Include="Service References\AccountBalanceService\BalanceReport.AccountBalanceService.AccountBalance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountBalanceService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountBalanceService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountBalanceService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\AccountInfoService\AccountInfoService.wsdl" />
     <None Include="Service References\AccountInfoService\BalanceReport.AccountInfoService.AccountInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -370,6 +408,19 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\AccountInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CompanyBalanceService\BalanceReport.CompanyBalanceService.CompanyBalance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CompanyBalanceService\CompanyBalanceService.wsdl" />
+    <None Include="Service References\CompanyBalanceService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CompanyBalanceService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CompanyBalanceService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\CustomerManagerInfoService\BalanceReport.CustomerManagerInfoService.CustomerManagerInfo.datasource">
@@ -401,6 +452,19 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceFile\ServiceFile.wsdl" />
+    <None Include="Service References\WebsiteBalanceService\BalanceReport.WebsiteBalanceService.WebsiteBalance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebsiteBalanceService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteBalanceService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteBalanceService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteBalanceService\WebsiteBalanceService.wsdl" />
     <None Include="Service References\WebsiteInfoService\BalanceReport.WebsiteInfoService.WebsiteInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -414,6 +478,19 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\WebsiteInfoService\WebsiteInfoService.wsdl" />
+    <None Include="Service References\ZoneBalanceService\BalanceReport.ZoneBalanceService.ZoneBalance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ZoneBalanceService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ZoneBalanceService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ZoneBalanceService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ZoneBalanceService\ZoneBalanceService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\13.ico" />
@@ -466,10 +543,14 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AccountBalanceService\" />
     <WCFMetadataStorage Include="Service References\AccountInfoService\" />
+    <WCFMetadataStorage Include="Service References\CompanyBalanceService\" />
     <WCFMetadataStorage Include="Service References\CustomerManagerInfoService\" />
     <WCFMetadataStorage Include="Service References\ServiceFile\" />
+    <WCFMetadataStorage Include="Service References\WebsiteBalanceService\" />
     <WCFMetadataStorage Include="Service References\WebsiteInfoService\" />
+    <WCFMetadataStorage Include="Service References\ZoneBalanceService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WebsiteInfoService\item.disco" />
@@ -527,6 +608,66 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceFile\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteBalanceService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteBalanceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteBalanceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteBalanceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ZoneBalanceService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ZoneBalanceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ZoneBalanceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ZoneBalanceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CompanyBalanceService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CompanyBalanceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CompanyBalanceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CompanyBalanceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountBalanceService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountBalanceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountBalanceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountBalanceService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

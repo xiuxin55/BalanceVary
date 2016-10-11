@@ -115,5 +115,46 @@ namespace BalanceDAL
             }
             return dtBalance;
         }
+
+
+        public static DataTable AccountBalanceListConvertTable(List<AccountBalance> list)
+        {
+            DataTable dtBalance = new DataTable();
+            dtBalance.TableName = "AccountBalanceVary";
+            dtBalance.Columns.Add("ID");
+            dtBalance.Columns.Add("AccountID");
+            dtBalance.Columns.Add("SubAccountNumber");
+            dtBalance.Columns.Add("AccountName");
+            dtBalance.Columns.Add("AccountType");
+            dtBalance.Columns.Add("WebsiteID");
+            dtBalance.Columns.Add("RegularMoney");
+            dtBalance.Columns.Add("UnRegularMoney");
+            dtBalance.Columns.Add("AmountMoney");
+            dtBalance.Columns.Add("RegularMoneyVary");
+            dtBalance.Columns.Add("UnRegularMoneyVary");
+            dtBalance.Columns.Add("AmountMoneyVary");
+            dtBalance.Columns.Add("Rate");
+            dtBalance.Columns.Add("BalanceTime");
+            foreach (var item in list)
+            {
+                DataRow dr = dtBalance.NewRow();
+                dr["ID"] = item.ID;
+                dr["AccountID"] = item.AccountID;
+                dr["SubAccountNumber"] = item.SubAccountNumber;
+                dr["AccountName"] = item.AccountName;
+                dr["AccountType"] = item.AccountType;
+                dr["WebsiteID"] = item.WebsiteID;
+                dr["RegularMoney"] = item.RegularMoney;
+                dr["UnRegularMoney"] = item.UnRegularMoney;
+                dr["AmountMoney"] = item.AmountMoney;
+                dr["RegularMoneyVary"] = item.RegularMoneyVary;
+                dr["UnRegularMoneyVary"] = item.UnRegularMoneyVary;
+                dr["AmountMoneyVary"] = item.AmountMoneyVary;
+                dr["Rate"] = item.Rate;
+                dr["BalanceTime"] = item.BalanceTime;
+                dtBalance.Rows.Add(dr);
+            }
+            return dtBalance;
+        }
     }
 }
