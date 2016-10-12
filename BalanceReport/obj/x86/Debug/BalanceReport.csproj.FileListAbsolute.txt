@@ -664,3 +664,7 @@ E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\Depa
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentManage.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentAdd.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentAdd.g.cs
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ReportDataGrid\DepartmentDataGrid.g.cs
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ReportDataGrid\DepartmentDataGrid.baml
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ReportDataGrid\CustomerManagerDataGrid.g.cs
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ReportDataGrid\CustomerManagerDataGrid.baml

@@ -130,7 +130,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\CustomerManagerBalanceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\CustomerManagerInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DepartmentBalanceService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -169,6 +179,8 @@
     <Compile Include="Tools\UIElementAdorner.cs" />
     <Compile Include="Helper\UploadFile.cs" />
     <Compile Include="ViewModels\DepartmentReportUserControlVM.cs" />
+    <Compile Include="ViewModels\ReportDataGridVM\CustomerManagerDataGridVM.cs" />
+    <Compile Include="ViewModels\ReportDataGridVM\DepartmentDataGridVM.cs" />
     <Compile Include="ViewModels\ReportDataGridVM\CountyWebsiteDataGridVM.cs" />
     <Compile Include="ViewModels\ReportDataGridVM\CityWebsiteDataGridVM.cs" />
     <Compile Include="ViewModels\ReportDataGridVM\CountyDataGridVM.cs" />
@@ -200,6 +212,12 @@
     </Compile>
     <Compile Include="Views\ProgressBarWindow.xaml.cs">
       <DependentUpon>ProgressBarWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportDataGrid\CustomerManagerDataGrid.xaml.cs">
+      <DependentUpon>CustomerManagerDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportDataGrid\DepartmentDataGrid.xaml.cs">
+      <DependentUpon>DepartmentDataGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ReportDataGrid\CountyCompanyDataGrid.xaml.cs">
       <DependentUpon>CountyCompanyDataGrid.xaml</DependentUpon>
@@ -293,6 +311,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProgressBarWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ReportDataGrid\CustomerManagerDataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ReportDataGrid\DepartmentDataGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -444,6 +470,19 @@
     <None Include="Service References\CompanyBalanceService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\CustomerManagerBalanceService\BalanceReport.CustomerManagerBalanceService.CustomerManagerBalance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CustomerManagerBalanceService\CustomerManagerBalanceService.wsdl" />
+    <None Include="Service References\CustomerManagerBalanceService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CustomerManagerBalanceService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CustomerManagerBalanceService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\CustomerManagerInfoService\BalanceReport.CustomerManagerInfoService.CustomerManagerInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -455,6 +494,19 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\CustomerManagerInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DepartmentBalanceService\BalanceReport.DepartmentBalanceService.DepartmentBalance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DepartmentBalanceService\DepartmentBalanceService.wsdl" />
+    <None Include="Service References\DepartmentBalanceService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DepartmentBalanceService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DepartmentBalanceService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\DepartmentInfoService\BalanceReport.DepartmentInfoService.DepartmentInfo.datasource">
@@ -580,7 +632,9 @@
     <WCFMetadataStorage Include="Service References\AccountBalanceService\" />
     <WCFMetadataStorage Include="Service References\AccountInfoService\" />
     <WCFMetadataStorage Include="Service References\CompanyBalanceService\" />
+    <WCFMetadataStorage Include="Service References\CustomerManagerBalanceService\" />
     <WCFMetadataStorage Include="Service References\CustomerManagerInfoService\" />
+    <WCFMetadataStorage Include="Service References\DepartmentBalanceService\" />
     <WCFMetadataStorage Include="Service References\DepartmentInfoService\" />
     <WCFMetadataStorage Include="Service References\ServiceFile\" />
     <WCFMetadataStorage Include="Service References\WebsiteBalanceService\" />
@@ -718,6 +772,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\DepartmentInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DepartmentBalanceService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DepartmentBalanceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DepartmentBalanceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DepartmentBalanceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerBalanceService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerBalanceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerBalanceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerBalanceService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

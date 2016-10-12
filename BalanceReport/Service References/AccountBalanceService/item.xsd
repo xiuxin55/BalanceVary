@@ -71,4 +71,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SelectByDepartment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BalanceModel" minOccurs="0" name="model" nillable="true" type="q7:DepartmentBalance" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SelectByDepartmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BalanceModel" minOccurs="0" name="SelectByDepartmentResult" nillable="true" type="q8:ArrayOfAccountBalance" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SelectByDepartmentCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BalanceModel" minOccurs="0" name="model" nillable="true" type="q9:DepartmentBalance" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SelectByDepartmentCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SelectByDepartmentCountResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

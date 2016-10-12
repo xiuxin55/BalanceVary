@@ -17,5 +17,13 @@ namespace BalanceBLL
         {
             dal.BatchInsert(list, ImportTimeList);
         }
+        public List<AccountBalance> SelectByDepartment(DepartmentBalance model)
+        {
+            return dal.SelectByDepartment(model);
+        }
+        public int SelectByDepartmentCount(DepartmentBalance model)
+        {
+            return dal.SelectByDepartmentCount(model);
+        }
     }
 }

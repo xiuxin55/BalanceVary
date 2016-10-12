@@ -30,5 +30,15 @@ namespace BalanceDAL
                 throw ex;
             }
         }
+
+        public List<AccountBalance> SelectByDepartment(DepartmentBalance model)
+        {
+            return SqlMap.QueryForList<AccountBalance>("SelectByDepartment", model).ToList();
+        }
+
+        public int SelectByDepartmentCount(DepartmentBalance model)
+        {
+            return SqlMap.QueryForObject<int>("SelectByDepartmentCount", model);
+        }
     }
 }

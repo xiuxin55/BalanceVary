@@ -49,6 +49,7 @@ namespace BalanceDataSync
                     wb.ID = Guid.NewGuid().ToString();
                     wb.WebsiteID = item.WebsiteID;
                     wb.ZoneType = item.Institution;
+                    wb.Rate = "0%";
                     WebsiteBalanceVary[item.WebsiteID].Add(wb);
                 }
                 ImportTimeList.Add(MinTime.AddDays(i));
@@ -99,6 +100,10 @@ namespace BalanceDataSync
             List<WebsiteBalance> preList= wbbll.Select(w);
             foreach (var item in preList)
             {
+                if(!WebsiteBalanceVary.Keys.Contains(item.WebsiteID))
+                {
+                    continue;
+                }
                 WebsiteBalance firstwb = WebsiteBalanceVary[item.WebsiteID][0];
                 firstwb.RegularMoneyVary = firstwb.RegularMoney - item.RegularMoney;
                 firstwb.UnRegularMoneyVary = firstwb.UnRegularMoney - item.UnRegularMoney;

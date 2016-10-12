@@ -71,7 +71,9 @@
   <ItemGroup>
     <Compile Include="Calculate\CalculateAccount.cs" />
     <Compile Include="Calculate\CalculateCompany.cs" />
+    <Compile Include="Calculate\CalculateCustomerManager.cs" />
     <Compile Include="Calculate\CalculateWebsite.cs" />
+    <Compile Include="Calculate\CalculateDepartment.cs" />
     <Compile Include="Calculate\CalculateZone.cs" />
     <Compile Include="Calculate\ABCalculateBalance.cs" />
     <Compile Include="Converters\FileTypeConverter.cs" />

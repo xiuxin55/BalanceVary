@@ -156,5 +156,77 @@ namespace BalanceDAL
             }
             return dtBalance;
         }
+
+        public static DataTable DepartmentBalanceListConvertTable(List<DepartmentBalance> list)
+        {
+            DataTable dtBalance = new DataTable();
+            dtBalance.TableName = "DepartmentBalanceVary";
+            dtBalance.Columns.Add("ID");
+            dtBalance.Columns.Add("DepartmentID");
+            dtBalance.Columns.Add("DepartmentName");
+            dtBalance.Columns.Add("RegularMoney");
+            dtBalance.Columns.Add("UnRegularMoney");
+            dtBalance.Columns.Add("AmountMoney");
+            dtBalance.Columns.Add("RegularMoneyVary");
+            dtBalance.Columns.Add("UnRegularMoneyVary");
+            dtBalance.Columns.Add("AmountMoneyVary");
+            dtBalance.Columns.Add("Rate");
+            dtBalance.Columns.Add("BalanceTime");
+            foreach (var item in list)
+            {
+                DataRow dr = dtBalance.NewRow();
+                dr["ID"] = item.ID;
+                dr["DepartmentID"] = item.DepartmentID;
+                dr["DepartmentName"] = item.DepartmentName;
+                dr["RegularMoney"] = item.RegularMoney;
+                dr["UnRegularMoney"] = item.UnRegularMoney;
+                dr["AmountMoney"] = item.AmountMoney;
+                dr["RegularMoneyVary"] = item.RegularMoneyVary;
+                dr["UnRegularMoneyVary"] = item.UnRegularMoneyVary;
+                dr["AmountMoneyVary"] = item.AmountMoneyVary;
+                dr["Rate"] = item.Rate;
+                dr["BalanceTime"] = item.BalanceTime;
+                dtBalance.Rows.Add(dr);
+            }
+            return dtBalance;
+        }
+
+        public static DataTable CustomerManagerBalanceListConvertTable(List<CustomerManagerBalance> list)
+        {
+            DataTable dtBalance = new DataTable();
+            dtBalance.TableName = "CustomerManagerBalanceVary";
+            dtBalance.Columns.Add("ID");
+            dtBalance.Columns.Add("DepartmentID");
+            dtBalance.Columns.Add("DepartmentName");
+            dtBalance.Columns.Add("ManagerID");
+            dtBalance.Columns.Add("ManagerName");
+            dtBalance.Columns.Add("RegularMoney");
+            dtBalance.Columns.Add("UnRegularMoney");
+            dtBalance.Columns.Add("AmountMoney");
+            dtBalance.Columns.Add("RegularMoneyVary");
+            dtBalance.Columns.Add("UnRegularMoneyVary");
+            dtBalance.Columns.Add("AmountMoneyVary");
+            dtBalance.Columns.Add("Rate");
+            dtBalance.Columns.Add("BalanceTime");
+            foreach (var item in list)
+            {
+                DataRow dr = dtBalance.NewRow();
+                dr["ID"] = item.ID;
+                dr["DepartmentID"] = item.DepartmentID;
+                dr["DepartmentName"] = item.DepartmentName;
+                dr["ManagerID"] = item.ManagerID;
+                dr["ManagerName"] = item.ManagerName;
+                dr["RegularMoney"] = item.RegularMoney;
+                dr["UnRegularMoney"] = item.UnRegularMoney;
+                dr["AmountMoney"] = item.AmountMoney;
+                dr["RegularMoneyVary"] = item.RegularMoneyVary;
+                dr["UnRegularMoneyVary"] = item.UnRegularMoneyVary;
+                dr["AmountMoneyVary"] = item.AmountMoneyVary;
+                dr["Rate"] = item.Rate;
+                dr["BalanceTime"] = item.BalanceTime;
+                dtBalance.Rows.Add(dr);
+            }
+            return dtBalance;
+        }
     }
 }

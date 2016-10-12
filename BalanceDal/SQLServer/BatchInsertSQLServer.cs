@@ -29,5 +29,17 @@ namespace BalanceDAL
             SQLServer ss = new SQLServer();
             return ss.BatchInsertSQLServer(result);
         }
+        public bool BatchInsertDepartmentBalance(List<DepartmentBalance> list)
+        {
+            DataTable result = ConverterTable.DepartmentBalanceListConvertTable(list);
+            SQLServer ss = new SQLServer();
+            return ss.BatchInsertSQLServer(result);
+        }
+        public bool BatchInsertCustomerManagerBalance(List<CustomerManagerBalance> list)
+        {
+            DataTable result = ConverterTable.CustomerManagerBalanceListConvertTable(list);
+            SQLServer ss = new SQLServer();
+            return ss.BatchInsertSQLServer(result);
+        }
     }
 }

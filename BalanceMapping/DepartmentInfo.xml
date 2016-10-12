@@ -10,6 +10,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     <resultMap id="DepartmentInfoMap" class="DepartmentInfo">
       <result property="RowNumber" column="RowNumber"/>
       <result property="ID" column="ID"/>
+      <result property="DepartmentID" column="DepartmentID"/>
+      
       <result property="DepartmentName" column="DepartmentName"/>
       <result property="DepartmentManager" column="DepartmentManager"/>
       <result property="ManagerTelphone" column="ManagerTelphone"/>
@@ -21,6 +23,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="DepartmentID">DepartmentID=#DepartmentID#</isNotEmpty>
           <isNotEmpty prepend="and" property="DepartmentName">DepartmentName=#DepartmentName#</isNotEmpty>
           <isNotEmpty prepend="and" property="DepartmentManager">DepartmentManager=#DepartmentManager#</isNotEmpty>
           <isNotEmpty prepend="and" property="ManagerTelphone">ManagerTelphone=#ManagerTelphone#</isNotEmpty>
@@ -31,6 +34,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       UPDATE DepartmentInfo
       SET
       ID = #ID#
+      <isNotEmpty prepend ="," property="DepartmentID">
+        DepartmentID = #DepartmentID#
+      </isNotEmpty>
       <isNotEmpty prepend ="," property="DepartmentName">
         DepartmentName = #DepartmentName#
       </isNotEmpty>
@@ -43,12 +49,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       WHERE ID = #ID#
     </update>
     <insert id="AddDepartmentInfo" parameterClass="DepartmentInfo">
-      INSERT INTO DepartmentInfo (ID,
+      INSERT INTO DepartmentInfo (ID,DepartmentID,
       DepartmentName,
       DepartmentManager,
       ManagerTelphone
       )
-      VALUES (#ID#,#DepartmentName#,#DepartmentManager#,#ManagerTelphone#);
+      VALUES (#ID#,#DepartmentID#,#DepartmentName#,#DepartmentManager#,#ManagerTelphone#);
     </insert>
     <delete id="DeleteDepartmentInfo" parameterClass="DepartmentInfo">
       DELETE DepartmentInfo WHERE ID = #ID#

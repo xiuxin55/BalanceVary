@@ -61,6 +61,8 @@
     <Compile Include="BalanceInfo.cs" />
     <Compile Include="BalanceVaryModel\BalanceModel.cs" />
     <Compile Include="BalanceVaryModel\AccountBalance.cs" />
+    <Compile Include="BalanceVaryModel\CustomerManagerBalance.cs" />
+    <Compile Include="BalanceVaryModel\DepartmentBalance.cs" />
     <Compile Include="BalanceVaryModel\CompanyBalance.cs" />
     <Compile Include="BalanceVaryModel\WebsiteBalance.cs" />
     <Compile Include="BalanceVaryModel\ZoneBalance.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="BaseModel.cs" />
     <Compile Include="CustomFileInfo.cs" />
     <Compile Include="DateTimeModel.cs" />
+    <Compile Include="AccountLinkManagerInfo.cs" />
     <Compile Include="ImportDataInfo.cs" />
     <Compile Include="CustomerManagerInfo.cs" />
     <Compile Include="ReportModel.cs" />

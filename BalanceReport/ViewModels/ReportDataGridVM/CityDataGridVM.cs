@@ -77,6 +77,7 @@ namespace BalanceReport.ViewModels
             }
             try
             {
+                Total = 0;
                 SearchZoneBalanceModel.ZoneType = "市行";
                 SearchZoneBalanceModel.OrderbyColomnName ="BalanceTime";
           

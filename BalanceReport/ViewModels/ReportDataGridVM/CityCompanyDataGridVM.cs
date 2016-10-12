@@ -146,8 +146,9 @@ namespace BalanceReport.ViewModels
         #region 命令执行方法
         private void SearchAccountExecute()
         {
+            Total = 0;
             SearchAccountBalanceModel = new AccountBalance();
-            SearchAccountBalanceModel.EndIndex = int.MaxValue;
+
             SearchAccountBalanceModel.OrderbyColomnName = "BalanceTime";
             SearchAccountBalanceModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
             SearchAccountBalanceModel.StartIndex = 1;
@@ -159,7 +160,6 @@ namespace BalanceReport.ViewModels
         private void SearchCompanyExecute()
         {
             SearchCompanyBalanceoModel = new CompanyBalance();
-            SearchCompanyBalanceoModel.EndIndex = int.MaxValue;
             SearchCompanyBalanceoModel.OrderbyColomnName = "BalanceTime";
             SearchCompanyBalanceoModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
             SearchCompanyBalanceoModel.StartIndex = 1;

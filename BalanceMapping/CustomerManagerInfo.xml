@@ -16,6 +16,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <result property="WebsiteName" column="WebsiteName"/>
       <result property="ManagerTelphone" column="ManagerTelphone"/>
       <result property="ManagerEmail" column="ManagerEmail"/>
+      
+      <result property="DepartmentID" column="DepartmentID"/>
       <result property="DepartmentName" column="DepartmentName"/>
       
     </resultMap>
@@ -28,12 +30,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
           <isNotEmpty prepend="and" property="WebsiteID">ManagerID=#ManagerID#</isNotEmpty>
           <isNotEmpty prepend="and" property="WebsiteName">ManagerName=#ManagerName#</isNotEmpty>
-          <isNotEmpty prepend="and" property="WebsiteAddress">WebsiteID=#WebsiteID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
           <isNotEmpty prepend="and" property="WebsiteTel">WebsiteName=#WebsiteName#</isNotEmpty>
           <isNotEmpty prepend="and" property="ManagerTelphone">ManagerTelphone=#ManagerTelphone#</isNotEmpty>
           <isNotEmpty prepend="and" property="Institution">ManagerEmail=#ManagerEmail#</isNotEmpty>
-          <isNotEmpty prepend="and" property="Institution">DepartmentName=#DepartmentName#</isNotEmpty>
-          
+          <isNotEmpty prepend="and" property="DepartmentID">DepartmentID=#DepartmentID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="DepartmentName">DepartmentName=#DepartmentName#</isNotEmpty>
         </isParameterPresent>
       </dynamic>
     </select>
@@ -59,10 +61,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <isNotEmpty prepend ="," property="ManagerEmail">
         ManagerEmail = #ManagerEmail#
       </isNotEmpty>
+      <isNotEmpty prepend ="," property="DepartmentID">
+        DepartmentID = #DepartmentID#
+      </isNotEmpty>
       <isNotEmpty prepend ="," property="DepartmentName">
         DepartmentName = #DepartmentName#
       </isNotEmpty>
-      
 
       WHERE ID = #ID#
     </update>
@@ -73,8 +77,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       WebsiteID,
       WebsiteName,
       ManagerTelphone,
-      ManagerEmail,DepartmentName)
-      VALUES (#ID#,#ManagerID#,#ManagerName#,#WebsiteID#,#WebsiteName#,#ManagerTelphone#,#ManagerEmail#,#DepartmentName#);
+      ManagerEmail,DepartmentName,DepartmentID)
+      VALUES (#ID#,#ManagerID#,#ManagerName#,#WebsiteID#,#WebsiteName#,#ManagerTelphone#,#ManagerEmail#,#DepartmentName#,#DepartmentID#);
     </insert>
     <delete id="DeleteCustomerManagerInfo" parameterClass="CustomerManagerInfo">
       DELETE ManagersInfo WHERE ID = #ID#

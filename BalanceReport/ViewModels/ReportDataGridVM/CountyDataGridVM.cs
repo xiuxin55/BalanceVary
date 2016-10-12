@@ -78,6 +78,7 @@ namespace BalanceReport.ViewModels
             }
             try
             {
+                Total = 0;
                 SearchZoneBalanceModel.ZoneType = "县行";
                 SearchZoneBalanceModel.EndIndex = int.MaxValue;
                 SearchZoneBalanceModel.OrderbyColomnName = "BalanceTime";

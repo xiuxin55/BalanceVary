@@ -40,5 +40,23 @@ namespace WcfBalanceServiceLibrary
         {
             return bll.Update(info);
         }
+
+        public List<AccountBalance> SelectByDepartment(DepartmentBalance model)
+        {
+            try
+            {
+                return bll.SelectByDepartment(model);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
+        }
+        public int SelectByDepartmentCount(DepartmentBalance model)
+        {
+            return bll.SelectByDepartmentCount(model); ;
+        }
     }
 }

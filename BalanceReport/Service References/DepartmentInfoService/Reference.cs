@@ -114,6 +114,9 @@ namespace BalanceReport.DepartmentInfoService {
     public partial class DepartmentInfo : BalanceReport.DepartmentInfoService.BaseModel {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DepartmentIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DepartmentManagerField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -124,6 +127,19 @@ namespace BalanceReport.DepartmentInfoService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ManagerTelphoneField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DepartmentID {
+            get {
+                return this.DepartmentIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DepartmentIDField, value) != true)) {
+                    this.DepartmentIDField = value;
+                    this.RaisePropertyChanged("DepartmentID");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string DepartmentManager {

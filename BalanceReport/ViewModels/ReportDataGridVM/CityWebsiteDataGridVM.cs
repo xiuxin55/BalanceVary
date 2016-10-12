@@ -92,8 +92,8 @@ namespace BalanceReport.ViewModels
         #region 命令执行方法
         private void SearchWebsiteExecute()
         {
+            Total = 0;
             SearchWebsiteBalanceModel = new WebsiteBalance();
-            SearchWebsiteBalanceModel.EndIndex = int.MaxValue;
             SearchWebsiteBalanceModel.OrderbyColomnName = "BalanceTime";
             SearchWebsiteBalanceModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
             SearchWebsiteBalanceModel.StartIndex = 1;

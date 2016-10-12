@@ -41,12 +41,14 @@ namespace BalanceDataSync
                 zb.ID = Guid.NewGuid().ToString();
                 zb.BalanceTime = MinTime.AddDays(i);
                 zb.ZoneType = "市行";
+                zb.Rate = "0%";
                 CityZoneBalanceVary.Add(zb);
 
                 ZoneBalance zb2 = new ZoneBalance();
                 zb2.ID = Guid.NewGuid().ToString();
                 zb2.BalanceTime = MinTime.AddDays(i);
                 zb2.ZoneType = "县行";
+                zb2.Rate = "0%";
                 CountyZoneBalanceVary.Add(zb2);
             }
             WebsiteInfoBLL bllwb = new WebsiteInfoBLL();

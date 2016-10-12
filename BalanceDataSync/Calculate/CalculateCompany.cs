@@ -45,6 +45,7 @@ namespace BalanceDataSync
                     cb.ID = Guid.NewGuid().ToString();
                     cb.CompanyName = item.Split('+')[0];
                     cb.WebsiteID = item.Split('+')[1];
+                    cb.Rate = "0%";
                     CompanyBalanceVary[item].Add(cb);
                 }
                 ImportTimeList.Add(MinTime.AddDays(i));
@@ -99,6 +100,10 @@ namespace BalanceDataSync
             List<CompanyBalance> preList = cbbll.Select(cbs);
             foreach (var item in preList)
             {
+                if (!CompanyBalanceVary.Keys.Contains(item.CompanyName + "+" + item.WebsiteID))
+                {
+                    continue;
+                }
                 CompanyBalance firstwb = CompanyBalanceVary[item.CompanyName + "+" + item.WebsiteID][0];
                 firstwb.RegularMoneyVary = firstwb.RegularMoney - item.RegularMoney;
                 firstwb.UnRegularMoneyVary = firstwb.UnRegularMoney - item.UnRegularMoney;

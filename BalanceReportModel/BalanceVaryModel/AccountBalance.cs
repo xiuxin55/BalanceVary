@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BalanceModel
 {
-    public class AccountBalance : BalanceBaseModel 
+    public partial class AccountBalance : BalanceBaseModel 
     {
         /// <summary>
         /// 帐号
@@ -27,5 +27,26 @@ namespace BalanceModel
         /// 网点id
         /// </summary>
         public string WebsiteID { get; set; }
+
+      
     }
+    //public partial class AccountBalance
+    //{
+    //    /// <summary>
+    //    /// 部门ID
+    //    /// </summary>
+    //    public string DepartmentID { get; set; }
+    //    /// <summary>
+    //    /// 部门名称
+    //    /// </summary>
+    //    public string DepartmentName { get; set; }
+    //    /// <summary>
+    //    /// 客户经理ID
+    //    /// </summary>
+    //    public string ManagerID { get; set; }
+    //    /// <summary>
+    //    /// 客户经理名称
+    //    /// </summary>
+    //    public string ManagerName { get; set; }
+    //}
 }

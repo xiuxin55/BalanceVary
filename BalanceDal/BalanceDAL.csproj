@@ -50,12 +50,15 @@
   <ItemGroup>
     <Compile Include="BalanceDAL.cs" />
     <Compile Include="DataConverter\ConverterTable.cs" />
+    <Compile Include="AccountLinkManagerInfoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomerManagerInfoDAL.cs" />
     <Compile Include="AccountInfoDAL.cs" />
     <Compile Include="ImportDataDAL.cs" />
     <Compile Include="SQLServer\BatchInsertSQLServer.cs" />
     <Compile Include="UploadFileInfoDAL.cs" />
+    <Compile Include="Vary\CustomerManagerBalanceDAL.cs" />
+    <Compile Include="Vary\DepartmentBalanceDAL.cs" />
     <Compile Include="Vary\CompanyBalanceDAL.cs" />
     <Compile Include="Vary\AccountBalanceDAL.cs" />
     <Compile Include="Vary\WebsiteBalanceDAL.cs" />

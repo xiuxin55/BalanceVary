@@ -47,4 +47,15 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfAccountBalance" nillable="true" type="tns:ArrayOfAccountBalance" />
+  <xs:complexType name="DepartmentBalance">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BalanceBaseModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DepartmentID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DepartmentName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DepartmentBalance" nillable="true" type="tns:DepartmentBalance" />
 </xs:schema>

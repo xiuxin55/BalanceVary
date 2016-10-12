@@ -22,6 +22,10 @@ namespace WcfBalanceServiceLibrary
         List<AccountBalance> Select(AccountBalance info);
         [OperationContract]
         int SelectCount(AccountBalance info);
-
+        [OperationContract]
+        List<AccountBalance> SelectByDepartment(DepartmentBalance model);
+        [OperationContract]
+        int SelectByDepartmentCount(DepartmentBalance model);
+        
     }
 }

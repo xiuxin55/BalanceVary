@@ -64,7 +64,7 @@ namespace BalanceReport.Views
             if ((bool)ws.ShowDialog())
             {
                 this.textBox2.Text = ws.WSVM.SelectedWebsiteInfo.WebsiteID;
-                this.textBox6.Text = ws.WSVM.SelectedWebsiteInfo.WebsiteName;
+  
             }
             this.button1.Focus();
         }

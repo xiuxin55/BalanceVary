@@ -19,6 +19,10 @@ namespace BalanceModel
         /// <summary>
         /// 部门名称
         /// </summary>
+        public string DepartmentID { get; set; }
+        /// <summary>
+        /// 部门名称
+        /// </summary>
         public string DepartmentName { get; set; }
         
     }

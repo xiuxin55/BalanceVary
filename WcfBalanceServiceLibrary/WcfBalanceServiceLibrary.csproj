@@ -49,28 +49,32 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomerManagerInfoService.cs" />
-    <Compile Include="AccountInfoService.cs" />
-    <Compile Include="ICustomerManagerInfoService.cs" />
-    <Compile Include="IAccountInfoService.cs" />
-    <Compile Include="IService1.cs" />
-    <Compile Include="IServiceFile.cs" />
-    <Compile Include="ICompanyBalanceService.cs" />
-    <Compile Include="IAccountBalanceService.cs" />
-    <Compile Include="IDepartmentInfoService.cs" />
-    <Compile Include="IZoneBalanceService.cs" />
-    <Compile Include="IWebsiteBalanceService.cs" />
-    <Compile Include="IWebsiteInfoService.cs" />
-    <Compile Include="ManageService.cs" />
+    <Compile Include="Implement\CustomerManagerInfoService.cs" />
+    <Compile Include="Implement\AccountInfoService.cs" />
+    <Compile Include="Implement\CustomerManagerBalanceService.cs" />
+    <Compile Include="Interface\ICustomerManagerInfoService.cs" />
+    <Compile Include="Interface\IAccountInfoService.cs" />
+    <Compile Include="Interface\ICustomerManagerBalanceService.cs" />
+    <Compile Include="Interface\IService1.cs" />
+    <Compile Include="Interface\IServiceFile.cs" />
+    <Compile Include="Interface\ICompanyBalanceService.cs" />
+    <Compile Include="Interface\IAccountBalanceService.cs" />
+    <Compile Include="Interface\IDepartmentInfoService.cs" />
+    <Compile Include="Interface\IDepartmentBalanceService.cs" />
+    <Compile Include="Interface\IZoneBalanceService.cs" />
+    <Compile Include="Interface\IWebsiteBalanceService.cs" />
+    <Compile Include="Interface\IWebsiteInfoService.cs" />
+    <Compile Include="Implement\ManageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service1.cs" />
-    <Compile Include="ServiceFile.cs" />
-    <Compile Include="CompanyBalanceService.cs" />
-    <Compile Include="AccountBalanceService.cs" />
-    <Compile Include="DepartmentInfoService.cs" />
-    <Compile Include="ZoneBalanceService.cs" />
-    <Compile Include="WebsiteBalanceService.cs" />
-    <Compile Include="WebsiteInfoService.cs" />
+    <Compile Include="Implement\Service1.cs" />
+    <Compile Include="Implement\ServiceFile.cs" />
+    <Compile Include="Implement\CompanyBalanceService.cs" />
+    <Compile Include="Implement\AccountBalanceService.cs" />
+    <Compile Include="Implement\DepartmentInfoService.cs" />
+    <Compile Include="Implement\DepartmentBalanceService.cs" />
+    <Compile Include="Implement\ZoneBalanceService.cs" />
+    <Compile Include="Implement\WebsiteBalanceService.cs" />
+    <Compile Include="Implement\WebsiteInfoService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BalanceBLL\BalanceBLL.csproj">

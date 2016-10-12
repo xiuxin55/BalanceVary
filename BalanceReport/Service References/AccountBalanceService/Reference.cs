@@ -18,6 +18,7 @@ namespace BalanceReport.AccountBalanceService {
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseModel", Namespace="http://schemas.datacontract.org/2004/07/BalanceModel")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(BalanceReport.AccountBalanceService.BalanceBaseModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BalanceReport.AccountBalanceService.DepartmentBalance))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(BalanceReport.AccountBalanceService.AccountBalance))]
     public partial class BaseModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -112,6 +113,7 @@ namespace BalanceReport.AccountBalanceService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BalanceBaseModel", Namespace="http://schemas.datacontract.org/2004/07/BalanceModel")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BalanceReport.AccountBalanceService.DepartmentBalance))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(BalanceReport.AccountBalanceService.AccountBalance))]
     public partial class BalanceBaseModel : BalanceReport.AccountBalanceService.BaseModel {
         
@@ -262,6 +264,45 @@ namespace BalanceReport.AccountBalanceService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DepartmentBalance", Namespace="http://schemas.datacontract.org/2004/07/BalanceModel")]
+    [System.SerializableAttribute()]
+    public partial class DepartmentBalance : BalanceReport.AccountBalanceService.BalanceBaseModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DepartmentIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DepartmentNameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DepartmentID {
+            get {
+                return this.DepartmentIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DepartmentIDField, value) != true)) {
+                    this.DepartmentIDField = value;
+                    this.RaisePropertyChanged("DepartmentID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DepartmentName {
+            get {
+                return this.DepartmentNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DepartmentNameField, value) != true)) {
+                    this.DepartmentNameField = value;
+                    this.RaisePropertyChanged("DepartmentName");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AccountBalance", Namespace="http://schemas.datacontract.org/2004/07/BalanceModel")]
     [System.SerializableAttribute()]
     public partial class AccountBalance : BalanceReport.AccountBalanceService.BalanceBaseModel {
@@ -365,6 +406,12 @@ namespace BalanceReport.AccountBalanceService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountBalanceService/SelectCount", ReplyAction="http://tempuri.org/IAccountBalanceService/SelectCountResponse")]
         int SelectCount(BalanceReport.AccountBalanceService.AccountBalance info);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountBalanceService/SelectByDepartment", ReplyAction="http://tempuri.org/IAccountBalanceService/SelectByDepartmentResponse")]
+        BalanceReport.AccountBalanceService.AccountBalance[] SelectByDepartment(BalanceReport.AccountBalanceService.DepartmentBalance model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountBalanceService/SelectByDepartmentCount", ReplyAction="http://tempuri.org/IAccountBalanceService/SelectByDepartmentCountResponse")]
+        int SelectByDepartmentCount(BalanceReport.AccountBalanceService.DepartmentBalance model);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -412,6 +459,14 @@ namespace BalanceReport.AccountBalanceService {
         
         public int SelectCount(BalanceReport.AccountBalanceService.AccountBalance info) {
             return base.Channel.SelectCount(info);
+        }
+        
+        public BalanceReport.AccountBalanceService.AccountBalance[] SelectByDepartment(BalanceReport.AccountBalanceService.DepartmentBalance model) {
+            return base.Channel.SelectByDepartment(model);
+        }
+        
+        public int SelectByDepartmentCount(BalanceReport.AccountBalanceService.DepartmentBalance model) {
+            return base.Channel.SelectByDepartmentCount(model);
         }
     }
 }

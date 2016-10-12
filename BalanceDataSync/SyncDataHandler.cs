@@ -53,16 +53,21 @@ namespace BalanceDataSync
 
                     item.FileState = 2;
                     item.FileException = ex.Message + ":\n" + ex.StackTrace;
+                    throw ex;
                 }
             }
         }
         private void CalculateData()
         {
-            ABCalculateBalance cz = new CalculateZone(ImportDataList);
-            ABCalculateBalance cw = new CalculateWebsite(ImportDataList);
-            ABCalculateBalance cc = new CalculateCompany(ImportDataList);
-            ABCalculateBalance ca = new CalculateAccount(ImportDataList);
+            ABCalculateBalance cz = new CalculateZone(ImportDataList);//计算市行、县行
+            ABCalculateBalance cd = new CalculateDepartment(ImportDataList);//计算部门
+            ABCalculateBalance cm = new CalculateCustomerManager(ImportDataList);//计算客户经理
+            ABCalculateBalance cw = new CalculateWebsite(ImportDataList);//计算网点
+            ABCalculateBalance cc = new CalculateCompany(ImportDataList);//计算公司
+            ABCalculateBalance ca = new CalculateAccount(ImportDataList);//计算账户
             cz.Caculate();
+            cd.Caculate();
+            cm.Caculate();
             cw.Caculate();
             cc.Caculate();
             ca.Caculate();

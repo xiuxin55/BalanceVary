@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="BalanceReport.Views.ReportDataGrid.CustomerManagerDataGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BalanceReport.Views.ReportDataGrid"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:tool="clr-namespace:BalanceReport.Tools"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <tool:TimeConverter x:Key="TimeConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="90*"/>
+            </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="293*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="1" Background="{StaticResource WindowTitleColorBrush}">
+                <TextBlock  Width="auto" Text="部门" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            </Border>
+            <ListBox   Grid.Row="2"  ItemsSource="{Binding DepartmentInfoList}" DisplayMemberPath="DepartmentName" SelectedItem="{Binding SelectedDepartmentInfoModel}" Grid.RowSpan="2"></ListBox>
+        </Grid>
+
+        <TabControl Grid.Column="1" TabStripPlacement="Top" Controls:TabControlHelper.IsUnderlined="True" SelectedIndex="{Binding SelectedTabItemIndex}">
+            <TabItem Header="客户经理变化 "  Controls:ControlsHelper.HeaderFontSize="13">
+                <Grid>
+                    <DataGrid  Name="CompanyDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding CustomerManagerBalanceList}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="48" Header="序号" Binding="{Binding RowNumber}"  />
+                            <DataGridTextColumn Binding="{Binding ManagerName}"  Header="客户经理" Width="1.5*"/>
+                            <DataGridTextColumn Binding="{Binding DepartmentName}"  Header="所属部门" Width="1.5*"/>
+                            <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*" Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"  Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding RegularMoneyVary}" Header="定期余额变化"  Width="*"/>
+                            <DataGridTextColumn Binding="{Binding UnRegularMoneyVary}" Header="活期余额变化"  Width="*"/>
+                            <DataGridTextColumn Binding="{Binding AmountMoneyVary}" Header="总余额变化"  Width="*"/>
+                            <DataGridTextColumn Binding="{Binding Rate}" Header="活期比"  Width="*"/>
+                            <DataGridTextColumn Binding="{Binding BalanceTime,Converter={StaticResource TimeConverter} }" Header="时间"   Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header=" 账户变化 "  Controls:ControlsHelper.HeaderFontSize="13">
+                <Grid>
+                    <DataGrid  Name="AccountCompanyDataGrid2"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding AccountBalanceList}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="48" Header="序号" Binding="{Binding RowNumber}"  />
+                            <DataGridTextColumn Binding="{Binding AccountID}"  Header="账户号" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding SubAccountNumber}"  Header="子账号" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding AccountName}"  Header="账户名称" Width="1.5*"/>
+                            <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*" Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"  Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding RegularMoneyVary}" Header="定期余额变化"  Width="*"/>
+                            <DataGridTextColumn Binding="{Binding UnRegularMoneyVary}" Header="活期余额变化"  Width="*"/>
+                            <DataGridTextColumn Binding="{Binding AmountMoneyVary}" Header="总余额变化"   Visibility="Hidden" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding Rate}" Header="活期比"   Visibility="Hidden" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding BalanceTime,Converter={StaticResource TimeConverter} }" Header="时间"   Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
