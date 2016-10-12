@@ -32,10 +32,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
           <isNotEmpty prepend="and" property="AccountID">AccountID=#AccountID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
           <isNotEmpty prepend="and" property="AccountName">AccountName=#AccountName#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountType">AccountType=#AccountType#</isNotEmpty>
+
           <isNotEmpty prepend="and" property="SubAccountNumber">SubAccountNumber=#SubAccountNumber#</isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
+          <isGreaterThan prepend="and" property="AccountType" compareValue="-1">AccountType=#AccountType#</isGreaterThan>
         </isParameterPresent>
       </dynamic>
     </select>
@@ -48,7 +50,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
           <isNotEmpty prepend="and" property="AccountID">AccountID=#AccountID#</isNotEmpty>
           <isNotEmpty prepend="and" property="SubAccountNumber">SubAccountNumber=#SubAccountNumber#</isNotEmpty>
           <isNotEmpty prepend="and" property="AccountName">AccountName=#AccountName#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountType">AccountType=#AccountType#</isNotEmpty>
+          <isGreaterThan prepend="and" property="AccountType" compareValue="-1">AccountType=#AccountType#</isGreaterThan>
           <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
         </isParameterPresent>

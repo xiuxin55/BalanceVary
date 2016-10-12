@@ -11,6 +11,7 @@ using BalanceReport.WebsiteInfoService;
 using Common;
 using BalanceReport.CompanyBalanceService;
 using Utility;
+using BalanceReport.AccountBalanceService;
 
 namespace BalanceReport.ViewModels
 {
@@ -18,13 +19,33 @@ namespace BalanceReport.ViewModels
     {
         private WebsiteInfoService.WebsiteInfoServiceClient clientwebsite = new WebsiteInfoServiceClient();
         private CompanyBalanceServiceClient clientcompanybalance = new CompanyBalanceServiceClient();
+        private AccountBalanceService.AccountBalanceServiceClient clientAccountBalance = new AccountBalanceServiceClient();
         public CityCompanyDataGridVM()
         {
-            SearchWebsiteCommand = new DelegateCommand(SearchWebsiteExecute);
+            SearchCompanyCommand = new DelegateCommand(SearchCompanyExecute);
             LoadData();
           //  SearchWebsiteExecute();
         }
         #region 属性
+
+        private int _SelectedTabItemIndex;
+        public int SelectedTabItemIndex
+        {
+            get { return _SelectedTabItemIndex; }
+            set
+            {
+                _SelectedTabItemIndex = value;
+                if (_SelectedTabItemIndex == 0)
+                {
+                    SearchCompanyExecute();
+                }
+                else
+                {
+                    SearchAccountExecute();
+                }
+                this.RaisePropertyChanged("SelectedTabItemIndex");
+            }
+        }
         private WebsiteInfo _selectedWebsiteInfoModel;
         /// <summary>
         ///被选中的行 
@@ -35,7 +56,14 @@ namespace BalanceReport.ViewModels
             set
             {
                 _selectedWebsiteInfoModel = value;
-                SearchWebsiteExecute();
+                if (_SelectedTabItemIndex == 0)
+                {
+                    SearchCompanyExecute();
+                }
+                else
+                {
+                    SearchAccountExecute();
+                }
                 this.RaisePropertyChanged("SelectedWebsiteInfoModel");
             }
         }
@@ -83,14 +111,52 @@ namespace BalanceReport.ViewModels
                 this.RaisePropertyChanged("CompanyBalanceList");
             }
         }
+        private ObservableCollection<AccountBalance> _AccountBalanceList;
+        /// <summary>
+        /// 集合
+        /// </summary>
+        public ObservableCollection<AccountBalance> AccountBalanceList
+        {
+            get { return _AccountBalanceList; }
+            set
+            {
+                _AccountBalanceList = value;
+                this.RaisePropertyChanged("AccountBalanceList");
+            }
+        }
 
+        private AccountBalance _searchAccountBalanceModel;
+        /// <summary>
+        /// 查询
+        /// </summary>
+        public AccountBalance SearchAccountBalanceModel
+        {
+            get { return _searchAccountBalanceModel; }
+            set
+            {
+                _searchAccountBalanceModel = value;
 
+                this.RaisePropertyChanged("SearchAccountBalanceModel");
+            }
+        }
         #endregion
         #region 命令
-        public DelegateCommand SearchWebsiteCommand { get; set; }
+        public DelegateCommand SearchCompanyCommand { get; set; }
         #endregion
         #region 命令执行方法
-        private void SearchWebsiteExecute()
+        private void SearchAccountExecute()
+        {
+            SearchAccountBalanceModel = new AccountBalance();
+            SearchAccountBalanceModel.EndIndex = int.MaxValue;
+            SearchAccountBalanceModel.OrderbyColomnName = "BalanceTime";
+            SearchAccountBalanceModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
+            SearchAccountBalanceModel.StartIndex = 1;
+            SearchAccountBalanceModel.EndIndex = PageSize;
+            SearchAccountBalanceModel.AccountType = -1;
+            AccountBalanceList = new ObservableCollection<AccountBalance>(clientAccountBalance.Select(SearchAccountBalanceModel));
+            Total = clientAccountBalance.SelectCount(SearchAccountBalanceModel);
+        }
+        private void SearchCompanyExecute()
         {
             SearchCompanyBalanceoModel = new CompanyBalance();
             SearchCompanyBalanceoModel.EndIndex = int.MaxValue;
@@ -115,12 +181,21 @@ namespace BalanceReport.ViewModels
                 LogHelper.WriteLog(typeof(CityCompanyDataGridVM), ex);
             }
         }
-
+     
         public override void LoadPageData(int startindex, int endindex)
         {
-            SearchCompanyBalanceoModel.StartIndex = startindex;
-            SearchCompanyBalanceoModel.EndIndex = endindex;
-            CompanyBalanceList = new ObservableCollection<CompanyBalance>(clientcompanybalance.Select(SearchCompanyBalanceoModel));
+            if (SelectedTabItemIndex == 0)
+            {
+                SearchCompanyBalanceoModel.StartIndex = startindex;
+                SearchCompanyBalanceoModel.EndIndex = endindex;
+                CompanyBalanceList = new ObservableCollection<CompanyBalance>(clientcompanybalance.Select(SearchCompanyBalanceoModel));
+            }
+            if (SelectedTabItemIndex == 1)
+            {
+                SearchAccountBalanceModel.StartIndex = startindex;
+                SearchAccountBalanceModel.EndIndex = endindex;
+                AccountBalanceList = new ObservableCollection<AccountBalance>(clientAccountBalance.Select(SearchAccountBalanceModel));
+            }
         }
         #endregion
         #region 内部方法
