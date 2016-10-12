@@ -16,6 +16,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <result property="WebsiteName" column="WebsiteName"/>
       <result property="ManagerTelphone" column="ManagerTelphone"/>
       <result property="ManagerEmail" column="ManagerEmail"/>
+      <result property="DepartmentName" column="DepartmentName"/>
+      
     </resultMap>
   </resultMaps>
   <statements>
@@ -30,6 +32,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
           <isNotEmpty prepend="and" property="WebsiteTel">WebsiteName=#WebsiteName#</isNotEmpty>
           <isNotEmpty prepend="and" property="ManagerTelphone">ManagerTelphone=#ManagerTelphone#</isNotEmpty>
           <isNotEmpty prepend="and" property="Institution">ManagerEmail=#ManagerEmail#</isNotEmpty>
+          <isNotEmpty prepend="and" property="Institution">DepartmentName=#DepartmentName#</isNotEmpty>
+          
         </isParameterPresent>
       </dynamic>
     </select>
@@ -55,6 +59,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <isNotEmpty prepend ="," property="ManagerEmail">
         ManagerEmail = #ManagerEmail#
       </isNotEmpty>
+      <isNotEmpty prepend ="," property="DepartmentName">
+        DepartmentName = #DepartmentName#
+      </isNotEmpty>
+      
+
       WHERE ID = #ID#
     </update>
     <insert id="AddCustomerManagerInfo" parameterClass="CustomerManagerInfo">
@@ -64,8 +73,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       WebsiteID,
       WebsiteName,
       ManagerTelphone,
-      ManagerEmail)
-      VALUES (#ID#,#ManagerID#,#ManagerName#,#WebsiteID#,#WebsiteName#,#ManagerTelphone#,#ManagerEmail#);
+      ManagerEmail,DepartmentName)
+      VALUES (#ID#,#ManagerID#,#ManagerName#,#WebsiteID#,#WebsiteName#,#ManagerTelphone#,#ManagerEmail#,#DepartmentName#);
     </insert>
     <delete id="DeleteCustomerManagerInfo" parameterClass="CustomerManagerInfo">
       DELETE ManagersInfo WHERE ID = #ID#

@@ -72,6 +72,7 @@
     <Compile Include="CustomerManagerInfo.cs" />
     <Compile Include="ReportModel.cs" />
     <Compile Include="UploadFileInfo.cs" />
+    <Compile Include="DepartmentInfo.cs" />
     <Compile Include="WebsiteInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

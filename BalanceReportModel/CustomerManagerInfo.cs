@@ -16,5 +16,10 @@ namespace BalanceModel
         public string ManagerTelphone { get; set; }
         public string ManagerEmail { get; set; }
         public string Institution { get; set; }
+        /// <summary>
+        /// 部门名称
+        /// </summary>
+        public string DepartmentName { get; set; }
+        
     }
 }

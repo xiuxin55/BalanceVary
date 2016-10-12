@@ -49,6 +49,7 @@
     <Compile Include="Vary\AccountBalanceBLL.cs" />
     <Compile Include="Vary\WebsiteBalanceBLL.cs" />
     <Compile Include="Vary\ZoneBalanceBLL.cs" />
+    <Compile Include="DepartmentInfoBLL.cs" />
     <Compile Include="WebsiteInfoBLL.cs" />
   </ItemGroup>
   <ItemGroup>

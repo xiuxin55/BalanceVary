@@ -60,9 +60,9 @@ namespace BalanceReport.ViewModels
         #region 命令执行方法
         private void OkManagersExecute()
         {
-            if (AddCustomerManagerInfo == null || AddCustomerManagerInfo.ManagerID == null || AddCustomerManagerInfo.ManagerName == null || AddCustomerManagerInfo.WebsiteID == null || AddCustomerManagerInfo.ManagerTelphone == null)
+            if (AddCustomerManagerInfo == null || AddCustomerManagerInfo.ManagerID == null || AddCustomerManagerInfo.ManagerName == null || AddCustomerManagerInfo.DepartmentName == null )
             {
-                MessageBox.Show("所有内容均不能为空");
+                MessageBox.Show("必填内容不能为空");
                 return;
             }
             if (IsAdd)
@@ -91,7 +91,7 @@ namespace BalanceReport.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("新增失败,数据库连接失败");
+                    MessageBox.Show("新增失败");
                 }
             }
             else
@@ -106,7 +106,7 @@ namespace BalanceReport.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("修改失败,数据库连接失败");
+                    MessageBox.Show("修改失败");
                 }
             }
 

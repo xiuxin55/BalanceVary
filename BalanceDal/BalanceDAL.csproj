@@ -60,6 +60,7 @@
     <Compile Include="Vary\AccountBalanceDAL.cs" />
     <Compile Include="Vary\WebsiteBalanceDAL.cs" />
     <Compile Include="Vary\ZoneBalanceDAL.cs" />
+    <Compile Include="DepartmentInfoDAL.cs" />
     <Compile Include="WebsiteInfoDAL.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -28,7 +28,7 @@
                 <ListBox   Grid.Row="2"  ItemsSource="{Binding WebsiteInfoList}" DisplayMemberPath="WebsiteName" SelectedItem="{Binding SelectedWebsiteInfoModel}" Grid.RowSpan="2"></ListBox>
             </Grid>
         <TabControl Grid.Column="1" TabStripPlacement="Top" Controls:TabControlHelper.IsUnderlined="True" SelectedIndex="{Binding SelectedTabItemIndex}">
-            <TabItem Header="公司变化"  Controls:ControlsHelper.HeaderFontSize="13">
+            <TabItem Header=" 公司变化 "  Controls:ControlsHelper.HeaderFontSize="13">
                 <Grid>
                     <DataGrid  Name="CompanyDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding CompanyBalanceList}">
                     <DataGrid.Columns>
@@ -46,7 +46,7 @@
                 </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="账户变化"  Controls:ControlsHelper.HeaderFontSize="13">
+            <TabItem Header=" 账户变化 "  Controls:ControlsHelper.HeaderFontSize="13">
                 <Grid>
                     <DataGrid  Name="AccountCompanyDataGrid2"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding AccountBalanceList}">
                         <DataGrid.Columns>

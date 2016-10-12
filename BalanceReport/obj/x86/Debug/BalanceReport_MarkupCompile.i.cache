@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-26448360098
+28-575349272
 
-622121132567
+67-1911649531
 36-1442235522
-App.xaml;MainWindow.xaml;Views\CoverUserControl.xaml;Views\DepartmentReportUserControl.xaml;Views\CustomerManagerAdd.xaml;Views\MyCalendar.xaml;Views\ProgressBarWindow.xaml;Views\ReportDataGrid\CountyCompanyDataGrid.xaml;Views\ReportDataGrid\CityCompanyDataGrid.xaml;Views\ReportDataGrid\CountyDataGrid.xaml;Views\ReportDataGrid\CityDataGrid.xaml;Views\ReportDataGrid\CountyWebsiteDataGrid.xaml;Views\ReportDataGrid\CityWebsiteDataGrid.xaml;Views\ReportUserControl.xaml;Views\SearchWindow.xaml;Views\UserControlLoading.xaml;Views\VaryGridControl.xaml;Views\WebsiteAdd.xaml;Views\WebsiteManage.xaml;Views\CustomerManagerList.xaml;Views\WebsiteSelect.xaml;Views\ManagersSelect.xaml;Views\AccountManage.xaml;Views\AccountAdd.xaml;Views\AccountLink.xaml;Views\ImportSelectDate.xaml;
+App.xaml;MainWindow.xaml;Views\CoverUserControl.xaml;Views\DepartmentReportUserControl.xaml;Views\CustomerManagerAdd.xaml;Views\MyCalendar.xaml;Views\ProgressBarWindow.xaml;Views\ReportDataGrid\CountyCompanyDataGrid.xaml;Views\ReportDataGrid\CityCompanyDataGrid.xaml;Views\ReportDataGrid\CountyDataGrid.xaml;Views\ReportDataGrid\CityDataGrid.xaml;Views\ReportDataGrid\CountyWebsiteDataGrid.xaml;Views\ReportDataGrid\CityWebsiteDataGrid.xaml;Views\ReportUserControl.xaml;Views\SearchWindow.xaml;Views\UserControlLoading.xaml;Views\VaryGridControl.xaml;Views\DepartmentAdd.xaml;Views\WebsiteAdd.xaml;Views\DepartmentManage.xaml;Views\WebsiteManage.xaml;Views\CustomerManagerList.xaml;Views\WebsiteSelect.xaml;Views\ManagersSelect.xaml;Views\AccountManage.xaml;Views\AccountAdd.xaml;Views\AccountLink.xaml;Views\ImportSelectDate.xaml;
 
 False
 

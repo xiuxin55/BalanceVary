@@ -114,6 +114,9 @@ namespace BalanceReport.CustomerManagerInfoService {
     public partial class CustomerManagerInfo : BalanceReport.CustomerManagerInfoService.BaseModel {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DepartmentNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -139,6 +142,19 @@ namespace BalanceReport.CustomerManagerInfoService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string WebsiteTelField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DepartmentName {
+            get {
+                return this.DepartmentNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DepartmentNameField, value) != true)) {
+                    this.DepartmentNameField = value;
+                    this.RaisePropertyChanged("DepartmentName");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string ID {

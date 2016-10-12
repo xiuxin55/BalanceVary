@@ -543,3 +543,4 @@ E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\Styles\Co
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\MahApps.Metro.g.resources
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\MahApps.Metro.dll
 E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\MahApps.Metro.pdb
+E:\个人\GitHub_余额变动\BalanceVary\MahApps.Metro\obj\NET4\Debug\MahApps.Metro.csprojResolveAssemblyReference.cache

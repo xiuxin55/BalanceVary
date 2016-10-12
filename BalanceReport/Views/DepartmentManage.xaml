@@ -1,0 +1,48 @@
+﻿<UserControl  x:Class="BalanceReport.Views.DepartmentManage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:tool="clr-namespace:BalanceReport.Tools"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="553">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="265*" />
+        </Grid.RowDefinitions>
+        <ToolBar     x:Name="toolBar1" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True"  >
+            <Button Width="0"/>
+            <Button x:Name="AddDepartment" Width="60" Content="新增" Command="{Binding AddDepartmentCommand}" HorizontalAlignment="Center" HorizontalContentAlignment="Left" />
+            <Button x:Name="UpdateDepartment" Width="60"  Content="修改" Command="{Binding UpdateDepartmentCommand}" HorizontalContentAlignment="Left" />
+            <Button x:Name="DeleteDepartment" Width="60"  Content="删除" Command="{Binding DeleteDepartmentCommand}" HorizontalContentAlignment="Left" />
+            <!--<TextBlock  Width="60"   Text="部门号:" VerticalAlignment="Center" />
+            <TextBox  Width="120" Text="{Binding SearchDepartmentModel.DepartmentID}"  HorizontalContentAlignment="Left" VerticalAlignment="Center" />-->
+            <TextBlock  Width="60"   Text="部门名称:" VerticalAlignment="Center" />
+            <TextBox  Width="120" Text="{Binding SearchDepartmentModel.DepartmentName}"  HorizontalContentAlignment="Left" />
+            <Button x:Name="SearchDepartment" Width="60"  Content="查询" Command="{Binding SearchDepartmentCommand}" HorizontalContentAlignment="Left"  />
+        </ToolBar>
+        <tool:GridLineDecorator Grid.Row="1" >
+            <ListView  x:Name="listView1" ItemsSource="{Binding DepartmentInfoList}" SelectedItem="{Binding SelectedDepartmentInfoModel}">
+                <ListView.View>
+                    <GridView >
+                        <!--<GridViewColumn Width="100" Header="网点号" DisplayMemberBinding="{Binding DepartmentID}" tool:ListViewBehavior.SortField="DepartmentID" />-->
+                        <GridViewColumn Width="200"  Header="部门名称" DisplayMemberBinding="{Binding DepartmentName}" tool:ListViewBehavior.SortField="DepartmentName"/>
+                        <!--<GridViewColumn Width="260" Header="网点地址" DisplayMemberBinding="{Binding DepartmentAddress}" tool:ListViewBehavior.SortField="DepartmentAddress"/>
+                        <GridViewColumn Width="150"  Header="网点电话" DisplayMemberBinding="{Binding DepartmentTel}" tool:ListViewBehavior.SortField="DepartmentTel"/>-->
+                        <GridViewColumn Width="100"  Header="部门负责人" DisplayMemberBinding="{Binding DepartmentManager}" tool:ListViewBehavior.SortField="DepartmentManager" />
+                        <GridViewColumn Width="100"  Header="负责人电话" DisplayMemberBinding="{Binding ManagerTelphone}" tool:ListViewBehavior.SortField="ManagerTelphone"/>
+                        <!--<GridViewColumn Width="100"  Header="所属机构" DisplayMemberBinding="{Binding Institution}" tool:ListViewBehavior.SortField="Institution"/>-->
+                    </GridView>
+                </ListView.View>
+                <!--<ListView.ItemTemplate>
+                <DataTemplate >
+                    
+                </DataTemplate>
+            </ListView.ItemTemplate>-->
+            </ListView>
+        </tool:GridLineDecorator>
+    </Grid>
+
+</UserControl>

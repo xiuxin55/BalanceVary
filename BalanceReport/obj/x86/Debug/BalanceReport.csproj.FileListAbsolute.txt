@@ -660,3 +660,7 @@ E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceRep
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceReport.csproj.GenerateResource.Cache
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceReport.dll
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceReport.pdb
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentManage.g.cs
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentManage.baml
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentAdd.baml
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentAdd.g.cs

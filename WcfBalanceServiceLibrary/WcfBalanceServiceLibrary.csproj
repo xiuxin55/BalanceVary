@@ -57,6 +57,7 @@
     <Compile Include="IServiceFile.cs" />
     <Compile Include="ICompanyBalanceService.cs" />
     <Compile Include="IAccountBalanceService.cs" />
+    <Compile Include="IDepartmentInfoService.cs" />
     <Compile Include="IZoneBalanceService.cs" />
     <Compile Include="IWebsiteBalanceService.cs" />
     <Compile Include="IWebsiteInfoService.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="ServiceFile.cs" />
     <Compile Include="CompanyBalanceService.cs" />
     <Compile Include="AccountBalanceService.cs" />
+    <Compile Include="DepartmentInfoService.cs" />
     <Compile Include="ZoneBalanceService.cs" />
     <Compile Include="WebsiteBalanceService.cs" />
     <Compile Include="WebsiteInfoService.cs" />
