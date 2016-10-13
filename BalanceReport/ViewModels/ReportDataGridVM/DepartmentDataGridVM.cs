@@ -11,6 +11,7 @@ using BalanceReport.DepartmentInfoService;
 using Common;
 using BalanceReport.DepartmentBalanceService;
 using Utility;
+using BalanceReport.LocalModel;
 
 namespace BalanceReport.ViewModels
 {
@@ -25,7 +26,11 @@ namespace BalanceReport.ViewModels
             LoadData();
         }
         #region 属性
+        public DataGridColomnState ColomnState
+        {
+            get { return LocalCommonData.ColomnState; }
 
+        }
         private DepartmentInfo _selectedDepartmentInfoModel;
         /// <summary>
         ///被选中的行 

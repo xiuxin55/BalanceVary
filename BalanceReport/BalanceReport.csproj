@@ -116,6 +116,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="LocalModel\DataGridColomnState.cs" />
+    <Compile Include="LocalModel\LocalCommonData.cs" />
     <Compile Include="Service References\AccountBalanceService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

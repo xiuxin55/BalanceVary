@@ -11,6 +11,7 @@ using BalanceReport.WebsiteInfoService;
 using Common;
 using BalanceReport.ZoneBalanceService;
 using Utility;
+using BalanceReport.LocalModel;
 
 namespace BalanceReport.ViewModels
 {
@@ -23,6 +24,11 @@ namespace BalanceReport.ViewModels
             SearchWebsiteExecute();
         }
         #region 属性
+        public DataGridColomnState ColomnState
+        {
+            get { return LocalCommonData.ColomnState; }
+
+        }
         private ZoneBalance _selectedWebsiteInfoModel;
         /// <summary>
         ///被选中的行 

@@ -12,6 +12,8 @@ using Common;
 using BalanceReport.CompanyBalanceService;
 using Utility;
 using BalanceReport.AccountBalanceService;
+using BalanceReport.LocalModel;
+
 
 namespace BalanceReport.ViewModels
 {
@@ -27,6 +29,12 @@ namespace BalanceReport.ViewModels
           //  SearchWebsiteExecute();
         }
         #region 属性
+ 
+        public DataGridColomnState ColomnState
+        {
+            get { return LocalCommonData.ColomnState; }
+           
+        }
 
         private int _SelectedTabItemIndex;
         public int SelectedTabItemIndex
@@ -172,6 +180,7 @@ namespace BalanceReport.ViewModels
         {
             try
             {
+ 
                 WebsiteInfo model = new WebsiteInfo();
                 model.Institution = "市行";
                 WebsiteInfoList = new ObservableCollection<WebsiteInfo>(clientwebsite.Select(model));

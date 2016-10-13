@@ -1,4 +1,5 @@
 ﻿using BalanceReport.SystemSetInfoService;
+using Microsoft.Practices.Prism.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,14 +7,74 @@ using System.Text;
 
 namespace BalanceReport.LocalModel
 {
-    public class DataGridColomnState
+    public class DataGridColomnState: NotificationObject
     {
-        public bool RegularColomnState { get; set; }
-        public bool RegularVaryColomnState { get; set; }
-        public bool UnRegularColomnState { get; set; }
-        public bool UnRegularVaryColomnState { get; set; }
-        public bool AmountColomnState { get; set; }
-        public bool AmountVaryColomnState { get; set; }
+        private bool _RegularColomnState;
+        public bool RegularColomnState
+        {
+            get { return _RegularColomnState; }
+            set { _RegularColomnState = value;
+                RaisePropertyChanged("RegularColomnState");
+            }
+        }
+
+
+        private bool _RegularVaryColomnState;
+        public bool RegularVaryColomnState
+        {
+            get { return _RegularVaryColomnState; }
+            set
+            {
+                _RegularVaryColomnState = value;
+                RaisePropertyChanged("RegularVaryColomnState");
+            }
+        }
+
+        private bool _UnRegularColomnState;
+        public bool UnRegularColomnState
+        {
+            get { return _UnRegularColomnState; }
+            set
+            {
+                _UnRegularColomnState = value;
+                RaisePropertyChanged("UnRegularColomnState");
+            }
+        }
+
+        private bool _UnRegularVaryColomnState;
+        public bool UnRegularVaryColomnState
+        {
+            get { return _UnRegularVaryColomnState; }
+            set
+            {
+                _UnRegularVaryColomnState = value;
+                RaisePropertyChanged("UnRegularVaryColomnState");
+            }
+        }
+
+        private bool _AmountColomnState;
+        public bool AmountColomnState
+        {
+            get { return _AmountColomnState; }
+            set
+            {
+                _AmountColomnState = value;
+                RaisePropertyChanged("AmountColomnState");
+            }
+        }
+
+
+        private bool _AmountVaryColomnState;
+        public bool AmountVaryColomnState
+        {
+            get { return _AmountVaryColomnState; }
+            set
+            {
+                _AmountVaryColomnState = value;
+                RaisePropertyChanged("AmountVaryColomnState");
+            }
+        }
+
 
         public static DataGridColomnState SystemSetInfoToState(SystemSetInfo info)
         {
