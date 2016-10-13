@@ -12,6 +12,7 @@ using Common;
 using BalanceReport.ZoneBalanceService;
 using Utility;
 using BalanceReport.LocalModel;
+using BalanceReport.SystemSetInfoService;
 
 namespace BalanceReport.ViewModels
 {
@@ -22,11 +23,19 @@ namespace BalanceReport.ViewModels
         {
             SearchWebsiteCommand = new DelegateCommand(SearchWebsiteExecute);
             SearchWebsiteExecute();
+            LoadData();
         }
+
         #region 属性
+        private DataGridColomnState _ColomnState;
         public DataGridColomnState ColomnState
         {
-            get { return LocalCommonData.ColomnState; }
+            get { return _ColomnState; }
+            set
+            {
+                _ColomnState = value;
+                RaisePropertyChanged("ColomnState");
+            }
 
         }
         private ZoneBalance _selectedWebsiteInfoModel;
@@ -109,7 +118,13 @@ namespace BalanceReport.ViewModels
         }
         #endregion
         #region 内部方法
-
+        private void LoadData()
+        {
+            SystemSetInfoService.SystemSetInfoServiceClient clientSystemSetInfo = new SystemSetInfoServiceClient();
+            List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
+            SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()) : null;
+            ColomnState = ColomnSet != null ? DataGridColomnState.SystemSetInfoToState(ColomnSet) : null;
+        }
         #endregion
     }
 }

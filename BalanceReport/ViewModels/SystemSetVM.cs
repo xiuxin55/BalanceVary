@@ -16,10 +16,11 @@ namespace BalanceReport.ViewModels
         private SystemSetInfoService.SystemSetInfoServiceClient client = new SystemSetInfoServiceClient();
         public SystemSetVM()
         {
-            OkAccountCommand = new DelegateCommand(OkAccountExecute);
+            OkSystemSetCommand = new DelegateCommand(OkSystemSetExecute);
             LoadData();
         }
         #region 属性
+        private SystemSetInfo ColomnSet;
         private DataGridColomnState _SystemSetInfo;
         /// <summary>
         ///列是否显示设置
@@ -41,16 +42,30 @@ namespace BalanceReport.ViewModels
                 this.RaisePropertyChanged("ColomnStateSystemSetInfo");
             }
         }
-
+        bool isAdd = true;
         #endregion
         #region 命令
-        public DelegateCommand OkAccountCommand { get; set; }
+        public DelegateCommand OkSystemSetCommand { get; set; }
 
         #endregion
+
         #region 命令执行方法
-        private void OkAccountExecute()
+        private void OkSystemSetExecute()
         {
-           
+            if (isAdd)
+            {
+                ColomnSet = new SystemSetInfo();
+                ColomnSet.ID = Guid.NewGuid().ToString();
+                ColomnSet.SetName = DataGridColomnState.GetSetName();
+                ColomnSet.SetContent = ColomnStateSystemSetInfo.ToString();
+                client.Add(ColomnSet);
+            }
+            else
+            {
+                ColomnSet.SetContent = ColomnStateSystemSetInfo.ToString();
+                client.Update(ColomnSet);
+            }
+            MessageBox.Show("操作成功");
         }
 
 
@@ -59,8 +74,9 @@ namespace BalanceReport.ViewModels
         private void LoadData()
         {
             List<SystemSetInfo> setList = new List<SystemSetInfo>(client.Select(null));
-            SystemSetInfo colomnset = setList != null? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()):null;
-            ColomnStateSystemSetInfo = colomnset!=null? DataGridColomnState.SystemSetInfoToState(colomnset):null;
+            ColomnSet = setList != null? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()):null;
+            ColomnStateSystemSetInfo = ColomnSet != null? DataGridColomnState.SystemSetInfoToState(ColomnSet) :null;
+            isAdd = ColomnSet == null;
         }
         #endregion
     }

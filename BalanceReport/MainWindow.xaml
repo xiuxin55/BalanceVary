@@ -39,6 +39,7 @@
                                 <MenuItem x:Name="MonthImportButton" Header="账户按月份导入" Click="MonthImportButton_Click" />
                                 <MenuItem x:Name="ManagersImportButton" Header="客户经理信息导入" Click="ManagersImportButton_Click"  />
                                 <MenuItem x:Name="LinkImportButton" Header="客户经理帐号关联" Click="LinkImportButton_Click"  />
+                                <MenuItem x:Name="SystemSetButton" Header="系统设置" Click="SystemSetButton_Click"  />
                                 <!--<MenuItem x:Name="menubtnChangePWD" Header="修改密码" Click="menubtnChangePWD_Click"/>-->
                                 <!--<MenuItem Header="更 新"/>-->
                                 <!--<MenuItem Header="关 于"/>

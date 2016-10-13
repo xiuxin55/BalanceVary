@@ -9,6 +9,7 @@
              d:DesignHeight="300" d:DesignWidth="600">
     <UserControl.Resources>
         <tool:TimeConverter x:Key="TimeConverter" />
+        <tool:ColomnStateConverter x:Key="ColomnStateConverter" />
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -31,12 +32,12 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Width="48" Header="序号" Binding="{Binding RowNumber}"  />
                 <DataGridTextColumn Binding="{Binding WebsiteName}" Header="网点名称"  Width="1.3*"/>
-                <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding RegularMoneyVary}" Header="定期余额变化"  Width="*"/>
-                <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding UnRegularMoneyVary}" Header="活期余额变化"  Width="*"/>
-                <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"  Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding AmountMoneyVary}" Header="总余额变化"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*" Visibility="{Binding ColomnState.RegularColomnState,Converter={StaticResource ColomnStateConverter} }"/>
+                <DataGridTextColumn Binding="{Binding RegularMoneyVary}" Header="定期余额变化"  Width="*" Visibility="{Binding ColomnState.RegularVaryColomnState,Converter={StaticResource ColomnStateConverter}}"/>
+                <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="{Binding ColomnState.UnRegularColomnState,Converter={StaticResource ColomnStateConverter}}"/>
+                <DataGridTextColumn Binding="{Binding UnRegularMoneyVary}" Header="活期余额变化"  Visibility="{Binding ColomnState.UnRegularVaryColomnState,Converter={StaticResource ColomnStateConverter}}"/>
+                <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"  Visibility="{Binding ColomnState.AmountColomnState,Converter={StaticResource ColomnStateConverter}}"/>
+                <DataGridTextColumn Binding="{Binding AmountMoneyVary}" Header="总余额变化"  Width="*" Visibility="{Binding ColomnState.AmountVaryColomnState,Converter={StaticResource ColomnStateConverter}}"/>
                 <DataGridTextColumn Binding="{Binding Rate}" Header="活期比"  Width="*"/>
                 <DataGridTextColumn Binding="{Binding WebsiteInfoObj.WebsiteAddress}" Header="网点地址"  Width="*"/>
                 <DataGridTextColumn Binding="{Binding WebsiteInfoObj.WebsiteTel}" Header="网点电话"   Width="*"/>

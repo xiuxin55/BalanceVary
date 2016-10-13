@@ -178,6 +178,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Tools\Byte[]ToBitmapImageConverter.cs" />
+    <Compile Include="Tools\ColomnStateConverter.cs" />
     <Compile Include="Tools\TimeConverter.cs" />
     <Compile Include="Tools\GridLineDecorator.cs" />
     <Compile Include="Tools\ListSortDecorator.cs" />

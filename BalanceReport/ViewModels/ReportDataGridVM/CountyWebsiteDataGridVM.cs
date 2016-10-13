@@ -12,6 +12,7 @@ using Common;
 using BalanceReport.WebsiteBalanceService;
 using Utility;
 using BalanceReport.LocalModel;
+using BalanceReport.SystemSetInfoService;
 
 namespace BalanceReport.ViewModels
 {
@@ -27,9 +28,15 @@ namespace BalanceReport.ViewModels
             //  SearchWebsiteExecute();
         }
         #region 属性
+        private DataGridColomnState _ColomnState;
         public DataGridColomnState ColomnState
         {
-            get { return LocalCommonData.ColomnState; }
+            get { return _ColomnState; }
+            set
+            {
+                _ColomnState = value;
+                RaisePropertyChanged("ColomnState");
+            }
 
         }
         private WebsiteInfoService.WebsiteInfo _selectedWebsiteInfoModel;
@@ -121,6 +128,11 @@ namespace BalanceReport.ViewModels
                 temp.Institution = "县行";
                 temp.WebsiteName = "全部";
                 WebsiteInfoList.Insert(0, temp);
+
+                SystemSetInfoService.SystemSetInfoServiceClient clientSystemSetInfo = new SystemSetInfoServiceClient();
+                List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
+                SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()) : null;
+                ColomnState = ColomnSet != null ? DataGridColomnState.SystemSetInfoToState(ColomnSet) : null;
             }
             catch (Exception ex)
             {

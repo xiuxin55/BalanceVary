@@ -6,20 +6,22 @@
              xmlns:local="clr-namespace:BalanceReport.Views.ReportDataGrid"
              xmlns:tool="clr-namespace:BalanceReport.Tools"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             Name="UCCityDataGrid"
+             d:DesignHeight="300" d:DesignWidth="800">
     <UserControl.Resources>
         <tool:TimeConverter x:Key="TimeConverter" />
+        <tool:ColomnStateConverter x:Key="ColomnStateConverter" />
     </UserControl.Resources>
     <Grid>
         <DataGrid Name="ZoneDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding ZoneBalanceList}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="48" Header="序号" Binding="{Binding RowNumber}"  />
-                <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding RegularMoneyVary}" Header="定期余额变化"  Width="*"/>
-                <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding UnRegularMoneyVary}" Header="活期余额变化"  Width="*"/>
-                <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"  Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding AmountMoneyVary}" Header="总余额变化"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*" Visibility="{Binding Path=DataContext.ColomnState.RegularColomnState,ElementName=UCCityDataGrid ,Converter={StaticResource ColomnStateConverter} }"/>
+                <DataGridTextColumn Binding="{Binding RegularMoneyVary}" Header="定期余额变化"  Width="*" Visibility="{Binding  Path=DataContext.ColomnState.RegularVaryColomnState,ElementName=UCCityDataGrid,Converter={StaticResource ColomnStateConverter}}"/>
+                <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="{Binding  Path=DataContext.ColomnState.UnRegularColomnState,ElementName=UCCityDataGrid,Converter={StaticResource ColomnStateConverter}}"/>
+                <DataGridTextColumn Binding="{Binding UnRegularMoneyVary}" Header="活期余额变化"  Visibility="{Binding  Path=DataContext.ColomnState.UnRegularVaryColomnState,ElementName=UCCityDataGrid,Converter={StaticResource ColomnStateConverter}}"/>
+                <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"  Visibility="{Binding  Path=DataContext.ColomnState.AmountColomnState,ElementName=UCCityDataGrid,Converter={StaticResource ColomnStateConverter}}"/>
+                <DataGridTextColumn Binding="{Binding AmountMoneyVary}" Header="总余额变化"  Width="*" Visibility="{Binding  Path=DataContext.ColomnState.AmountVaryColomnState,ElementName=UCCityDataGrid,Converter={StaticResource ColomnStateConverter}}"/>
                 <DataGridTextColumn Binding="{Binding Rate}" Header="活期比"  Width="*"/>
                 <DataGridTextColumn Binding="{Binding BalanceTime,Converter={StaticResource TimeConverter} }" Header="时间"   Width="*"/>
             </DataGrid.Columns>

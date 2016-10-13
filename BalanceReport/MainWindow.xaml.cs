@@ -124,6 +124,11 @@ namespace BalanceReport
                 //UploadFile.Upload(op.FileName, ServiceFile.FileType.Manager); ;
             }
         }
-  
+
+        private void SystemSetButton_Click(object sender, RoutedEventArgs e)
+        {
+            SystemSet ss = new SystemSet();
+            ss.ShowDialog();
+        }
     }
 }

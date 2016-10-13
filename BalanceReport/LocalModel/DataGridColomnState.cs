@@ -87,7 +87,7 @@ namespace BalanceReport.LocalModel
                 if (item.Split(':').Length==2)
                 {
                     statename = item.Split(':')[0];
-                    state = item.Split(':')[1] == "true" ? true : false;
+                    state = item.Split(':')[1].ToLower() == "true" ? true : false;
                 }
                 else
                 {
@@ -119,6 +119,12 @@ namespace BalanceReport.LocalModel
             }
             return obj;
             
+        }
+
+        public override string ToString()
+        {
+            return string.Format("RegularColomnState:{0}|RegularVaryColomnState:{1}|UnRegularColomnState:{2}|UnRegularVaryColomnState:{3}|AmountColomnState:{4}|AmountVaryColomnState:{5}",
+                this.RegularColomnState, this.RegularVaryColomnState, this.UnRegularColomnState, this.UnRegularVaryColomnState, this.AmountColomnState, this.AmountVaryColomnState);
         }
         public static string GetSetName()
         {

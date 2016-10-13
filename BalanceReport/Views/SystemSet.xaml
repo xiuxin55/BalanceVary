@@ -11,15 +11,20 @@
         WindowStartupLocation="CenterScreen"
         >
     <Grid>
-        <Grid.ColumnDefinitions>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="146*"/>
             <ColumnDefinition Width="143*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="232*"/>
             <RowDefinition Height="209*"/>
+        </Grid.RowDefinitions>Grid.Row="0" Grid.Column="0"-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="232*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Grid.Column="0">
+        <Grid >
             <GroupBox Header="余额变动表显示列设置">
                 <StackPanel Orientation="Vertical">
                     <CheckBox  Content="定期余额列" IsChecked="{Binding ColomnStateSystemSetInfo.RegularColomnState}" Margin="8"/>
@@ -30,7 +35,8 @@
                     <CheckBox Content="总余额变化列"  IsChecked="{Binding ColomnStateSystemSetInfo.AmountVaryColomnState}"  Margin="8"/>
                 </StackPanel>
             </GroupBox>
+            
         </Grid>
-
+        <Button Grid.Row="1" Width="100" Content="确定" Command="{Binding OkSystemSetCommand}"/>
     </Grid>
 </Controls:MetroWindow>
