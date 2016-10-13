@@ -21,18 +21,10 @@ namespace BalanceReport.Views
     /// </summary>
     public partial class SystemSet : MetroWindow
     {
-        public SystemSet(bool IsAdd, AccountInfo MIM)
+        public SystemSet()
         {
             InitializeComponent();
-            AccountAddVM wa = new AccountAddVM(IsAdd);
-            wa.AccountAddUI = this;
-            if (MIM != null)
-            {
-                wa.AddAccountInfo = MIM;
-                wa.OldAccountInfo = new AccountInfo();
-                wa.OldAccountInfo.AccountID = MIM.AccountID;
-            }
-            this.DataContext = wa;
+            this.DataContext = new SystemSetVM();
         }
         #region 窗口基本按键方法
         private void closeButton_Click(object sender, RoutedEventArgs e)
@@ -58,32 +50,6 @@ namespace BalanceReport.Views
             this.DragMove();
         }
         #endregion
-
-        private void textBox4_GotFocus(object sender, RoutedEventArgs e)
-        {
-            WebsiteSelect ws = new WebsiteSelect();
-            if ((bool)ws.ShowDialog())
-            {
-               // this.textBox4.Text = ws.WSVM.SelectedWebsiteInfoModel.WebsiteID;
-
-            }
-            this.button1.Focus();
-        }
-
-        private void textBox2_GotFocus(object sender, RoutedEventArgs e)
-        {
-            ManagersSelect ws = new ManagersSelect();
-            if ((bool)ws.ShowDialog())
-            {
-               // this.textBox2.Text = ws.WSVM.SelectedManagersInfoModel.ManagerID;
-
-
-            }
-            this.button1.Focus();
-        }
-
-
-
 
     }
 }

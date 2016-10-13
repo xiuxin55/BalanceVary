@@ -15,6 +15,7 @@ namespace BalanceReport.ViewModels
 {
     public class CityDataGridVM : BaseVM
     {
+
         private ZoneBalanceServiceClient client = new ZoneBalanceServiceClient();
         public CityDataGridVM()
         {

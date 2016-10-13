@@ -37,10 +37,10 @@
                             <DataGridTextColumn Binding="{Binding ManagerName}"  Header="客户经理" Width="1.5*"/>
                             <DataGridTextColumn Binding="{Binding DepartmentName}"  Header="所属部门" Width="1.5*"/>
                             <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*" Visibility="Hidden"/>
-                            <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="Hidden"/>
-                            <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"  Visibility="Hidden"/>
                             <DataGridTextColumn Binding="{Binding RegularMoneyVary}" Header="定期余额变化"  Width="*"/>
+                            <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="Hidden"/>
                             <DataGridTextColumn Binding="{Binding UnRegularMoneyVary}" Header="活期余额变化"  Width="*"/>
+                            <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"  Visibility="Hidden"/>
                             <DataGridTextColumn Binding="{Binding AmountMoneyVary}" Header="总余额变化"  Width="*"/>
                             <DataGridTextColumn Binding="{Binding Rate}" Header="活期比"  Width="*"/>
                             <DataGridTextColumn Binding="{Binding BalanceTime,Converter={StaticResource TimeConverter} }" Header="时间"   Width="*"/>
@@ -57,11 +57,11 @@
                             <DataGridTextColumn Binding="{Binding SubAccountNumber}"  Header="子账号" Width="*"/>
                             <DataGridTextColumn Binding="{Binding AccountName}"  Header="账户名称" Width="1.5*"/>
                             <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*" Visibility="Hidden"/>
-                            <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="Hidden"/>
-                            <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"  Visibility="Hidden"/>
                             <DataGridTextColumn Binding="{Binding RegularMoneyVary}" Header="定期余额变化"  Width="*"/>
+                            <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="Hidden"/>
                             <DataGridTextColumn Binding="{Binding UnRegularMoneyVary}" Header="活期余额变化"  Width="*"/>
-                            <DataGridTextColumn Binding="{Binding AmountMoneyVary}" Header="总余额变化"   Visibility="Hidden" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"  Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding AmountMoneyVary}" Header="总余额变化"  Width="*"  Visibility="Hidden"/>
                             <DataGridTextColumn Binding="{Binding Rate}" Header="活期比"   Visibility="Hidden" Width="*"/>
                             <DataGridTextColumn Binding="{Binding BalanceTime,Converter={StaticResource TimeConverter} }" Header="时间"   Width="*"/>
                         </DataGrid.Columns>

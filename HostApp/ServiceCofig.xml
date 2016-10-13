@@ -11,6 +11,8 @@
   <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.AccountBalanceService"  describe="账户余额变动服务"/>
   <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.DepartmentBalanceService"  describe="部门余额变动服务"/>
   <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.CustomerManagerBalanceService"  describe="客户经理余额变动服务"/>
+  <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.SystemSetInfoService"  describe="系统设置服务"/>
+  
 </config>
 
 

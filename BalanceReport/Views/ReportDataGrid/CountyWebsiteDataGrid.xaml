@@ -32,10 +32,10 @@
                 <DataGridTextColumn Width="48" Header="序号" Binding="{Binding RowNumber}"  />
                 <DataGridTextColumn Binding="{Binding WebsiteName}" Header="网点名称"  Width="1.3*"/>
                 <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"  Visibility="Hidden"/>
                 <DataGridTextColumn Binding="{Binding RegularMoneyVary}" Header="定期余额变化"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="Hidden"/>
                 <DataGridTextColumn Binding="{Binding UnRegularMoneyVary}" Header="活期余额变化"  Width="*"/>
+                <DataGridTextColumn Binding="{Binding AmountMoney}" Header="总余额"  Width="*"  Visibility="Hidden"/>
                 <DataGridTextColumn Binding="{Binding AmountMoneyVary}" Header="总余额变化"  Width="*"/>
                 <DataGridTextColumn Binding="{Binding Rate}" Header="活期比"  Width="*"/>
                 <DataGridTextColumn Binding="{Binding WebsiteInfoObj.WebsiteAddress}" Header="网点地址"  Width="*"/>

@@ -115,6 +115,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LocalModel\DataGridColomnState.cs" />
     <Compile Include="Service References\AccountBalanceService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -151,6 +152,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\ServiceFile\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SystemSetInfoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -546,6 +552,19 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceFile\ServiceFile.wsdl" />
+    <None Include="Service References\SystemSetInfoService\BalanceReport.SystemSetInfoService.SystemSetInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SystemSetInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SystemSetInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SystemSetInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SystemSetInfoService\SystemSetInfoService.wsdl" />
     <None Include="Service References\WebsiteBalanceService\BalanceReport.WebsiteBalanceService.WebsiteBalance.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -645,6 +664,7 @@
     <WCFMetadataStorage Include="Service References\DepartmentBalanceService\" />
     <WCFMetadataStorage Include="Service References\DepartmentInfoService\" />
     <WCFMetadataStorage Include="Service References\ServiceFile\" />
+    <WCFMetadataStorage Include="Service References\SystemSetInfoService\" />
     <WCFMetadataStorage Include="Service References\WebsiteBalanceService\" />
     <WCFMetadataStorage Include="Service References\WebsiteInfoService\" />
     <WCFMetadataStorage Include="Service References\ZoneBalanceService\" />
@@ -810,6 +830,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\CustomerManagerBalanceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SystemSetInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SystemSetInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SystemSetInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SystemSetInfoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
