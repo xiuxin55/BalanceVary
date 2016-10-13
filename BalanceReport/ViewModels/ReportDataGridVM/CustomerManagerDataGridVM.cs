@@ -147,7 +147,7 @@ namespace BalanceReport.ViewModels
         {
             Total = 0;
             SearchAccountBalanceModel = new AccountBalanceService.DepartmentBalance();
-            SearchAccountBalanceModel.OrderbyColomnName = "a.BalanceTime";
+            SearchAccountBalanceModel.OrderbyColomnName = "BalanceTime";
             SearchAccountBalanceModel.DepartmentID = SelectedDepartmentInfoModel.DepartmentID;
             SearchAccountBalanceModel.DepartmentName = SelectedDepartmentInfoModel.DepartmentName == "全部" ? null : SelectedDepartmentInfoModel.DepartmentName;
             SearchAccountBalanceModel.StartIndex = 1;

@@ -28,11 +28,24 @@ namespace BalanceDataSync
             base.Caculate();
             ConcurrentBag<DateTime> ImportTimeList = new ConcurrentBag<DateTime>();
             ConcurrentBag<AccountBalance> AccountBalanceVaryTemp = new ConcurrentBag<AccountBalance>();
+            ConcurrentBag<int> MinTimeIndexList = new ConcurrentBag<int>();
             Parallel.For(0, ImportDataList.Count, i =>
 
             {
                 ImportDataInfo item = ImportDataList[i];
-                ImportDataInfo import = ImportDataList.Find(e => e.AccountID == item.AccountID && e.SubAccountNumber == item.SubAccountNumber && e.DataTime == item.DataTime.AddDays(-1));
+                ImportDataInfo import = null;
+                if (i>0  )
+                {
+                    if (ImportDataList[i - 1].AccountID == item.AccountID && ImportDataList[i - 1].SubAccountNumber == item.SubAccountNumber  && ImportDataList[i - 1].DataTime == item.DataTime.AddDays(-1))
+                    {
+                        import = ImportDataList[i - 1];
+                    }
+                    else
+                    {
+                        import = ImportDataList.Find(e => e.AccountID == item.AccountID && e.SubAccountNumber == item.SubAccountNumber && e.DataTime == item.DataTime.AddDays(-1));
+                    }
+                }
+               
                 import = import ?? new ImportDataInfo();
                 AccountBalance ab = new AccountBalance();
                 ab.ID = Guid.NewGuid().ToString();
@@ -54,6 +67,10 @@ namespace BalanceDataSync
                     ab.UnRegularMoneyVary = item.CurrentBalance - import.CurrentBalance;
                 }
                 AccountBalanceVaryTemp.Add(ab);
+                if(item.DataTime==MinTime)
+                {
+                    MinTimeIndexList.Add(AccountBalanceVaryTemp.Count-1);
+                }
                 if (!ImportTimeList.Contains(item.DataTime))
                 {
                     ImportTimeList.Add(item.DataTime);
@@ -94,13 +111,21 @@ namespace BalanceDataSync
             AccountBalance abs = new AccountBalance();
             abs.BalanceTime = MinTime.AddDays(-1);
             List<AccountBalance> preList = abbll.Select(abs);
-            foreach (var item in preList)
+            if (preList != null && preList.Count>0)
             {
-                AccountBalance firstwb = AccountBalanceVary.Find(e=>e.BalanceTime==MinTime && e.AccountID ==item.AccountID && e.SubAccountNumber ==item.SubAccountNumber);
-                firstwb.RegularMoneyVary = firstwb.RegularMoney - item.RegularMoney;
-                firstwb.UnRegularMoneyVary = firstwb.UnRegularMoney - item.UnRegularMoney;
-                firstwb.AmountMoneyVary = firstwb.AmountMoney - item.AmountMoney;
-                firstwb.Rate = firstwb.UnRegularMoney == 0 ? "0" : ((firstwb.RegularMoney / firstwb.UnRegularMoney) * 100).ToString("f2") + "%";
+                foreach (var index in MinTimeIndexList)
+                {
+                    AccountBalance firstwb = AccountBalanceVary[index];
+                    AccountBalance item = preList.Find(e => e.BalanceTime == MinTime && e.AccountID == firstwb.AccountID && e.SubAccountNumber == firstwb.SubAccountNumber);
+                    if (item == null)
+                    {
+                        continue;
+                    }
+                    firstwb.RegularMoneyVary = firstwb.RegularMoney - item.RegularMoney;
+                    firstwb.UnRegularMoneyVary = firstwb.UnRegularMoney - item.UnRegularMoney;
+                    firstwb.AmountMoneyVary = firstwb.AmountMoney - item.AmountMoney;
+                    firstwb.Rate = firstwb.UnRegularMoney == 0 ? "0" : ((firstwb.RegularMoney / firstwb.UnRegularMoney) * 100).ToString("f2") + "%";
+                }
             }
             abbll.BatchInsert(AccountBalanceVary, ImportTimeList.ToList());
         }

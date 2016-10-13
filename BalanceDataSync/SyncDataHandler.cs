@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BalanceDataSync
 {
@@ -65,12 +66,34 @@ namespace BalanceDataSync
             ABCalculateBalance cw = new CalculateWebsite(ImportDataList);//计算网点
             ABCalculateBalance cc = new CalculateCompany(ImportDataList);//计算公司
             ABCalculateBalance ca = new CalculateAccount(ImportDataList);//计算账户
-            cz.Caculate();
-            cd.Caculate();
-            cm.Caculate();
-            cw.Caculate();
-            cc.Caculate();
-            ca.Caculate();
+            var cztask=Task.Factory.StartNew(() =>
+            {
+                cz.Caculate();
+            });
+
+            var cdtask = Task.Factory.StartNew(() =>
+            {
+                cd.Caculate();
+            });
+            var cmtask = Task.Factory.StartNew(() =>
+            {
+                cm.Caculate();
+            });
+            var cwtask = Task.Factory.StartNew(() =>
+            {
+                cw.Caculate();
+            });
+            var cctask = Task.Factory.StartNew(() =>
+            {
+                cc.Caculate();
+            });
+
+            var catask = Task.Factory.StartNew(() =>
+            {
+                ca.Caculate();
+            });
+
+            Task.WaitAll(cztask, cdtask, cmtask, cwtask, cctask, catask);
         }
     }
 }

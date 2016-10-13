@@ -1,0 +1,36 @@
+﻿<Controls:MetroWindow x:Class="BalanceReport.Views.SystemSet"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="系统设置" Height="502" Width="586"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        NonActiveGlowBrush="#CDFF0000"
+        ShowIconOnTitleBar="True"
+        ShowTitleBar="True"
+        ShowMaxRestoreButton="False"
+        WindowStartupLocation="CenterScreen"
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="146*"/>
+            <ColumnDefinition Width="143*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="232*"/>
+            <RowDefinition Height="209*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <GroupBox Header="余额变动表显示列设置">
+                <StackPanel Orientation="Vertical">
+                    <CheckBox  Content="定期余额列" IsChecked="{Binding RegularColomnState}" Margin="8"/>
+                    <CheckBox Content="定期余额变化列"  IsChecked="{Binding RegularVaryColomnState}"  Margin="8"/>
+                    <CheckBox Content="活期余额列"  IsChecked="{Binding UnRegularColomnState}"  Margin="8"/>
+                    <CheckBox Content="活期余额变化列"  IsChecked="{Binding UnRegularVaryColomnState}"  Margin="8"/>
+                    <CheckBox Content="总余额列"  IsChecked="{Binding AmountColomnState}"  Margin="8"/>
+                    <CheckBox Content="总余额变化列"  IsChecked="{Binding AmountVaryColomnState}"  Margin="8"/>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+
+    </Grid>
+</Controls:MetroWindow>

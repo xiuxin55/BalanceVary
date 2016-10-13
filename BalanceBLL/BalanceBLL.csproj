@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SystemSetInfoBLL.cs" />
     <Compile Include="BalanceBaseBLL.cs" />
     <Compile Include="AccountLinkManagerInfoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

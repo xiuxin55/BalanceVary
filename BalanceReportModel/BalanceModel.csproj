@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SystemSetInfo.cs" />
     <Compile Include="AccountInfo.cs" />
     <Compile Include="BalanceInfo.cs" />
     <Compile Include="BalanceVaryModel\BalanceModel.cs" />

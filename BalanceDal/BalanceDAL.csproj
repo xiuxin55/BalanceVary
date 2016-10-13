@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SystemSetInfoDAL.cs" />
     <Compile Include="BalanceDAL.cs" />
     <Compile Include="DataConverter\ConverterTable.cs" />
     <Compile Include="AccountLinkManagerInfoDAL.cs" />

@@ -178,6 +178,7 @@
     <Compile Include="Tools\SortInfo.cs" />
     <Compile Include="Tools\UIElementAdorner.cs" />
     <Compile Include="Helper\UploadFile.cs" />
+    <Compile Include="ViewModels\SystemSetVM.cs" />
     <Compile Include="ViewModels\DepartmentReportUserControlVM.cs" />
     <Compile Include="ViewModels\ReportDataGridVM\CustomerManagerDataGridVM.cs" />
     <Compile Include="ViewModels\ReportDataGridVM\DepartmentDataGridVM.cs" />
@@ -198,6 +199,9 @@
     <Compile Include="ViewModels\ManagersSelectVM.cs" />
     <Compile Include="ViewModels\AccountManageVM.cs" />
     <Compile Include="ViewModels\AccountAddVM.cs" />
+    <Compile Include="Views\SystemSet.xaml.cs">
+      <DependentUpon>SystemSet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CoverUserControl.xaml.cs">
       <DependentUpon>CoverUserControl.xaml</DependentUpon>
     </Compile>
@@ -294,6 +298,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\SystemSet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\CoverUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
