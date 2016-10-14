@@ -54,6 +54,54 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
         </isParameterPresent>
       </dynamic>
     </select>
+
+    <select id="SelectDepartmentBalanceTwoTime"  resultMap="DepartmentBalanceMap"  parameterClass="DepartmentBalance">
+      select * into #DepartmentBalanceVaryStart from DepartmentBalanceVary where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="DepartmentID">DepartmentID=#DepartmentID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="DepartmentName">DepartmentName=#DepartmentName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>;
+      select * into #DepartmentBalanceVaryEnd from DepartmentBalanceVary where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="DepartmentID">DepartmentID=#DepartmentID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="DepartmentName">DepartmentName=#DepartmentName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>;
+      select * from (
+      select row_number() over(order by $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,
+      e.ID
+      ,e.DepartmentID
+      ,e.DepartmentName
+      ,e.RegularMoney
+      ,e.UnRegularMoney
+      ,e.AmountMoney
+      ,(e.RegularMoney-s.RegularMoney) as RegularMoneyVary
+      ,(e.UnRegularMoney-s.UnRegularMoney) as UnRegularMoneyVary
+      ,(e.AmountMoney-s.AmountMoney) as AmountMoneyVary
+      ,e.Rate
+      ,e.BalanceTime
+      from #DepartmentBalanceVaryEnd e left join #DepartmentBalanceVaryStart s on e.ID =s.ID
+      )as result
+      where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="StartIndex"><![CDATA[result.RowNumber>=#StartIndex#]]></isNotEmpty>
+          <isNotEmpty prepend="and" property="EndIndex"><![CDATA[result.RowNumber<=#EndIndex#]]></isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+      ;
+      drop table #DepartmentBalanceVaryStart;
+      drop table #DepartmentBalanceVaryEnd;
+
+    </select>
+    
     <insert id="BatchInsertDepartmentBalance" parameterClass="ArrayList">
       insert DepartmentBalanceVary(ID,DepartmentID,DepartmentName,RegularMoney,UnRegularMoney,AmountMoney,RegularMoneyVary,UnRegularMoneyVary,AmountMoneyVary,Rate ,BalanceTime)
       values

@@ -60,6 +60,61 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
         </isParameterPresent>
       </dynamic>
     </select>
+
+    <select id="SelectCustomerManagerBalanceTwoTime"  resultMap="CustomerManagerBalanceMap"  parameterClass="CustomerManagerBalance">
+      select * into #CustomerManagerBalanceVaryStart from CustomerManagerBalanceVary  where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="DepartmentID">DepartmentID=#DepartmentID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="DepartmentName">DepartmentName=#DepartmentName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ManagerID">ManagerID=#ManagerID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ManagerName">ManagerName=#ManagerName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>;
+      select * into #CustomerManagerBalanceVaryEnd from CustomerManagerBalanceVary  where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="DepartmentID">DepartmentID=#DepartmentID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="DepartmentName">DepartmentName=#DepartmentName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ManagerID">ManagerID=#ManagerID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ManagerName">ManagerName=#ManagerName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>;
+      select * from (
+      select row_number() over(order by $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,
+      e.ID
+      ,e.DepartmentID
+      ,e.DepartmentName
+      ,e.ManagerID
+      ,e.ManagerName
+      ,e.RegularMoney
+      ,e.UnRegularMoney
+      ,e.AmountMoney
+      ,(e.RegularMoney-s.RegularMoney) as RegularMoneyVary
+      ,(e.UnRegularMoney-s.UnRegularMoney) as UnRegularMoneyVary
+      ,(e.AmountMoney-s.AmountMoney) as AmountMoneyVary
+      ,e.Rate
+      ,e.BalanceTime
+      from #CustomerManagerBalanceVaryEnd e left join #CustomerManagerBalanceVaryStart s on e.ID =s.ID
+      )as result
+      where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="StartIndex"><![CDATA[result.RowNumber>=#StartIndex#]]></isNotEmpty>
+          <isNotEmpty prepend="and" property="EndIndex"><![CDATA[result.RowNumber<=#EndIndex#]]></isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+      ;
+      drop table #CustomerManagerBalanceVaryStart;
+      drop table #CustomerManagerBalanceVaryEnd;
+
+    </select>
+    
+    
     <insert id="BatchInsertCustomerManagerBalance" parameterClass="ArrayList">
       insert CustomerManagerBalanceVary(ID,DepartmentID,DepartmentName,ManagerID,ManagerName,RegularMoney,UnRegularMoney,AmountMoney,RegularMoneyVary,UnRegularMoneyVary,AmountMoneyVary,Rate ,BalanceTime)
       values

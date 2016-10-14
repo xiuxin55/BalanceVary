@@ -67,6 +67,56 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       </dynamic>
       
     </select>
+
+
+    <select id="SelectWebsiteBalanceTwoTime"  resultMap="DepartmentBalanceMap"  parameterClass="DepartmentBalance">
+      select * into #WebsiteBalanceVaryStart from WebsiteBalanceVary where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">b.ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="WebsiteID">b.WebsiteID=#WebsiteID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ZoneType">ZoneType=#ZoneType#</isNotEmpty>
+          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>;
+      select * into #WebsiteBalanceVaryEnd from WebsiteBalanceVary where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">b.ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="WebsiteID">b.WebsiteID=#WebsiteID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ZoneType">ZoneType=#ZoneType#</isNotEmpty>
+          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>;
+      select * from (
+      select row_number() over(order by $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,
+      e.ID
+      ,e.WebsiteID
+      ,e.ZoneType
+      ,e.RegularMoney
+      ,e.UnRegularMoney
+      ,e.AmountMoney
+      ,(e.RegularMoney-s.RegularMoney) as RegularMoneyVary
+      ,(e.UnRegularMoney-s.UnRegularMoney) as UnRegularMoneyVary
+      ,(e.AmountMoney-s.AmountMoney) as AmountMoneyVary
+      ,e.Rate
+      ,e.BalanceTime
+      from #WebsiteBalanceVaryEnd e left join #WebsiteBalanceVaryStart s on e.ID =s.ID
+      )as result
+      where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="StartIndex"><![CDATA[result.RowNumber>=#StartIndex#]]></isNotEmpty>
+          <isNotEmpty prepend="and" property="EndIndex"><![CDATA[result.RowNumber<=#EndIndex#]]></isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+      ;
+      drop table #WebsiteBalanceVaryStart;
+      drop table #WebsiteBalanceVaryEnd;
+
+    </select>
+    
+    
     <insert id="BatchInsertWebsiteBalance" parameterClass="ArrayList">
       insert WebsiteBalanceVary(ID,WebsiteID,ZoneType,RegularMoney,UnRegularMoney,AmountMoney,RegularMoneyVary,UnRegularMoneyVary,AmountMoneyVary,Rate ,BalanceTime)
       values

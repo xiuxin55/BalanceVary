@@ -17,7 +17,20 @@ namespace BalanceModel
         public string FileType { get; set; }
         public DateTime? FileDateTime { get; set; }
         public DateTime? FileUploadTime { get; set; }
-        public int FileState { get; set; }
+        private  int _FileState { get; set; }
+        public int FileState
+        {
+            get
+            {
+                return _FileState;
+            }
+            set
+            {
+                _FileState = value;
+                this.RaisePropertyChanged("FileState");
+            }
+        }
+
         public string FileException { get; set; }
         public string FileMD5 { get; set; }
         
