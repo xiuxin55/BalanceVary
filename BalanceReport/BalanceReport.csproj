@@ -115,6 +115,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helper\OrderByColomnHelper.cs" />
+    <Compile Include="LocalModel\ResultOrderBy.cs" />
     <Compile Include="LocalModel\DataGridColomnState.cs" />
     <Compile Include="LocalModel\LocalCommonData.cs" />
     <Compile Include="Service References\AccountBalanceService\Reference.cs">

@@ -12,6 +12,7 @@ using BalanceReport.ZoneBalanceService;
 using Utility;
 using BalanceReport.LocalModel;
 using BalanceReport.SystemSetInfoService;
+using BalanceReport.Helper;
 
 namespace BalanceReport.ViewModels
 {
@@ -95,7 +96,7 @@ namespace BalanceReport.ViewModels
             {
                 Total = 0;
                 SearchZoneBalanceModel.ZoneType = "市行";
-                SearchZoneBalanceModel.OrderbyColomnName ="BalanceTime";
+                SearchZoneBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
           
                 SearchZoneBalanceModel.StartIndex = 1;
                 SearchZoneBalanceModel.EndIndex = PageSize;

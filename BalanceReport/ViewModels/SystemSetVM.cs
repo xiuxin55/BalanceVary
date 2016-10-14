@@ -8,6 +8,7 @@ using System.Windows;
 using System.Collections.ObjectModel;
 using BalanceReport.SystemSetInfoService;
 using BalanceReport.LocalModel;
+using BalanceReport.Helper;
 
 namespace BalanceReport.ViewModels
 {
@@ -21,6 +22,8 @@ namespace BalanceReport.ViewModels
         }
         #region 属性
         private SystemSetInfo ColomnSet;
+
+        private SystemSetInfo ColomnOderbySet;
         private DataGridColomnState _SystemSetInfo;
         /// <summary>
         ///列是否显示设置
@@ -42,7 +45,26 @@ namespace BalanceReport.ViewModels
                 this.RaisePropertyChanged("ColomnStateSystemSetInfo");
             }
         }
-        bool isAdd = true;
+
+
+        private ResultOrderBy _SystemSetOrderInfo;
+        /// <summary>
+        ///列表结果按照哪一列排序
+        /// </summary>
+        public ResultOrderBy ResultOrderSystemSetInfo
+        {
+            get
+            {
+                return _SystemSetOrderInfo;
+            }
+            set
+            {
+                _SystemSetOrderInfo = value;
+                this.RaisePropertyChanged("ResultOrderSystemSetInfo");
+            }
+        }
+        bool isColomnDisplayAdd = true;
+        bool isColomnOrderByAdd = true;
         #endregion
         #region 命令
         public DelegateCommand OkSystemSetCommand { get; set; }
@@ -52,7 +74,7 @@ namespace BalanceReport.ViewModels
         #region 命令执行方法
         private void OkSystemSetExecute()
         {
-            if (isAdd)
+            if (isColomnDisplayAdd)
             {
                 ColomnSet = new SystemSetInfo();
                 ColomnSet.ID = Guid.NewGuid().ToString();
@@ -65,6 +87,27 @@ namespace BalanceReport.ViewModels
                 ColomnSet.SetContent = ColomnStateSystemSetInfo.ToString();
                 client.Update(ColomnSet);
             }
+
+
+            if (isColomnOrderByAdd)
+            {
+                ResultOrderSystemSetInfo = new ResultOrderBy();
+                ColomnOderbySet = new SystemSetInfo();
+                ColomnOderbySet.ID = Guid.NewGuid().ToString();
+                ColomnOderbySet.SetName = ResultOrderBy.GetSetName();
+                ColomnOderbySet.SetContent = ResultOrderSystemSetInfo.ToString();
+                client.Add(ColomnOderbySet);
+                OrderByColomnHelper.SetOrderByColomn(ColomnOderbySet.SetContent);
+            }
+            else
+            {
+                ColomnOderbySet.SetContent = ResultOrderSystemSetInfo.ToString();
+                client.Update(ColomnOderbySet);
+                OrderByColomnHelper.SetOrderByColomn(ColomnOderbySet.SetContent);
+            }
+
+
+
             MessageBox.Show("操作成功");
         }
 
@@ -76,7 +119,11 @@ namespace BalanceReport.ViewModels
             List<SystemSetInfo> setList = new List<SystemSetInfo>(client.Select(null));
             ColomnSet = setList != null? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()):null;
             ColomnStateSystemSetInfo = ColomnSet != null? DataGridColomnState.SystemSetInfoToState(ColomnSet) :null;
-            isAdd = ColomnSet == null;
+            isColomnDisplayAdd = ColomnSet == null;
+
+            ColomnOderbySet = setList != null ? setList.Find(e => e.SetName.ToLower() == ResultOrderBy.GetSetName().ToLower()) : null;
+            ResultOrderSystemSetInfo = ColomnOderbySet != null ? ResultOrderBy.SystemSetInfoToOrderBy(ColomnOderbySet) : null;
+            isColomnOrderByAdd = ColomnOderbySet == null;
         }
         #endregion
     }

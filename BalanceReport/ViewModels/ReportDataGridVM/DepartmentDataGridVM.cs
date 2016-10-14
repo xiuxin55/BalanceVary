@@ -12,6 +12,8 @@ using Common;
 using BalanceReport.DepartmentBalanceService;
 using Utility;
 using BalanceReport.LocalModel;
+using BalanceReport.SystemSetInfoService;
+using BalanceReport.Helper;
 
 namespace BalanceReport.ViewModels
 {
@@ -26,9 +28,15 @@ namespace BalanceReport.ViewModels
             LoadData();
         }
         #region 属性
+        private DataGridColomnState _ColomnState;
         public DataGridColomnState ColomnState
         {
-            get { return LocalCommonData.ColomnState; }
+            get { return _ColomnState; }
+            set
+            {
+                _ColomnState = value;
+                RaisePropertyChanged("ColomnState");
+            }
 
         }
         private DepartmentInfo _selectedDepartmentInfoModel;
@@ -100,7 +108,7 @@ namespace BalanceReport.ViewModels
         {
             Total = 0;
             SearchDepartmentBalanceoModel = new DepartmentBalance();
-            SearchDepartmentBalanceoModel.OrderbyColomnName = "BalanceTime";
+            SearchDepartmentBalanceoModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchDepartmentBalanceoModel.DepartmentID = SelectedDepartmentInfoModel.DepartmentID;
             SearchDepartmentBalanceoModel.DepartmentName = SelectedDepartmentInfoModel.DepartmentName=="全部"? null: SelectedDepartmentInfoModel.DepartmentName;
             SearchDepartmentBalanceoModel.StartIndex = 1;
@@ -118,6 +126,11 @@ namespace BalanceReport.ViewModels
                 DepartmentInfoList = new ObservableCollection<DepartmentInfo>(clientDepartment.Select(model));
                 model.DepartmentName = "全部";
                 DepartmentInfoList.Insert(0, model);
+
+                SystemSetInfoService.SystemSetInfoServiceClient clientSystemSetInfo = new SystemSetInfoServiceClient();
+                List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
+                SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()) : null;
+                ColomnState = ColomnSet != null ? DataGridColomnState.SystemSetInfoToState(ColomnSet) : null;
             }
             catch (Exception ex)
             {

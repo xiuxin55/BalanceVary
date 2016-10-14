@@ -43,6 +43,21 @@ namespace BalanceModel
             }
         }
 
+        private string _SubOrderbyColomnName = "BalanceTime";
+        /// <summary>
+        /// 子排序列
+        /// </summary>
+        public string SubOrderbyColomnName
+        {
+            get
+            {
+                return _SubOrderbyColomnName;
+            }
+            set
+            {
+                _SubOrderbyColomnName = value;
+            }
+        } 
         public event PropertyChangedEventHandler PropertyChanged;
         public void RaisePropertyChanged(string propertyname)
         {

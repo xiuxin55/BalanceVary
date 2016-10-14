@@ -13,6 +13,7 @@ using BalanceReport.WebsiteBalanceService;
 using Utility;
 using BalanceReport.LocalModel;
 using BalanceReport.SystemSetInfoService;
+using BalanceReport.Helper;
 
 namespace BalanceReport.ViewModels
 {
@@ -109,7 +110,7 @@ namespace BalanceReport.ViewModels
             Total = 0;
             SearchWebsiteBalanceModel = new WebsiteBalance();
             SearchWebsiteBalanceModel.EndIndex = int.MaxValue;
-            SearchWebsiteBalanceModel.OrderbyColomnName = "BalanceTime";
+            SearchWebsiteBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchWebsiteBalanceModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
             SearchWebsiteBalanceModel.StartIndex = 1;
             SearchWebsiteBalanceModel.EndIndex = PageSize;

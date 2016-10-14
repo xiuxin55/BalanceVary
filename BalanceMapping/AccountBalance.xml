@@ -44,7 +44,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     </select>
     <select id="SelectByDepartment"  resultMap="AccountBalanceMap"  parameterClass="DepartmentBalance">
       select * from (
-      select row_number() over(order by $OrderbyColomnName$  desc) as RowNumber,a.ID,a.AccountID,a.SubAccountNumber,a.AccountName,
+      select row_number() over(order by $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,a.ID,a.AccountID,a.SubAccountNumber,a.AccountName,
       a.AccountType,a.WebsiteID,a.RegularMoney,a.UnRegularMoney,a.AmountMoney,a.RegularMoneyVary,a.UnRegularMoneyVary,
       a.AmountMoneyVary,a.Rate,a.BalanceTime   from  AccountLinkManagerInfo l
       left join AccountBalanceVary a on l.AccountID=a.AccountID
@@ -85,7 +85,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     </select>
     <select id="SelectAccountBalance"  resultMap="AccountBalanceMap"  parameterClass="AccountBalance">
       select * from (
-      select row_number() over(order by $OrderbyColomnName$  desc) as RowNumber,*  from AccountBalanceVary where 1=1
+      select row_number() over(order by $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,*  from AccountBalanceVary where 1=1
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>

@@ -15,6 +15,7 @@ using BalanceReport.AccountBalanceService;
 using BalanceReport.CustomerManagerBalanceService;
 using BalanceReport.LocalModel;
 using BalanceReport.SystemSetInfoService;
+using BalanceReport.Helper;
 
 namespace BalanceReport.ViewModels
 {
@@ -160,7 +161,7 @@ namespace BalanceReport.ViewModels
         {
             Total = 0;
             SearchAccountBalanceModel = new AccountBalanceService.DepartmentBalance();
-            SearchAccountBalanceModel.OrderbyColomnName = "BalanceTime";
+            SearchAccountBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchAccountBalanceModel.DepartmentID = SelectedDepartmentInfoModel.DepartmentID;
             SearchAccountBalanceModel.DepartmentName = SelectedDepartmentInfoModel.DepartmentName == "全部" ? null : SelectedDepartmentInfoModel.DepartmentName;
             SearchAccountBalanceModel.StartIndex = 1;
@@ -172,7 +173,7 @@ namespace BalanceReport.ViewModels
         {
             Total = 0;
             SearchCustomerManagerBalanceoModel = new CustomerManagerBalance();
-            SearchCustomerManagerBalanceoModel.OrderbyColomnName = "BalanceTime";
+            SearchCustomerManagerBalanceoModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchCustomerManagerBalanceoModel.DepartmentID = SelectedDepartmentInfoModel.DepartmentID;
             SearchCustomerManagerBalanceoModel.DepartmentName = SelectedDepartmentInfoModel.DepartmentName=="全部"? null: SelectedDepartmentInfoModel.DepartmentName;
             SearchCustomerManagerBalanceoModel.StartIndex = 1;

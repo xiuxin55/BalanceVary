@@ -34,7 +34,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     </select>
     <select id="SelectZoneBalance"  resultMap="ZoneBalanceMap"  parameterClass="ZoneBalance">
       select * from (
-      select row_number() over(order by $OrderbyColomnName$  desc) as RowNumber,*  from ZoneBalanceVary where 1=1
+      select row_number() over(order by $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,*  from ZoneBalanceVary where 1=1
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>

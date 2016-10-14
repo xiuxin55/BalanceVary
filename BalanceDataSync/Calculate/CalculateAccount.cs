@@ -59,12 +59,16 @@ namespace BalanceDataSync
                 if (item.AccountType == Common.Server.CommonDataServer.AccountTypeRegular)
                 {
                     ab.RegularMoney = item.CurrentBalance;
+                    ab.AmountMoney = item.CurrentBalance; ;
                     ab.RegularMoneyVary = item.CurrentBalance - import.CurrentBalance;
+                    ab.AmountMoneyVary = ab.RegularMoneyVary;
                 }
                 if (item.AccountType == Common.Server.CommonDataServer.AccountTypeUnRegular)
                 {
                     ab.UnRegularMoney = item.CurrentBalance;
+                    ab.AmountMoney = item.CurrentBalance; ;
                     ab.UnRegularMoneyVary = item.CurrentBalance - import.CurrentBalance;
+                    ab.AmountMoneyVary = ab.UnRegularMoneyVary;
                 }
                 AccountBalanceVaryTemp.Add(ab);
                 if(item.DataTime==MinTime)

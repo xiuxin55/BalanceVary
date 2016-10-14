@@ -46,7 +46,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     </select>
     <select id="SelectWebsiteBalance"  resultMap="WebsiteBalanceMap"  parameterClass="WebsiteBalance">
       select * from (
-      select row_number() over(order by $OrderbyColomnName$ desc) as RowNumber,b.ID,b.WebsiteID,w.WebsiteName,ZoneType,RegularMoney,UnRegularMoney,AmountMoney,RegularMoneyVary,
+      select row_number() over(order by $OrderbyColomnName$ desc,$SubOrderbyColomnName$ desc) as RowNumber,b.ID,b.WebsiteID,w.WebsiteName,ZoneType,RegularMoney,UnRegularMoney,AmountMoney,RegularMoneyVary,
       UnRegularMoneyVary,AmountMoneyVary,Rate,b.BalanceTime,w.WebsiteAddress,w.WebsiteTel,w.WebsiteManager,w.ManagerTelphone
       from WebsiteBalanceVary b left join WebsiteInfo w on b.WebsiteID=w.WebsiteID where 1=1
       <dynamic>

@@ -14,6 +14,7 @@ using Utility;
 using BalanceReport.AccountBalanceService;
 using BalanceReport.LocalModel;
 using BalanceReport.SystemSetInfoService;
+using BalanceReport.Helper;
 
 namespace BalanceReport.ViewModels
 {
@@ -163,7 +164,7 @@ namespace BalanceReport.ViewModels
             Total = 0;
             SearchAccountBalanceModel = new AccountBalance();
 
-            SearchAccountBalanceModel.OrderbyColomnName = "BalanceTime";
+            SearchAccountBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchAccountBalanceModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
             SearchAccountBalanceModel.StartIndex = 1;
             SearchAccountBalanceModel.EndIndex = PageSize;
@@ -174,7 +175,7 @@ namespace BalanceReport.ViewModels
         private void SearchCompanyExecute()
         {
             SearchCompanyBalanceoModel = new CompanyBalance();
-            SearchCompanyBalanceoModel.OrderbyColomnName = "BalanceTime";
+            SearchCompanyBalanceoModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchCompanyBalanceoModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
             SearchCompanyBalanceoModel.StartIndex = 1;
             SearchCompanyBalanceoModel.EndIndex = PageSize;
