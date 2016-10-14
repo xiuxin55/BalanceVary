@@ -9,6 +9,11 @@ namespace BalanceBLL
 {
     public  class BalanceBaseBLL<T,S>: BaseBLL<T, S> where T:new() where S:BalanceDAL<T>,new()
     {
+        public  List<T> CallTimeSpanProc(T t)
+        {
+            return dal.CallTimeSpanProc(t);
+        }
+            
 
     }
 }

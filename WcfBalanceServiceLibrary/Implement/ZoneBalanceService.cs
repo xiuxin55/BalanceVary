@@ -22,6 +22,11 @@ namespace WcfBalanceServiceLibrary
             return bll.Add(info);
         }
 
+        public List<ZoneBalance> CallTimeSpanProc(ZoneBalance t)
+        {
+            return bll.CallTimeSpanProc(t);
+        }
+
         public bool Delete(ZoneBalance info)
         {
             return bll.Delete(info);

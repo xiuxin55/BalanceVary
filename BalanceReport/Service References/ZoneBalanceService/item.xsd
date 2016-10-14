@@ -71,4 +71,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CallTimeSpanProc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BalanceModel" minOccurs="0" name="t" nillable="true" type="q7:ZoneBalance" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CallTimeSpanProcResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BalanceModel" minOccurs="0" name="CallTimeSpanProcResult" nillable="true" type="q8:ArrayOfZoneBalance" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

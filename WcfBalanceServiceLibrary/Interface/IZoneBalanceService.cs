@@ -22,6 +22,8 @@ namespace WcfBalanceServiceLibrary
         List<ZoneBalance> Select(ZoneBalance info);
         [OperationContract]
         int SelectCount(ZoneBalance info);
+        [OperationContract]
+        List<ZoneBalance> CallTimeSpanProc(ZoneBalance t);
 
     }
 }

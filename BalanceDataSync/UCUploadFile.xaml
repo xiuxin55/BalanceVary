@@ -22,6 +22,7 @@
                 <ComboBoxItem Content="处理完成"/>
                 <ComboBoxItem Content="处理异常"/>
             </ComboBox>
+            <Button Content="定时进行计算" HorizontalAlignment="Left" Height="28" Margin="5,0,0,0" VerticalAlignment="Center" Width="90" Command="{Binding TimerCalculateCommand}"/>
         </StackPanel>
         <DataGrid Grid.Row="1" ItemsSource="{Binding UploadFileList}" AutoGenerateColumns="False" CanUserAddRows="False" x:Name="uploaddg">
             <DataGrid.Columns>

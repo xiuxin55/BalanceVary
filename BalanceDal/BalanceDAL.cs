@@ -13,5 +13,10 @@ namespace BalanceDAL
         {
             SqlMap = BalanceBatis.Batis;
         }
+        public List<T> CallTimeSpanProc(T t)
+        {
+            IList<T> list = SqlMap.QueryForList<T>("Select" + DefaultKey + "TwoTime", t);
+            return list!=null? list.ToList():new List<T>();
+        }
     }
 }

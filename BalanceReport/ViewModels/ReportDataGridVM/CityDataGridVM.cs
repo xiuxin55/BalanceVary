@@ -124,6 +124,15 @@ namespace BalanceReport.ViewModels
             List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
             SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()) : null;
             ColomnState = ColomnSet != null ? DataGridColomnState.SystemSetInfoToState(ColomnSet) : null;
+
+            //ZoneBalance zb = new ZoneBalance();
+            //zb.OrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
+            //zb.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
+            //zb.StartIndex = 0;
+            //zb.EndIndex = 1000000;
+            //zb.StartBalanceTime = DateTime.Parse("2016-10-21");
+            //zb.EndBalanceTime = DateTime.Parse("2016-10-22");
+            //List<ZoneBalance> rr= client.CallTimeSpanProc(zb).ToList();
         }
         #endregion
     }

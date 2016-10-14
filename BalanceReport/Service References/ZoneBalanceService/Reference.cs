@@ -349,6 +349,9 @@ namespace BalanceReport.ZoneBalanceService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IZoneBalanceService/SelectCount", ReplyAction="http://tempuri.org/IZoneBalanceService/SelectCountResponse")]
         int SelectCount(BalanceReport.ZoneBalanceService.ZoneBalance info);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IZoneBalanceService/CallTimeSpanProc", ReplyAction="http://tempuri.org/IZoneBalanceService/CallTimeSpanProcResponse")]
+        BalanceReport.ZoneBalanceService.ZoneBalance[] CallTimeSpanProc(BalanceReport.ZoneBalanceService.ZoneBalance t);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -396,6 +399,10 @@ namespace BalanceReport.ZoneBalanceService {
         
         public int SelectCount(BalanceReport.ZoneBalanceService.ZoneBalance info) {
             return base.Channel.SelectCount(info);
+        }
+        
+        public BalanceReport.ZoneBalanceService.ZoneBalance[] CallTimeSpanProc(BalanceReport.ZoneBalanceService.ZoneBalance t) {
+            return base.Channel.CallTimeSpanProc(t);
         }
     }
 }
