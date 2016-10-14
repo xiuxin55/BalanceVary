@@ -18,10 +18,12 @@
           <xs:element minOccurs="0" name="AmountMoney" type="xs:decimal" />
           <xs:element minOccurs="0" name="AmountMoneyVary" type="xs:decimal" />
           <xs:element minOccurs="0" name="BalanceTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="EndBalanceTime" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Rate" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="RegularMoney" type="xs:decimal" />
           <xs:element minOccurs="0" name="RegularMoneyVary" type="xs:decimal" />
+          <xs:element minOccurs="0" name="StartBalanceTime" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="UnRegularMoney" type="xs:decimal" />
           <xs:element minOccurs="0" name="UnRegularMoneyVary" type="xs:decimal" />
         </xs:sequence>

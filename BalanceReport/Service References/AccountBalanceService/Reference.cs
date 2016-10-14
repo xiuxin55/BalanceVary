@@ -143,6 +143,9 @@ namespace BalanceReport.AccountBalanceService {
         private System.Nullable<System.DateTime> BalanceTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> EndBalanceTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -153,6 +156,9 @@ namespace BalanceReport.AccountBalanceService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private decimal RegularMoneyVaryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> StartBalanceTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private decimal UnRegularMoneyField;
@@ -195,6 +201,19 @@ namespace BalanceReport.AccountBalanceService {
                 if ((this.BalanceTimeField.Equals(value) != true)) {
                     this.BalanceTimeField = value;
                     this.RaisePropertyChanged("BalanceTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> EndBalanceTime {
+            get {
+                return this.EndBalanceTimeField;
+            }
+            set {
+                if ((this.EndBalanceTimeField.Equals(value) != true)) {
+                    this.EndBalanceTimeField = value;
+                    this.RaisePropertyChanged("EndBalanceTime");
                 }
             }
         }
@@ -247,6 +266,19 @@ namespace BalanceReport.AccountBalanceService {
                 if ((this.RegularMoneyVaryField.Equals(value) != true)) {
                     this.RegularMoneyVaryField = value;
                     this.RaisePropertyChanged("RegularMoneyVary");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> StartBalanceTime {
+            get {
+                return this.StartBalanceTimeField;
+            }
+            set {
+                if ((this.StartBalanceTimeField.Equals(value) != true)) {
+                    this.StartBalanceTimeField = value;
+                    this.RaisePropertyChanged("StartBalanceTime");
                 }
             }
         }

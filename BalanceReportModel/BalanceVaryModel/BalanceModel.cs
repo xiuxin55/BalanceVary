@@ -40,5 +40,8 @@ namespace BalanceModel
         /// 时间
         /// </summary>
         public DateTime? BalanceTime { get; set; }
+
+        public DateTime? StartBalanceTime { get; set; }
+        public DateTime? EndBalanceTime { get; set; }
     }
 }

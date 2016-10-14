@@ -24,10 +24,26 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <result property="Rate" column="Rate"/>
       <result property="BalanceTime" column="BalanceTime"/>
     </resultMap>
-
-
-    
   </resultMaps>
+  <parameterMaps>
+    <parameterMap id="AccountBalanceProcMap" class="AccountBalance">
+      <parameter property="ID"  />
+      <parameter property="AccountID"  />
+      <parameter property="SubAccountNumber"  />
+      <parameter property="AccountName" />
+
+      <parameter property="AccountType"  />
+      <parameter property="WebsiteID"  />
+      <parameter property="StartBalanceTime"  />
+      <parameter property="EndBalanceTime" />
+      
+      <parameter property="StartIndex"  />
+      <parameter property="EndIndex"  />
+      <parameter property="OrderbyColomnName"  />
+      <parameter property="SubOrderbyColomnName" />
+    </parameterMap>
+  </parameterMaps>
+
   <statements>
     <select id="SelectByDepartmentCount"  resultClass="int"   parameterClass="DepartmentBalance">
       select count(*)  from  AccountLinkManagerInfo l
@@ -107,62 +123,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       </dynamic>
     </select>
 
-    
-    
-    <select id="SelectAccountBalanceTwoTime"  resultMap="AccountBalanceMap"  parameterClass="AccountBalance">
-      select * into #AccountBalanceVaryStart from AccountBalanceVary where 1=1
-      <dynamic>
-        <isParameterPresent>
-          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountID">AccountID=#AccountID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="SubAccountNumber">SubAccountNumber=#SubAccountNumber#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountName">AccountName=#AccountName#</isNotEmpty>
-          <isGreaterThan prepend="and" property="AccountType" compareValue="-1">AccountType=#AccountType#</isGreaterThan>
-          <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
-        </isParameterPresent>
-      </dynamic>;
-      select * into #AccountBalanceVaryEnd from AccountBalanceVary where 1=1
-      <dynamic>
-        <isParameterPresent>
-          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountID">AccountID=#AccountID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="SubAccountNumber">SubAccountNumber=#SubAccountNumber#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountName">AccountName=#AccountName#</isNotEmpty>
-          <isGreaterThan prepend="and" property="AccountType" compareValue="-1">AccountType=#AccountType#</isGreaterThan>
-          <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
-        </isParameterPresent>
-      </dynamic>;
-      select * from (
-      select row_number() over(order by $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber, e.ID
-      ,e.AccountID
-      ,e.SubAccountNumber
-      ,e.AccountName
-      ,e.AccountType
-      ,e.WebsiteID
-      ,e.RegularMoney
-      ,e.UnRegularMoney
-      ,e.AmountMoney
-      ,(e.RegularMoney-s.RegularMoney) as RegularMoneyVary
-      ,(e.UnRegularMoney-s.UnRegularMoney) as UnRegularMoneyVary
-      ,(e.AmountMoney-s.AmountMoney) as AmountMoneyVary
-      ,e.Rate
-      ,e.BalanceTime
-      from #AccountBalanceVaryEnd e left join #AccountBalanceVaryStart s on e.ID =s.ID
-      )as result
-      where 1=1
-      <dynamic>
-        <isParameterPresent>
-          <isNotEmpty prepend="and" property="StartIndex"><![CDATA[result.RowNumber>=#StartIndex#]]></isNotEmpty>
-          <isNotEmpty prepend="and" property="EndIndex"><![CDATA[result.RowNumber<=#EndIndex#]]></isNotEmpty>
-        </isParameterPresent>
-      </dynamic>
-      ;
-      drop table #AccountBalanceVaryStart;
-      drop table #AccountBalanceVaryEnd;
 
-    </select>
+    <procedure  id="SelectAccountBalanceTwoTime" parameterMap="AccountBalanceProcMap" resultMap="AccountBalanceMap"  >
+      AccountBalanceVaryTwo
+    </procedure >
     
     
     

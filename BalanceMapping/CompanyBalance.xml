@@ -23,6 +23,23 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <result property="BalanceTime" column="BalanceTime"/>
     </resultMap>
   </resultMaps>
+  <parameterMaps>
+    <parameterMap id="CompanyBalanceProcMap" class="CompanyBalance">
+      <parameter property="ID"  />
+      <parameter property="ZoneType"  />
+      <parameter property="CompanyName"  />
+      <parameter property="WebsiteID" />
+
+   
+      <parameter property="StartBalanceTime"  />
+      <parameter property="EndBalanceTime" />
+
+      <parameter property="StartIndex"  />
+      <parameter property="EndIndex"  />
+      <parameter property="OrderbyColomnName"  />
+      <parameter property="SubOrderbyColomnName" />
+    </parameterMap>
+  </parameterMaps>
   <statements>
     <select id="SelectCompanyBalanceCount"  resultClass="int"   parameterClass="CompanyBalance">
       select count(*) from CompanyBalanceVary where 1=1
@@ -58,57 +75,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       </dynamic>
     </select>
 
-    <select id="SelectCompanyBalanceTwoTime"  resultMap="CompanyBalanceMap"  parameterClass="CompanyBalance">
-      select * into #CompanyBalanceVaryStart from CompanyBalanceVary where 1=1
-      <dynamic>
-        <isParameterPresent>
-          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="CompanyName">CompanyName=#CompanyName#</isNotEmpty>
-          <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="ZoneType">ZoneType=#ZoneType#</isNotEmpty>
-          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
-        </isParameterPresent>
-      </dynamic>;
-      select * into #CompanyBalanceVaryEnd from CompanyBalanceVary where 1=1
-      <dynamic>
-        <isParameterPresent>
-          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="CompanyName">CompanyName=#CompanyName#</isNotEmpty>
-          <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="ZoneType">ZoneType=#ZoneType#</isNotEmpty>
-          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
-        </isParameterPresent>
-      </dynamic>;
-      select * from (
-      select row_number() over(order by $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,
-      e.ID
-      ,e.CompanyName
-      ,e.ZoneType
-      ,e.WebsiteID
-      ,e.RegularMoney
-      ,e.UnRegularMoney
-      ,e.AmountMoney
-      ,(e.RegularMoney-s.RegularMoney) as RegularMoneyVary
-      ,(e.UnRegularMoney-s.UnRegularMoney) as UnRegularMoneyVary
-      ,(e.AmountMoney-s.AmountMoney) as AmountMoneyVary
-      ,e.Rate
-      ,e.BalanceTime
-      from #CompanyBalanceVaryEnd e left join #CompanyBalanceVaryStart s on e.ID =s.ID
+    <procedure  id="SelectCompanyBalanceTwoTime" parameterMap="CompanyBalanceProcMap" resultMap="CompanyBalanceMap"  >
+      CompanyBalanceVaryTwo
+    </procedure >
 
-      )as result
-      where 1=1
-      <dynamic>
-        <isParameterPresent>
-          <isNotEmpty prepend="and" property="StartIndex"><![CDATA[result.RowNumber>=#StartIndex#]]></isNotEmpty>
-          <isNotEmpty prepend="and" property="EndIndex"><![CDATA[result.RowNumber<=#EndIndex#]]></isNotEmpty>
-        </isParameterPresent>
-      </dynamic>
-      ;
-      drop table #CompanyBalanceVaryStart;
-      drop table #CompanyBalanceVaryEnd;
-
-    </select>
-    
     <insert id="BatchInsertCompanyBalance" parameterClass="ArrayList">
       insert CompanyBalanceVary(ID,CompanyName,WebsiteID,ZoneType,RegularMoney,UnRegularMoney,AmountMoney,RegularMoneyVary,UnRegularMoneyVary,AmountMoneyVary,Rate ,BalanceTime)
       values

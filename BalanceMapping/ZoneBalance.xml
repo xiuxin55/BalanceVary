@@ -21,6 +21,20 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <result property="BalanceTime" column="BalanceTime"/>
     </resultMap>
   </resultMaps>
+  <parameterMaps>
+    <parameterMap id="ZoneBalanceProcMap" class="ZoneBalance">
+      <parameter property="ID"  />
+      <parameter property="ZoneType"  />
+     
+      <parameter property="StartBalanceTime"  />
+      <parameter property="EndBalanceTime" />
+
+      <parameter property="StartIndex"  />
+      <parameter property="EndIndex"  />
+      <parameter property="OrderbyColomnName"  />
+      <parameter property="SubOrderbyColomnName" />
+    </parameterMap>
+  </parameterMaps>
   <statements>
     <select id="SelectZoneBalanceCount"  resultClass="int"   parameterClass="ZoneBalance">
       select count(*) from ZoneBalanceVary where 1=1
@@ -52,50 +66,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       </dynamic>
     </select>
 
-    <select id="SelectDepartmentBalanceTwoTime"  resultMap="DepartmentBalanceMap"  parameterClass="DepartmentBalance">
-      select * into #WebsiteBalanceVaryStart from WebsiteBalanceVary where 1=1
-      <dynamic>
-        <isParameterPresent>
-          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="ZoneType">ZoneType=#ZoneType#</isNotEmpty>
-          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
-        </isParameterPresent>
-      </dynamic>;
-      select * into #WebsiteBalanceVaryEnd from WebsiteBalanceVary where 1=1
-      <dynamic>
-        <isParameterPresent>
-          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="ZoneType">ZoneType=#ZoneType#</isNotEmpty>
-          <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
-        </isParameterPresent>
-      </dynamic>;
-      select * from (
-      select row_number() over(order by $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,
-      e.ID
-      ,e.ZoneType
-      ,e.RegularMoney
-      ,e.UnRegularMoney
-      ,e.AmountMoney
-      ,(e.RegularMoney-s.RegularMoney) as RegularMoneyVary
-      ,(e.UnRegularMoney-s.UnRegularMoney) as UnRegularMoneyVary
-      ,(e.AmountMoney-s.AmountMoney) as AmountMoneyVary
-      ,e.Rate
-      ,e.BalanceTime
-      from #ZoneBalanceVaryEnd e left join #ZoneBalanceVaryStart s on e.ID =s.ID
-      )as result
-      where 1=1
-      <dynamic>
-        <isParameterPresent>
-          <isNotEmpty prepend="and" property="StartIndex"><![CDATA[result.RowNumber>=#StartIndex#]]></isNotEmpty>
-          <isNotEmpty prepend="and" property="EndIndex"><![CDATA[result.RowNumber<=#EndIndex#]]></isNotEmpty>
-        </isParameterPresent>
-      </dynamic>
-      ;
-      drop table #WebsiteBalanceVaryStart;
-      drop table #WebsiteBalanceVaryEnd;
 
-    </select>
-    
+    <procedure  id="SelectZoneBalanceTwoTime" parameterMap="ZoneBalanceProcMap" resultMap="ZoneBalanceMap"  >
+      ZoneBalanceVaryTwo
+    </procedure >
     
     <insert id="BatchInsertZoneBalance" parameterClass="ArrayList">
       insert ZoneBalanceVary(ID,ZoneType,RegularMoney,UnRegularMoney,AmountMoney,RegularMoneyVary,UnRegularMoneyVary,AmountMoneyVary,Rate ,BalanceTime)
