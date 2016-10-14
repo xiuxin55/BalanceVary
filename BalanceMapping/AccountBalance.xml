@@ -107,7 +107,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       </dynamic>
     </select>
 
-
+    
+    
     <select id="SelectAccountBalanceTwoTime"  resultMap="AccountBalanceMap"  parameterClass="AccountBalance">
       select * into #AccountBalanceVaryStart from AccountBalanceVary where 1=1
       <dynamic>

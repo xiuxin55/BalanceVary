@@ -64,7 +64,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
           <isNotEmpty prepend="and" property="DepartmentName">DepartmentName=#DepartmentName#</isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
         </isParameterPresent>
-      </dynamic>;
+      </dynamic>
       select * into #DepartmentBalanceVaryEnd from DepartmentBalanceVary where 1=1
       <dynamic>
         <isParameterPresent>
@@ -73,7 +73,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
           <isNotEmpty prepend="and" property="DepartmentName">DepartmentName=#DepartmentName#</isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
         </isParameterPresent>
-      </dynamic>;
+      </dynamic>
       select * from (
       select row_number() over(order by $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,
       e.ID
@@ -96,9 +96,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
           <isNotEmpty prepend="and" property="EndIndex"><![CDATA[result.RowNumber<=#EndIndex#]]></isNotEmpty>
         </isParameterPresent>
       </dynamic>
-      ;
-      drop table #DepartmentBalanceVaryStart;
-      drop table #DepartmentBalanceVaryEnd;
+      
+      drop table #DepartmentBalanceVaryStart
+      drop table #DepartmentBalanceVaryEnd
 
     </select>
     
