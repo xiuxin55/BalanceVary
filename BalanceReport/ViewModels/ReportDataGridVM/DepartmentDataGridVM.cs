@@ -109,6 +109,7 @@ namespace BalanceReport.ViewModels
             Total = 0;
             SearchDepartmentBalanceoModel = new DepartmentBalance();
             SearchDepartmentBalanceoModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
+            SearchDepartmentBalanceoModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
             SearchDepartmentBalanceoModel.DepartmentID = SelectedDepartmentInfoModel.DepartmentID;
             SearchDepartmentBalanceoModel.DepartmentName = SelectedDepartmentInfoModel.DepartmentName=="全部"? null: SelectedDepartmentInfoModel.DepartmentName;
             SearchDepartmentBalanceoModel.StartIndex = 1;

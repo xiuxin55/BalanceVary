@@ -165,6 +165,7 @@ namespace BalanceReport.ViewModels
             SearchAccountBalanceModel = new AccountBalance();
 
             SearchAccountBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
+            SearchAccountBalanceModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
             SearchAccountBalanceModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
             SearchAccountBalanceModel.StartIndex = 1;
             SearchAccountBalanceModel.EndIndex = PageSize;
@@ -176,6 +177,7 @@ namespace BalanceReport.ViewModels
         {
             SearchCompanyBalanceoModel = new CompanyBalance();
             SearchCompanyBalanceoModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
+            SearchCompanyBalanceoModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
             SearchCompanyBalanceoModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
             SearchCompanyBalanceoModel.StartIndex = 1;
             SearchCompanyBalanceoModel.EndIndex = PageSize;

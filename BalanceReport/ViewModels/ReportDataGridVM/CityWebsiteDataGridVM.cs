@@ -109,6 +109,7 @@ namespace BalanceReport.ViewModels
             Total = 0;
             SearchWebsiteBalanceModel = new WebsiteBalance();
             SearchWebsiteBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
+            SearchWebsiteBalanceModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
             SearchWebsiteBalanceModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
             SearchWebsiteBalanceModel.StartIndex = 1;
             SearchWebsiteBalanceModel.EndIndex = PageSize;

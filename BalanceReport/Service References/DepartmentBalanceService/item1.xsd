@@ -35,6 +35,7 @@
       <xs:element minOccurs="0" name="OrderbyColomnName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RowNumber" type="xs:int" />
       <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SubOrderbyColomnName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BaseModel" nillable="true" type="tns:BaseModel" />

@@ -1,7 +1,7 @@
 ﻿<Controls:MetroWindow x:Class="BalanceReport.Views.SystemSet"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="系统设置" Height="502" Width="586"
+        Title="系统设置" Height="666" Width="700"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         GlowBrush="{DynamicResource AccentColorBrush}"
         NonActiveGlowBrush="#CDFF0000"
@@ -20,15 +20,15 @@
             <RowDefinition Height="209*"/>
         </Grid.RowDefinitions>Grid.Row="0" Grid.Column="0"-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="232*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="45"/>
             <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
         <Grid >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="143*"/>
-                <ColumnDefinition Width="146*"/>
-            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1.2*"/>
+            </Grid.RowDefinitions>
             <GroupBox Header="余额变动表显示列设置" Grid.Column="0">
                 <StackPanel Orientation="Vertical">
                     <CheckBox  Content="定期余额列" IsChecked="{Binding ColomnStateSystemSetInfo.RegularColomnState}" Margin="8"/>
@@ -39,19 +39,37 @@
                     <CheckBox Content="总余额变化列"  IsChecked="{Binding ColomnStateSystemSetInfo.AmountVaryColomnState}"  Margin="8"/>
                 </StackPanel>
             </GroupBox>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Header="结果排序的列设置-主排序" >
+                    <StackPanel Orientation="Vertical">
+                        <RadioButton  GroupName="order"   Content="定期余额列" IsChecked="{Binding ResultOrderSystemSetInfo.RegularColomn}" Tag="" Margin="8"/>
+                        <RadioButton  GroupName="order"   Content="定期余额变化列"  IsChecked="{Binding ResultOrderSystemSetInfo.RegularVaryColomn}"  Margin="8"/>
+                        <RadioButton  GroupName="order"   Content="活期余额列"  IsChecked="{Binding ResultOrderSystemSetInfo.UnRegularColomn}"  Margin="8"/>
+                        <RadioButton  GroupName="order"   Content="活期余额变化列"  IsChecked="{Binding ResultOrderSystemSetInfo.UnRegularVaryColomn}"  Margin="8"/>
+                        <RadioButton  GroupName="order"   Content="总余额列"  IsChecked="{Binding ResultOrderSystemSetInfo.AmountColomn}"  Margin="8"/>
+                        <RadioButton  GroupName="order"   Content="总余额变化列"  IsChecked="{Binding ResultOrderSystemSetInfo.AmountVaryColomn}"  Margin="8"/>
+                        <RadioButton  GroupName="order"   Content="活期比"  IsChecked="{Binding ResultOrderSystemSetInfo.Rate}"  Margin="8"/>
+                        <RadioButton  GroupName="order"   Content="时间"  IsChecked="{Binding ResultOrderSystemSetInfo.BalanceTime}"  Margin="8"/>
+                    </StackPanel>
+                </GroupBox>
 
-            <GroupBox Header="结果排序的列设置" Grid.Column="1">
-                <StackPanel Orientation="Vertical">
-                    <RadioButton  GroupName="order"   Content="定期余额列" IsChecked="{Binding ResultOrderSystemSetInfo.RegularColomn}" Tag="" Margin="8"/>
-                    <RadioButton  GroupName="order"   Content="定期余额变化列"  IsChecked="{Binding ResultOrderSystemSetInfo.RegularVaryColomn}"  Margin="8"/>
-                    <RadioButton  GroupName="order"   Content="活期余额列"  IsChecked="{Binding ResultOrderSystemSetInfo.UnRegularColomn}"  Margin="8"/>
-                    <RadioButton  GroupName="order"   Content="活期余额变化列"  IsChecked="{Binding ResultOrderSystemSetInfo.UnRegularVaryColomn}"  Margin="8"/>
-                    <RadioButton  GroupName="order"   Content="总余额列"  IsChecked="{Binding ResultOrderSystemSetInfo.AmountColomn}"  Margin="8"/>
-                    <RadioButton  GroupName="order"   Content="总余额变化列"  IsChecked="{Binding ResultOrderSystemSetInfo.AmountVaryColomn}"  Margin="8"/>
-                    <RadioButton  GroupName="order"   Content="活期比"  IsChecked="{Binding ResultOrderSystemSetInfo.Rate}"  Margin="8"/>
-                    <RadioButton  GroupName="order"   Content="时间"  IsChecked="{Binding ResultOrderSystemSetInfo.BalanceTime}"  Margin="8"/>
-                </StackPanel>
-            </GroupBox>
+                <GroupBox Header="结果排序的列设置-次排序" Grid.Column="1" >
+                    <StackPanel Orientation="Vertical">
+                        <RadioButton  GroupName="ordersecond"   Content="定期余额列" IsChecked="{Binding SubResultOrderSystemSetInfo.RegularColomn}" Tag="" Margin="8"/>
+                        <RadioButton  GroupName="ordersecond"   Content="定期余额变化列"  IsChecked="{Binding SubResultOrderSystemSetInfo.RegularVaryColomn}"  Margin="8"/>
+                        <RadioButton  GroupName="ordersecond"   Content="活期余额列"  IsChecked="{Binding SubResultOrderSystemSetInfo.UnRegularColomn}"  Margin="8"/>
+                        <RadioButton  GroupName="ordersecond"   Content="活期余额变化列"  IsChecked="{Binding SubResultOrderSystemSetInfo.UnRegularVaryColomn}"  Margin="8"/>
+                        <RadioButton  GroupName="ordersecond"   Content="总余额列"  IsChecked="{Binding SubResultOrderSystemSetInfo.AmountColomn}"  Margin="8"/>
+                        <RadioButton  GroupName="ordersecond"   Content="总余额变化列"  IsChecked="{Binding SubResultOrderSystemSetInfo.AmountVaryColomn}"  Margin="8"/>
+                        <RadioButton  GroupName="ordersecond"   Content="活期比"  IsChecked="{Binding SubResultOrderSystemSetInfo.Rate}"  Margin="8"/>
+                        <RadioButton  GroupName="ordersecond"   Content="时间"  IsChecked="{Binding SubResultOrderSystemSetInfo.BalanceTime}"  Margin="8"/>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
         </Grid>
         <Button Grid.Row="1" Width="100" Content="确定" Command="{Binding OkSystemSetCommand}"/>
     </Grid>

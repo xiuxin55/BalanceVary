@@ -162,6 +162,7 @@ namespace BalanceReport.ViewModels
             Total = 0;
             SearchAccountBalanceModel = new AccountBalanceService.DepartmentBalance();
             SearchAccountBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
+            SearchAccountBalanceModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
             SearchAccountBalanceModel.DepartmentID = SelectedDepartmentInfoModel.DepartmentID;
             SearchAccountBalanceModel.DepartmentName = SelectedDepartmentInfoModel.DepartmentName == "全部" ? null : SelectedDepartmentInfoModel.DepartmentName;
             SearchAccountBalanceModel.StartIndex = 1;
@@ -174,6 +175,7 @@ namespace BalanceReport.ViewModels
             Total = 0;
             SearchCustomerManagerBalanceoModel = new CustomerManagerBalance();
             SearchCustomerManagerBalanceoModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
+            SearchCustomerManagerBalanceoModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
             SearchCustomerManagerBalanceoModel.DepartmentID = SelectedDepartmentInfoModel.DepartmentID;
             SearchCustomerManagerBalanceoModel.DepartmentName = SelectedDepartmentInfoModel.DepartmentName=="全部"? null: SelectedDepartmentInfoModel.DepartmentName;
             SearchCustomerManagerBalanceoModel.StartIndex = 1;

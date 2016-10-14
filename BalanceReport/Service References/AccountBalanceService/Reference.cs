@@ -37,6 +37,9 @@ namespace BalanceReport.AccountBalanceService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int StartIndexField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubOrderbyColomnNameField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -95,6 +98,19 @@ namespace BalanceReport.AccountBalanceService {
                 if ((this.StartIndexField.Equals(value) != true)) {
                     this.StartIndexField = value;
                     this.RaisePropertyChanged("StartIndex");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SubOrderbyColomnName {
+            get {
+                return this.SubOrderbyColomnNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubOrderbyColomnNameField, value) != true)) {
+                    this.SubOrderbyColomnNameField = value;
+                    this.RaisePropertyChanged("SubOrderbyColomnName");
                 }
             }
         }

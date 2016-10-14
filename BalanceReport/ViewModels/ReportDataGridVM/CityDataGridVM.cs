@@ -97,7 +97,7 @@ namespace BalanceReport.ViewModels
                 Total = 0;
                 SearchZoneBalanceModel.ZoneType = "市行";
                 SearchZoneBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
-          
+                SearchZoneBalanceModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
                 SearchZoneBalanceModel.StartIndex = 1;
                 SearchZoneBalanceModel.EndIndex = PageSize;
                 ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.Select(SearchZoneBalanceModel));
