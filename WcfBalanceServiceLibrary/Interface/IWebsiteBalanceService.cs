@@ -22,6 +22,7 @@ namespace WcfBalanceServiceLibrary
         List<WebsiteBalance> Select(WebsiteBalance info);
         [OperationContract]
         int SelectCount(WebsiteBalance info);
-
+        [OperationContract]
+        List<WebsiteBalance> CallTimeSpanProc(WebsiteBalance t);
     }
 }

@@ -48,5 +48,10 @@ namespace WcfBalanceServiceLibrary
         {
             return bll.SelectCount(info);
         }
+
+        public List<DepartmentBalance> CallTimeSpanProc(DepartmentBalance t)
+        {
+            return bll.CallTimeSpanProc(t);
+        }
     }
 }

@@ -397,6 +397,9 @@ namespace BalanceReport.CustomerManagerBalanceService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerManagerBalanceService/SelectCount", ReplyAction="http://tempuri.org/ICustomerManagerBalanceService/SelectCountResponse")]
         int SelectCount(BalanceReport.CustomerManagerBalanceService.CustomerManagerBalance info);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICustomerManagerBalanceService/CallTimeSpanProc", ReplyAction="http://tempuri.org/ICustomerManagerBalanceService/CallTimeSpanProcResponse")]
+        BalanceReport.CustomerManagerBalanceService.CustomerManagerBalance[] CallTimeSpanProc(BalanceReport.CustomerManagerBalanceService.CustomerManagerBalance t);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -444,6 +447,10 @@ namespace BalanceReport.CustomerManagerBalanceService {
         
         public int SelectCount(BalanceReport.CustomerManagerBalanceService.CustomerManagerBalance info) {
             return base.Channel.SelectCount(info);
+        }
+        
+        public BalanceReport.CustomerManagerBalanceService.CustomerManagerBalance[] CallTimeSpanProc(BalanceReport.CustomerManagerBalanceService.CustomerManagerBalance t) {
+            return base.Channel.CallTimeSpanProc(t);
         }
     }
 }

@@ -533,6 +533,9 @@ namespace BalanceReport.WebsiteBalanceService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebsiteBalanceService/SelectCount", ReplyAction="http://tempuri.org/IWebsiteBalanceService/SelectCountResponse")]
         int SelectCount(BalanceReport.WebsiteBalanceService.WebsiteBalance info);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWebsiteBalanceService/CallTimeSpanProc", ReplyAction="http://tempuri.org/IWebsiteBalanceService/CallTimeSpanProcResponse")]
+        BalanceReport.WebsiteBalanceService.WebsiteBalance[] CallTimeSpanProc(BalanceReport.WebsiteBalanceService.WebsiteBalance t);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -580,6 +583,10 @@ namespace BalanceReport.WebsiteBalanceService {
         
         public int SelectCount(BalanceReport.WebsiteBalanceService.WebsiteBalance info) {
             return base.Channel.SelectCount(info);
+        }
+        
+        public BalanceReport.WebsiteBalanceService.WebsiteBalance[] CallTimeSpanProc(BalanceReport.WebsiteBalanceService.WebsiteBalance t) {
+            return base.Channel.CallTimeSpanProc(t);
         }
     }
 }

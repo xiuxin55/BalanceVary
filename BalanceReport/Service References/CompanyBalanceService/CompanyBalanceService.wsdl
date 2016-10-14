@@ -37,6 +37,12 @@
   <wsdl:message name="ICompanyBalanceService_SelectCount_OutputMessage">
     <wsdl:part name="parameters" element="tns:SelectCountResponse" />
   </wsdl:message>
+  <wsdl:message name="ICompanyBalanceService_CallTimeSpanProc_InputMessage">
+    <wsdl:part name="parameters" element="tns:CallTimeSpanProc" />
+  </wsdl:message>
+  <wsdl:message name="ICompanyBalanceService_CallTimeSpanProc_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CallTimeSpanProcResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICompanyBalanceService">
     <wsdl:operation name="Add">
       <wsdl:input wsaw:Action="http://tempuri.org/ICompanyBalanceService/Add" message="tns:ICompanyBalanceService_Add_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="SelectCount">
       <wsdl:input wsaw:Action="http://tempuri.org/ICompanyBalanceService/SelectCount" message="tns:ICompanyBalanceService_SelectCount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICompanyBalanceService/SelectCountResponse" message="tns:ICompanyBalanceService_SelectCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CallTimeSpanProc">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICompanyBalanceService/CallTimeSpanProc" message="tns:ICompanyBalanceService_CallTimeSpanProc_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICompanyBalanceService/CallTimeSpanProcResponse" message="tns:ICompanyBalanceService_CallTimeSpanProc_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICompanyBalanceService" type="tns:ICompanyBalanceService">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="SelectCount">
       <soap:operation soapAction="http://tempuri.org/ICompanyBalanceService/SelectCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CallTimeSpanProc">
+      <soap:operation soapAction="http://tempuri.org/ICompanyBalanceService/CallTimeSpanProc" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

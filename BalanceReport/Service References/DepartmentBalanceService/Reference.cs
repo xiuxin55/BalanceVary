@@ -365,6 +365,9 @@ namespace BalanceReport.DepartmentBalanceService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDepartmentBalanceService/SelectCount", ReplyAction="http://tempuri.org/IDepartmentBalanceService/SelectCountResponse")]
         int SelectCount(BalanceReport.DepartmentBalanceService.DepartmentBalance info);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDepartmentBalanceService/CallTimeSpanProc", ReplyAction="http://tempuri.org/IDepartmentBalanceService/CallTimeSpanProcResponse")]
+        BalanceReport.DepartmentBalanceService.DepartmentBalance[] CallTimeSpanProc(BalanceReport.DepartmentBalanceService.DepartmentBalance t);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -412,6 +415,10 @@ namespace BalanceReport.DepartmentBalanceService {
         
         public int SelectCount(BalanceReport.DepartmentBalanceService.DepartmentBalance info) {
             return base.Channel.SelectCount(info);
+        }
+        
+        public BalanceReport.DepartmentBalanceService.DepartmentBalance[] CallTimeSpanProc(BalanceReport.DepartmentBalanceService.DepartmentBalance t) {
+            return base.Channel.CallTimeSpanProc(t);
         }
     }
 }

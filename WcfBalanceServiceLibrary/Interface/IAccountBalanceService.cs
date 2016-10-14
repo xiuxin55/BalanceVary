@@ -26,6 +26,8 @@ namespace WcfBalanceServiceLibrary
         List<AccountBalance> SelectByDepartment(DepartmentBalance model);
         [OperationContract]
         int SelectByDepartmentCount(DepartmentBalance model);
-        
+        [OperationContract]
+        List<AccountBalance> CallTimeSpanProc(AccountBalance t);
+
     }
 }

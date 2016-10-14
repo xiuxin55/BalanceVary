@@ -22,6 +22,7 @@ namespace WcfBalanceServiceLibrary
         List<CompanyBalance> Select(CompanyBalance info);
         [OperationContract]
         int SelectCount(CompanyBalance info);
-
+        [OperationContract]
+        List<CompanyBalance> CallTimeSpanProc(CompanyBalance t);
     }
 }
