@@ -100,6 +100,7 @@ namespace BalanceDataSync
                     return;
                 }
                 SyncDataHandler syn = new SyncDataHandler(UploadFileList.Where(e => e.IsSelected).ToList());
+                syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), this.SynComplete, UploadFileList, Application.Current.MainWindow.Dispatcher);
             }
             catch (Exception ex)
@@ -160,7 +161,15 @@ namespace BalanceDataSync
         }
         public void NotifyCurrentCalculateFile(UploadFileInfo info)
         {
-            this.CurrentCalculateFile = info.FileName;
+            if (info.FileState==2)
+            {
+                this.CurrentCalculateFile = info.FileName+" 处理出现异常";
+            }
+            else
+            {
+                this.CurrentCalculateFile = info.FileName;
+            }
+            
         }
         private  void SearchExecute()
         {
@@ -185,6 +194,8 @@ namespace BalanceDataSync
             ObservableCollection<UploadFileInfo> ufiList = obj as ObservableCollection<UploadFileInfo>;
             bll.BatchUpdate(ufiList.ToList());
             SearchExecute();
+
+            CurrentCalculateFile = "所有文件处理结束";
         }
     }
 }

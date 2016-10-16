@@ -9,7 +9,7 @@ namespace Utility
 {
     public class MultiTask
     {
-        public static  void TaskDispatcherWithUI(Action doWork,Action<object> complete,object param, Dispatcher dispatcher)
+        public static  void TaskDispatcherWithUI(Action doWork,Action<object> complete,object param, Dispatcher dispatcher=null)
         {
             IAsyncResult ir = doWork.BeginInvoke(new AsyncCallback(
                 obj=>
@@ -21,6 +21,10 @@ namespace Utility
                     if (complete!=null)
                     {
                         dispatcher.Invoke(complete, param);
+                    }
+                    else
+                    {
+                        complete(param);
                     }
                 }
                 ), doWork);

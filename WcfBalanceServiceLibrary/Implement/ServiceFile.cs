@@ -1,4 +1,5 @@
 ﻿using BalanceBLL;
+using BalanceDataSync;
 using BalanceModel;
 using Common;
 using Common.Server;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Utility;
 
 namespace WcfBalanceServiceLibrary
 {
@@ -45,6 +47,7 @@ namespace WcfBalanceServiceLibrary
                 fileInfo.SendByte = null;
                 binaryWriter.Close();
                 fs.Close();
+                AutoCalculate();
                 return fileInfo;
             }
             catch (Exception ex)
@@ -53,7 +56,24 @@ namespace WcfBalanceServiceLibrary
                 return null;
             }
         }
+        private void AutoCalculate()
+        {
+            UploadFileInfoBLL bll = new UploadFileInfoBLL();
+            UploadFileInfo info = new UploadFileInfo();
+            info.FileState = 0;
+            List<UploadFileInfo> UploadFileList = bll.Select(info);
+            SyncDataHandler syn = new SyncDataHandler(UploadFileList);
 
+           // MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), this.SynComplete, UploadFileList);
+        }
+        /// <summary>
+        /// 同步数据完成
+        /// </summary>
+        public void SynComplete(object obj)
+        {
+            List<UploadFileInfo> ufiList = obj as List<UploadFileInfo>;
+            bll.BatchUpdate(ufiList);
+        }
         public bool  StoreUpLoadResult(UploadFileInfo uploadfileinfo)
         {
             try

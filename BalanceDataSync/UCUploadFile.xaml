@@ -46,12 +46,13 @@
                 <DataGridTextColumn Header="文件类型" Binding="{Binding FileType}" Width="1*" IsReadOnly="True"/>
                 <DataGridTextColumn Header="当前状态" Binding="{Binding FileState,Converter={StaticResource FileStateConverter} }"  Width="1*" IsReadOnly="True"/>
                 <DataGridTextColumn Header="上传时间" Binding="{Binding FileUploadTime}" Width="1*" IsReadOnly="True"/>
+                <!--<DataGridTextColumn Header="异常" Binding="{Binding FileException}" Width="1*" IsReadOnly="True"/>-->
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="2" >
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="当前正在计算：" Foreground="Red" VerticalAlignment="Center" FontSize="18"/>
-                <TextBlock Text="{Binding CurrentCalculateFile}"/>
+                <TextBlock Text="{Binding CurrentCalculateFile}" FontSize="16" VerticalAlignment="Center" />
             </StackPanel>
         </Grid>
     </Grid>

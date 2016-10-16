@@ -14,6 +14,7 @@ namespace BalanceDataSync
 
         List<ImportDataInfo> ImportDataList = new List<ImportDataInfo>();
         List<UploadFileInfo> UploadFileInfoList = new List<UploadFileInfo>();
+        public Action<UploadFileInfo> NotifyFileStateChange = null;
         public SyncDataHandler(List<UploadFileInfo> uploadFileInfoList)
         {
             this.UploadFileInfoList = uploadFileInfoList;
@@ -42,6 +43,10 @@ namespace BalanceDataSync
             {
                 try
                 {
+                    if(NotifyFileStateChange!=null)
+                    {
+                        NotifyFileStateChange(item);
+                    }
                     ImportDataList = ReadExcel.ReadMonthData(item.FilePath + item.FileName, item.FileDateTime.Value);
                     if (ImportDataList == null || ImportDataList.Count == 0)
                     {
@@ -55,6 +60,10 @@ namespace BalanceDataSync
 
                     item.FileState = 2;
                     item.FileException = ex.Message + ":\n" + ex.StackTrace;
+                    if (NotifyFileStateChange != null)
+                    {
+                        NotifyFileStateChange(item);
+                    }
                     throw ex;
                 }
             }
