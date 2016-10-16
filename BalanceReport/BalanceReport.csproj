@@ -115,7 +115,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helper\BalanceModeHelper.cs" />
     <Compile Include="Helper\OrderByColomnHelper.cs" />
+    <Compile Include="LocalModel\BalanceMode.cs" />
     <Compile Include="LocalModel\ResultOrderBy.cs" />
     <Compile Include="LocalModel\DataGridColomnState.cs" />
     <Compile Include="LocalModel\LocalCommonData.cs" />

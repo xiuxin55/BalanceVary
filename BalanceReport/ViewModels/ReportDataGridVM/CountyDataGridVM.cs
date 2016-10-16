@@ -7,7 +7,6 @@ using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using BalanceReport.Views;
-using BalanceReport.WebsiteInfoService;
 using Common;
 using BalanceReport.ZoneBalanceService;
 using Utility;
@@ -22,8 +21,8 @@ namespace BalanceReport.ViewModels
         private ZoneBalanceServiceClient client = new ZoneBalanceServiceClient();
         public CountyDataGridVM()
         {
-            SearchWebsiteCommand = new DelegateCommand(SearchWebsiteExecute);
-            SearchWebsiteExecute();
+            SearchZoneCommand = new DelegateCommand(SearchZoneExecute);
+            SearchZoneExecute();
             LoadData();
         }
 
@@ -39,17 +38,17 @@ namespace BalanceReport.ViewModels
             }
 
         }
-        private ZoneBalance _selectedWebsiteInfoModel;
+        private ZoneBalance _selectedZoneInfoModel;
         /// <summary>
         ///被选中的行 
         /// </summary>
-        public ZoneBalance SelectedWebsiteInfoModel
+        public ZoneBalance SelectedZoneInfoModel
         {
-            get { return _selectedWebsiteInfoModel; }
+            get { return _selectedZoneInfoModel; }
             set
             {
-                _selectedWebsiteInfoModel = value;
-                this.RaisePropertyChanged("SelectedWebsiteInfoModel");
+                _selectedZoneInfoModel = value;
+                this.RaisePropertyChanged("SelectedZoneInfoModel");
             }
         }
 
@@ -80,13 +79,25 @@ namespace BalanceReport.ViewModels
                 this.RaisePropertyChanged("ZoneBalanceList");
             }
         }
-
+        private BalanceMode _Mode;
+        /// <summary>
+        /// 余额模式
+        /// </summary>
+        public BalanceMode Mode
+        {
+            get { return _Mode; }
+            set
+            {
+                _Mode = value;
+                this.RaisePropertyChanged("Mode");
+            }
+        }
         #endregion
         #region 命令
-        public DelegateCommand SearchWebsiteCommand { get; set; }
+        public DelegateCommand SearchZoneCommand { get; set; }
         #endregion
         #region 命令执行方法
-        private void SearchWebsiteExecute()
+        private void SearchZoneExecute()
         {
             if (SearchZoneBalanceModel == null)
             {
@@ -101,7 +112,17 @@ namespace BalanceReport.ViewModels
                 SearchZoneBalanceModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
                 SearchZoneBalanceModel.StartIndex = 1;
                 SearchZoneBalanceModel.EndIndex = PageSize;
-                ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.Select(SearchZoneBalanceModel));
+                if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
+                {
+                    ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.Select(SearchZoneBalanceModel));
+                }
+                else
+                {
+                    SearchZoneBalanceModel.StartBalanceTime = SearchZoneBalanceModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
+                    SearchZoneBalanceModel.EndBalanceTime = SearchZoneBalanceModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
+                 
+                    ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.CallTimeSpanProc(SearchZoneBalanceModel));
+                }
                 Total = client.SelectCount(SearchZoneBalanceModel);
             }
             catch (Exception ex)
@@ -115,7 +136,14 @@ namespace BalanceReport.ViewModels
         {
             SearchZoneBalanceModel.StartIndex = startindex;
             SearchZoneBalanceModel.EndIndex = endindex;
-            ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.Select(SearchZoneBalanceModel));
+            if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
+            {
+                ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.Select(SearchZoneBalanceModel));
+            }
+            else
+            {
+                ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.CallTimeSpanProc(SearchZoneBalanceModel));
+            }
         }
         #endregion
         #region 内部方法
@@ -125,6 +153,8 @@ namespace BalanceReport.ViewModels
             List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
             SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()) : null;
             ColomnState = ColomnSet != null ? DataGridColomnState.SystemSetInfoToState(ColomnSet) : null;
+            Mode = BalanceModeHelper.GetBalanceModeobj();
+
         }
         #endregion
     }

@@ -97,7 +97,19 @@ namespace BalanceReport.ViewModels
                 this.RaisePropertyChanged("DepartmentBalanceList");
             }
         }
-       
+        private BalanceMode _Mode;
+        /// <summary>
+        /// 余额模式
+        /// </summary>
+        public BalanceMode Mode
+        {
+            get { return _Mode; }
+            set
+            {
+                _Mode = value;
+                this.RaisePropertyChanged("Mode");
+            }
+        }
         #endregion
         #region 命令
         public DelegateCommand SearchDepartmentCommand { get; set; }
@@ -107,14 +119,28 @@ namespace BalanceReport.ViewModels
         private void SearchDepartmentExecute()
         {
             Total = 0;
-            SearchDepartmentBalanceoModel = new DepartmentBalance();
+            if (SearchDepartmentBalanceoModel == null)
+            {
+                SearchDepartmentBalanceoModel = new DepartmentBalance();
+            }
             SearchDepartmentBalanceoModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchDepartmentBalanceoModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
             SearchDepartmentBalanceoModel.DepartmentID = SelectedDepartmentInfoModel.DepartmentID;
             SearchDepartmentBalanceoModel.DepartmentName = SelectedDepartmentInfoModel.DepartmentName=="全部"? null: SelectedDepartmentInfoModel.DepartmentName;
             SearchDepartmentBalanceoModel.StartIndex = 1;
             SearchDepartmentBalanceoModel.EndIndex = PageSize;
-            DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(clientDepartmentBalance.Select(SearchDepartmentBalanceoModel));
+            if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
+            {
+                DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(clientDepartmentBalance.Select(SearchDepartmentBalanceoModel));
+            }
+            else
+            {
+                SearchDepartmentBalanceoModel.StartBalanceTime = SearchDepartmentBalanceoModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
+                SearchDepartmentBalanceoModel.EndBalanceTime = SearchDepartmentBalanceoModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
+                 
+                DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(clientDepartmentBalance.CallTimeSpanProc(SearchDepartmentBalanceoModel));
+
+            }
             Total = clientDepartmentBalance.SelectCount(SearchDepartmentBalanceoModel);
         }
 
@@ -132,6 +158,8 @@ namespace BalanceReport.ViewModels
                 List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
                 SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()) : null;
                 ColomnState = ColomnSet != null ? DataGridColomnState.SystemSetInfoToState(ColomnSet) : null;
+                Mode = BalanceModeHelper.GetBalanceModeobj();
+
             }
             catch (Exception ex)
             {
@@ -144,7 +172,15 @@ namespace BalanceReport.ViewModels
 
             SearchDepartmentBalanceoModel.StartIndex = startindex;
             SearchDepartmentBalanceoModel.EndIndex = endindex;
-            DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(clientDepartmentBalance.Select(SearchDepartmentBalanceoModel));
+            if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
+            {
+                DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(clientDepartmentBalance.Select(SearchDepartmentBalanceoModel));
+            }
+            else
+            {
+                DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(clientDepartmentBalance.CallTimeSpanProc(SearchDepartmentBalanceoModel));
+
+            }
         }
         #endregion
         #region 内部方法

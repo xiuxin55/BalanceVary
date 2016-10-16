@@ -29,7 +29,27 @@
             <ListBox   Grid.Row="2"  ItemsSource="{Binding WebsiteInfoList}" DisplayMemberPath="WebsiteName" SelectedItem="{Binding SelectedWebsiteInfoModel}" Grid.RowSpan="2"></ListBox>
         </Grid>
         <ContentControl Visibility="Hidden" Content="{StaticResource ProxyElement}"/>
-        <DataGrid Grid.Column="1" Name="ZoneWebsiteDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True"  ItemsSource="{Binding WebsiteBalanceList}">
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="26"/>
+                <RowDefinition Height="67*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0"   Margin="10,0,0,0" Visibility="{Binding Mode.EveryDayBalance,Converter={StaticResource ColomnStateConverter}}">
+
+                <DatePicker SelectedDate="{Binding SearchWebsiteBalanceModel.BalanceTime}" Width="150" Margin="10,0,0,0"/>
+                <Button Content="查询" Width="80"   Margin="10,0,0,0" Command="{Binding SearchWebsiteCommand}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10,0,0,0"  Visibility="{Binding Mode.BetweenTwoTimeBalance,Converter={StaticResource ColomnStateConverter}}">
+            
+                <TextBlock Text="开始日期：" VerticalAlignment="Center"  Margin="10,0,0,0"/>
+                <DatePicker SelectedDate="{Binding SearchWebsiteBalanceModel.StartBalanceTime}" Width="150"   Margin="10,0,0,0"/>
+                <TextBlock Text="结束日期："  VerticalAlignment="Center"   Margin="10,0,0,0"/>
+                <DatePicker SelectedDate="{Binding SearchWebsiteBalanceModel.EndBalanceTime}" Width="150"   Margin="10,0,0,0"/>
+                <Button Content="查询"  Width="80"   Margin="10,0,0,0"  Command="{Binding SearchWebsiteCommand}"/>
+            </StackPanel>
+
+            <DataGrid Grid.Row="1" Name="ZoneWebsiteDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True"  ItemsSource="{Binding WebsiteBalanceList}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="48" Header="序号" Binding="{Binding RowNumber}"  />
                 <DataGridTextColumn Binding="{Binding WebsiteName}" Header="网点名称"  Width="1.3*"/>
@@ -45,5 +65,6 @@
                 <DataGridTextColumn Binding="{Binding BalanceTime,Converter={StaticResource TimeConverter} }" Header="时间"   Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
+        </Grid>
     </Grid>
 </UserControl>

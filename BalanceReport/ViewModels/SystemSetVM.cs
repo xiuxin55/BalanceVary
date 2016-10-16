@@ -25,6 +25,10 @@ namespace BalanceReport.ViewModels
 
         private SystemSetInfo ColomnOderbySet;
         private SystemSetInfo SubColomnOderbySet;
+
+        private SystemSetInfo BalanceModeSet;
+
+
         private DataGridColomnState _SystemSetInfo;
         /// <summary>
         ///列是否显示设置
@@ -85,9 +89,27 @@ namespace BalanceReport.ViewModels
         }
 
 
+        private BalanceMode _ModeSystemSetInfo;
+        /// <summary>
+        ///余额变化模式
+        /// </summary>
+        public BalanceMode ModeSystemSetInfo
+        {
+            get
+            {
+                return _ModeSystemSetInfo;
+            }
+            set
+            {
+                _ModeSystemSetInfo = value;
+                this.RaisePropertyChanged("ModeSystemSetInfo");
+            }
+        }
+
         bool isColomnDisplayAdd = true;
         bool isColomnOrderByAdd = true;
         bool isSubColomnOrderByAdd = true;
+        bool isBalanceModeAdd = true;
         #endregion
         #region 命令
         public DelegateCommand OkSystemSetCommand { get; set; }
@@ -114,7 +136,7 @@ namespace BalanceReport.ViewModels
 
             if (isColomnOrderByAdd)
             {
-                ResultOrderSystemSetInfo = new ResultOrderBy();
+                
                 ColomnOderbySet = new SystemSetInfo();
                 ColomnOderbySet.ID = Guid.NewGuid().ToString();
                 ColomnOderbySet.SetName = ResultOrderBy.GetSetName();
@@ -131,7 +153,7 @@ namespace BalanceReport.ViewModels
 
             if (isSubColomnOrderByAdd)
             {
-                SubResultOrderSystemSetInfo = new ResultOrderBy();
+                
                 SubColomnOderbySet = new SystemSetInfo();
                 SubColomnOderbySet.ID = Guid.NewGuid().ToString();
                 SubColomnOderbySet.SetName ="Sub"+ ResultOrderBy.GetSetName();
@@ -146,6 +168,24 @@ namespace BalanceReport.ViewModels
                 OrderByColomnHelper.SetSubOrderByColomn(SubColomnOderbySet.SetContent);
             }
 
+
+            if (isBalanceModeAdd)
+            {
+               
+                BalanceModeSet = new SystemSetInfo();
+                BalanceModeSet.ID = Guid.NewGuid().ToString();
+                BalanceModeSet.SetName = BalanceMode.GetSetName();
+                BalanceModeSet.SetContent = ModeSystemSetInfo.ToString();
+                client.Add(BalanceModeSet);
+                BalanceModeHelper.SetBalanceMode(ModeSystemSetInfo);
+            }
+            else
+            {
+                BalanceModeSet.SetContent = ModeSystemSetInfo.ToString();
+                client.Update(BalanceModeSet);
+                BalanceModeHelper.SetBalanceMode(ModeSystemSetInfo);
+            }
+
             MessageBox.Show("操作成功");
         }
 
@@ -154,19 +194,25 @@ namespace BalanceReport.ViewModels
         #region 内部方法
         private void LoadData()
         {
+            //余额表显示列
             List<SystemSetInfo> setList = new List<SystemSetInfo>(client.Select(null));
             ColomnSet = setList != null? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()):null;
             ColomnStateSystemSetInfo = ColomnSet != null? DataGridColomnState.SystemSetInfoToState(ColomnSet) :null;
             isColomnDisplayAdd = ColomnSet == null;
-
+            //次排序列
             SubColomnOderbySet = setList != null ? setList.Find(e => e.SetName.ToLower() ==("Sub"+ ResultOrderBy.GetSetName()).ToLower()) : null;
-            SubResultOrderSystemSetInfo = SubColomnOderbySet != null ? ResultOrderBy.SystemSetInfoToOrderBy(SubColomnOderbySet) : null;
+            SubResultOrderSystemSetInfo = SubColomnOderbySet != null ? ResultOrderBy.SystemSetInfoToOrderBy(SubColomnOderbySet) : new ResultOrderBy();
             isSubColomnOrderByAdd = SubColomnOderbySet == null;
 
-
+            //主排序列
             ColomnOderbySet = setList != null ? setList.Find(e => e.SetName.ToLower() == ResultOrderBy.GetSetName().ToLower()) : null;
-            ResultOrderSystemSetInfo = ColomnOderbySet != null ? ResultOrderBy.SystemSetInfoToOrderBy(ColomnOderbySet) : null;
+            ResultOrderSystemSetInfo = ColomnOderbySet != null ? ResultOrderBy.SystemSetInfoToOrderBy(ColomnOderbySet) : new ResultOrderBy();
             isColomnOrderByAdd = ColomnOderbySet == null;
+            
+            //模式列
+            BalanceModeSet = setList != null ? setList.Find(e => e.SetName.ToLower() == BalanceMode.GetSetName().ToLower()) : null;
+            ModeSystemSetInfo = BalanceModeSet != null ? BalanceMode.SystemSetInfoToBalanceMode(BalanceModeSet) : new BalanceMode();
+            isBalanceModeAdd = BalanceModeSet == null;
         }
         #endregion
     }

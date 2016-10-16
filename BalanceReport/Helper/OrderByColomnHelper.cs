@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BalanceReport.Helper
 {
-    public class OrderByColomnHelper
+    public  class OrderByColomnHelper
     {
         public static string SubOrderByColomnobj = string.Empty;
         public static string OrderByColomnobj = string.Empty;

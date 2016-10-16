@@ -29,16 +29,29 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="1.2*"/>
             </Grid.RowDefinitions>
-            <GroupBox Header="余额变动表显示列设置" Grid.Column="0">
-                <StackPanel Orientation="Vertical">
-                    <CheckBox  Content="定期余额列" IsChecked="{Binding ColomnStateSystemSetInfo.RegularColomnState}" Margin="8"/>
-                    <CheckBox Content="定期余额变化列"  IsChecked="{Binding ColomnStateSystemSetInfo.RegularVaryColomnState}"  Margin="8"/>
-                    <CheckBox Content="活期余额列"  IsChecked="{Binding ColomnStateSystemSetInfo.UnRegularColomnState}"  Margin="8"/>
-                    <CheckBox Content="活期余额变化列"  IsChecked="{Binding ColomnStateSystemSetInfo.UnRegularVaryColomnState}"  Margin="8"/>
-                    <CheckBox Content="总余额列"  IsChecked="{Binding ColomnStateSystemSetInfo.AmountColomnState}"  Margin="8"/>
-                    <CheckBox Content="总余额变化列"  IsChecked="{Binding ColomnStateSystemSetInfo.AmountVaryColomnState}"  Margin="8"/>
-                </StackPanel>
-            </GroupBox>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Header="余额变动表显示列设置" Grid.Column="0">
+                    <StackPanel Orientation="Vertical">
+                        <CheckBox  Content="定期余额列" IsChecked="{Binding ColomnStateSystemSetInfo.RegularColomnState}" Margin="8"/>
+                        <CheckBox Content="定期余额变化列"  IsChecked="{Binding ColomnStateSystemSetInfo.RegularVaryColomnState}"  Margin="8"/>
+                        <CheckBox Content="活期余额列"  IsChecked="{Binding ColomnStateSystemSetInfo.UnRegularColomnState}"  Margin="8"/>
+                        <CheckBox Content="活期余额变化列"  IsChecked="{Binding ColomnStateSystemSetInfo.UnRegularVaryColomnState}"  Margin="8"/>
+                        <CheckBox Content="总余额列"  IsChecked="{Binding ColomnStateSystemSetInfo.AmountColomnState}"  Margin="8"/>
+                        <CheckBox Content="总余额变化列"  IsChecked="{Binding ColomnStateSystemSetInfo.AmountVaryColomnState}"  Margin="8"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="余额模式切换设置" Grid.Column="1">
+                    <StackPanel Orientation="Vertical">
+                        <RadioButton  GroupName="mode"   Content="每日余额模式" IsChecked="{Binding ModeSystemSetInfo.EveryDayBalance}" Tag="" Margin="8"/>
+                        <RadioButton  GroupName="mode"   Content="任意两个日期的余额模式"  IsChecked="{Binding ModeSystemSetInfo.BetweenTwoTimeBalance}"  Margin="8"/>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

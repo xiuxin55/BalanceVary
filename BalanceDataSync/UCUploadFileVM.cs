@@ -66,6 +66,20 @@ namespace BalanceDataSync
             }
         }
 
+        private string _CurrentCalculateFile;
+        /// <summary>
+        /// 当前正在计算的文件
+        /// </summary>
+        public string CurrentCalculateFile
+        {
+            get { return _CurrentCalculateFile; }
+            set
+            {
+                _CurrentCalculateFile = value;
+                this.RaisePropertyChanged("CurrentCalculateFile");
+            }
+        }
+        
         //#endregion
         #region 命令
         public DelegateCommand HandleFileCommand { get; set; }
@@ -144,7 +158,11 @@ namespace BalanceDataSync
                 item.IsSelected = obj;
             }
         }
-        private void SearchExecute()
+        public void NotifyCurrentCalculateFile(UploadFileInfo info)
+        {
+            this.CurrentCalculateFile = info.FileName;
+        }
+        private  void SearchExecute()
         {
             try
             {
@@ -166,6 +184,7 @@ namespace BalanceDataSync
         {
             ObservableCollection<UploadFileInfo> ufiList = obj as ObservableCollection<UploadFileInfo>;
             bll.BatchUpdate(ufiList.ToList());
+            SearchExecute();
         }
     }
 }

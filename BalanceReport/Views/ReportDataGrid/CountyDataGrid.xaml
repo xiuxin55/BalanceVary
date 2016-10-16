@@ -13,8 +13,23 @@
         <FrameworkElement x:Key="ProxyElement" DataContext="{Binding}"/>
     </UserControl.Resources>
     <Grid>
-        <ContentControl Visibility="Hidden" Content="{StaticResource ProxyElement}"/>
-        <DataGrid Name="ZoneDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True"  ItemsSource="{Binding ZoneBalanceList}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="67*"/>
+        </Grid.RowDefinitions>
+        <ContentControl Visibility="Hidden" Content="{StaticResource ProxyElement}" Grid.RowSpan="2"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="0"  Margin="10,0,0,0" Visibility="{Binding Mode.EveryDayBalance,Converter={StaticResource ColomnStateConverter}}">
+            <DatePicker SelectedDate="{Binding SearchZoneBalanceModel.BalanceTime}" Width="150"/>
+            <Button Content="查询" Width="80"   Margin="10,0,0,0" Command="{Binding SearchZoneCommand}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10,0,0,0"  Visibility="{Binding Mode.BetweenTwoTimeBalance,Converter={StaticResource ColomnStateConverter}}">
+            <TextBlock Text="开始日期：" VerticalAlignment="Center"  Margin="10,0,0,0"/>
+            <DatePicker SelectedDate="{Binding SearchZoneBalanceModel.StartBalanceTime}" Width="150"   Margin="10,0,0,0"/>
+            <TextBlock Text="结束日期："  VerticalAlignment="Center"   Margin="10,0,0,0"/>
+            <DatePicker SelectedDate="{Binding SearchZoneBalanceModel.EndBalanceTime}" Width="150"   Margin="10,0,0,0"/>
+            <Button Content="查询"  Width="80"   Margin="10,0,0,0"  Command="{Binding SearchZoneCommand}"/>
+        </StackPanel>
+        <DataGrid Name="ZoneDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding ZoneBalanceList}" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="48" Header="序号" Binding="{Binding RowNumber}"  />
                 <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*" Visibility="{Binding DataContext.ColomnState.RegularColomnState,Source={StaticResource ProxyElement} ,Converter={StaticResource ColomnStateConverter} }"/>

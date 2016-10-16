@@ -22,8 +22,8 @@ namespace BalanceReport.ViewModels
         private ZoneBalanceServiceClient client = new ZoneBalanceServiceClient();
         public CityDataGridVM()
         {
-            SearchWebsiteCommand = new DelegateCommand(SearchWebsiteExecute);
-            SearchWebsiteExecute();
+            SearchZoneCommand = new DelegateCommand(SearchZoneExecute);
+            SearchZoneExecute();
             LoadData();
         }
         #region 属性
@@ -81,12 +81,27 @@ namespace BalanceReport.ViewModels
             }
         }
 
+
+        private BalanceMode _Mode;
+        /// <summary>
+        /// 余额模式
+        /// </summary>
+        public BalanceMode Mode
+        {
+            get { return _Mode; }
+            set
+            {
+                _Mode = value;
+                this.RaisePropertyChanged("Mode");
+            }
+        }
+
         #endregion
         #region 命令
-        public DelegateCommand SearchWebsiteCommand { get; set; }
+        public DelegateCommand SearchZoneCommand { get; set; }
         #endregion
         #region 命令执行方法
-        private void SearchWebsiteExecute()
+        private void SearchZoneExecute()
         {
             if (SearchZoneBalanceModel == null)
             {
@@ -100,8 +115,18 @@ namespace BalanceReport.ViewModels
                 SearchZoneBalanceModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
                 SearchZoneBalanceModel.StartIndex = 1;
                 SearchZoneBalanceModel.EndIndex = PageSize;
-                ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.Select(SearchZoneBalanceModel));
+                if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
+                {
+                    ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.Select(SearchZoneBalanceModel));
+                }
+                else
+                {
+                    SearchZoneBalanceModel.StartBalanceTime = SearchZoneBalanceModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
+                    SearchZoneBalanceModel.EndBalanceTime = SearchZoneBalanceModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
+                    ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.CallTimeSpanProc(SearchZoneBalanceModel));
+                }
                 Total = client.SelectCount(SearchZoneBalanceModel);
+                
             }
             catch (Exception ex)
             {
@@ -114,7 +139,17 @@ namespace BalanceReport.ViewModels
         {
             SearchZoneBalanceModel.StartIndex = startindex;
             SearchZoneBalanceModel.EndIndex = endindex;
-            ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.Select(SearchZoneBalanceModel));
+            if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
+            {
+                ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.Select(SearchZoneBalanceModel));
+            }
+            else
+            {
+                SearchZoneBalanceModel.StartBalanceTime = SearchZoneBalanceModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
+                SearchZoneBalanceModel.EndBalanceTime = SearchZoneBalanceModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
+                ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.CallTimeSpanProc(SearchZoneBalanceModel));
+            }
+          
         }
         #endregion
         #region 内部方法
@@ -133,6 +168,7 @@ namespace BalanceReport.ViewModels
             //zb.StartBalanceTime = DateTime.Parse("2016-10-21");
             //zb.EndBalanceTime = DateTime.Parse("2016-10-22");
             //List<ZoneBalance> rr= client.CallTimeSpanProc(zb).ToList();
+            Mode = BalanceModeHelper.GetBalanceModeobj();
         }
         #endregion
     }

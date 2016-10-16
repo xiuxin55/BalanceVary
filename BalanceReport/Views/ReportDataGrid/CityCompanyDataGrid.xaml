@@ -30,8 +30,50 @@
                 <ListBox   Grid.Row="2"  ItemsSource="{Binding WebsiteInfoList}" DisplayMemberPath="WebsiteName" SelectedItem="{Binding SelectedWebsiteInfoModel}" Grid.RowSpan="2"></ListBox>
             </Grid>
         <ContentControl Visibility="Hidden" Content="{StaticResource ProxyElement}"/>
-        <TabControl Grid.Column="1" TabStripPlacement="Top" Controls:TabControlHelper.IsUnderlined="True" SelectedIndex="{Binding SelectedTabItemIndex}">
-            <TabItem Header=" 公司变化 "  Controls:ControlsHelper.HeaderFontSize="13">
+        <Grid Grid.Column="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="26"/>
+                <RowDefinition Height="67*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Visibility="{Binding IsSelected,ElementName=companyvary,Converter={StaticResource ColomnStateConverter}}">
+                <StackPanel Orientation="Horizontal"    Margin="10,0,0,0" Visibility="{Binding Mode.EveryDayBalance,Converter={StaticResource ColomnStateConverter}}">
+                    <TextBlock Text="公司名称：" VerticalAlignment="Center"  Margin="10,0,0,0"/>
+                    <TextBox  VerticalAlignment="Center"  Margin="10,0,0,0" Text="{Binding SearchCompanyBalanceoModel.CompanyName}" Width="100"/>
+                    <DatePicker SelectedDate="{Binding SearchCompanyBalanceoModel.BalanceTime}" Width="150" Margin="10,0,0,0"/>
+                    <Button Content="查询" Width="80"   Margin="10,0,0,0" Command="{Binding SearchCompanyCommand}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,0,0,0"  Visibility="{Binding Mode.BetweenTwoTimeBalance,Converter={StaticResource ColomnStateConverter}}">
+                    <TextBlock Text="公司名称：" VerticalAlignment="Center"  Margin="10,0,0,0"/>
+                    <TextBox  VerticalAlignment="Center"  Margin="10,0,0,0" Text="{Binding SearchCompanyBalanceoModel.CompanyName}" Width="100"/>
+                    <TextBlock Text="开始日期：" VerticalAlignment="Center"  Margin="10,0,0,0"/>
+                    <DatePicker SelectedDate="{Binding SearchCompanyBalanceoModel.StartBalanceTime}" Width="150"   Margin="10,0,0,0"/>
+                    <TextBlock Text="结束日期："  VerticalAlignment="Center"   Margin="10,0,0,0"/>
+                    <DatePicker SelectedDate="{Binding SearchCompanyBalanceoModel.EndBalanceTime}" Width="150"   Margin="10,0,0,0"/>
+                    <Button Content="查询"  Width="80"   Margin="10,0,0,0"  Command="{Binding SearchCompanyCommand}"/>
+
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="0" Visibility="{Binding IsSelected,ElementName=accountvary,Converter={StaticResource ColomnStateConverter}}">
+                <StackPanel Orientation="Horizontal"    Margin="10,0,0,0" Visibility="{Binding Mode.EveryDayBalance,Converter={StaticResource ColomnStateConverter}}">
+                    <TextBlock Text="账户名称：" VerticalAlignment="Center"  Margin="10,0,0,0"/>
+                    <TextBox  VerticalAlignment="Center"  Margin="10,0,0,0" Text="{Binding SearchAccountBalanceModel.AccountName}" Width="100"/>
+                    <DatePicker SelectedDate="{Binding SearchAccountBalanceModel.BalanceTime}" Width="150" Margin="10,0,0,0"/>
+                    <Button Content="查询" Width="80"   Margin="10,0,0,0" Command="{Binding SearchAccountCommand}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,0,0,0"  Visibility="{Binding Mode.BetweenTwoTimeBalance,Converter={StaticResource ColomnStateConverter}}">
+                    <TextBlock Text="账户名称：" VerticalAlignment="Center"  Margin="10,0,0,0"/>
+                    <TextBox  VerticalAlignment="Center"  Margin="10,0,0,0" Text="{Binding SearchAccountBalanceModel.AccountName}" Width="100"/>
+                    <TextBlock Text="开始日期：" VerticalAlignment="Center"  Margin="10,0,0,0"/>
+                    <DatePicker SelectedDate="{Binding SearchAccountBalanceModel.StartBalanceTime}" Width="150"   Margin="10,0,0,0"/>
+                    <TextBlock Text="结束日期："  VerticalAlignment="Center"   Margin="10,0,0,0"/>
+                    <DatePicker SelectedDate="{Binding SearchAccountBalanceModel.EndBalanceTime}" Width="150"   Margin="10,0,0,0"/>
+                    <Button Content="查询"  Width="80"   Margin="10,0,0,0"  Command="{Binding SearchAccountCommand}"/>
+
+                </StackPanel>
+            </Grid>
+            <TabControl Grid.Row="1"   TabStripPlacement="Top" Controls:TabControlHelper.IsUnderlined="True" SelectedIndex="{Binding SelectedTabItemIndex}">
+            <TabItem Name="companyvary"  Header=" 公司变化 "  Controls:ControlsHelper.HeaderFontSize="13" >
                 <Grid>
                     <DataGrid  Name="CompanyDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding CompanyBalanceList}">
                     <DataGrid.Columns>
@@ -49,7 +91,7 @@
                 </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header=" 账户变化 "  Controls:ControlsHelper.HeaderFontSize="13">
+            <TabItem Name="accountvary" Header=" 账户变化 "  Controls:ControlsHelper.HeaderFontSize="13">
                 <Grid>
                     <DataGrid  Name="AccountCompanyDataGrid2"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding AccountBalanceList}">
                         <DataGrid.Columns>
@@ -70,6 +112,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        
-    </Grid>
+            </Grid>
+            </Grid>
 </UserControl>

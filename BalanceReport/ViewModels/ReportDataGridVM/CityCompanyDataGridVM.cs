@@ -26,6 +26,7 @@ namespace BalanceReport.ViewModels
         public CityCompanyDataGridVM()
         {
             SearchCompanyCommand = new DelegateCommand(SearchCompanyExecute);
+            SearchAccountCommand = new DelegateCommand(SearchAccountExecute);
             LoadData();
 
           //  SearchWebsiteExecute();
@@ -154,15 +155,34 @@ namespace BalanceReport.ViewModels
                 this.RaisePropertyChanged("SearchAccountBalanceModel");
             }
         }
+
+        private BalanceMode _Mode;
+        /// <summary>
+        /// 余额模式
+        /// </summary>
+        public BalanceMode Mode
+        {
+            get { return _Mode; }
+            set
+            {
+                _Mode = value;
+                this.RaisePropertyChanged("Mode");
+            }
+        }
         #endregion
         #region 命令
         public DelegateCommand SearchCompanyCommand { get; set; }
+        public DelegateCommand SearchAccountCommand { get; set; }
         #endregion
         #region 命令执行方法
         private void SearchAccountExecute()
         {
             Total = 0;
-            SearchAccountBalanceModel = new AccountBalance();
+            if (SearchAccountBalanceModel == null)
+            {
+                SearchAccountBalanceModel = new AccountBalance();
+            }
+        
 
             SearchAccountBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchAccountBalanceModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
@@ -170,18 +190,42 @@ namespace BalanceReport.ViewModels
             SearchAccountBalanceModel.StartIndex = 1;
             SearchAccountBalanceModel.EndIndex = PageSize;
             SearchAccountBalanceModel.AccountType = -1;
-            AccountBalanceList = new ObservableCollection<AccountBalance>(clientAccountBalance.Select(SearchAccountBalanceModel));
+            if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
+            {
+                AccountBalanceList = new ObservableCollection<AccountBalance>(clientAccountBalance.Select(SearchAccountBalanceModel));
+            }
+            else
+            {
+                SearchAccountBalanceModel.StartBalanceTime = SearchAccountBalanceModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
+                SearchAccountBalanceModel.EndBalanceTime = SearchAccountBalanceModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
+                    
+                AccountBalanceList = new ObservableCollection<AccountBalance>(clientAccountBalance.CallTimeSpanProc(SearchAccountBalanceModel));
+            }
+            
             Total = clientAccountBalance.SelectCount(SearchAccountBalanceModel);
         }
         private void SearchCompanyExecute()
         {
-            SearchCompanyBalanceoModel = new CompanyBalance();
+            if (SearchCompanyBalanceoModel == null)
+            {
+                SearchCompanyBalanceoModel = new CompanyBalance();
+            }
             SearchCompanyBalanceoModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchCompanyBalanceoModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
             SearchCompanyBalanceoModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
             SearchCompanyBalanceoModel.StartIndex = 1;
             SearchCompanyBalanceoModel.EndIndex = PageSize;
-            CompanyBalanceList = new ObservableCollection<CompanyBalance>(clientcompanybalance.Select(SearchCompanyBalanceoModel));
+            if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
+            {
+                CompanyBalanceList = new ObservableCollection<CompanyBalance>(clientcompanybalance.Select(SearchCompanyBalanceoModel));
+            }
+            else
+            {
+                SearchCompanyBalanceoModel.StartBalanceTime = SearchCompanyBalanceoModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
+                SearchCompanyBalanceoModel.EndBalanceTime = SearchCompanyBalanceoModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());    
+                CompanyBalanceList = new ObservableCollection<CompanyBalance>(clientcompanybalance.CallTimeSpanProc(SearchCompanyBalanceoModel));
+            }
+            
             Total = clientcompanybalance.SelectCount(SearchCompanyBalanceoModel);
         }
 
@@ -193,11 +237,14 @@ namespace BalanceReport.ViewModels
                 WebsiteInfo model = new WebsiteInfo();
                 model.Institution = "市行";
                 WebsiteInfoList = new ObservableCollection<WebsiteInfo>(clientwebsite.Select(model));
-
+                model.WebsiteName="全部";
+                WebsiteInfoList.Insert(0, model);
                 SystemSetInfoService.SystemSetInfoServiceClient clientSystemSetInfo = new SystemSetInfoServiceClient();
                 List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
                 SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()) : null;
                 ColomnState = ColomnSet != null ? DataGridColomnState.SystemSetInfoToState(ColomnSet) : null;
+
+                Mode = BalanceModeHelper.GetBalanceModeobj();
             }
             catch (Exception ex)
             {
@@ -211,13 +258,36 @@ namespace BalanceReport.ViewModels
             {
                 SearchCompanyBalanceoModel.StartIndex = startindex;
                 SearchCompanyBalanceoModel.EndIndex = endindex;
-                CompanyBalanceList = new ObservableCollection<CompanyBalance>(clientcompanybalance.Select(SearchCompanyBalanceoModel));
+                if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
+                {
+                    CompanyBalanceList = new ObservableCollection<CompanyBalance>(clientcompanybalance.Select(SearchCompanyBalanceoModel));
+                }
+                else
+                {
+                    SearchCompanyBalanceoModel.StartBalanceTime = SearchCompanyBalanceoModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
+                    SearchCompanyBalanceoModel.EndBalanceTime = SearchCompanyBalanceoModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
+                    
+
+                    CompanyBalanceList = new ObservableCollection<CompanyBalance>(clientcompanybalance.CallTimeSpanProc(SearchCompanyBalanceoModel));
+                }
+               
             }
             if (SelectedTabItemIndex == 1)
             {
                 SearchAccountBalanceModel.StartIndex = startindex;
                 SearchAccountBalanceModel.EndIndex = endindex;
-                AccountBalanceList = new ObservableCollection<AccountBalance>(clientAccountBalance.Select(SearchAccountBalanceModel));
+                if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
+                {
+                    AccountBalanceList = new ObservableCollection<AccountBalance>(clientAccountBalance.Select(SearchAccountBalanceModel));
+                }
+                else
+                {
+                    SearchAccountBalanceModel.StartBalanceTime = SearchAccountBalanceModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
+                    SearchAccountBalanceModel.EndBalanceTime = SearchAccountBalanceModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
+                    
+
+                    AccountBalanceList = new ObservableCollection<AccountBalance>(clientAccountBalance.CallTimeSpanProc(SearchAccountBalanceModel));
+                }
             }
         }
         #endregion

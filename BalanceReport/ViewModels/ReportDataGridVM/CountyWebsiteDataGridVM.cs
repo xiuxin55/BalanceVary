@@ -99,7 +99,19 @@ namespace BalanceReport.ViewModels
             }
         }
 
-
+        private BalanceMode _Mode;
+        /// <summary>
+        /// 余额模式
+        /// </summary>
+        public BalanceMode Mode
+        {
+            get { return _Mode; }
+            set
+            {
+                _Mode = value;
+                this.RaisePropertyChanged("Mode");
+            }
+        }
         #endregion
         #region 命令
         public DelegateCommand SearchWebsiteCommand { get; set; }
@@ -108,14 +120,27 @@ namespace BalanceReport.ViewModels
         private void SearchWebsiteExecute()
         {
             Total = 0;
-            SearchWebsiteBalanceModel = new WebsiteBalance();
+            if (SearchWebsiteBalanceModel == null)
+            {
+                SearchWebsiteBalanceModel = new WebsiteBalance();
+            }
             SearchWebsiteBalanceModel.EndIndex = int.MaxValue;
             SearchWebsiteBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchWebsiteBalanceModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
             SearchWebsiteBalanceModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
             SearchWebsiteBalanceModel.StartIndex = 1;
             SearchWebsiteBalanceModel.EndIndex = PageSize;
-            WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(clientwebsitebalance.Select(SearchWebsiteBalanceModel));
+            if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
+            {
+                WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(clientwebsitebalance.Select(SearchWebsiteBalanceModel));
+            }
+            else
+            {
+                SearchWebsiteBalanceModel.StartBalanceTime = SearchWebsiteBalanceModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
+                SearchWebsiteBalanceModel.EndBalanceTime = SearchWebsiteBalanceModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
+                 
+                WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(clientwebsitebalance.CallTimeSpanProc(SearchWebsiteBalanceModel));
+            }
             Total = clientwebsitebalance.SelectCount(SearchWebsiteBalanceModel);
         }
 
@@ -135,6 +160,8 @@ namespace BalanceReport.ViewModels
                 List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
                 SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()) : null;
                 ColomnState = ColomnSet != null ? DataGridColomnState.SystemSetInfoToState(ColomnSet) : null;
+                Mode = BalanceModeHelper.GetBalanceModeobj();
+
             }
             catch (Exception ex)
             {
@@ -146,7 +173,14 @@ namespace BalanceReport.ViewModels
         {
             SearchWebsiteBalanceModel.StartIndex = startindex;
             SearchWebsiteBalanceModel.EndIndex = endindex;
-            WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(clientwebsitebalance.Select(SearchWebsiteBalanceModel));
+            if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
+            {
+                WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(clientwebsitebalance.Select(SearchWebsiteBalanceModel));
+            }
+            else
+            {
+                WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(clientwebsitebalance.CallTimeSpanProc(SearchWebsiteBalanceModel));
+            }
         }
         #endregion
         #region 内部方法

@@ -51,7 +51,16 @@ namespace WcfBalanceServiceLibrary
 
         public List<WebsiteBalance> CallTimeSpanProc(WebsiteBalance t)
         {
-            return bll.CallTimeSpanProc(t);
+            try
+            {
+                return bll.CallTimeSpanProc(t);
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+            
         }
     }
 }
