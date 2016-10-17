@@ -161,8 +161,6 @@ namespace BalanceDataSync
                     rowIndex = 2;
                 }
                 #endregion
-
-
                 #region 填充内容
                 HSSFRow dataRow = (HSSFRow)sheet.CreateRow(rowIndex);
                 foreach (DataColumn column in dtSource.Columns)

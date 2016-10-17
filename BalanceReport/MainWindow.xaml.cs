@@ -122,7 +122,7 @@ namespace BalanceReport
             {
                 //this.WebsiteManageTab.IsSelected = true;
                 UploadFile.Upload(op.FileName, FileType.CustomerManagerLinkAccount); ;
-            }
+            } 
         }
 
         private void SystemSetButton_Click(object sender, RoutedEventArgs e)

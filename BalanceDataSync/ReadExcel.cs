@@ -167,8 +167,7 @@ namespace BalanceDataSync
                     if (string.IsNullOrWhiteSpace(item[0].ToString()))
                     {
                         continue;
-                    }
-
+                    }          
                     AccountLinkManagerInfo am = new AccountLinkManagerInfo();
                     am.ID = Guid.NewGuid().ToString();
                     am.AccountID = item["账户号"].ToString().Trim();

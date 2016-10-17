@@ -30,10 +30,10 @@
             <ListView  Name="listView1" ItemsSource="{Binding ManagersInfoList}" SelectedItem="{Binding SelectedCustomerManagerInfo}">
                 <ListView.View>
                     <GridView >
-                        <GridViewColumn Width="150"  Header="客户经理号" DisplayMemberBinding="{Binding ManagerID}" tool:ListViewBehavior.SortField="ManagerID"/>
+                        <!--<GridViewColumn Width="150"  Header="客户经理号" DisplayMemberBinding="{Binding ManagerID}" tool:ListViewBehavior.SortField="ManagerID"/>-->
                         <GridViewColumn Width="100" Header="客户经理姓名" DisplayMemberBinding="{Binding ManagerName}" tool:ListViewBehavior.SortField="ManagerName" />
-                        <GridViewColumn Width="200"  Header="电话号码" DisplayMemberBinding="{Binding ManagerTelphone}" tool:ListViewBehavior.SortField="ManagerTelphone"/>
-                        <GridViewColumn  Width="100" Header="邮箱" DisplayMemberBinding="{Binding ManagerEmail}" tool:ListViewBehavior.SortField="ManagerEmail"/>
+                        <!--<GridViewColumn Width="200"  Header="电话号码" DisplayMemberBinding="{Binding ManagerTelphone}" tool:ListViewBehavior.SortField="ManagerTelphone"/>
+                        <GridViewColumn  Width="100" Header="邮箱" DisplayMemberBinding="{Binding ManagerEmail}" tool:ListViewBehavior.SortField="ManagerEmail"/>-->
                         <GridViewColumn Width="100"  Header="所属部门" DisplayMemberBinding="{Binding DepartmentName}" tool:ListViewBehavior.SortField="WebsiteName" />
                     </GridView>
                 </ListView.View>
