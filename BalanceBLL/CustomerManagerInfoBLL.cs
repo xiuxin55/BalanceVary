@@ -9,6 +9,9 @@ namespace BalanceBLL
 {
     public class CustomerManagerInfoBLL : BalanceBaseBLL<CustomerManagerInfo, CustomerManagerInfoDAL>
     {
-
+        public void BatchInsert(List<CustomerManagerInfo> list)
+        {
+            dal.BatchInsert(list);
+        }
     }
 }

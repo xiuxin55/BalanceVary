@@ -20,6 +20,7 @@ namespace BalanceReport.ViewModels
             UpdateManagersCommand = new DelegateCommand(UpdateManagersExecute);
             DeleteManagersCommand = new DelegateCommand(DeleteManagersExecute);
             SearchManagersCommand = new DelegateCommand(SearchManagersExecute);
+            LinkAccountCommand = new DelegateCommand(LinkAccountExecute);
             SearchManagersExecute();
         }
         #region 属性
@@ -69,6 +70,8 @@ namespace BalanceReport.ViewModels
         public DelegateCommand UpdateManagersCommand { get; set; }
         public DelegateCommand DeleteManagersCommand { get; set; }
         public DelegateCommand SearchManagersCommand { get; set; }
+        public DelegateCommand LinkAccountCommand { get; set; }
+        
         #endregion
         #region 命令执行方法
         private void AddManagersExecute()
@@ -104,6 +107,10 @@ namespace BalanceReport.ViewModels
                 SearchCustomerManagerInfo = new CustomerManagerInfo();
             }
             ManagersInfoList =new ObservableCollection<CustomerManagerInfo>( client.Select(SearchCustomerManagerInfo));
+        }
+        private void LinkAccountExecute()
+        {
+
         }
         #endregion
         #region 内部方法

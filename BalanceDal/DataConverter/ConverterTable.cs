@@ -228,5 +228,34 @@ namespace BalanceDAL
             }
             return dtBalance;
         }
+
+        public static DataTable AccountLinkListConvertTable(List<AccountLinkManagerInfo> list)
+        {
+            DataTable dt = new DataTable();
+            dt.TableName = "AccountLinkManagerInfo";
+            dt.Columns.Add("ID");
+            dt.Columns.Add("ManagerID");
+            dt.Columns.Add("ManagerName");
+            dt.Columns.Add("DepartmentID");
+            dt.Columns.Add("DepartmentName");
+           
+            dt.Columns.Add("AccountID");
+            dt.Columns.Add("SubAccountNumber");
+           
+            foreach (var item in list)
+            {
+                DataRow dr = dt.NewRow();
+                dr["ID"] = item.ID;
+                dr["DepartmentID"] = item.DepartmentID;
+                dr["DepartmentName"] = item.DepartmentName;
+                dr["ManagerID"] = item.ManagerID;
+                dr["ManagerName"] = item.ManagerName;
+                dr["AccountID"] = item.AccountID ;
+                dr["SubAccountNumber"] = item.SubAccountNumber;
+               
+                dt.Rows.Add(dr);
+            }
+            return dt;
+        }
     }
 }

@@ -121,7 +121,7 @@ namespace BalanceReport
             if ((bool)op.ShowDialog())
             {
                 //this.WebsiteManageTab.IsSelected = true;
-                //UploadFile.Upload(op.FileName, ServiceFile.FileType.Manager); ;
+                UploadFile.Upload(op.FileName, FileType.CustomerManagerLinkAccount); ;
             }
         }
 
@@ -129,6 +129,16 @@ namespace BalanceReport
         {
             SystemSet ss = new SystemSet();
             ss.ShowDialog();
+        }
+
+        private void DepartmentImportButton_Click(object sender, RoutedEventArgs e)
+        {
+           
+            OpenFileDialog op = new OpenFileDialog();
+            if ((bool)op.ShowDialog())
+            {
+                UploadFile.Upload(op.FileName, FileType.CustomerManagerLinkAccount);
+            }
         }
     }
 }

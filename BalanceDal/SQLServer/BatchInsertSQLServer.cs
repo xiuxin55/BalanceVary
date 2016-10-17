@@ -41,5 +41,12 @@ namespace BalanceDAL
             SQLServer ss = new SQLServer();
             return ss.BatchInsertSQLServer(result);
         }
+
+        public bool BatchInsertAccountLink(List<AccountLinkManagerInfo> list)
+        {
+            DataTable result = ConverterTable.AccountLinkListConvertTable(list);
+            SQLServer ss = new SQLServer();
+            return ss.BatchInsertSQLServer(result);
+        }
     }
 }

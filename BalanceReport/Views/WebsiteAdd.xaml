@@ -52,7 +52,7 @@
         <ComboBox Text="{Binding  AddWebsiteInfoModel.Institution}" Grid.Column="2" Grid.Row="7" Height="32" HorizontalAlignment="Left" Margin="6,5,0,0"  Name="comboBox1" VerticalAlignment="Top"  Width="244" VerticalContentAlignment="Center" Background="White">
             <ComboBoxItem Content="市行" />
             <ComboBoxItem Content="县行" />
-            <ComboBoxItem Content="部门" />
+         
         </ComboBox>
     </Grid>
 </Controls:MetroWindow>

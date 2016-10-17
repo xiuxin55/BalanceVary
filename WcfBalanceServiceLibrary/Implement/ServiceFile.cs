@@ -68,6 +68,11 @@ namespace WcfBalanceServiceLibrary
                 {
                     CommonEvent.FileUploadedCalculateEvent(uploadfileinfo);
                 }
+                if (CommonEvent.FileUploadedCustomerLinkEvent != null)
+                {
+                    CommonEvent.FileUploadedCustomerLinkEvent(uploadfileinfo);
+                }
+                
                 return true;
             }
             catch (Exception ex)

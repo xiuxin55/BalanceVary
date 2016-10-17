@@ -21,6 +21,16 @@ namespace BalanceDataSync
             }
             return null;
         }
+        public static List<AccountLinkManagerInfo> ReadCustomerLinkData(string filename)
+        {
+            if (File.Exists(filename))
+            {
+                FileInfo fi = new FileInfo(filename);
+                return ImportCustomerLinkData(fi.FullName);
+            }
+            return null;
+        }
+
         public static List<ImportDataInfo> ReadMonthData(string filename, DateTime dtime)
         {
             if (File.Exists(filename))
@@ -143,9 +153,40 @@ namespace BalanceDataSync
             }
                
         }
-        
 
 
+        public static List<AccountLinkManagerInfo> ImportCustomerLinkData(string filename)
+        {
+            try
+            {
+                List<AccountLinkManagerInfo> list = new List<AccountLinkManagerInfo>();
+                DataTable dt = NPOIHelper.Instance.ImportAccountLink(filename);
+                for (int j = 1; j < dt.Rows.Count; j++)
+                {
+                    DataRow item = dt.Rows[j];
+                    if (string.IsNullOrWhiteSpace(item[0].ToString()))
+                    {
+                        continue;
+                    }
+
+                    AccountLinkManagerInfo am = new AccountLinkManagerInfo();
+                    am.ID = Guid.NewGuid().ToString();
+                    am.AccountID = item["账户号"].ToString().Trim();
+                    am.ManagerName = item["客户经理"].ToString().Trim();
+                    // am.SubAccountNumber = item["子账号"].ToString().Trim();
+                    // am.DepartmentID = item["部门编号"].ToString();
+                    // am.ManagerID  = item["客户经理编号"].ToString();
+                    am.DepartmentName = item["所属部门"].ToString();
+                    list.Add(am);
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
 
     }
 }

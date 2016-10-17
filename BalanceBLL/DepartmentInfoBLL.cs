@@ -9,6 +9,9 @@ namespace BalanceBLL
 {
     public class DepartmentInfoBLL : BalanceBaseBLL<DepartmentInfo, DepartmentInfoDAL>
     {
-
+        public void BatchInsert(List<DepartmentInfo> list)
+        {
+            dal.BatchInsert(list);
+        }
     }
 }

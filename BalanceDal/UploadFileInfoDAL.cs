@@ -24,9 +24,10 @@ namespace BalanceDAL
                 }
                 SqlMap.CommitTransaction();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 SqlMap.RollBackTransaction();
+                throw ex;
             }
             
         }

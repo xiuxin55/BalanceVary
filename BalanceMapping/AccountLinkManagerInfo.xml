@@ -71,5 +71,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     <delete id="DeleteAccountLinkManagerInfo" parameterClass="AccountLinkManagerInfo">
       DELETE AccountLinkManagerInfo WHERE ID = #ID#
     </delete>
+    <delete id="DeleteAllAccountLinkManagerInfo" >
+      DELETE from AccountLinkManagerInfo
+    </delete>
   </statements>
 </sqlMap>

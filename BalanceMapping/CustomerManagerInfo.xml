@@ -28,12 +28,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="WebsiteID">ManagerID=#ManagerID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="WebsiteName">ManagerName=#ManagerName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ManagerID">ManagerID=#ManagerID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ManagerName">ManagerName=#ManagerName#</isNotEmpty>
           <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
           <isNotEmpty prepend="and" property="WebsiteTel">WebsiteName=#WebsiteName#</isNotEmpty>
           <isNotEmpty prepend="and" property="ManagerTelphone">ManagerTelphone=#ManagerTelphone#</isNotEmpty>
-          <isNotEmpty prepend="and" property="Institution">ManagerEmail=#ManagerEmail#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ManagerEmail">ManagerEmail=#ManagerEmail#</isNotEmpty>
           <isNotEmpty prepend="and" property="DepartmentID">DepartmentID=#DepartmentID#</isNotEmpty>
           <isNotEmpty prepend="and" property="DepartmentName">DepartmentName=#DepartmentName#</isNotEmpty>
         </isParameterPresent>
@@ -82,6 +82,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     </insert>
     <delete id="DeleteCustomerManagerInfo" parameterClass="CustomerManagerInfo">
       DELETE ManagersInfo WHERE ID = #ID#
+    </delete>
+
+    <delete id="DeleteAllCustomerManagerInfo" >
+      DELETE ManagersInfo 
     </delete>
   </statements>
 </sqlMap>

@@ -27,6 +27,7 @@ namespace BalanceDataSync
             SearchCommand = new DelegateCommand(SearchExecute);
             SearchExecute();
             CommonEvent.FileUploadedCalculateEvent += CalculateEvent;
+            CommonEvent.FileUploadedCustomerLinkEvent += CustomerLinkEvent;
         }
         //#region 属性
         // private WebsiteInfoModel _selectedWebsiteInfoModel;
@@ -102,9 +103,10 @@ namespace BalanceDataSync
                 {
                     return;
                 }
-                SyncDataHandler syn = new SyncDataHandler(UploadFileList.Where(e => e.IsSelected).ToList());
+                SyncDataHandler syn = new SyncDataHandler(UploadFileList.Where(e => e.IsSelected ).ToList());
                 syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportCustomerLink), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
             }
             catch (Exception ex)
             {
@@ -122,6 +124,19 @@ namespace BalanceDataSync
                 SyncDataHandler syn = new SyncDataHandler(temp);
                 syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+            }
+        }
+
+        private void CustomerLinkEvent(object obj)
+        {
+            UploadFileInfo info = obj as UploadFileInfo;
+            if (info != null)
+            {
+                List<UploadFileInfo> temp = new List<UploadFileInfo>();
+                temp.Add(info);
+                SyncDataHandler syn = new SyncDataHandler(temp);
+                syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportCustomerLink), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
             }
         }
         /// <summary>

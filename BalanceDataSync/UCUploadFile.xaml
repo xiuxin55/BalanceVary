@@ -51,7 +51,7 @@
         </DataGrid>
         <Grid Grid.Row="2" >
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="当前正在计算：" Foreground="Red" VerticalAlignment="Center" FontSize="18"/>
+                <TextBlock Text="当前正在处理：" Foreground="Red" VerticalAlignment="Center" FontSize="18"/>
                 <TextBlock Text="{Binding CurrentCalculateFile}" FontSize="16" VerticalAlignment="Center" />
             </StackPanel>
         </Grid>

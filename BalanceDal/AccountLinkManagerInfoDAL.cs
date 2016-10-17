@@ -13,6 +13,22 @@ namespace BalanceDAL
         {
             DefaultKey = "AccountLinkManagerInfo";
         }
-      
+        /// <summary>
+        /// 批量插入数据
+        /// </summary>
+        /// <param name="list"></param>
+        public void BatchInsert(List<AccountLinkManagerInfo> list)
+        {
+            try
+            {
+                SqlMap.Delete("DeleteAll" + DefaultKey,null);
+                BatchInsertSQLServer bs = new BatchInsertSQLServer();
+                bs.BatchInsertAccountLink(list);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

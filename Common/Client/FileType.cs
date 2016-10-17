@@ -9,6 +9,8 @@ namespace Common.Client
     {
         Day,
         Month,
-        Manager
+        Department,
+        CustomerManager,
+        CustomerManagerLinkAccount
     }
 }

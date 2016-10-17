@@ -20,7 +20,8 @@
             <!--<TextBlock  Width="60"   Text="部门号:" VerticalAlignment="Center" />
             <TextBox  Width="120" Text="{Binding SearchDepartmentModel.DepartmentID}"  HorizontalContentAlignment="Left" VerticalAlignment="Center" />-->
             <TextBlock  Width="60"   Text="部门名称:" VerticalAlignment="Center" />
-            <TextBox  Width="120" Text="{Binding SearchDepartmentModel.DepartmentName}"  HorizontalContentAlignment="Left" />
+            <TextBox  Width="120" Text="{Binding SearchDepartmentInfoModel.DepartmentName}"  HorizontalContentAlignment="Left" />
+
             <Button x:Name="SearchDepartment" Width="60"  Content="查询" Command="{Binding SearchDepartmentCommand}" HorizontalContentAlignment="Left"  />
         </ToolBar>
         <tool:GridLineDecorator Grid.Row="1" >

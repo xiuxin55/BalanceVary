@@ -30,15 +30,14 @@
                 </Button>-->
                 <Popup x:Name="Menu" AllowsTransparency="True" Margin="0,-1,0,1"  StaysOpen="False" PopupAnimation="Scroll" Placement="MousePoint">
                     <Grid  HorizontalAlignment="Left">
-                        <Border BorderThickness="1" CornerRadius="3" Background="#FFEFEFEF" Margin="3">
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="0" Opacity="0.495"/>
-                            </Border.Effect>
+                        <Border BorderThickness="1" CornerRadius="3"  Margin="3">
+                           
                             <StackPanel Margin="0,4">
-                                <MenuItem x:Name="ImportButton" Header="账户按日导入" Click="ImportButton_Click"  />
+                                <!--<MenuItem x:Name="ImportButton" Header="账户按日导入" Click="ImportButton_Click"  />-->
                                 <MenuItem x:Name="MonthImportButton" Header="账户按月份导入" Click="MonthImportButton_Click" />
-                                <MenuItem x:Name="ManagersImportButton" Header="客户经理信息导入" Click="ManagersImportButton_Click"  />
-                                <MenuItem x:Name="LinkImportButton" Header="客户经理帐号关联" Click="LinkImportButton_Click"  />
+                                <!--<MenuItem x:Name="DepartmentImportButton" Header="部门信息导入" Click="DepartmentImportButton_Click"  />
+                                <MenuItem x:Name="ManagersImportButton" Header="客户经理信息导入" Click="ManagersImportButton_Click"  />-->
+                                <MenuItem x:Name="LinkImportButton" Header="帐号关联导入" Click="LinkImportButton_Click"  />
                                 <MenuItem x:Name="SystemSetButton" Header="系统设置" Click="SystemSetButton_Click"  />
                                 <!--<MenuItem x:Name="menubtnChangePWD" Header="修改密码" Click="menubtnChangePWD_Click"/>-->
                                 <!--<MenuItem Header="更 新"/>-->
@@ -97,7 +96,7 @@
                         <localcontrol:DepartmentReportUserControl x:Name="DepartReportUserControl" />
                     </Grid>
                 </TabItem>
-                <TabItem Header="日期管理" Name="ImportDate"   Controls:ControlsHelper.HeaderFontSize="26.0" >
+                <!--<TabItem Header="日期管理" Name="ImportDate"   Controls:ControlsHelper.HeaderFontSize="26.0" >
                     <Grid >
                         <localcontrol:MyCalendar x:Name="MyUserControl" />
                     </Grid>
@@ -106,7 +105,7 @@
                     <Grid >
                        
                     </Grid>
-                </TabItem>
+                </TabItem>-->
             </TabControl>
             <Border Grid.Row="2" CornerRadius="5"  BorderBrush="{x:Null}" >
             </Border>

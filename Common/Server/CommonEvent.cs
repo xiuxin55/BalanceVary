@@ -8,5 +8,6 @@ namespace Common.Server
     public class CommonEvent
     {
         public static Action<object> FileUploadedCalculateEvent;
+        public static Action<object> FileUploadedCustomerLinkEvent;
     }
 }

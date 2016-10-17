@@ -183,7 +183,7 @@ namespace BalanceReport.ViewModels
             }
             SearchAccountBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchAccountBalanceModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
-            SearchAccountBalanceModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
+            SearchAccountBalanceModel.WebsiteID = SelectedWebsiteInfoModel != null ? SelectedWebsiteInfoModel.WebsiteID : null;
             SearchAccountBalanceModel.StartIndex = 1;
             SearchAccountBalanceModel.EndIndex = PageSize;
             SearchAccountBalanceModel.AccountType = -1;
@@ -210,7 +210,7 @@ namespace BalanceReport.ViewModels
             
             SearchCompanyBalanceoModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchCompanyBalanceoModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
-            SearchCompanyBalanceoModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
+            SearchCompanyBalanceoModel.WebsiteID = SelectedWebsiteInfoModel!=null ?SelectedWebsiteInfoModel.WebsiteID:null;
             SearchCompanyBalanceoModel.StartIndex = 1;
             SearchCompanyBalanceoModel.EndIndex = PageSize;
             if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)

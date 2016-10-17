@@ -283,31 +283,35 @@ namespace BalanceDataSync
             if (fi.Extension.ToLower() == ".xlsx")
             {
 
-                return ImportMonth2007(strFileName);
+                return ImportNew2007(strFileName);
             }
             else
             {
-                DataTable dt = ImportMonth2003(strFileName);
+                DataTable dt = ImportNew2003(strFileName);
                 return dt;
             }
-            //Excel.Application app = new Excel.ApplicationClass();
-            //Excel.Workbook m_workbook = app.Workbooks.Open(
-            //     strFileName,
-            //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-            //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-            //    Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-            //    Type.Missing, Type.Missing);
-            //strFileName = strFileName.Substring(0, strFileName.LastIndexOf(".")) + "temp.xls";
-            //m_workbook.SaveAs(strFileName, Excel.XlFileFormat.xlExcel8, Type.Missing, Type.Missing, Type.Missing,
-            //    Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing,
-            //    Type.Missing, Type.Missing, Type.Missing);
-            //m_workbook.Close();
+        }
+        public DataTable ImportAccountLink(string strFileName)
+        {
+            if (!File.Exists(strFileName))
+            {
+                return null;
+            }
+            FileInfo fi = new FileInfo(strFileName);
+            if (fi.Extension.ToLower() == ".xlsx")
+            {
 
-
+                return ImportNew2007(strFileName,0);
+            }
+            else
+            {
+                DataTable dt = ImportNew2003(strFileName,0);
+                return dt;
+            }
         }
         #region 月样表导入
 
-        private DataTable ImportMonth2003(string strFileName)
+        private DataTable ImportNew2003(string strFileName,int defaultrowhead=2)
         {
             try
             {
@@ -324,7 +328,7 @@ namespace BalanceDataSync
                
                 System.Collections.IEnumerator rows = sheet.GetRowEnumerator();
 
-                HSSFRow headerRow = (HSSFRow)sheet.GetRow(2);// 默认第一行为标头
+                HSSFRow headerRow = (HSSFRow)sheet.GetRow(defaultrowhead);// 默认第一行为标头
                 int cellCount = headerRow.LastCellNum;
 
                 for (int j = 0; j < cellCount; j++)
@@ -380,7 +384,7 @@ namespace BalanceDataSync
                 return null;
             }
         }
-        private DataTable ImportMonth2007(string strFileName)
+        private DataTable ImportNew2007(string strFileName, int defaultrowhead = 2)
         {
             try
             {
@@ -395,7 +399,7 @@ namespace BalanceDataSync
                 
                 System.Collections.IEnumerator rows = sheet.GetRowEnumerator();
 
-                XSSFRow headerRow = (XSSFRow)sheet.GetRow(2);// 默认第二行为标头
+                XSSFRow headerRow = (XSSFRow)sheet.GetRow(defaultrowhead);// 默认第二行为标头
                 int cellCount = headerRow.LastCellNum;
 
                 for (int j = 0; j < cellCount; j++)
