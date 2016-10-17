@@ -19,14 +19,14 @@
                 <Button Name="UpdateManagers" Width="60"  Content="修改" Command="{Binding UpdateManagersCommand}" HorizontalContentAlignment="Left" />
                 <Button Name="DeleteManagers" Width="60"  Content="删除" Command="{Binding DeleteManagersCommand}" HorizontalContentAlignment="Left" />
                 <TextBlock  Width="65"   Text="客户经理号:" VerticalAlignment="Center" />
-                <TextBox  Width="100" Text="{Binding SearchManagersInfoModel.ManagerID}"  HorizontalContentAlignment="Left" />
+                <TextBox  Width="100" Text="{Binding SearchCustomerManagerInfo.ManagerID}"  HorizontalContentAlignment="Left" />
                 <TextBlock  Width="65"   Text="客户经理名:" VerticalAlignment="Center" />
-                <TextBox  Width="100" Text="{Binding SearchManagersInfoModel.ManagerName}"  HorizontalContentAlignment="Left" />
+                <TextBox  Width="100" Text="{Binding SearchCustomerManagerInfo.ManagerName}"  HorizontalContentAlignment="Left" />
                 <Button Name="SearchWebsite" Width="60"  Content="查询" Command="{Binding SearchManagersCommand}" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" VerticalAlignment="Center" />
             </ToolBar.Items>
         </ToolBar>
         <tool:GridLineDecorator Grid.Row="1" >
-            <ListView  Name="listView1" ItemsSource="{Binding ManagersInfoList}" SelectedItem="{Binding SelectedManagersInfoModel}">
+            <ListView  Name="listView1" ItemsSource="{Binding ManagersInfoList}" SelectedItem="{Binding SelectedCustomerManagerInfo}">
                 <ListView.View>
                     <GridView >
                         <GridViewColumn Width="150"  Header="客户经理号" DisplayMemberBinding="{Binding ManagerID}" tool:ListViewBehavior.SortField="ManagerID"/>

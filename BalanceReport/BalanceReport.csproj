@@ -207,7 +207,7 @@
     <Compile Include="ViewModels\WebsiteManageVM.cs" />
     <Compile Include="ViewModels\CustomerManagerListVM.cs" />
     <Compile Include="ViewModels\CustomerManagerAddVM.cs" />
-    <Compile Include="ViewModels\WebsiteSelectVM.cs" />
+    <Compile Include="ViewModels\DepartmentSelectVM.cs" />
     <Compile Include="ViewModels\ManagersSelectVM.cs" />
     <Compile Include="ViewModels\AccountManageVM.cs" />
     <Compile Include="ViewModels\AccountAddVM.cs" />
@@ -280,8 +280,8 @@
     <Compile Include="Views\CustomerManagerList.xaml.cs">
       <DependentUpon>CustomerManagerList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WebsiteSelect.xaml.cs">
-      <DependentUpon>WebsiteSelect.xaml</DependentUpon>
+    <Compile Include="Views\DepartmentSelect.xaml.cs">
+      <DependentUpon>DepartmentSelect.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ManagersSelect.xaml.cs">
       <DependentUpon>ManagersSelect.xaml</DependentUpon>
@@ -402,7 +402,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\WebsiteSelect.xaml">
+    <Page Include="Views\DepartmentSelect.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

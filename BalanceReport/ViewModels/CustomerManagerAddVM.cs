@@ -17,9 +17,9 @@ namespace BalanceReport.ViewModels
         {
             OkManagersCommand = new DelegateCommand(OkManagersExecute);
             CancelManagersCommand = new DelegateCommand(CancelManagersManagersExecute);
-            AddCustomerManagerInfo = new CustomerManagerInfo();
+            
             this.IsAdd = IsAdd;
-
+       
         }
         #region 属性
         private bool IsAdd = false;
@@ -71,9 +71,9 @@ namespace BalanceReport.ViewModels
                 CustomerManagerInfo info = new CustomerManagerInfo();
                 info.ManagerID = AddCustomerManagerInfo.ManagerID;
                 CustomerManagerInfo wim = client.Select(info).FirstOrDefault();
-                if (wim.ID != null)
+                if (wim.ManagerID == AddCustomerManagerInfo.ManagerID && wim.ManagerName==AddCustomerManagerInfo.ManagerName )
                 {
-                    MessageBox.Show("该号已存在");
+                    MessageBox.Show("客户经理已存在");
                     if (ManagersAddUI != null)
                     {
                         ManagersAddUI.Close();

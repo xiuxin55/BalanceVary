@@ -31,6 +31,10 @@ namespace BalanceReport.Views
             {
                 wa.AddCustomerManagerInfo = MIM;
             }
+            else
+            {
+                wa.AddCustomerManagerInfo = new CustomerManagerInfo();
+            }
             this.DataContext = wa;
         }
         #region 窗口基本按键方法
@@ -60,10 +64,10 @@ namespace BalanceReport.Views
 
         private void textBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            WebsiteSelect ws = new WebsiteSelect();
+            DepartmentSelect ws = new DepartmentSelect();
             if ((bool)ws.ShowDialog())
             {
-                this.textBox2.Text = ws.WSVM.SelectedWebsiteInfo.WebsiteID;
+                this.textBox2.Text = ws.WSVM.SelectedDepartmentInfoModel.DepartmentName;
   
             }
             this.button1.Focus();

@@ -59,16 +59,16 @@ namespace BalanceReport.Views
         }
         #endregion
 
-        private void textBox4_GotFocus(object sender, RoutedEventArgs e)
-        {
-            WebsiteSelect ws = new WebsiteSelect();
-            if ((bool)ws.ShowDialog())
-            {
-               // this.textBox4.Text = ws.WSVM.SelectedWebsiteInfoModel.WebsiteID;
+        //private void textBox4_GotFocus(object sender, RoutedEventArgs e)
+        //{
+        //    WebsiteSelect ws = new WebsiteSelect();
+        //    if ((bool)ws.ShowDialog())
+        //    {
+        //       // this.textBox4.Text = ws.WSVM.SelectedWebsiteInfoModel.WebsiteID;
 
-            }
-            this.button1.Focus();
-        }
+        //    }
+        //    this.button1.Focus();
+        //}
 
         private void textBox2_GotFocus(object sender, RoutedEventArgs e)
         {

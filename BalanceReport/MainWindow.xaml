@@ -81,11 +81,11 @@
                         <localcontrol:CustomerManagerList x:Name="CustomerManagerList" />
                 </Grid>
             </TabItem>
-                <TabItem Header="账户管理" Name="AccountManageTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
+                <!--<TabItem Header="账户管理" Name="AccountManageTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
                     <Grid >
                         <localcontrol:AccountManage x:Name="AccountManageList" />
                     </Grid>
-                </TabItem>
+                </TabItem>-->
 
                 <TabItem Header="网点余额变动" Name="ReportUserControlTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
             <Grid >

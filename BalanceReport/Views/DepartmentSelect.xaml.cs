@@ -18,14 +18,14 @@ namespace BalanceReport.Views
     /// <summary>
     /// WebsiteAdd.xaml 的交互逻辑
     /// </summary>
-    public partial class WebsiteSelect : MetroWindow
+    public partial class DepartmentSelect : MetroWindow
     {
-        public WebsiteSelectVM WSVM { get; set; }
-        public WebsiteSelect()
+        public DepartmentSelectVM WSVM { get; set; }
+        public DepartmentSelect()
         {
             InitializeComponent();
-            WSVM = new WebsiteSelectVM();
-            WSVM.WebsiteSelectUI = this;
+            WSVM = new DepartmentSelectVM();
+            
             this.DataContext = WSVM;
         }
         #region 窗口基本按键方法
@@ -52,5 +52,10 @@ namespace BalanceReport.Views
             this.DragMove();
         }
         #endregion
+
+        private void btnOk_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+        }
     }
 }
