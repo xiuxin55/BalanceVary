@@ -1,6 +1,7 @@
 ﻿using BalanceBLL;
 using BalanceModel;
 using Common;
+using Common.Server;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.ViewModel;
 using System;
@@ -11,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using Utility;
+
 
 namespace BalanceDataSync
 {
@@ -24,6 +26,7 @@ namespace BalanceDataSync
     
             SearchCommand = new DelegateCommand(SearchExecute);
             SearchExecute();
+            CommonEvent.FileUploadedCalculateEvent += CalculateEvent;
         }
         //#region 属性
         // private WebsiteInfoModel _selectedWebsiteInfoModel;
@@ -101,13 +104,25 @@ namespace BalanceDataSync
                 }
                 SyncDataHandler syn = new SyncDataHandler(UploadFileList.Where(e => e.IsSelected).ToList());
                 syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
-                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), this.SynComplete, UploadFileList, Application.Current.MainWindow.Dispatcher);
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
             }
             catch (Exception ex)
             {
                 LogHelper.WriteLog(typeof(UCUploadFileVM), ex);
             }
 
+        }
+        private void CalculateEvent(object obj)
+        {
+            UploadFileInfo info = obj as UploadFileInfo;
+            if (info !=null)
+            {
+                List<UploadFileInfo> temp = new List<UploadFileInfo>();
+                temp.Add(info);
+                SyncDataHandler syn = new SyncDataHandler(temp);
+                syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+            }
         }
         /// <summary>
         /// 删除文件
@@ -191,8 +206,8 @@ namespace BalanceDataSync
         /// </summary>
         public void SynComplete(object obj)
         {
-            ObservableCollection<UploadFileInfo> ufiList = obj as ObservableCollection<UploadFileInfo>;
-            bll.BatchUpdate(ufiList.ToList());
+            List<UploadFileInfo> ufiList = obj as List<UploadFileInfo>;
+            bll.BatchUpdate(ufiList);
             SearchExecute();
 
             CurrentCalculateFile = "所有文件处理结束";

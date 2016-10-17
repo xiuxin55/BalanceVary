@@ -41,6 +41,7 @@ namespace BalanceDataSync
             IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.ToLower().Contains("month"));
             foreach (var item in filelist)
             {
+               
                 try
                 {
                     if(NotifyFileStateChange!=null)

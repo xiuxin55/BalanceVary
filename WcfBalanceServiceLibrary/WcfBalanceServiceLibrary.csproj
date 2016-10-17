@@ -87,10 +87,6 @@
       <Project>{55635394-4f80-40c9-8c79-5a958cf2c219}</Project>
       <Name>BalanceDAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BalanceDataSync\BalanceDataSync.csproj">
-      <Project>{c57d8718-263e-4a5a-aefb-76a19f8898d1}</Project>
-      <Name>BalanceDataSync</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BalanceMapping\BalanceMapping.csproj">
       <Project>{9f97d256-7446-41c6-a499-c52227f4b82c}</Project>
       <Name>BalanceMapping</Name>
