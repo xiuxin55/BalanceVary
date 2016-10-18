@@ -37,11 +37,16 @@ namespace BalanceModel
         /// </summary>
         public string Rate { get; set; }
         /// <summary>
-        /// 时间
+        /// 余额时间
         /// </summary>
         public DateTime? BalanceTime { get; set; }
-
+        /// <summary>
+        /// 开始时间
+        /// </summary>
         public DateTime? StartBalanceTime { get; set; }
+        /// <summary>
+        /// 结束时间
+        /// </summary>
         public DateTime? EndBalanceTime { get; set; }
     }
 }

@@ -23,7 +23,16 @@ namespace BalanceReport.Views
         public WebsiteManage()
         {
             InitializeComponent();
-            this.DataContext = new WebsiteManageVM();
+            try
+            {
+                this.DataContext = new WebsiteManageVM();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
 
         private void AddWebsite_Click(object sender, RoutedEventArgs e)

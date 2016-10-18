@@ -23,6 +23,7 @@ namespace BalanceReport.Views
         public DepartmentManage()
         {
             InitializeComponent();
+
             this.DataContext = new DepartmentManageVM();
         }
 

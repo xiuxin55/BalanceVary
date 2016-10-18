@@ -31,6 +31,9 @@ namespace BalanceModel
             }
         }
         private string _OrderbyColomnName= "BalanceTime";
+        /// <summary>
+        /// 主排序字段
+        /// </summary>
         public string OrderbyColomnName
         {
             get

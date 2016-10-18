@@ -210,6 +210,7 @@ namespace BalanceDataSync
             catch (Exception ex)
             {
                 LogHelper.WriteLog(typeof(UCUploadFileVM), ex);
+                throw ex;
             }
         }
         //#endregion

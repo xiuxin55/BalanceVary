@@ -16,9 +16,10 @@ namespace MainHome
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            this.DispatcherUnhandledException += App_DispatcherUnhandledException;
             BalanceWindow bw = new BalanceWindow();
             bw.Show();
-            this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+            
       
         }
 
