@@ -172,6 +172,7 @@ namespace BalanceDataSync
                     am.ID = Guid.NewGuid().ToString();
                     am.AccountID = item["账户号"].ToString().Trim();
                     am.ManagerName = item["客户经理"].ToString().Trim();
+           
                     // am.SubAccountNumber = item["子账号"].ToString().Trim();
                     // am.DepartmentID = item["部门编号"].ToString();
                     // am.ManagerID  = item["客户经理编号"].ToString();

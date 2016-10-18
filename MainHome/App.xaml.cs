@@ -18,6 +18,13 @@ namespace MainHome
             base.OnStartup(e);
             BalanceWindow bw = new BalanceWindow();
             bw.Show();
+            this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+      
+        }
+
+        private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            throw e.Exception;
         }
     }
 }

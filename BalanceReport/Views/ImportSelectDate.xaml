@@ -1,7 +1,7 @@
 ﻿<Controls:MetroWindow x:Class="BalanceReport.Views.ImportSelectDate"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="客户经理信息" Height="254" Width="386"
+        Title="导入" Height="254" Width="386"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         GlowBrush="{DynamicResource AccentColorBrush}"
         NonActiveGlowBrush="#CDFF0000"
