@@ -64,19 +64,9 @@ namespace WcfBalanceServiceLibrary
                 uploadfileinfo.FilePath =  CommonDataServer.UploadFileServerPath;
                 uploadfileinfo.FileUploadTime = DateTime.Now;
                 bool result = uploadfileinfo.IsOverride ? bll.Update(uploadfileinfo) : bll.Add(uploadfileinfo);
-                if (CommonEvent.FileUploadedCalculateEvent != null)
-                {
-                    CommonEvent.FileUploadedCalculateEvent(uploadfileinfo);
-                }
-                if (CommonEvent.FileUploadedCalculateDayEvent != null)
-                {
-                    CommonEvent.FileUploadedCalculateDayEvent(uploadfileinfo);
-                }
-                if (CommonEvent.FileUploadedCustomerLinkEvent != null)
-                {
-                    CommonEvent.FileUploadedCustomerLinkEvent(uploadfileinfo);
-                }
-                
+                ImportFileTrigger(uploadfileinfo);
+
+
                 return true;
             }
             catch (Exception ex)
@@ -85,7 +75,21 @@ namespace WcfBalanceServiceLibrary
                 return false;
             }
         }
-
+        private void ImportFileTrigger(UploadFileInfo uploadfileinfo)
+        {
+            if (CommonEvent.FileUploadedCalculateEvent != null)
+            {
+                CommonEvent.FileUploadedCalculateEvent(uploadfileinfo);
+            }
+            if (CommonEvent.FileUploadedCalculateDayEvent != null)
+            {
+                CommonEvent.FileUploadedCalculateDayEvent(uploadfileinfo);
+            }
+            if (CommonEvent.FileUploadedAccountAndNameLinkEvent != null)
+            {
+                CommonEvent.FileUploadedAccountAndNameLinkEvent(uploadfileinfo);
+            }
+        }
         public UploadFileInfo GetFileInfo(UploadFileInfo uploadfileinfo)
         {
             try

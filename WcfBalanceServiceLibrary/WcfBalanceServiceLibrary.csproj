@@ -49,10 +49,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implement\AccountAndNameLinkInfoService.cs" />
     <Compile Include="Implement\SystemSetInfoService.cs" />
     <Compile Include="Implement\CustomerManagerInfoService.cs" />
     <Compile Include="Implement\AccountInfoService.cs" />
     <Compile Include="Implement\CustomerManagerBalanceService.cs" />
+    <Compile Include="Interface\IAccountAndNameLinkInfoService.cs" />
     <Compile Include="Interface\ISystemSetInfoService.cs" />
     <Compile Include="Interface\ICustomerManagerInfoService.cs" />
     <Compile Include="Interface\IAccountInfoService.cs" />

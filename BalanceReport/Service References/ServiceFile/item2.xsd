@@ -19,6 +19,7 @@
           <xs:element minOccurs="0" name="FileMD5" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="FilePath" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FileRealName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="FileState" type="xs:int" />
           <xs:element minOccurs="0" name="FileType" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="FileUploadTime" nillable="true" type="xs:dateTime" />
@@ -36,6 +37,7 @@
       <xs:element minOccurs="0" name="OrderbyColomnName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RowNumber" type="xs:int" />
       <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SubOrderbyColomnName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BaseModel" nillable="true" type="tns:BaseModel" />

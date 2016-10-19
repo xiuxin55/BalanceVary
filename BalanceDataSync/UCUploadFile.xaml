@@ -20,7 +20,7 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" >
-            <Button Content="计算" HorizontalAlignment="Left" Height="28" Margin="5,0,0,0" VerticalAlignment="Center" Width="90" Command="{Binding HandleFileCommand}"/>
+            <Button Content="处理文件" HorizontalAlignment="Left" Height="28" Margin="5,0,0,0" VerticalAlignment="Center" Width="90" Command="{Binding HandleFileCommand}"/>
             <Button Content="删除" HorizontalAlignment="Left" Height="28" Margin="5,0,0,0" VerticalAlignment="Center" Width="90" Command="{Binding DeleteFileCommand}"/>
         <Button Content="刷新" HorizontalAlignment="Left" Height="28" Margin="5,0,0,0" VerticalAlignment="Center" Width="90" Command="{Binding SearchCommand}"/>
             <ComboBox  Margin="5,0,0,0"  Width="90" >

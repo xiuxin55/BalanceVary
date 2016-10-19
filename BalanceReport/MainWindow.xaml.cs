@@ -149,5 +149,15 @@ namespace BalanceReport
                 UploadFile.Upload(op.FileName, FileType.CustomerManagerLinkAccount);
             }
         }
+
+        private void AccountAndNameLinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog op = new OpenFileDialog();
+            if ((bool)op.ShowDialog())
+            {
+                //this.WebsiteManageTab.IsSelected = true;
+                UploadFile.Upload(op.FileName, FileType.AccountAndNameLink); ;
+            }
+        }
     }
 }

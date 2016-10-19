@@ -9,6 +9,7 @@ namespace Common.Server
     {
         public static Action<object> FileUploadedCalculateEvent;
         public static Action<object> FileUploadedCalculateDayEvent;
-        public static Action<object> FileUploadedCustomerLinkEvent;
+        public static Action<object> FileUploadedCustomerLinkEvent; 
+        public static Action<object> FileUploadedAccountAndNameLinkEvent;
     }
 }

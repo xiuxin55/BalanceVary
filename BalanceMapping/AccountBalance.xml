@@ -47,7 +47,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
   <statements>
     <select id="SelectByDepartmentCount"  resultClass="int"   parameterClass="DepartmentBalance">
       select count(*)  from  AccountLinkManagerInfo l
-      left join AccountBalanceVary a on l.AccountID=a.AccountID
+      left join AccountBalanceVary a on l.AccountID=a.AccountID 
       where (a.SubAccountNumber =l.SubAccountNumber or l.SubAccountNumber is null)
       <dynamic>
         <isParameterPresent>
@@ -60,10 +60,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     </select>
     <select id="SelectByDepartment"  resultMap="AccountBalanceMap"  parameterClass="DepartmentBalance">
       select * from (
-      select row_number() over(order by $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,a.ID,a.AccountID,a.SubAccountNumber,a.AccountName,
+      select row_number() over(order by $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,a.ID,a.AccountID,a.SubAccountNumber,link.CompanyName as AccountName,
       a.AccountType,a.WebsiteID,a.RegularMoney,a.UnRegularMoney,a.AmountMoney,a.RegularMoneyVary,a.UnRegularMoneyVary,
       a.AmountMoneyVary,a.Rate,a.BalanceTime   from  AccountLinkManagerInfo l
-      left join AccountBalanceVary a on l.AccountID=a.AccountID
+      left join AccountBalanceVary a on l.AccountID=a.AccountID left join AccountAndNameLink link on l.AccountID=link.AccountID
       where (a.SubAccountNumber =l.SubAccountNumber or l.SubAccountNumber is null)
       <dynamic>
         <isParameterPresent>
@@ -85,13 +85,13 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
 
 
     <select id="SelectAccountBalanceCount"  resultClass="int"   parameterClass="AccountBalance">
-      select count(*) from AccountBalanceVary where 1=1
+      select count(*) from AccountBalanceVary av left join AccountAndNameLink link on av.AccountID=link.AccountID where 1=1
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountID">AccountID=#AccountID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="AccountID">av.AccountID=#AccountID#</isNotEmpty>
           <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountName">AccountName=#AccountName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="AccountName">link.CompanyName=#AccountName#</isNotEmpty>
 
           <isNotEmpty prepend="and" property="SubAccountNumber">SubAccountNumber=#SubAccountNumber#</isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
@@ -101,13 +101,28 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     </select>
     <select id="SelectAccountBalance"  resultMap="AccountBalanceMap"  parameterClass="AccountBalance">
       select * from (
-      select row_number() over(order by $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,*  from AccountBalanceVary where 1=1
+      select row_number() over(order by $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,
+      av.[ID]
+      ,av.[AccountID]
+      ,[SubAccountNumber]
+      ,link.CompanyName as AccountName
+      ,[AccountType]
+      ,[WebsiteID]
+      ,[RegularMoney]
+      ,[UnRegularMoney]
+      ,[AmountMoney]
+      ,[RegularMoneyVary]
+      ,[UnRegularMoneyVary]
+      ,[AmountMoneyVary]
+      ,[Rate]
+      ,[BalanceTime]
+      from AccountBalanceVary av left join AccountAndNameLink link on av.AccountID=link.AccountID where 1=1
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountID">AccountID=#AccountID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="AccountID">av.AccountID=#AccountID#</isNotEmpty>
           <isNotEmpty prepend="and" property="SubAccountNumber">SubAccountNumber=#SubAccountNumber#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountName">AccountName=#AccountName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="AccountName">link.CompanyName=#AccountName#</isNotEmpty>
           <isGreaterThan prepend="and" property="AccountType" compareValue="-1">AccountType=#AccountType#</isGreaterThan>
           <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>

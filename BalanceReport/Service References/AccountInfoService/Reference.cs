@@ -37,6 +37,9 @@ namespace BalanceReport.AccountInfoService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int StartIndexField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubOrderbyColomnNameField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -99,6 +102,19 @@ namespace BalanceReport.AccountInfoService {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SubOrderbyColomnName {
+            get {
+                return this.SubOrderbyColomnNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubOrderbyColomnNameField, value) != true)) {
+                    this.SubOrderbyColomnNameField = value;
+                    this.RaisePropertyChanged("SubOrderbyColomnName");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -114,6 +130,12 @@ namespace BalanceReport.AccountInfoService {
     [System.Runtime.Serialization.DataContractAttribute(Name="CustomerManagerInfo", Namespace="http://schemas.datacontract.org/2004/07/BalanceModel")]
     [System.SerializableAttribute()]
     public partial class CustomerManagerInfo : BalanceReport.AccountInfoService.BaseModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DepartmentIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DepartmentNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IDField;
@@ -141,6 +163,32 @@ namespace BalanceReport.AccountInfoService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string WebsiteTelField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DepartmentID {
+            get {
+                return this.DepartmentIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DepartmentIDField, value) != true)) {
+                    this.DepartmentIDField = value;
+                    this.RaisePropertyChanged("DepartmentID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DepartmentName {
+            get {
+                return this.DepartmentNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DepartmentNameField, value) != true)) {
+                    this.DepartmentNameField = value;
+                    this.RaisePropertyChanged("DepartmentName");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string ID {

@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountAndNameLinkInfo.cs" />
     <Compile Include="SystemSetInfo.cs" />
     <Compile Include="AccountInfo.cs" />
     <Compile Include="BalanceInfo.cs" />

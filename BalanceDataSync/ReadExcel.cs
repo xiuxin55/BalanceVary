@@ -30,6 +30,16 @@ namespace BalanceDataSync
             }
             return null;
         }
+        public static List<AccountAndNameLinkInfo> ReadAccountAndNameData(string filename)
+        {
+            if (File.Exists(filename))
+            {
+                FileInfo fi = new FileInfo(filename);
+                return AccountAndNameLinkData(fi.FullName);
+            }
+            return null;
+        }
+       
 
         public static List<ImportDataInfo> ReadMonthData(string filename, DateTime dtime)
         {
@@ -182,11 +192,46 @@ namespace BalanceDataSync
                 return list;
             }
             catch (Exception ex)
+            { 
+                throw ex;
+            }
+
+        }
+
+        public static List<AccountAndNameLinkInfo> AccountAndNameLinkData(string filename)
+        {
+            try
+            {
+                List<AccountAndNameLinkInfo> list = new List<AccountAndNameLinkInfo>();
+                DataTable dt = NPOIHelper.Instance.ImportAccountLink(filename);
+      
+                if (! dt.Columns.Contains("账户号"))
+                {
+                    dt = NPOIHelper.Instance.ImportMonth(filename);
+                }
+                for (int j = 1; j < dt.Rows.Count; j++)
+                {
+                    DataRow item = dt.Rows[j];
+                    if (string.IsNullOrWhiteSpace(item[0].ToString()))
+                    {
+                        continue;
+                    }
+                    AccountAndNameLinkInfo am = new AccountAndNameLinkInfo();
+                    am.ID = Guid.NewGuid().ToString();
+                    am.AccountID = item["账户号"].ToString().Trim();
+                    am.CompanyName = item["客户名称"].ToString().Trim();
+                    list.Add(am);
+                }
+
+                return list;
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }
 
         }
+        
 
     }
 }

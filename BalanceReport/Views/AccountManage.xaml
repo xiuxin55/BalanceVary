@@ -26,22 +26,22 @@
                 <TextBox  Width="120" Text="{Binding SearchAccountInfoModel.AccountID}"  HorizontalContentAlignment="Left" />
                 <TextBlock  Width="60"   Text="账户名称:" VerticalAlignment="Center" />
                 <TextBox  Width="120" Text="{Binding SearchAccountInfoModel.AccountName}"  HorizontalContentAlignment="Left" />
-                <TextBlock  Width="70"   Text="是否已关联:" VerticalAlignment="Center" />
+                <!--<TextBlock  Width="70"   Text="是否已关联:" VerticalAlignment="Center" />
                 <ComboBox   Width="120" Text="{Binding  SearchAccountInfoModel.CorrelationState}"  Name="comboBox1"  Background="White" VerticalContentAlignment="Center" VerticalAlignment="Stretch" FontSize="12">
                     <ComboBoxItem Content="全部" />
                     <ComboBoxItem Content="已关联" />
                     <ComboBoxItem Content="未关联" />
-                </ComboBox>
+                </ComboBox>-->
              
                 <Button Name="SearchAccount" Width="60"  Content="查询" Command="{Binding SearchAccountCommand}" HorizontalContentAlignment="Left"  />
-                <Button Name="Link" Width="60"  Content="批量关联" Command="{Binding ManyLinkCommand}" HorizontalContentAlignment="Left"   />
+                <!--<Button Name="Link" Width="60"  Content="批量关联" Command="{Binding ManyLinkCommand}" HorizontalContentAlignment="Left"   />-->
             </ToolBar.Items>
         </ToolBar>
         <tool:GridLineDecorator Grid.Row="1" >
             <ListView  Name="listView1" ItemsSource="{Binding AccountInfoList}" SelectedItem="{Binding SelectedAccountInfoModel}">
             <ListView.View>
                 <GridView >
-                        <GridViewColumn Header="  " >
+                        <!--<GridViewColumn Header="  " >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <CheckBox  >
@@ -55,7 +55,7 @@
                                     </CheckBox>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
-                     </GridViewColumn>
+                     </GridViewColumn>-->
                         <GridViewColumn Width="50" Header="序号" DisplayMemberBinding="{Binding RowNumber}" tool:ListViewBehavior.SortField="RowNumber" />
                         <GridViewColumn Width="150" Header="账号" DisplayMemberBinding="{Binding AccountID}" tool:ListViewBehavior.SortField="AccountID" />
                     

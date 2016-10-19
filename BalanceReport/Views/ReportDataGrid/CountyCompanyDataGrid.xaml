@@ -78,7 +78,8 @@
                     <DataGrid  Name="CompanyDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding CompanyBalanceList}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="48" Header="序号" Binding="{Binding RowNumber}"  />
-                            <DataGridTextColumn Binding="{Binding CompanyName}"  Header="公司名称" Width="1.5*"/>
+                                <DataGridTextColumn Binding="{Binding AccountID}"  Header="帐号" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding CompanyName}"  Header="公司名称" Width="1.5*"/>
                             <DataGridTextColumn Binding="{Binding RegularMoney}" Header="定期余额"  Width="*" Visibility="{Binding DataContext.ColomnState.RegularColomnState,Source={StaticResource ProxyElement} ,Converter={StaticResource ColomnStateConverter} }"/>
                             <DataGridTextColumn Binding="{Binding RegularMoneyVary}" Header="定期余额变化"  Width="*" Visibility="{Binding DataContext.ColomnState.RegularVaryColomnState,Source={StaticResource ProxyElement},Converter={StaticResource ColomnStateConverter}}"/>
                             <DataGridTextColumn Binding="{Binding UnRegularMoney}" Header="活期余额"  Width="*"  Visibility="{Binding DataContext.ColomnState.UnRegularColomnState,Source={StaticResource ProxyElement},Converter={StaticResource ColomnStateConverter}}"/>

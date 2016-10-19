@@ -11,6 +11,7 @@ namespace Common.Client
         Month,
         Department,
         CustomerManager,
-        CustomerManagerLinkAccount
+        CustomerManagerLinkAccount,
+        AccountAndNameLink
     }
 }

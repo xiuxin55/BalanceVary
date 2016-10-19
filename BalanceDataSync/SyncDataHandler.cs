@@ -15,11 +15,65 @@ namespace BalanceDataSync
 
         List<ImportDataInfo> ImportDataList = new List<ImportDataInfo>();
         List<AccountLinkManagerInfo> ImportLinkDataList = new List<AccountLinkManagerInfo>();
+        List<AccountAndNameLinkInfo> ImportAccountAndNameDataList = new List<AccountAndNameLinkInfo>();
         List<UploadFileInfo> UploadFileInfoList = new List<UploadFileInfo>();
         public Action<UploadFileInfo> NotifyFileStateChange = null;
         public SyncDataHandler(List<UploadFileInfo> uploadFileInfoList)
         {
             this.UploadFileInfoList = uploadFileInfoList;
+        }
+        public void ImportAccountAndNameLink()
+        {
+            IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains("AccountAndNameLink"));
+            foreach (var item in filelist)
+            {
+                try
+                {
+                    ImportAccountAndNameDataList = ReadExcel.ReadAccountAndNameData(item.FilePath + item.FileName);
+                    if (ImportAccountAndNameDataList.Count==0)
+                    {
+                        return;
+                    }
+                    AccountAndNameLinkInfoBLL bll = new AccountAndNameLinkInfoBLL();
+                    bll.BatchInsert(ImportAccountAndNameDataList);
+                    item.FileState = 1;
+                }
+                catch (Exception ex)
+                {
+
+                    item.FileState = 2;
+                    item.FileException = ex.Message + ":\n" + ex.StackTrace;
+                    if (NotifyFileStateChange != null)
+                    {
+                        NotifyFileStateChange(item);
+                    }
+                    throw ex;
+                }
+            }
+        }
+        public void ImportCustomerLink()
+        {
+            IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains("CustomerManagerLinkAccount"));
+            foreach (var item in filelist)
+            {
+                try
+                {
+                    ImportLinkDataList = ReadExcel.ReadCustomerLinkData(item.FilePath + item.FileName);
+                    DataDivideStore();
+                    item.FileState = 1;
+                }
+                catch (Exception ex)
+                {
+
+                    item.FileState = 2;
+                    item.FileException = ex.Message + ":\n" + ex.StackTrace;
+                    if (NotifyFileStateChange != null)
+                    {
+                        NotifyFileStateChange(item);
+                    }
+                    throw ex;
+                }
+            }
         }
         /// <summary>
         /// 导入日数据
@@ -58,30 +112,7 @@ namespace BalanceDataSync
             }
 
         }
-        public void ImportCustomerLink()
-        {
-            IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains("CustomerManagerLinkAccount"));
-            foreach (var item in filelist)
-            {
-                try
-                {
-                    ImportLinkDataList = ReadExcel.ReadCustomerLinkData(item.FilePath + item.FileName);
-                    DataDivideStore();
-                    item.FileState = 1;
-                }
-                catch (Exception ex)
-                {
-
-                    item.FileState = 2;
-                    item.FileException = ex.Message + ":\n" + ex.StackTrace;
-                    if (NotifyFileStateChange != null)
-                    {
-                        NotifyFileStateChange(item);
-                    }
-                    throw ex;
-                }
-            }
-        }
+       
         /// <summary>
         /// 导入月数据
         /// </summary>
@@ -155,7 +186,7 @@ namespace BalanceDataSync
 
             Task.WaitAll(cztask, cdtask, cmtask, cwtask, cctask, catask);
         }
-
+       
         private void DataDivideStore()
         {
             if (ImportLinkDataList.Count==0)

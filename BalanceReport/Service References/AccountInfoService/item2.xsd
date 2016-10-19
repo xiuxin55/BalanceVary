@@ -25,6 +25,7 @@
       <xs:element minOccurs="0" name="OrderbyColomnName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RowNumber" type="xs:int" />
       <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SubOrderbyColomnName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BaseModel" nillable="true" type="tns:BaseModel" />
@@ -32,6 +33,8 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseModel">
         <xs:sequence>
+          <xs:element minOccurs="0" name="DepartmentID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DepartmentName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Institution" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ManagerEmail" nillable="true" type="xs:string" />

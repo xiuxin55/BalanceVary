@@ -121,6 +121,11 @@
     <Compile Include="LocalModel\ResultOrderBy.cs" />
     <Compile Include="LocalModel\DataGridColomnState.cs" />
     <Compile Include="LocalModel\LocalCommonData.cs" />
+    <Compile Include="Service References\AccountAndNameLinkInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\AccountBalanceService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -190,6 +195,8 @@
     <Compile Include="Tools\SortInfo.cs" />
     <Compile Include="Tools\UIElementAdorner.cs" />
     <Compile Include="Helper\UploadFile.cs" />
+    <Compile Include="ViewModels\AccountAndNameLinkInfoAddVM.cs" />
+    <Compile Include="ViewModels\AccountAndNameLinkManageVM.cs" />
     <Compile Include="ViewModels\SystemSetVM.cs" />
     <Compile Include="ViewModels\DepartmentReportUserControlVM.cs" />
     <Compile Include="ViewModels\ReportDataGridVM\CustomerManagerDataGridVM.cs" />
@@ -211,6 +218,12 @@
     <Compile Include="ViewModels\ManagersSelectVM.cs" />
     <Compile Include="ViewModels\AccountManageVM.cs" />
     <Compile Include="ViewModels\AccountAddVM.cs" />
+    <Compile Include="Views\AccountAndNameLinkInfoAdd.xaml.cs">
+      <DependentUpon>AccountAndNameLinkInfoAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountAndNameLinkManage.xaml.cs">
+      <DependentUpon>AccountAndNameLinkManage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SystemSet.xaml.cs">
       <DependentUpon>SystemSet.xaml</DependentUpon>
     </Compile>
@@ -310,6 +323,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AccountAndNameLinkInfoAdd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AccountAndNameLinkManage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\SystemSet.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -451,6 +472,19 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\AccountAndNameLinkInfoService\AccountAndNameLinkInfoService.wsdl" />
+    <None Include="Service References\AccountAndNameLinkInfoService\BalanceReport.AccountAndNameLinkInfoService.AccountAndNameLinkInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountAndNameLinkInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountAndNameLinkInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountAndNameLinkInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\AccountBalanceService\AccountBalanceService.wsdl" />
     <None Include="Service References\AccountBalanceService\BalanceReport.AccountBalanceService.AccountBalance.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -658,6 +692,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AccountAndNameLinkInfoService\" />
     <WCFMetadataStorage Include="Service References\AccountBalanceService\" />
     <WCFMetadataStorage Include="Service References\AccountInfoService\" />
     <WCFMetadataStorage Include="Service References\CompanyBalanceService\" />
@@ -847,6 +882,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SystemSetInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountAndNameLinkInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountAndNameLinkInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountAndNameLinkInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountAndNameLinkInfoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

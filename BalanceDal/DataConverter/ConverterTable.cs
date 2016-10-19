@@ -119,6 +119,25 @@ namespace BalanceDAL
             }
             return dtBalance;
         }
+        public static DataTable AccountAndNameLinkInfoListConvertTableAccount(List<AccountAndNameLinkInfo> list)
+        {
+            DataTable dtBalance = new DataTable();
+            dtBalance.TableName = "AccountAndNameLink";
+            dtBalance.Columns.Add("ID");
+            dtBalance.Columns.Add("AccountID");
+            dtBalance.Columns.Add("CompanyName");
+           
+            foreach (var item in list)
+            {
+                DataRow dr = dtBalance.NewRow();
+                dr["ID"] = item.ID;
+                dr["AccountID"] = item.AccountID;
+                dr["CompanyName"] = item.CompanyName;
+               
+                dtBalance.Rows.Add(dr);
+            }
+            return dtBalance;
+        }
 
         public static DataTable WebsiteBalanceListConvertTable(List<WebsiteBalance> list)
         {
@@ -154,6 +173,7 @@ namespace BalanceDAL
             return dtBalance;
         }
 
+        
 
         public static DataTable AccountBalanceListConvertTable(List<AccountBalance> list)
         {

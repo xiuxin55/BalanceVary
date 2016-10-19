@@ -144,6 +144,9 @@ namespace BalanceReport.ServiceFile {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int StartIndexField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubOrderbyColomnNameField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -206,6 +209,19 @@ namespace BalanceReport.ServiceFile {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SubOrderbyColomnName {
+            get {
+                return this.SubOrderbyColomnNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubOrderbyColomnNameField, value) != true)) {
+                    this.SubOrderbyColomnNameField = value;
+                    this.RaisePropertyChanged("SubOrderbyColomnName");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -236,6 +252,9 @@ namespace BalanceReport.ServiceFile {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FilePathField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileRealNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int FileStateField;
@@ -316,6 +335,19 @@ namespace BalanceReport.ServiceFile {
                 if ((object.ReferenceEquals(this.FilePathField, value) != true)) {
                     this.FilePathField = value;
                     this.RaisePropertyChanged("FilePath");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileRealName {
+            get {
+                return this.FileRealNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileRealNameField, value) != true)) {
+                    this.FileRealNameField = value;
+                    this.RaisePropertyChanged("FileRealName");
                 }
             }
         }

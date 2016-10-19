@@ -315,6 +315,9 @@ namespace BalanceReport.CompanyBalanceService {
     public partial class CompanyBalance : BalanceReport.CompanyBalanceService.BalanceBaseModel {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AccountIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CompanyNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -322,6 +325,19 @@ namespace BalanceReport.CompanyBalanceService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ZoneTypeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AccountID {
+            get {
+                return this.AccountIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AccountIDField, value) != true)) {
+                    this.AccountIDField = value;
+                    this.RaisePropertyChanged("AccountID");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string CompanyName {

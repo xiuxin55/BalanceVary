@@ -4,6 +4,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BalanceBaseModel">
         <xs:sequence>
+          <xs:element minOccurs="0" name="AccountID" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="WebsiteID" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ZoneType" nillable="true" type="xs:string" />

@@ -29,6 +29,8 @@ namespace BalanceDataSync
             CommonEvent.FileUploadedCalculateEvent += CalculateEvent;
             CommonEvent.FileUploadedCalculateDayEvent += CalculateDayEvent;
             CommonEvent.FileUploadedCustomerLinkEvent += CustomerLinkEvent;
+            CommonEvent.FileUploadedAccountAndNameLinkEvent += AccountAndNameLinkEvent;
+            
         }
         //#region 属性
         // private WebsiteInfoModel _selectedWebsiteInfoModel;
@@ -108,6 +110,7 @@ namespace BalanceDataSync
                 syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportCustomerLink), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportAccountAndNameLink), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
             }
             catch (Exception ex)
             {
@@ -153,6 +156,20 @@ namespace BalanceDataSync
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportCustomerLink), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
             }
         }
+
+        private void AccountAndNameLinkEvent(object obj)
+        {
+            UploadFileInfo info = obj as UploadFileInfo;
+            if (info != null)
+            {
+                List<UploadFileInfo> temp = new List<UploadFileInfo>();
+                temp.Add(info);
+                SyncDataHandler syn = new SyncDataHandler(temp);
+                syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportAccountAndNameLink), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+            }
+        }
+        
         /// <summary>
         /// 删除文件
         /// </summary>

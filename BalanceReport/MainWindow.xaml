@@ -33,11 +33,13 @@
                         <Border BorderThickness="1" CornerRadius="3"  Margin="3">
                            
                             <StackPanel Margin="0,4">
+                                
                                 <MenuItem x:Name="ImportButton" Header="账户按日导入" Click="ImportButton_Click"  />
                                 <MenuItem x:Name="MonthImportButton" Header="账户按月份导入" Click="MonthImportButton_Click" />
                                 <!--<MenuItem x:Name="DepartmentImportButton" Header="部门信息导入" Click="DepartmentImportButton_Click"  />
                                 <MenuItem x:Name="ManagersImportButton" Header="客户经理信息导入" Click="ManagersImportButton_Click"  />-->
-                                <MenuItem x:Name="LinkImportButton" Header="帐号关联导入" Click="LinkImportButton_Click"  />
+                                <MenuItem x:Name="LinkImportButton" Header="客户经理关联导入" Click="LinkImportButton_Click"  />
+                                <MenuItem x:Name="AccountAndNameLinkImportButton" Header="帐号和名称关联导入" Click="AccountAndNameLinkButton_Click"  />
                                 <MenuItem x:Name="SystemSetButton" Header="系统设置" Click="SystemSetButton_Click"  />
                                 <!--<MenuItem x:Name="menubtnChangePWD" Header="修改密码" Click="menubtnChangePWD_Click"/>-->
                                 <!--<MenuItem Header="更 新"/>-->
@@ -80,6 +82,11 @@
                         <localcontrol:CustomerManagerList x:Name="CustomerManagerList" />
                 </Grid>
             </TabItem>
+                <TabItem Header="账号和名称关联管理" Name="AccountAndNameLinkTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
+                    <Grid >
+                        <localcontrol:AccountAndNameLinkManage x:Name="AccountAndNameLinkList" />
+                    </Grid>
+                </TabItem>
                 <!--<TabItem Header="账户管理" Name="AccountManageTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
                     <Grid >
                         <localcontrol:AccountManage x:Name="AccountManageList" />
