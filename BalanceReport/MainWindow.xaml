@@ -30,7 +30,7 @@
                 </Button>-->
                 <Popup x:Name="Menu" AllowsTransparency="True" Margin="0,-1,0,1"  StaysOpen="False" PopupAnimation="Scroll" Placement="MousePoint">
                     <Grid  HorizontalAlignment="Left">
-                        <Border BorderThickness="1" CornerRadius="3"  Margin="3">
+                        <Border BorderThickness="1" CornerRadius="3" Background="Gray"  Margin="3">
                            
                             <StackPanel Margin="0,4">
                                 
