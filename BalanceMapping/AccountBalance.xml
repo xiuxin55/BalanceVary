@@ -24,7 +24,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <result property="Rate" column="Rate"/>
       <result property="BalanceTime" column="BalanceTime"/>
     </resultMap>
-  </resultMaps>
+  </resultMaps> 
   <parameterMaps>
     <parameterMap id="AccountBalanceProcMap" class="AccountBalance">
       <parameter property="ID"  />
