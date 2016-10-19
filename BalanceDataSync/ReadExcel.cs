@@ -209,6 +209,7 @@ namespace BalanceDataSync
                 {
                     dt = NPOIHelper.Instance.ImportMonth(filename);
                 }
+                List<string> accountids = new List<string>();
                 for (int j = 1; j < dt.Rows.Count; j++)
                 {
                     DataRow item = dt.Rows[j];
@@ -216,11 +217,16 @@ namespace BalanceDataSync
                     {
                         continue;
                     }
-                    AccountAndNameLinkInfo am = new AccountAndNameLinkInfo();
-                    am.ID = Guid.NewGuid().ToString();
-                    am.AccountID = item["账户号"].ToString().Trim();
-                    am.CompanyName = item["客户名称"].ToString().Trim();
-                    list.Add(am);
+                    if (!accountids.Contains(item["账户号"].ToString().Trim()))
+                    {
+
+                        accountids.Add(item["账户号"].ToString().Trim());
+                        AccountAndNameLinkInfo am = new AccountAndNameLinkInfo();
+                        am.ID = Guid.NewGuid().ToString();
+                        am.AccountID = item["账户号"].ToString().Trim();
+                        am.CompanyName = item["客户名称"].ToString().Trim();
+                        list.Add(am);
+                    }
                 }
 
                 return list;

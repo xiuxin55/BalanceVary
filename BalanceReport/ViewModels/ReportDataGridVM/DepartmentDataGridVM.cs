@@ -25,6 +25,7 @@ namespace BalanceReport.ViewModels
         public DepartmentDataGridVM()
         {
             SearchDepartmentCommand = new DelegateCommand(SearchDepartmentExecute);
+            SearchDepartmentBalanceoModel = new DepartmentBalance();
             LoadData();
         }
         #region 属性
@@ -45,7 +46,7 @@ namespace BalanceReport.ViewModels
         /// </summary>
         public DepartmentInfo SelectedDepartmentInfoModel
         {
-            get { return _selectedDepartmentInfoModel; }
+            get { return _selectedDepartmentInfoModel ?? new DepartmentInfo(); ; }
             set
             {
                 _selectedDepartmentInfoModel = value;
@@ -119,10 +120,10 @@ namespace BalanceReport.ViewModels
         private void SearchDepartmentExecute()
         {
             Total = 0;
-            if (SearchDepartmentBalanceoModel == null)
-            {
-                SearchDepartmentBalanceoModel = new DepartmentBalance();
-            }
+            //if (SearchDepartmentBalanceoModel == null)
+            //{
+            //    SearchDepartmentBalanceoModel = new DepartmentBalance();
+            //}
             SearchDepartmentBalanceoModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchDepartmentBalanceoModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
             SearchDepartmentBalanceoModel.DepartmentID = SelectedDepartmentInfoModel.DepartmentID;
@@ -139,6 +140,7 @@ namespace BalanceReport.ViewModels
                 SearchDepartmentBalanceoModel.EndBalanceTime = SearchDepartmentBalanceoModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
                  
                 DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(clientDepartmentBalance.CallTimeSpanProc(SearchDepartmentBalanceoModel));
+                SearchDepartmentBalanceoModel.BalanceTime = SearchDepartmentBalanceoModel.StartBalanceTime;
 
             }
             Total = clientDepartmentBalance.SelectCount(SearchDepartmentBalanceoModel);

@@ -28,7 +28,9 @@ namespace BalanceReport.ViewModels
         {
             SearchCustomerManagerCommand = new DelegateCommand(SearchCustomerManagerExecute);
             SearchAccountCommand = new DelegateCommand(SearchAccountExecute);
+            SearchAccountBalanceModel = new AccountBalanceService.DepartmentBalance();
             LoadData();
+       
         }
         #region 属性
         private DataGridColomnState _ColomnState;
@@ -66,7 +68,7 @@ namespace BalanceReport.ViewModels
         /// </summary>
         public DepartmentInfo SelectedDepartmentInfoModel
         {
-            get { return _selectedDepartmentInfoModel; }
+            get { return _selectedDepartmentInfoModel??new DepartmentInfo(); }
             set
             {
                 _selectedDepartmentInfoModel = value;
@@ -176,10 +178,10 @@ namespace BalanceReport.ViewModels
         private void SearchAccountExecute()
         {
             Total = 0;
-            if (SearchAccountBalanceModel == null)
-            {
-                SearchAccountBalanceModel = new AccountBalanceService.DepartmentBalance();
-            }
+            //if (SearchAccountBalanceModel == null)
+            //{
+            //    SearchAccountBalanceModel = new AccountBalanceService.DepartmentBalance();
+            //}
             SearchAccountBalanceModel = new AccountBalanceService.DepartmentBalance();
             SearchAccountBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchAccountBalanceModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
@@ -225,6 +227,7 @@ namespace BalanceReport.ViewModels
                 SearchCustomerManagerBalanceoModel.EndBalanceTime = SearchCustomerManagerBalanceoModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
 
                 CustomerManagerBalanceList = new ObservableCollection<CustomerManagerBalance>(clientCustomerManagerBalance.CallTimeSpanProc(SearchCustomerManagerBalanceoModel));
+                SearchCustomerManagerBalanceoModel.BalanceTime = SearchCustomerManagerBalanceoModel.StartBalanceTime;
             }
             Total = clientCustomerManagerBalance.SelectCount(SearchCustomerManagerBalanceoModel);
         }

@@ -27,6 +27,8 @@ namespace BalanceReport.ViewModels
         {
             SearchCompanyCommand = new DelegateCommand(SearchCompanyExecute);
             SearchAccountCommand = new DelegateCommand(SearchAccountExecute);
+            SearchAccountBalanceModel = new AccountBalance();
+            SearchCompanyBalanceoModel = new CompanyBalance();
             LoadData();
 
           //  SearchWebsiteExecute();
@@ -68,7 +70,7 @@ namespace BalanceReport.ViewModels
         /// </summary>
         public WebsiteInfo SelectedWebsiteInfoModel
         {
-            get { return _selectedWebsiteInfoModel; }
+            get { return _selectedWebsiteInfoModel ?? new WebsiteInfo(); }
             set
             {
                 _selectedWebsiteInfoModel = value;
@@ -178,10 +180,10 @@ namespace BalanceReport.ViewModels
         private void SearchAccountExecute()
         {
             Total = 0;
-            if (SearchAccountBalanceModel == null)
-            {
-                SearchAccountBalanceModel = new AccountBalance();
-            }
+            //if (SearchAccountBalanceModel == null)
+            //{
+            //    SearchAccountBalanceModel = new AccountBalance();
+            //}
         
 
             SearchAccountBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
@@ -198,7 +200,7 @@ namespace BalanceReport.ViewModels
             {
                 SearchAccountBalanceModel.StartBalanceTime = SearchAccountBalanceModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
                 SearchAccountBalanceModel.EndBalanceTime = SearchAccountBalanceModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
-                    
+                SearchAccountBalanceModel.BalanceTime = SearchAccountBalanceModel.StartBalanceTime;
                 AccountBalanceList = new ObservableCollection<AccountBalance>(clientAccountBalance.CallTimeSpanProc(SearchAccountBalanceModel));
             }
             
@@ -206,10 +208,10 @@ namespace BalanceReport.ViewModels
         }
         private void SearchCompanyExecute()
         {
-            if (SearchCompanyBalanceoModel == null)
-            {
-                SearchCompanyBalanceoModel = new CompanyBalance();
-            }
+            //if (SearchCompanyBalanceoModel == null)
+            //{
+            //    SearchCompanyBalanceoModel = new CompanyBalance();
+            //}
             SearchCompanyBalanceoModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchCompanyBalanceoModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
             SearchCompanyBalanceoModel.WebsiteID = SelectedWebsiteInfoModel.WebsiteID;
@@ -222,7 +224,8 @@ namespace BalanceReport.ViewModels
             else
             {
                 SearchCompanyBalanceoModel.StartBalanceTime = SearchCompanyBalanceoModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
-                SearchCompanyBalanceoModel.EndBalanceTime = SearchCompanyBalanceoModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());    
+                SearchCompanyBalanceoModel.EndBalanceTime = SearchCompanyBalanceoModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
+                SearchCompanyBalanceoModel.BalanceTime = SearchCompanyBalanceoModel.StartBalanceTime;
                 CompanyBalanceList = new ObservableCollection<CompanyBalance>(clientcompanybalance.CallTimeSpanProc(SearchCompanyBalanceoModel));
             }
             

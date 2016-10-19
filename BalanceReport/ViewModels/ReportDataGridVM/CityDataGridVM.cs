@@ -23,6 +23,7 @@ namespace BalanceReport.ViewModels
         public CityDataGridVM()
         {
             SearchZoneCommand = new DelegateCommand(SearchZoneExecute);
+            SearchZoneBalanceModel = new ZoneBalance();
             SearchZoneExecute();
             LoadData();
         }
@@ -103,10 +104,10 @@ namespace BalanceReport.ViewModels
         #region 命令执行方法
         private void SearchZoneExecute()
         {
-            if (SearchZoneBalanceModel == null)
-            {
-                SearchZoneBalanceModel = new ZoneBalance();
-            }
+            //if (SearchZoneBalanceModel == null)
+            //{
+            //    SearchZoneBalanceModel = new ZoneBalance();
+            //}
             try
             {
                 Total = 0;
@@ -123,6 +124,7 @@ namespace BalanceReport.ViewModels
                 {
                     SearchZoneBalanceModel.StartBalanceTime = SearchZoneBalanceModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
                     SearchZoneBalanceModel.EndBalanceTime = SearchZoneBalanceModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
+                    SearchZoneBalanceModel.BalanceTime = SearchZoneBalanceModel.StartBalanceTime;
                     ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.CallTimeSpanProc(SearchZoneBalanceModel));
                 }
                 Total = client.SelectCount(SearchZoneBalanceModel);

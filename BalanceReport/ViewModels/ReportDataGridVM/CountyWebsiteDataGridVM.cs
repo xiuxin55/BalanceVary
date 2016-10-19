@@ -25,6 +25,7 @@ namespace BalanceReport.ViewModels
         public CountyWebsiteDataGridVM()
         {
             SearchWebsiteCommand = new DelegateCommand(SearchWebsiteExecute);
+            SearchWebsiteBalanceModel = new WebsiteBalance();
             LoadData();
             //  SearchWebsiteExecute();
         }
@@ -46,7 +47,7 @@ namespace BalanceReport.ViewModels
         /// </summary>
         public WebsiteInfoService.WebsiteInfo SelectedWebsiteInfoModel
         {
-            get { return _selectedWebsiteInfoModel; }
+            get { return _selectedWebsiteInfoModel??new  WebsiteInfoService.WebsiteInfo(); }
             set
             {
                 _selectedWebsiteInfoModel = value;
@@ -120,10 +121,10 @@ namespace BalanceReport.ViewModels
         private void SearchWebsiteExecute()
         {
             Total = 0;
-            if (SearchWebsiteBalanceModel == null)
-            {
-                SearchWebsiteBalanceModel = new WebsiteBalance();
-            }
+            //if (SearchWebsiteBalanceModel == null)
+            //{
+            //    SearchWebsiteBalanceModel = new WebsiteBalance();
+            //}
             SearchWebsiteBalanceModel.EndIndex = int.MaxValue;
             SearchWebsiteBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchWebsiteBalanceModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
@@ -140,6 +141,8 @@ namespace BalanceReport.ViewModels
                 SearchWebsiteBalanceModel.EndBalanceTime = SearchWebsiteBalanceModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
                  
                 WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(clientwebsitebalance.CallTimeSpanProc(SearchWebsiteBalanceModel));
+                SearchWebsiteBalanceModel.BalanceTime = SearchWebsiteBalanceModel.StartBalanceTime;
+
             }
             Total = clientwebsitebalance.SelectCount(SearchWebsiteBalanceModel);
         }

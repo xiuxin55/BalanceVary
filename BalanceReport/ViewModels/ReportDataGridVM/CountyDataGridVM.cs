@@ -22,6 +22,7 @@ namespace BalanceReport.ViewModels
         public CountyDataGridVM()
         {
             SearchZoneCommand = new DelegateCommand(SearchZoneExecute);
+            SearchZoneBalanceModel = new ZoneBalance();
             SearchZoneExecute();
             LoadData();
         }
@@ -99,10 +100,10 @@ namespace BalanceReport.ViewModels
         #region 命令执行方法
         private void SearchZoneExecute()
         {
-            if (SearchZoneBalanceModel == null)
-            {
-                SearchZoneBalanceModel = new ZoneBalance();
-            }
+            //if (SearchZoneBalanceModel == null)
+            //{
+            //    SearchZoneBalanceModel = new ZoneBalance();
+            //}
             try
             {
                 Total = 0;
@@ -122,6 +123,7 @@ namespace BalanceReport.ViewModels
                     SearchZoneBalanceModel.EndBalanceTime = SearchZoneBalanceModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
                  
                     ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.CallTimeSpanProc(SearchZoneBalanceModel));
+                    SearchZoneBalanceModel.BalanceTime = SearchZoneBalanceModel.StartBalanceTime;
                 }
                 Total = client.SelectCount(SearchZoneBalanceModel);
             }
