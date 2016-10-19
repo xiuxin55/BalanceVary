@@ -28,7 +28,7 @@ namespace HostApp
             catch (Exception ex)
             {
                 LogHelper.WriteLog(typeof(HostManageVM), ex);
-                throw ex;
+               // throw ex;
             }
             //SearchWebsiteCommand = new DelegateCommand(SearchWebsiteExecute);
             //SearchWebsiteExecute();
@@ -101,7 +101,7 @@ namespace HostApp
             catch (Exception ex)
             {
                 LogHelper.WriteLog(typeof(HostManageVM), ex);
-                throw ex;
+               // throw ex;
             }
             
         }
@@ -123,7 +123,7 @@ namespace HostApp
             catch (Exception ex)
             {
                 LogHelper.WriteLog(typeof(HostManageVM), ex);
-                throw ex;
+               // throw ex;
             }
         }
         private bool _isSelectedAll;

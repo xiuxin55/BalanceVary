@@ -33,7 +33,7 @@
                         <Border BorderThickness="1" CornerRadius="3"  Margin="3">
                            
                             <StackPanel Margin="0,4">
-                                <!--<MenuItem x:Name="ImportButton" Header="账户按日导入" Click="ImportButton_Click"  />-->
+                                <MenuItem x:Name="ImportButton" Header="账户按日导入" Click="ImportButton_Click"  />
                                 <MenuItem x:Name="MonthImportButton" Header="账户按月份导入" Click="MonthImportButton_Click" />
                                 <!--<MenuItem x:Name="DepartmentImportButton" Header="部门信息导入" Click="DepartmentImportButton_Click"  />
                                 <MenuItem x:Name="ManagersImportButton" Header="客户经理信息导入" Click="ManagersImportButton_Click"  />-->

@@ -27,6 +27,7 @@ namespace BalanceDataSync
             SearchCommand = new DelegateCommand(SearchExecute);
             SearchExecute();
             CommonEvent.FileUploadedCalculateEvent += CalculateEvent;
+            CommonEvent.FileUploadedCalculateDayEvent += CalculateDayEvent;
             CommonEvent.FileUploadedCustomerLinkEvent += CustomerLinkEvent;
         }
         //#region 属性
@@ -124,6 +125,19 @@ namespace BalanceDataSync
                 SyncDataHandler syn = new SyncDataHandler(temp);
                 syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+            }
+        }
+
+        private void CalculateDayEvent(object obj)
+        {
+            UploadFileInfo info = obj as UploadFileInfo;
+            if (info != null)
+            {
+                List<UploadFileInfo> temp = new List<UploadFileInfo>();
+                temp.Add(info);
+                SyncDataHandler syn = new SyncDataHandler(temp);
+                syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportDayData), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
             }
         }
 

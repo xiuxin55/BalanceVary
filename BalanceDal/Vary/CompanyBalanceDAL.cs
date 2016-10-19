@@ -30,5 +30,23 @@ namespace BalanceDAL
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// 批量插入数据
+        /// </summary>
+        /// <param name="list"></param>
+        public void BatchInsertAccountID(List<CompanyBalance> list, List<DateTime> ImportTimeList)
+        {
+            try
+            {
+                SqlMap.Delete("BatchDelete" + DefaultKey, ImportTimeList.ToArray());
+                BatchInsertSQLServer bs = new BatchInsertSQLServer();
+                bs.BatchInsertCompanyBalanceAccount(list);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

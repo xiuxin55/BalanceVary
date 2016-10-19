@@ -26,13 +26,37 @@ namespace BalanceDataSync
         /// </summary>
         public  void ImportDayData()
         {
-            IEnumerable<UploadFileInfo> filelist= UploadFileInfoList.Where(p => p.FileName.ToLower().Contains("day"));
+            IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.ToLower().Contains("day"));
             foreach (var item in filelist)
             {
-                ReadExcel.ReadDayData(item.FilePath+item.FileName,item.FileDateTime.Value);
-                CalculateData();
+
+                try
+                {
+                    if (NotifyFileStateChange != null)
+                    {
+                        NotifyFileStateChange(item);
+                    }
+                    ImportDataList = ReadExcel.ReadDayData(item.FilePath + item.FileName, item.FileDateTime.Value);
+                    if (ImportDataList == null || ImportDataList.Count == 0)
+                    {
+                        return;
+                    }
+                    CalculateData();
+                    item.FileState = 1;
+                }
+                catch (Exception ex)
+                {
+
+                    item.FileState = 2;
+                    item.FileException = ex.Message + ":\n" + ex.StackTrace;
+                    if (NotifyFileStateChange != null)
+                    {
+                        NotifyFileStateChange(item);
+                    }
+                    throw ex;
+                }
             }
-           
+
         }
         public void ImportCustomerLink()
         {

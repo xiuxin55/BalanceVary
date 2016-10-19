@@ -19,8 +19,12 @@ namespace MainHome
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
             BalanceWindow bw = new BalanceWindow();
             bw.Show();
-            
-      
+            //MainWindow bw = new MainWindow();
+            //bw.Show();
+
+
+
+
         }
 
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)

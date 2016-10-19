@@ -31,13 +31,22 @@ namespace BalanceReport
         }
         
         /// <summary>
-        /// 导入数据
+        /// 按日导入数据
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Import_Click(object sender, RoutedEventArgs e)
         {
-            
+            ImportSelectDate s = new ImportSelectDate();
+            if ((bool)s.ShowDialog() == false)
+            {
+                return;
+            }
+            OpenFileDialog op = new OpenFileDialog();
+            if ((bool)op.ShowDialog())
+            {
+                UploadFile.Upload(op.FileName, FileType.Day, s.ImportTime);
+            }
         }
         #region 窗口基本按键方法
         private void closeButton_Click(object sender, RoutedEventArgs e)

@@ -17,5 +17,13 @@ namespace BalanceBLL
         {
             dal.BatchInsert(list,ImportTimeList);
         }
+        /// <summary>
+        /// 批量插入,在插入前删除重复项(accountid 为主键)
+        /// </summary>
+        /// <param name="list"></param>
+        public void BatchInsertAccountID(List<CompanyBalance> list, List<DateTime> ImportTimeList)
+        {
+            dal.BatchInsertAccountID(list, ImportTimeList);
+        }
     }
 }

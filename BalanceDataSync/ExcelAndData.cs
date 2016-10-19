@@ -309,7 +309,7 @@ namespace BalanceDataSync
         }
         #region 月样表导入
 
-        private DataTable ImportNew2003(string strFileName,int defaultrowhead=2)
+        private DataTable ImportNew2003(string strFileName,int defaultrowhead=1)
         {
             try
             {

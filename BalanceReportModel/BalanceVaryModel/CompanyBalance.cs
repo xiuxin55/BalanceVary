@@ -10,6 +10,10 @@ namespace BalanceModel
         /// <summary>
         /// 公司名称
         /// </summary>
+        public string AccountID { get; set; }
+        /// <summary>
+        /// 公司名称
+        /// </summary>
         public string CompanyName { get; set; }
         /// <summary>
         /// 网点编号

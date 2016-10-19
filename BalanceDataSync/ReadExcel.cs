@@ -121,7 +121,7 @@ namespace BalanceDataSync
                 List<ImportDataInfo> list = new List<ImportDataInfo>();
                 DataTable dt = NPOIHelper.Instance.ImportMonth(filename);
                 int days = (dtime.AddMonths(1) - dtime).Days;
-                for (int j = 2; j < dt.Rows.Count; j++)
+                for (int j = 1; j < dt.Rows.Count; j++)
                 {
                     DataRow item = dt.Rows[j];
                     if (string.IsNullOrWhiteSpace(item[0].ToString()))

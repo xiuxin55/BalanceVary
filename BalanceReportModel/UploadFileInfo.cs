@@ -12,6 +12,7 @@ namespace BalanceModel
     {
         public string  ID { get; set; }
         public string FileName { get; set; }
+        public string FileRealName { get; set; }
         public string FilePath { get; set; }
         
         public string FileType { get; set; }
