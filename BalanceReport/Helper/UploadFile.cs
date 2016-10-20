@@ -49,6 +49,7 @@ namespace BalanceReport
                 CustomFileInfo file= new CustomFileInfo();
                 file.OffSet = 0;
                 file.Name = searchfile.ID + "." + importtype.ToString();
+                file.FileRealName = fileInfoIO.Name;
                 file.Length = fs.Length;
                 while (file.Length != file.OffSet)
                 {
@@ -61,6 +62,7 @@ namespace BalanceReport
                 }
                 searchfile.FileName = file.Name;
                 searchfile.FileDateTime = datetime;
+                searchfile.FileRealName = file.FileRealName;
                 client.StoreUpLoadResult(searchfile);
                 MessageBox.Show("上传成功");
                 
@@ -114,6 +116,7 @@ namespace BalanceReport
                 CustomFileInfo file = new CustomFileInfo();
                 file.OffSet = 0;
                 file.Name = searchfile.ID + "." + importtype.ToString();
+                file.FileRealName = fileInfoIO.Name;
                 file.Length = fs.Length;
                 while (file.Length != file.OffSet)
                 {
@@ -125,7 +128,8 @@ namespace BalanceReport
                     int percent = (int)(((double)file.OffSet / (double)((long)file.Length)) * 100);
                 }
                 searchfile.FileName = file.Name;
-                searchfile.FileDateTime = null;
+                searchfile.FileDateTime = DateTime.Now ;
+                searchfile.FileRealName = file.FileRealName;
                 client.StoreUpLoadResult(searchfile);
                 MessageBox.Show("上传成功");
 

@@ -10,6 +10,7 @@ namespace BalanceModel
     /// </summary>
     public class CustomFileInfo
     {
+        public string FileRealName { get; set; }
         /// <summary>
         /// 文件名称
         /// </summary>

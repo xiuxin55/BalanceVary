@@ -92,6 +92,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{49cc37a0-302e-43c4-aded-8d79f652242e}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SqlMaps\SqlMaps.csproj">
       <Project>{e19a6dc8-30f3-45d5-8b67-584c5a034212}</Project>
       <Name>SqlMaps</Name>

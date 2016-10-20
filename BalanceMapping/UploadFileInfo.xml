@@ -10,6 +10,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     <resultMap id="UploadFileInfoMap" class="UploadFileInfo">
       <result property="RowNumber" column="RowNumber"/>
       <result property="ID" column="ID"/>
+      
+      <result property="FileRealName" column="FileRealName"/>
       <result property="FileName" column="FileName"/>
       <result property="FileType" column="FileType"/>
       <result property="FileDateTime" column="FileDateTime"/>
@@ -70,6 +72,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     </update>
     <insert id="AddUploadFileInfo" parameterClass="UploadFileInfo">
       INSERT INTO UploadFileInfo (ID,
+      FileRealName,
       FileName,
       FileType,
       FileDateTime,
@@ -77,7 +80,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       FileState,
       FileException,
       FilePath,FileMD5)
-      VALUES (#ID#,#FileName#,#FileType#,#FileDateTime#,#FileUploadTime#,#FileState#,#FileException#,#FilePath#,#FileMD5#);
+      VALUES (#ID#,#FileRealName#,#FileName#,#FileType#,#FileDateTime#,#FileUploadTime#,#FileState#,#FileException#,#FilePath#,#FileMD5#);
     </insert>
     <delete id="DeleteUploadFileInfo" parameterClass="UploadFileInfo">
       DELETE UploadFileInfo WHERE ID = #ID#

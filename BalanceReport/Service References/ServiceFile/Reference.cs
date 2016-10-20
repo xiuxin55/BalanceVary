@@ -23,6 +23,9 @@ namespace BalanceReport.ServiceFile {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileRealNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ImportTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -44,6 +47,19 @@ namespace BalanceReport.ServiceFile {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileRealName {
+            get {
+                return this.FileRealNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileRealNameField, value) != true)) {
+                    this.FileRealNameField = value;
+                    this.RaisePropertyChanged("FileRealName");
+                }
             }
         }
         

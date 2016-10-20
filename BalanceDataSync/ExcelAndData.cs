@@ -311,8 +311,7 @@ namespace BalanceDataSync
 
         private DataTable ImportNew2003(string strFileName,int defaultrowhead=1)
         {
-            try
-            {
+            
 
                 DataTable dt = new DataTable();
 
@@ -375,17 +374,11 @@ namespace BalanceDataSync
                     //}));
                 }
                 return dt;
-            }
-            catch (Exception e)
-            {
-                System.Windows.Forms.MessageBox.Show(e.Message);
-                return null;
-            }
+           
         }
-        private DataTable ImportNew2007(string strFileName, int defaultrowhead = 2)
+        private DataTable ImportNew2007(string strFileName, int defaultrowhead = 1)
         {
-            try
-            {
+            
                 DataTable dt = new DataTable();
 
                 XSSFWorkbook hssfworkbook;
@@ -420,19 +413,13 @@ namespace BalanceDataSync
                     
                 }
                 return dt;
-            }
-            catch
-            {
-                return null;
-            }
+           
         }
 
         #endregion
         private  DataTable Import2003(string strFileName)
         {
-            try
-            {
-                
+             
                 DataTable dt = new DataTable();
 
                 HSSFWorkbook hssfworkbook;
@@ -485,17 +472,11 @@ namespace BalanceDataSync
                     
                 }
                 return dt;
-            }
-            catch(Exception e)
-            {
-                System.Windows.Forms.MessageBox.Show(e.Message);
-                return null;
-            }
+         
         }
         private  DataTable Import2007(string strFileName)
         {
-            try
-            {
+           
                 DataTable dt = new DataTable();
 
                 XSSFWorkbook hssfworkbook;
@@ -529,11 +510,7 @@ namespace BalanceDataSync
                     dt.Rows.Add(dataRow);
                 }
                 return dt;
-            }
-            catch
-            {
-                return null;
-            }
+           
         }
     }
 }

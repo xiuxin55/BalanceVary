@@ -88,6 +88,11 @@ namespace BalanceReport
             OpenFileDialog op = new OpenFileDialog();
             if ((bool)op.ShowDialog())
             {
+                if(op.DefaultExt.ToLower()!= "xls")
+                {
+                    MessageBox.Show("系统仅支持xls格式");
+                    return;
+                }
                 UploadFile.Upload(op.FileName,FileType.Day,s.ImportTime);
             }
         }
@@ -106,6 +111,11 @@ namespace BalanceReport
             OpenFileDialog op = new OpenFileDialog();
             if ((bool)op.ShowDialog())
             {
+                if (op.DefaultExt.ToLower() != "xls")
+                {
+                    MessageBox.Show("系统仅支持xls格式");
+                    return;
+                }
                 UploadFile.Upload(op.FileName, FileType.Month, s.ImportTime);
             }
         }
@@ -129,6 +139,11 @@ namespace BalanceReport
             OpenFileDialog op = new OpenFileDialog();
             if ((bool)op.ShowDialog())
             {
+                if (op.DefaultExt.ToLower() != "xls")
+                {
+                    MessageBox.Show("系统仅支持xls格式");
+                    return;
+                }
                 //this.WebsiteManageTab.IsSelected = true;
                 UploadFile.Upload(op.FileName, FileType.CustomerManagerLinkAccount); ;
             } 
@@ -146,6 +161,11 @@ namespace BalanceReport
             OpenFileDialog op = new OpenFileDialog();
             if ((bool)op.ShowDialog())
             {
+                if (op.DefaultExt.ToLower() != "xls")
+                {
+                    MessageBox.Show("系统仅支持xls格式");
+                    return;
+                }
                 UploadFile.Upload(op.FileName, FileType.CustomerManagerLinkAccount);
             }
         }
@@ -155,6 +175,11 @@ namespace BalanceReport
             OpenFileDialog op = new OpenFileDialog();
             if ((bool)op.ShowDialog())
             {
+                if (op.DefaultExt.ToLower() != "xls")
+                {
+                    MessageBox.Show("系统仅支持xls格式");
+                    return;
+                }
                 //this.WebsiteManageTab.IsSelected = true;
                 UploadFile.Upload(op.FileName, FileType.AccountAndNameLink); ;
             }

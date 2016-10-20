@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,18 +15,27 @@ namespace Utility
             IAsyncResult ir = doWork.BeginInvoke(new AsyncCallback(
                 obj=>
                 {
-                    IAsyncResult ar = obj as IAsyncResult;
-                    if (ar == null) return;
-                    Action ac = ar.AsyncState as Action;
-                    ac.EndInvoke(ar);
-                    if (complete!=null)
+                    try
                     {
-                        dispatcher.Invoke(complete, param);
+                        IAsyncResult ar = obj as IAsyncResult;
+                        if (ar == null) return;
+                        Action ac = ar.AsyncState as Action;
+                        ac.EndInvoke(ar);
+                        if (complete != null)
+                        {
+                            dispatcher.Invoke(complete, param);
+                        }
+                        else
+                        {
+                            complete(param);
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        complete(param);
+                        LogHelper.WriteLog(typeof(MultiTask), ex);
+       
                     }
+                    
                 }
                 ), doWork);
         }

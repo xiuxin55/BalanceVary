@@ -225,6 +225,8 @@ namespace BalanceDataSync
             if (info.FileState==2)
             {
                 this.CurrentCalculateFile = info.FileName+" 处理出现异常";
+                bll.Update(info);
+                SearchExecute();
             }
             else
             {

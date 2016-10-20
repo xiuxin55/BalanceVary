@@ -17,10 +17,10 @@ namespace MainHome
         {
             base.OnStartup(e);
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
-            //BalanceWindow bw = new BalanceWindow();
-            //bw.Show();
-            MainWindow bw = new MainWindow();
+            BalanceWindow bw = new BalanceWindow();
             bw.Show();
+            //MainWindow bw = new MainWindow();
+            //bw.Show();
 
 
 

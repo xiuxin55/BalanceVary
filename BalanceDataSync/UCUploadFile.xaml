@@ -42,6 +42,8 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="文件实际名称" Binding="{Binding FileRealName}" Width="1*" IsReadOnly="True"  />
                 <DataGridTextColumn Header="文件名称" Binding="{Binding FileName}" Width="1*" IsReadOnly="True"  />
                 <DataGridTextColumn Header="文件类型" Binding="{Binding FileType}" Width="1*" IsReadOnly="True"/>
                 <DataGridTextColumn Header="当前状态" Binding="{Binding FileState,Converter={StaticResource FileStateConverter} }"  Width="1*" IsReadOnly="True"/>
