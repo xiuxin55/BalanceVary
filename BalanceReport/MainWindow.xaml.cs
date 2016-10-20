@@ -111,7 +111,7 @@ namespace BalanceReport
             OpenFileDialog op = new OpenFileDialog();
             if ((bool)op.ShowDialog())
             {
-                if (op.DefaultExt.ToLower() != "xls")
+                if (!op.SafeFileName.ToLower().EndsWith(".xls"))
                 {
                     MessageBox.Show("系统仅支持xls格式");
                     return;
@@ -139,7 +139,7 @@ namespace BalanceReport
             OpenFileDialog op = new OpenFileDialog();
             if ((bool)op.ShowDialog())
             {
-                if (op.DefaultExt.ToLower() != "xls")
+                if (!op.SafeFileName.ToLower().EndsWith(".xls"))
                 {
                     MessageBox.Show("系统仅支持xls格式");
                     return;
@@ -161,7 +161,7 @@ namespace BalanceReport
             OpenFileDialog op = new OpenFileDialog();
             if ((bool)op.ShowDialog())
             {
-                if (op.DefaultExt.ToLower() != "xls")
+                if (!op.SafeFileName.ToLower().EndsWith(".xls"))
                 {
                     MessageBox.Show("系统仅支持xls格式");
                     return;
@@ -175,7 +175,7 @@ namespace BalanceReport
             OpenFileDialog op = new OpenFileDialog();
             if ((bool)op.ShowDialog())
             {
-                if (op.DefaultExt.ToLower() != "xls")
+                if (!op.SafeFileName.ToLower().EndsWith(".xls"))
                 {
                     MessageBox.Show("系统仅支持xls格式");
                     return;

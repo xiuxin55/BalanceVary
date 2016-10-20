@@ -53,7 +53,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
           <isNotEmpty prepend="and" property="DepartmentID">l.DepartmentID=#DepartmentID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="DepartmentName">l.DepartmentName=#DepartmentName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="DepartmentName">l.DepartmentName  like '%$DepartmentName$%' </isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">a.BalanceTime=#BalanceTime#</isNotEmpty>
         </isParameterPresent>
       </dynamic>
@@ -69,7 +69,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
           <isNotEmpty prepend="and" property="DepartmentID">l.DepartmentID=#DepartmentID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="DepartmentName">l.DepartmentName=#DepartmentName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="DepartmentName">l.DepartmentName  like '%$DepartmentName$%'</isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
         </isParameterPresent>
       </dynamic>
@@ -89,9 +89,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountID">av.AccountID=#AccountID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="AccountID">av.AccountID   like '%$AccountID$%' </isNotEmpty>
           <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountName">link.CompanyName=#AccountName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="AccountName">link.CompanyName like '%$AccountName$%' </isNotEmpty>
 
           <isNotEmpty prepend="and" property="SubAccountNumber">SubAccountNumber=#SubAccountNumber#</isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
@@ -120,9 +120,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountID">av.AccountID=#AccountID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="AccountID">av.AccountID like '%$AccountID$%' </isNotEmpty>
           <isNotEmpty prepend="and" property="SubAccountNumber">SubAccountNumber=#SubAccountNumber#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountName">link.CompanyName=#AccountName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="AccountName">link.CompanyName like '%$AccountName$%' </isNotEmpty>
           <isGreaterThan prepend="and" property="AccountType" compareValue="-1">AccountType=#AccountType#</isGreaterThan>
           <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>

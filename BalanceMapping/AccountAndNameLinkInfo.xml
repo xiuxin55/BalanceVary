@@ -20,8 +20,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountID">AccountID=#AccountID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="CompanyName">CompanyName=#CompanyName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="AccountID">AccountID like '%$AccountID$%'</isNotEmpty>
+          <isNotEmpty prepend="and" property="CompanyName">CompanyName like '%$CompanyName$%'</isNotEmpty>
 
         </isParameterPresent>
       </dynamic>
@@ -32,8 +32,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountID">AccountID=#AccountID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="CompanyName">CompanyName=#CompanyName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="AccountID"> AccountID like '%$AccountID$%'</isNotEmpty>
+          <isNotEmpty prepend="and" property="CompanyName">CompanyName like '%$CompanyName$%'</isNotEmpty>
           
         </isParameterPresent>
       </dynamic>) as result

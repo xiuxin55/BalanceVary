@@ -85,6 +85,10 @@ namespace WcfBalanceServiceLibrary
             {
                 CommonEvent.FileUploadedCalculateDayEvent(uploadfileinfo);
             }
+            if (CommonEvent.FileUploadedCustomerLinkEvent != null)
+            {
+                CommonEvent.FileUploadedCustomerLinkEvent(uploadfileinfo);
+            }
             if (CommonEvent.FileUploadedAccountAndNameLinkEvent != null)
             {
                 CommonEvent.FileUploadedAccountAndNameLinkEvent(uploadfileinfo);

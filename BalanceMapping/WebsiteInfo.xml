@@ -27,8 +27,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="WebsiteName">WebsiteName=#WebsiteName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="WebsiteID">WebsiteID like '%$WebsiteID$%'</isNotEmpty>
+          <isNotEmpty prepend="and" property="WebsiteName">WebsiteName like '%$WebsiteName$%' </isNotEmpty>
           <isNotEmpty prepend="and" property="WebsiteAddress">WebsiteAddress=#WebsiteAddress#</isNotEmpty>
           <isNotEmpty prepend="and" property="WebsiteTel">WebsiteTel=#WebsiteTel#</isNotEmpty>
           <isNotEmpty prepend="and" property="WebsiteManager">WebsiteManager=#WebsiteManager#</isNotEmpty>

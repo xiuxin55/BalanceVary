@@ -51,7 +51,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
           <isNotEmpty prepend="and" property="DepartmentID">DepartmentID=#DepartmentID#</isNotEmpty>
           <isNotEmpty prepend="and" property="DepartmentName">DepartmentName=#DepartmentName#</isNotEmpty>
           <isNotEmpty prepend="and" property="ManagerID">ManagerID=#ManagerID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="ManagerName">ManagerName=#ManagerName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ManagerName">ManagerName like '%$ManagerName$%' </isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
         </isParameterPresent>
       </dynamic>
@@ -65,7 +65,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
           <isNotEmpty prepend="and" property="DepartmentID">DepartmentID=#DepartmentID#</isNotEmpty>
           <isNotEmpty prepend="and" property="DepartmentName">DepartmentName=#DepartmentName#</isNotEmpty>
           <isNotEmpty prepend="and" property="ManagerID">ManagerID=#ManagerID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="ManagerName">ManagerName=#ManagerName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ManagerName">ManagerNamelike '%$ManagerName$%' </isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
         </isParameterPresent>
       </dynamic>

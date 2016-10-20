@@ -48,8 +48,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="AccountID">AccountID=#AccountID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="CompanyName">link.CompanyName=#CompanyName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="AccountID">cv.AccountID like '%$AccountID$%'</isNotEmpty>
+          <isNotEmpty prepend="and" property="CompanyName">link.CompanyName like '%$CompanyName$%' </isNotEmpty>
           <isNotEmpty prepend="and" property="ZoneType">ZoneType=#ZoneType#</isNotEmpty>
           <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
@@ -76,7 +76,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="CompanyName">link.CompanyName=#CompanyName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="AccountID">cv.AccountID like '%$AccountID$%'</isNotEmpty>
+          <isNotEmpty prepend="and" property="CompanyName">link.CompanyName like '%$CompanyName$%'</isNotEmpty>
           <isNotEmpty prepend="and" property="WebsiteID">WebsiteID=#WebsiteID#</isNotEmpty>
           <isNotEmpty prepend="and" property="ZoneType">ZoneType=#ZoneType#</isNotEmpty>
           <isNotEmpty prepend="and" property="BalanceTime">BalanceTime=#BalanceTime#</isNotEmpty>
