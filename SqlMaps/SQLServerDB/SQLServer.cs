@@ -7,9 +7,16 @@ using System.Text;
 
 namespace SqlMaps
 {
+    /// <summary>
+    /// 直连数据库类
+    /// </summary>
     public  class SQLServer
     {
         private SqlConnection Connection = null;
+        /// <summary>
+        /// 打开数据库连接
+        /// </summary>
+        /// <returns></returns>
         private bool OpenSQLServer()
         {
             if (string.IsNullOrWhiteSpace(CommonData.DBConnetionString))
@@ -25,7 +32,11 @@ namespace SqlMaps
             }
             return false;
         }
-
+        /// <summary>
+        /// 无返回执行sql语句
+        /// </summary>
+        /// <param name="Sqls">sql语句</param>
+        /// <returns></returns>
         public bool  ExecuteSqlNoReturn(params string[]  Sqls)
         {
             if (OpenSQLServer())
@@ -50,7 +61,11 @@ namespace SqlMaps
             }
             return true;
         }
-
+        /// <summary>
+        /// 批量插入数据
+        /// </summary>
+        /// <param name="dt">数据表</param>
+        /// <returns></returns>
         public bool BatchInsertSQLServer(DataTable dt)
         {
             if (OpenSQLServer())
@@ -66,7 +81,9 @@ namespace SqlMaps
             return true;
         }
 
-        
+        /// <summary>
+        /// 关闭数据库连接
+        /// </summary>
         private void CloseSQLServer()
         {
             if (Connection != null)

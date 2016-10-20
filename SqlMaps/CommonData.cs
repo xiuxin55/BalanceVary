@@ -7,8 +7,14 @@ namespace SqlMaps
 {
     public class CommonData
     {
+        /// <summary>
+        /// ibatis config位置
+        /// </summary>
         public  const string  BalanceSqlConfig= @"Configure.sqlmap.config";
         private static string _DBConnetionString;
+        /// <summary>
+        /// 根据ibatis配置文件解析，数据库连接字符串，用于直连数据库
+        /// </summary>
         public static string  DBConnetionString
         {
             get

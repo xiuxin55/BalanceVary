@@ -6,6 +6,9 @@ using System.Text;
 
 namespace SqlMaps
 {
+    /// <summary>
+    /// 余额变化的ibatis
+    /// </summary>
     public class BalanceBatis: BaseBatis
     {
         public static ISqlMapper Batis

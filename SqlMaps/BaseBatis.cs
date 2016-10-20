@@ -33,7 +33,7 @@ namespace SqlMaps
                         {
                             //DomSqlMapBuilder builder = new DomSqlMapBuilder();
                             //SqlMap = builder.Configure(sqlconfig);
-
+                            //加载ibatis配置文件
                             Assembly assembly = Assembly.Load(sqlconfig.Split('.')[0]);
                             Stream stream = assembly.GetManifestResourceStream(sqlconfig);
                             DomSqlMapBuilder builder = new DomSqlMapBuilder();

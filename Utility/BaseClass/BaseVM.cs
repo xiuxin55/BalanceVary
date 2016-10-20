@@ -7,6 +7,9 @@ using System.Text;
 
 namespace Utility
 {
+    /// <summary>
+    /// VM基类
+    /// </summary>
     public abstract class BaseVM : NotificationObject
     {
         public BaseVM()
@@ -16,6 +19,9 @@ namespace Utility
             PageSize = 20;
         }
         private int _pageSize;
+        /// <summary>
+        /// 每页的条数
+        /// </summary>
         public int PageSize
         {
             get
@@ -30,6 +36,9 @@ namespace Utility
             }
         }
         private int _Total;
+        /// <summary>
+        /// 结果总条数
+        /// </summary>
         public int Total
         {
             get
@@ -43,9 +52,18 @@ namespace Utility
                 RaisePropertyChanged("Total");
             }
         }
-
+        /// <summary>
+        /// 当前页数
+        /// </summary>
         protected int CurrentPage { get; set; } 
+        /// <summary>
+        /// 分页命令
+        /// </summary>
         public DelegateCommand<object> PageChangedCommand { get; set; }
+        /// <summary>
+        /// 分页命令执行函数
+        /// </summary>
+        /// <param name="obj"></param>
         public virtual void PageChangedCommandExecute(object obj)
         {
             if (obj is int)
@@ -55,7 +73,11 @@ namespace Utility
             }
         }
 
-
+        /// <summary>
+        /// 分页操作执行方法
+        /// </summary>
+        /// <param name="startindex">开始索引</param>
+        /// <param name="endindex">结束索引</param>
         public abstract void LoadPageData(int startindex, int endindex);
     }
 }

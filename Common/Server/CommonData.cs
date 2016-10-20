@@ -10,6 +10,9 @@ namespace Common.Server
     /// </summary>
     public class CommonDataServer
     {
+        /// <summary>
+        /// 默认上传文件存储路径
+        /// </summary>
         public  static string UploadFileServerPath = AppDomain.CurrentDomain.BaseDirectory + "UpLoadFile\\";
         public static string CityZoneCode = "市行";
         public static string CountyZoneCode = "县行";

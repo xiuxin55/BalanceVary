@@ -10,42 +10,12 @@ namespace BalanceDAL
 {
     public class ConverterTable
     {
-        //public static  DataTable ListConvertTable<T>(List<T> list)
-        //{
-        //    Type t = typeof(T);
-        //    Type basemodel = typeof(BaseModel);
-        //    DataTable dtBalance = new DataTable();
-        //    dtBalance.TableName =t.Name+"Vary";
-        //    PropertyInfo[] properties= t.GetProperties();
-        //    List<string> strs = new List<string>();
-        //    foreach (var item in properties)
-        //    {
-        //        if (basemodel.GetProperty(item.Name) == null)
-        //        {
-        //            dtBalance.Columns.Add(item.Name);
-        //        }
-        //        else
-        //        {
-        //            strs.Add(item.Name);
-        //        }
-        //    }
-        //    foreach (var item in list)
-        //    {
-        //        DataRow dr = dtBalance.NewRow();
-        //        Type type=item.GetType();
-        //        foreach (var property in properties)
-        //        {
-        //            if (!strs.Contains(property.Name))
-        //            {
-        //                object obj = property.GetValue(item, null);
-        //                dr[property.Name] = obj == null?"":obj.ToString().Trim();
-        //            }
-        //        }
-        //        dtBalance.Rows.Add(dr);
-        //    }
-        //    return dtBalance;
-        //}
-
+        
+        /// <summary>
+        /// 每个公司变化数据转换为DataTable
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static DataTable CompanyBalanceListConvertTable(List<CompanyBalance> list)
         {
             DataTable dtBalance = new DataTable();
@@ -81,7 +51,11 @@ namespace BalanceDAL
             }
             return dtBalance;
         }
-
+        /// <summary>
+        /// 每个公司变化数据转换为DataTable
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static DataTable CompanyBalanceListConvertTableAccount(List<CompanyBalance> list)
         {
             DataTable dtBalance = new DataTable();
@@ -119,6 +93,11 @@ namespace BalanceDAL
             }
             return dtBalance;
         }
+        /// <summary>
+        /// 账户、户名数据转换为DataTable
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static DataTable AccountAndNameLinkInfoListConvertTableAccount(List<AccountAndNameLinkInfo> list)
         {
             DataTable dtBalance = new DataTable();
@@ -138,7 +117,11 @@ namespace BalanceDAL
             }
             return dtBalance;
         }
-
+        /// <summary>
+        /// 每个网点变化数据转换为DataTable
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static DataTable WebsiteBalanceListConvertTable(List<WebsiteBalance> list)
         {
             DataTable dtBalance = new DataTable();
@@ -173,8 +156,12 @@ namespace BalanceDAL
             return dtBalance;
         }
 
-        
 
+        /// <summary>
+        /// 每个账户变化数据转换为DataTable
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static DataTable AccountBalanceListConvertTable(List<AccountBalance> list)
         {
             DataTable dtBalance = new DataTable();
@@ -214,7 +201,11 @@ namespace BalanceDAL
             }
             return dtBalance;
         }
-
+        /// <summary>
+        ///  部门变化数据转换为DataTable
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static DataTable DepartmentBalanceListConvertTable(List<DepartmentBalance> list)
         {
             DataTable dtBalance = new DataTable();
@@ -248,7 +239,11 @@ namespace BalanceDAL
             }
             return dtBalance;
         }
-
+        /// <summary>
+        ///  客户经理变化数据转换为DataTable
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static DataTable CustomerManagerBalanceListConvertTable(List<CustomerManagerBalance> list)
         {
             DataTable dtBalance = new DataTable();
@@ -286,7 +281,11 @@ namespace BalanceDAL
             }
             return dtBalance;
         }
-
+        /// <summary>
+        ///  客户经理关联数据转换为DataTable
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static DataTable AccountLinkListConvertTable(List<AccountLinkManagerInfo> list)
         {
             DataTable dt = new DataTable();

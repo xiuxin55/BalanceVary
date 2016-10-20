@@ -50,7 +50,7 @@
   <ItemGroup>
     <Compile Include="AccountAndNameLinkInfoDAL.cs" />
     <Compile Include="SystemSetInfoDAL.cs" />
-    <Compile Include="BalanceDAL.cs" />
+    <Compile Include="Vary\BalanceDAL.cs" />
     <Compile Include="DataConverter\ConverterTable.cs" />
     <Compile Include="AccountLinkManagerInfoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
