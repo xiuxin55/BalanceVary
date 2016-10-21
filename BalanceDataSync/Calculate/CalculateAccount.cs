@@ -82,35 +82,6 @@ namespace BalanceDataSync
 
             });
             AccountBalanceVary = AccountBalanceVaryTemp.ToList();
-            //foreach (var item in ImportDataList)
-            //{
-            //    ImportDataInfo import = ImportDataList.Find(e => e.AccountID == item.AccountID && e.SubAccountNumber == item.SubAccountNumber&&e.DataTime==item.DataTime.AddDays(-1));
-            //    import = import ?? new ImportDataInfo();
-            //    AccountBalance ab = new AccountBalance();
-            //    ab.ID = Guid.NewGuid().ToString();
-            //    ab.AccountID = item.AccountID;
-            //    ab.AccountName = item.AccountName;
-            //    ab.AccountType = item.AccountType;
-            //    ab.SubAccountNumber = item.SubAccountNumber;
-            //    ab.WebsiteID = item.WebsiteID;
-            //    ab.BalanceTime = item.DataTime;
-            //    ab.Rate = "0%";
-            //    if(item.AccountType ==Common.Server.CommonDataServer.AccountTypeRegular)
-            //    {
-            //        ab.RegularMoney = item.CurrentBalance;
-            //        ab.RegularMoneyVary = item.CurrentBalance - import.CurrentBalance;
-            //    }
-            //    if (item.AccountType == Common.Server.CommonDataServer.AccountTypeUnRegular)
-            //    {
-            //        ab.UnRegularMoney = item.CurrentBalance;
-            //        ab.UnRegularMoneyVary = item.CurrentBalance - import.CurrentBalance;
-            //    }
-            //    AccountBalanceVary.Add(ab);
-            //    if (!ImportTimeList.Contains(item.DataTime))
-            //    {
-            //        ImportTimeList.Add(item.DataTime);
-            //    }
-            //}
             AccountBalanceBLL abbll = new AccountBalanceBLL();
             AccountBalance abs = new AccountBalance();
             abs.BalanceTime = MinTime.AddDays(-1);
