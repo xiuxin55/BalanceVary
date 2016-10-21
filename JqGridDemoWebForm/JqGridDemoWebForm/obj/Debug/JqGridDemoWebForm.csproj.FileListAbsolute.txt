@@ -1,0 +1,74 @@
+E:\Sample\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.dll
+E:\Sample\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.pdb
+E:\Sample\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\ResolveAssemblyReference.cache
+E:\Sample\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.dll
+E:\Sample\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\测试项目\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.dll
+C:\Users\Administrator\Desktop\测试项目\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\测试项目\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.dll
+C:\Users\Administrator\Desktop\测试项目\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\测试项目\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.dll
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportDao.dll
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportModel.dll
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportDao.pdb
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportModel.pdb
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.dll
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportDao.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportModel.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportDao.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportModel.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\测试项目\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\BalanceReport20150503\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.dll
+C:\Users\Administrator\Desktop\BalanceReport20150503\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\BalanceReport20150503\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportDao.dll
+C:\Users\Administrator\Desktop\BalanceReport20150503\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportModel.dll
+C:\Users\Administrator\Desktop\BalanceReport20150503\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportDao.pdb
+C:\Users\Administrator\Desktop\BalanceReport20150503\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportModel.pdb
+C:\Users\Administrator\Desktop\BalanceReport20150503\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.dll
+C:\Users\Administrator\Desktop\BalanceReport20150503\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\BalanceReport20150503\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\BalanceReport2015-05-07\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.dll
+C:\Users\Administrator\Desktop\BalanceReport2015-05-07\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\BalanceReport2015-05-07\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportDao.dll
+C:\Users\Administrator\Desktop\BalanceReport2015-05-07\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportModel.dll
+C:\Users\Administrator\Desktop\BalanceReport2015-05-07\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportDao.pdb
+C:\Users\Administrator\Desktop\BalanceReport2015-05-07\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportModel.pdb
+C:\Users\Administrator\Desktop\BalanceReport2015-05-07\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\BalanceReport2015-05-07\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.dll
+C:\Users\Administrator\Desktop\BalanceReport2015-05-07\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-05-24-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-05-24-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-05-24-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportDao.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-05-24-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportModel.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-05-24-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportDao.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-05-24-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportModel.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-05-24-最新\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-05-24-最新\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-05-24-最新\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-01-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-01-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-01-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportDao.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-01-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportModel.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-01-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportDao.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-01-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportModel.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-01-最新\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-01-最新\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-01-最新\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\JqGridDemoWebForm.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportDao.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportModel.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportDao.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\JqGridDemoWebForm\JqGridDemoWebForm\bin\BalanceReportModel.pdb
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.dll
+C:\Users\Administrator\Desktop\测试项目\BalanceReport2015-06-03-最新\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.pdb
+E:\个人\GitHub_余额变动\BalanceVary\JqGridDemoWebForm\JqGridDemoWebForm\obj\Debug\JqGridDemoWebForm.csprojResolveAssemblyReference.cache
