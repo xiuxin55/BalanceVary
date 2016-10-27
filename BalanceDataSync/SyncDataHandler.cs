@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BalanceDataSync
 {
-    public class SyncDataHandler : ISyncDataHandler
+    public partial  class SyncDataHandler 
     {
 
         List<ImportDataInfo> ImportDataList = new List<ImportDataInfo>();

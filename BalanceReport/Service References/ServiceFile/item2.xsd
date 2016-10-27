@@ -42,4 +42,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BaseModel" nillable="true" type="tns:BaseModel" />
+  <xs:complexType name="ArrayOfUploadFileInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UploadFileInfo" nillable="true" type="tns:UploadFileInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUploadFileInfo" nillable="true" type="tns:ArrayOfUploadFileInfo" />
 </xs:schema>

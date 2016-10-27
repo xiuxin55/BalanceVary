@@ -23,6 +23,8 @@
             <Button Content="处理文件" HorizontalAlignment="Left" Height="28" Margin="5,0,0,0" VerticalAlignment="Center" Width="90" Command="{Binding HandleFileCommand}"/>
             <Button Content="删除" HorizontalAlignment="Left" Height="28" Margin="5,0,0,0" VerticalAlignment="Center" Width="90" Command="{Binding DeleteFileCommand}"/>
         <Button Content="刷新" HorizontalAlignment="Left" Height="28" Margin="5,0,0,0" VerticalAlignment="Center" Width="90" Command="{Binding SearchCommand}"/>
+            <Button Content="查看异常" HorizontalAlignment="Left" Height="28" Margin="5,0,0,0" VerticalAlignment="Center" Width="90" Command="{Binding LookExceptionCommand}"/>
+            
             <ComboBox  Margin="5,0,0,0"  Width="90" >
                 <ComboBoxItem Content="上传成功"/>
                 <ComboBoxItem Content="处理完成"/>
@@ -30,7 +32,7 @@
             </ComboBox>
             <Button Content="定时进行计算" HorizontalAlignment="Left" Height="28" Margin="5,0,0,0" VerticalAlignment="Center" Width="90" Command="{Binding TimerCalculateCommand}"/>
         </StackPanel>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding UploadFileList}" AutoGenerateColumns="False" CanUserAddRows="False" x:Name="uploaddg">
+        <DataGrid Grid.Row="1" ItemsSource="{Binding UploadFileList}" SelectedItem="{Binding SelectedUploadFile}" AutoGenerateColumns="False" CanUserAddRows="False" x:Name="uploaddg">
             <DataGrid.Columns>
                 <DataGridTemplateColumn >
                     <DataGridTemplateColumn.Header>

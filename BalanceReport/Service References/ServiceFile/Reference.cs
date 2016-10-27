@@ -459,6 +459,9 @@ namespace BalanceReport.ServiceFile {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceFile/StoreUpLoadResult", ReplyAction="http://tempuri.org/IServiceFile/StoreUpLoadResultResponse")]
         bool StoreUpLoadResult(BalanceReport.ServiceFile.UploadFileInfo uploadfileinfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceFile/Select", ReplyAction="http://tempuri.org/IServiceFile/SelectResponse")]
+        BalanceReport.ServiceFile.UploadFileInfo[] Select(BalanceReport.ServiceFile.UploadFileInfo uploadfileinfo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -498,6 +501,10 @@ namespace BalanceReport.ServiceFile {
         
         public bool StoreUpLoadResult(BalanceReport.ServiceFile.UploadFileInfo uploadfileinfo) {
             return base.Channel.StoreUpLoadResult(uploadfileinfo);
+        }
+        
+        public BalanceReport.ServiceFile.UploadFileInfo[] Select(BalanceReport.ServiceFile.UploadFileInfo uploadfileinfo) {
+            return base.Channel.Select(uploadfileinfo);
         }
     }
 }

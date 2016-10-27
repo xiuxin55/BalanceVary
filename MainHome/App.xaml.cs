@@ -22,7 +22,8 @@ namespace MainHome
             MainWindow bw = new MainWindow();
             bw.Show();
 
-
+            //BalanceReport.Salary.SalaryWindow sw = new BalanceReport.Salary.SalaryWindow();
+            //sw.Show();
 
 
         }

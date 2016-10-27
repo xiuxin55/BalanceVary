@@ -30,103 +30,107 @@ namespace BalanceModel
         /// <summary>
         /// 保留年功津贴
         /// </summary>
-        public string  WebsiteManager { get; set; }
+        public string YearCreditAllowance { get; set; }
         /// <summary>
         /// 保留工资
         /// </summary>
-        public string  ManagerTelphone { get; set; }
+        public string  RetainsSalary { get; set; }
         /// <summary>
         /// 综合补贴
         /// </summary>
-        public string  Institution { get; set; }
+        public string SynthesizeAllowance { get; set; }
         /// <summary>
         /// 过渡期补贴
         /// </summary>
-        public string Institution { get; set; }
+        public string ExpiredAllowance { get; set; }
         /// <summary>
         /// 住房补贴
         /// </summary>
-        public string Institution { get; set; }
+        public string HouseAllowance { get; set; }
         /// <summary>
         /// 应发工资
         /// </summary>
-        public string Institution { get; set; }
+        public string ShouldSalary { get; set; }
         /// <summary>
         /// 住房公积金实缴额(个人合计)
         /// </summary>
-        public string Institution { get; set; }
+        public string HouseFund { get; set; }
         /// <summary>
         /// 养老保险实缴额(个人)
         /// </summary>
-        public string Institution { get; set; }
+        public string PensionMoney { get; set; }
         /// <summary>
         /// 工会费
         /// </summary>
-        public string Institution { get; set; }
+        public string UnionMoney { get; set; }
         /// <summary>
         /// 医疗保险实缴额(个人)
         /// </summary>
-        public string Institution { get; set; }
+        public string HealthInsuranceMoney { get; set; }
         /// <summary>
         /// 失业保险实缴额(个人)
         /// </summary>
-        public string Institution { get; set; }
+        public string LossJobMoney { get; set; }
         /// <summary>
         /// 大病医疗保险实缴额(个人)
         /// </summary>
-        public string Institution { get; set; }
+        public string BigDiseaseInsuranceMoney { get; set; }
         /// <summary>
         /// 年金
         /// </summary>
-        public string Institution { get; set; }
+        public string YearMoney { get; set; }
         /// <summary>
         /// 扣款自定义项1(抵税)
         /// </summary>
-        public string Institution { get; set; }
+        public string TaxDeductable { get; set; }
         /// <summary>
         /// 扣款合计
         /// </summary>
-        public string Institution { get; set; }
+        public string ChargebacksAmount { get; set; }
         /// <summary>
         /// 实发工资
         /// </summary>
-        public string Institution { get; set; }
+        public string RealSalary { get; set; }
         /// <summary>
         /// 应发绩效
         /// </summary>
-        public string Institution { get; set; }
+        public string ShouldPerformance { get; set; }
         /// <summary>
         /// 奖励
         /// </summary>
-        public string Institution { get; set; }
+        public string Reward { get; set; }
         /// <summary>
         /// 考核
         /// </summary>
-        public string Institution { get; set; }
+        public string Appraisals { get; set; }
         /// <summary>
         /// 补扣上月
         /// </summary>
-        public string Institution { get; set; }
+        public string BucklupLastMonth { get; set; }
         /// <summary>
         /// 税收
         /// </summary>
-        public string Institution { get; set; }
+        public string Tax { get; set; }
         /// <summary>
         /// 风险金
         /// </summary>
-        public string Institution { get; set; }
+        public string RiskMoney { get; set; }
         /// <summary>
         /// 实发绩效
         /// </summary>
-        public string Institution { get; set; }
+        public string RealPerformance { get; set; }
         /// <summary>
         /// 实发合计
         /// </summary>
-        public string Institution { get; set; }
+        public string RealAmount { get; set; }
         /// <summary>
         /// 备注说明
         /// </summary>
-        public string Institution { get; set; }
+        public string Remark { get; set; }
+        /// <summary>
+        /// 薪资时间
+        /// </summary>
+        public DateTime? SalaryTime { get; set; }
 
     }
 }

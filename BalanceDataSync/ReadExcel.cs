@@ -237,7 +237,71 @@ namespace BalanceDataSync
             }
 
         }
-        
 
+        public static List<SalaryInfo> ReadSalaryInfoData(string filename,DateTime? salarytime)
+        {
+            try
+            {
+                List<SalaryInfo> list = new List<SalaryInfo>();
+                DataTable dt = NPOIHelper.Instance.ImportAccountLink(filename);
+                bool ishas = true ;
+                if (!dt.Columns.Contains("人员编码"))
+                {
+                    ishas = false;
+                    dt = NPOIHelper.Instance.ImportMonth(filename);
+                }
+                for (int j = ishas?0:1; j < dt.Rows.Count; j++)
+                {
+                    DataRow item = dt.Rows[j];
+                    if (string.IsNullOrWhiteSpace(item[0].ToString()))
+                    {
+                        continue;
+                    }
+                    SalaryInfo am = new SalaryInfo();
+                    am.ID = Guid.NewGuid().ToString();
+                    am.StaffCode = item[0]!=null? item[0].ToString().Trim():"";
+                    am.StaffName = item[1] != null ? item[1].ToString().Trim() : "";
+                    am.JobSalary = item[2] != null ? item[2].ToString().Trim() : "0";
+                    am.ProfessionAllowance = item[3] != null ? item[3].ToString().Trim() : "0";
+                    am.YearCreditAllowance = item[4] != null ? item[4].ToString().Trim() : "0";
+                    am.RetainsSalary = item[5] != null ? item[5].ToString().Trim() : "0";
+                    am.SynthesizeAllowance = item[6] != null ? item[6].ToString().Trim() : "0";
+                    am.ExpiredAllowance = item[7] != null ? item[7].ToString().Trim() : "0";
+                    am.HouseAllowance = item[8] != null ? item[8].ToString().Trim() : "0";
+                    am.ShouldSalary = item[9] != null ? item[9].ToString().Trim() : "0";
+                    am.HouseFund = item[10] != null ? item[10].ToString().Trim() : "0";
+                    am.PensionMoney = item[11] != null ? item[11].ToString().Trim() : "0";
+                    am.UnionMoney = item[12] != null ? item[12].ToString().Trim() : "0";
+                    am.HealthInsuranceMoney = item[13] != null ? item[13].ToString().Trim() : "0";
+                    am.LossJobMoney = item[14] != null ? item[14].ToString().Trim() : "0";
+                    am.BigDiseaseInsuranceMoney = item[15] != null ? item[15].ToString().Trim() : "0";
+                    am.YearMoney = item[16] != null ? item[16].ToString().Trim() : "0";
+                    am.TaxDeductable = item[17] != null ? item[17].ToString().Trim() : "0";
+                    am.ChargebacksAmount = item[18] != null ? item[18].ToString().Trim() : "0";
+                    am.RealSalary = item[19] != null ? item[19].ToString().Trim() : "0";
+                    am.ShouldPerformance = item[20] != null ? item[20].ToString().Trim() : "0";
+                    am.Reward = item[21] != null ? item[21].ToString().Trim() : "0";
+                    am.Appraisals = item[22] != null ? item[22].ToString().Trim() : "0";
+                    am.BucklupLastMonth = item[23] != null ? item[23].ToString().Trim() : "0";
+                    am.Tax = item[24] != null ? item[24].ToString().Trim() : "0";
+                    am.RiskMoney = item[25] != null ? item[25].ToString().Trim() : "0";
+                    am.RealPerformance = item[26] != null ? item[26].ToString().Trim() : "0";
+                    am.RealAmount = item[27] != null ? item[27].ToString().Trim() : "0";
+                    am.Remark = item[28] != null ? item[28].ToString().Trim() : "0";
+                    am.SalaryTime = salarytime;
+                    list.Add(am);
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
     }
+
+
+
 }

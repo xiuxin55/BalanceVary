@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountAndNameLinkInfoBLL.cs" />
+    <Compile Include="Salary\SalaryInfoBLL.cs" />
     <Compile Include="SystemSetInfoBLL.cs" />
     <Compile Include="BalanceBaseBLL.cs" />
     <Compile Include="AccountLinkManagerInfoBLL.cs" />

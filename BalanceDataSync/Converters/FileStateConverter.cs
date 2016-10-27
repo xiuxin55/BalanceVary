@@ -21,9 +21,9 @@ namespace BalanceDataSync.Converters
                     return "上传成功";
 
                 case 1:
-                    return "计算成功";
+                    return "处理成功";
                 case 2:
-                    return "计算失败";
+                    return "处理失败";
                 default:
                     return null;
             }

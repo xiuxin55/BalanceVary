@@ -11,7 +11,7 @@ namespace BalanceDAL
     /// <summary>
     /// 批量插入
     /// </summary>
-    public class BatchInsertSQLServer
+    public partial class BatchInsertSQLServer
     {
         /// <summary>
         /// 批量插入公司数据
@@ -98,6 +98,24 @@ namespace BalanceDAL
         public bool BatchInsertAccountLink(List<AccountLinkManagerInfo> list)
         {
             DataTable result = ConverterTable.AccountLinkListConvertTable(list);
+            SQLServer ss = new SQLServer();
+            return ss.BatchInsertSQLServer(result);
+        }
+    }
+
+    /// <summary>
+    /// 薪资的导入
+    /// </summary>
+    public partial class BatchInsertSQLServer
+    {
+        /// <summary>
+        /// 批量插入薪资数据
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public bool BatchInsertSalaryInfo(List<SalaryInfo> list)
+        {
+            DataTable result = ConverterTable.SalaryInfoListConvertTable(list);
             SQLServer ss = new SQLServer();
             return ss.BatchInsertSQLServer(result);
         }

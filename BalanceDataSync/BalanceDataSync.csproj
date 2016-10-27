@@ -81,6 +81,7 @@
     <Compile Include="ExcelAndData.cs" />
     <Compile Include="ISyncDataHandler.cs" />
     <Compile Include="ReadExcel.cs" />
+    <Compile Include="Salary\SyncSalaryDataHandler.cs" />
     <Compile Include="SyncDataHandler.cs" />
     <Compile Include="UCUploadFile.xaml.cs">
       <DependentUpon>UCUploadFile.xaml</DependentUpon>
@@ -159,6 +160,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

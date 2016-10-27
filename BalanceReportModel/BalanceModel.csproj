@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountAndNameLinkInfo.cs" />
+    <Compile Include="Salary\SalaryInfo.cs" />
     <Compile Include="SystemSetInfo.cs" />
     <Compile Include="AccountInfo.cs" />
     <Compile Include="BalanceInfo.cs" />

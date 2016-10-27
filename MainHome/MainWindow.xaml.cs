@@ -1,4 +1,5 @@
 ﻿using BalanceReport;
+using BalanceReport.Salary;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,12 @@ namespace MainHome
         {
             BalanceWindow bw = new BalanceWindow();
             bw.Show();
+        }
+
+        private void btnSalary_Click(object sender, RoutedEventArgs e)
+        {
+            SalaryWindow sw = new SalaryWindow();
+            sw.Show();
         }
     }
 }

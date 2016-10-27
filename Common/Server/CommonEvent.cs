@@ -23,5 +23,10 @@ namespace Common.Server
         /// 上传账户号和账户名称数据后触发导入事件
         /// </summary>
         public static Action<object> FileUploadedAccountAndNameLinkEvent;
+
+        /// <summary>
+        /// 上传薪资数据后触发导入事件
+        /// </summary>
+        public static Action<object> FileUploadedSalaryEvent;
     }
 }

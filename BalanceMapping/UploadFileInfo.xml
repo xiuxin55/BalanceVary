@@ -32,7 +32,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
           <isNotEmpty prepend="and" property="FileType">FileType=#FileType#</isNotEmpty>
           <isNotEmpty prepend="and" property="FileDateTime">FileDateTime=#FileDateTime#</isNotEmpty>
           <isNotEmpty prepend="and" property="FileUploadTime">FileUploadTime=#FileUploadTime#</isNotEmpty>
-          <isNotEmpty prepend="and" property="FileState">FileState=#FileState#</isNotEmpty>
+          
           <isNotEmpty prepend="and" property="FileException">FileException=#FileException#</isNotEmpty>
           <isNotEmpty prepend="and" property="FilePath">FilePath=#FilePath#</isNotEmpty>
           <isNotEmpty prepend="and" property="FileMD5">FileMD5=#FileMD5#</isNotEmpty>
@@ -42,7 +42,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     <update id="UpdateUploadFileInfo"  parameterClass="UploadFileInfo">
       UPDATE UploadFileInfo
       SET
-      ID = #ID#
+      ID = #ID#,
+      FileException = #FileException#
       <isNotEmpty prepend ="," property="FileName">
         FileName = #FileName#
       </isNotEmpty>
@@ -58,9 +59,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <isNotEmpty prepend ="," property="FileState">
         FileState = #FileState#
       </isNotEmpty>
-      <isNotEmpty prepend ="," property="FileException">
-        FileException = #FileException#
-      </isNotEmpty>
+   
       <isNotEmpty prepend ="," property="FilePath">
         FilePath = #FilePath#
       </isNotEmpty>

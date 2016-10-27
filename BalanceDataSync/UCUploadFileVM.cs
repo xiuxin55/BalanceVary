@@ -23,27 +23,31 @@ namespace BalanceDataSync
         {
             HandleFileCommand = new DelegateCommand(HandleFileExecute);
             DeleteFileCommand = new DelegateCommand(DeleteFileExecute);
-    
+            LookExceptionCommand = new DelegateCommand(LookExceptionExecute);
             SearchCommand = new DelegateCommand(SearchExecute);
             SearchExecute();
             CommonEvent.FileUploadedCalculateEvent += CalculateEvent;
             CommonEvent.FileUploadedCalculateDayEvent += CalculateDayEvent;
             CommonEvent.FileUploadedCustomerLinkEvent += CustomerLinkEvent;
             CommonEvent.FileUploadedAccountAndNameLinkEvent += AccountAndNameLinkEvent;
-            
+            CommonEvent.FileUploadedSalaryEvent+= SalaryEvent;
+
+
         }
         //#region 属性
-        // private WebsiteInfoModel _selectedWebsiteInfoModel;
-        ///// <summary>
-        /////被选中的行 
-        ///// </summary>
-        //public WebsiteInfoModel SelectedWebsiteInfoModel
-        //{
-        //    get { return _selectedWebsiteInfoModel; }
-        //    set { _selectedWebsiteInfoModel = value;
-        //    this.RaisePropertyChanged("SelectedWebsiteInfoModel");
-        //    }
-        //}
+        private UploadFileInfo  _SelectedUploadFile;
+        /// <summary>
+        ///被选中的行 
+        /// </summary>
+        public UploadFileInfo SelectedUploadFile
+        {
+            get { return _SelectedUploadFile; }
+            set
+            {
+                _SelectedUploadFile = value;
+                this.RaisePropertyChanged("SelectedUploadFile");
+            }
+        }
 
 
         //private WebsiteInfoModel _searchWebsiteInfoModel;
@@ -91,9 +95,28 @@ namespace BalanceDataSync
         #region 命令
         public DelegateCommand HandleFileCommand { get; set; }
         public DelegateCommand DeleteFileCommand { get; set; }
-
+        public DelegateCommand LookExceptionCommand { get; set; }
+        
         public DelegateCommand SearchCommand { get; set; }
         #endregion
+        private void LookExceptionExecute()
+        {
+            if (SelectedUploadFile ==null)
+            {
+                MessageBox.Show("请选择一条记录");
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(SelectedUploadFile.FileException))
+                {
+                    MessageBox.Show("该记录无异常");
+                }
+                else
+                {
+                    MessageBox.Show(SelectedUploadFile.FileException);
+                }
+            }
+        }
         //#region 命令执行方法
         /// <summary>
         /// 计算文件中数据
@@ -106,11 +129,16 @@ namespace BalanceDataSync
                 {
                     return;
                 }
+                foreach (var item in UploadFileList)
+                {
+                    item.FileException = null;
+                }
                 SyncDataHandler syn = new SyncDataHandler(UploadFileList.Where(e => e.IsSelected ).ToList());
                 syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportCustomerLink), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportAccountAndNameLink), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportSalaryInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
             }
             catch (Exception ex)
             {
@@ -169,7 +197,23 @@ namespace BalanceDataSync
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportAccountAndNameLink), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
             }
         }
-        
+        /// <summary>
+        /// 薪资导入触发事件
+        /// </summary>
+        /// <param name="obj"></param>
+        private void SalaryEvent(object obj)
+        {
+            UploadFileInfo info = obj as UploadFileInfo;
+            if (info != null)
+            {
+                List<UploadFileInfo> temp = new List<UploadFileInfo>();
+                temp.Add(info);
+                SyncDataHandler syn = new SyncDataHandler(temp);
+                syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportSalaryInfo), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+            }
+        }
+
         /// <summary>
         /// 删除文件
         /// </summary>
@@ -256,6 +300,11 @@ namespace BalanceDataSync
         public void SynComplete(object obj)
         {
             List<UploadFileInfo> ufiList = obj as List<UploadFileInfo>;
+            if (ufiList == null || ufiList.Count==0)
+            {
+                CurrentCalculateFile = "所有文件处理结束";
+                return;
+            }
             bll.BatchUpdate(ufiList);
             SearchExecute();
 

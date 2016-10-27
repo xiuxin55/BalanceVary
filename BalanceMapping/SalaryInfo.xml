@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="SalaryInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <alias>
+    <typeAlias alias="SalaryInfo" type="BalanceModel.SalaryInfo,BalanceModel" />
+  </alias>
+  <resultMaps>
+    <resultMap id="SalaryInfoMap" class="SalaryInfo">
+      <result property="RowNumber" column="RowNumber"/>
+      <result property="ID" column="ID"/>
+      <result property="StaffCode" column="StaffCode"/>
+      <result property="StaffName" column="StaffName"/>
+      <result property="JobSalary" column="JobSalary"/>
+      <result property="ProfessionAllowance" column="ProfessionAllowance"/>
+      <result property="YearCreditAllowance" column="YearCreditAllowance"/>
+      <result property="RetainsSalary" column="RetainsSalary"/>
+      <result property="SynthesizeAllowance" column="SynthesizeAllowance"/>
+      <result property="ExpiredAllowance" column="ExpiredAllowance"/>
+      <result property="HouseAllowance" column="HouseAllowance"/>
+      <result property="ShouldSalary" column="ShouldSalary"/>
+      <result property="HouseFund" column="HouseFund"/>
+      <result property="PensionMoney" column="PensionMoney"/>
+
+      <result property="UnionMoney" column="UnionMoney"/>
+      <result property="HealthInsuranceMoney" column="HealthInsuranceMoney"/>
+      <result property="LossJobMoney" column="LossJobMoney"/>
+      <result property="BigDiseaseInsuranceMoney" column="BigDiseaseInsuranceMoney"/>
+      <result property="YearMoney" column="YearMoney"/>
+      <result property="TaxDeductable" column="TaxDeductable"/>
+      <result property="ChargebacksAmount" column="ChargebacksAmount"/>
+      <result property="RealSalary" column="RealSalary"/>
+      <result property="ShouldPerformance" column="ShouldPerformance"/>
+      <result property="Reward" column="Reward"/>
+      <result property="Appraisals" column="Appraisals"/>
+      <result property="BucklupLastMonth" column="BucklupLastMonth"/>
+      <result property="Tax" column="Tax"/>
+      <result property="RiskMoney" column="RiskMoney"/>
+
+      <result property="RealPerformance" column="RealPerformance"/>
+      <result property="RealAmount" column="RealAmount"/>
+      <result property="Remark" column="Remark"/>
+      <result property="SalaryTime" column="SalaryTime"/>
+      
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <select id="SelectSalaryInfoCount"  resultClass="int"   parameterClass="SalaryInfo">
+      select count(*) from SalaryInfo  where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="StaffCode">StaffCode =#StaffCode#</isNotEmpty>
+          <isNotEmpty prepend="and" property="StaffName">StaffName like '%$StaffName$%' </isNotEmpty>
+          <isNotEmpty prepend="and" property="SalaryTime">SalaryTime=#SalaryTime#</isNotEmpty>
+         
+        </isParameterPresent>
+      </dynamic>
+    </select>
+    <select id="SelectSalaryInfo"  resultMap="SalaryInfoMap"  parameterClass="SalaryInfo">
+      select * from (
+      select row_number() over(order by  $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,
+      *
+      from SalaryInfo   where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="StaffCode">StaffCode =#StaffCode#</isNotEmpty>
+          <isNotEmpty prepend="and" property="StaffName">StaffName like '%$StaffName$%' </isNotEmpty>
+          <isNotEmpty prepend="and" property="SalaryTime">SalaryTime=#SalaryTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+      )as result
+      where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="StartIndex"><![CDATA[result.RowNumber>=#StartIndex#]]></isNotEmpty>
+          <isNotEmpty prepend="and" property="EndIndex"><![CDATA[result.RowNumber<=#EndIndex#]]></isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
+   
+
+    <delete id="BatchDeleteSalaryInfo" parameterClass="ArrayList">
+      DELETE FROM SalaryInfo WHERE
+      SalaryTime IN
+      (
+      <iterate conjunction=",">
+        #[]#
+      </iterate> 
+      )
+    </delete>
+  </statements>
+</sqlMap>

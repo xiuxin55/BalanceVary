@@ -93,6 +93,12 @@ namespace WcfBalanceServiceLibrary
             {
                 CommonEvent.FileUploadedAccountAndNameLinkEvent(uploadfileinfo);
             }
+
+            if (CommonEvent.FileUploadedSalaryEvent != null)
+            {
+                //薪资数据导入触发
+                CommonEvent.FileUploadedSalaryEvent(uploadfileinfo);
+            }
         }
         public UploadFileInfo GetFileInfo(UploadFileInfo uploadfileinfo)
         {
@@ -106,6 +112,20 @@ namespace WcfBalanceServiceLibrary
                 LogHelper.WriteLog(typeof(ServiceFile), ex);
                 return null;
             }
+        }
+
+        public List<UploadFileInfo> Select(UploadFileInfo uploadfileinfo)
+        {
+            try
+            {
+                return bll.Select(uploadfileinfo);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(ServiceFile), ex);
+                throw ex;
+            }
+            
         }
     }
 }

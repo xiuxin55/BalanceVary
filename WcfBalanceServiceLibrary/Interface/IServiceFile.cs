@@ -34,6 +34,8 @@ namespace WcfBalanceServiceLibrary
         /// <returns></returns>
         [OperationContract]
         bool StoreUpLoadResult(UploadFileInfo uploadfileinfo);
+        [OperationContract]
+        List<UploadFileInfo> Select(UploadFileInfo uploadfileinfo);
     }
 
    

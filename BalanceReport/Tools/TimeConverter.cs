@@ -25,4 +25,23 @@ namespace BalanceReport.Tools
             throw new NotImplementedException();
         }
     }
+
+    public class TimeToyyyyMMConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            DateTime? dtime = value as DateTime?;
+            if (dtime != null)
+            {
+                return dtime.Value.ToString("yyyy年MM月");
+            }
+            return null;
+
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

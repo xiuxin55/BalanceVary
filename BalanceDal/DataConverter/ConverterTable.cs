@@ -8,7 +8,7 @@ using System.Text;
 
 namespace BalanceDAL
 {
-    public class ConverterTable
+    public partial  class ConverterTable
     {
         
         /// <summary>
@@ -313,6 +313,92 @@ namespace BalanceDAL
                 dt.Rows.Add(dr);
             }
             return dt;
+        }
+    }
+    /// <summary>
+    /// 薪资使用的转换
+    /// </summary>
+    public partial class ConverterTable
+    {
+        /// <summary>
+        ///  薪资数据转换为DataTable
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static DataTable SalaryInfoListConvertTable(List<SalaryInfo> list)
+        {
+            DataTable dtBalance = new DataTable();
+            dtBalance.TableName = "SalaryInfo";
+            dtBalance.Columns.Add("ID");
+            dtBalance.Columns.Add("StaffCode");
+            dtBalance.Columns.Add("StaffName");
+            dtBalance.Columns.Add("JobSalary");
+            dtBalance.Columns.Add("ProfessionAllowance");
+            dtBalance.Columns.Add("YearCreditAllowance");
+            dtBalance.Columns.Add("RetainsSalary");
+            dtBalance.Columns.Add("SynthesizeAllowance");
+            dtBalance.Columns.Add("ExpiredAllowance");
+            dtBalance.Columns.Add("HouseAllowance");
+            dtBalance.Columns.Add("ShouldSalary");
+            dtBalance.Columns.Add("HouseFund");
+            dtBalance.Columns.Add("PensionMoney");
+            dtBalance.Columns.Add("UnionMoney");
+            dtBalance.Columns.Add("HealthInsuranceMoney");
+            dtBalance.Columns.Add("LossJobMoney");
+            dtBalance.Columns.Add("BigDiseaseInsuranceMoney");
+            dtBalance.Columns.Add("YearMoney");
+            dtBalance.Columns.Add("TaxDeductable");
+            dtBalance.Columns.Add("ChargebacksAmount");
+            dtBalance.Columns.Add("RealSalary");
+            dtBalance.Columns.Add("ShouldPerformance");
+            dtBalance.Columns.Add("Reward");
+            dtBalance.Columns.Add("Appraisals");
+            dtBalance.Columns.Add("BucklupLastMonth");
+            dtBalance.Columns.Add("Tax");
+            dtBalance.Columns.Add("RiskMoney");
+            dtBalance.Columns.Add("RealPerformance");
+            dtBalance.Columns.Add("RealAmount");
+            dtBalance.Columns.Add("Remark");
+            dtBalance.Columns.Add("SalaryTime");
+           
+            foreach (var item in list)
+            {
+                DataRow dr = dtBalance.NewRow();
+                dr["ID"] = item.ID;
+                dr["StaffCode"] = item.StaffCode;
+                dr["StaffName"] = item.StaffName;
+                dr["JobSalary"] = item.JobSalary;
+                dr["ProfessionAllowance"] = item.ProfessionAllowance;
+                dr["YearCreditAllowance"] = item.YearCreditAllowance;
+                dr["RetainsSalary"] = item.RetainsSalary;
+                dr["SynthesizeAllowance"] = item.SynthesizeAllowance;
+                dr["ExpiredAllowance"] = item.ExpiredAllowance;
+                dr["HouseAllowance"] = item.HouseAllowance;
+                dr["ShouldSalary"] = item.ShouldSalary;
+                dr["HouseFund"] = item.HouseFund;
+                dr["PensionMoney"] = item.PensionMoney;
+                dr["UnionMoney"] = item.UnionMoney;
+                dr["HealthInsuranceMoney"] = item.HealthInsuranceMoney;
+                dr["LossJobMoney"] = item.LossJobMoney;
+                dr["BigDiseaseInsuranceMoney"] = item.BigDiseaseInsuranceMoney;
+                dr["YearMoney"] = item.YearMoney;
+                dr["TaxDeductable"] = item.TaxDeductable;
+                dr["ChargebacksAmount"] = item.ChargebacksAmount;
+                dr["RealSalary"] = item.RealSalary;
+                dr["ShouldPerformance"] = item.ShouldPerformance;
+                dr["Reward"] = item.Reward;
+                dr["Appraisals"] = item.Appraisals;
+                dr["BucklupLastMonth"] = item.BucklupLastMonth;
+                dr["Tax"] = item.Tax;
+                dr["RiskMoney"] = item.RiskMoney;
+                dr["RealPerformance"] = item.RealPerformance;
+                dr["RealAmount"] = item.RealAmount;
+                dr["Remark"] = item.Remark;
+                dr["SalaryTime"] = item.SalaryTime;
+                
+                dtBalance.Rows.Add(dr);
+            }
+            return dtBalance;
         }
     }
 }

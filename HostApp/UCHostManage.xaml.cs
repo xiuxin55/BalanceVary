@@ -22,9 +22,15 @@ namespace HostApp
         public UCHostManage()
         {
             InitializeComponent();
-            this.DataContext = new HostManageVM();
+            VM = new HostManageVM();
+            this.DataContext = VM;
         }
+        public HostManageVM VM { get; set; }
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
 
-       
+            CheckBox cb = sender as CheckBox;
+            VM.IsSelectedAll = cb.IsChecked == null ? false : cb.IsChecked.Value;
+        }
     }
 }

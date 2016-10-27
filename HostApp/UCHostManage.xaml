@@ -17,11 +17,11 @@
             <DataGrid.Columns>
                 <DataGridTemplateColumn >
                     <DataGridTemplateColumn.Header>
-                        <CheckBox IsChecked="{Binding DataContext.IsSelectedAll,ElementName=servicedg, UpdateSourceTrigger=PropertyChanged}"  />
+                        <CheckBox  Click="CheckBox_Click"  />
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox  IsChecked="{Binding IsSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <CheckBox  IsChecked="{Binding IsSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

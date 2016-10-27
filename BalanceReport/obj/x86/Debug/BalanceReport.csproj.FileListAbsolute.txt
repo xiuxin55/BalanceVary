@@ -680,3 +680,5 @@ C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\De
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentSelect.g.cs
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkManage.baml
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentSelect.baml
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Salary\SalaryWindow.g.cs
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Salary\SalaryWindow.baml
