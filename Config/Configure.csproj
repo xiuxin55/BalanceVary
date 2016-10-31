@@ -47,6 +47,10 @@
     <EmbeddedResource Include="sqlmap.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AuthorizationMapping\AuthorizationMapping.csproj">
+      <Project>{4f7b1d7f-2daf-4719-a9ff-9e44978f2dd2}</Project>
+      <Name>AuthorizationMapping</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BalanceMapping\BalanceMapping.csproj">
       <Project>{9f97d256-7446-41c6-a499-c52227f4b82c}</Project>
       <Name>BalanceMapping</Name>

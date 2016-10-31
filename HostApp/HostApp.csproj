@@ -118,6 +118,30 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AuthorizationBLL\AuthorizationBLL.csproj">
+      <Project>{c64b861c-451d-4696-a195-00da3b2a3733}</Project>
+      <Name>AuthorizationBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AuthorizationDAL\AuthorizationDAL.csproj">
+      <Project>{bb9c2fce-19a4-4485-98b6-5b8d9428775d}</Project>
+      <Name>AuthorizationDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AuthorizationMapping\AuthorizationMapping.csproj">
+      <Project>{4f7b1d7f-2daf-4719-a9ff-9e44978f2dd2}</Project>
+      <Name>AuthorizationMapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AuthorizationModel\AuthorizationModel.csproj">
+      <Project>{096d0d5f-0311-423d-9033-0305ba1e28b3}</Project>
+      <Name>AuthorizationModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BalanceBLL\BalanceBLL.csproj">
+      <Project>{3beda392-d2b0-425c-b8d6-d132ff4d3356}</Project>
+      <Name>BalanceBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BalanceDal\BalanceDAL.csproj">
+      <Project>{55635394-4f80-40c9-8c79-5a958cf2c219}</Project>
+      <Name>BalanceDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BalanceDataSync\BalanceDataSync.csproj">
       <Project>{c57d8718-263e-4a5a-aefb-76a19f8898d1}</Project>
       <Name>BalanceDataSync</Name>
@@ -141,6 +165,10 @@
     <ProjectReference Include="..\SqlMaps\SqlMaps.csproj">
       <Project>{e19a6dc8-30f3-45d5-8b67-584c5a034212}</Project>
       <Name>SqlMaps</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WcfAuthorizationServiceLibrary\WcfAuthorizationServiceLibrary.csproj">
+      <Project>{f70b9d33-c177-4616-adb3-133d80cda4d2}</Project>
+      <Name>WcfAuthorizationServiceLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\WcfBalanceServiceLibrary\WcfBalanceServiceLibrary.csproj">
       <Project>{96315950-b9e3-4ec9-ac4f-b6e10b77b422}</Project>

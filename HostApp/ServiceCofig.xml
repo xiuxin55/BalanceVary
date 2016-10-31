@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <config>
+  <service assembly="WcfAuthorizationServiceLibrary"  class="WcfAuthorizationServiceLibrary.UserInfoService"  describe="权限服务--用户管理"/>
   <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.AccountAndNameLinkInfoService"  describe="帐号和账户名称关联服务"/>
 <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.WebsiteInfoService"  describe="网点管理服务"/>
     <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.DepartmentInfoService"  describe="部门管理服务"/>

@@ -66,6 +66,8 @@
   <ItemGroup>
     <Compile Include="BaseClass\BaseBLL.cs" />
     <Compile Include="BaseClass\BaseDAL.cs" />
+    <Compile Include="BaseClass\BaseManageVM.cs" />
+    <Compile Include="BaseClass\BaseModel.cs" />
     <Compile Include="BaseClass\BaseVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

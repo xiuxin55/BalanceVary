@@ -48,6 +48,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\ReferenceDLL\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -69,14 +72,10 @@
     <Compile Include="BalanceVaryModel\CompanyBalance.cs" />
     <Compile Include="BalanceVaryModel\WebsiteBalance.cs" />
     <Compile Include="BalanceVaryModel\ZoneBalance.cs" />
-    <Compile Include="BalanceVaryInfo.cs" />
-    <Compile Include="BaseModel.cs" />
     <Compile Include="CustomFileInfo.cs" />
-    <Compile Include="DateTimeModel.cs" />
     <Compile Include="AccountLinkManagerInfo.cs" />
     <Compile Include="ImportDataInfo.cs" />
     <Compile Include="CustomerManagerInfo.cs" />
-    <Compile Include="ReportModel.cs" />
     <Compile Include="UploadFileInfo.cs" />
     <Compile Include="DepartmentInfo.cs" />
     <Compile Include="WebsiteInfo.cs" />
@@ -103,6 +102,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{33c58cb0-1338-455f-a678-9d5be412d468}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

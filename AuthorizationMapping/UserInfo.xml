@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="UserInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <alias>
+    <typeAlias alias="UserInfo" type="AuthorizationModel.UserInfo,AuthorizationModel" />
+  </alias>
+  <resultMaps>
+    <resultMap id="UserInfoMap" class="UserInfo">
+      <result property="ID" column="ID"/>
+    <result property="UserName" column="USERNAME"/>
+      <result property="UserPwd" column="USERPWD"/>
+      <result property="RealName" column="RealName"/>
+      <result property="Sex" column="SEX"/>
+      <result property="Linktel" column="Linktel"/>
+      <result property="Email" column="EMAIL"/>
+      <result property="State" column="State"/>
+      <result property="Describe" column="DESCRIBE"/>
+      
+    </resultMap>
+  </resultMaps>
+  <statements>
+   
+    <select id="SelectUserInfo" resultMap="UserInfoMap" parameterClass="UserInfo">
+      Select * from UserInfo where 1=1 
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="UserName">UserName=#UserName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="UserPwd">UserPwd=#UserPwd#</isNotEmpty>
+          <isNotEmpty prepend="and" property="RealName">RealName=#RealName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
+
+    <update id="UpdateUserInfo"  parameterClass="UserInfo">
+      UPDATE UserInfo
+      SET
+      ID = #ID#
+      <isNotEmpty prepend ="," property="UserName">
+        UserName = #UserName#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="UserPwd">
+        UserPwd = #UserPwd#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="RealName">
+        RealName = #RealName#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="Sex">
+        Sex = #Sex#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="Linktel">
+        Linktel = #Linktel#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="Email">
+        Email = #Email#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="State">
+        State = #State#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="Describe">
+        Describe = #Describe#
+      </isNotEmpty>
+      WHERE ID = #ID#
+    </update>
+    <insert id="AddUserInfo" parameterClass="UserInfo">
+      INSERT INTO UserInfo (ID,
+      UserName,
+      UserPwd,
+      RealName,
+      Sex,
+      Linktel,
+      Email,
+      State,Describe)
+      VALUES (#ID#,#UserName#,#UserPwd#,#RealName#,#Sex#,#Linktel#,#Email#,#State#,#Describe#);
+    </insert>
+    <delete id="DeleteUserInfo" parameterClass="UserInfo">
+      DELETE UserInfo WHERE ID = #ID#
+    </delete>
+
+  </statements>
+</sqlMap>

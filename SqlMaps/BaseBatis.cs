@@ -1,4 +1,5 @@
-﻿using IBatisNet.Common;
+﻿using Common;
+using IBatisNet.Common;
 using IBatisNet.DataMapper;
 using IBatisNet.DataMapper.Configuration;
 using IBatisNet.DataMapper.Configuration.Statements;
@@ -40,9 +41,10 @@ namespace SqlMaps
                             SqlMap = builder.Configure(stream);
                             CommonData.DBConnetionString = SqlMap.DataSource.ConnectionString;
                         }
-                        catch (Exception e)
+                        catch (Exception ex)
                         {
-                            throw e;
+                            LogHelper.WriteLog(typeof(BaseBatis), ex);
+                            throw ex;
                         }
                     }
                 }

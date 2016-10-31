@@ -1,21 +1,22 @@
-﻿using System;
+﻿using Microsoft.Practices.Prism.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace BalanceModel
+namespace Utility
 {
-    public class BaseModel: INotifyPropertyChanged
+    public class BaseModel : NotificationObject
     {
-   
+
         public int RowNumber { get; set; }
         /// <summary>
         /// 本页第一条索引
         /// </summary>
         public int StartIndex { get; set; }
 
-        private int _EndIndex=int.MaxValue;
+        private int _EndIndex = int.MaxValue;
         /// <summary>
         /// 本页最后一条索引
         /// </summary>
@@ -30,7 +31,7 @@ namespace BalanceModel
                 _EndIndex = value;
             }
         }
-        private string _OrderbyColomnName= "BalanceTime";
+        private string _OrderbyColomnName = "BalanceTime";
         /// <summary>
         /// 主排序字段
         /// </summary>
@@ -60,14 +61,7 @@ namespace BalanceModel
             {
                 _SubOrderbyColomnName = value;
             }
-        } 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void RaisePropertyChanged(string propertyname)
-        {
-            if(PropertyChanged!=null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
-            }
         }
+       
     }
 }

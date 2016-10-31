@@ -67,6 +67,10 @@
     <Compile Include="SQLServerDB\SQLServer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{49cc37a0-302e-43c4-aded-8d79f652242e}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Config\Configure.csproj">
       <Project>{46c7dbd4-3821-4579-995d-0e88bff6beac}</Project>
       <Name>Configure</Name>

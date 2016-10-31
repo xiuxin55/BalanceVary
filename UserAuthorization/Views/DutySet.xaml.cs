@@ -1,10 +1,12 @@
-﻿using BalanceReport;
-using BalanceReport.Salary;
+﻿using FundsRegulatoryClient;
 using MahApps.Metro.Controls;
+using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -15,28 +17,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MainHome
+namespace UserAuthorization
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// DutySet.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class DutySet : MetroWindow
     {
-        public MainWindow()
+        public DutySet()
         {
             InitializeComponent();
+            VM = new DutySetVM();
+            VM.Owner = this;
+            this.DataContext = VM;
         }
+        public DutySetVM VM { get; set; }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
-            BalanceWindow bw = new BalanceWindow();
-            bw.Show();
-        }
-
-        private void btnSalary_Click(object sender, RoutedEventArgs e)
-        {
-            SalaryWindow sw = new SalaryWindow();
-            sw.Show();
+            this.Close();
         }
     }
 }

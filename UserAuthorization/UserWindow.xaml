@@ -1,21 +1,19 @@
-﻿<Controls:MetroWindow x:Class="MainHome.MainWindow"
+﻿<Controls:MetroWindow x:Class="UserAuthorization.UserWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MainHome"
+        xmlns:local="clr-namespace:UserAuthorization"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         GlowBrush="{DynamicResource AccentColorBrush}"
         NonActiveGlowBrush="#CDFF0000"
         ShowIconOnTitleBar="True"
         ShowTitleBar="True"
         WindowStartupLocation="CenterScreen"
-        mc:Ignorable="d"
         ShowMenuRestoreButton="False" 
-        Title="MainWindow" Height="450" Width="300">
+        mc:Ignorable="d"
+        Title="UserWindow" Height="600" Width="800">
     <Grid>
-        <Button x:Name="button" Content="公司业务" FontSize="18" HorizontalAlignment="Left" Height="41" Margin="83,25,0,0" VerticalAlignment="Top" Width="122" Click="button_Click"/>
-        <Button x:Name="button2" Content="薪资业务" FontSize="18" HorizontalAlignment="Left" Height="41" Margin="83,83,0,0" VerticalAlignment="Top" Width="122" Click="btnSalary_Click"/>
-
+        <local:UserMaintenance/>
     </Grid>
 </Controls:MetroWindow>
