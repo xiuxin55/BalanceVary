@@ -12,18 +12,19 @@ using UserAuthorization;
 using UserAuthorization.UserInfoService;
 using System.Windows.Controls;
 using Encryption4Net;
+using Common.Client;
+using UserAuthorization.Helper;
 
 namespace MainHome
 {
     public class LoginVM : NotificationObject
     {
-        UserInfoServiceClient UserManageClient;
-        Encryption ep = new Encryption();
+       
         public LoginVM()
         {
             LoginCommand = new DelegateCommand(LoginExecute);
             UserModel = new UserInfo();
-            UserManageClient = new UserInfoServiceClient();
+            
         }
         #region 属性
         private PasswordBox _Password;
@@ -64,13 +65,17 @@ namespace MainHome
         #region 命令执行方法
         private void LoginExecute()
         {
-            UserModel.UserPwd = ep.EnCode(Password.Password);
-
-            UserInfo[] userinfoArray= UserManageClient.Select(UserModel);
-            if (userinfoArray.Length>0)
-            {
-
-            }
+            MainWindow win = new MainWindow();
+            win.Show();
+            //if (UserLoginHelper.Instance.CheckLogin(UserModel.UserName,Password.Password ))
+            //{
+            //    MainWindow win = new MainWindow();
+            //    win.Show();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("帐号或密码错误");
+            //}
         }
        
         #endregion

@@ -19,7 +19,7 @@ namespace MainHome
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
             //BalanceWindow bw = new BalanceWindow();
             //bw.Show();
-            MainWindow bw = new MainWindow();
+            Login bw = new Login();
             bw.Show();
 
             //BalanceReport.Salary.SalaryWindow sw = new BalanceReport.Salary.SalaryWindow();

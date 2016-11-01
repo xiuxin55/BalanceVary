@@ -7,9 +7,21 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     <typeAlias alias="UserInfo" type="AuthorizationModel.UserInfo,AuthorizationModel" />
   </alias>
   <resultMaps>
+
+    <resultMap id="UserFunctionInfoMap" class="FunctionInfo">
+      <result property="ID" column="ID"/>
+      <result property="Code" column="Code"/>
+      <result property="Name" column="Name"/>
+      <result property="Path" column="Path"/>
+      <result property="Parent" column="Parent"/>
+      <result property="InvokingConfig" column="InvokingConfig"/>
+      <result property="Icon" column="Icon"/>
+      <result property="AssemblyName" column="AssemblyName"/>
+    </resultMap>
+    
     <resultMap id="UserInfoMap" class="UserInfo">
       <result property="ID" column="ID"/>
-    <result property="UserName" column="USERNAME"/>
+     <result property="UserName" column="USERNAME"/>
       <result property="UserPwd" column="USERPWD"/>
       <result property="RealName" column="RealName"/>
       <result property="Sex" column="SEX"/>
@@ -17,11 +29,16 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <result property="Email" column="EMAIL"/>
       <result property="State" column="State"/>
       <result property="Describe" column="DESCRIBE"/>
-      
+      <result property="Functions" column="ID" select="getFunctionsByID"/>
     </resultMap>
+
+   
+    
   </resultMaps>
   <statements>
-   
+    <select id="getFunctionsByID" resultMap="UserFunctionInfoMap" parameterClass="string">
+      Select * from FunctionInfo where ID in (select FunId from UserFuncInfo where UserId=#value#)
+    </select>
     <select id="SelectUserInfo" resultMap="UserInfoMap" parameterClass="UserInfo">
       Select * from UserInfo where 1=1 
       <dynamic>

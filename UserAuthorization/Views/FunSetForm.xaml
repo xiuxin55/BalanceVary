@@ -3,20 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-                       
-          
              mc:Ignorable="d" 
-                       Title="功能设置"
-                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-                      ShowIconOnTitleBar="True"
-                      ShowTitleBar="True"
-                      WindowStartupLocation="CenterScreen"
-                      GlowBrush="{DynamicResource AccentColorBrush}"
-                      NonActiveGlowBrush="#CDFF0000"
-                      WindowTransitionsEnabled="False"
-                      ShowMaxRestoreButton="False" 
-                      ResizeMode="NoResize"
-                       Loaded="FunSetForm_Load"
+             Title="功能设置"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             ShowIconOnTitleBar="True"
+             ShowTitleBar="True"
+             WindowStartupLocation="CenterScreen"
+             GlowBrush="{DynamicResource AccentColorBrush}"
+             NonActiveGlowBrush="#CDFF0000"
+             WindowTransitionsEnabled="False"
+             ShowMaxRestoreButton="False" 
+             ResizeMode="NoResize"
+             Loaded="FunSetForm_Load"
              Height="601" Width="795">
     <Controls:MetroWindow.Resources>
   
@@ -36,7 +34,7 @@
                 <ColumnDefinition Width="343*"/>
                 <ColumnDefinition Width="5"/>
             </Grid.ColumnDefinitions>
-            <GroupBox Header="未授权功能"    Grid.Column="1" >
+            <GroupBox Header="未授权功能"    Grid.Column="1" Margin="5,29,5,-19" >
             
             </GroupBox>
             <StackPanel Grid.Column="2"  Orientation="Vertical">

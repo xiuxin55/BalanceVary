@@ -162,7 +162,7 @@ namespace UserAuthorization
         {
             UserInfoAdd di = new UserInfoAdd();
             di.VM.SelectUser = SelectUser;
-         //   di.VM.LoadOwnDutyList();
+            //di.VM.LoadOwnDutyList();
             di.VM.IsAdd = false;
             di.ShowDialog();
             LoadData();

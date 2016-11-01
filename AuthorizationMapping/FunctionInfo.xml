@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="FunctionInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <alias>
+    <typeAlias alias="FunctionInfo" type="AuthorizationModel.FunctionInfo,AuthorizationModel" />
+  </alias>
+  <resultMaps>
+    <resultMap id="FunctionInfoMap" class="FunctionInfo">
+      <result property="ID" column="ID"/>
+      <result property="Code" column="Code"/>
+      <result property="Name" column="Name"/>
+      <result property="Path" column="Path"/>
+      <result property="Parent" column="Parent"/>
+      <result property="InvokingConfig" column="InvokingConfig"/>
+      <result property="Icon" column="Icon"/>
+      <result property="AssemblyName" column="AssemblyName"/>
+
+      
+    </resultMap>
+  </resultMaps>
+  <statements>
+   
+    <select id="SelectFunctionInfo" resultMap="FunctionInfoMap" parameterClass="FunctionInfo">
+      Select * from FunctionInfo where 1=1 
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="Name">Name=#Name#</isNotEmpty>
+          <isNotEmpty prepend="and" property="AssemblyName">AssemblyName=#AssemblyName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="Code">Code=#Code#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
+
+    <update id="UpdateFunctionInfo"  parameterClass="FunctionInfo">
+      UPDATE FunctionInfo
+      SET
+      ID = #ID#
+      <isNotEmpty prepend ="," property="Code">
+        Code = #Code#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="Name">
+        Name = #Name#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="Path">
+        Path = #Path#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="Parent">
+        Parent = #Parent#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="InvokingConfig">
+        InvokingConfig = #InvokingConfig#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="Icon">
+        Icon = #Icon#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="AssemblyName">
+        AssemblyName = #AssemblyName#
+      </isNotEmpty>
+     
+      WHERE ID = #ID#
+    </update>
+    <insert id="AddFunctionInfo" parameterClass="FunctionInfo">
+      INSERT INTO FunctionInfo (ID,
+      Code,
+      Name,
+      Path,
+      Parent,
+      InvokingConfig,
+      Icon,
+      AssemblyName)
+      VALUES (#ID#,#Code#,#Name#,#Path#,#Parent#,#InvokingConfig#,#Icon#,#AssemblyName#);
+    </insert>
+    <delete id="DeleteFunctionInfo" parameterClass="FunctionInfo">
+      DELETE FunctionInfo WHERE ID = #ID#
+    </delete>
+
+  </statements>
+</sqlMap>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="UserFuncInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <alias>
+    <typeAlias alias="UserFuncInfo" type="AuthorizationModel.UserFuncInfo,AuthorizationModel" />
+  </alias>
+  <resultMaps>
+    <resultMap id="UserFuncInfoMap" class="UserFuncInfo">
+      <result property="ID" column="ID"/>
+      <result property="UserId" column="UserId"/>
+      <result property="FunId" column="FunId"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+   
+    <select id="SelectUserFuncInfo" resultMap="UserFuncInfoMap" parameterClass="UserFuncInfo">
+      Select * from UserFuncInfo where 1=1 
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="UserId">UserId=#UserId#</isNotEmpty>
+          <isNotEmpty prepend="and" property="FunId">FunId=#FunId#</isNotEmpty>
+          <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
+
+    <update id="UpdateUserFuncInfo"  parameterClass="UserFuncInfo">
+      UPDATE UserFuncInfo
+      SET
+      ID = #ID#
+      <isNotEmpty prepend ="," property="UserId">
+        UserId = #UserId#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="FunId">
+        FunId = #FunId#
+      </isNotEmpty>
+     
+      WHERE ID = #ID#
+    </update>
+    <insert id="AddUserFuncInfo" parameterClass="UserFuncInfo">
+      INSERT INTO UserFuncInfo (ID,
+      UserId,
+      FunId)
+      VALUES (#ID#,#UserId#,#FunId#);
+    </insert>
+    <delete id="DeleteUserFuncInfo" parameterClass="UserFuncInfo">
+      DELETE UserFuncInfo WHERE ID = #ID#
+    </delete>
+
+  </statements>
+</sqlMap>

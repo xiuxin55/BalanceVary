@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Utility;
 
 namespace AuthorizationModel
 {
-    public class UserInfo//: BaseModel
+    public class UserInfo: BaseModel
     {
         string _ID;
         /// <summary>
@@ -88,5 +89,25 @@ namespace AuthorizationModel
             get { return _Describe; }
             set { _Describe = value; }
         }
+
+        List<FunctionInfo> _Functions;
+        /// <summary>
+        /// 功能
+        /// </summary>
+        public List<FunctionInfo> Functions
+        {
+            get { return _Functions; }
+            set { _Functions = value; }
+
+        }
+        //string _Functions;
+        ///// <summary>
+        ///// 功能
+        ///// </summary>
+        //public string Functions
+        //{
+        //    get { return _Functions; }
+        //    set { _Functions = value; }
+        //}
     }
 }

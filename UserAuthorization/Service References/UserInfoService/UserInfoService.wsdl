@@ -5,6 +5,8 @@
       <xsd:import schemaLocation="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AuthorizationModel" />
+      <xsd:import schemaLocation="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Utility" />
+      <xsd:import schemaLocation="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Practices.Prism.ViewModel" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserInfoService_Add_InputMessage">

@@ -24,6 +24,7 @@ namespace MainHome
             InitializeComponent();
             LoginVM VM = new LoginVM();
             VM.Password = this.passwordbox;
+            this.DataContext = VM;
         }
     }
 }

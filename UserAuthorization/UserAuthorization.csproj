@@ -65,6 +65,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\CheckLogin.cs" />
     <Compile Include="Service References\UserInfoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -136,12 +137,22 @@
     <None Include="Service References\UserInfoService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\UserInfoService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserInfoService\item31.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\UserInfoService\UserAuthorization.UserInfoService.UserInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\UserInfoService\UserInfoService.wsdl" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{49cc37a0-302e-43c4-aded-8d79f652242e}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MahApps.Metro\MahApps.Metro.csproj">
       <Project>{5b1710d2-5dc8-4754-91b2-19165de49b3d}</Project>
       <Name>MahApps.Metro</Name>
@@ -151,9 +162,7 @@
       <Name>Utility</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helper\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>

@@ -140,6 +140,14 @@ namespace UserAuthorization
                 MessageBox.Show("登录名不能为空");
                 return;
             }
+            UserInfo temp = new UserInfoService.UserInfo();
+            temp.UserName = SelectUser.UserName;
+            UserInfo[] users= UserManageClient.Select(temp);
+            if (users!=null && users.Length>0)
+            {
+                MessageBox.Show("登录名已存在，重新填写");
+                return;
+            }
             try
             {
                 if (!IsAdd)

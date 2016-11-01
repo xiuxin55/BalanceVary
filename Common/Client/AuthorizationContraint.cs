@@ -10,6 +10,13 @@ namespace Common.Client
     /// </summary>
     public class AuthorizationContraint
     {
-        private static List<string> AuthorizationList = new List<string>();
+        /// <summary>
+        /// 当前登录用户可以使用的功能
+        /// </summary>
+        public static List<string> AuthorizationList =null;
+        /// <summary>
+        /// 当前登录用户
+        /// </summary>
+        public static object CurrentUser = null;
     }
 }
