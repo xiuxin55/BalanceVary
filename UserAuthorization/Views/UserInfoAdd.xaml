@@ -15,12 +15,12 @@
                       ShowMaxRestoreButton="False" 
                       ResizeMode="NoResize"
                       Title="用户信息"
-             Height="460" Width="404">
+             Height="470" Width="404">
     <Controls:MetroWindow.Resources>
 
         <ResourceDictionary>
-          
-          
+
+
         </ResourceDictionary>
 
     </Controls:MetroWindow.Resources>
@@ -40,7 +40,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>
                 <ColumnDefinition Width="6"/>
-          
+
             </Grid.ColumnDefinitions>
             <GroupBox Header="基本信息"  Grid.Column="0">
                 <Grid>
@@ -78,11 +78,11 @@
                         <ComboBoxItem Content="女"/>
                     </ComboBox>
                     <TextBox Margin="0,5,0,0"  Text="{Binding SelectUser.Email}"  Grid.Column="1" Grid.Row="6"/>
-                    <TextBox Margin="0,5,0,0" Text="{Binding SelectUser.LinkTel}"  Grid.Column="1" Grid.Row="7" TextAlignment="Left" />
-                    <TextBox Text="{Binding SelectUser.Describe}"  Grid.Column="1" Grid.Row="9" Height="110" VerticalAlignment="Center" />
+                    <TextBox Margin="0,5,0,0" Text="{Binding SelectUser.Linktel}"  Grid.Column="1" Grid.Row="7" TextAlignment="Left" />
+                    <TextBox Text="{Binding SelectUser.Describe}"  Grid.Column="1" Grid.Row="8" Height="95" VerticalAlignment="Center" Margin="0,5,0,20" />
                 </Grid>
             </GroupBox>
-        
+
         </Grid>
         <StackPanel  Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center"  Height="30" >
             <Button x:Name="btnConfirm" Command="{Binding OKCommand}"   Content="确定" Width="80" Height="30" />

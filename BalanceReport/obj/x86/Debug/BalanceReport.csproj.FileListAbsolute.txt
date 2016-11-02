@@ -571,6 +571,12 @@ C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\De
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ReportDataGrid\CustomerManagerDataGrid.baml
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ReportDataGrid\DepartmentDataGrid.baml
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentManage.baml
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkInfoAdd.baml
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkInfoAdd.g.cs
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkManage.g.cs
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentSelect.g.cs
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkManage.baml
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentSelect.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\BalanceReport.dll.config
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\BalanceReport.dll
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\BalanceReport.pdb
@@ -600,6 +606,7 @@ E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\ko\System.Wind
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceReport.csprojResolveAssemblyReference.cache
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkInfoAdd.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\SystemSet.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\CoverUserControl.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\CustomerManagerAdd.baml
@@ -614,6 +621,9 @@ E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\Acco
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ImportSelectDate.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\App.g.cs
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\MainWindow.g.cs
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Salary\SalaryWindow.g.cs
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkInfoAdd.g.cs
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkManage.g.cs
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\SystemSet.g.cs
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\CoverUserControl.g.cs
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentReportUserControl.g.cs
@@ -648,6 +658,8 @@ E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceRep
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceReport_MarkupCompile.lref
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\App.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\MainWindow.baml
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Salary\SalaryWindow.baml
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkManage.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentReportUserControl.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ReportDataGrid\CustomerManagerDataGrid.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ReportDataGrid\DepartmentDataGrid.baml
@@ -670,15 +682,3 @@ E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceRep
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceReport.csproj.GenerateResource.Cache
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceReport.dll
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceReport.pdb
-E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkInfoAdd.baml
-E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkInfoAdd.g.cs
-E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkManage.g.cs
-E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkManage.baml
-C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkInfoAdd.baml
-C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkInfoAdd.g.cs
-C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkManage.g.cs
-C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentSelect.g.cs
-C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAndNameLinkManage.baml
-C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentSelect.baml
-E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Salary\SalaryWindow.g.cs
-E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Salary\SalaryWindow.baml

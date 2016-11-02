@@ -31,18 +31,10 @@ namespace WcfBalanceServiceLibrary
         {
             try
             {
-                if (info==null)
-                {
-                    info = new BalanceModel.SalaryInfo();
-                }
                 if (info.SalaryTime != null)
                 {
                     info.SalaryTime = DateTime.Parse(info.SalaryTime.Value.ToString("yyyy-MM") + "-01");
                     
-                }
-                if (string.IsNullOrWhiteSpace(info.OrderbyColomnName))
-                {
-                    info.OrderbyColomnName = info.SubOrderbyColomnName = "SalaryTime";
                 }
                 return bll.Select(info);
             }

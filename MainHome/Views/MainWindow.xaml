@@ -8,23 +8,28 @@
         GlowBrush="{DynamicResource AccentColorBrush}"
         NonActiveGlowBrush="#CDFF0000"
         ShowIconOnTitleBar="True"
-                      ResizeMode="NoResize" 
+                     
         ShowTitleBar="True"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
+                      ShowMaxRestoreButton="False"
         ShowMenuRestoreButton="True" 
+                      MinHeight="450"
+                      MinWidth="300"
+                      MaxHeight="450"
+                      MaxWidth="300"
         Title="MainWindow" Height="450" Width="300">
     <Grid>
         <Button x:Name="button" Content="公司业务" FontSize="18" HorizontalAlignment="Left" Height="41" Margin="83,25,0,0" VerticalAlignment="Top" Width="122" Command="{Binding CompanyDataCommand}"/>
         <Button x:Name="button2" Content="薪资业务" FontSize="18" HorizontalAlignment="Left" Height="41" Margin="83,83,0,0" VerticalAlignment="Top" Width="122"  Command="{Binding SalaryDataCommand}"/>
-        <Popup x:Name="Menu" AllowsTransparency="True" Margin="0,-1,0,1"  StaysOpen="False" PopupAnimation="Scroll" Placement="MousePoint">
+        <Popup x:Name="Menu" AllowsTransparency="True" Margin="0,-1,0,1"  StaysOpen="False" PopupAnimation="Scroll" Placement="MousePoint" >
             <Grid  HorizontalAlignment="Left">
-                <Border BorderThickness="1" CornerRadius="3" Background="Gray"  Margin="3">
+                <Border BorderThickness="1" CornerRadius="3" Background="{DynamicResource AccentColorBrush}"  Margin="3">
 
-                    <StackPanel Margin="0,4">
+                    <StackPanel Margin="2">
 
                         <MenuItem Header="用户设置"   Command="{Binding UserSetCommand }"  />
-                        
+                        <MenuItem Header="功能设置"   Command="{Binding FunctionSetCommand }"  />
                     </StackPanel>
                 </Border>
             </Grid>

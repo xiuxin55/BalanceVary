@@ -27,12 +27,12 @@
             <Button Margin="6,0,0,0"  Command="{Binding SearchCommand}"  x:Name="Search"      >查询</Button>
 
         </ToolBar>
-        <DataGrid  Background="White" ItemsSource="{Binding Path=UserMaintainList}" SelectedItem="{Binding SelectUser}" Grid.Row="1"  AutoGenerateColumns="False"  IsReadOnly="True">
+        <DataGrid  Background="White" ItemsSource="{Binding Path=UserMaintainList}" SelectedItem="{Binding SelectUser}" Grid.Row="1"  AutoGenerateColumns="False"  IsReadOnly="True" Margin="0,0,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="用户名" Width="30*" Binding="{Binding UserName}" IsReadOnly="True" />
                 <DataGridTextColumn Header="用户姓名" Width="40*" Binding="{Binding UserName}" IsReadOnly="True" />
                 <DataGridTextColumn Header="性别" Width="30*" Binding="{Binding Sex,Converter={StaticResource SexConverter} }" IsReadOnly="True" />
-                <DataGridTextColumn Header="联系电话" Width="60*" Binding="{Binding LinkTel}" IsReadOnly="True" />
+                <DataGridTextColumn Header="联系电话" Width="60*" Binding="{Binding Linktel}" IsReadOnly="True" />
                 <DataGridTextColumn Header="邮箱" Width="60*" Binding="{Binding Email}" IsReadOnly="True" />
                 <DataGridTextColumn Header="状态" Width="30*" Binding="{Binding State}" IsReadOnly="True" />
                 <DataGridTextColumn Header="描述" Width="80*" Binding="{Binding Describe}" IsReadOnly="True" />

@@ -14,6 +14,7 @@ using System.Windows.Controls;
 using Encryption4Net;
 using Common.Client;
 using UserAuthorization.Helper;
+using MahApps.Metro.Controls;
 
 namespace MainHome
 {
@@ -26,6 +27,7 @@ namespace MainHome
             UserModel = new UserInfo();
             
         }
+        public MetroWindow LoginWin;
         #region 属性
         private PasswordBox _Password;
         /// <summary>
@@ -65,17 +67,21 @@ namespace MainHome
         #region 命令执行方法
         private void LoginExecute()
         {
-            MainWindow win = new MainWindow();
-            win.Show();
-            //if (UserLoginHelper.Instance.CheckLogin(UserModel.UserName,Password.Password ))
-            //{
-            //    MainWindow win = new MainWindow();
-            //    win.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("帐号或密码错误");
-            //}
+
+            if (UserLoginHelper.Instance.CheckLogin(UserModel.UserName, Password.Password))
+            {
+                
+                MainWindow win = new MainWindow();
+                win.Show();
+                if (LoginWin != null)
+                {
+                    LoginWin.Hide();
+                }
+            }
+            else
+            {
+                MessageBox.Show("帐号或密码错误");
+            }
         }
        
         #endregion

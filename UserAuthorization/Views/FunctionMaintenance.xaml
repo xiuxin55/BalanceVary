@@ -1,0 +1,34 @@
+﻿<Controls:MetroContentControl x:Class="UserAuthorization.FunctionMaintenance"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"             
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"   
+             xmlns:tool="clr-namespace:UserAuthorization.Tools"
+             d:DesignHeight="900" d:DesignWidth="900"
+             >
+    <Controls:MetroContentControl.Resources >
+        <tool:SexConverter x:Key="SexConverter"/>
+    </Controls:MetroContentControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="259*"/>
+        </Grid.RowDefinitions>
+        <ToolBar  Grid.Row="0">
+            <Button Margin="5,0,0,1" Command="{Binding AddCommand}"  Content="新建"   BorderBrush="#FFB1B1B1"  />
+            <Button Margin="6,0,0,0"  Command="{Binding ModifyCommand}"  Content="编辑"   BorderBrush="#FFB1B1B1"  />
+            <Button Margin="6,0,0,0"  Command="{Binding DeleteCommand}"  BorderBrush="#FFB1B1B1"  Content="删除"     HorizontalContentAlignment="Center" HorizontalAlignment="Left" />
+        </ToolBar>
+        <DataGrid  Background="White" ItemsSource="{Binding Path=FunctionMaintainList}" SelectedItem="{Binding SelectFunction}" Grid.Row="1"  AutoGenerateColumns="False"  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="功能编码" Width="30*" Binding="{Binding Code}" IsReadOnly="True" />
+                <DataGridTextColumn Header="功能名" Width="40*" Binding="{Binding Name}" IsReadOnly="True" />
+                <DataGridTextColumn Header="类名" Width="60*" Binding="{Binding ClassName}" IsReadOnly="True" />
+                <DataGridTextColumn Header="程序集" Width="60*" Binding="{Binding AssemblyName}" IsReadOnly="True" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Controls:MetroContentControl>

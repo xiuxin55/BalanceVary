@@ -1,0 +1,72 @@
+﻿<Controls:MetroWindow  x:Class="UserAuthorization.UserFunSet"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Title="功能分配"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             ShowIconOnTitleBar="True"
+             ShowTitleBar="True"
+             WindowStartupLocation="CenterScreen"
+             GlowBrush="{DynamicResource AccentColorBrush}"
+             NonActiveGlowBrush="#CDFF0000"
+             WindowTransitionsEnabled="False"
+             ShowMaxRestoreButton="False" 
+             ResizeMode="NoResize"
+           
+             Height="601" Width="695">
+    <Controls:MetroWindow.Resources>
+  
+    </Controls:MetroWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9"/>
+            <RowDefinition Height="517*"/>
+            <RowDefinition Height="46"/>
+            <RowDefinition Height="9"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="343*"/>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="343*"/>
+                <ColumnDefinition Width="5"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="未授权功能"    Grid.Column="1"  >
+                <ListBox ItemsSource="{Binding UnAllocateFunctions}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" >
+                                <CheckBox IsChecked="{Binding IsSelected}" />
+                                <TextBlock Text="{Binding Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </GroupBox>
+            <StackPanel Grid.Column="2"  Orientation="Vertical">
+                <Button  Margin="0,100,0,0"   Content=">"  Width="70" Height="30" x:Name="btnAdd" Command="{Binding AddCommand}"/>
+                <Button Margin="0,60,0,0"   Content=">>" Width="70" Height="30"  x:Name="btnAddAll"  Command="{Binding AddCommand}"/>
+                <Button  Margin="0,60,0,0"   Content="&lt;"  Width="70" Height="30" x:Name="btnDelete"  Command="{Binding RemoveCommand}"/>
+                <Button  Margin="0,60,0,0"   Content="&lt;&lt;"  Width="70" Height="30" x:Name="btnDeleteAll" Command="{Binding RemoveCommand}"/>
+            </StackPanel>
+            <GroupBox Header="已授权功能"  Grid.Column="3" >
+                <ListBox ItemsSource="{Binding AllocatedFunctions}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" >
+                                <CheckBox IsChecked="{Binding IsSelected}" />
+                                <TextBlock Text="{Binding Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </GroupBox>
+        </Grid>
+        <StackPanel  Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center"  Height="30" >
+            <Button x:Name="btnConfirm"   Content="确定" Width="80" Height="30" Command="{Binding OKCommand}"/>
+        </StackPanel>
+    </Grid>
+</Controls:MetroWindow>

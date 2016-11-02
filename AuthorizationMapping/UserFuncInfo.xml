@@ -46,7 +46,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       VALUES (#ID#,#UserId#,#FunId#);
     </insert>
     <delete id="DeleteUserFuncInfo" parameterClass="UserFuncInfo">
-      DELETE UserFuncInfo WHERE ID = #ID#
+      DELETE UserFuncInfo WHERE UserId = #UserId#
     </delete>
 
   </statements>

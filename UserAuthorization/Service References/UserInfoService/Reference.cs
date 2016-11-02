@@ -15,12 +15,271 @@ namespace UserAuthorization.UserInfoService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserInfo", Namespace="http://schemas.datacontract.org/2004/07/AuthorizationModel")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseModel", Namespace="http://schemas.datacontract.org/2004/07/AuthorizationModel")]
     [System.SerializableAttribute()]
-    public partial class UserInfo : Utility.BaseModel, System.Runtime.Serialization.IExtensibleDataObject {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAuthorization.UserInfoService.FunctionInfo))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAuthorization.UserInfoService.UserInfo))]
+    public partial class BaseModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int EndIndexField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderbyColomnNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RowNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StartIndexField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubOrderbyColomnNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int EndIndex {
+            get {
+                return this.EndIndexField;
+            }
+            set {
+                if ((this.EndIndexField.Equals(value) != true)) {
+                    this.EndIndexField = value;
+                    this.RaisePropertyChanged("EndIndex");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderbyColomnName {
+            get {
+                return this.OrderbyColomnNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderbyColomnNameField, value) != true)) {
+                    this.OrderbyColomnNameField = value;
+                    this.RaisePropertyChanged("OrderbyColomnName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RowNumber {
+            get {
+                return this.RowNumberField;
+            }
+            set {
+                if ((this.RowNumberField.Equals(value) != true)) {
+                    this.RowNumberField = value;
+                    this.RaisePropertyChanged("RowNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StartIndex {
+            get {
+                return this.StartIndexField;
+            }
+            set {
+                if ((this.StartIndexField.Equals(value) != true)) {
+                    this.StartIndexField = value;
+                    this.RaisePropertyChanged("StartIndex");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SubOrderbyColomnName {
+            get {
+                return this.SubOrderbyColomnNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubOrderbyColomnNameField, value) != true)) {
+                    this.SubOrderbyColomnNameField = value;
+                    this.RaisePropertyChanged("SubOrderbyColomnName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FunctionInfo", Namespace="http://schemas.datacontract.org/2004/07/AuthorizationModel")]
+    [System.SerializableAttribute()]
+    public partial class FunctionInfo : UserAuthorization.UserInfoService.BaseModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AssemblyNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ClassNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IconField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int InvokingConfigField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ParentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PathField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AssemblyName {
+            get {
+                return this.AssemblyNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AssemblyNameField, value) != true)) {
+                    this.AssemblyNameField = value;
+                    this.RaisePropertyChanged("AssemblyName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ClassName {
+            get {
+                return this.ClassNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClassNameField, value) != true)) {
+                    this.ClassNameField = value;
+                    this.RaisePropertyChanged("ClassName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Code {
+            get {
+                return this.CodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
+                    this.CodeField = value;
+                    this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IDField, value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Icon {
+            get {
+                return this.IconField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IconField, value) != true)) {
+                    this.IconField = value;
+                    this.RaisePropertyChanged("Icon");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int InvokingConfig {
+            get {
+                return this.InvokingConfigField;
+            }
+            set {
+                if ((this.InvokingConfigField.Equals(value) != true)) {
+                    this.InvokingConfigField = value;
+                    this.RaisePropertyChanged("InvokingConfig");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Parent {
+            get {
+                return this.ParentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParentField, value) != true)) {
+                    this.ParentField = value;
+                    this.RaisePropertyChanged("Parent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Path {
+            get {
+                return this.PathField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PathField, value) != true)) {
+                    this.PathField = value;
+                    this.RaisePropertyChanged("Path");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserInfo", Namespace="http://schemas.datacontract.org/2004/07/AuthorizationModel")]
+    [System.SerializableAttribute()]
+    public partial class UserInfo : UserAuthorization.UserInfoService.BaseModel {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescribeField;
@@ -52,23 +311,16 @@ namespace UserAuthorization.UserInfoService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserPwdField;
         
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string Describe {
             get {
                 return this.DescribeField;
             }
             set {
-                this.DescribeField = value;
+                if ((object.ReferenceEquals(this.DescribeField, value) != true)) {
+                    this.DescribeField = value;
+                    this.RaisePropertyChanged("Describe");
+                }
             }
         }
         
@@ -78,7 +330,10 @@ namespace UserAuthorization.UserInfoService {
                 return this.EmailField;
             }
             set {
-                this.EmailField = value;
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
             }
         }
         
@@ -88,7 +343,10 @@ namespace UserAuthorization.UserInfoService {
                 return this.FunctionsField;
             }
             set {
-                this.FunctionsField = value;
+                if ((object.ReferenceEquals(this.FunctionsField, value) != true)) {
+                    this.FunctionsField = value;
+                    this.RaisePropertyChanged("Functions");
+                }
             }
         }
         
@@ -98,7 +356,10 @@ namespace UserAuthorization.UserInfoService {
                 return this.IDField;
             }
             set {
-                this.IDField = value;
+                if ((object.ReferenceEquals(this.IDField, value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
             }
         }
         
@@ -108,7 +369,10 @@ namespace UserAuthorization.UserInfoService {
                 return this.LinktelField;
             }
             set {
-                this.LinktelField = value;
+                if ((object.ReferenceEquals(this.LinktelField, value) != true)) {
+                    this.LinktelField = value;
+                    this.RaisePropertyChanged("Linktel");
+                }
             }
         }
         
@@ -118,7 +382,10 @@ namespace UserAuthorization.UserInfoService {
                 return this.RealNameField;
             }
             set {
-                this.RealNameField = value;
+                if ((object.ReferenceEquals(this.RealNameField, value) != true)) {
+                    this.RealNameField = value;
+                    this.RaisePropertyChanged("RealName");
+                }
             }
         }
         
@@ -128,7 +395,10 @@ namespace UserAuthorization.UserInfoService {
                 return this.SexField;
             }
             set {
-                this.SexField = value;
+                if ((this.SexField.Equals(value) != true)) {
+                    this.SexField = value;
+                    this.RaisePropertyChanged("Sex");
+                }
             }
         }
         
@@ -138,7 +408,10 @@ namespace UserAuthorization.UserInfoService {
                 return this.StateField;
             }
             set {
-                this.StateField = value;
+                if ((this.StateField.Equals(value) != true)) {
+                    this.StateField = value;
+                    this.RaisePropertyChanged("State");
+                }
             }
         }
         
@@ -148,7 +421,10 @@ namespace UserAuthorization.UserInfoService {
                 return this.UserNameField;
             }
             set {
-                this.UserNameField = value;
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
             }
         }
         
@@ -158,131 +434,10 @@ namespace UserAuthorization.UserInfoService {
                 return this.UserPwdField;
             }
             set {
-                this.UserPwdField = value;
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FunctionInfo", Namespace="http://schemas.datacontract.org/2004/07/AuthorizationModel")]
-    [System.SerializableAttribute()]
-    public partial class FunctionInfo : Utility.BaseModel, System.Runtime.Serialization.IExtensibleDataObject {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AssemblyNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IconField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int InvokingConfigField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ParentField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PathField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string AssemblyName {
-            get {
-                return this.AssemblyNameField;
-            }
-            set {
-                this.AssemblyNameField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Code {
-            get {
-                return this.CodeField;
-            }
-            set {
-                this.CodeField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                this.IDField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Icon {
-            get {
-                return this.IconField;
-            }
-            set {
-                this.IconField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int InvokingConfig {
-            get {
-                return this.InvokingConfigField;
-            }
-            set {
-                this.InvokingConfigField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                this.NameField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Parent {
-            get {
-                return this.ParentField;
-            }
-            set {
-                this.ParentField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Path {
-            get {
-                return this.PathField;
-            }
-            set {
-                this.PathField = value;
+                if ((object.ReferenceEquals(this.UserPwdField, value) != true)) {
+                    this.UserPwdField = value;
+                    this.RaisePropertyChanged("UserPwd");
+                }
             }
         }
     }

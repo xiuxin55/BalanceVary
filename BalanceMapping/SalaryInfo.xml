@@ -60,7 +60,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     </select>
     <select id="SelectSalaryInfo"  resultMap="SalaryInfoMap"  parameterClass="SalaryInfo">
       select * from (
-      select row_number() over(order by  $OrderbyColomnName$  desc,$SubOrderbyColomnName$ desc) as RowNumber,
+      select row_number() over(order by
+      SalaryTime  desc) as RowNumber,
       *
       from SalaryInfo   where 1=1
       <dynamic>

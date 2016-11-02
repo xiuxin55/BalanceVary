@@ -66,6 +66,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\CheckLogin.cs" />
+    <Compile Include="Service References\FunctionInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UserFuncInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\UserInfoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -73,29 +83,60 @@
     </Compile>
     <Compile Include="Tools\SexConverter.cs" />
     <Compile Include="Tools\UserStateConverter.cs" />
+    <Compile Include="FunctionWindow.xaml.cs">
+      <DependentUpon>FunctionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FunSetForm.xaml.cs">
-      <DependentUpon>FunSetForm.xaml</DependentUpon>
+    <Compile Include="ViewModels\UserFunSetVM.cs" />
+    <Compile Include="ViewModels\FunctionMaintenanceVM.cs" />
+    <Compile Include="ViewModels\FunctionAddVM.cs" />
+    <Compile Include="Views\ClassNameView.xaml.cs">
+      <DependentUpon>ClassNameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserFunSet.xaml.cs">
+      <DependentUpon>UserFunSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FunctionAdd.xaml.cs">
+      <DependentUpon>FunctionAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserInfoAdd.xaml.cs">
       <DependentUpon>UserInfoAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\UserInfoVM.cs" />
+    <Compile Include="Views\FunctionMaintenance.xaml.cs">
+      <DependentUpon>FunctionMaintenance.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserMaintenance.xaml.cs">
       <DependentUpon>UserMaintenance.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\UserMaintenanceVM.cs" />
+    <Page Include="FunctionWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FunSetForm.xaml">
+    <Page Include="Views\ClassNameView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserFunSet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\FunctionAdd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\UserInfoAdd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FunctionMaintenance.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -128,6 +169,32 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\FunctionInfoService\FunctionInfoService.wsdl" />
+    <None Include="Service References\FunctionInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FunctionInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FunctionInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FunctionInfoService\UserAuthorization.FunctionInfoService.FunctionInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserFuncInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserFuncInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserFuncInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserFuncInfoService\UserAuthorization.UserFuncInfoService.UserFuncInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserFuncInfoService\UserFuncInfoService.wsdl" />
     <None Include="Service References\UserInfoService\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -135,12 +202,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserInfoService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UserInfoService\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UserInfoService\item31.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserInfoService\UserAuthorization.UserInfoService.UserInfo.datasource">
@@ -162,11 +223,15 @@
       <Name>Utility</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Service References\UserFuncInfoService\item.disco" />
+  </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\FunctionInfoService\" />
+    <WCFMetadataStorage Include="Service References\UserFuncInfoService\" />
     <WCFMetadataStorage Include="Service References\UserInfoService\" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +245,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\UserInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserFuncInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserFuncInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserFuncInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FunctionInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FunctionInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FunctionInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\FunctionInfoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

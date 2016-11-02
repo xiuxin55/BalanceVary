@@ -25,11 +25,9 @@ namespace MainHome
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowVM();
+            MainWindowVM VM= new MainWindowVM();
+            VM.Menu  = this.Menu;
+            this.DataContext = VM;
         }
-
-     
-
-    
     }
 }

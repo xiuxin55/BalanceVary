@@ -199,19 +199,28 @@ namespace UserAuthorization
         }
         private void AuthorizeExecute()
         {
-            //if (SelectUser != null && SelectUser.UserId != null)
-            //{
-            //    FunSetForm fsf = new FunSetForm(SelectUser.UserId);
-            //    fsf.ShowDialog();
-               
-            //}
+            if (SelectUser != null && SelectUser.ID != null)
+            {
+                UserFunSet fsf = new UserFunSet();
+                fsf.VM.SelectUser = SelectUser;
+                fsf.VM.LoadData();
+                fsf.ShowDialog();
+
+            }
         }
         /// <summary>
         /// 锁定解锁
         /// </summary>
         private void LockExecute()
         {
-           
+            UserInfo temp = new UserInfo();
+            temp.ID = SelectUser.ID;
+            temp.State = SelectUser.State == 0 ? 2 : 0;
+            if (UserManageClient.Update(temp))
+            {
+                MessageBox.Show("操作成功！");
+                LoadData();
+            }
         }
 
         public override void LoadPageData(int startindex, int endindex)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Utility;
+
 
 namespace AuthorizationModel
 {
@@ -75,6 +75,14 @@ namespace AuthorizationModel
             get { return _AssemblyName; }
             set { _AssemblyName = value; }
         }
+        string _ClassName;
+
+        public string ClassName
+        {
+            get { return _ClassName; }
+            set { _ClassName = value; }
+        }
+        
     }
     
 }

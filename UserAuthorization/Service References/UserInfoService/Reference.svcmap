@@ -21,12 +21,10 @@
     <MetadataSource Address="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="d1a64592-8a58-4e7a-aa66-3893cbbeaece" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/?xsd=xsd1" />
-    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="454e8577-6cad-4a37-8802-921b45b21a8c" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/?xsd=xsd4" />
     <MetadataFile FileName="UserInfoService.wsdl" MetadataType="Wsdl" ID="c587cbd5-6fd6-4fab-a444-55f1e6d4acaf" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/?wsdl" />
-    <MetadataFile FileName="item31.xsd" MetadataType="Schema" ID="cdd1d7bf-40fa-487d-9ad5-7e736a39ed11" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/?xsd=xsd3" />
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="3367d841-a32e-45c9-92fd-99e3a0ab3b52" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/?xsd=xsd2" />
     <MetadataFile FileName="item.disco" MetadataType="Disco" ID="bf164370-32bc-434a-8dd5-a6ce3813ebf7" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/?disco" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="d1a64592-8a58-4e7a-aa66-3893cbbeaece" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/?xsd=xsd1" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="8ea50e83-9e90-47c1-ab28-a0495ccd4928" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/?xsd=xsd0" />
   </Metadata>
   <Extensions>

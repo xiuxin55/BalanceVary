@@ -1,0 +1,77 @@
+﻿<Controls:MetroWindow x:Class="UserAuthorization.FunctionAdd"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                      
+       
+             mc:Ignorable="d" 
+                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      ShowIconOnTitleBar="True"
+                      ShowTitleBar="True"
+                      WindowStartupLocation="CenterScreen"
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      NonActiveGlowBrush="#CDFF0000"
+                      ShowMaxRestoreButton="False" 
+                      ResizeMode="NoResize"
+                      Title="功能信息"
+             Height="270" Width="404">
+    <Controls:MetroWindow.Resources>
+
+        <ResourceDictionary>
+
+
+        </ResourceDictionary>
+
+    </Controls:MetroWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="465*"/>
+            <RowDefinition Height="39"/>
+            <RowDefinition Height="4"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="6"/>
+
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="基本信息"  Grid.Column="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock VerticalAlignment="Center"  Text="功能编码" HorizontalAlignment="Center" Width="auto" Grid.Column="0" Grid.Row="0"></TextBlock>
+                    <TextBlock VerticalAlignment="Center" Text="功能名称" HorizontalAlignment="Center"  Width="auto" Grid.Column="0" Grid.Row="1"></TextBlock>
+                    <TextBlock VerticalAlignment="Center" Text="类名" HorizontalAlignment="Center"  Width="auto" Grid.Column="0" Grid.Row="2"></TextBlock>
+                    <TextBlock VerticalAlignment="Center" Text="程序集名" HorizontalAlignment="Center"  Width="auto" Grid.Column="0" Grid.Row="3"></TextBlock>
+                    <TextBox  Margin="0,5,0,0"  Text="{Binding SelectFunction.Code}"  Grid.Column="1" Grid.Row="0"/>
+
+                    <TextBox  Margin="0,5,0,0"  Text="{Binding SelectFunction.Name}"  Grid.Column="1" Grid.Row="1"/>
+                    <TextBox  Margin="0,5,0,0"  Text="{Binding SelectFunction.ClassName}"   Grid.Column="1" Grid.Row="2"/>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3" >
+                        <TextBox Text="{Binding SelectFunction.AssemblyName}" Width="210" IsReadOnly="True"   />
+                        <Button Content="浏览" Width="60" Margin="10,0,0,0" Command="{Binding BrowseCommand}"/>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+
+        </Grid>
+        <StackPanel  Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center"  Height="30" >
+            <Button x:Name="btnConfirm" Command="{Binding OKCommand}"   Content="确定" Width="80" Height="30" />
+        </StackPanel>
+    </Grid>
+</Controls:MetroWindow>

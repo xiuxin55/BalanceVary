@@ -16,8 +16,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <result property="InvokingConfig" column="InvokingConfig"/>
       <result property="Icon" column="Icon"/>
       <result property="AssemblyName" column="AssemblyName"/>
-
+      <result property="ClassName" column="ClassName"/>
       
+
     </resultMap>
   </resultMaps>
   <statements>
@@ -59,7 +60,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <isNotEmpty prepend ="," property="AssemblyName">
         AssemblyName = #AssemblyName#
       </isNotEmpty>
-     
+      <isNotEmpty prepend ="," property="ClassName">
+        ClassName = #ClassName#
+      </isNotEmpty>
+      
       WHERE ID = #ID#
     </update>
     <insert id="AddFunctionInfo" parameterClass="FunctionInfo">
@@ -70,8 +74,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       Parent,
       InvokingConfig,
       Icon,
-      AssemblyName)
-      VALUES (#ID#,#Code#,#Name#,#Path#,#Parent#,#InvokingConfig#,#Icon#,#AssemblyName#);
+      AssemblyName,ClassName)
+      VALUES (#ID#,#Code#,#Name#,#Path#,#Parent#,#InvokingConfig#,#Icon#,#AssemblyName#,#ClassName#);
     </insert>
     <delete id="DeleteFunctionInfo" parameterClass="FunctionInfo">
       DELETE FunctionInfo WHERE ID = #ID#

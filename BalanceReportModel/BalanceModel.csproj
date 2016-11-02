@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountAndNameLinkInfo.cs" />
+    <Compile Include="BaseModel.cs" />
     <Compile Include="Salary\SalaryInfo.cs" />
     <Compile Include="SystemSetInfo.cs" />
     <Compile Include="AccountInfo.cs" />
@@ -102,12 +103,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Utility\Utility.csproj">
-      <Project>{33c58cb0-1338-455f-a678-9d5be412d468}</Project>
-      <Name>Utility</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

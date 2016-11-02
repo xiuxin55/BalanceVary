@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AuthorizationModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AuthorizationModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost/WcfAuthorizationServiceLibrary/UserInfoService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Utility" />
   <xs:complexType name="UserInfo">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Utility" base="q1:BaseModel">
+      <xs:extension base="tns:BaseModel">
         <xs:sequence>
           <xs:element minOccurs="0" name="Describe" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
@@ -20,6 +19,16 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="UserInfo" nillable="true" type="tns:UserInfo" />
+  <xs:complexType name="BaseModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="OrderbyColomnName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SubOrderbyColomnName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseModel" nillable="true" type="tns:BaseModel" />
   <xs:complexType name="ArrayOfFunctionInfo">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="FunctionInfo" nillable="true" type="tns:FunctionInfo" />
@@ -28,9 +37,10 @@
   <xs:element name="ArrayOfFunctionInfo" nillable="true" type="tns:ArrayOfFunctionInfo" />
   <xs:complexType name="FunctionInfo">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Utility" base="q2:BaseModel">
+      <xs:extension base="tns:BaseModel">
         <xs:sequence>
           <xs:element minOccurs="0" name="AssemblyName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClassName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Icon" nillable="true" type="xs:string" />

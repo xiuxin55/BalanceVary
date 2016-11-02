@@ -339,7 +339,6 @@
     </Page>
     <Page Include="Views\AccountAndNameLinkInfoAdd.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AccountAndNameLinkManage.xaml">
       <Generator>MSBuild:Compile</Generator>

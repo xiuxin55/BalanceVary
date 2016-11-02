@@ -305,6 +305,7 @@ namespace MahApps.Metro.Controls
             Popup p = GetDesendentChild<Popup>(this.ParentWindow);
             if (p != null)
             {
+          
                 p.IsOpen = true;
             }
         }

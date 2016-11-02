@@ -41,5 +41,21 @@ namespace UserAuthorization.Helper
                 return false;
             }
         }
+        public bool CheckAuthrization(string classname)
+        {
+            UserInfo CurrentUser = (UserInfo)AuthorizationContraint.CurrentUser;
+            if (CurrentUser !=null)
+            {
+                foreach (var item in CurrentUser.Functions)
+                {
+                    if (item.ClassName!=null&&item.ClassName.Trim()== classname)
+                    {
+                        return true;
+                    }
+                }
+
+            }
+            return false;
+        }
     }
 }

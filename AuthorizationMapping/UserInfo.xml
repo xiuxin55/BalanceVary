@@ -17,6 +17,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <result property="InvokingConfig" column="InvokingConfig"/>
       <result property="Icon" column="Icon"/>
       <result property="AssemblyName" column="AssemblyName"/>
+      <result property="ClassName" column="ClassName"/>
     </resultMap>
     
     <resultMap id="UserInfoMap" class="UserInfo">

@@ -19,7 +19,7 @@ namespace UserAuthorization
     /// <summary>
     ///新建或修改
     /// </summary>
-    public class UserInfoVM : BaseManageVM<UserInfo>
+    public class UserInfoVM : BaseVM
     {
  
         public UserInfoServiceClient UserManageClient = new UserInfoServiceClient();
@@ -140,14 +140,7 @@ namespace UserAuthorization
                 MessageBox.Show("登录名不能为空");
                 return;
             }
-            UserInfo temp = new UserInfoService.UserInfo();
-            temp.UserName = SelectUser.UserName;
-            UserInfo[] users= UserManageClient.Select(temp);
-            if (users!=null && users.Length>0)
-            {
-                MessageBox.Show("登录名已存在，重新填写");
-                return;
-            }
+           
             try
             {
                 if (!IsAdd)
@@ -165,6 +158,14 @@ namespace UserAuthorization
                 }
                 else
                 {
+                    UserInfo temp = new UserInfoService.UserInfo();
+                    temp.UserName = SelectUser.UserName;
+                    UserInfo[] users = UserManageClient.Select(temp);
+                    if (users != null && users.Length > 0)
+                    {
+                        MessageBox.Show("登录名已存在，重新填写");
+                        return;
+                    }
                     if (string.IsNullOrWhiteSpace(SelectUser.UserPwd))
                     {
                         MessageBox.Show("登录密码不能为空");
