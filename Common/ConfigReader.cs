@@ -88,5 +88,26 @@ namespace Common
             
             return xmlContentLst;
         }
+
+        public static ArrayList GetAutoUpdateString(string fileName, string nodePathName)
+        {
+            ArrayList xmlContentLst = new ArrayList();
+            try
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(fileName);
+                XmlNode xn = xmlDoc.SelectSingleNode("UpdateFileList");
+                foreach (XmlNode item in xn.ChildNodes)
+                {
+                    xmlContentLst.Add(item.OuterXml);
+                }
+            }
+            catch (System.Exception e)
+            {
+
+            }
+
+            return xmlContentLst;
+        }
     }
 }

@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseModel.cs" />
+    <Compile Include="AutoUpdateModel.cs" />
+    <Compile Include="DownFileResult.cs" />
     <Compile Include="UserFuncInfo.cs" />
     <Compile Include="FunctionInfo.cs" />
     <Compile Include="UserInfo.cs" />

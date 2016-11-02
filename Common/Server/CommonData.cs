@@ -18,5 +18,7 @@ namespace Common.Server
         public static string CountyZoneCode = "县行";
         public static int AccountTypeRegular = 0;//0定期
         public static int AccountTypeUnRegular = 1;//1活期
+        public static string AutoUpdatePath = System.AppDomain.CurrentDomain.BaseDirectory + @"\AutoUpdate\";//自动更新文件所放的位置
+        public static string AutoUpdateConfigFile = "UpdateFileList.xml";
     }
 }

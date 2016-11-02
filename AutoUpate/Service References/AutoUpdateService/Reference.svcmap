@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2be141cc-82ff-40ae-b63c-6ce9287316e1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="f726f7e9-0c91-40e6-a20f-fabbaaf9180d" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/?disco" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="ac870ead-6c4b-4331-a3ac-617ffb79ec7b" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/?xsd=xsd2" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="89b39a34-aff3-482b-bd0d-74c950fac93d" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/?xsd=xsd4" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="b8aa747c-61fb-46b6-96d8-5a391e37fe60" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/?xsd=xsd1" />
+    <MetadataFile FileName="AutoUpdateService.wsdl" MetadataType="Wsdl" ID="63412787-6041-405f-b282-27da3559de5c" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/?wsdl" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="96daf1a6-1de6-4b67-8998-cb49f67d13dc" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/?xsd=xsd0" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="c757a6ad-c04b-4af3-9134-3015403c3b99" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

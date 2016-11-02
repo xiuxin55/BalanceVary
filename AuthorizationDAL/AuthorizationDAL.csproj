@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthorizationBaseDAL.cs" />
+    <Compile Include="AutoUpdateDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FunctionInfoDAL.cs" />
     <Compile Include="UserFuncInfoDAL.cs" />

@@ -1,9 +1,11 @@
 ﻿using BalanceReport;
+using Common.Client;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 
 namespace MainHome
@@ -17,13 +19,20 @@ namespace MainHome
         {
             base.OnStartup(e);
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
-            //BalanceWindow bw = new BalanceWindow();
-            //bw.Show();
+            try
+            {
+                Assembly abll = Assembly.LoadFrom(CommonDataClient.AutoUpdateDLLPath + CommonDataClient.AutoUpdateDLLFile);
+                Window frmAutoUpdate = (Window)abll.CreateInstance("AutoUpdate.AutoUpdateWindow");
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
             Login bw = new Login();
             bw.Show();
 
-            //BalanceReport.Salary.SalaryWindow sw = new BalanceReport.Salary.SalaryWindow();
-            //sw.Show();
+
 
 
         }

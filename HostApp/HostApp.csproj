@@ -176,6 +176,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AutoUpdate\UpdateFileList.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ServiceCofig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -42,6 +42,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FunctionInfoBLL.cs" />
     <Compile Include="UserFuncInfoBLL.cs" />
+    <Compile Include="AutoUpdateBLL.cs" />
     <Compile Include="UserInfoBLL.cs" />
   </ItemGroup>
   <ItemGroup>

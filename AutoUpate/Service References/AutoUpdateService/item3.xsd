@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AuthorizationModel" />
+  <xs:element name="CheckAutoUpdate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AuthorizationModel" minOccurs="0" name="list" nillable="true" type="q1:ArrayOfAutoUpdateModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckAutoUpdateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AuthorizationModel" minOccurs="0" name="CheckAutoUpdateResult" nillable="true" type="q2:ArrayOfAutoUpdateModel" />
+        <xs:element minOccurs="0" name="IsHasUpdate" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownLoadFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AuthorizationModel" minOccurs="0" name="filedata" nillable="true" type="q3:AutoUpdateModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownLoadFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AuthorizationModel" minOccurs="0" name="DownLoadFileResult" nillable="true" type="q4:DownFileResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

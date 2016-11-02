@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\AuthorizationContraint.cs" />
+    <Compile Include="Client\CommonData.cs" />
+    <Compile Include="Common\Class1.cs" />
     <Compile Include="HashHelper.cs" />
     <Compile Include="ConfigReader.cs" />
     <Compile Include="LogHelper.cs" />
@@ -55,7 +57,6 @@
   <ItemGroup>
     <EmbeddedResource Include="log4net_config.xml" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

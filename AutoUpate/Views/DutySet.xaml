@@ -1,0 +1,63 @@
+﻿<Controls:MetroWindow x:Class="UserAuthorization.DutySet"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             Title="职责分配"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             ShowIconOnTitleBar="True"
+             ShowTitleBar="True"
+             WindowStartupLocation="CenterScreen"
+             GlowBrush="{DynamicResource AccentColorBrush}"
+             NonActiveGlowBrush="#CDFF0000"
+             WindowTransitionsEnabled="False"
+             ShowMaxRestoreButton="False" 
+             ResizeMode="NoResize"
+             mc:Ignorable="d" 
+             Height="450" Width="593">
+    <Controls:MetroWindow.Resources>
+        <ResourceDictionary Source="/FinancialRegulation;component/Template/UC_Style.xaml"></ResourceDictionary>
+    </Controls:MetroWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9"/>
+            <RowDefinition Height="517*"/>
+            <RowDefinition Height="46"/>
+            <RowDefinition Height="9"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="343*"/>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="343*"/>
+                <ColumnDefinition Width="5"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="未分配职责"    Grid.Column="1" >
+                <DataGrid Name="dgUnAllocate" BorderThickness="0" Background="White" ItemsSource="{Binding Path=UnAllocateDutyList}" SelectedItem="{Binding UnSelectDuty}" Style="{StaticResource DataGridStyle}" Grid.Row="1" SelectionMode="Extended">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="职责编号" Width="30*" Binding="{Binding DutyCode}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="职责名称" Width="40*" Binding="{Binding DutyName}" IsReadOnly="True" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+            <StackPanel Grid.Column="2"  Orientation="Vertical">
+                <Button Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=dgUnAllocate,Path=SelectedItems}" Margin="0,75,0,0"   Content=">"  Width="50" Height="30" x:Name="btnAdd"/>
+                <Button Command="{Binding AddAllCommand}"  Margin="0,30,0,0"   Content=">>" Width="50" Height="30"  x:Name="btnAddAll"  />
+                <Button Command="{Binding RemoveCommand}"  CommandParameter="{Binding ElementName=dgAllocate,Path=SelectedItems}"   Margin="0,30,0,0"   Content="&lt;"  Width="50" Height="30" x:Name="btnDelete" />
+                <Button Command="{Binding RemoveAllCommand}"  Margin="0,30,0,0"   Content="&lt;&lt;"  Width="50" Height="30" x:Name="btnDeleteAll"/>
+            </StackPanel>
+            <GroupBox Header="已分配职责"  Grid.Column="3" >
+                <DataGrid Name="dgAllocate"  BorderThickness="0"   Background="White" ItemsSource="{Binding Path=AllocateDutyList}"  SelectedItem="{Binding SelectDuty}" Style="{StaticResource DataGridStyle}" Grid.Row="1" SelectionMode="Extended">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="职责编号" Width="30*" Binding="{Binding DutyCode}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="职责名称" Width="40*" Binding="{Binding DutyName}" IsReadOnly="True" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </Grid>
+        <StackPanel  Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center"  Height="30" >
+            <Button x:Name="btnConfirm"   Content="确定" Width="80" Click="btnConfirm_Click" />
+        </StackPanel>
+    </Grid>
+</Controls:MetroWindow>
