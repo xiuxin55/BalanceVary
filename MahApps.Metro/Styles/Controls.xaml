@@ -49,7 +49,7 @@
     <Style TargetType="TabControl" BasedOn="{StaticResource MetroTabControl}" />
     <Style TargetType="ScrollBar" BasedOn="{StaticResource MetroScrollBar}" />
     <Style TargetType="RadioButton" BasedOn="{StaticResource MetroRadioButton}" />
-    <Style TargetType="ProgressBar" BasedOn="{StaticResource MetroProgressBar}" />
+    <!--<Style TargetType="ProgressBar" BasedOn="{StaticResource MetroProgressBar}" />-->
     <Style TargetType="PasswordBox" BasedOn="{StaticResource MetroPasswordBox}" />
     <Style TargetType="CheckBox" BasedOn="{StaticResource MetroCheckBox}" />
     <Style TargetType="ComboBox" BasedOn="{StaticResource MetroComboBox}" />

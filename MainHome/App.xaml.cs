@@ -18,17 +18,17 @@ namespace MainHome
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            this.DispatcherUnhandledException += App_DispatcherUnhandledException;
-            try
-            {
-                Assembly abll = Assembly.LoadFrom(CommonDataClient.AutoUpdateDLLPath + CommonDataClient.AutoUpdateDLLFile);
-                Window frmAutoUpdate = (Window)abll.CreateInstance("AutoUpdate.AutoUpdateWindow");
-            }
-            catch (Exception ex)
-            {
+            //this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+            //try
+            //{
+            //    Assembly abll = Assembly.LoadFrom(CommonDataClient.AutoUpdateDLLPath + CommonDataClient.AutoUpdateDLLFile);
+            //    Window frmAutoUpdate = (Window)abll.CreateInstance("AutoUpdate.AutoUpdateWindow");
+            //}
+            //catch (Exception ex)
+            //{
 
-                throw ex;
-            }
+            //    throw ex;
+            //}
             Login bw = new Login();
             bw.Show();
 

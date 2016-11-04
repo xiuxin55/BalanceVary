@@ -17,26 +17,16 @@ namespace AutoUpdate.AutoUpdateService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AutoUpdateModel", Namespace="http://schemas.datacontract.org/2004/07/AuthorizationModel")]
     [System.SerializableAttribute()]
-    public partial class AutoUpdateModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+    public partial class AutoUpdateModel : AutoUpdate.AutoUpdateService.BaseModel {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FileNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string VersionField;
+        private string StateField;
         
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VersionField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string FileName {
@@ -52,6 +42,19 @@ namespace AutoUpdate.AutoUpdateService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string State {
+            get {
+                return this.StateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StateField, value) != true)) {
+                    this.StateField = value;
+                    this.RaisePropertyChanged("State");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Version {
             get {
                 return this.VersionField;
@@ -60,6 +63,107 @@ namespace AutoUpdate.AutoUpdateService {
                 if ((object.ReferenceEquals(this.VersionField, value) != true)) {
                     this.VersionField = value;
                     this.RaisePropertyChanged("Version");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseModel", Namespace="http://schemas.datacontract.org/2004/07/AuthorizationModel")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(AutoUpdate.AutoUpdateService.AutoUpdateModel))]
+    public partial class BaseModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int EndIndexField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderbyColomnNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RowNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StartIndexField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubOrderbyColomnNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int EndIndex {
+            get {
+                return this.EndIndexField;
+            }
+            set {
+                if ((this.EndIndexField.Equals(value) != true)) {
+                    this.EndIndexField = value;
+                    this.RaisePropertyChanged("EndIndex");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderbyColomnName {
+            get {
+                return this.OrderbyColomnNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderbyColomnNameField, value) != true)) {
+                    this.OrderbyColomnNameField = value;
+                    this.RaisePropertyChanged("OrderbyColomnName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RowNumber {
+            get {
+                return this.RowNumberField;
+            }
+            set {
+                if ((this.RowNumberField.Equals(value) != true)) {
+                    this.RowNumberField = value;
+                    this.RaisePropertyChanged("RowNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StartIndex {
+            get {
+                return this.StartIndexField;
+            }
+            set {
+                if ((this.StartIndexField.Equals(value) != true)) {
+                    this.StartIndexField = value;
+                    this.RaisePropertyChanged("StartIndex");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SubOrderbyColomnName {
+            get {
+                return this.SubOrderbyColomnNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubOrderbyColomnNameField, value) != true)) {
+                    this.SubOrderbyColomnNameField = value;
+                    this.RaisePropertyChanged("SubOrderbyColomnName");
                 }
             }
         }
@@ -87,9 +191,6 @@ namespace AutoUpdate.AutoUpdateService {
         private long FileSizeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.IO.Stream FileStreamField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FilenameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -97,6 +198,9 @@ namespace AutoUpdate.AutoUpdateService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] SendBytesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -117,19 +221,6 @@ namespace AutoUpdate.AutoUpdateService {
                 if ((this.FileSizeField.Equals(value) != true)) {
                     this.FileSizeField = value;
                     this.RaisePropertyChanged("FileSize");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.IO.Stream FileStream {
-            get {
-                return this.FileStreamField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FileStreamField, value) != true)) {
-                    this.FileStreamField = value;
-                    this.RaisePropertyChanged("FileStream");
                 }
             }
         }
@@ -169,6 +260,19 @@ namespace AutoUpdate.AutoUpdateService {
                 if ((object.ReferenceEquals(this.MessageField, value) != true)) {
                     this.MessageField = value;
                     this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] SendBytes {
+            get {
+                return this.SendBytesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SendBytesField, value) != true)) {
+                    this.SendBytesField = value;
+                    this.RaisePropertyChanged("SendBytes");
                 }
             }
         }

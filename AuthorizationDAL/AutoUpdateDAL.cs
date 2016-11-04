@@ -21,12 +21,13 @@ namespace AuthorizationDAL
             foreach (var item in localVersion)
             {
                 bool ishas = false;
+                item.State = "未下载";
                 foreach (var item2 in list)
                 {
-                    if (string.Compare(item.FileName, item2.FileName) > 0)
+                    if (item.FileName == item2.FileName)
                     {
                         ishas = true;
-                        if (item.Version == item2.Version)
+                        if (string.Compare(item.Version, item2.Version) > 0)
                         {
                             UpdateVersion.Add(item);
                         }
@@ -50,18 +51,19 @@ namespace AuthorizationDAL
                 result.IsSuccess = false;
                 result.FileSize = 0;
                 result.Message = "服务器不存在此文件";
-                result.FileStream = new MemoryStream();
+                result.SendBytes = null;
                 return result;
-            }
-            Stream ms = new MemoryStream();
-            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
-            fs.CopyTo(ms);
-            ms.Position = 0;  //重要，不为0的话，客户端读取有问题
-            result.IsSuccess = true;
-            result.FileSize = ms.Length;
-            result.FileStream = ms;
-            fs.Flush();
+            } 
+            FileInfo fi = new FileInfo(path);
+            long len = fi.Length;
+            FileStream fs = File.OpenRead(path);
+            byte[] buffer = new byte[len];
+            fs.Read(buffer, 0, (int)len);
             fs.Close();
+            result.FileSize = len;
+            result.SendBytes = buffer;
+            result.IsSuccess = true;
+            result.Filename = filedata.FileName;
             return result;
         }
         private List<AutoUpdateModel> GetUpdateList()
@@ -82,6 +84,8 @@ namespace AuthorizationDAL
                 AutoUpdateModel sm = new AutoUpdateModel();
                 sm.FileName  = xmlDoc.FirstChild.Attributes["FileName"].Value.ToString();
                 sm.Version = xmlDoc.FirstChild.Attributes["Version"].Value.ToString();
+                if (string.IsNullOrWhiteSpace(sm.FileName))
+                    continue;
                 list.Add(sm);
             }
             return list;

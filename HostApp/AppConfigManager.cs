@@ -23,7 +23,7 @@ namespace HostApp
             foreach (var item in contentarray)
             {
                 if (string.IsNullOrWhiteSpace(item.ToString()))
-                    return list;
+                    continue;
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.LoadXml(item.ToString());
                 ServiceModel sm = new ServiceModel();
@@ -33,6 +33,8 @@ namespace HostApp
                 sm.Name = sm.ClassName.Split('.').LastOrDefault();
                 sm.IsStart = "未启动";
                 sm.IsSelected = false;
+                if (string.IsNullOrWhiteSpace(sm.AssemblyName))
+                    continue;
                 list.Add(sm);
             }
             return list;

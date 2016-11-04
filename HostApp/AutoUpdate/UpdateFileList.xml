@@ -1,22 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <UpdateFileList>
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
-  <File FileName="" Version=""  />
+  <File FileName="MahApps.Metro.dll" Version="2.0"  />
+  <File FileName="Utility.dll" Version="1.0"  />
+  
   <File FileName="" Version=""  />
 </UpdateFileList>
 

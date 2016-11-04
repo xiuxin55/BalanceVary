@@ -1,12 +1,12 @@
 ﻿using AuthorizationBLL;
 using AuthorizationModel;
+using Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-
 
 namespace WcfAuthorizationServiceLibrary
 {
@@ -25,7 +25,17 @@ namespace WcfAuthorizationServiceLibrary
 
         public DownFileResult DownLoadFile(AutoUpdateModel filedata)
         {
-            return bll.DownLoadFile(filedata);
+            try
+            {
+                return bll.DownLoadFile(filedata);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(AutoUpdateService), ex);
+                return null;
+            }
+            
         }
+
     }
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AuthorizationModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AuthorizationModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.IO" />
   <xs:complexType name="ArrayOfAutoUpdateModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="AutoUpdateModel" nillable="true" type="tns:AutoUpdateModel" />
@@ -8,19 +7,34 @@
   </xs:complexType>
   <xs:element name="ArrayOfAutoUpdateModel" nillable="true" type="tns:ArrayOfAutoUpdateModel" />
   <xs:complexType name="AutoUpdateModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
-    </xs:sequence>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
   <xs:element name="AutoUpdateModel" nillable="true" type="tns:AutoUpdateModel" />
+  <xs:complexType name="BaseModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="OrderbyColomnName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SubOrderbyColomnName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseModel" nillable="true" type="tns:BaseModel" />
   <xs:complexType name="DownFileResult">
     <xs:sequence>
       <xs:element minOccurs="0" name="FileSize" type="xs:long" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.IO" minOccurs="0" name="FileStream" nillable="true" type="q1:Stream" />
       <xs:element minOccurs="0" name="Filename" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SendBytes" nillable="true" type="xs:base64Binary" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DownFileResult" nillable="true" type="tns:DownFileResult" />

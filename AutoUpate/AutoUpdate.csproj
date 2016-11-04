@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\MainHome\bin\Debug\AutoUpdate\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -110,16 +110,10 @@
     <None Include="Service References\AutoUpdateService\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\AutoUpdateService\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\AutoUpdateService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\AutoUpdateService\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AutoUpdateService\item4.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

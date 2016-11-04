@@ -15,6 +15,7 @@ using Encryption4Net;
 using Common.Client;
 using UserAuthorization.Helper;
 using MahApps.Metro.Controls;
+using System.Reflection;
 
 namespace MainHome
 {
@@ -67,10 +68,11 @@ namespace MainHome
         #region 命令执行方法
         private void LoginExecute()
         {
-
+            //Assembly abll = Assembly.LoadFrom(CommonDataClient.AutoUpdateDLLPath + CommonDataClient.AutoUpdateDLLFile);
+            //Window frmAutoUpdate = (Window)abll.CreateInstance("AutoUpdate.AutoUpdateWindow");
             if (UserLoginHelper.Instance.CheckLogin(UserModel.UserName, Password.Password))
             {
-                
+
                 MainWindow win = new MainWindow();
                 win.Show();
                 if (LoginWin != null)

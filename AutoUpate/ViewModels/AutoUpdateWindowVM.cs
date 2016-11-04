@@ -13,6 +13,7 @@ using System.Collections;
 using System.Xml;
 using Common.Client;
 using Common;
+using MahApps.Metro.Controls;
 
 namespace AutoUpdate
 {
@@ -95,12 +96,13 @@ namespace AutoUpdate
         public  bool CheckAutoUpdate()
         {
 
-            DownFileList =new ObservableCollection<AutoUpdateService.AutoUpdateModel>(GetUpdateList());
+           
             bool isHasUpdate;
-            Client.CheckAutoUpdate(out isHasUpdate, DownFileList.ToArray());
+            AutoUpdateModel[] arraray=Client.CheckAutoUpdate(out isHasUpdate, GetUpdateList().ToArray());
+            DownFileList = new ObservableCollection<AutoUpdateService.AutoUpdateModel>(arraray);
+            TotalAmount = DownFileList.Count;
             if (isHasUpdate)
             {
-                
                 return true;
             }
             else
@@ -109,31 +111,53 @@ namespace AutoUpdate
             }
           
         }
-        
+
         #endregion 构造加载
 
         #region 变量属性
-
+        public MetroWindow WinOwner;
         #endregion 变量属性
         #region 命令定义
-        private Microsoft.Practices.Prism.Commands.DelegateCommand DownLoadCommand;
-        private Microsoft.Practices.Prism.Commands.DelegateCommand CancelDownLoadCommand;
+        public Microsoft.Practices.Prism.Commands.DelegateCommand DownLoadCommand { get; set; }
+        public Microsoft.Practices.Prism.Commands.DelegateCommand CancelDownLoadCommand { get; set; }
         #endregion 命令定义
 
         #region 命令方法
         private  void DownLoadExecute()
         {
-            CurrentAmount = 0;
-            foreach (var item in DownFileList)
+            CurrentAmount = 0;FileStream fs = null;
+            try
             {
-                Client.DownLoadFile(item);
-                CurrentAmount++;
+                foreach (var item in DownFileList)
+                {
+                    item.State = "正在下载";
+                    DownFileResult down = Client.DownLoadFile(item);
+                    fs = File.Create(CommonDataClient.AutoUpdatePath + down.Filename);
+                    fs.Write(down.SendBytes, 0, down.SendBytes.Length);
+                    CurrentAmount++;
+                    item.State = "下载完成";
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex ;
+            }
+            finally
+            {
+                if (fs != null)
+                {
+                    fs.Close();
+                }
+
             }
            
         }
         private void CancelDownLoadExecute()
         {
-            
+            if (WinOwner!=null)
+            {
+                WinOwner.Close();
+            }
         }
 
         public override void LoadPageData(int startindex, int endindex)
