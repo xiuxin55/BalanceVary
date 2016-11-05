@@ -22,10 +22,11 @@ namespace MainHome
         public Login()
         {
             InitializeComponent();
-            LoginVM VM = new LoginVM();
+            VM = new LoginVM();
             VM.LoginWin = this;
             VM.Password = this.passwordbox;
             this.DataContext = VM;
         }
+        public LoginVM VM { get; set; }
     }
 }

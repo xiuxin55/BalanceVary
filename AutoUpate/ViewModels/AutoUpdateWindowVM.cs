@@ -21,6 +21,7 @@ namespace AutoUpdate
     public class AutoUpdateWindowVM : NotificationObject
     {
         AutoUpdateServiceClient Client ;
+        string logfile = System.AppDomain.CurrentDomain.BaseDirectory +DateTime.Now.ToString("yyyyMMdd")+ "autoupdatelog.txt";
         #region 构造加载
         public AutoUpdateWindowVM()
         {
@@ -33,8 +34,10 @@ namespace AutoUpdate
             }
             catch (Exception ex)
             {
+                
+                File.AppendAllText(logfile, DateTime.Now.ToString()+"\n"+ex.Message + ":\n" + ex.StackTrace);
                 CancelDownLoadExecute();
-                throw ex;
+
             }
            
         }

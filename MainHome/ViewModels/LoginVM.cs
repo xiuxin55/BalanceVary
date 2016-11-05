@@ -60,6 +60,7 @@ namespace MainHome
                 RaisePropertyChanged("UserModel");
             }
         }
+        public Window WinOwner { get; set; }
         #endregion
         #region 命令
         public DelegateCommand LoginCommand { get; set; }
@@ -74,6 +75,7 @@ namespace MainHome
             {
 
                 MainWindow win = new MainWindow();
+                Application.Current.MainWindow = win;
                 win.Show();
                 if (LoginWin != null)
                 {

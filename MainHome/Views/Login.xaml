@@ -13,7 +13,7 @@
         mc:Ignorable="d"
         ShowMenuRestoreButton="True" 
                       ResizeMode="NoResize" 
-        Title="MainWindow" Height="220" Width="320">
+        Title="数据分析" Height="220" Width="320">
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="19" Margin="55,30,0,0" TextWrapping="Wrap" Text="用户名" VerticalAlignment="Top" Width="41"/>
         <TextBox x:Name="textBox" Text="{Binding UserModel.UserName}" HorizontalAlignment="Left" Height="28" Margin="117,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>

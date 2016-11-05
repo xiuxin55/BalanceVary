@@ -4,22 +4,81 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoUpdate"
-                      ResizeMode="NoResize" 
+                      ResizeMode="NoResize"  WindowStyle="None"
         mc:Ignorable="d"
         Title="下载列表" Height="320" Width="380" WindowStartupLocation="CenterScreen">
-    
-    <Grid Margin="3">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="WindowTitle" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF2C7AD6" Offset="1" />
+            <GradientStop Color="#FF3FCDE0" Offset="0" />
+        </LinearGradientBrush>
+        <!--背景笔刷6-->
+        <LinearGradientBrush x:Key="BackGroundBrush6" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF2C7AD6" Offset="1" />
+            <GradientStop Color="#FF3FCDE0" Offset="0" />
+            <GradientStop Color="#FF2C7AD6" Offset="0.107" />
+            <GradientStop Color="#FF256CF3" Offset="0.213" />
+        </LinearGradientBrush>
+        <Style TargetType="Button" x:Key="btuCommonStyle">
+            <Setter Property="Width" Value="90"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="{StaticResource WindowTitle}"/>
+        </Style>
+        <!--关闭窗体按钮的样式-->
+        <Style x:Key="XButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border x:Name="border" BorderBrush="#80000000" BorderThickness="0,0,0,0" CornerRadius="5,5,5,0">
+
+                                <Path Data="M0.5,0.5 L21.5,23.5 M22.5,0.5 L0.5,24.5" Fill="White"   HorizontalAlignment="Center" Height="16" Width="16" Stretch="Fill" Stroke="White"  />
+                             
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True">
+                                <Setter Property="Focusable" Value="False"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#87A58686" Offset="0"/>
+                                            <GradientStop Color="#FF702323" Offset="0.047"/>
+                                            <GradientStop Color="#01FFFFFF" Offset="0.884"/>
+                                            <GradientStop Color="#46FCFAFA" Offset="1"/>
+                                            <GradientStop Color="#33905454" Offset="0.862"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                           
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Background="{DynamicResource BackGroundBrush6}" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Grid Margin="3">
         <Grid.RowDefinitions>
-            <RowDefinition Height="13*"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="13*"/>
             <RowDefinition Height="5"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="3"/>
             <RowDefinition Height="1.4*"/>
             <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
+        
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
 
-        <Grid  Grid.Row="0">
-            <DataGrid  Name="CompanyDataGrid"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding DownFileList}">
+                <Button   Style="{DynamicResource XButtonStyle}" Width="28" Margin="0,-1,0,1"  Command="{Binding CancelDownLoadCommand}" Click="closeButton_Click"/>
+            </StackPanel>
+            <Grid  Grid.Row="1">
+            <DataGrid Background="White"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding DownFileList}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding FileName}"  Header="文件名" Width="1.3*"/>
                     <DataGridTextColumn Binding="{Binding Version}"  Header="版本" Width="*"/>
@@ -27,7 +86,7 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        <Grid  Grid.Row="2">
+        <Grid  Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20*"/>
                 <ColumnDefinition Width="3*"/>
@@ -39,13 +98,12 @@
                 <Run Text="{Binding TotalAmount}"></Run>
             </TextBlock>
         </Grid>
-        <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Right">
-            <Button Margin="5,0,5,0" Content="下载" Command="{Binding DownLoadCommand}" Width="60"/>
-            <Button Content="取消" Command="{Binding CancelDownLoadCommand}" Width="60"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Right">
-            <Button Margin="5,0,5,0" Content="下载" Command="{Binding DownLoadCommand}" Width="60"/>
-            <Button Content="启动" Command="{Binding CancelDownLoadCommand}" Width="60"/>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Right">
+
+                <Button Margin="5,0,5,0" Content="下载" Command="{Binding DownLoadCommand}" Width="60"  Style="{StaticResource btuCommonStyle}"/>
+                <Button Content="启动" Command="{Binding CancelDownLoadCommand}" Width="60"  Style="{StaticResource btuCommonStyle}"/>
         </StackPanel>
     </Grid>
+    </Border>
 </Window>

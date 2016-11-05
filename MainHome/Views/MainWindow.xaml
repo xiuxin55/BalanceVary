@@ -8,7 +8,7 @@
         GlowBrush="{DynamicResource AccentColorBrush}"
         NonActiveGlowBrush="#CDFF0000"
         ShowIconOnTitleBar="True"
-                     
+                     Closed="MetroWindow_Closed"
         ShowTitleBar="True"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
@@ -18,21 +18,31 @@
                       MinWidth="300"
                       MaxHeight="450"
                       MaxWidth="300"
-        Title="MainWindow" Height="450" Width="300">
+        Title="邮储数据分析" Height="450" Width="300">
     <Grid>
-        <Button x:Name="button" Content="公司业务" FontSize="18" HorizontalAlignment="Left" Height="41" Margin="83,25,0,0" VerticalAlignment="Top" Width="122" Command="{Binding CompanyDataCommand}"/>
-        <Button x:Name="button2" Content="薪资业务" FontSize="18" HorizontalAlignment="Left" Height="41" Margin="83,83,0,0" VerticalAlignment="Top" Width="122"  Command="{Binding SalaryDataCommand}"/>
-        <Popup x:Name="Menu" AllowsTransparency="True" Margin="0,-1,0,1"  StaysOpen="False" PopupAnimation="Scroll" Placement="MousePoint" >
-            <Grid  HorizontalAlignment="Left">
-                <Border BorderThickness="1" CornerRadius="3" Background="{DynamicResource AccentColorBrush}"  Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="400*"/>
+            <RowDefinition Height="26"/>
+        </Grid.RowDefinitions>
+        <Grid >
+            <Button x:Name="button" Content="公司业务" FontSize="18" HorizontalAlignment="Left" Height="41" Margin="83,25,0,0" VerticalAlignment="Top" Width="122" Command="{Binding CompanyDataCommand}"/>
+            <Button x:Name="button2" Content="薪资业务" FontSize="18" HorizontalAlignment="Left" Height="41" Margin="83,83,0,0" VerticalAlignment="Top" Width="122"  Command="{Binding SalaryDataCommand}"/>
+            <Popup x:Name="Menu" AllowsTransparency="True" Margin="0,-1,0,1"  StaysOpen="False" PopupAnimation="Scroll" Placement="MousePoint" >
+                <Grid  HorizontalAlignment="Left">
+                    <Border BorderThickness="1" CornerRadius="3" Background="{DynamicResource AccentColorBrush}"  Margin="3">
 
-                    <StackPanel Margin="2">
+                        <StackPanel Margin="2">
 
-                        <MenuItem Header="用户设置"   Command="{Binding UserSetCommand }"  />
-                        <MenuItem Header="功能设置"   Command="{Binding FunctionSetCommand }"  />
-                    </StackPanel>
-                </Border>
-            </Grid>
-        </Popup>
+                            <MenuItem Header="用户设置"   Command="{Binding UserSetCommand }"  />
+                            <MenuItem Header="功能设置"   Command="{Binding FunctionSetCommand }"  />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Popup>
+        </Grid>
+
+        <Border Grid.Row="1" BorderThickness="0" Background="{DynamicResource AccentColorBrush}">
+            <TextBlock  Text="唯度授权邮储银行连云港分行使用" VerticalAlignment="Center" Foreground="White" />
+        </Border>
     </Grid>
 </Controls:MetroWindow>

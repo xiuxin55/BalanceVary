@@ -30,5 +30,17 @@ namespace AutoUpdate
             //    this.ShowDialog();
             //}
         }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+           // this.Close();
+        }
+
+
     }
 }

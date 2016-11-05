@@ -29,5 +29,10 @@ namespace MainHome
             VM.Menu  = this.Menu;
             this.DataContext = VM;
         }
+
+        private void MetroWindow_Closed(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }
