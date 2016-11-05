@@ -66,6 +66,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\CheckLogin.cs" />
+    <Compile Include="Service References\AutoUpdateService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\FunctionInfoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -169,6 +174,22 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\AutoUpdateService\AutoUpdateService.wsdl" />
+    <None Include="Service References\AutoUpdateService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AutoUpdateService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AutoUpdateService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AutoUpdateService\UserAuthorization.AutoUpdateService.AutoUpdateModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AutoUpdateService\UserAuthorization.AutoUpdateService.DownFileResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\FunctionInfoService\FunctionInfoService.wsdl" />
     <None Include="Service References\FunctionInfoService\item.xsd">
       <SubType>Designer</SubType>
@@ -230,6 +251,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AutoUpdateService\" />
     <WCFMetadataStorage Include="Service References\FunctionInfoService\" />
     <WCFMetadataStorage Include="Service References\UserFuncInfoService\" />
     <WCFMetadataStorage Include="Service References\UserInfoService\" />
@@ -272,6 +294,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\FunctionInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AutoUpdateService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AutoUpdateService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AutoUpdateService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AutoUpdateService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

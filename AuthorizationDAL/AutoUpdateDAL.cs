@@ -41,6 +41,15 @@ namespace AuthorizationDAL
             IsHasUpdate = UpdateVersion.Count > 0;
             return UpdateVersion;
         }
+        public string ReadUpadateXMLString()
+        {
+            string path = CommonDataServer.AutoUpdatePath + CommonDataServer.AutoUpdateConfigFile;
+            if (File.Exists(path))
+            {
+                return File.ReadAllText(path);
+            }
+            return null;
+        }
         //下载文件
         public DownFileResult DownLoadFile(AutoUpdateModel filedata)
         {

@@ -16,6 +16,8 @@ namespace WcfAuthorizationServiceLibrary
         List<AutoUpdateModel> CheckAutoUpdate(List<AutoUpdateModel> list, out bool IsHasUpdate);
         [OperationContract]
         DownFileResult DownLoadFile(AutoUpdateModel filedata);
+         [OperationContract]
+        string ReadUpadateXMLString();
 
     }
 }

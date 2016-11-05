@@ -22,5 +22,9 @@ namespace AuthorizationBLL
         {
             return dal.DownLoadFile(filedata);
         }
+        public string ReadUpadateXMLString()
+        {
+            return dal.ReadUpadateXMLString();
+        }
     }
 }

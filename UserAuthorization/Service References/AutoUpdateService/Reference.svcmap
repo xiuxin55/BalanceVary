@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6528634c-c17d-4207-a6de-d66c452c8db4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="ecd60e15-7d99-4855-92f5-13aef2eabdba" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/?xsd=xsd1" />
+    <MetadataFile FileName="AutoUpdateService.wsdl" MetadataType="Wsdl" ID="3b3cfa8f-3c8f-4356-9076-396b97db9462" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="e3177da8-2910-43aa-a5c8-8e5bf13e55ae" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/?xsd=xsd0" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="bfd5500d-cdef-4aa9-be20-9b3f6eec2490" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/?disco" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="8d120c28-a8e4-459c-aeb4-8b43211716f1" SourceId="1" SourceUrl="http://localhost/WcfAuthorizationServiceLibrary/AutoUpdateService/?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

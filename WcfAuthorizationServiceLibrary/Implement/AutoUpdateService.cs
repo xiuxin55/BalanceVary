@@ -36,6 +36,10 @@ namespace WcfAuthorizationServiceLibrary
             }
             
         }
+        public string ReadUpadateXMLString()
+        {
+            return bll.ReadUpadateXMLString();
+        }
 
     }
 }

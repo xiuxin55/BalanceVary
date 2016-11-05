@@ -1,12 +1,16 @@
 ﻿using BalanceReport;
+using Common;
 using Common.Client;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Xml;
 
 namespace MainHome
 {
@@ -18,17 +22,28 @@ namespace MainHome
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            //this.DispatcherUnhandledException += App_DispatcherUnhandledException;
-            //try
-            //{
-            //    Assembly abll = Assembly.LoadFrom(CommonDataClient.AutoUpdateDLLPath + CommonDataClient.AutoUpdateDLLFile);
-            //    Window frmAutoUpdate = (Window)abll.CreateInstance("AutoUpdate.AutoUpdateWindow");
-            //}
-            //catch (Exception ex)
-            //{
+            
+            this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+            
+            try
+            {
+                if (e.Args.Length == 0)
+                {
 
-            //    throw ex;
-            //}
+
+                    AutoUpdate update = new AutoUpdate();
+                    if (update.CheckAutoUpdate())
+                    {
+                        Process.Start(CommonDataClient.AutoUpdatePath + CommonDataClient.AutoUpdateExeFile);
+                        Environment.Exit(0);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
             Login bw = new Login();
             bw.Show();
 
@@ -36,7 +51,7 @@ namespace MainHome
 
 
         }
-
+      
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
             throw e.Exception;

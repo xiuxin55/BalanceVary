@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AutoUpdate.AutoUpdateService {
+namespace UserAuthorization.AutoUpdateService {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,7 +17,7 @@ namespace AutoUpdate.AutoUpdateService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="AutoUpdateModel", Namespace="http://schemas.datacontract.org/2004/07/AuthorizationModel")]
     [System.SerializableAttribute()]
-    public partial class AutoUpdateModel : AutoUpdate.AutoUpdateService.BaseModel {
+    public partial class AutoUpdateModel : UserAuthorization.AutoUpdateService.BaseModel {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FileNameField;
@@ -72,7 +72,7 @@ namespace AutoUpdate.AutoUpdateService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseModel", Namespace="http://schemas.datacontract.org/2004/07/AuthorizationModel")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(AutoUpdate.AutoUpdateService.AutoUpdateModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UserAuthorization.AutoUpdateService.AutoUpdateModel))]
     public partial class BaseModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -292,22 +292,22 @@ namespace AutoUpdate.AutoUpdateService {
     public interface IAutoUpdateService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoUpdateService/CheckAutoUpdate", ReplyAction="http://tempuri.org/IAutoUpdateService/CheckAutoUpdateResponse")]
-        AutoUpdate.AutoUpdateService.AutoUpdateModel[] CheckAutoUpdate(out bool IsHasUpdate, AutoUpdate.AutoUpdateService.AutoUpdateModel[] list);
+        UserAuthorization.AutoUpdateService.AutoUpdateModel[] CheckAutoUpdate(out bool IsHasUpdate, UserAuthorization.AutoUpdateService.AutoUpdateModel[] list);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoUpdateService/DownLoadFile", ReplyAction="http://tempuri.org/IAutoUpdateService/DownLoadFileResponse")]
-        AutoUpdate.AutoUpdateService.DownFileResult DownLoadFile(AutoUpdate.AutoUpdateService.AutoUpdateModel filedata);
+        UserAuthorization.AutoUpdateService.DownFileResult DownLoadFile(UserAuthorization.AutoUpdateService.AutoUpdateModel filedata);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAutoUpdateService/ReadUpadateXMLString", ReplyAction="http://tempuri.org/IAutoUpdateService/ReadUpadateXMLStringResponse")]
         string ReadUpadateXMLString();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IAutoUpdateServiceChannel : AutoUpdate.AutoUpdateService.IAutoUpdateService, System.ServiceModel.IClientChannel {
+    public interface IAutoUpdateServiceChannel : UserAuthorization.AutoUpdateService.IAutoUpdateService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class AutoUpdateServiceClient : System.ServiceModel.ClientBase<AutoUpdate.AutoUpdateService.IAutoUpdateService>, AutoUpdate.AutoUpdateService.IAutoUpdateService {
+    public partial class AutoUpdateServiceClient : System.ServiceModel.ClientBase<UserAuthorization.AutoUpdateService.IAutoUpdateService>, UserAuthorization.AutoUpdateService.IAutoUpdateService {
         
         public AutoUpdateServiceClient() {
         }
@@ -328,11 +328,11 @@ namespace AutoUpdate.AutoUpdateService {
                 base(binding, remoteAddress) {
         }
         
-        public AutoUpdate.AutoUpdateService.AutoUpdateModel[] CheckAutoUpdate(out bool IsHasUpdate, AutoUpdate.AutoUpdateService.AutoUpdateModel[] list) {
+        public UserAuthorization.AutoUpdateService.AutoUpdateModel[] CheckAutoUpdate(out bool IsHasUpdate, UserAuthorization.AutoUpdateService.AutoUpdateModel[] list) {
             return base.Channel.CheckAutoUpdate(out IsHasUpdate, list);
         }
         
-        public AutoUpdate.AutoUpdateService.DownFileResult DownLoadFile(AutoUpdate.AutoUpdateService.AutoUpdateModel filedata) {
+        public UserAuthorization.AutoUpdateService.DownFileResult DownLoadFile(UserAuthorization.AutoUpdateService.AutoUpdateModel filedata) {
             return base.Channel.DownLoadFile(filedata);
         }
         
