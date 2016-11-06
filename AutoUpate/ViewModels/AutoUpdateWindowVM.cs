@@ -13,6 +13,7 @@ using System.Xml;
 using Microsoft.Practices.Prism.ViewModel;
 using System.Diagnostics;
 
+
 namespace AutoUpdate
 {
     /// <summary>
@@ -30,6 +31,7 @@ namespace AutoUpdate
 
                 Client = new AutoUpdateServiceClient();
                 LoadCommand();
+                KillMainHome();
                 CheckAutoUpdate();
             }
             catch (Exception ex)
@@ -101,10 +103,11 @@ namespace AutoUpdate
            
             bool isHasUpdate;
             AutoUpdateModel[] arraray=Client.CheckAutoUpdate(out isHasUpdate, GetUpdateList().ToArray());
-            DownFileList = new ObservableCollection<AutoUpdateService.AutoUpdateModel>(arraray);
-            TotalAmount = DownFileList.Count;
             if (isHasUpdate)
             {
+                DownFileList = new ObservableCollection<AutoUpdateService.AutoUpdateModel>(arraray);
+                TotalAmount = DownFileList.Count;
+
                 return true;
             }
             else
@@ -128,7 +131,8 @@ namespace AutoUpdate
         #region 命令方法
         private  void DownLoadExecute()
         {
-            CurrentAmount = 0;FileStream fs = null;
+           
+            CurrentAmount = 0; 
             try
             {
                 XmlDocument xmlDoc = new XmlDocument();
@@ -146,9 +150,27 @@ namespace AutoUpdate
                     DownFileResult down = Client.DownLoadFile(item);
                     if (!string.IsNullOrWhiteSpace(down.Filename))
                     {
-                        fs = File.Create(System.AppDomain.CurrentDomain.BaseDirectory + down.Filename);
-                        fs.Write(down.SendBytes, 0, down.SendBytes.Length);
-                        fs.Close();
+                        FileStream fs = null;
+           
+                        try
+                        {
+                            fs = File.Create(System.AppDomain.CurrentDomain.BaseDirectory + down.Filename);
+                            fs.Write(down.SendBytes, 0, down.SendBytes.Length);
+                        }
+                        catch (Exception ex)
+                        {
+                            item.State = "下载出错";
+                            throw ex;
+                        }
+                        finally
+                        {
+
+                            if (fs != null)
+                            {
+                                fs.Close();
+                            }
+                        }
+
                         item.State = "下载完成";
                         SetUpdateXML(xmlDoc, item);
                     }
@@ -165,14 +187,7 @@ namespace AutoUpdate
             {
                 throw ex ;
             }
-            finally
-            {
-                if (fs != null)
-                {
-                    fs.Close();
-                }
-                
-            }
+            
            
         }
         private void CancelDownLoadExecute()
@@ -206,9 +221,8 @@ namespace AutoUpdate
         }
         private XmlDocument CreateXML()
         {
-            File.Create(fullfile);
+           // File.AppendAllText(fullfile,"");
             XmlDocument doc = new XmlDocument();
-            doc.Load(fullfile);
             XmlDeclaration dec = doc.CreateXmlDeclaration("1.0", "GB2312", null);
             doc.AppendChild(dec);
             //创建一个根节点（一级）
@@ -240,6 +254,17 @@ namespace AutoUpdate
                 xns.AppendChild(xe1);
             }
           
+
+        }
+
+
+        private void KillMainHome()
+        {
+            Process[] pro = Process.GetProcessesByName("MainHome");
+            for (int i = 0; i < pro.Length; i++)
+            {
+                pro[i].Kill();
+            }
 
         }
     }

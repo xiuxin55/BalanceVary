@@ -75,7 +75,7 @@
         
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
 
-                <Button   Style="{DynamicResource XButtonStyle}" Width="28" Margin="0,-1,0,1"  Command="{Binding CancelDownLoadCommand}" Click="closeButton_Click"/>
+                <Button   Style="{DynamicResource XButtonStyle}" Width="28" Margin="0,-1,0,1"   Click="closeButton_Click"/>
             </StackPanel>
             <Grid  Grid.Row="1">
             <DataGrid Background="White"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding DownFileList}">

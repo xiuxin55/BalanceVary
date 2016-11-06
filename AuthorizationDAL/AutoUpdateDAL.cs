@@ -80,7 +80,7 @@ namespace AuthorizationDAL
             string fullfile = CommonDataServer.AutoUpdatePath + "UpdateFileList.xml";
             if (!File.Exists(fullfile))
             {
-                return null;
+                return new List<AutoUpdateModel>();
             }
             ArrayList contentarray = ConfigReader.GetAutoUpdateString(fullfile, "UpdateFileList/File");
             List<AutoUpdateModel> list = new List<AutoUpdateModel>();
