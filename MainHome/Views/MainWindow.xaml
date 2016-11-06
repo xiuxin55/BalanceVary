@@ -19,6 +19,9 @@
                       MaxHeight="450"
                       MaxWidth="300"
         Title="邮储数据分析" Height="450" Width="300">
+    <Controls:MetroWindow.Background>
+        <ImageBrush ImageSource="/MainHome;component/background.PNG"/>
+    </Controls:MetroWindow.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="400*"/>
