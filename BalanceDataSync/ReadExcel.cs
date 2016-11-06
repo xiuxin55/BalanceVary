@@ -243,7 +243,7 @@ namespace BalanceDataSync
             try
             {
                 List<SalaryInfo> list = new List<SalaryInfo>();
-                DataTable dt = NPOIHelper.Instance.ImportAccountLink(filename);
+                DataTable dt = NPOIHelper.Instance.ImportSalary(filename);
                 bool ishas = true ;
                 if (!dt.Columns.Contains("人员编码"))
                 {

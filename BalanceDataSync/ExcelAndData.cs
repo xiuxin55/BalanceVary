@@ -307,7 +307,97 @@ namespace BalanceDataSync
                 return dt;
             }
         }
+        public DataTable ImportSalary(string strFileName)
+        {
+            if (!File.Exists(strFileName))
+            {
+                return null;
+            }
+            FileInfo fi = new FileInfo(strFileName);
+            if (fi.Extension.ToLower() == ".xlsx")
+            {
+
+                return ImportNew2007(strFileName, 0);
+            }
+            else
+            {
+                DataTable dt = ImportSalary2003(strFileName, 0);
+                return dt;
+            }
+        }
         #region 月样表导入
+        private DataTable ImportSalary2003(string strFileName, int defaultrowhead = 1)
+        {
+
+
+            DataTable dt = new DataTable();
+
+            HSSFWorkbook hssfworkbook;
+            using (FileStream file = new FileStream(strFileName, FileMode.Open, FileAccess.Read))
+            {
+                hssfworkbook = new HSSFWorkbook(file);
+            }
+            HSSFSheet sheet = (HSSFSheet)hssfworkbook.GetSheetAt(0);
+
+
+            System.Collections.IEnumerator rows = sheet.GetRowEnumerator();
+
+            HSSFRow headerRow = (HSSFRow)sheet.GetRow(defaultrowhead);// 默认第一行为标头
+            int cellCount = headerRow.LastCellNum;
+
+            for (int j = 0; j < cellCount; j++)
+            {
+                HSSFCell cell = (HSSFCell)headerRow.GetCell(j);
+                dt.Columns.Add(cell.ToString());
+            }
+
+            for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum; i++)
+            {
+
+
+                HSSFRow row = (HSSFRow)sheet.GetRow(i);
+                DataRow dataRow = dt.NewRow();
+
+                for (int j = row.FirstCellNum; j < cellCount; j++)
+                {
+                    if (row.GetCell(j) != null)
+                        if (row.GetCell(j).CellType == NPOI.SS.UserModel.CellType.NUMERIC)
+                        {
+                            int s = row.GetCell(j).CellStyle.DataFormat;
+                            if (s == 14 || s == 31 || s == 57 || s == 58)
+                            {
+                                DateTime date = row.GetCell(j).DateCellValue;
+                                dataRow[j] = date.ToString();
+                            }
+                            else
+                            {
+                                dataRow[j] = row.GetCell(j).ToString();
+                            }
+                        }
+                        else if (row.GetCell(j).CellType == NPOI.SS.UserModel.CellType.FORMULA)
+                        {
+                            double number = row.GetCell(j).NumericCellValue;
+                            dataRow[j] = number.ToString();
+                        }
+                        else
+                        {
+                            dataRow[j] = row.GetCell(j).ToString();
+                        }
+                }
+
+                dt.Rows.Add(dataRow);
+                //App.Current.Dispatcher.Invoke(new Action(delegate()
+                //{
+                //    MainWindow MW = (MainWindow)App.Current.MainWindow;
+                //    MW.pro.progressBar.Value = MW.pro.progressBar.Value + 1;
+                //    jinDu = MW.pro.progressBar.Value / MW.pro.progressBar.Maximum * 100;
+                //    MW.pro.jinDu.Text = "当前进度:" + jinDu.ToString("#0.00") + "%";
+
+                //}));
+            }
+            return dt;
+
+        }
 
         private DataTable ImportNew2003(string strFileName,int defaultrowhead=1)
         {
