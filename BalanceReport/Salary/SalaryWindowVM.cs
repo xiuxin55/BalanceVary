@@ -26,14 +26,32 @@ namespace BalanceReport.Salary
         public SalaryWindowVM()
         {
             SearchCommand = new DelegateCommand(SearchExecute);
+            DeleteCommand = new DelegateCommand(DeleteExecute);
             FlushUpLoadCommand = new DelegateCommand(FlushUpLoadFileExecute);
             LookExceptionCommand = new DelegateCommand(LookExceptionExecute);
             SearchSalaryInfoModel = new SalaryInfo();
             SearchExecute();
             FlushUpLoadFileExecute();
+            PageSize = 50;
+           
         }
         #region 属性
-
+        private bool _IsSelectAll;
+        public bool IsSelectAll
+        {
+            get
+            {
+                return _IsSelectAll;
+            }
+            set
+            {
+                _IsSelectAll = value;
+                foreach (var item in SalaryInfoList)
+                {
+                    item.IsSelected = value;
+                }
+            }
+        }
         private UploadFileInfo _SelectedUploadFile;
         /// <summary>
         ///被选中的行 
@@ -47,7 +65,19 @@ namespace BalanceReport.Salary
                 this.RaisePropertyChanged("SelectedUploadFile");
             }
         }
-
+        private SalaryInfo _SelectSalaryInfoModel;
+        /// <summary>
+        /// 被选中的行
+        /// </summary>
+        public SalaryInfo SelectSalaryInfoModel
+        {
+            get { return _SelectSalaryInfoModel; }
+            set
+            {
+                _SelectSalaryInfoModel = value;
+                this.RaisePropertyChanged("SelectSalaryInfoModel");
+            }
+        }
         private SalaryInfo _searchSalaryInfoModel;
         /// <summary>
         /// 查询
@@ -95,6 +125,7 @@ namespace BalanceReport.Salary
         public DelegateCommand SearchCommand { get; set; }
         public DelegateCommand FlushUpLoadCommand { get; set; }
         public DelegateCommand LookExceptionCommand { get; set; }
+        public DelegateCommand DeleteCommand { get; set; }
         #endregion
         #region 命令执行方法
         private void LookExceptionExecute()
@@ -148,9 +179,25 @@ namespace BalanceReport.Salary
             SalaryInfoList = new ObservableCollection<SalaryInfo>(client.Select(SearchSalaryInfoModel));
           
         }
+        private void DeleteExecute()
+        {
+
+            if (MessageBox.Show("是否删除", "消息提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (var item in SalaryInfoList)
+                {
+                    if (item.IsSelected)
+                    {
+                        client.Delete(item);
+                    }
+                }
+                MessageBox.Show("删除成功");
+                SearchExecute();
+            }
+        }
         #endregion
         #region 内部方法
-      
+
         #endregion
     }
 }

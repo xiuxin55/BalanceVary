@@ -27,9 +27,10 @@ namespace BalanceReport.Salary
         public SalaryWindow()
         {
             InitializeComponent();
-            this.DataContext = new SalaryWindowVM();
+            VM = new SalaryWindowVM();
+            this.DataContext = VM;
         }
-
+        SalaryWindowVM VM;
 
         #region 窗口基本按键方法
         private void closeButton_Click(object sender, RoutedEventArgs e)
@@ -79,6 +80,12 @@ namespace BalanceReport.Salary
                 }
                 UploadFile.Upload(op.FileName, FileType.SalaryInfo, s.ImportTime);
             }
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            VM.IsSelectAll = cb.IsChecked == null ? false : cb.IsChecked.Value;
         }
     }
 }

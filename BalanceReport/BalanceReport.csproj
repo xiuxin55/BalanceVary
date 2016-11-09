@@ -234,6 +234,9 @@
     <Compile Include="Views\AccountAndNameLinkManage.xaml.cs">
       <DependentUpon>AccountAndNameLinkManage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ImportTemplate.xaml.cs">
+      <DependentUpon>ImportTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SystemSet.xaml.cs">
       <DependentUpon>SystemSet.xaml</DependentUpon>
     </Compile>
@@ -341,6 +344,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AccountAndNameLinkManage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ImportTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

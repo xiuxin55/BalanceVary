@@ -2,8 +2,7 @@
 <UpdateFileList>
   <File FileName="MahApps.Metro.dll" Version="2.0"  />
   <File FileName="Utility.dll" Version="1.0"  />
-  
-  <File FileName="" Version=""  />
+  <File FileName="BalanceReport.dll" Version="2.0"  />
 </UpdateFileList>
 
 

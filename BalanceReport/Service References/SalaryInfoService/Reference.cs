@@ -157,6 +157,9 @@ namespace BalanceReport.SalaryInfoService {
         private string IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsSelectedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string JobSalaryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -335,6 +338,19 @@ namespace BalanceReport.SalaryInfoService {
                 if ((object.ReferenceEquals(this.IDField, value) != true)) {
                     this.IDField = value;
                     this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsSelected {
+            get {
+                return this.IsSelectedField;
+            }
+            set {
+                if ((this.IsSelectedField.Equals(value) != true)) {
+                    this.IsSelectedField = value;
+                    this.RaisePropertyChanged("IsSelected");
                 }
             }
         }

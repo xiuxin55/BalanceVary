@@ -13,6 +13,7 @@
           <xs:element minOccurs="0" name="HouseAllowance" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="HouseFund" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsSelected" type="xs:boolean" />
           <xs:element minOccurs="0" name="JobSalary" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="LossJobMoney" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="PensionMoney" nillable="true" type="xs:string" />

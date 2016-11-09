@@ -184,5 +184,10 @@ namespace BalanceReport
                 UploadFile.Upload(op.FileName, FileType.AccountAndNameLink); ;
             }
         }
+
+        private void ImportTemplate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

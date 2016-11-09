@@ -82,7 +82,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       </dynamic>
     </select>
    
-
+    <delete id="DeleteSalaryInfo" parameterClass="SalaryInfo">
+      DELETE SalaryInfo WHERE ID = #ID#
+    </delete>
     <delete id="BatchDeleteSalaryInfo" parameterClass="ArrayList">
       DELETE FROM SalaryInfo WHERE
       SalaryTime IN

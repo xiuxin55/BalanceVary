@@ -41,7 +41,6 @@ namespace AutoUpdate
                 CancelDownLoadExecute();
 
             }
-           
         }
         /// <summary>
         /// 加载命令

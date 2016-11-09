@@ -684,3 +684,5 @@ C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\De
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceReport.csproj.GenerateResource.Cache
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceReport.dll
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\BalanceReport.pdb
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ImportTemplate.baml
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ImportTemplate.g.cs

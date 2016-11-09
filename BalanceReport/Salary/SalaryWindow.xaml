@@ -48,10 +48,21 @@
                             <TextBlock Text="日期：" VerticalAlignment="Center"  Margin="20,0,0,0"/>
                             <DatePicker SelectedDate="{Binding SearchSalaryInfoModel.SalaryTime}" Width="150"   Margin="10,0,0,0"/>
                             <Button Margin="20,0,0,0" Content="查询" Command="{Binding SearchCommand}"/>
+                            <Button Margin="20,0,0,0" Content="删除" Command="{Binding DeleteCommand}"/>
                             <Button Margin="20,0,0,0" Content="导入薪资数据"  Click="MonthImportButton_Click"/>
                         </StackPanel>
-                        <DataGrid  Grid.Row="2"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding SalaryInfoList}" >
+                        <DataGrid  Grid.Row="2"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding SalaryInfoList}" SelectedItem="{Binding SelectSalaryInfoModel}">
                             <DataGrid.Columns>
+                                <DataGridTemplateColumn >
+                                    <DataGridTemplateColumn.Header>
+                                        <CheckBox  Click="CheckBox_Click"  />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox  IsChecked="{Binding IsSelected,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                                 <DataGridTextColumn Width="48" Header="序号" Binding="{Binding RowNumber}"  />
                                 <DataGridTextColumn Binding="{Binding StaffCode}" Header="人员编码"  Width="*" />
                                 <DataGridTextColumn Binding="{Binding StaffName}" Header="人员姓名"  Width="*" />
