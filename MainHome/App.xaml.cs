@@ -41,7 +41,7 @@ namespace MainHome
             }
             catch (Exception ex)
             {
-
+                LogHelper.WriteLog(typeof(Window), ex);
                 throw ex;
             }
             Login bw = new Login();

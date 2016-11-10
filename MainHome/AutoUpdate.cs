@@ -14,18 +14,26 @@ namespace MainHome
     {
         public bool CheckAutoUpdate()
         {
-
-            AutoUpdateServiceClient Client = new AutoUpdateServiceClient();
-            bool isHasUpdate;
-            Client.CheckAutoUpdate(out isHasUpdate, GetUpdateList().ToArray());
-            if (isHasUpdate)
+            try
             {
-                return true;
+                AutoUpdateServiceClient Client = new AutoUpdateServiceClient();
+                bool isHasUpdate;
+                Client.CheckAutoUpdate(out isHasUpdate, GetUpdateList().ToArray());
+                if (isHasUpdate)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return false;
+                LogHelper.WriteLog(typeof(AutoUpdate), ex);
+                throw ex;
             }
+            
 
         }
         private List<AutoUpdateModel> GetUpdateList()

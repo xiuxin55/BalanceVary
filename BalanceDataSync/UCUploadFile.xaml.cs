@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,8 +23,17 @@ namespace BalanceDataSync
         public UCUploadFile()
         {
             InitializeComponent();
-            VM  = new UCUploadFileVM();
-            this.DataContext = VM;
+            try
+            {
+                VM = new UCUploadFileVM();
+                this.DataContext = VM;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(UCUploadFile), ex);
+                // throw ex;
+            }
+           
         }
         public UCUploadFileVM VM { get; set; }
         private void CheckBox_Click(object sender, RoutedEventArgs e)
