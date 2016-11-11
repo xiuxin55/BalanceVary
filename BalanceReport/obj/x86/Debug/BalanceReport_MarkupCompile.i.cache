@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-36168106863
+37-730393881
 
-951141984431
+96-965601640
 36-1991122189
-App.xaml;MainWindow.xaml;Salary\SalaryWindow.xaml;UpLoadFileInfo\UpLoadFileWindow.xaml;Views\AccountAndNameLinkInfoAdd.xaml;Views\AccountAndNameLinkManage.xaml;Views\ImportTemplate.xaml;Views\SystemSet.xaml;Views\CoverUserControl.xaml;Views\DepartmentReportUserControl.xaml;Views\CustomerManagerAdd.xaml;Views\MyCalendar.xaml;Views\ProgressBarWindow.xaml;Views\ReportDataGrid\CustomerManagerDataGrid.xaml;Views\ReportDataGrid\DepartmentDataGrid.xaml;Views\ReportDataGrid\CountyCompanyDataGrid.xaml;Views\ReportDataGrid\CityCompanyDataGrid.xaml;Views\ReportDataGrid\CountyDataGrid.xaml;Views\ReportDataGrid\CityDataGrid.xaml;Views\ReportDataGrid\CountyWebsiteDataGrid.xaml;Views\ReportDataGrid\CityWebsiteDataGrid.xaml;Views\ReportUserControl.xaml;Views\SearchWindow.xaml;Views\UserControlLoading.xaml;Views\VaryGridControl.xaml;Views\DepartmentAdd.xaml;Views\WebsiteAdd.xaml;Views\DepartmentManage.xaml;Views\WebsiteManage.xaml;Views\CustomerManagerList.xaml;Views\DepartmentSelect.xaml;Views\ManagersSelect.xaml;Views\AccountManage.xaml;Views\AccountAdd.xaml;Views\AccountLink.xaml;Views\ImportSelectDate.xaml;
+App.xaml;MainWindow.xaml;Salary\ImportTemplate.xaml;Salary\SalaryWindow.xaml;UpLoadFileInfo\UpLoadFileWindow.xaml;Views\AccountAndNameLinkInfoAdd.xaml;Views\AccountAndNameLinkManage.xaml;Views\ImportTemplate.xaml;Views\SystemSet.xaml;Views\CoverUserControl.xaml;Views\DepartmentReportUserControl.xaml;Views\CustomerManagerAdd.xaml;Views\MyCalendar.xaml;Views\ProgressBarWindow.xaml;Views\ReportDataGrid\CustomerManagerDataGrid.xaml;Views\ReportDataGrid\DepartmentDataGrid.xaml;Views\ReportDataGrid\CountyCompanyDataGrid.xaml;Views\ReportDataGrid\CityCompanyDataGrid.xaml;Views\ReportDataGrid\CountyDataGrid.xaml;Views\ReportDataGrid\CityDataGrid.xaml;Views\ReportDataGrid\CountyWebsiteDataGrid.xaml;Views\ReportDataGrid\CityWebsiteDataGrid.xaml;Views\ReportUserControl.xaml;Views\SearchWindow.xaml;Views\UserControlLoading.xaml;Views\VaryGridControl.xaml;Views\DepartmentAdd.xaml;Views\WebsiteAdd.xaml;Views\DepartmentManage.xaml;Views\WebsiteManage.xaml;Views\CustomerManagerList.xaml;Views\DepartmentSelect.xaml;Views\ManagersSelect.xaml;Views\AccountManage.xaml;Views\AccountAdd.xaml;Views\AccountLink.xaml;Views\ImportSelectDate.xaml;
 
 True
 

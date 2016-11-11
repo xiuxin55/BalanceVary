@@ -7,7 +7,6 @@
         GlowBrush="{DynamicResource AccentColorBrush}"
         NonActiveGlowBrush="#CDFF0000"
         ShowIconOnTitleBar="True"
-                      ShowMenuRestoreButton="False" 
         ShowTitleBar="True"
         WindowStartupLocation="CenterScreen"
                       xmlns:tool="clr-namespace:BalanceReport.Tools"
@@ -24,7 +23,16 @@
                 <RowDefinition Height="265*" />
                 <RowDefinition Height="1" />
             </Grid.RowDefinitions>
+            <Popup x:Name="Menu" AllowsTransparency="True" Margin="0,-1,0,1"  StaysOpen="False" PopupAnimation="Scroll" Placement="MousePoint">
+                <Grid  HorizontalAlignment="Left">
+                    <Border BorderThickness="1" CornerRadius="3" Background="{DynamicResource AccentColorBrush}"  Margin="3">
 
+                        <StackPanel Margin="2">
+                            <MenuItem x:Name="ImportTemplate" Header="导入模版查看" Click="ImportTemplate_Click"  />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Popup>
             <Border CornerRadius="5"  BorderBrush="{x:Null}" >
                 <Label Content="薪资业务" Name="label1" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="Black"  />
             </Border>
@@ -77,6 +85,7 @@
                     </Grid>
                     <Border Grid.Row="2" CornerRadius="5"  BorderBrush="{x:Null}" >
             </Border>
+            
         </Grid>
     </Border>
 </Controls:MetroWindow>

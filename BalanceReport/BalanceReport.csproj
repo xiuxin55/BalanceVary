@@ -121,6 +121,9 @@
     <Compile Include="LocalModel\ResultOrderBy.cs" />
     <Compile Include="LocalModel\DataGridColomnState.cs" />
     <Compile Include="LocalModel\LocalCommonData.cs" />
+    <Compile Include="Salary\ImportTemplate.xaml.cs">
+      <DependentUpon>ImportTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Salary\SalaryWindowVM.cs" />
     <Compile Include="Salary\SalaryWindow.xaml.cs">
       <DependentUpon>SalaryWindow.xaml</DependentUpon>
@@ -340,6 +343,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Salary\ImportTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Salary\SalaryWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

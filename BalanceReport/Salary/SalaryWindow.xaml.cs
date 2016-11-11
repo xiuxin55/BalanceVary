@@ -87,5 +87,11 @@ namespace BalanceReport.Salary
             CheckBox cb = sender as CheckBox;
             VM.IsSelectAll = cb.IsChecked == null ? false : cb.IsChecked.Value;
         }
+
+        private void ImportTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            ImportTemplate win = new ImportTemplate();
+            win.Show();
+        }
     }
 }
