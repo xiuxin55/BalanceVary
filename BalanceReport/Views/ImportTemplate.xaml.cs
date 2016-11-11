@@ -12,14 +12,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BalanceReport.ViewModels;
 using MahApps.Metro.Controls;
+using System.IO;
 
-namespace BalanceReport.Views
+namespace BalanceReport
 {
     /// <summary>
     /// ManagerAdd.xaml 的交互逻辑
     /// </summary>
     public partial class ImportTemplate : MetroWindow
     {
+        ServiceFile.ServiceFileClient client = new ServiceFile.ServiceFileClient();
         public ImportTemplate()
         {
             InitializeComponent();
@@ -75,7 +77,60 @@ namespace BalanceReport.Views
 
         public DateTime ImportTime { get; set; }
 
+        private void btn_customer_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDownloadFile("客户经理和部门关联导入模版.xls");
+        }
 
+        private void btn_dayreport_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDownloadFile("日报模版.xls");
+        }
 
+        private void btn_monthreport_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDownloadFile("月报模版.xls");
+        }
+
+        private void btn_salary_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDownloadFile("薪资模板.xls");
+        }
+
+        private void SaveDownloadFile(string filename)
+        {
+            System.Windows.Forms.FolderBrowserDialog folder = new System.Windows.Forms.FolderBrowserDialog();
+            if (folder.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            {
+                return;
+            }
+            string savepath = folder.SelectedPath;
+            byte[] filebytes=client.DownLoadTemplateFile(filename);
+            if (filebytes==null || filebytes.Length==0)
+            {
+                MessageBox.Show("模版不存在");
+                return;
+            }
+            FileStream fs = null;
+
+            try
+            {
+                fs = File.Create(savepath+"\\"+ filename);
+                fs.Write(filebytes, 0, filebytes.Length);
+                MessageBox.Show("下载完成");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("同名文件正在打开，请先关闭");
+            }
+            finally
+            {
+
+                if (fs != null)
+                {
+                    fs.Close();
+                }
+            }
+        }
     }
 }

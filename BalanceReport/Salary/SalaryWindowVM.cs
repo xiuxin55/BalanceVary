@@ -31,7 +31,7 @@ namespace BalanceReport.Salary
             LookExceptionCommand = new DelegateCommand(LookExceptionExecute);
             SearchSalaryInfoModel = new SalaryInfo();
             SearchExecute();
-            FlushUpLoadFileExecute();
+           //FlushUpLoadFileExecute();
             PageSize = 50;
            
         }

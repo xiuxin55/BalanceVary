@@ -290,6 +290,9 @@ namespace BalanceReport.ServiceFile {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsSelectedField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UpLoadPersonCodeField;
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<System.DateTime> FileDateTime {
             get {
@@ -445,6 +448,19 @@ namespace BalanceReport.ServiceFile {
                 }
             }
         }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UpLoadPersonCode {
+            get {
+                return this.UpLoadPersonCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UpLoadPersonCodeField, value) != true)) {
+                    this.UpLoadPersonCodeField = value;
+                    this.RaisePropertyChanged("UpLoadPersonCode");
+                }
+            }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -459,6 +475,12 @@ namespace BalanceReport.ServiceFile {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceFile/StoreUpLoadResult", ReplyAction="http://tempuri.org/IServiceFile/StoreUpLoadResultResponse")]
         bool StoreUpLoadResult(BalanceReport.ServiceFile.UploadFileInfo uploadfileinfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceFile/ClientTriggerHandleFile", ReplyAction="http://tempuri.org/IServiceFile/ClientTriggerHandleFileResponse")]
+        bool ClientTriggerHandleFile(BalanceReport.ServiceFile.UploadFileInfo uploadfileinfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceFile/DownLoadTemplateFile", ReplyAction="http://tempuri.org/IServiceFile/DownLoadTemplateFileResponse")]
+        byte[] DownLoadTemplateFile(string filename);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceFile/Select", ReplyAction="http://tempuri.org/IServiceFile/SelectResponse")]
         BalanceReport.ServiceFile.UploadFileInfo[] Select(BalanceReport.ServiceFile.UploadFileInfo uploadfileinfo);
@@ -501,6 +523,14 @@ namespace BalanceReport.ServiceFile {
         
         public bool StoreUpLoadResult(BalanceReport.ServiceFile.UploadFileInfo uploadfileinfo) {
             return base.Channel.StoreUpLoadResult(uploadfileinfo);
+        }
+        
+        public bool ClientTriggerHandleFile(BalanceReport.ServiceFile.UploadFileInfo uploadfileinfo) {
+            return base.Channel.ClientTriggerHandleFile(uploadfileinfo);
+        }
+        
+        public byte[] DownLoadTemplateFile(string filename) {
+            return base.Channel.DownLoadTemplateFile(filename);
         }
         
         public BalanceReport.ServiceFile.UploadFileInfo[] Select(BalanceReport.ServiceFile.UploadFileInfo uploadfileinfo) {

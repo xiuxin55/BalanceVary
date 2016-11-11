@@ -31,9 +31,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,99">
             </StackPanel>
             <localcontrol:ProgressBarWindow Grid.Row="1" Visibility="Collapsed"  x:Name="pro" Margin="3,0" Panel.ZIndex="99"></localcontrol:ProgressBarWindow>
-            <TabControl Grid.Row="1" Margin="3,0">
-                <TabItem  Header="薪资" Controls:ControlsHelper.HeaderFontSize="26.0">
-                    <Grid >
+            <Grid   Grid.Row="1" Margin="3,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="6"/>
@@ -77,32 +75,7 @@
                    TotalItem="{Binding Total}" 
                    />
                     </Grid>
-                </TabItem>
-                <TabItem  Header="上传的文件" Controls:ControlsHelper.HeaderFontSize="26.0">
-                    <Grid >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="6"/>
-                            <RowDefinition Height="605*"/>
-                        </Grid.RowDefinitions>
-                        <StackPanel Grid.Row="0" Orientation="Horizontal">
-                            <Button Margin="20,0,0,0" Content="刷新" Command="{Binding FlushUpLoadCommand}" Width="80"/>
-                            <Button Content="查看异常" Margin="20,0,0,0" Command="{Binding LookExceptionCommand}"  Width="80"/>
-                        </StackPanel>
-                        <DataGrid  Grid.Row="2"   SelectedItem="{Binding SelectedUploadFile}"  ItemsSource="{Binding UploadFileList}" AutoGenerateColumns="False" CanUserAddRows="False" x:Name="uploaddg">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="文件实际名称" Binding="{Binding FileRealName}" Width="1*" IsReadOnly="True"  />
-                                <DataGridTextColumn Header="文件名称" Binding="{Binding FileName}" Width="1*" IsReadOnly="True"  />
-                                <DataGridTextColumn Header="文件类型" Binding="{Binding FileType}" Width="1*" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="当前状态" Binding="{Binding FileState,Converter={StaticResource FileStateConverter } }"  Width="1*" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="上传时间" Binding="{Binding FileUploadTime}" Width="1*" IsReadOnly="True"/>
-                                <!--<DataGridTextColumn Header="异常" Binding="{Binding FileException}" Width="1*" IsReadOnly="True"/> ,Converter={StaticResource FileStateConverter}-->
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </Grid>
-                </TabItem>
-            </TabControl>
-        <Border Grid.Row="2" CornerRadius="5"  BorderBrush="{x:Null}" >
+                    <Border Grid.Row="2" CornerRadius="5"  BorderBrush="{x:Null}" >
             </Border>
         </Grid>
     </Border>

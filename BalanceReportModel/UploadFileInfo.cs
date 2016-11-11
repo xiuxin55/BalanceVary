@@ -35,6 +35,10 @@ namespace BalanceModel
 
         public string FileException { get; set; }
         public string FileMD5 { get; set; }
+        /// <summary>
+        /// 当前登录帐号
+        /// </summary>
+        public string UpLoadPersonCode { get; set; }
         
         /// <summary>
         /// 是否覆盖

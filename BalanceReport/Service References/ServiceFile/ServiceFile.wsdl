@@ -25,6 +25,18 @@
   <wsdl:message name="IServiceFile_StoreUpLoadResult_OutputMessage">
     <wsdl:part name="parameters" element="tns:StoreUpLoadResultResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceFile_ClientTriggerHandleFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClientTriggerHandleFile" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFile_ClientTriggerHandleFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClientTriggerHandleFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFile_DownLoadTemplateFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:DownLoadTemplateFile" />
+  </wsdl:message>
+  <wsdl:message name="IServiceFile_DownLoadTemplateFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DownLoadTemplateFileResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceFile_Select_InputMessage">
     <wsdl:part name="parameters" element="tns:Select" />
   </wsdl:message>
@@ -43,6 +55,14 @@
     <wsdl:operation name="StoreUpLoadResult">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceFile/StoreUpLoadResult" message="tns:IServiceFile_StoreUpLoadResult_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceFile/StoreUpLoadResultResponse" message="tns:IServiceFile_StoreUpLoadResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClientTriggerHandleFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceFile/ClientTriggerHandleFile" message="tns:IServiceFile_ClientTriggerHandleFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceFile/ClientTriggerHandleFileResponse" message="tns:IServiceFile_ClientTriggerHandleFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadTemplateFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceFile/DownLoadTemplateFile" message="tns:IServiceFile_DownLoadTemplateFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceFile/DownLoadTemplateFileResponse" message="tns:IServiceFile_DownLoadTemplateFile_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Select">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceFile/Select" message="tns:IServiceFile_Select_InputMessage" />
@@ -71,6 +91,24 @@
     </wsdl:operation>
     <wsdl:operation name="StoreUpLoadResult">
       <soap:operation soapAction="http://tempuri.org/IServiceFile/StoreUpLoadResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClientTriggerHandleFile">
+      <soap:operation soapAction="http://tempuri.org/IServiceFile/ClientTriggerHandleFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownLoadTemplateFile">
+      <soap:operation soapAction="http://tempuri.org/IServiceFile/DownLoadTemplateFile" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

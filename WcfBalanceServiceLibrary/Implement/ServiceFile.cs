@@ -75,6 +75,63 @@ namespace WcfBalanceServiceLibrary
                 return false;
             }
         }
+        public bool ClientTriggerHandleFile(UploadFileInfo uploadfileinfo)
+        {
+            try
+            {
+                ImportFileTrigger(uploadfileinfo);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(ServiceFile), ex);
+                return false;
+            }
+        }
+      
+        public UploadFileInfo GetFileInfo(UploadFileInfo uploadfileinfo)
+        {
+            try
+            {
+                List<UploadFileInfo> list = bll.Select(uploadfileinfo);
+                return list.Count > 0 ? list[0] : null;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(ServiceFile), ex);
+                return null;
+            }
+        }
+        public byte[] DownLoadTemplateFile(string filename)
+        {
+                string path = CommonDataServer.TemplateFilePath + filename;
+                if (!File.Exists(path))
+                {
+                    return null;
+                }
+                FileInfo fi = new FileInfo(path);
+                long len = fi.Length;
+                FileStream fs = File.OpenRead(path);
+                byte[] buffer = new byte[len];
+                fs.Read(buffer, 0, (int)len);
+                fs.Close();
+                return buffer;
+        }
+
+        public List<UploadFileInfo> Select(UploadFileInfo uploadfileinfo)
+        {
+            try
+            {
+                return bll.Select(uploadfileinfo);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(ServiceFile), ex);
+                throw ex;
+            }
+            
+        }
+        #region 非接口
         private void ImportFileTrigger(UploadFileInfo uploadfileinfo)
         {
             if (CommonEvent.FileUploadedCalculateEvent != null)
@@ -100,32 +157,6 @@ namespace WcfBalanceServiceLibrary
                 CommonEvent.FileUploadedSalaryEvent(uploadfileinfo);
             }
         }
-        public UploadFileInfo GetFileInfo(UploadFileInfo uploadfileinfo)
-        {
-            try
-            {
-                List<UploadFileInfo> list = bll.Select(uploadfileinfo);
-                return list.Count > 0 ? list[0] : null;
-            }
-            catch (Exception ex)
-            {
-                LogHelper.WriteLog(typeof(ServiceFile), ex);
-                return null;
-            }
-        }
-
-        public List<UploadFileInfo> Select(UploadFileInfo uploadfileinfo)
-        {
-            try
-            {
-                return bll.Select(uploadfileinfo);
-            }
-            catch (Exception ex)
-            {
-                LogHelper.WriteLog(typeof(ServiceFile), ex);
-                throw ex;
-            }
-            
-        }
+        #endregion
     }
 }

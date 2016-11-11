@@ -27,6 +27,7 @@
           <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IsOverride" type="xs:boolean" />
           <xs:element minOccurs="0" name="IsSelected" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UpLoadPersonCode" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

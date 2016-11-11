@@ -10,16 +10,16 @@ using AutoUpdate.AutoUpdateService;
 using System.IO;
 using System.Collections;
 using System.Xml;
-using Microsoft.Practices.Prism.ViewModel;
 using System.Diagnostics;
-
+using System.ComponentModel;
+using System.Windows.Input;
 
 namespace AutoUpdate
 {
     /// <summary>
     ///用户管理
     /// </summary>
-    public class AutoUpdateWindowVM : NotificationObject
+    public class AutoUpdateWindowVM : INotifyPropertyChanged
     {
         AutoUpdateServiceClient Client ;
         string logfile = System.AppDomain.CurrentDomain.BaseDirectory +DateTime.Now.ToString("yyyyMMdd")+ "autoupdatelog.txt";
@@ -47,8 +47,8 @@ namespace AutoUpdate
         /// </summary>
         public  void LoadCommand()
         {
-            DownLoadCommand = new Microsoft.Practices.Prism.Commands.DelegateCommand(DownLoadExecute);
-            CancelDownLoadCommand = new Microsoft.Practices.Prism.Commands.DelegateCommand(CancelDownLoadExecute);
+            DownLoadCommand = new MyCommand(DownLoadExecute);
+            CancelDownLoadCommand = new MyCommand(CancelDownLoadExecute);
             DownFileList = new ObservableCollection<AutoUpdateModel>();
         }
 
@@ -123,8 +123,8 @@ namespace AutoUpdate
         string fullfile = System.AppDomain.CurrentDomain.BaseDirectory + "UpdateFileList.xml";
         #endregion 变量属性
         #region 命令定义
-        public Microsoft.Practices.Prism.Commands.DelegateCommand DownLoadCommand { get; set; }
-        public Microsoft.Practices.Prism.Commands.DelegateCommand CancelDownLoadCommand { get; set; }
+        public ICommand DownLoadCommand { get; set; }
+        public ICommand CancelDownLoadCommand { get; set; }
         #endregion 命令定义
 
         #region 命令方法
@@ -266,7 +266,39 @@ namespace AutoUpdate
             }
 
         }
+        #region  内部方法
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void RaisePropertyChanged(string propertyname)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+            }
+        }
+        #endregion
     }
 
-   
+    public class MyCommand : ICommand
+    {
+
+        public Action  CommandExecute { get; set; }
+        public MyCommand(Action CommandExecute)
+        {
+            this.CommandExecute = CommandExecute;
+        }
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public event EventHandler CanExecuteChanged;
+
+        public void Execute(object parameter)
+        {
+            if (CommandExecute !=null)
+            {
+                CommandExecute();
+            }
+        }
+    }
 }

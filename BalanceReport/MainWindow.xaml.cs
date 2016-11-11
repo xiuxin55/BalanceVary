@@ -187,7 +187,8 @@ namespace BalanceReport
 
         private void ImportTemplate_Click(object sender, RoutedEventArgs e)
         {
-
+            ImportTemplate win = new BalanceReport.ImportTemplate();
+            win.Show();
         }
     }
 }

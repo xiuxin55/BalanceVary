@@ -43,17 +43,45 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Select">
+  <xs:element name="ClientTriggerHandleFile">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BalanceModel" minOccurs="0" name="uploadfileinfo" nillable="true" type="q6:UploadFileInfo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ClientTriggerHandleFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ClientTriggerHandleFileResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownLoadTemplateFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="filename" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownLoadTemplateFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DownLoadTemplateFileResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Select">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BalanceModel" minOccurs="0" name="uploadfileinfo" nillable="true" type="q7:UploadFileInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SelectResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BalanceModel" minOccurs="0" name="SelectResult" nillable="true" type="q7:ArrayOfUploadFileInfo" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BalanceModel" minOccurs="0" name="SelectResult" nillable="true" type="q8:ArrayOfUploadFileInfo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

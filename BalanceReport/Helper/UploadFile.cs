@@ -5,9 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
-
+using UserAuthorization.UserInfoService;
 
 namespace BalanceReport
 {
@@ -17,13 +18,16 @@ namespace BalanceReport
         {
             string path = filepath;
             System.IO.FileInfo fileInfoIO = new System.IO.FileInfo(path);
-            string md5 = HashHelper.ComputeMD5(fileInfoIO.FullName);
+            
             // 要上传的文件地址
-            FileStream fs = File.OpenRead(fileInfoIO.FullName);
+            FileStream fs = null;
             // 实例化服务客户的
-            ServiceFileClient client = new ServiceFileClient();
+            ServiceFileClient client = null;
             try
             {
+                string md5 = HashHelper.ComputeMD5(fileInfoIO.FullName);
+                fs = File.OpenRead(fileInfoIO.FullName);
+                client = new ServiceFileClient();
                 int maxSiz = 1024 * 100;
                 // 根据文件名获取服务器上的文件
                 UploadFileInfo search = new UploadFileInfo();
@@ -63,20 +67,26 @@ namespace BalanceReport
                 searchfile.FileName = file.Name;
                 searchfile.FileDateTime = datetime;
                 searchfile.FileRealName = file.FileRealName;
+                UserInfo CurrentUser = (UserInfo)AuthorizationContraint.CurrentUser;
+                if (CurrentUser != null)
+                {
+                    searchfile.UpLoadPersonCode = CurrentUser.UserName;
+                }
                 client.StoreUpLoadResult(searchfile);
                 MessageBox.Show("上传成功");
                 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message+":"+ex.StackTrace);
             }
             finally
             {
-                fs.Close();
-                fs.Dispose();
-                client.Close();
-                client.Abort();
+                if (fs!=null)
+                {
+                    fs.Close();
+                    fs.Dispose();
+                }
             }
 
         }
@@ -147,5 +157,7 @@ namespace BalanceReport
             }
 
         }
+        #region 内部方法
+        #endregion
     }
 }

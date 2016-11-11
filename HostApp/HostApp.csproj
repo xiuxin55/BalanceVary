@@ -106,16 +106,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Content Include="EXCELTemplate\客户经理和部门关联导入模版.xls">
+    <Content Include="TemplateFile\客户经理和部门关联导入模版.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="EXCELTemplate\微信查询模板.xlsx">
+    <Content Include="TemplateFile\日报模版.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="EXCELTemplate\日报模版.xls">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="EXCELTemplate\月报模版.xls">
+    <Content Include="TemplateFile\月报模版.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\Settings.settings">
@@ -123,6 +120,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="TemplateFile\薪资模板.xls" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

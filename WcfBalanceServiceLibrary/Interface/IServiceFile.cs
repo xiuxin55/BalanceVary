@@ -35,6 +35,10 @@ namespace WcfBalanceServiceLibrary
         [OperationContract]
         bool StoreUpLoadResult(UploadFileInfo uploadfileinfo);
         [OperationContract]
+        bool ClientTriggerHandleFile(UploadFileInfo uploadfileinfo);
+        [OperationContract]
+        byte[] DownLoadTemplateFile(string filename);
+        [OperationContract]
         List<UploadFileInfo> Select(UploadFileInfo uploadfileinfo);
     }
 

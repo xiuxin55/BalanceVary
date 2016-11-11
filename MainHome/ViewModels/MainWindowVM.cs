@@ -24,8 +24,9 @@ namespace MainHome
             SalaryDataCommand = new DelegateCommand(SalaryDataExecute);
             UserSetCommand = new DelegateCommand(UserSetExecute);
             FunctionSetCommand = new DelegateCommand(FunctionSetExecute);
+            LookUploadFileCommand = new DelegateCommand(LookUploadFileExecute);
         }
-
+        
         #region 属性
         public Popup  Menu { get; set; }
         #endregion
@@ -34,6 +35,7 @@ namespace MainHome
         public DelegateCommand SalaryDataCommand { get; set; }
         public DelegateCommand UserSetCommand { get; set; }
         public DelegateCommand FunctionSetCommand { get; set; }
+        public DelegateCommand LookUploadFileCommand { get; set; }
         
         #endregion
         #region 命令执行方法
@@ -103,6 +105,24 @@ namespace MainHome
             {
                 MessageBox.Show("权限不足");
             }
+        }
+
+        private void LookUploadFileExecute()
+        {
+            if (Menu != null)
+            {
+                Menu.IsOpen = false;
+            }
+            if (UserLoginHelper.Instance.CheckAuthrization(typeof(UpLoadFileWindow).FullName))
+            {
+                UpLoadFileWindow win = new UpLoadFileWindow();
+                win.Show();
+            }
+            else
+            {
+                MessageBox.Show("权限不足");
+            }
+            
         }
         #endregion
         #region 内部方法

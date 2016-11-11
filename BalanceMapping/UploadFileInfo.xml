@@ -20,6 +20,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <result property="FileException" column="FileException"/>
       <result property="FilePath" column="FilePath"/>
       <result property="FileMD5" column="FileMD5"/>
+      <result property="UpLoadPersonCode" column="UpLoadPersonCode"/>
+      
     </resultMap>
   </resultMaps>
   <statements>
@@ -32,7 +34,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
           <isNotEmpty prepend="and" property="FileType">FileType=#FileType#</isNotEmpty>
           <isNotEmpty prepend="and" property="FileDateTime">FileDateTime=#FileDateTime#</isNotEmpty>
           <isNotEmpty prepend="and" property="FileUploadTime">FileUploadTime=#FileUploadTime#</isNotEmpty>
-          
+          <isNotEmpty prepend="and" property="UpLoadPersonCode">UpLoadPersonCode=#UpLoadPersonCode#</isNotEmpty>
           <isNotEmpty prepend="and" property="FileException">FileException=#FileException#</isNotEmpty>
           <isNotEmpty prepend="and" property="FilePath">FilePath=#FilePath#</isNotEmpty>
           <isNotEmpty prepend="and" property="FileMD5">FileMD5=#FileMD5#</isNotEmpty>
@@ -59,7 +61,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <isNotEmpty prepend ="," property="FileState">
         FileState = #FileState#
       </isNotEmpty>
-   
+      <isNotEmpty prepend ="," property="UpLoadPersonCode">
+        UpLoadPersonCode = #UpLoadPersonCode#
+      </isNotEmpty>
+      
       <isNotEmpty prepend ="," property="FilePath">
         FilePath = #FilePath#
       </isNotEmpty>
@@ -78,8 +83,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       FileUploadTime,
       FileState,
       FileException,
-      FilePath,FileMD5)
-      VALUES (#ID#,#FileRealName#,#FileName#,#FileType#,#FileDateTime#,#FileUploadTime#,#FileState#,#FileException#,#FilePath#,#FileMD5#);
+      FilePath,FileMD5,UpLoadPersonCode)
+      VALUES (#ID#,#FileRealName#,#FileName#,#FileType#,#FileDateTime#,#FileUploadTime#,#FileState#,#FileException#,#FilePath#,#FileMD5#,#UpLoadPersonCode#);
     </insert>
     <delete id="DeleteUploadFileInfo" parameterClass="UploadFileInfo">
       DELETE UploadFileInfo WHERE ID = #ID#

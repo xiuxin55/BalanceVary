@@ -23,7 +23,7 @@ namespace MainHome
         {
             base.OnStartup(e);
             
-            this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+           // this.DispatcherUnhandledException += App_DispatcherUnhandledException;
             
             try
             {
@@ -42,7 +42,7 @@ namespace MainHome
             catch (Exception ex)
             {
                 LogHelper.WriteLog(typeof(Window), ex);
-                throw ex;
+                //throw ex;
             }
             Login bw = new Login();
             bw.Show();
