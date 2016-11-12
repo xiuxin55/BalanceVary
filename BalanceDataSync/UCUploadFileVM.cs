@@ -223,20 +223,27 @@ namespace BalanceDataSync
         {
             try
             {
+                bool ishasseleted = false;
                 foreach (var item in UploadFileList)
                 {
                     if (item.IsSelected)
                     {
+                        ishasseleted = true;
                         if (bll.Delete(item))
                         {
                             if(File.Exists(item.FilePath+item.FileName))
                             {
                                 File.Delete(item.FilePath + item.FileName);
                             }
-                            MessageBox.Show("删除成功");
+                            
                         }
                     }
                 }
+                if (ishasseleted)
+                {
+                    MessageBox.Show("删除成功");
+                }
+              
                 SearchExecute();
             }
             catch (Exception ex)

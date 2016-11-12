@@ -104,6 +104,18 @@ namespace BalanceModel
         /// 考核
         /// </summary>
         public string Appraisals { get; set; }
+
+
+        /// <summary>
+        /// 加班费
+        /// </summary>
+        public string OvertimePay { get; set; }
+        /// <summary>
+        /// 其他收入
+        /// </summary>
+        public string OtherIncome { get; set; }
+
+
         /// <summary>
         /// 补扣上月
         /// </summary>
@@ -124,6 +136,12 @@ namespace BalanceModel
         /// 实发合计
         /// </summary>
         public string RealAmount { get; set; }
+
+
+
+
+
+
         /// <summary>
         /// 备注说明
         /// </summary>

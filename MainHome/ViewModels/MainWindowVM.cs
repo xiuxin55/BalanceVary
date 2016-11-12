@@ -113,15 +113,15 @@ namespace MainHome
             {
                 Menu.IsOpen = false;
             }
-            if (UserLoginHelper.Instance.CheckAuthrization(typeof(UpLoadFileWindow).FullName))
-            {
+            //if (UserLoginHelper.Instance.CheckAuthrization(typeof(UpLoadFileWindow).FullName))
+            //{
                 UpLoadFileWindow win = new UpLoadFileWindow();
                 win.Show();
-            }
-            else
-            {
-                MessageBox.Show("权限不足");
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("权限不足");
+            //}
             
         }
         #endregion

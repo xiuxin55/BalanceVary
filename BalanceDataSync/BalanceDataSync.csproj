@@ -78,9 +78,9 @@
     <Compile Include="Calculate\ABCalculateBalance.cs" />
     <Compile Include="Converters\FileTypeConverter.cs" />
     <Compile Include="Converters\FileStateConverter.cs" />
-    <Compile Include="ExcelAndData.cs" />
+    <Compile Include="ReadExcel\ExcelAndData.cs" />
     <Compile Include="ISyncDataHandler.cs" />
-    <Compile Include="ReadExcel.cs" />
+    <Compile Include="ReadExcel\ReadExcel.cs" />
     <Compile Include="Salary\SyncSalaryDataHandler.cs" />
     <Compile Include="SyncDataHandler.cs" />
     <Compile Include="UCUploadFile.xaml.cs">

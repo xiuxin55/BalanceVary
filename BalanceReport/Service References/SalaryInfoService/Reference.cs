@@ -166,6 +166,12 @@ namespace BalanceReport.SalaryInfoService {
         private string LossJobMoneyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OtherIncomeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OvertimePayField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PensionMoneyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -377,6 +383,32 @@ namespace BalanceReport.SalaryInfoService {
                 if ((object.ReferenceEquals(this.LossJobMoneyField, value) != true)) {
                     this.LossJobMoneyField = value;
                     this.RaisePropertyChanged("LossJobMoney");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OtherIncome {
+            get {
+                return this.OtherIncomeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OtherIncomeField, value) != true)) {
+                    this.OtherIncomeField = value;
+                    this.RaisePropertyChanged("OtherIncome");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OvertimePay {
+            get {
+                return this.OvertimePayField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OvertimePayField, value) != true)) {
+                    this.OvertimePayField = value;
+                    this.RaisePropertyChanged("OvertimePay");
                 }
             }
         }

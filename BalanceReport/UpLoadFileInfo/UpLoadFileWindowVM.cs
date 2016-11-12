@@ -126,7 +126,11 @@ namespace BalanceReport.Salary
             {
                 return;
             }
-            ui.UpLoadPersonCode = CurrentUser.UserName;
+            if (!UserAuthorization.Helper.UserLoginHelper.Instance.CheckAuthrization(typeof(UpLoadFileWindow).FullName))
+            {
+                ui.UpLoadPersonCode = CurrentUser.UserName;
+            }
+            
             UploadFileList=new ObservableCollection<UploadFileInfo>( uploadfileclient.Select(ui));
         }
         private void HandleExecute()

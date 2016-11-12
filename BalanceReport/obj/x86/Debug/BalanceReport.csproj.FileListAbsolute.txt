@@ -693,3 +693,12 @@ E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\Encryption4Net
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\UserAuthorization.pdb
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Salary\ImportTemplate.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Salary\ImportTemplate.g.cs
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\bin\Debug\UserAuthorization.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\bin\Debug\Encryption4Net.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\bin\Debug\UserAuthorization.pdb
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Salary\ImportTemplate.baml
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ImportTemplate.baml
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Salary\ImportTemplate.g.cs
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\UpLoadFileInfo\UpLoadFileWindow.g.cs
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ImportTemplate.g.cs
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\UpLoadFileInfo\UpLoadFileWindow.baml

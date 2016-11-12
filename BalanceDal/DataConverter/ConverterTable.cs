@@ -353,6 +353,8 @@ namespace BalanceDAL
             dtBalance.Columns.Add("ShouldPerformance");
             dtBalance.Columns.Add("Reward");
             dtBalance.Columns.Add("Appraisals");
+            dtBalance.Columns.Add("OvertimePay");
+            dtBalance.Columns.Add("OtherIncome");
             dtBalance.Columns.Add("BucklupLastMonth");
             dtBalance.Columns.Add("Tax");
             dtBalance.Columns.Add("RiskMoney");
@@ -388,6 +390,8 @@ namespace BalanceDAL
                 dr["ShouldPerformance"] = item.ShouldPerformance;
                 dr["Reward"] = item.Reward;
                 dr["Appraisals"] = item.Appraisals;
+                dr["OvertimePay"] = item.OvertimePay;
+                dr["OtherIncome"] = item.OtherIncome;
                 dr["BucklupLastMonth"] = item.BucklupLastMonth;
                 dr["Tax"] = item.Tax;
                 dr["RiskMoney"] = item.RiskMoney;

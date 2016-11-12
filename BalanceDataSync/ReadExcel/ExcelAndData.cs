@@ -321,7 +321,7 @@ namespace BalanceDataSync
             }
             else
             {
-                DataTable dt = ImportSalary2003(strFileName, 0);
+                DataTable dt = ImportSalary2003(strFileName,0);
                 return dt;
             }
         }
@@ -356,6 +356,10 @@ namespace BalanceDataSync
 
 
                 HSSFRow row = (HSSFRow)sheet.GetRow(i);
+                if (row ==null )
+                {
+                    continue;
+                }
                 DataRow dataRow = dt.NewRow();
 
                 for (int j = row.FirstCellNum; j < cellCount; j++)
@@ -429,6 +433,10 @@ namespace BalanceDataSync
 
 
                     HSSFRow row = (HSSFRow)sheet.GetRow(i);
+                    if (row == null)
+                    {
+                        continue;
+                    }
                     DataRow dataRow = dt.NewRow();
 
                     for (int j = row.FirstCellNum; j < cellCount; j++)
@@ -492,6 +500,10 @@ namespace BalanceDataSync
                 for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum; i++)
                 {
                     XSSFRow row = (XSSFRow)sheet.GetRow(i);
+                    if (row == null)
+                    {
+                        continue;
+                    }
                     DataRow dataRow = dt.NewRow();
 
                     for (int j = row.FirstCellNum; j < cellCount; j++)
@@ -534,6 +546,10 @@ namespace BalanceDataSync
                    
 
                     HSSFRow row = (HSSFRow)sheet.GetRow(i);
+                    if (row == null)
+                    {
+                        continue;
+                    }
                     DataRow dataRow = dt.NewRow();
 
                     for (int j = row.FirstCellNum; j < cellCount; j++)
@@ -589,6 +605,10 @@ namespace BalanceDataSync
                 for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum; i++)
                 {
                     XSSFRow row = (XSSFRow)sheet.GetRow(i);
+                    if (row == null)
+                    {
+                        continue;
+                    }
                     DataRow dataRow = dt.NewRow();
 
                     for (int j = row.FirstCellNum; j < cellCount; j++)

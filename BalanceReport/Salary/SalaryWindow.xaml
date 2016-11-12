@@ -57,7 +57,7 @@
                             <Button Margin="20,0,0,0" Content="删除" Command="{Binding DeleteCommand}"/>
                             <Button Margin="20,0,0,0" Content="导入薪资数据"  Click="MonthImportButton_Click"/>
                         </StackPanel>
-                        <DataGrid  Grid.Row="2"  AutoGenerateColumns="False"  IsReadOnly="True" ItemsSource="{Binding SalaryInfoList}" SelectedItem="{Binding SelectSalaryInfoModel}">
+                        <DataGrid  Grid.Row="2"  AutoGenerateColumns="False"  IsReadOnly="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" ItemsSource="{Binding SalaryInfoList}" SelectedItem="{Binding SelectSalaryInfoModel}">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn >
                                     <DataGridTemplateColumn.Header>
@@ -70,13 +70,22 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTextColumn Width="48" Header="序号" Binding="{Binding RowNumber}"  />
-                                <DataGridTextColumn Binding="{Binding StaffCode}" Header="人员编码"  Width="*" />
-                                <DataGridTextColumn Binding="{Binding StaffName}" Header="人员姓名"  Width="*" />
-                                <DataGridTextColumn Binding="{Binding JobSalary}" Header="岗位工资"  Width="*"  />
-                                <DataGridTextColumn Binding="{Binding ShouldSalary}" Header="应发工资"  />
-                                <DataGridTextColumn Binding="{Binding RealSalary}" Header="实发工资"  Width="*"  />
-                                <DataGridTextColumn Binding="{Binding RealAmount}" Header="实发合计"  Width="*" />
-                                <DataGridTextColumn Binding="{Binding SalaryTime,Converter={StaticResource TimeConverter} }" Header="日期"   Width="*"/>
+                                <DataGridTextColumn Binding="{Binding StaffCode}" Header="人员编码"  Width="130" />
+                                <DataGridTextColumn Binding="{Binding StaffName}" Header="人员姓名"  Width="100" />
+                        <DataGridTextColumn Binding="{Binding JobSalary}" Header="岗位工资"  Width="80"  />
+                        <DataGridTextColumn Binding="{Binding ProfessionAllowance}" Header="专业技术职务津贴" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding YearCreditAllowance}" Header="保留年功津贴"  Width="80"   />
+                        <DataGridTextColumn Binding="{Binding RetainsSalary}" Header="保留工资" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding SynthesizeAllowance}" Header="综合补贴"  Width="80"  />
+                        <DataGridTextColumn Binding="{Binding ExpiredAllowance}" Header="过渡期补贴" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding HouseAllowance}" Header="住房补贴"  Width="80"   />
+                        <DataGridTextColumn Binding="{Binding ShouldSalary}" Header="应发工资" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding HouseFund}" Header="住房公积金实缴额(个人合计)"  Width="80"  />
+                        <DataGridTextColumn Binding="{Binding PensionMoney}" Header="养老保险实缴额(个人)" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding OvertimePay}" Header="加班费"  Width="80"   />
+                        <DataGridTextColumn Binding="{Binding OtherIncome}" Header="其他收入" Width="80"  />
+
+                                <DataGridTextColumn Binding="{Binding SalaryTime,Converter={StaticResource TimeConverter} }" Header="日期"   Width="140"/>
                             </DataGrid.Columns>
                         </DataGrid>
                         <cc:UCPage Name="page" Background="White" Grid.Row="3" PageChangedCommand="{Binding PageChangedCommand}" 

@@ -34,6 +34,10 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <result property="ShouldPerformance" column="ShouldPerformance"/>
       <result property="Reward" column="Reward"/>
       <result property="Appraisals" column="Appraisals"/>
+
+      <result property="OvertimePay" column="OvertimePay"/>
+      <result property="OtherIncome" column="OtherIncome"/>
+      
       <result property="BucklupLastMonth" column="BucklupLastMonth"/>
       <result property="Tax" column="Tax"/>
       <result property="RiskMoney" column="RiskMoney"/>
