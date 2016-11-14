@@ -41,6 +41,22 @@ namespace AutoUpdate
             this.Close();
         }
 
+        private void Expander_Collapsed(object sender, RoutedEventArgs e)
+        {
+            Expander expand = sender as Expander;
+            if (expand !=null )
+            {
+                this.Height = 100;
+            }
+        }
 
+        private void Expander_Expanded(object sender, RoutedEventArgs e)
+        {
+            Expander expand = sender as Expander;
+            if (expand != null)
+            {
+                this.Height = 260;
+            }
+        }
     }
 }
