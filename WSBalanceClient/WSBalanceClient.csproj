@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WSBalanceClient</RootNamespace>
+    <AssemblyName>WSBalanceClient</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="WSServiceFile.cs" />
+    <Compile Include="WSZoneBalanceService.cs" />
+    <Compile Include="WSWebsiteInfoService.cs" />
+    <Compile Include="WSWebsiteBalanceService.cs" />
+    <Compile Include="WSSystemSetInfoService.cs" />
+    <Compile Include="WSSalaryInfoService.cs" />
+    <Compile Include="WSDepartmentInfoService.cs" />
+    <Compile Include="WSDepartmentBalanceService.cs" />
+    <Compile Include="WSCustomerManagerInfoService.cs" />
+    <Compile Include="WSCustomerManagerBalanceService.cs" />
+    <Compile Include="WSCompanyBalanceService.cs" />
+    <Compile Include="WSAccountInfoService.cs" />
+    <Compile Include="WSAccountBalanceService.cs" />
+    <Compile Include="WSAccountAndNameLinkInfoService.cs" />
+    <Compile Include="Service References\AccountAndNameLinkInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AccountBalanceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AccountInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CompanyBalanceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CustomerManagerBalanceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CustomerManagerInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DepartmentBalanceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DepartmentInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SalaryInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceFile\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SystemSetInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WebsiteBalanceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WebsiteInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ZoneBalanceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceInvokeHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\AccountAndNameLinkInfoService\AccountAndNameLinkInfoService.wsdl" />
+    <None Include="Service References\AccountAndNameLinkInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountAndNameLinkInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountAndNameLinkInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountAndNameLinkInfoService\WSBalanceClient.AccountAndNameLinkInfoService.AccountAndNameLinkInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountBalanceService\AccountBalanceService.wsdl" />
+    <None Include="Service References\AccountBalanceService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountBalanceService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountBalanceService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountBalanceService\WSBalanceClient.AccountBalanceService.AccountBalance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountInfoService\AccountInfoService.wsdl" />
+    <None Include="Service References\AccountInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountInfoService\WSBalanceClient.AccountInfoService.AccountInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CompanyBalanceService\CompanyBalanceService.wsdl" />
+    <None Include="Service References\CompanyBalanceService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CompanyBalanceService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CompanyBalanceService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CompanyBalanceService\WSBalanceClient.CompanyBalanceService.CompanyBalance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CustomerManagerBalanceService\CustomerManagerBalanceService.wsdl" />
+    <None Include="Service References\CustomerManagerBalanceService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CustomerManagerBalanceService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CustomerManagerBalanceService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CustomerManagerBalanceService\WSBalanceClient.CustomerManagerBalanceService.CustomerManagerBalance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CustomerManagerInfoService\CustomerManagerInfoService.wsdl" />
+    <None Include="Service References\CustomerManagerInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CustomerManagerInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CustomerManagerInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CustomerManagerInfoService\WSBalanceClient.CustomerManagerInfoService.CustomerManagerInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DepartmentBalanceService\DepartmentBalanceService.wsdl" />
+    <None Include="Service References\DepartmentBalanceService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DepartmentBalanceService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DepartmentBalanceService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DepartmentBalanceService\WSBalanceClient.DepartmentBalanceService.DepartmentBalance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DepartmentInfoService\DepartmentInfoService.wsdl" />
+    <None Include="Service References\DepartmentInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DepartmentInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DepartmentInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DepartmentInfoService\WSBalanceClient.DepartmentInfoService.DepartmentInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SalaryInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SalaryInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SalaryInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SalaryInfoService\SalaryInfoService.wsdl" />
+    <None Include="Service References\SalaryInfoService\WSBalanceClient.SalaryInfoService.SalaryInfo1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceFile\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceFile\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceFile\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceFile\ServiceFile.wsdl" />
+    <None Include="Service References\ServiceFile\WSBalanceClient.ServiceFile.CustomFileInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceFile\WSBalanceClient.ServiceFile.UploadFileInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SystemSetInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SystemSetInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SystemSetInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SystemSetInfoService\SystemSetInfoService.wsdl" />
+    <None Include="Service References\SystemSetInfoService\WSBalanceClient.SystemSetInfoService.SystemSetInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebsiteBalanceService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteBalanceService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteBalanceService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteBalanceService\WebsiteBalanceService.wsdl" />
+    <None Include="Service References\WebsiteBalanceService\WSBalanceClient.WebsiteBalanceService.WebsiteBalance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebsiteInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WebsiteInfoService\WebsiteInfoService.wsdl" />
+    <None Include="Service References\WebsiteInfoService\WSBalanceClient.WebsiteInfoService.WebsiteInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ZoneBalanceService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ZoneBalanceService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ZoneBalanceService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ZoneBalanceService\WSBalanceClient.ZoneBalanceService.ZoneBalance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ZoneBalanceService\ZoneBalanceService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SalaryInfoService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SalaryInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SalaryInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SalaryInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SalaryInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AccountAndNameLinkInfoService\" />
+    <WCFMetadataStorage Include="Service References\AccountBalanceService\" />
+    <WCFMetadataStorage Include="Service References\AccountInfoService\" />
+    <WCFMetadataStorage Include="Service References\CompanyBalanceService\" />
+    <WCFMetadataStorage Include="Service References\CustomerManagerBalanceService\" />
+    <WCFMetadataStorage Include="Service References\CustomerManagerInfoService\" />
+    <WCFMetadataStorage Include="Service References\DepartmentBalanceService\" />
+    <WCFMetadataStorage Include="Service References\DepartmentInfoService\" />
+    <WCFMetadataStorage Include="Service References\SalaryInfoService\" />
+    <WCFMetadataStorage Include="Service References\ServiceFile\" />
+    <WCFMetadataStorage Include="Service References\SystemSetInfoService\" />
+    <WCFMetadataStorage Include="Service References\WebsiteBalanceService\" />
+    <WCFMetadataStorage Include="Service References\WebsiteInfoService\" />
+    <WCFMetadataStorage Include="Service References\ZoneBalanceService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceFile\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceFile\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceFile\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceFile\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteBalanceService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteBalanceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteBalanceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebsiteBalanceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ZoneBalanceService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ZoneBalanceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ZoneBalanceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ZoneBalanceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CompanyBalanceService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CompanyBalanceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CompanyBalanceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CompanyBalanceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountBalanceService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountBalanceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountBalanceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountBalanceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DepartmentInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DepartmentInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DepartmentInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DepartmentInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DepartmentBalanceService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DepartmentBalanceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DepartmentBalanceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DepartmentBalanceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerBalanceService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerBalanceService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerBalanceService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CustomerManagerBalanceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SystemSetInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SystemSetInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SystemSetInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SystemSetInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountAndNameLinkInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountAndNameLinkInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountAndNameLinkInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountAndNameLinkInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SalaryInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SalaryInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SalaryInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SalaryInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

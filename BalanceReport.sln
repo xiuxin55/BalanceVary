@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalanceReport", "BalanceReport\BalanceReport.csproj", "{5C397F56-6126-4F15-B6EC-7391BB0C13EB}"
 EndProject
@@ -72,6 +72,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfCallbackInterface", "WcfCallbackInterface\WcfCallbackInterface.csproj", "{201B29D3-476A-4B7C-99A6-55DC8C92EE80}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WCF", "WCF", "{B3EFDE90-73F1-4576-8905-1F37919BFDE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WSClient", "WSClient", "{2BFC5770-9E3E-4E00-8202-6CA0BE05879F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSBalanceClient", "WSBalanceClient\WSBalanceClient.csproj", "{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -357,6 +361,18 @@ Global
 		{201B29D3-476A-4B7C-99A6-55DC8C92EE80}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{201B29D3-476A-4B7C-99A6-55DC8C92EE80}.Release|x86.ActiveCfg = Release|Any CPU
 		{201B29D3-476A-4B7C-99A6-55DC8C92EE80}.Release|x86.Build.0 = Release|Any CPU
+		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Debug|x86.Build.0 = Debug|Any CPU
+		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Release|x86.ActiveCfg = Release|Any CPU
+		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -386,5 +402,6 @@ Global
 		{F9D394A4-A509-4404-99F0-BBDBF4C58139} = {B04915AD-F43B-4DDA-92D2-5B3738E8BBBF}
 		{201B29D3-476A-4B7C-99A6-55DC8C92EE80} = {B3EFDE90-73F1-4576-8905-1F37919BFDE9}
 		{B3EFDE90-73F1-4576-8905-1F37919BFDE9} = {773DE8C3-C719-4853-A0A4-8F765551E6EA}
+		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E} = {2BFC5770-9E3E-4E00-8202-6CA0BE05879F}
 	EndGlobalSection
 EndGlobal
