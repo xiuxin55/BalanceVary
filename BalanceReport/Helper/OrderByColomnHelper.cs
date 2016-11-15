@@ -1,5 +1,5 @@
 ﻿using BalanceReport.LocalModel;
-using BalanceReport.SystemSetInfoService;
+using WSBalanceClient.SystemSetInfoService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +17,8 @@ namespace BalanceReport.Helper
             {
                 return OrderByColomnobj;
             }
-            SystemSetInfoService.SystemSetInfoServiceClient clientSystemSetInfo = new SystemSetInfoServiceClient();
-            List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
+          
+            List<SystemSetInfo> setList = new List<SystemSetInfo>(WSBalanceClient.WSSystemSetInfoService.Instance.Select(null));
             SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == ResultOrderBy.GetSetName().ToLower()) : null;
             OrderByColomnobj = ColomnSet != null ? ColomnSet.SetContent : "BalanceTime";
             return OrderByColomnobj;
@@ -39,8 +39,7 @@ namespace BalanceReport.Helper
             {
                 return SubOrderByColomnobj;
             }
-            SystemSetInfoService.SystemSetInfoServiceClient clientSystemSetInfo = new SystemSetInfoServiceClient();
-            List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
+            List<SystemSetInfo> setList = new List<SystemSetInfo>(WSBalanceClient.WSSystemSetInfoService.Instance.Select(null));
             SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() ==("Sub"+ ResultOrderBy.GetSetName()).ToLower()) : null;
             SubOrderByColomnobj = ColomnSet != null ? ColomnSet.SetContent : "BalanceTime";
             return SubOrderByColomnobj;

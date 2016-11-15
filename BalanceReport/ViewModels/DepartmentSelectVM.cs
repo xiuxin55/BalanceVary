@@ -7,15 +7,15 @@ using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using BalanceReport.Views;
-using BalanceReport.WebsiteInfoService;
-using BalanceReport.DepartmentInfoService;
+using WSBalanceClient.WebsiteInfoService;
+using WSBalanceClient.DepartmentInfoService;
 using Common;
-
+using WSBalanceClient;
 namespace BalanceReport.ViewModels
 {
     public class DepartmentSelectVM:NotificationObject
     {
-        private DepartmentInfoService.DepartmentInfoServiceClient client = new DepartmentInfoServiceClient();
+      
         public DepartmentSelectVM()
         {
             AddDepartmentCommand = new DelegateCommand(AddDepartmentExecute);
@@ -94,7 +94,7 @@ namespace BalanceReport.ViewModels
         {
             if (SelectedDepartmentInfoModel != null && SelectedDepartmentInfoModel.ID != null)
             {
-                if (MessageBox.Show("是否删除", "消息提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes && client.Delete(SelectedDepartmentInfoModel))
+                if (MessageBox.Show("是否删除", "消息提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes && WSDepartmentInfoService.Instance.Delete(SelectedDepartmentInfoModel))
                 {
                     MessageBox.Show("删除成功");
                     SearchDepartmentExecute();
@@ -109,7 +109,7 @@ namespace BalanceReport.ViewModels
             }
             try
             {
-                DepartmentInfoList = new ObservableCollection<DepartmentInfo>(client.Select(SearchDepartmentInfoModel));
+                DepartmentInfoList = new ObservableCollection<DepartmentInfo>(WSDepartmentInfoService.Instance.Select(SearchDepartmentInfoModel));
             }
             catch (Exception ex)
             {

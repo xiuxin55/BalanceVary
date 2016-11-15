@@ -7,21 +7,19 @@ using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using BalanceReport.Views;
-using BalanceReport.DepartmentInfoService;
+using WSBalanceClient.DepartmentInfoService;
 using Common;
-using BalanceReport.DepartmentBalanceService;
+using WSBalanceClient.DepartmentBalanceService;
 using Utility;
 using BalanceReport.LocalModel;
-using BalanceReport.SystemSetInfoService;
+using WSBalanceClient.SystemSetInfoService;
 using BalanceReport.Helper;
-
+using WSBalanceClient;
 namespace BalanceReport.ViewModels
 {
     public class DepartmentDataGridVM: BaseVM
     {
-        private DepartmentInfoService.DepartmentInfoServiceClient clientDepartment = new DepartmentInfoServiceClient();
-        private DepartmentBalanceServiceClient clientDepartmentBalance = new DepartmentBalanceServiceClient();
-      
+       
         public DepartmentDataGridVM()
         {
             SearchDepartmentCommand = new DelegateCommand(SearchDepartmentExecute);
@@ -132,18 +130,18 @@ namespace BalanceReport.ViewModels
             SearchDepartmentBalanceoModel.EndIndex = PageSize;
             if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
             {
-                DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(clientDepartmentBalance.Select(SearchDepartmentBalanceoModel));
+                DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(WSDepartmentBalanceService.Instance.Select(SearchDepartmentBalanceoModel));
             }
             else
             {
                 SearchDepartmentBalanceoModel.StartBalanceTime = SearchDepartmentBalanceoModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
                 SearchDepartmentBalanceoModel.EndBalanceTime = SearchDepartmentBalanceoModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
                  
-                DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(clientDepartmentBalance.CallTimeSpanProc(SearchDepartmentBalanceoModel));
+                DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(WSDepartmentBalanceService.Instance.CallTimeSpanProc(SearchDepartmentBalanceoModel));
                 SearchDepartmentBalanceoModel.BalanceTime = SearchDepartmentBalanceoModel.StartBalanceTime;
 
             }
-            Total = clientDepartmentBalance.SelectCount(SearchDepartmentBalanceoModel);
+            Total = WSDepartmentBalanceService.Instance.SelectCount(SearchDepartmentBalanceoModel);
         }
 
         private void LoadData()
@@ -152,12 +150,12 @@ namespace BalanceReport.ViewModels
             {
                 DepartmentInfo model = new DepartmentInfo();
                
-                DepartmentInfoList = new ObservableCollection<DepartmentInfo>(clientDepartment.Select(model));
+                DepartmentInfoList = new ObservableCollection<DepartmentInfo>(WSDepartmentInfoService.Instance.Select(model));
                 model.DepartmentName = "全部";
                 DepartmentInfoList.Insert(0, model);
 
-                SystemSetInfoService.SystemSetInfoServiceClient clientSystemSetInfo = new SystemSetInfoServiceClient();
-                List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
+               
+                List<SystemSetInfo> setList = new List<SystemSetInfo>(WSSystemSetInfoService.Instance.Select(null));
                 SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()) : null;
                 ColomnState = ColomnSet != null ? DataGridColomnState.SystemSetInfoToState(ColomnSet) : null;
                 Mode = BalanceModeHelper.GetBalanceModeobj();
@@ -176,11 +174,11 @@ namespace BalanceReport.ViewModels
             SearchDepartmentBalanceoModel.EndIndex = endindex;
             if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
             {
-                DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(clientDepartmentBalance.Select(SearchDepartmentBalanceoModel));
+                DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(WSDepartmentBalanceService.Instance.Select(SearchDepartmentBalanceoModel));
             }
             else
             {
-                DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(clientDepartmentBalance.CallTimeSpanProc(SearchDepartmentBalanceoModel));
+                DepartmentBalanceList = new ObservableCollection<DepartmentBalance>(WSDepartmentBalanceService.Instance.CallTimeSpanProc(SearchDepartmentBalanceoModel));
 
             }
         }

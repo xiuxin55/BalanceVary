@@ -6,13 +6,13 @@ using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using System.Collections.ObjectModel;
-using BalanceReport.AccountAndNameLinkInfoService;
-
+using WSBalanceClient.AccountAndNameLinkInfoService;
+using WSBalanceClient;
 namespace BalanceReport.ViewModels
 {
     public class AccountAndNameLinkInfoAddVM : NotificationObject
     {
-        private AccountAndNameLinkInfoService.AccountAndNameLinkInfoServiceClient client = new AccountAndNameLinkInfoServiceClient();
+      
         public AccountAndNameLinkInfoAddVM(bool IsAdd)
         {
             OkAccountCommand = new DelegateCommand(OkAccountExecute);
@@ -78,7 +78,7 @@ namespace BalanceReport.ViewModels
                 temp.CompanyName = AddAccountAndNameLinkInfo.CompanyName;
                 temp.StartIndex = 0;
                 temp.EndIndex = int.MaxValue;
-                AccountAndNameLinkInfo wim = client.Select(temp).FirstOrDefault();
+                AccountAndNameLinkInfo wim = WSAccountAndNameLinkInfoService.Instance.Select(temp).FirstOrDefault();
                 if (wim!=null && wim.ID != null)
                 {
                     MessageBox.Show("该关联已存在");
@@ -89,7 +89,7 @@ namespace BalanceReport.ViewModels
                     }
                     return;
                 }
-                if (client.Add(AddAccountAndNameLinkInfo))
+                if (WSAccountAndNameLinkInfoService.Instance.Add(AddAccountAndNameLinkInfo))
                 {
                     MessageBox.Show("新增成功");
                     if (AccountAddUI != null)
@@ -104,7 +104,7 @@ namespace BalanceReport.ViewModels
             }
             else
             {
-                if (client.Update(AddAccountAndNameLinkInfo))
+                if (WSAccountAndNameLinkInfoService.Instance.Update(AddAccountAndNameLinkInfo))
                 {
                     MessageBox.Show("修改成功");
                     if (AccountAddUI != null)

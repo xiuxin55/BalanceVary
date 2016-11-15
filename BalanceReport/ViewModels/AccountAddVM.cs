@@ -6,13 +6,13 @@ using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using System.Collections.ObjectModel;
-using BalanceReport.AccountInfoService;
-
+using WSBalanceClient.AccountInfoService;
+using WSBalanceClient;
 namespace BalanceReport.ViewModels
 {
     public class AccountAddVM : NotificationObject
     {
-        private AccountInfoService.AccountInfoServiceClient client = new AccountInfoServiceClient();
+       
         public AccountAddVM(bool IsAdd)
         {
             OkAccountCommand = new DelegateCommand(OkAccountExecute);
@@ -73,7 +73,7 @@ namespace BalanceReport.ViewModels
                 AccountInfo temp = new AccountInfo();
                 temp.AccountID = AddAccountInfo.AccountID;
                 temp.SubAccountNumber = AddAccountInfo.SubAccountNumber;
-                AccountInfo wim = client.Select(temp).FirstOrDefault();
+                AccountInfo wim = WSAccountInfoService.Instance.Select(temp).FirstOrDefault();
                 if (wim.ID != null)
                 {
                     MessageBox.Show("该账号+子账号已存在");
@@ -84,7 +84,7 @@ namespace BalanceReport.ViewModels
                     }
                     return;
                 }
-                if (client.Add(AddAccountInfo))
+                if (WSAccountInfoService.Instance.Add(AddAccountInfo))
                 {
                     MessageBox.Show("新增成功");
                     if (AccountAddUI != null)
@@ -99,7 +99,7 @@ namespace BalanceReport.ViewModels
             }
             else
             {
-                if (client.Update(AddAccountInfo))
+                if (WSAccountInfoService.Instance.Update(AddAccountInfo))
                 {
                     MessageBox.Show("修改成功");
                     if (AccountAddUI != null)

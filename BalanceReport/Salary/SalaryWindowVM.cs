@@ -12,21 +12,19 @@ using Utility;
 using BalanceReport.LocalModel;
 
 using BalanceReport.Helper;
-using BalanceReport.SalaryInfoService;
-using BalanceReport.ServiceFile;
 using Common.Client;
+using WSBalanceClient;
+using WSBalanceClient.SalaryInfoService;
+using WSBalanceClient.ServiceFile;
 
 namespace BalanceReport.Salary
 {
     public class SalaryWindowVM : BaseVM
     {
-
-        private SalaryInfoService.SalaryInfoServiceClient client = new SalaryInfoServiceClient();
-        private ServiceFile.ServiceFileClient uploadfileclient = new ServiceFileClient();
         public SalaryWindowVM()
         {
-            SearchCommand = new DelegateCommand(SearchExecute);
-            DeleteCommand = new DelegateCommand(DeleteExecute);
+            SearchCommand = new DelegateCommand(SearchExecute); 
+             DeleteCommand = new DelegateCommand(DeleteExecute);
             FlushUpLoadCommand = new DelegateCommand(FlushUpLoadFileExecute);
             LookExceptionCommand = new DelegateCommand(LookExceptionExecute);
             SearchSalaryInfoModel = new SalaryInfo();
@@ -156,8 +154,8 @@ namespace BalanceReport.Salary
                 SearchSalaryInfoModel.SubOrderbyColomnName = "SalaryTime";
                 SearchSalaryInfoModel.StartIndex = 1;
                 SearchSalaryInfoModel.EndIndex = PageSize;
-                SalaryInfoList = new ObservableCollection<SalaryInfo>(client.Select(SearchSalaryInfoModel));
-                Total = client.SelectCount(SearchSalaryInfoModel);
+                SalaryInfoList = new ObservableCollection<SalaryInfo>(WSSalaryInfoService.Instance.Select(SearchSalaryInfoModel));
+                Total = WSSalaryInfoService.Instance.SelectCount(SearchSalaryInfoModel);
                 
             }
             catch (Exception ex)
@@ -170,13 +168,13 @@ namespace BalanceReport.Salary
         {
             UploadFileInfo ui = new UploadFileInfo();
             ui.FileType = FileType.SalaryInfo.ToString();
-            UploadFileList=new ObservableCollection<UploadFileInfo>( uploadfileclient.Select(ui));
+            UploadFileList=new ObservableCollection<UploadFileInfo>( WSServiceFile.Instance.Select(ui));
         }
         public override void LoadPageData(int startindex, int endindex)
         {
             SearchSalaryInfoModel.StartIndex = startindex;
             SearchSalaryInfoModel.EndIndex = endindex;
-            SalaryInfoList = new ObservableCollection<SalaryInfo>(client.Select(SearchSalaryInfoModel));
+            SalaryInfoList = new ObservableCollection<SalaryInfo>(WSSalaryInfoService.Instance.Select(SearchSalaryInfoModel));
           
         }
         private void DeleteExecute()
@@ -188,7 +186,7 @@ namespace BalanceReport.Salary
                 {
                     if (item.IsSelected)
                     {
-                        client.Delete(item);
+                        WSSalaryInfoService.Instance.Delete(item);
                     }
                 }
                 MessageBox.Show("删除成功");

@@ -12,17 +12,17 @@ using Utility;
 using BalanceReport.LocalModel;
 
 using BalanceReport.Helper;
-using BalanceReport.SalaryInfoService;
-using BalanceReport.ServiceFile;
 using Common.Client;
 using UserAuthorization.UserInfoService;
+using WSBalanceClient.ServiceFile;
+using WSBalanceClient;
+using WSBalanceClient.SalaryInfoService;
 
 namespace BalanceReport.Salary
 {
     public class UpLoadFileWindowVM : BaseVM
     {
 
-        private ServiceFile.ServiceFileClient uploadfileclient = new ServiceFileClient();
         public UpLoadFileWindowVM()
         {
 
@@ -131,7 +131,7 @@ namespace BalanceReport.Salary
                 ui.UpLoadPersonCode = CurrentUser.UserName;
             }
             
-            UploadFileList=new ObservableCollection<UploadFileInfo>( uploadfileclient.Select(ui));
+            UploadFileList=new ObservableCollection<UploadFileInfo>( WSServiceFile.Instance.Select(ui));
         }
         private void HandleExecute()
         {
@@ -144,7 +144,7 @@ namespace BalanceReport.Salary
                 else
                 {
                     SelectedUploadFile.FileException = "";
-                    uploadfileclient.ClientTriggerHandleFile(SelectedUploadFile);
+                    WSServiceFile.Instance.ClientTriggerHandleFile(SelectedUploadFile);
                     MessageBox.Show("正在处理，请稍后点击刷新");
                 }
             }

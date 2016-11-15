@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BalanceReport.ViewModels;
 using MahApps.Metro.Controls;
-using BalanceReport.AccountAndNameLinkInfoService;
+using WSBalanceClient.AccountAndNameLinkInfoService;
 
 namespace BalanceReport.Views
 {

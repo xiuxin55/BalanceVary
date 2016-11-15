@@ -6,13 +6,13 @@ using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using System.Collections.ObjectModel;
-using BalanceReport.CustomerManagerInfoService;
-
+using WSBalanceClient.CustomerManagerInfoService;
+using WSBalanceClient;
 namespace BalanceReport.ViewModels
 {
     public class CustomerManagerAddVM : NotificationObject
     {
-        private CustomerManagerInfoService.CustomerManagerInfoServiceClient client = new CustomerManagerInfoServiceClient();
+       
         public CustomerManagerAddVM(bool IsAdd)
         {
             OkManagersCommand = new DelegateCommand(OkManagersExecute);
@@ -70,7 +70,7 @@ namespace BalanceReport.ViewModels
                 AddCustomerManagerInfo.ID = Guid.NewGuid().ToString();
                 CustomerManagerInfo info = new CustomerManagerInfo();
                 info.ManagerID = AddCustomerManagerInfo.ManagerID;
-                CustomerManagerInfo wim = client.Select(info).FirstOrDefault();
+                CustomerManagerInfo wim = WSCustomerManagerInfoService.Instance.Select(info).FirstOrDefault();
                 if (wim.ManagerID == AddCustomerManagerInfo.ManagerID && wim.ManagerName==AddCustomerManagerInfo.ManagerName )
                 {
                     MessageBox.Show("客户经理已存在");
@@ -81,7 +81,7 @@ namespace BalanceReport.ViewModels
                     }
                     return;
                 }
-                if (client.Add(AddCustomerManagerInfo))
+                if (WSCustomerManagerInfoService.Instance.Add(AddCustomerManagerInfo))
                 {
                     MessageBox.Show("新增成功");
                     if (ManagersAddUI != null)
@@ -96,7 +96,7 @@ namespace BalanceReport.ViewModels
             }
             else
             {
-                if (client.Update(AddCustomerManagerInfo))
+                if (WSCustomerManagerInfoService.Instance.Update(AddCustomerManagerInfo))
                 {
                     MessageBox.Show("修改成功");
                     if (ManagersAddUI != null)

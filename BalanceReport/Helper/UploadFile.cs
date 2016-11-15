@@ -1,4 +1,4 @@
-﻿using BalanceReport.ServiceFile;
+﻿using WSBalanceClient.ServiceFile;
 using Common;
 using Common.Client;
 using System;
@@ -86,6 +86,7 @@ namespace BalanceReport
                 {
                     fs.Close();
                     fs.Dispose();
+                    client.Close();
                 }
             }
 

@@ -1,8 +1,9 @@
-﻿using BalanceReport.SystemSetInfoService;
+﻿using WSBalanceClient.SystemSetInfoService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WSBalanceClient;
 
 namespace BalanceReport.LocalModel
 {
@@ -15,8 +16,7 @@ namespace BalanceReport.LocalModel
             {
                 if (ColomnStateResult==null)
                 {
-                    SystemSetInfoService.SystemSetInfoServiceClient client = new SystemSetInfoServiceClient();
-                    List<SystemSetInfo> setList = new List<SystemSetInfo>(client.Select(null));
+                    List<SystemSetInfo> setList = new List<SystemSetInfo>(WSSystemSetInfoService.Instance.Select(null));
                     SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()) : null;
                     ColomnStateResult = ColomnSet != null ? DataGridColomnState.SystemSetInfoToState(ColomnSet) : null;
                 }

@@ -7,14 +7,15 @@ using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using BalanceReport.Views;
-using BalanceReport.WebsiteInfoService;
+using WSBalanceClient.WebsiteInfoService;
 using Common;
+using WSBalanceClient;
 
 namespace BalanceReport.ViewModels
 {
     public class WebsiteManageVM:NotificationObject
     {
-        private WebsiteInfoService.WebsiteInfoServiceClient client = new WebsiteInfoServiceClient();
+       
         public WebsiteManageVM()
         {
             AddWebsiteCommand = new DelegateCommand(AddWebsiteExecute);
@@ -93,7 +94,7 @@ namespace BalanceReport.ViewModels
         {
             if (SelectedWebsiteInfoModel != null && SelectedWebsiteInfoModel.ID != null)
             {
-                if (MessageBox.Show("是否删除", "消息提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes && client.Delete(SelectedWebsiteInfoModel))
+                if (MessageBox.Show("是否删除", "消息提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes && WSWebsiteInfoService.Instance.Delete(SelectedWebsiteInfoModel))
                 {
                     MessageBox.Show("删除成功");
                     SearchWebsiteExecute();
@@ -108,7 +109,7 @@ namespace BalanceReport.ViewModels
             }
             try
             {
-                WebsiteInfoList = new ObservableCollection<WebsiteInfo>(client.Select(SearchWebsiteInfoModel));
+                WebsiteInfoList = new ObservableCollection<WebsiteInfo>(WSWebsiteInfoService.Instance.Select(SearchWebsiteInfoModel));
             }
             catch (Exception ex)
             {

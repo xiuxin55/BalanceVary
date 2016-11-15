@@ -7,13 +7,13 @@ using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using BalanceReport.Views;
-using BalanceReport.CustomerManagerInfoService;
-
+using WSBalanceClient.CustomerManagerInfoService;
+using WSBalanceClient;
 namespace BalanceReport.ViewModels
 {
     public class CustomerManagerListVM : NotificationObject
     {
-        private CustomerManagerInfoService.CustomerManagerInfoServiceClient client = new CustomerManagerInfoServiceClient();
+      
         public CustomerManagerListVM()
         {
             AddManagersCommand = new DelegateCommand(AddManagersExecute);
@@ -93,7 +93,7 @@ namespace BalanceReport.ViewModels
         {
             if (SelectedCustomerManagerInfo != null && SelectedCustomerManagerInfo.ID != null)
             {
-                if (MessageBox.Show("是否删除", "消息提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes && client.Delete(SelectedCustomerManagerInfo))
+                if (MessageBox.Show("是否删除", "消息提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes && WSCustomerManagerInfoService.Instance.Delete(SelectedCustomerManagerInfo))
                 {
                     MessageBox.Show("删除成功");
                     SearchManagersExecute();
@@ -106,7 +106,7 @@ namespace BalanceReport.ViewModels
             {
                 SearchCustomerManagerInfo = new CustomerManagerInfo();
             }
-            ManagersInfoList =new ObservableCollection<CustomerManagerInfo>( client.Select(SearchCustomerManagerInfo));
+            ManagersInfoList =new ObservableCollection<CustomerManagerInfo>( WSCustomerManagerInfoService.Instance.Select(SearchCustomerManagerInfo));
         }
         private void LinkAccountExecute()
         {

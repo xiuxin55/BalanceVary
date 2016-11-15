@@ -9,13 +9,15 @@ using System.Windows;
 using BalanceReport.Views;
 
 using Utility;
-using BalanceReport.AccountAndNameLinkInfoService;
+
+using WSBalanceClient;
+using WSBalanceClient.AccountAndNameLinkInfoService;
 
 namespace BalanceReport.ViewModels
 {
     public class AccountAndNameLinkManageVM : BaseVM
     {
-        private AccountAndNameLinkInfoService.AccountAndNameLinkInfoServiceClient client = new AccountAndNameLinkInfoServiceClient();
+      
         public AccountAndNameLinkManageVM()
         {
             AddAccountCommand = new DelegateCommand(AddAccountExecute);
@@ -103,7 +105,7 @@ namespace BalanceReport.ViewModels
         {
             if (SelectedAccountAndNameLinkInfoModel != null && SelectedAccountAndNameLinkInfoModel.ID != null)
             {
-                if (MessageBox.Show("是否删除", "消息提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes && client.Delete(SelectedAccountAndNameLinkInfoModel))
+                if (MessageBox.Show("是否删除", "消息提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes && WSAccountAndNameLinkInfoService.Instance.Delete(SelectedAccountAndNameLinkInfoModel))
                 {
                     MessageBox.Show("删除成功");
                     SearchAccountExecute();
@@ -127,8 +129,8 @@ namespace BalanceReport.ViewModels
       
             SearchAccountAndNameLinkInfoModel.StartIndex = 1;
             SearchAccountAndNameLinkInfoModel.EndIndex = PageSize;
-            AccountAndNameLinkInfoList =new ObservableCollection<AccountAndNameLinkInfo>(client.Select(SearchAccountAndNameLinkInfoModel));
-            Total = client.SelectCount(SearchAccountAndNameLinkInfoModel);
+            AccountAndNameLinkInfoList =new ObservableCollection<AccountAndNameLinkInfo>(WSAccountAndNameLinkInfoService.Instance.Select(SearchAccountAndNameLinkInfoModel));
+            Total = WSAccountAndNameLinkInfoService.Instance.SelectCount(SearchAccountAndNameLinkInfoModel);
         }
         /// <summary>
         /// 复选框的选中的方法
@@ -165,7 +167,7 @@ namespace BalanceReport.ViewModels
             //        item.WebsiteID = al.WebsiteID;
             //        item.CorrelationState = al.State;
             //    }
-            //    if (client.Update(SelectedItemList))
+            //    if (WSAccountAndNameLinkInfoService.Instance.Update(SelectedItemList))
             //    {
             //        MessageBox.Show("关联成功");
 
@@ -188,7 +190,7 @@ namespace BalanceReport.ViewModels
         {
             SearchAccountAndNameLinkInfoModel.StartIndex = startindex;
             SearchAccountAndNameLinkInfoModel.EndIndex = endindex;
-            AccountAndNameLinkInfoList = new ObservableCollection<AccountAndNameLinkInfo>(client.Select(SearchAccountAndNameLinkInfoModel));
+            AccountAndNameLinkInfoList = new ObservableCollection<AccountAndNameLinkInfo>(WSAccountAndNameLinkInfoService.Instance.Select(SearchAccountAndNameLinkInfoModel));
         }
         #endregion
     }

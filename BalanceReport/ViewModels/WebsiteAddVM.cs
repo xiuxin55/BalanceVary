@@ -5,14 +5,15 @@ using System.Text;
 using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
-using BalanceReport.WebsiteInfoService;
+using WSBalanceClient.WebsiteInfoService;
 using Common;
+using WSBalanceClient;
 
 namespace BalanceReport.ViewModels
 {
     public class WebsiteAddVM : NotificationObject
     {
-        private WebsiteInfoService.WebsiteInfoServiceClient client = new WebsiteInfoServiceClient();
+       
         public WebsiteAddVM(bool IsAdd)
         {
             OkWebsiteCommand = new DelegateCommand(OkWebsiteExecute);
@@ -62,7 +63,7 @@ namespace BalanceReport.ViewModels
                     AddWebsiteInfoModel.ID = Guid.NewGuid().ToString();
                     WebsiteInfo temp = new WebsiteInfo();
                     temp.WebsiteID = AddWebsiteInfoModel.WebsiteID;
-                    WebsiteInfo wim = client.Select(temp).FirstOrDefault();
+                    WebsiteInfo wim = WSWebsiteInfoService.Instance.Select(temp).FirstOrDefault();
                     if (wim != null)
                     {
                         MessageBox.Show("该网点已存在");
@@ -73,7 +74,7 @@ namespace BalanceReport.ViewModels
                         }
                         return;
                     }
-                    if (client.Add(AddWebsiteInfoModel))
+                    if (WSWebsiteInfoService.Instance.Add(AddWebsiteInfoModel))
                     {
                         MessageBox.Show("新增成功");
                         if (WebsiteAddUI != null)
@@ -88,7 +89,7 @@ namespace BalanceReport.ViewModels
                 }
                 else
                 {
-                    if (client.Update(AddWebsiteInfoModel))
+                    if (WSWebsiteInfoService.Instance.Update(AddWebsiteInfoModel))
                     {
                         MessageBox.Show("修改成功");
                         if (WebsiteAddUI != null)

@@ -7,28 +7,26 @@ using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using BalanceReport.Views;
-using BalanceReport.DepartmentInfoService;
+using WSBalanceClient.DepartmentInfoService;
 using Common;
-using BalanceReport.DepartmentBalanceService;
+using WSBalanceClient.DepartmentBalanceService;
 using Utility;
-using BalanceReport.AccountBalanceService;
-using BalanceReport.CustomerManagerBalanceService;
+using WSBalanceClient.AccountBalanceService;
+using WSBalanceClient.CustomerManagerBalanceService;
 using BalanceReport.LocalModel;
-using BalanceReport.SystemSetInfoService;
+using WSBalanceClient.SystemSetInfoService;
 using BalanceReport.Helper;
-
+using WSBalanceClient;
 namespace BalanceReport.ViewModels
 {
     public class CustomerManagerDataGridVM : BaseVM
     {
-        private DepartmentInfoService.DepartmentInfoServiceClient clientDepartment = new DepartmentInfoServiceClient();
-        private CustomerManagerBalanceServiceClient clientCustomerManagerBalance = new CustomerManagerBalanceServiceClient();
-        private AccountBalanceService.AccountBalanceServiceClient clientAccountBalance = new AccountBalanceServiceClient();
+      
         public CustomerManagerDataGridVM()
         {
             SearchCustomerManagerCommand = new DelegateCommand(SearchCustomerManagerExecute);
             SearchAccountCommand = new DelegateCommand(SearchAccountExecute);
-            SearchAccountBalanceModel = new AccountBalanceService.DepartmentBalance();
+            SearchAccountBalanceModel = new WSBalanceClient.AccountBalanceService.DepartmentBalance();
             LoadData();
        
         }
@@ -128,11 +126,11 @@ namespace BalanceReport.ViewModels
             }
         }
 
-        private AccountBalanceService.DepartmentBalance _searchAccountBalanceModel;
+        private WSBalanceClient.AccountBalanceService.DepartmentBalance _searchAccountBalanceModel;
         /// <summary>
         /// 查询
         /// </summary>
-        public AccountBalanceService.DepartmentBalance SearchAccountBalanceModel
+        public WSBalanceClient.AccountBalanceService.DepartmentBalance SearchAccountBalanceModel
         {
             get { return _searchAccountBalanceModel; }
             set
@@ -182,7 +180,7 @@ namespace BalanceReport.ViewModels
             //{
             //    SearchAccountBalanceModel = new AccountBalanceService.DepartmentBalance();
             //}
-            SearchAccountBalanceModel = new AccountBalanceService.DepartmentBalance();
+            SearchAccountBalanceModel = new WSBalanceClient.AccountBalanceService.DepartmentBalance();
             SearchAccountBalanceModel.OrderbyColomnName = OrderByColomnHelper.GetOrderByColomn();
             SearchAccountBalanceModel.SubOrderbyColomnName = OrderByColomnHelper.GetSubOrderByColomn();
             SearchAccountBalanceModel.DepartmentID = SelectedDepartmentInfoModel.DepartmentID;
@@ -191,17 +189,17 @@ namespace BalanceReport.ViewModels
             SearchAccountBalanceModel.EndIndex = PageSize;
             if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
             {
-                AccountBalanceList = new ObservableCollection<AccountBalance>(clientAccountBalance.SelectByDepartment(SearchAccountBalanceModel));
+                AccountBalanceList = new ObservableCollection<AccountBalance>(WSAccountBalanceService.Instance.SelectByDepartment(SearchAccountBalanceModel));
             }
             else
             {
                 SearchAccountBalanceModel.StartBalanceTime = SearchAccountBalanceModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
                 SearchAccountBalanceModel.EndBalanceTime = SearchAccountBalanceModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
 
-               // AccountBalanceList = new ObservableCollection<AccountBalance>(clientAccountBalance.SelectByDepartment(SearchAccountBalanceModel));
+               // AccountBalanceList = new ObservableCollection<AccountBalance>(WSAccountBalanceService.Instance.SelectByDepartment(SearchAccountBalanceModel));
             }
           
-            Total = clientAccountBalance.SelectByDepartmentCount(SearchAccountBalanceModel);
+            Total = WSAccountBalanceService.Instance.SelectByDepartmentCount(SearchAccountBalanceModel);
         }
         private void SearchCustomerManagerExecute()
         {
@@ -219,17 +217,17 @@ namespace BalanceReport.ViewModels
             SearchCustomerManagerBalanceoModel.EndIndex = PageSize;
             if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
             {
-                CustomerManagerBalanceList = new ObservableCollection<CustomerManagerBalance>(clientCustomerManagerBalance.Select(SearchCustomerManagerBalanceoModel));
+                CustomerManagerBalanceList = new ObservableCollection<CustomerManagerBalance>(WSCustomerManagerBalanceService.Instance.Select(SearchCustomerManagerBalanceoModel));
             }
             else
             {
                 SearchCustomerManagerBalanceoModel.StartBalanceTime = SearchCustomerManagerBalanceoModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
                 SearchCustomerManagerBalanceoModel.EndBalanceTime = SearchCustomerManagerBalanceoModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
 
-                CustomerManagerBalanceList = new ObservableCollection<CustomerManagerBalance>(clientCustomerManagerBalance.CallTimeSpanProc(SearchCustomerManagerBalanceoModel));
+                CustomerManagerBalanceList = new ObservableCollection<CustomerManagerBalance>(WSCustomerManagerBalanceService.Instance.CallTimeSpanProc(SearchCustomerManagerBalanceoModel));
                 SearchCustomerManagerBalanceoModel.BalanceTime = SearchCustomerManagerBalanceoModel.StartBalanceTime;
             }
-            Total = clientCustomerManagerBalance.SelectCount(SearchCustomerManagerBalanceoModel);
+            Total = WSCustomerManagerBalanceService.Instance.SelectCount(SearchCustomerManagerBalanceoModel);
         }
 
         private void LoadData()
@@ -238,12 +236,11 @@ namespace BalanceReport.ViewModels
             {
                 DepartmentInfo model = new DepartmentInfo();
                
-                DepartmentInfoList = new ObservableCollection<DepartmentInfo>(clientDepartment.Select(model));
+                DepartmentInfoList = new ObservableCollection<DepartmentInfo>(WSDepartmentInfoService.Instance.Select(model));
                 model.DepartmentName = "全部";
                 DepartmentInfoList.Insert(0, model);
 
-                SystemSetInfoService.SystemSetInfoServiceClient clientSystemSetInfo = new SystemSetInfoServiceClient();
-                List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
+                List<SystemSetInfo> setList = new List<SystemSetInfo>(WSSystemSetInfoService.Instance.Select(null));
                 SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()) : null;
                 ColomnState = ColomnSet != null ? DataGridColomnState.SystemSetInfoToState(ColomnSet) : null;
                 Mode = BalanceModeHelper.GetBalanceModeobj();
@@ -261,11 +258,11 @@ namespace BalanceReport.ViewModels
                 SearchCustomerManagerBalanceoModel.EndIndex = endindex;
                 if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
                 {
-                    CustomerManagerBalanceList = new ObservableCollection<CustomerManagerBalance>(clientCustomerManagerBalance.Select(SearchCustomerManagerBalanceoModel));
+                    CustomerManagerBalanceList = new ObservableCollection<CustomerManagerBalance>(WSCustomerManagerBalanceService.Instance.Select(SearchCustomerManagerBalanceoModel));
                 }
                 else
                 {
-                    CustomerManagerBalanceList = new ObservableCollection<CustomerManagerBalance>(clientCustomerManagerBalance.CallTimeSpanProc(SearchCustomerManagerBalanceoModel));
+                    CustomerManagerBalanceList = new ObservableCollection<CustomerManagerBalance>(WSCustomerManagerBalanceService.Instance.CallTimeSpanProc(SearchCustomerManagerBalanceoModel));
 
                 }
             }
@@ -275,11 +272,11 @@ namespace BalanceReport.ViewModels
                 SearchAccountBalanceModel.EndIndex = endindex;
                 if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
                 {
-                    AccountBalanceList = new ObservableCollection<AccountBalance>(clientAccountBalance.SelectByDepartment(SearchAccountBalanceModel));
+                    AccountBalanceList = new ObservableCollection<AccountBalance>(WSAccountBalanceService.Instance.SelectByDepartment(SearchAccountBalanceModel));
                 }
                 else
                 {
-                    // AccountBalanceList = new ObservableCollection<AccountBalance>(clientAccountBalance.SelectByDepartment(SearchAccountBalanceModel));
+                    // AccountBalanceList = new ObservableCollection<AccountBalance>(WSAccountBalanceService.Instance.SelectByDepartment(SearchAccountBalanceModel));
 
                 }
             }

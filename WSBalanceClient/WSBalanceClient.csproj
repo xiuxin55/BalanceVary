@@ -129,7 +129,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Service References\AccountAndNameLinkInfoService\AccountAndNameLinkInfoService.wsdl" />
     <None Include="Service References\AccountAndNameLinkInfoService\item.xsd">
       <SubType>Designer</SubType>

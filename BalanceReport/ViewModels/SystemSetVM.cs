@@ -6,15 +6,16 @@ using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using System.Collections.ObjectModel;
-using BalanceReport.SystemSetInfoService;
+using WSBalanceClient.SystemSetInfoService;
 using BalanceReport.LocalModel;
 using BalanceReport.Helper;
+using WSBalanceClient;
 
 namespace BalanceReport.ViewModels
 {
     public class SystemSetVM : NotificationObject
     {
-        private SystemSetInfoService.SystemSetInfoServiceClient client = new SystemSetInfoServiceClient();
+        
         public SystemSetVM()
         {
             OkSystemSetCommand = new DelegateCommand(OkSystemSetExecute);
@@ -125,12 +126,12 @@ namespace BalanceReport.ViewModels
                 ColomnSet.ID = Guid.NewGuid().ToString();
                 ColomnSet.SetName = DataGridColomnState.GetSetName();
                 ColomnSet.SetContent = ColomnStateSystemSetInfo.ToString();
-                client.Add(ColomnSet);
+                WSSystemSetInfoService.Instance.Add(ColomnSet);
             }
             else
             {
                 ColomnSet.SetContent = ColomnStateSystemSetInfo.ToString();
-                client.Update(ColomnSet);
+                WSSystemSetInfoService.Instance.Update(ColomnSet);
             }
 
 
@@ -141,13 +142,13 @@ namespace BalanceReport.ViewModels
                 ColomnOderbySet.ID = Guid.NewGuid().ToString();
                 ColomnOderbySet.SetName = ResultOrderBy.GetSetName();
                 ColomnOderbySet.SetContent = ResultOrderSystemSetInfo.ToString();
-                client.Add(ColomnOderbySet);
+                WSSystemSetInfoService.Instance.Add(ColomnOderbySet);
                 OrderByColomnHelper.SetOrderByColomn(ColomnOderbySet.SetContent);
             }
             else
             {
                 ColomnOderbySet.SetContent = ResultOrderSystemSetInfo.ToString();
-                client.Update(ColomnOderbySet);
+                WSSystemSetInfoService.Instance.Update(ColomnOderbySet);
                 OrderByColomnHelper.SetOrderByColomn(ColomnOderbySet.SetContent);
             }
 
@@ -158,13 +159,13 @@ namespace BalanceReport.ViewModels
                 SubColomnOderbySet.ID = Guid.NewGuid().ToString();
                 SubColomnOderbySet.SetName ="Sub"+ ResultOrderBy.GetSetName();
                 SubColomnOderbySet.SetContent = SubResultOrderSystemSetInfo.ToString();
-                client.Add(SubColomnOderbySet);
+                WSSystemSetInfoService.Instance.Add(SubColomnOderbySet);
                 OrderByColomnHelper.SetSubOrderByColomn(SubColomnOderbySet.SetContent);
             }
             else
             {
                 SubColomnOderbySet.SetContent = SubResultOrderSystemSetInfo.ToString();
-                client.Update(SubColomnOderbySet);
+                WSSystemSetInfoService.Instance.Update(SubColomnOderbySet);
                 OrderByColomnHelper.SetSubOrderByColomn(SubColomnOderbySet.SetContent);
             }
 
@@ -176,13 +177,13 @@ namespace BalanceReport.ViewModels
                 BalanceModeSet.ID = Guid.NewGuid().ToString();
                 BalanceModeSet.SetName = BalanceMode.GetSetName();
                 BalanceModeSet.SetContent = ModeSystemSetInfo.ToString();
-                client.Add(BalanceModeSet);
+                WSSystemSetInfoService.Instance.Add(BalanceModeSet);
                 BalanceModeHelper.SetBalanceMode(ModeSystemSetInfo);
             }
             else
             {
                 BalanceModeSet.SetContent = ModeSystemSetInfo.ToString();
-                client.Update(BalanceModeSet);
+                WSSystemSetInfoService.Instance.Update(BalanceModeSet);
                 BalanceModeHelper.SetBalanceMode(ModeSystemSetInfo);
             }
 
@@ -195,7 +196,7 @@ namespace BalanceReport.ViewModels
         private void LoadData()
         {
             //余额表显示列
-            List<SystemSetInfo> setList = new List<SystemSetInfo>(client.Select(null));
+            List<SystemSetInfo> setList = new List<SystemSetInfo>(WSSystemSetInfoService.Instance.Select(null));
             ColomnSet = setList != null? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()):null;
             ColomnStateSystemSetInfo = ColomnSet != null? DataGridColomnState.SystemSetInfoToState(ColomnSet) :null;
             isColomnDisplayAdd = ColomnSet == null;

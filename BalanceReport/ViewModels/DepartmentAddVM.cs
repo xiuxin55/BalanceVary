@@ -5,14 +5,14 @@ using System.Text;
 using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
-using BalanceReport.DepartmentInfoService;
+using WSBalanceClient.DepartmentInfoService;
 using Common;
-
+using WSBalanceClient;
 namespace BalanceReport.ViewModels
 {
     public class DepartmentAddVM : NotificationObject
     {
-        private DepartmentInfoService.DepartmentInfoServiceClient client = new DepartmentInfoServiceClient();
+       
         public DepartmentAddVM(bool IsAdd)
         {
             OkDepartmentCommand = new DelegateCommand(OkDepartmentExecute);
@@ -61,7 +61,7 @@ namespace BalanceReport.ViewModels
                     AddDepartmentInfoModel.ID = Guid.NewGuid().ToString();
                     DepartmentInfo temp = new DepartmentInfo();
                     temp.DepartmentName = AddDepartmentInfoModel.DepartmentName;
-                    DepartmentInfo wim = client.Select(temp).FirstOrDefault();
+                    DepartmentInfo wim = WSDepartmentInfoService.Instance.Select(temp).FirstOrDefault();
                     if (wim != null)
                     {
                         MessageBox.Show("该部门已存在");
@@ -72,7 +72,7 @@ namespace BalanceReport.ViewModels
                         }
                         return;
                     }
-                    if (client.Add(AddDepartmentInfoModel))
+                    if (WSDepartmentInfoService.Instance.Add(AddDepartmentInfoModel))
                     {
                         MessageBox.Show("新增成功");
                         if (DepartmentAddUI != null)
@@ -87,7 +87,7 @@ namespace BalanceReport.ViewModels
                 }
                 else
                 {
-                    if (client.Update(AddDepartmentInfoModel))
+                    if (WSDepartmentInfoService.Instance.Update(AddDepartmentInfoModel))
                     {
                         MessageBox.Show("修改成功");
                         if (DepartmentAddUI != null)

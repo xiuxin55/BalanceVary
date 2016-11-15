@@ -9,19 +9,18 @@ using System.Windows;
 using BalanceReport.Views;
 
 using Common;
-using BalanceReport.WebsiteBalanceService;
+using WSBalanceClient.WebsiteBalanceService;
 using Utility;
 using BalanceReport.LocalModel;
-using BalanceReport.SystemSetInfoService;
+using WSBalanceClient.SystemSetInfoService;
 using BalanceReport.Helper;
-
+using WSBalanceClient;
 namespace BalanceReport.ViewModels
 {
 
     public class CountyWebsiteDataGridVM : BaseVM
     {
-        private WebsiteInfoService.WebsiteInfoServiceClient clientwebsite = new WebsiteInfoService.WebsiteInfoServiceClient();
-        private WebsiteBalanceServiceClient clientwebsitebalance = new WebsiteBalanceServiceClient();
+      
         public CountyWebsiteDataGridVM()
         {
             SearchWebsiteCommand = new DelegateCommand(SearchWebsiteExecute);
@@ -41,13 +40,13 @@ namespace BalanceReport.ViewModels
             }
 
         }
-        private WebsiteInfoService.WebsiteInfo _selectedWebsiteInfoModel;
+        private WSBalanceClient.WebsiteInfoService.WebsiteInfo _selectedWebsiteInfoModel;
         /// <summary>
         ///被选中的行 
         /// </summary>
-        public WebsiteInfoService.WebsiteInfo SelectedWebsiteInfoModel
+        public WSBalanceClient.WebsiteInfoService.WebsiteInfo SelectedWebsiteInfoModel
         {
-            get { return _selectedWebsiteInfoModel??new  WebsiteInfoService.WebsiteInfo(); }
+            get { return _selectedWebsiteInfoModel??new WSBalanceClient.WebsiteInfoService.WebsiteInfo(); }
             set
             {
                 _selectedWebsiteInfoModel = value;
@@ -71,11 +70,11 @@ namespace BalanceReport.ViewModels
                 this.RaisePropertyChanged("SearchWebsiteBalanceModel");
             }
         }
-        private ObservableCollection<WebsiteInfoService.WebsiteInfo> _websiteInfoList;
+        private ObservableCollection<WSBalanceClient.WebsiteInfoService.WebsiteInfo> _websiteInfoList;
         /// <summary>
         /// 网点集合
         /// </summary>
-        public ObservableCollection<WebsiteInfoService.WebsiteInfo> WebsiteInfoList
+        public ObservableCollection<WSBalanceClient.WebsiteInfoService.WebsiteInfo> WebsiteInfoList
         {
             get { return _websiteInfoList; }
             set
@@ -133,34 +132,34 @@ namespace BalanceReport.ViewModels
             SearchWebsiteBalanceModel.EndIndex = PageSize;
             if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
             {
-                WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(clientwebsitebalance.Select(SearchWebsiteBalanceModel));
+                WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(WSWebsiteBalanceService.Instance.Select(SearchWebsiteBalanceModel));
             }
             else
             {
                 SearchWebsiteBalanceModel.StartBalanceTime = SearchWebsiteBalanceModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
                 SearchWebsiteBalanceModel.EndBalanceTime = SearchWebsiteBalanceModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
                  
-                WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(clientwebsitebalance.CallTimeSpanProc(SearchWebsiteBalanceModel));
+                WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(WSWebsiteBalanceService.Instance.CallTimeSpanProc(SearchWebsiteBalanceModel));
                 SearchWebsiteBalanceModel.BalanceTime = SearchWebsiteBalanceModel.StartBalanceTime;
 
             }
-            Total = clientwebsitebalance.SelectCount(SearchWebsiteBalanceModel);
+            Total = WSWebsiteBalanceService.Instance.SelectCount(SearchWebsiteBalanceModel);
         }
 
         private void LoadData()
         {
             try
             {
-                WebsiteInfoService.WebsiteInfo model = new WebsiteInfoService.WebsiteInfo();
+                WSBalanceClient.WebsiteInfoService.WebsiteInfo model = new WSBalanceClient.WebsiteInfoService.WebsiteInfo();
                 model.Institution = "县行";
-                WebsiteInfoList = new ObservableCollection<WebsiteInfoService.WebsiteInfo>(clientwebsite.Select(model));
-                WebsiteInfoService.WebsiteInfo temp = new WebsiteInfoService.WebsiteInfo();
+                WebsiteInfoList = new ObservableCollection<WSBalanceClient.WebsiteInfoService.WebsiteInfo>(WSWebsiteInfoService.Instance.Select(model));
+                WSBalanceClient.WebsiteInfoService.WebsiteInfo temp = new WSBalanceClient.WebsiteInfoService.WebsiteInfo();
                 temp.Institution = "县行";
                 temp.WebsiteName = "全部";
                 WebsiteInfoList.Insert(0, temp);
 
-                SystemSetInfoService.SystemSetInfoServiceClient clientSystemSetInfo = new SystemSetInfoServiceClient();
-                List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
+               
+                List<SystemSetInfo> setList = new List<SystemSetInfo>(WSSystemSetInfoService.Instance.Select(null));
                 SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()) : null;
                 ColomnState = ColomnSet != null ? DataGridColomnState.SystemSetInfoToState(ColomnSet) : null;
                 Mode = BalanceModeHelper.GetBalanceModeobj();
@@ -178,11 +177,11 @@ namespace BalanceReport.ViewModels
             SearchWebsiteBalanceModel.EndIndex = endindex;
             if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
             {
-                WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(clientwebsitebalance.Select(SearchWebsiteBalanceModel));
+                WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(WSWebsiteBalanceService.Instance.Select(SearchWebsiteBalanceModel));
             }
             else
             {
-                WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(clientwebsitebalance.CallTimeSpanProc(SearchWebsiteBalanceModel));
+                WebsiteBalanceList = new ObservableCollection<WebsiteBalance>(WSWebsiteBalanceService.Instance.CallTimeSpanProc(SearchWebsiteBalanceModel));
             }
         }
         #endregion

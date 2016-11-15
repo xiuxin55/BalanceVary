@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using BalanceReport.ViewModels;
 using MahApps.Metro.Controls;
 using System.IO;
+using WSBalanceClient;
 
 namespace BalanceReport
 {
@@ -21,7 +22,7 @@ namespace BalanceReport
     /// </summary>
     public partial class ImportTemplate : MetroWindow
     {
-        ServiceFile.ServiceFileClient client = new ServiceFile.ServiceFileClient();
+        
         public ImportTemplate()
         {
             InitializeComponent();
@@ -105,7 +106,7 @@ namespace BalanceReport
                 return;
             }
             string savepath = folder.SelectedPath;
-            byte[] filebytes=client.DownLoadTemplateFile(filename);
+            byte[] filebytes=WSServiceFile.Instance.DownLoadTemplateFile(filename);
             if (filebytes==null || filebytes.Length==0)
             {
                 MessageBox.Show("模版不存在");

@@ -7,14 +7,14 @@ using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using BalanceReport.Views;
-using BalanceReport.AccountInfoService;
+using WSBalanceClient.AccountInfoService;
 using Utility;
-
+using WSBalanceClient;
 namespace BalanceReport.ViewModels
 {
     public class AccountManageVM: BaseVM
     {
-        private AccountInfoService.AccountInfoServiceClient client = new AccountInfoServiceClient();
+      
         public AccountManageVM()
         {
             AddAccountCommand = new DelegateCommand(AddAccountExecute);
@@ -103,7 +103,7 @@ namespace BalanceReport.ViewModels
         {
             if (SelectedAccountInfoModel != null && SelectedAccountInfoModel.ID != null)
             {
-                if (MessageBox.Show("是否删除", "消息提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes && client.Delete(SelectedAccountInfoModel))
+                if (MessageBox.Show("是否删除", "消息提示", MessageBoxButton.YesNo) == MessageBoxResult.Yes && WSAccountInfoService.Instance.Delete(SelectedAccountInfoModel))
                 {
                     MessageBox.Show("删除成功");
                     SearchAccountExecute();
@@ -128,8 +128,8 @@ namespace BalanceReport.ViewModels
                  SearchAccountInfoModel.CorrelationState = null;
             SearchAccountInfoModel.StartIndex = 1;
             SearchAccountInfoModel.EndIndex = PageSize;
-            AccountInfoList =new ObservableCollection<AccountInfo>(client.Select(SearchAccountInfoModel));
-            Total = client.SelectCount(SearchAccountInfoModel);
+            AccountInfoList =new ObservableCollection<AccountInfo>(WSAccountInfoService.Instance.Select(SearchAccountInfoModel));
+            Total = WSAccountInfoService.Instance.SelectCount(SearchAccountInfoModel);
         }
         /// <summary>
         /// 复选框的选中的方法
@@ -166,7 +166,7 @@ namespace BalanceReport.ViewModels
             //        item.WebsiteID = al.WebsiteID;
             //        item.CorrelationState = al.State;
             //    }
-            //    if (client.Update(SelectedItemList))
+            //    if (WSAccountInfoService.Instance.Update(SelectedItemList))
             //    {
             //        MessageBox.Show("关联成功");
 
@@ -189,7 +189,7 @@ namespace BalanceReport.ViewModels
         {
             SearchAccountInfoModel.StartIndex = startindex;
             SearchAccountInfoModel.EndIndex = endindex;
-            AccountInfoList = new ObservableCollection<AccountInfo>(client.Select(SearchAccountInfoModel));
+            AccountInfoList = new ObservableCollection<AccountInfo>(WSAccountInfoService.Instance.Select(SearchAccountInfoModel));
         }
         #endregion
     }

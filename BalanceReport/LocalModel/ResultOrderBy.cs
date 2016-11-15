@@ -1,4 +1,4 @@
-﻿using BalanceReport.SystemSetInfoService;
+﻿using WSBalanceClient.SystemSetInfoService;
 using Microsoft.Practices.Prism.ViewModel;
 using System;
 using System.Collections.Generic;

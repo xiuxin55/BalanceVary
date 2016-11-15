@@ -8,18 +8,19 @@ using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using BalanceReport.Views;
 using Common;
-using BalanceReport.ZoneBalanceService;
+using WSBalanceClient.ZoneBalanceService;
 using Utility;
 using BalanceReport.LocalModel;
-using BalanceReport.SystemSetInfoService;
+using WSBalanceClient.SystemSetInfoService;
 using BalanceReport.Helper;
+using WSBalanceClient.ZoneBalanceService;
+using WSBalanceClient;
 
 namespace BalanceReport.ViewModels
 {
     public class CityDataGridVM : BaseVM
     {
 
-        private ZoneBalanceServiceClient client = new ZoneBalanceServiceClient();
         public CityDataGridVM()
         {
             SearchZoneCommand = new DelegateCommand(SearchZoneExecute);
@@ -118,16 +119,16 @@ namespace BalanceReport.ViewModels
                 SearchZoneBalanceModel.EndIndex = PageSize;
                 if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
                 {
-                    ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.Select(SearchZoneBalanceModel));
+                    ZoneBalanceList = new ObservableCollection<ZoneBalance>(WSZoneBalanceService.Instance.Select(SearchZoneBalanceModel));
                 }
                 else
                 {
                     SearchZoneBalanceModel.StartBalanceTime = SearchZoneBalanceModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
                     SearchZoneBalanceModel.EndBalanceTime = SearchZoneBalanceModel.EndBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
                     SearchZoneBalanceModel.BalanceTime = SearchZoneBalanceModel.StartBalanceTime;
-                    ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.CallTimeSpanProc(SearchZoneBalanceModel));
+                    ZoneBalanceList = new ObservableCollection<ZoneBalance>(WSZoneBalanceService.Instance.CallTimeSpanProc(SearchZoneBalanceModel));
                 }
-                Total = client.SelectCount(SearchZoneBalanceModel);
+                Total = WSZoneBalanceService.Instance.SelectCount(SearchZoneBalanceModel);
                 
             }
             catch (Exception ex)
@@ -143,13 +144,13 @@ namespace BalanceReport.ViewModels
             SearchZoneBalanceModel.EndIndex = endindex;
             if (BalanceModeHelper.GetBalanceModeobj().EveryDayBalance)
             {
-                ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.Select(SearchZoneBalanceModel));
+                ZoneBalanceList = new ObservableCollection<ZoneBalance>(WSZoneBalanceService.Instance.Select(SearchZoneBalanceModel));
             }
             else
             {
                 SearchZoneBalanceModel.StartBalanceTime = SearchZoneBalanceModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString());
                 SearchZoneBalanceModel.EndBalanceTime = SearchZoneBalanceModel.StartBalanceTime ?? DateTime.Parse(DateTime.Now.ToShortDateString());
-                ZoneBalanceList = new ObservableCollection<ZoneBalance>(client.CallTimeSpanProc(SearchZoneBalanceModel));
+                ZoneBalanceList = new ObservableCollection<ZoneBalance>(WSZoneBalanceService.Instance.CallTimeSpanProc(SearchZoneBalanceModel));
             }
           
         }
@@ -157,8 +158,7 @@ namespace BalanceReport.ViewModels
         #region 内部方法
         private void LoadData()
         {
-            SystemSetInfoService.SystemSetInfoServiceClient clientSystemSetInfo = new SystemSetInfoServiceClient();
-            List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
+            List<SystemSetInfo> setList = new List<SystemSetInfo>(WSSystemSetInfoService.Instance.Select(null));
             SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == DataGridColomnState.GetSetName().ToLower()) : null;
             ColomnState = ColomnSet != null ? DataGridColomnState.SystemSetInfoToState(ColomnSet) : null;
 
@@ -169,7 +169,7 @@ namespace BalanceReport.ViewModels
             //zb.EndIndex = 1000000;
             //zb.StartBalanceTime = DateTime.Parse("2016-10-21");
             //zb.EndBalanceTime = DateTime.Parse("2016-10-22");
-            //List<ZoneBalance> rr= client.CallTimeSpanProc(zb).ToList();
+            //List<ZoneBalance> rr= WSZoneBalanceService.Instance.CallTimeSpanProc(zb).ToList();
             Mode = BalanceModeHelper.GetBalanceModeobj();
         }
         #endregion

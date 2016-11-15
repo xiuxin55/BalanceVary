@@ -1,9 +1,10 @@
 ﻿using BalanceReport.LocalModel;
-using BalanceReport.SystemSetInfoService;
+using WSBalanceClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WSBalanceClient.SystemSetInfoService;
 
 namespace BalanceReport.Helper
 {
@@ -20,8 +21,8 @@ namespace BalanceReport.Helper
             {
                 return BalanceModeobj;
             }
-            SystemSetInfoService.SystemSetInfoServiceClient clientSystemSetInfo = new SystemSetInfoServiceClient();
-            List<SystemSetInfo> setList = new List<SystemSetInfo>(clientSystemSetInfo.Select(null));
+
+            List<SystemSetInfo> setList = new List<SystemSetInfo>(WSSystemSetInfoService.Instance.Select(null));
             SystemSetInfo ColomnSet = setList != null ? setList.Find(e => e.SetName.ToLower() == BalanceMode.GetSetName().ToLower()) : null;
             if (ColomnSet==null)
             {
