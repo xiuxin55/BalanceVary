@@ -21,13 +21,19 @@ namespace MainHome
                 AutoUpdateModel[] updatelist=  Client.CheckAutoUpdate(out isHasUpdate, GetUpdateList().ToArray());
                 if (isHasUpdate)
                 {
+                    bool ishavaAutoUpdateexe = false;
                     foreach (var item in updatelist)
                     {
                         if (item.FileName== "AutoUpdate.exe")
                         {
                             DownAutoUpdateEXE(item);
+                            ishavaAutoUpdateexe = true;
                             break;
                         }
+                    }
+                    if (ishavaAutoUpdateexe&&updatelist.Length>1)
+                    {
+                        return false;
                     }
                     return true;
                 }
