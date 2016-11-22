@@ -23,14 +23,15 @@ namespace BalanceReport.Salary
     {
         public SalaryWindowVM()
         {
+            PageSize = 50;
             SearchCommand = new DelegateCommand(SearchExecute); 
-             DeleteCommand = new DelegateCommand(DeleteExecute);
+            DeleteCommand = new DelegateCommand(DeleteExecute);
             FlushUpLoadCommand = new DelegateCommand(FlushUpLoadFileExecute);
             LookExceptionCommand = new DelegateCommand(LookExceptionExecute);
             SearchSalaryInfoModel = new SalaryInfo();
             SearchExecute();
            //FlushUpLoadFileExecute();
-            PageSize = 50;
+          
            
         }
         #region 属性

@@ -375,13 +375,21 @@ namespace BalanceDataSync
                             }
                             else
                             {
-                                dataRow[j] = row.GetCell(j).ToString();
+                                dataRow[j] = row.GetCell(j).NumericCellValue.ToString();
                             }
                         }
                         else if (row.GetCell(j).CellType == NPOI.SS.UserModel.CellType.FORMULA)
                         {
-                            double number = row.GetCell(j).NumericCellValue;
-                            dataRow[j] = number.ToString();
+                            //double number = row.GetCell(j).NumericCellValue;
+                            if (row.GetCell(j).CachedFormulaResultType == NPOI.SS.UserModel.CellType.NUMERIC)
+                            {
+                                dataRow[j] = row.GetCell(j).NumericCellValue.ToString();
+                            }
+                            else if(row.GetCell(j).CachedFormulaResultType == NPOI.SS.UserModel.CellType.STRING)
+                            {
+                                dataRow[j] = row.GetCell(j).StringCellValue;
+                            }
+                           
                         }
                         else
                         {
