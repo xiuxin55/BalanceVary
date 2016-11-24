@@ -57,9 +57,9 @@
                             <Button Margin="20,0,0,0" Content="删除" Command="{Binding DeleteCommand}"/>
                             <Button Margin="20,0,0,0" Content="导入薪资数据"  Click="MonthImportButton_Click"/>
                         </StackPanel>
-                        <DataGrid  Grid.Row="2"  AutoGenerateColumns="False"  IsReadOnly="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" ItemsSource="{Binding SalaryInfoList}" SelectedItem="{Binding SelectSalaryInfoModel}">
+                        <DataGrid VirtualizingStackPanel.IsVirtualizing="False"  Grid.Row="2"  FrozenColumnCount="4" AutoGenerateColumns="False"  IsReadOnly="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" ItemsSource="{Binding SalaryInfoList}" SelectedItem="{Binding SelectSalaryInfoModel}">
                             <DataGrid.Columns>
-                                <DataGridTemplateColumn >
+                                <DataGridTemplateColumn  >
                                     <DataGridTemplateColumn.Header>
                                         <CheckBox  Click="CheckBox_Click"  />
                                     </DataGridTemplateColumn.Header>
@@ -82,13 +82,31 @@
                         <DataGridTextColumn Binding="{Binding ShouldSalary}" Header="应发工资" Width="80"  />
                         <DataGridTextColumn Binding="{Binding HouseFund}" Header="住房公积金实缴额(个人合计)"  Width="80"  />
                         <DataGridTextColumn Binding="{Binding PensionMoney}" Header="养老保险实缴额(个人)" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding UnionMoney}" Header="工会费" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding HealthInsuranceMoney}" Header="医疗保险实缴额(个人)" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding LossJobMoney}" Header="失业保险实缴额(个人)" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding BigDiseaseInsuranceMoney}" Header="大病医疗保险实缴额(个人)" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding YearMoney}" Header="年金" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding TaxDeductable}" Header="扣款自定义项1(抵税)" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding ChargebacksAmount}" Header="扣款合计" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding RealSalary}" Header="实发工资" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding ShouldPerformance}" Header="应发绩效" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding Reward}" Header="奖励" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding Appraisals}" Header="考核" Width="80"  />
+                       
                         <DataGridTextColumn Binding="{Binding OvertimePay}" Header="加班费"  Width="80"   />
                         <DataGridTextColumn Binding="{Binding OtherIncome}" Header="其他收入" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding BucklupLastMonth}" Header="补扣上月" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding Tax}" Header="税收" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding RiskMoney}" Header="风险金" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding RealPerformance}" Header="实发绩效" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding RealAmount}" Header="实发合计" Width="80"  />
+                        <DataGridTextColumn Binding="{Binding Remark}" Header="备注说明" Width="80"  />
 
-                                <DataGridTextColumn Binding="{Binding SalaryTime,Converter={StaticResource TimeConverter} }" Header="日期"   Width="140"/>
+                        <DataGridTextColumn Binding="{Binding SalaryTime,Converter={StaticResource TimeConverter} }" Header="日期"   Width="140"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <cc:UCPage Name="page" Background="White" Grid.Row="3" PageChangedCommand="{Binding PageChangedCommand}" 
+                <cc:UCPage Name="page" Background="White" Grid.Row="3" PageChangedCommand="{Binding PageChangedCommand}" PageSize="{Binding PageSize}"
                    TotalItem="{Binding Total}" 
                    />
                     </Grid>

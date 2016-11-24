@@ -65,27 +65,19 @@
             <!--</ToolBar.Items>-->
         <!--</ToolBar>-->
         <localcontrol:ProgressBarWindow Grid.Row="1" Visibility="Collapsed"  x:Name="pro" Margin="3,0" Panel.ZIndex="99"></localcontrol:ProgressBarWindow>
-        <TabControl Grid.Row="1" Margin="3,0">
+        <TabControl Grid.Row="1" Margin="3,0" SelectionChanged="TabControl_SelectionChanged">
                 <TabItem  Header="网点管理" Name="WebsiteManageTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
-                    <Grid >
-                        <localcontrol:WebsiteManage x:Name="WebsiteManage" />
-                   </Grid>
+                   
             </TabItem>
 
                 <TabItem  Header="部门管理" Name="DepartmentManageTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
-                    <Grid >
-                        <localcontrol:DepartmentManage x:Name="DepartmentManage" />
-                    </Grid>
+                    
                 </TabItem>
                 <TabItem Header="客户经理信息管理" Name="ManagerTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
-                <Grid >
-                        <localcontrol:CustomerManagerList x:Name="CustomerManagerList" />
-                </Grid>
+                
             </TabItem>
                 <TabItem Header="账号和名称关联管理" Name="AccountAndNameLinkTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
-                    <Grid >
-                        <localcontrol:AccountAndNameLinkManage x:Name="AccountAndNameLinkList" />
-                    </Grid>
+                   
                 </TabItem>
                 <!--<TabItem Header="账户管理" Name="AccountManageTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
                     <Grid >
@@ -94,14 +86,10 @@
                 </TabItem>-->
 
                 <TabItem Header="网点余额变动" Name="ReportUserControlTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
-            <Grid >
-                    <localcontrol:ReportUserControl x:Name="ReportUserControl" />
-            </Grid>
+           
             </TabItem>
                 <TabItem Header="部门余额变动" Name="DepartReportUserControlTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
-                    <Grid >
-                        <localcontrol:DepartmentReportUserControl x:Name="DepartReportUserControl" />
-                    </Grid>
+                   
                 </TabItem>
                 <!--<TabItem Header="日期管理" Name="ImportDate"   Controls:ControlsHelper.HeaderFontSize="26.0" >
                     <Grid >

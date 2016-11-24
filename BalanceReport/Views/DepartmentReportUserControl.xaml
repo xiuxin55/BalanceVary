@@ -26,15 +26,10 @@
             </ListBox>-->
             <TabControl Grid.Row="1" Margin="3,0" TabStripPlacement="Bottom" Controls:TabControlHelper.IsUnderlined="True"  SelectionChanged="TabControl_SelectionChanged">
                 <TabItem  Header="部门情况"  Controls:ControlsHelper.HeaderFontSize="18">
-                    <Grid >
-                        <datagrid:DepartmentDataGrid x:Name="DepartmentDataGrid"/>
-                        <!--<datagrid:CityWebsiteDataGrid />-->
-                    </Grid>
+                   
                 </TabItem>
                 <TabItem    Header="部门-客户经理情况"  Controls:ControlsHelper.HeaderFontSize="18">
-                    <Grid >
-                        <datagrid:CustomerManagerDataGrid x:Name="CustomerManagerDataGrid"/>
-                    </Grid>
+                  
                 </TabItem>
               
             </TabControl>

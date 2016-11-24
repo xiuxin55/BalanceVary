@@ -190,5 +190,48 @@ namespace BalanceReport
             ImportTemplate win = new BalanceReport.ImportTemplate();
             win.Show();
         }
+
+        List<int> CacheUC = new List<int>();
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TabControl tb = sender as TabControl;
+            if (tb==null || CacheUC.Contains(tb.SelectedIndex))
+            {
+                return;
+            }
+            TabItem ti = tb.SelectedItem as TabItem;
+            switch (tb.SelectedIndex)
+            {
+                case 0:
+                    ti.Content = new WebsiteManage();
+                    CacheUC.Add(tb.SelectedIndex);
+                    break;
+                case 1:
+                    ti.Content = new DepartmentManage();
+                    CacheUC.Add(tb.SelectedIndex);
+                    break;
+                case 2:
+                    ti.Content = new CustomerManagerList();
+                    CacheUC.Add(tb.SelectedIndex);
+                    break;
+                case 3:
+                    ti.Content = new AccountAndNameLinkManage();
+                    CacheUC.Add(tb.SelectedIndex);
+                    break;
+                case 4:
+                    ti.Content = new ReportUserControl();
+                    CacheUC.Add(tb.SelectedIndex);
+                    break;
+                case 5:
+                    ti.Content = new DepartmentReportUserControl();
+                    CacheUC.Add(tb.SelectedIndex);
+                    break;
+                default:
+                    ti.Content = new WebsiteManage();
+                    CacheUC.Add(0);
+                    break;
+                    break;
+            }
+        }
     }
 }

@@ -23,38 +23,24 @@
                 <ListBoxItem Content="市行" Selected="button1_Click"></ListBoxItem>
                 <ListBoxItem Content="县行"  Selected="button2_Click"></ListBoxItem>
             </ListBox>-->
-            <TabControl Grid.Row="1" Margin="3,0" TabStripPlacement="Bottom" Controls:TabControlHelper.IsUnderlined="True"  SelectionChanged="TabControl_SelectionChanged">
+            <TabControl  Grid.Row="1" Margin="3,0" TabStripPlacement="Bottom" Controls:TabControlHelper.IsUnderlined="True"  SelectionChanged="TabControl_SelectionChanged">
                 <TabItem  Header="市行情况"  Controls:ControlsHelper.HeaderFontSize="18">
-                    <Grid >
-                        <datagrid:CityDataGrid x:Name="CityDataGrid"/>
-                        <!--<datagrid:CityWebsiteDataGrid />-->
-                    </Grid>
+                    
                 </TabItem>
                 <TabItem    Header="县行情况"  Controls:ControlsHelper.HeaderFontSize="18">
-                    <Grid >
-                        <datagrid:CountyDataGrid x:Name="CountyDataGrid"/>
-                        <!--<datagrid:CountyWebsiteDataGrid />-->
-                    </Grid>
+                   
                 </TabItem>
                 <TabItem   Header="市行网点情况"  Controls:ControlsHelper.HeaderFontSize="18">
-                    <Grid >
-                        <datagrid:CityWebsiteDataGrid  x:Name="CityWebsiteDataGrid"/>
-                    </Grid>
+                   
                 </TabItem>
                 <TabItem   Header="县行网点情况"  Controls:ControlsHelper.HeaderFontSize="18">
-                    <Grid >
-                        <datagrid:CountyWebsiteDataGrid  x:Name="CountyWebsiteDataGrid"/>
-                    </Grid>
+                   
                 </TabItem>
                 <TabItem   Header="市行网点-公司情况"  Controls:ControlsHelper.HeaderFontSize="18">
-                    <Grid >
-                        <datagrid:CityCompanyDataGrid  x:Name="CityCompanyDataGrid"/>
-                    </Grid>
+                   
                 </TabItem>
                 <TabItem   Header="县行网点-公司情况"  Controls:ControlsHelper.HeaderFontSize="18">
-                    <Grid >
-                        <datagrid:CountyCompanyDataGrid  x:Name="CountyCompanyDataGrid"/>
-                    </Grid>
+                    
                 </TabItem>
             </TabControl>
         </Border>

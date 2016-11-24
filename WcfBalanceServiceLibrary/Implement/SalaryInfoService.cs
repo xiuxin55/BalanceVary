@@ -52,6 +52,11 @@ namespace WcfBalanceServiceLibrary
         }
         public int SelectCount(SalaryInfo info)
         {
+            if (info.SalaryTime != null)
+            {
+                info.SalaryTime = DateTime.Parse(info.SalaryTime.Value.ToString("yyyy-MM") + "-01");
+
+            }
             return bll.SelectCount(info);
         }
 

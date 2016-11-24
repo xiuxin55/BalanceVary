@@ -150,7 +150,6 @@ namespace BalanceReport.Salary
             try
             {
                 Total = 0;
-           
                 SearchSalaryInfoModel.OrderbyColomnName = "SalaryTime";
                 SearchSalaryInfoModel.SubOrderbyColomnName = "SalaryTime";
                 SearchSalaryInfoModel.StartIndex = 1;

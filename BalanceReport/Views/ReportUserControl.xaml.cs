@@ -17,6 +17,7 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using BalanceReport.ViewModels;
 using MahApps.Metro.Controls;
+using BalanceReport.Views.ReportDataGrid;
 
 namespace BalanceReport.Views
 {
@@ -33,52 +34,63 @@ namespace BalanceReport.Views
 
 
 
-        private void CityDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.page.DataContext = this.CityDataGrid.DataContext;
-        }
-
-        private void CountyDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.page.DataContext = this.CountyDataGrid.DataContext;
-        }
-
-        private void CityCompanyDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.page.DataContext = this.CityCompanyDataGrid.DataContext;
-        }
-
-        private void CountyCompanyDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.page.DataContext = this.CountyCompanyDataGrid.DataContext;
-        }
-
+        
+        Dictionary<int, UserControl> CacheUC = new Dictionary<int, UserControl>();
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TabControl tc = sender as TabControl;
-            if(tc.SelectedIndex==0)
+            if (tc == null )
             {
-                this.page.DataContext = this.CityDataGrid.DataContext;
+                return;
+            }
+            TabItem ti = tc.SelectedItem as TabItem;
+            if (tc.SelectedIndex==0)
+            {
+                if (!CacheUC.Keys.Contains(tc.SelectedIndex))
+                {
+                    ti.Content = CacheUC[tc.SelectedIndex] = new CityDataGrid();
+                }
+                this.page.DataContext = CacheUC[tc.SelectedIndex].DataContext;
             }
             if (tc.SelectedIndex == 1)
             {
-                this.page.DataContext = this.CountyDataGrid.DataContext;
+                if (!CacheUC.Keys.Contains(tc.SelectedIndex))
+                {
+                    ti.Content = CacheUC[tc.SelectedIndex] = new CountyDataGrid();
+                }
+                this.page.DataContext = CacheUC[tc.SelectedIndex].DataContext;
             }
             if (tc.SelectedIndex == 2)
             {
-                this.page.DataContext = this.CityWebsiteDataGrid.DataContext;
+                if (!CacheUC.Keys.Contains(tc.SelectedIndex))
+                {
+                    ti.Content = CacheUC[tc.SelectedIndex] = new CityWebsiteDataGrid();
+                }
+                this.page.DataContext = CacheUC[tc.SelectedIndex].DataContext;
             }
             if (tc.SelectedIndex == 3)
             {
-                this.page.DataContext = this.CountyWebsiteDataGrid.DataContext;
+                if (!CacheUC.Keys.Contains(tc.SelectedIndex))
+                {
+                    ti.Content = CacheUC[tc.SelectedIndex] = new CountyWebsiteDataGrid();
+                }
+                this.page.DataContext = CacheUC[tc.SelectedIndex].DataContext;
             }
             if (tc.SelectedIndex == 4)
             {
-                this.page.DataContext = this.CityCompanyDataGrid.DataContext;
+                if (!CacheUC.Keys.Contains(tc.SelectedIndex))
+                {
+                    ti.Content = CacheUC[tc.SelectedIndex] = new CityCompanyDataGrid();
+                }
+                this.page.DataContext = CacheUC[tc.SelectedIndex].DataContext;
             }
             if (tc.SelectedIndex == 5)
             {
-                this.page.DataContext = this.CountyCompanyDataGrid.DataContext;
+                if (!CacheUC.Keys.Contains(tc.SelectedIndex))
+                {
+                    ti.Content = ti.Content = CacheUC[tc.SelectedIndex] = new CountyCompanyDataGrid();
+                }
+                this.page.DataContext = CacheUC[tc.SelectedIndex].DataContext;
             }
         }
     }
