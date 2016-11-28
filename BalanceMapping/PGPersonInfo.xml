@@ -33,9 +33,9 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">p.ID=#ID#</isNotEmpty>
-          <isNotEmpty prepend="and" property="NewWebsiteID">w.NewWebsiteID =NewWebsiteID </isNotEmpty>
-          <isNotEmpty prepend="and" property="WebsiteID">p.WebsiteID =WebsiteID</isNotEmpty>
-          <isNotEmpty prepend="and" property="StaffCode">StaffCode =StaffCode </isNotEmpty>
+          <isNotEmpty prepend="and" property="NewWebsiteID">w.NewWebsiteID =#NewWebsiteID# </isNotEmpty>
+          <isNotEmpty prepend="and" property="WebsiteID">p.WebsiteID =#WebsiteID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="StaffCode">StaffCode =#StaffCode# </isNotEmpty>
           <isNotEmpty prepend="and" property="StaffName">StaffName=#StaffName#</isNotEmpty>
           <isNotEmpty prepend="and" property="CardID">CardID=#CardID#</isNotEmpty>
           <isNotEmpty prepend="and" property="StaffType">StaffType=#StaffType#</isNotEmpty>

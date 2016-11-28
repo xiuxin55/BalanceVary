@@ -107,6 +107,10 @@
     <Compile Include="Views\PGPersonInfoManage.xaml.cs">
       <DependentUpon>PGPersonInfoManage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PGPersonInfoAdd.xaml.cs">
+      <DependentUpon>PGPersonInfoAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\PGPersonInfoAddVM.cs" />
     <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -116,6 +120,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PGPersonInfoManage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PGPersonInfoAdd.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

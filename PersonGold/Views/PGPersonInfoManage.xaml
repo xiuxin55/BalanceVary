@@ -31,7 +31,8 @@
                         <GridViewColumn Width="50"  Header="序号" DisplayMemberBinding="{Binding RowNumber}" tool:ListViewBehavior.SortField="RowNumber"/>
                         <GridViewColumn Width="100"  Header="人员编码" DisplayMemberBinding="{Binding StaffCode}" tool:ListViewBehavior.SortField="StaffCode"/>
                         <GridViewColumn Width="100"  Header="姓名" DisplayMemberBinding="{Binding StaffName}" tool:ListViewBehavior.SortField="StaffName"/>
-                        <GridViewColumn Width="100" Header="部门编码" DisplayMemberBinding="{Binding NewWebsiteID}" tool:ListViewBehavior.SortField="NewWebsiteID" />
+                        <GridViewColumn Width="100" Header="新部门编码" DisplayMemberBinding="{Binding NewWebsiteID}" tool:ListViewBehavior.SortField="NewWebsiteID" />
+                        <GridViewColumn Width="100" Header="旧部门编码" DisplayMemberBinding="{Binding WebsiteID}" tool:ListViewBehavior.SortField="WebsiteID" />
                         <GridViewColumn Width="150" Header="所在部门" DisplayMemberBinding="{Binding WebsiteInfoObj.WebsiteName}" tool:ListViewBehavior.SortField="WebsiteInfoObj.WebsiteName"/>
                         <GridViewColumn Width="130"  Header="身份证号" DisplayMemberBinding="{Binding CardID}" tool:ListViewBehavior.SortField="CardID" />
                         <GridViewColumn Width="100"  Header="人员类别" DisplayMemberBinding="{Binding StaffType}" tool:ListViewBehavior.SortField="StaffType"/>

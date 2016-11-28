@@ -9,6 +9,7 @@ using System.Windows;
 using Common;
 using WSBalanceClient;
 using WSBalanceClient.PGPersonInfoService;
+using PersonGold.Views;
 
 namespace PersonGold.ViewModels
 {
@@ -76,16 +77,16 @@ namespace PersonGold.ViewModels
         #region 命令执行方法
         private void AddExecute()
         {
-            //Add waui = new Add(true, null);
-            //waui.ShowDialog();
+            PGPersonInfoAdd ui = new PGPersonInfoAdd(true, null);
+            ui.ShowDialog();
             SearchExecute();
         }
         private void UpdateExecute()
         {
             if (SelectedInfoModel != null)
             {
-                //Add waui = new Add(false, SelectedInfoModel);
-                //waui.ShowDialog();
+                PGPersonInfoAdd ui = new PGPersonInfoAdd(false, SelectedInfoModel);
+                ui.ShowDialog();
                 SearchExecute();
             }
         }

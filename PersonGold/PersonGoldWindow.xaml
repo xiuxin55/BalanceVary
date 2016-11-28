@@ -59,24 +59,19 @@
                 <TabItem  Header="人员管理" Name="PersonInfoManageTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
 
                 </TabItem>
-                <TabItem Header="客户经理信息管理" Name="ManagerTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
+                <TabItem Header="人员业绩管理" Name="ManagerTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
 
                 </TabItem>
-                <TabItem Header="账号和名称关联管理" Name="AccountAndNameLinkTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
+                <TabItem Header="网点业绩管理" Name="AccountAndNameLinkTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
 
                 </TabItem>
-                <!--<TabItem Header="账户管理" Name="AccountManageTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
-                    <Grid >
-                        <localcontrol:AccountManage x:Name="AccountManageList" />
-                    </Grid>
-                </TabItem>-->
-
-                <TabItem Header="网点余额变动" Name="ReportUserControlTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
+    
+                <!--<TabItem Header="网点余额变动" Name="ReportUserControlTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
 
                 </TabItem>
                 <TabItem Header="部门余额变动" Name="DepartReportUserControlTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
 
-                </TabItem>
+                </TabItem>-->
                 <!--<TabItem Header="日期管理" Name="ImportDate"   Controls:ControlsHelper.HeaderFontSize="26.0" >
                     <Grid >
                         <localcontrol:MyCalendar x:Name="MyUserControl" />
