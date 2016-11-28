@@ -77,6 +77,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WSClient", "WSClient", "{2B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSBalanceClient", "WSBalanceClient\WSBalanceClient.csproj", "{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonGold", "PersonGold\PersonGold.csproj", "{47EB95C2-1EA6-44FE-933C-47B7B52606B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -373,6 +375,16 @@ Global
 		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Release|x86.ActiveCfg = Release|Any CPU
 		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E}.Release|x86.Build.0 = Release|Any CPU
+		{47EB95C2-1EA6-44FE-933C-47B7B52606B7}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{47EB95C2-1EA6-44FE-933C-47B7B52606B7}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{47EB95C2-1EA6-44FE-933C-47B7B52606B7}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{47EB95C2-1EA6-44FE-933C-47B7B52606B7}.Debug|x86.ActiveCfg = Debug|x86
+		{47EB95C2-1EA6-44FE-933C-47B7B52606B7}.Debug|x86.Build.0 = Debug|x86
+		{47EB95C2-1EA6-44FE-933C-47B7B52606B7}.Release|Any CPU.ActiveCfg = Release|x86
+		{47EB95C2-1EA6-44FE-933C-47B7B52606B7}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{47EB95C2-1EA6-44FE-933C-47B7B52606B7}.Release|Mixed Platforms.Build.0 = Release|x86
+		{47EB95C2-1EA6-44FE-933C-47B7B52606B7}.Release|x86.ActiveCfg = Release|x86
+		{47EB95C2-1EA6-44FE-933C-47B7B52606B7}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -403,5 +415,6 @@ Global
 		{201B29D3-476A-4B7C-99A6-55DC8C92EE80} = {B3EFDE90-73F1-4576-8905-1F37919BFDE9}
 		{B3EFDE90-73F1-4576-8905-1F37919BFDE9} = {773DE8C3-C719-4853-A0A4-8F765551E6EA}
 		{3E2F8906-336F-4C37-9B70-AAEE637D3E3E} = {2BFC5770-9E3E-4E00-8202-6CA0BE05879F}
+		{47EB95C2-1EA6-44FE-933C-47B7B52606B7} = {B04915AD-F43B-4DDA-92D2-5B3738E8BBBF}
 	EndGlobalSection
 EndGlobal

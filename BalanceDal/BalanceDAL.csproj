@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountAndNameLinkInfoDAL.cs" />
+    <Compile Include="PersonGold\PGPersonInfoDAL.cs" />
     <Compile Include="Salary\SalaryInfoDAL.cs" />
     <Compile Include="SystemSetInfoDAL.cs" />
     <Compile Include="Vary\BalanceDAL.cs" />

@@ -78,8 +78,10 @@
     <Compile Include="Calculate\ABCalculateBalance.cs" />
     <Compile Include="Converters\FileTypeConverter.cs" />
     <Compile Include="Converters\FileStateConverter.cs" />
+    <Compile Include="PersonGold\SyncPersonGoldDataHandler.cs" />
     <Compile Include="ReadExcel\ExcelAndData.cs" />
     <Compile Include="ISyncDataHandler.cs" />
+    <Compile Include="ReadExcel\ReadPersonExcel.cs" />
     <Compile Include="ReadExcel\ReadExcel.cs" />
     <Compile Include="Salary\SyncSalaryDataHandler.cs" />
     <Compile Include="SyncDataHandler.cs" />

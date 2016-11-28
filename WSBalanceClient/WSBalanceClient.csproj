@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -41,6 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\UploadFile.cs" />
+    <Compile Include="PersonGold\WSPGPersonInfoService.cs" />
+    <Compile Include="Service References\PGPersonInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="WSServiceFile.cs" />
     <Compile Include="WSZoneBalanceService.cs" />
     <Compile Include="WSWebsiteInfoService.cs" />
@@ -129,6 +137,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Service References\AccountAndNameLinkInfoService\AccountAndNameLinkInfoService.wsdl" />
     <None Include="Service References\AccountAndNameLinkInfoService\item.xsd">
       <SubType>Designer</SubType>
@@ -233,6 +242,19 @@
     <None Include="Service References\DepartmentInfoService\WSBalanceClient.DepartmentInfoService.DepartmentInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\PGPersonInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PGPersonInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PGPersonInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PGPersonInfoService\PGPersonInfoService.wsdl" />
+    <None Include="Service References\PGPersonInfoService\WSBalanceClient.PGPersonInfoService.PGPersonInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\SalaryInfoService\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -319,6 +341,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\PGPersonInfoService\" />
     <WCFMetadataStorage Include="Service References\SalaryInfoService\" />
   </ItemGroup>
   <ItemGroup>
@@ -336,7 +359,16 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{49CC37A0-302E-43C4-ADED-8D79F652242E}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserAuthorization\UserAuthorization.csproj">
+      <Project>{3204A670-18BF-4501-AE87-149C33DE05DC}</Project>
+      <Name>UserAuthorization</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AccountAndNameLinkInfoService\" />
     <WCFMetadataStorage Include="Service References\AccountBalanceService\" />
@@ -559,6 +591,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\SalaryInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PGPersonInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PGPersonInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PGPersonInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PGPersonInfoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

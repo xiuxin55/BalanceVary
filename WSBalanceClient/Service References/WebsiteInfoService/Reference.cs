@@ -139,6 +139,9 @@ namespace WSBalanceClient.WebsiteInfoService {
         private string ManagerTelphoneField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NewWebsiteIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string WebsiteAddressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -188,6 +191,19 @@ namespace WSBalanceClient.WebsiteInfoService {
                 if ((object.ReferenceEquals(this.ManagerTelphoneField, value) != true)) {
                     this.ManagerTelphoneField = value;
                     this.RaisePropertyChanged("ManagerTelphone");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NewWebsiteID {
+            get {
+                return this.NewWebsiteIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NewWebsiteIDField, value) != true)) {
+                    this.NewWebsiteIDField = value;
+                    this.RaisePropertyChanged("NewWebsiteID");
                 }
             }
         }

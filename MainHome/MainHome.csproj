@@ -130,6 +130,10 @@
       <Project>{5b1710d2-5dc8-4754-91b2-19165de49b3d}</Project>
       <Name>MahApps.Metro</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PersonGold\PersonGold.csproj">
+      <Project>{47eb95c2-1ea6-44fe-933c-47b7b52606b7}</Project>
+      <Name>PersonGold</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UserAuthorization\UserAuthorization.csproj">
       <Project>{3204a670-18bf-4501-ae87-149c33de05dc}</Project>
       <Name>UserAuthorization</Name>

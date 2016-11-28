@@ -31,7 +31,7 @@ namespace BalanceDataSync
             CommonEvent.FileUploadedCustomerLinkEvent += CustomerLinkEvent;
             CommonEvent.FileUploadedAccountAndNameLinkEvent += AccountAndNameLinkEvent;
             CommonEvent.FileUploadedSalaryEvent+= SalaryEvent;
-
+            CommonEvent.PersonInfoDataEvent += PersonInfoEvent;
 
         }
         //#region 属性
@@ -139,6 +139,7 @@ namespace BalanceDataSync
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportCustomerLink), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportAccountAndNameLink), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportSalaryInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGPersonInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
             }
             catch (Exception ex)
             {
@@ -215,7 +216,22 @@ namespace BalanceDataSync
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportSalaryInfo), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
             }
         }
-
+        /// <summary>
+        /// 人员导入触发事件
+        /// </summary>
+        /// <param name="obj"></param>
+        private void PersonInfoEvent(object obj)
+        {
+            UploadFileInfo info = obj as UploadFileInfo;
+            if (info != null)
+            {
+                List<UploadFileInfo> temp = new List<UploadFileInfo>();
+                temp.Add(info);
+                SyncDataHandler syn = new SyncDataHandler(temp);
+                syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGPersonInfo), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+            }
+        }
         /// <summary>
         /// 删除文件
         /// </summary>

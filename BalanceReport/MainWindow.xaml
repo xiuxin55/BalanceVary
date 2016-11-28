@@ -66,9 +66,9 @@
         <!--</ToolBar>-->
         <localcontrol:ProgressBarWindow Grid.Row="1" Visibility="Collapsed"  x:Name="pro" Margin="3,0" Panel.ZIndex="99"></localcontrol:ProgressBarWindow>
         <TabControl Grid.Row="1" Margin="3,0" SelectionChanged="TabControl_SelectionChanged">
-                <TabItem  Header="网点管理" Name="WebsiteManageTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
+                <!--<TabItem  Header="网点管理" Name="WebsiteManageTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
                    
-            </TabItem>
+            </TabItem>-->
 
                 <TabItem  Header="部门管理" Name="DepartmentManageTab"  Controls:ControlsHelper.HeaderFontSize="26.0">
                     

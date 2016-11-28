@@ -12,6 +12,7 @@ namespace BalanceModel
     public class WebsiteInfo : BaseModel
     {
         public string  ID { get; set; }
+        public string NewWebsiteID { get; set; }
         public string  WebsiteID { get; set; }
         public string WebsiteName { get; set; }
         public string  WebsiteAddress { get; set; }

@@ -156,6 +156,13 @@ namespace WcfBalanceServiceLibrary
                 //薪资数据导入触发
                 CommonEvent.FileUploadedSalaryEvent(uploadfileinfo);
             }
+            if (CommonEvent.PersonInfoDataEvent != null)
+            {
+                //薪资数据导入触发
+                CommonEvent.PersonInfoDataEvent(uploadfileinfo);
+            }
+
+            
         }
         #endregion
     }

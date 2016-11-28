@@ -28,5 +28,10 @@ namespace Common.Server
         /// 上传薪资数据后触发导入事件
         /// </summary>
         public static Action<object> FileUploadedSalaryEvent;
+
+        /// <summary>
+        /// 上传人员数据后触发导入事件
+        /// </summary>
+        public static Action<object> PersonInfoDataEvent;
     }
 }

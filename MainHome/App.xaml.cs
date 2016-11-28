@@ -22,9 +22,9 @@ namespace MainHome
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            
-           // this.DispatcherUnhandledException += App_DispatcherUnhandledException;
-            
+
+            // this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+
             //try
             //{
             //    if (e.Args.Length == 0)
@@ -46,9 +46,6 @@ namespace MainHome
             //}
             Login bw = new Login();
             bw.Show();
-           
-
-
 
 
         }

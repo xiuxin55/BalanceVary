@@ -19,7 +19,7 @@
   <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.CustomerManagerBalanceService"  describe="客户经理余额变动服务"/>
   <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.SystemSetInfoService"  describe="系统设置服务"/>
   <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.SalaryInfoService"  describe="薪资服务---仅提供查询功能"/>
-  
+  <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.PGPersonInfoService"  describe="个金服务"/>
 </config>
 
 

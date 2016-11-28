@@ -7,6 +7,7 @@
           <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Institution" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ManagerTelphone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NewWebsiteID" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="WebsiteAddress" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="WebsiteID" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="WebsiteManager" nillable="true" type="xs:string" />

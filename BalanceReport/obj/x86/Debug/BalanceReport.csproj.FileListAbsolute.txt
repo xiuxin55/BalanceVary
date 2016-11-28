@@ -512,7 +512,6 @@ E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\Prog
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\SearchWindow.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\UserControlLoading.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentAdd.baml
-E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\WebsiteAdd.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAdd.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountLink.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ImportSelectDate.baml
@@ -540,9 +539,7 @@ E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\Sear
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\UserControlLoading.g.cs
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\VaryGridControl.g.cs
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentAdd.g.cs
-E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\WebsiteAdd.g.cs
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentManage.g.cs
-E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\WebsiteManage.g.cs
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\CustomerManagerList.g.cs
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentSelect.g.cs
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ManagersSelect.g.cs
@@ -569,7 +566,6 @@ E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\Repo
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ReportUserControl.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\VaryGridControl.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentManage.baml
-E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\WebsiteManage.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\CustomerManagerList.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentSelect.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ManagersSelect.baml
@@ -704,3 +700,9 @@ C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\De
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\UpLoadFileInfo\UpLoadFileWindow.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\WSBalanceClient.dll
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\bin\Debug\WSBalanceClient.pdb
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WebsiteAdd.baml
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WinWesiteWindow.g.cs
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WebsiteAdd.g.cs
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WebsiteManage.g.cs
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WinWesiteWindow.baml
+E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WebsiteManage.baml

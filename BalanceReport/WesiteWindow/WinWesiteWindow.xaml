@@ -1,0 +1,39 @@
+﻿<Controls:MetroWindow x:Class="BalanceReport.WesiteWindow.WinWesiteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:localcontrol="clr-namespace:BalanceReport.WesiteWindow"
+        Title="网点管理" Height="730" Width="900"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        NonActiveGlowBrush="#CDFF0000"
+        ShowIconOnTitleBar="True"
+        ShowTitleBar="True"
+                      ShowMenuRestoreButton="False"
+        WindowStartupLocation="CenterScreen"
+                      xmlns:tool="clr-namespace:BalanceReport.Tools"
+                       xmlns:cc="clr-namespace:CustomControls;assembly=CustomControls" 
+        MouseLeftButtonDown="Window_MouseLeftButtonDown" >
+    <Controls:MetroWindow.Resources >
+        <tool:TimeToyyyyMMConverter x:Key="TimeConverter" />
+        <tool:FileStateConverter  x:Key="FileStateConverter" />
+    </Controls:MetroWindow.Resources>
+    <Border BorderBrush="#FF3299FF" BorderThickness="1" Margin="0" CornerRadius="4">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="265*" />
+                <RowDefinition Height="1" />
+            </Grid.RowDefinitions>
+           
+            <Border CornerRadius="5"  BorderBrush="{x:Null}" >
+                <Label Content="网点管理" Name="label1" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="Black"  />
+            </Border>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,99">
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <localcontrol:WebsiteManage/>
+            </Grid>
+            
+        </Grid>
+    </Border>
+</Controls:MetroWindow>

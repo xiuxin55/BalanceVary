@@ -12,6 +12,8 @@ using UserAuthorization;
 using System.Windows.Controls.Primitives;
 using MahApps.Metro.Controls;
 using UserAuthorization.Helper;
+using BalanceReport.WesiteWindow;
+using PersonGold;
 
 namespace MainHome
 {
@@ -25,6 +27,8 @@ namespace MainHome
             UserSetCommand = new DelegateCommand(UserSetExecute);
             FunctionSetCommand = new DelegateCommand(FunctionSetExecute);
             LookUploadFileCommand = new DelegateCommand(LookUploadFileExecute);
+            WebsiteManageCommand = new DelegateCommand(WebsiteManageExecute);
+            PersonGoldCommand = new DelegateCommand(PersonGoldExecute);
         }
         
         #region 属性
@@ -36,6 +40,14 @@ namespace MainHome
         public DelegateCommand UserSetCommand { get; set; }
         public DelegateCommand FunctionSetCommand { get; set; }
         public DelegateCommand LookUploadFileCommand { get; set; }
+        /// <summary>
+        /// 网点管理
+        /// </summary>
+        public DelegateCommand WebsiteManageCommand { get; set; }
+        /// <summary>
+        /// 个金业务
+        /// </summary>
+        public DelegateCommand PersonGoldCommand { get; set; }
         
         #endregion
         #region 命令执行方法
@@ -123,6 +135,40 @@ namespace MainHome
             //    MessageBox.Show("权限不足");
             //}
             
+        }
+        private void WebsiteManageExecute()
+        {
+            if (Menu != null)
+            {
+                Menu.IsOpen = false;
+            }
+            if (UserLoginHelper.Instance.CheckAuthrization(typeof(WinWesiteWindow).FullName))
+            {
+                WinWesiteWindow win = new WinWesiteWindow();
+                win.Show();
+            }
+            else
+            {
+                MessageBox.Show("权限不足");
+            }
+
+        }
+        private void PersonGoldExecute()
+        {
+            if (Menu != null)
+            {
+                Menu.IsOpen = false;
+            }
+            if (UserLoginHelper.Instance.CheckAuthrization(typeof(PersonGoldWindow).FullName))
+            {
+                PersonGoldWindow win = new PersonGoldWindow();
+                win.Show();
+            }
+            else
+            {
+                MessageBox.Show("权限不足");
+            }
+
         }
         #endregion
         #region 内部方法

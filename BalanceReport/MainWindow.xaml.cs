@@ -202,34 +202,33 @@ namespace BalanceReport
             TabItem ti = tb.SelectedItem as TabItem;
             switch (tb.SelectedIndex)
             {
+                //case 0:
+                //    ti.Content = new WebsiteManage();
+                //    CacheUC.Add(tb.SelectedIndex);
+                //    break;
                 case 0:
-                    ti.Content = new WebsiteManage();
-                    CacheUC.Add(tb.SelectedIndex);
-                    break;
-                case 1:
                     ti.Content = new DepartmentManage();
                     CacheUC.Add(tb.SelectedIndex);
                     break;
-                case 2:
+                case 1:
                     ti.Content = new CustomerManagerList();
                     CacheUC.Add(tb.SelectedIndex);
                     break;
-                case 3:
+                case 2:
                     ti.Content = new AccountAndNameLinkManage();
                     CacheUC.Add(tb.SelectedIndex);
                     break;
-                case 4:
+                case 3:
                     ti.Content = new ReportUserControl();
                     CacheUC.Add(tb.SelectedIndex);
                     break;
-                case 5:
+                case 4:
                     ti.Content = new DepartmentReportUserControl();
                     CacheUC.Add(tb.SelectedIndex);
                     break;
                 default:
-                    ti.Content = new WebsiteManage();
+                    ti.Content = new DepartmentManage();
                     CacheUC.Add(0);
-                    break;
                     break;
             }
         }

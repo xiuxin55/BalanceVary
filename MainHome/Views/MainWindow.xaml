@@ -30,8 +30,9 @@
         <Grid >
             <Button x:Name="button" Content="公司业务" FontSize="18" HorizontalAlignment="Left" Height="41" Margin="83,25,0,0" VerticalAlignment="Top" Width="122" Command="{Binding CompanyDataCommand}"/>
             <Button x:Name="button2" Content="薪资业务" FontSize="18" HorizontalAlignment="Left" Height="41" Margin="83,83,0,0" VerticalAlignment="Top" Width="122"  Command="{Binding SalaryDataCommand}"/>
-
-            <Button x:Name="button3" Content="导入文件列表" FontSize="18" HorizontalAlignment="Left" Height="41" Margin="83,147,0,0" VerticalAlignment="Top" Width="122"  Command="{Binding LookUploadFileCommand}"/>
+            <Button x:Name="btn_website" Content="网点管理" FontSize="18" HorizontalAlignment="Left" Height="41" Margin="83,195,0,0" VerticalAlignment="Top" Width="122"  Command="{Binding WebsiteManageCommand}"/>
+            <Button x:Name="btn_persongold" Content="个金业务" FontSize="18" HorizontalAlignment="Left" Height="41" Margin="83,141,0,0" VerticalAlignment="Top" Width="122"  Command="{Binding PersonGoldCommand}"/>
+            <Button x:Name="btn_importFile" Content="导入文件列表" FontSize="18" HorizontalAlignment="Left" Height="41" Margin="83,250,0,0" VerticalAlignment="Top" Width="122"  Command="{Binding LookUploadFileCommand}"/>
             <Popup x:Name="Menu" AllowsTransparency="True" Margin="0,-1,0,1"  StaysOpen="False" PopupAnimation="Scroll" Placement="MousePoint" >
                 <Grid  HorizontalAlignment="Left">
                     <Border BorderThickness="1" CornerRadius="3" Background="{DynamicResource AccentColorBrush}"  Margin="3">
