@@ -36,7 +36,7 @@
                         <GridViewColumn Width="50"  Header="序号" DisplayMemberBinding="{Binding RowNumber}" tool:ListViewBehavior.SortField="RowNumber"/>
                         <GridViewColumn Width="100"  Header="新网点编号" DisplayMemberBinding="{Binding NewWebsiteID}" tool:ListViewBehavior.SortField="NewWebsiteID"/>
                         <GridViewColumn Width="100"  Header="旧网点编号" DisplayMemberBinding="{Binding WebsiteID}" tool:ListViewBehavior.SortField="WebsiteID"/>
-                        <GridViewColumn Width="120" Header="储蓄卡当日" DisplayMemberBinding="{Binding PGDebitCardInfoObj.CurrentDayBalance}" tool:ListViewBehavior.SortField="PGDebitCardInfoObj.CurrentDayBalance" />
+                        <GridViewColumn Width="120" Header="储蓄卡当日余额" DisplayMemberBinding="{Binding PGDebitCardInfoObj.CurrentDayBalance}" tool:ListViewBehavior.SortField="PGDebitCardInfoObj.CurrentDayBalance" />
                         <GridViewColumn Width="120" Header="储蓄卡当日净增" DisplayMemberBinding="{Binding PGDebitCardInfoObj.DifferenceValue}" tool:ListViewBehavior.SortField=" PGDebitCardInfoObj.DifferenceValue" />
                         <GridViewColumn Width="120" Header="保险当日净增" DisplayMemberBinding="{Binding PGInsuranceInfoObj.DifferenceValue}" tool:ListViewBehavior.SortField="PGInsuranceInfoObj.DifferenceValue"/>
                         <GridViewColumn Width="120"  Header="保险本年累计" DisplayMemberBinding="{Binding PGInsuranceInfoObj.WholeBalance}" tool:ListViewBehavior.SortField="PGInsuranceInfoObj.WholeBalance" />
