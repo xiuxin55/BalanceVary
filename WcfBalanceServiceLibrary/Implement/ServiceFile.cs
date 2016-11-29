@@ -158,11 +158,15 @@ namespace WcfBalanceServiceLibrary
             }
             if (CommonEvent.PersonInfoDataEvent != null)
             {
-                //薪资数据导入触发
+                //个金人员信息数据导入触发
                 CommonEvent.PersonInfoDataEvent(uploadfileinfo);
             }
+            if (CommonEvent.PGDebitCardInfoDataEvent != null)
+            {
+                //个金储蓄卡信息数据导入触发
+                CommonEvent.PGDebitCardInfoDataEvent(uploadfileinfo);
+            }
 
-            
         }
         #endregion
     }

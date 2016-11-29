@@ -7,37 +7,26 @@ using System.Text;
 namespace BalanceModel
 {
     /// <summary>
-    /// 个金人员信息
+    /// 个金保险信息
     /// </summary>
-    public class PGPersonInfo : PersonGoldBaseModel
+    public class PGInsuranceInfo : PersonGoldBaseModel
     {
-
-      
         /// <summary>
-        /// 人员编码
+        /// 本期发生
         /// </summary>
-        public string  StaffCode { get; set; }
+        public decimal? CurrentDayBalance { get; set; }
         /// <summary>
-        /// 人员姓名
+        /// 与昨天的差值
         /// </summary>
-        public string StaffName { get; set; }
+        public decimal? DifferenceValue { get; set; }
         /// <summary>
-        /// 身份证号
+        /// 累计发生
         /// </summary>
-        public string  CardID { get; set; }
+        public decimal? WholeBalance { get; set; }
         /// <summary>
-        /// 人员类别
+        /// 当年余额均值
         /// </summary>
-        public string StaffType { get; set; }
-        /// <summary>
-        /// 岗位序列
-        /// </summary>
-        public string StaffPositionOrder { get; set; }
-        /// <summary>
-        /// 岗位
-        /// </summary>
-        public string StaffPosition { get; set; }
-     
+        public decimal? CurrentYearAverageBalance { get; set; }
         /// <summary>
         /// 关联的网点
         /// </summary>

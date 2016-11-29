@@ -10,6 +10,8 @@ namespace BalanceDataSync
     public partial class SyncDataHandler
     {
         List<PGPersonInfo> ImportPGPersonInfoDataList = new List<PGPersonInfo>();
+        List<PGDebitCardInfo> ImportPGDebitCardInfoDataList = new List<PGDebitCardInfo>();
+        
         public void ImportPGPersonInfo()
         {
             IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains("PGPersonInfo"));
@@ -51,6 +53,82 @@ namespace BalanceDataSync
                     }
                     throw ex;
                 }
+            }
+        }
+
+        public void ImportPGDebitCardInfo()
+        {
+            IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains("PGDebitCardInfo"));
+            foreach (var item in filelist)
+            {
+                try
+                {
+
+                    DateTime time;
+                    if (item.FileDateTime == null)
+                    {
+                        time = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
+                    }
+                    else
+                    {
+                        time = DateTime.Parse(item.FileDateTime.Value.ToString("yyyy-MM-dd"));
+                    }
+                    ImportPGDebitCardInfoDataList = ReadPersonExcel.ReadPGDebitCardInfoData(item.FilePath + item.FileName);
+                    if (ImportPGDebitCardInfoDataList.Count == 0)
+                    {
+                        item.FileState = 2;
+                        item.FileException = "未获取到数据";
+                        return;
+                    }
+                    CalculateDebitCardInfo(time);
+                    item.FileState = 1;
+                }
+                catch (Exception ex)
+                {
+
+                    item.FileState = 2;
+                    item.FileException = ex.Message + ":\n" + ex.StackTrace;
+                    if (NotifyFileStateChange != null)
+                    {
+                        NotifyFileStateChange(item);
+                    }
+                    throw ex;
+                }
+            }
+        }
+        private void CalculateDebitCardInfo(DateTime importtime)
+        {
+            PGDebitCardInfoBLL bll = new PGDebitCardInfoBLL();
+            //前一天的储蓄卡数据
+            List<PGDebitCardInfo> PrePGDebitCardInfoDataList = bll.Select(new PGDebitCardInfo() { DataTime = importtime.AddDays(-1) });
+            bll.Delete(new PGDebitCardInfo() { DataTime = importtime });
+            foreach (var model in ImportPGDebitCardInfoDataList)
+            {
+                PGDebitCardInfo predata = null;
+                if (string.IsNullOrWhiteSpace(model.NewWebsiteID))
+                {
+                    if(!string.IsNullOrWhiteSpace(model.WebsiteID))
+                    {
+                        predata = PrePGDebitCardInfoDataList.FirstOrDefault(e => e.WebsiteID == model.WebsiteID);
+                    }
+                   
+                }
+                else 
+                {
+                    predata = PrePGDebitCardInfoDataList.FirstOrDefault(e => e.NewWebsiteID == model.NewWebsiteID);
+                }
+             
+                
+                if (predata!=null&& (!string.IsNullOrWhiteSpace(predata.WebsiteID)|| !string.IsNullOrWhiteSpace(predata.NewWebsiteID)))
+                {
+                    model.DifferenceValue = model.CurrentDayBalance - predata.CurrentDayBalance??0;
+                }
+                else
+                {
+                    model.DifferenceValue = 0;
+                }
+                model.DataTime = importtime;
+                bll.Add(model);
             }
         }
     }

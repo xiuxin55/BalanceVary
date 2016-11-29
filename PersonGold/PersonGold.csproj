@@ -104,6 +104,9 @@
     <Compile Include="Tools\SortInfo.cs" />
     <Compile Include="Tools\UIElementAdorner.cs" />
     <Compile Include="ViewModels\PGPersonInfoManageVM.cs" />
+    <Compile Include="Views\ImportSelectDate.xaml.cs">
+      <DependentUpon>ImportSelectDate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PGPersonInfoManage.xaml.cs">
       <DependentUpon>PGPersonInfoManage.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PersonGoldWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ImportSelectDate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

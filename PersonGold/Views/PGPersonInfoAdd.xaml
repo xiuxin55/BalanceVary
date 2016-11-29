@@ -4,6 +4,7 @@
         Title="新增/编辑人员" Height="496" Width="384"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         GlowBrush="{DynamicResource AccentColorBrush}"
+        ShowMenuRestoreButton="False"
         NonActiveGlowBrush="#CDFF0000"
         ShowIconOnTitleBar="True"
         ShowTitleBar="True"

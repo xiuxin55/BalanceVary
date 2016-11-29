@@ -120,4 +120,22 @@ namespace BalanceDAL
             return ss.BatchInsertSQLServer(result);
         }
     }
+
+    /// <summary>
+    /// 个金的导入
+    /// </summary>
+    public partial class BatchInsertSQLServer
+    {
+        /// <summary>
+        /// 批量插入储蓄卡数据
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public bool BatchInsertPGDebitCardInfo(List<PGDebitCardInfo> list)
+        {
+            DataTable result = ConverterTable.PGDebitCardInfoListConvertTable(list);
+            SQLServer ss = new SQLServer();
+            return ss.BatchInsertSQLServer(result);
+        }
+    }
 }

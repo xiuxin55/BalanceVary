@@ -33,5 +33,10 @@ namespace Common.Server
         /// 上传人员数据后触发导入事件
         /// </summary>
         public static Action<object> PersonInfoDataEvent;
+        /// <summary>
+        /// 上传储蓄卡数据后触发导入事件
+        /// </summary>
+        public static Action<object> PGDebitCardInfoDataEvent;
+        
     }
 }

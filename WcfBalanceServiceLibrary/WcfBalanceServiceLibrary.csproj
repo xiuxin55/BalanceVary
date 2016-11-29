@@ -50,14 +50,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implement\AccountAndNameLinkInfoService.cs" />
-    <Compile Include="Implement\PersonGoldImplete\PGPersonInfoService.cs" />
+    <Compile Include="IPersonGold\IPGInsuranceInfoService.cs" />
+    <Compile Include="IPersonGold\IPGDebitCardInfoService.cs" />
+    <Compile Include="PersonGoldImplete\PGInsuranceInfoService.cs" />
+    <Compile Include="PersonGoldImplete\PGDebitCardInfoService.cs" />
+    <Compile Include="PersonGoldImplete\PGPersonInfoService.cs" />
     <Compile Include="Implement\SalaryInfoService.cs" />
     <Compile Include="Implement\SystemSetInfoService.cs" />
     <Compile Include="Implement\CustomerManagerInfoService.cs" />
     <Compile Include="Implement\AccountInfoService.cs" />
     <Compile Include="Implement\CustomerManagerBalanceService.cs" />
     <Compile Include="Interface\IAccountAndNameLinkInfoService.cs" />
-    <Compile Include="Interface\IPersonGold\IPGPersonInfoService.cs" />
+    <Compile Include="IPersonGold\IPGPersonInfoService.cs" />
     <Compile Include="Interface\ISalaryInfoService.cs" />
     <Compile Include="Interface\ISystemSetInfoService.cs" />
     <Compile Include="Interface\ICustomerManagerInfoService.cs" />

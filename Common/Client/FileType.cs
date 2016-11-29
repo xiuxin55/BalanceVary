@@ -18,5 +18,6 @@ namespace Common.Client
         AccountAndNameLink,//帐号、账户名称关联
         SalaryInfo,//薪资导入
         PGPersonInfo,//个金中的人员信息导入
+        PGDebitCardInfo//个金--储蓄卡数据导入
     }
 }

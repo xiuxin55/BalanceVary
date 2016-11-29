@@ -62,6 +62,9 @@
   <ItemGroup>
     <Compile Include="AccountAndNameLinkInfo.cs" />
     <Compile Include="BaseModel.cs" />
+    <Compile Include="PersonGold\PersonGoldBaseModel.cs" />
+    <Compile Include="PersonGold\PGInsuranceInfo.cs" />
+    <Compile Include="PersonGold\PGDebitCardInfo.cs" />
     <Compile Include="PersonGold\PGPersonInfo.cs" />
     <Compile Include="Salary\SalaryInfo.cs" />
     <Compile Include="SystemSetInfo.cs" />

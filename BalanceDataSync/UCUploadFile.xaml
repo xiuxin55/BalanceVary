@@ -50,7 +50,7 @@
                 <DataGridTextColumn Header="文件类型" Binding="{Binding FileType}" Width="1*" IsReadOnly="True"/>
                 <DataGridTextColumn Header="当前状态" Binding="{Binding FileState,Converter={StaticResource FileStateConverter} }"  Width="1*" IsReadOnly="True"/>
                 <DataGridTextColumn Header="上传时间" Binding="{Binding FileUploadTime}" Width="1*" IsReadOnly="True"/>
-                <!--<DataGridTextColumn Header="异常" Binding="{Binding FileException}" Width="1*" IsReadOnly="True"/>-->
+                <DataGridTextColumn Header="数据时间" Binding="{Binding FileDateTime}" Width="1*" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="2" >

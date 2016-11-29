@@ -32,6 +32,7 @@ namespace BalanceDataSync
             CommonEvent.FileUploadedAccountAndNameLinkEvent += AccountAndNameLinkEvent;
             CommonEvent.FileUploadedSalaryEvent+= SalaryEvent;
             CommonEvent.PersonInfoDataEvent += PersonInfoEvent;
+            CommonEvent.PGDebitCardInfoDataEvent += PGDebitCardInfoData;
 
         }
         //#region 属性
@@ -140,6 +141,7 @@ namespace BalanceDataSync
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportAccountAndNameLink), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportSalaryInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGPersonInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGDebitCardInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
             }
             catch (Exception ex)
             {
@@ -229,9 +231,27 @@ namespace BalanceDataSync
                 temp.Add(info);
                 SyncDataHandler syn = new SyncDataHandler(temp);
                 syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGDebitCardInfo), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+            }
+        }
+
+        /// <summary>
+        /// 储蓄卡数据导入触发事件
+        /// </summary>
+        /// <param name="obj"></param>
+        private void PGDebitCardInfoData(object obj)
+        {
+            UploadFileInfo info = obj as UploadFileInfo;
+            if (info != null)
+            {
+                List<UploadFileInfo> temp = new List<UploadFileInfo>();
+                temp.Add(info);
+                SyncDataHandler syn = new SyncDataHandler(temp);
+                syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGPersonInfo), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
             }
         }
+        
         /// <summary>
         /// 删除文件
         /// </summary>

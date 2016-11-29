@@ -405,4 +405,42 @@ namespace BalanceDAL
             return dtBalance;
         }
     }
+
+
+    /// <summary>
+    /// 个金使用的转换
+    /// </summary>
+    public partial class ConverterTable
+    {
+        /// <summary>
+        ///  薪资数据转换为DataTable
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static DataTable PGDebitCardInfoListConvertTable(List<PGDebitCardInfo> list)
+        {
+            DataTable dt = new DataTable();
+            dt.TableName = "PGDebitCardInfo";
+            dt.Columns.Add("ID");
+            dt.Columns.Add("NewWebsiteID");
+            dt.Columns.Add("WebsiteID");
+            dt.Columns.Add("CurrentDayBalance");
+            dt.Columns.Add("DifferenceValue");
+            dt.Columns.Add("DataTime");
+
+            foreach (var item in list)
+            {
+                DataRow dr = dt.NewRow();
+                dr["ID"] = item.ID;
+                dr["NewWebsiteID"] = item.NewWebsiteID;
+                dr["WebsiteID"] = item.WebsiteID;
+                dr["CurrentDayBalance"] = item.CurrentDayBalance;
+                dr["DifferenceValue"] = item.DifferenceValue;
+                dr["DataTime"] = item.DataTime;
+                
+                dt.Rows.Add(dr);
+            }
+            return dt;
+        }
+    }
 }

@@ -638,7 +638,7 @@ namespace BalanceDataSync
         /// </summary>
         /// <param name="strFileName"></param>
         /// <returns></returns>
-        public List<DataTable> ImportPersonInfo(string strFileName)
+        public List<DataTable> ImportPersonInfo(string strFileName, int defaultrowhead = 0, int colomns = 0)
         {
             if (!File.Exists(strFileName))
             {
@@ -652,11 +652,11 @@ namespace BalanceDataSync
             }
             else
             {
-                List<DataTable> tables = ImportPersonInfo2003(strFileName, 0);
+                List<DataTable> tables = ImportPersonInfo2003(strFileName, defaultrowhead, colomns);
                 return tables;
             }
         }
-        private List<DataTable> ImportPersonInfo2003(string strFileName, int defaultrowhead = 1)
+        private List<DataTable> ImportPersonInfo2003(string strFileName, int defaultrowhead = 0,int colomns=0)
         {
 
 
@@ -676,16 +676,29 @@ namespace BalanceDataSync
                 HSSFSheet sheet = (HSSFSheet)hssfworkbook.GetSheetAt(k);
                 System.Collections.IEnumerator rows = sheet.GetRowEnumerator();
 
-                HSSFRow headerRow = (HSSFRow)sheet.GetRow(defaultrowhead);// 默认第一行为标头
-                int cellCount = headerRow.LastCellNum;
-
-                for (int j = 0; j < cellCount; j++)
+                HSSFRow headerRow = (HSSFRow)sheet.GetRow(defaultrowhead);
+                int cellCount = 0;
+                int rowstartindex = 0;
+                if (colomns > 0)
                 {
-                    HSSFCell cell = (HSSFCell)headerRow.GetCell(j);
-                    dt.Columns.Add(cell.ToString());
+                    cellCount = colomns;
+                    for (int j = 0; j < cellCount; j++)
+                    {
+                        dt.Columns.Add(j.ToString());
+                    }
+                }
+                else
+                {
+                    cellCount = headerRow.LastCellNum;
+                    rowstartindex = sheet.FirstRowNum;
+                    for (int j = 0; j < cellCount; j++)
+                    {
+                        HSSFCell cell = (HSSFCell)headerRow.GetCell(j);
+                        dt.Columns.Add(cell.ToString());
+                    }
                 }
 
-                for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum; i++)
+                for (int i = (rowstartindex + 1); i <= sheet.LastRowNum; i++)
                 {
 
 
@@ -747,6 +760,8 @@ namespace BalanceDataSync
 
         } 
         #endregion
+
+
     }
 }
 

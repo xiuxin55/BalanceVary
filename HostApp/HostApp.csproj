@@ -174,6 +174,10 @@
       <Project>{46c7dbd4-3821-4579-995d-0e88bff6beac}</Project>
       <Name>Configure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PersonGoldMapping\PersonGoldMapping.csproj">
+      <Project>{85623961-3e06-4525-af82-1a5821979fd1}</Project>
+      <Name>PersonGoldMapping</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SqlMaps\SqlMaps.csproj">
       <Project>{e19a6dc8-30f3-45d5-8b67-584c5a034212}</Project>
       <Name>SqlMaps</Name>

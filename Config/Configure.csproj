@@ -55,6 +55,10 @@
       <Project>{9f97d256-7446-41c6-a499-c52227f4b82c}</Project>
       <Name>BalanceMapping</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PersonGoldMapping\PersonGoldMapping.csproj">
+      <Project>{85623961-3e06-4525-af82-1a5821979fd1}</Project>
+      <Name>PersonGoldMapping</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
