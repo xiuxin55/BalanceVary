@@ -49,11 +49,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\ImportFileHelper.cs" />
     <Compile Include="Implement\AccountAndNameLinkInfoService.cs" />
     <Compile Include="IPersonGold\IPGInsuranceInfoService.cs" />
     <Compile Include="IPersonGold\IPGDebitCardInfoService.cs" />
+    <Compile Include="IPersonGold\IPGWebistePerformanceInfoService.cs" />
     <Compile Include="PersonGoldImplete\PGInsuranceInfoService.cs" />
     <Compile Include="PersonGoldImplete\PGDebitCardInfoService.cs" />
+    <Compile Include="PersonGoldImplete\PGWebistePerformanceInfoService.cs" />
     <Compile Include="PersonGoldImplete\PGPersonInfoService.cs" />
     <Compile Include="Implement\SalaryInfoService.cs" />
     <Compile Include="Implement\SystemSetInfoService.cs" />

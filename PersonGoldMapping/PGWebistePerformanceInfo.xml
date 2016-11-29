@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="PGWebistePerformanceInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <alias>
+    <typeAlias alias="PGWebistePerformanceInfo" type="BalanceModel.PGWebistePerformanceInfo,BalanceModel" />
+  </alias>
+  <resultMaps>
+    <resultMap id="WebsiteInfoObjMap" class="WebsiteInfo">
+      <result property="WebsiteID" column="WebsiteID"/>
+      <result property="WebsiteName" column="WebsiteName"/>
+    </resultMap>
+    <resultMap id="PGDebitCardInfObjMap" class="PGDebitCardInfo">
+      <result property="CurrentDayBalance" column="CardCurrentDayBalance"/>
+      <result property="DifferenceValue" column="CardDifferenceValue"/>
+    </resultMap>
+    <resultMap id="PGInsuranceInfoObjMap" class="PGInsuranceInfo">
+      <result property="CurrentDayBalance" column="InsuranceCurrentDayBalance"/>
+      <result property="DifferenceValue" column="InsuranceDifferenceValue"/>
+      <result property="WholeBalance" column="InsuranceWholeBalance"/>
+    </resultMap>
+    
+    
+    <resultMap id="PGWebistePerformanceInfoMap" class="PGWebistePerformanceInfo">
+      <result property="RowNumber" column="RowNumber"/>
+      <result property="NewWebsiteID" column="NewWebsiteID"/>
+      <result property="WebsiteID" column="WebsiteID"/>
+      <result property="DataTime" column="DataTime"/>
+      <result property="PGDebitCardInfoObj" resultMapping="PGWebistePerformanceInfo.PGDebitCardInfObjMap"/>
+      <result property="PGInsuranceInfoObj" resultMapping="PGWebistePerformanceInfo.PGInsuranceInfoObjMap"/>
+      <result property="WebsiteInfoObj" resultMapping="PGWebistePerformanceInfo.WebsiteInfoObjMap"/>
+      
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <select id="SelectPGWebistePerformanceInfoCount"  resultClass="int"   parameterClass="PGWebistePerformanceInfo">
+      select count(*)  from  WebsiteInfo  web left join PGDebitCardInfo card on web.NewWebsiteID=card.NewWebsiteID or web.WebsiteID=card.WebsiteID
+      left join PGInsuranceInfo insurance on web.NewWebsiteID=insurance.NewWebsiteID or web.WebsiteID=insurance.WebsiteID
+      where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="NewWebsiteID">web.NewWebsiteID=#NewWebsiteID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="WebsiteID">web.WebsiteID  =#WebsiteID# </isNotEmpty>
+          <isNotEmpty prepend="and" property="DataTime">card.DataTime=#DataTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
+    <select id="SelectPGWebistePerformanceInfo"  resultMap="PGWebistePerformanceInfoMap"  parameterClass="PGWebistePerformanceInfo">
+      select * from (
+      select row_number() over(order by card.DataTime desc) as RowNumber,web.NewWebsiteID,web.WebsiteID,web.WebsiteName,
+      card.CurrentDayBalance as CardCurrentDayBalance,card.DifferenceValue as CardDifferenceValue,
+      insurance.CurrentDayBalance as InsuranceCurrentDayBalance,insurance.DifferenceValue as InsuranceDifferenceValue,
+      insurance.WholeBalance as InsuranceWholeBalance,card.DataTime
+      from  WebsiteInfo  web left join PGDebitCardInfo card on web.NewWebsiteID=card.NewWebsiteID or web.WebsiteID=card.WebsiteID
+      left join PGInsuranceInfo insurance on web.NewWebsiteID=insurance.NewWebsiteID or web.WebsiteID=insurance.WebsiteID
+      where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="NewWebsiteID">web.NewWebsiteID=#NewWebsiteID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="WebsiteID">web.WebsiteID  =#WebsiteID# </isNotEmpty>
+          <isNotEmpty prepend="and" property="DataTime">card.DataTime=#DataTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+      )as result
+      where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="StartIndex"><![CDATA[result.RowNumber>=#StartIndex#]]></isNotEmpty>
+          <isNotEmpty prepend="and" property="EndIndex"><![CDATA[result.RowNumber<=#EndIndex#]]></isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
+  </statements>
+</sqlMap>

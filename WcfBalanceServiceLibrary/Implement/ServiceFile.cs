@@ -64,7 +64,7 @@ namespace WcfBalanceServiceLibrary
                 uploadfileinfo.FilePath =  CommonDataServer.UploadFileServerPath;
                 uploadfileinfo.FileUploadTime = DateTime.Now;
                 bool result = uploadfileinfo.IsOverride ? bll.Update(uploadfileinfo) : bll.Add(uploadfileinfo);
-                ImportFileTrigger(uploadfileinfo);
+                Helper.ImportFileHelper.ImportFileTrigger(uploadfileinfo);
 
 
                 return true;
@@ -79,7 +79,7 @@ namespace WcfBalanceServiceLibrary
         {
             try
             {
-                ImportFileTrigger(uploadfileinfo);
+                Helper.ImportFileHelper.ImportFileTrigger(uploadfileinfo);
                 return true;
             }
             catch (Exception ex)
@@ -132,42 +132,7 @@ namespace WcfBalanceServiceLibrary
             
         }
         #region 非接口
-        private void ImportFileTrigger(UploadFileInfo uploadfileinfo)
-        {
-            if (CommonEvent.FileUploadedCalculateEvent != null)
-            {
-                CommonEvent.FileUploadedCalculateEvent(uploadfileinfo);
-            }
-            if (CommonEvent.FileUploadedCalculateDayEvent != null)
-            {
-                CommonEvent.FileUploadedCalculateDayEvent(uploadfileinfo);
-            }
-            if (CommonEvent.FileUploadedCustomerLinkEvent != null)
-            {
-                CommonEvent.FileUploadedCustomerLinkEvent(uploadfileinfo);
-            }
-            if (CommonEvent.FileUploadedAccountAndNameLinkEvent != null)
-            {
-                CommonEvent.FileUploadedAccountAndNameLinkEvent(uploadfileinfo);
-            }
-
-            if (CommonEvent.FileUploadedSalaryEvent != null)
-            {
-                //薪资数据导入触发
-                CommonEvent.FileUploadedSalaryEvent(uploadfileinfo);
-            }
-            if (CommonEvent.PersonInfoDataEvent != null)
-            {
-                //个金人员信息数据导入触发
-                CommonEvent.PersonInfoDataEvent(uploadfileinfo);
-            }
-            if (CommonEvent.PGDebitCardInfoDataEvent != null)
-            {
-                //个金储蓄卡信息数据导入触发
-                CommonEvent.PGDebitCardInfoDataEvent(uploadfileinfo);
-            }
-
-        }
+       
         #endregion
     }
 }

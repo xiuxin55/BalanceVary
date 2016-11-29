@@ -103,9 +103,13 @@
     <Compile Include="Tools\ListViewBehavior.cs" />
     <Compile Include="Tools\SortInfo.cs" />
     <Compile Include="Tools\UIElementAdorner.cs" />
+    <Compile Include="ViewModels\PGWebistePerformanceInfoManageVM.cs" />
     <Compile Include="ViewModels\PGPersonInfoManageVM.cs" />
     <Compile Include="Views\ImportSelectDate.xaml.cs">
       <DependentUpon>ImportSelectDate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PGWebistePerformanceInfoManage.xaml.cs">
+      <DependentUpon>PGWebistePerformanceInfoManage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PGPersonInfoManage.xaml.cs">
       <DependentUpon>PGPersonInfoManage.xaml</DependentUpon>
@@ -123,6 +127,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ImportSelectDate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PGWebistePerformanceInfoManage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

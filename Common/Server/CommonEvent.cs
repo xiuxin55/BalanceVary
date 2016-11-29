@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Common.Server
 {
+    /// <summary>
+    /// 上传文件后触发后台处理服务
+    /// </summary>
     public class CommonEvent
     {
         /// <summary>
@@ -37,6 +40,10 @@ namespace Common.Server
         /// 上传储蓄卡数据后触发导入事件
         /// </summary>
         public static Action<object> PGDebitCardInfoDataEvent;
-        
+        /// <summary>
+        /// 上传保险数据后触发导入事件
+        /// </summary>
+        public static Action<object> PGInsuranceInfoDataEvent;
+
     }
 }

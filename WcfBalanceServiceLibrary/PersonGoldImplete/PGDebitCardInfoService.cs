@@ -40,8 +40,8 @@ namespace WcfBalanceServiceLibrary
             }
             catch (Exception ex)
             {
-                LogHelper.WriteLog(typeof(SalaryInfoService), ex);
-                throw ex;
+                LogHelper.WriteLog(typeof(PGDebitCardInfoService), ex);
+                return null;
             }
            
         }

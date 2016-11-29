@@ -41,7 +41,7 @@ namespace WcfBalanceServiceLibrary
             catch (Exception ex)
             {
                 LogHelper.WriteLog(typeof(SalaryInfoService), ex);
-                throw ex;
+                return null;
             }
            
         }

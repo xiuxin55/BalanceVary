@@ -26,16 +26,19 @@ namespace BalanceDataSync
             LookExceptionCommand = new DelegateCommand(LookExceptionExecute);
             SearchCommand = new DelegateCommand(SearchExecute);
             SearchExecute();
+            #region 上传文件后触发
             CommonEvent.FileUploadedCalculateEvent += CalculateEvent;
             CommonEvent.FileUploadedCalculateDayEvent += CalculateDayEvent;
             CommonEvent.FileUploadedCustomerLinkEvent += CustomerLinkEvent;
             CommonEvent.FileUploadedAccountAndNameLinkEvent += AccountAndNameLinkEvent;
-            CommonEvent.FileUploadedSalaryEvent+= SalaryEvent;
+            CommonEvent.FileUploadedSalaryEvent += SalaryEvent;
             CommonEvent.PersonInfoDataEvent += PersonInfoEvent;
             CommonEvent.PGDebitCardInfoDataEvent += PGDebitCardInfoData;
+            CommonEvent.PGInsuranceInfoDataEvent += PGInsuranceInfoData;
+            #endregion
 
         }
-        //#region 属性
+        #region 属性
         private UploadFileInfo  _SelectedUploadFile;
         /// <summary>
         ///被选中的行 
@@ -49,21 +52,6 @@ namespace BalanceDataSync
                 this.RaisePropertyChanged("SelectedUploadFile");
             }
         }
-
-
-        //private WebsiteInfoModel _searchWebsiteInfoModel;
-        ///// <summary>
-        ///// 查询
-        ///// </summary>
-        //public WebsiteInfoModel SearchWebsiteInfoModel
-        //{
-        //    get { return _searchWebsiteInfoModel; }
-        //    set
-        //    {
-        //        _searchWebsiteInfoModel = value;
-        //        this.RaisePropertyChanged("SearchWebsiteInfoModel");
-        //    }
-        //}
         private ObservableCollection<UploadFileInfo> _UploadFileList;
         /// <summary>
         /// 文件信息集合
@@ -92,7 +80,7 @@ namespace BalanceDataSync
             }
         }
         
-        //#endregion
+        #endregion
         #region 命令
         public DelegateCommand HandleFileCommand { get; set; }
         public DelegateCommand DeleteFileCommand { get; set; }
@@ -100,24 +88,7 @@ namespace BalanceDataSync
         
         public DelegateCommand SearchCommand { get; set; }
         #endregion
-        private void LookExceptionExecute()
-        {
-            if (SelectedUploadFile ==null)
-            {
-                MessageBox.Show("请选择一条记录");
-            }
-            else
-            {
-                if (string.IsNullOrWhiteSpace(SelectedUploadFile.FileException))
-                {
-                    MessageBox.Show("该记录无异常");
-                }
-                else
-                {
-                    MessageBox.Show(SelectedUploadFile.FileException);
-                }
-            }
-        }
+       
         //#region 命令执行方法
         /// <summary>
         /// 计算文件中数据
@@ -142,6 +113,7 @@ namespace BalanceDataSync
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportSalaryInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGPersonInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGDebitCardInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGInsuranceInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
             }
             catch (Exception ex)
             {
@@ -151,10 +123,136 @@ namespace BalanceDataSync
             }
 
         }
+
+        #region 命令方法
+        private void LookExceptionExecute()
+        {
+            if (SelectedUploadFile == null)
+            {
+                MessageBox.Show("请选择一条记录");
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(SelectedUploadFile.FileException))
+                {
+                    MessageBox.Show("该记录无异常");
+                }
+                else
+                {
+                    MessageBox.Show(SelectedUploadFile.FileException);
+                }
+            }
+        }
+        /// <summary>
+        /// 删除文件
+        /// </summary>
+        private void DeleteFileExecute()
+        {
+            try
+            {
+                bool ishasseleted = false;
+                foreach (var item in UploadFileList)
+                {
+                    if (item.IsSelected)
+                    {
+                        ishasseleted = true;
+                        if (bll.Delete(item))
+                        {
+                            if (File.Exists(item.FilePath + item.FileName))
+                            {
+                                File.Delete(item.FilePath + item.FileName);
+                            }
+
+                        }
+                    }
+                }
+                if (ishasseleted)
+                {
+                    MessageBox.Show("删除成功");
+                }
+
+                SearchExecute();
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(UCUploadFileVM), ex);
+            }
+        }
+        private bool _isSelectedAll;
+        public bool IsSelectedAll
+        {
+            get
+            {
+                return _isSelectedAll;
+            }
+            set
+            {
+                _isSelectedAll = value;
+                CheckBoxClickExecute(value);
+                this.RaisePropertyChanged("IsSelectedAll");
+            }
+        }
+        private void CheckBoxClickExecute(bool obj)
+        {
+
+            foreach (var item in UploadFileList)
+            {
+                item.IsSelected = obj;
+            }
+        }
+        private void SearchExecute()
+        {
+            try
+            {
+                UploadFileList = new ObservableCollection<UploadFileInfo>(bll.Select(null));
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(UCUploadFileVM), ex);
+                throw ex;
+            }
+        } 
+        #endregion
+
+
+        public void NotifyCurrentCalculateFile(UploadFileInfo info)
+        {
+            if (info.FileState == 2)
+            {
+                this.CurrentCalculateFile = info.FileName + " 处理出现异常";
+                bll.Update(info);
+                SearchExecute();
+            }
+            else
+            {
+                this.CurrentCalculateFile = info.FileName;
+            }
+
+        }
+        /// <summary>
+        /// 同步数据完成
+        /// </summary>
+        public void SynComplete(object obj)
+        {
+            List<UploadFileInfo> ufiList = obj as List<UploadFileInfo>;
+            if (ufiList == null || ufiList.Count==0)
+            {
+                CurrentCalculateFile = "所有文件处理结束";
+                return;
+            }
+            bll.BatchUpdate(ufiList);
+            SearchExecute();
+
+            CurrentCalculateFile = "所有文件处理结束";
+        }
+
+
+        #region 上传文件触发方法
+
         private void CalculateEvent(object obj)
         {
             UploadFileInfo info = obj as UploadFileInfo;
-            if (info !=null)
+            if (info != null)
             {
                 List<UploadFileInfo> temp = new List<UploadFileInfo>();
                 temp.Add(info);
@@ -163,7 +261,6 @@ namespace BalanceDataSync
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
             }
         }
-
         private void CalculateDayEvent(object obj)
         {
             UploadFileInfo info = obj as UploadFileInfo;
@@ -202,158 +299,92 @@ namespace BalanceDataSync
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportAccountAndNameLink), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
             }
         }
+        private object SalaryObj = new object();
         /// <summary>
         /// 薪资导入触发事件
         /// </summary>
         /// <param name="obj"></param>
         private void SalaryEvent(object obj)
         {
-            UploadFileInfo info = obj as UploadFileInfo;
-            if (info != null)
+            lock (SalaryObj)
             {
-                List<UploadFileInfo> temp = new List<UploadFileInfo>();
-                temp.Add(info);
-                SyncDataHandler syn = new SyncDataHandler(temp);
-                syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
-                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportSalaryInfo), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+                UploadFileInfo info = obj as UploadFileInfo;
+                if (info != null)
+                {
+                    List<UploadFileInfo> temp = new List<UploadFileInfo>();
+                    temp.Add(info);
+                    SyncDataHandler syn = new SyncDataHandler(temp);
+                    syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
+                    MultiTask.TaskDispatcherWithUI(new Action(syn.ImportSalaryInfo), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+                }
             }
+            
         }
+        private object PersonInfoObj = new object();
         /// <summary>
         /// 人员导入触发事件
         /// </summary>
         /// <param name="obj"></param>
         private void PersonInfoEvent(object obj)
         {
-            UploadFileInfo info = obj as UploadFileInfo;
-            if (info != null)
+            lock (PersonInfoObj)
             {
-                List<UploadFileInfo> temp = new List<UploadFileInfo>();
-                temp.Add(info);
-                SyncDataHandler syn = new SyncDataHandler(temp);
-                syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
-                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGDebitCardInfo), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+                UploadFileInfo info = obj as UploadFileInfo;
+                if (info != null)
+                {
+                    List<UploadFileInfo> temp = new List<UploadFileInfo>();
+                    temp.Add(info);
+                    SyncDataHandler syn = new SyncDataHandler(temp);
+                    syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
+                    MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGDebitCardInfo), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+                }
             }
+            
         }
-
+        private object DebitCardObj = new object();
         /// <summary>
         /// 储蓄卡数据导入触发事件
         /// </summary>
         /// <param name="obj"></param>
         private void PGDebitCardInfoData(object obj)
         {
-            UploadFileInfo info = obj as UploadFileInfo;
-            if (info != null)
+            lock (DebitCardObj)
             {
-                List<UploadFileInfo> temp = new List<UploadFileInfo>();
-                temp.Add(info);
-                SyncDataHandler syn = new SyncDataHandler(temp);
-                syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
-                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGPersonInfo), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
-            }
-        }
-        
-        /// <summary>
-        /// 删除文件
-        /// </summary>
-        private void DeleteFileExecute()
-        {
-            try
-            {
-                bool ishasseleted = false;
-                foreach (var item in UploadFileList)
+                UploadFileInfo info = obj as UploadFileInfo;
+                if (info != null)
                 {
-                    if (item.IsSelected)
-                    {
-                        ishasseleted = true;
-                        if (bll.Delete(item))
-                        {
-                            if(File.Exists(item.FilePath+item.FileName))
-                            {
-                                File.Delete(item.FilePath + item.FileName);
-                            }
-                            
-                        }
-                    }
+                    List<UploadFileInfo> temp = new List<UploadFileInfo>();
+                    temp.Add(info);
+                    SyncDataHandler syn = new SyncDataHandler(temp);
+                    syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
+                    MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGPersonInfo), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
                 }
-                if (ishasseleted)
-                {
-                    MessageBox.Show("删除成功");
-                }
-              
-                SearchExecute();
-            }
-            catch (Exception ex)
-            {
-                LogHelper.WriteLog(typeof(UCUploadFileVM), ex);
-            }
-        }
-        private bool _isSelectedAll;
-        public bool IsSelectedAll
-        {
-            get
-            {
-                return _isSelectedAll;
-            }
-            set
-            {
-                _isSelectedAll = value;
-                CheckBoxClickExecute(value);
-                this.RaisePropertyChanged("IsSelectedAll");
-            }
-        }
-        private void CheckBoxClickExecute(bool  obj)
-        {
 
-            foreach (var item in UploadFileList)
-            {
-                item.IsSelected = obj;
-            }
-        }
-        public void NotifyCurrentCalculateFile(UploadFileInfo info)
-        {
-            if (info.FileState==2)
-            {
-                this.CurrentCalculateFile = info.FileName+" 处理出现异常";
-                bll.Update(info);
-                SearchExecute();
-            }
-            else
-            {
-                this.CurrentCalculateFile = info.FileName;
             }
             
         }
-        private  void SearchExecute()
-        {
-            try
-            {
-                UploadFileList = new ObservableCollection<UploadFileInfo>(bll.Select(null));
-            }
-            catch (Exception ex)
-            {
-                LogHelper.WriteLog(typeof(UCUploadFileVM), ex);
-                throw ex;
-            }
-        }
-        //#endregion
-        //#region 内部方法
-
-        //#endregion
+        private object InsuranceObj = new object();
         /// <summary>
-        /// 同步数据完成
+        /// 保险数据导入触发事件
         /// </summary>
-        public void SynComplete(object obj)
+        /// <param name="obj"></param>
+        private void PGInsuranceInfoData(object obj)
         {
-            List<UploadFileInfo> ufiList = obj as List<UploadFileInfo>;
-            if (ufiList == null || ufiList.Count==0)
+            lock (InsuranceObj)
             {
-                CurrentCalculateFile = "所有文件处理结束";
-                return;
+                UploadFileInfo info = obj as UploadFileInfo;
+                if (info != null)
+                {
+                    List<UploadFileInfo> temp = new List<UploadFileInfo>();
+                    temp.Add(info);
+                    SyncDataHandler syn = new SyncDataHandler(temp);
+                    syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
+                    MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGInsuranceInfo), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+                }
             }
-            bll.BatchUpdate(ufiList);
-            SearchExecute();
-
-            CurrentCalculateFile = "所有文件处理结束";
+            
         }
+
+        #endregion
     }
 }

@@ -11,7 +11,8 @@ namespace BalanceDataSync
     {
         List<PGPersonInfo> ImportPGPersonInfoDataList = new List<PGPersonInfo>();
         List<PGDebitCardInfo> ImportPGDebitCardInfoDataList = new List<PGDebitCardInfo>();
-        
+        List<PGInsuranceInfo> ImportPGInsuranceInfoDataList = new List<PGInsuranceInfo>();
+
         public void ImportPGPersonInfo()
         {
             IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains("PGPersonInfo"));
@@ -56,6 +57,7 @@ namespace BalanceDataSync
             }
         }
 
+        #region 储蓄卡导入处理
         public void ImportPGDebitCardInfo()
         {
             IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains("PGDebitCardInfo"));
@@ -107,21 +109,21 @@ namespace BalanceDataSync
                 PGDebitCardInfo predata = null;
                 if (string.IsNullOrWhiteSpace(model.NewWebsiteID))
                 {
-                    if(!string.IsNullOrWhiteSpace(model.WebsiteID))
+                    if (!string.IsNullOrWhiteSpace(model.WebsiteID))
                     {
                         predata = PrePGDebitCardInfoDataList.FirstOrDefault(e => e.WebsiteID == model.WebsiteID);
                     }
-                   
+
                 }
-                else 
+                else
                 {
                     predata = PrePGDebitCardInfoDataList.FirstOrDefault(e => e.NewWebsiteID == model.NewWebsiteID);
                 }
-             
-                
-                if (predata!=null&& (!string.IsNullOrWhiteSpace(predata.WebsiteID)|| !string.IsNullOrWhiteSpace(predata.NewWebsiteID)))
+
+
+                if (predata != null && (!string.IsNullOrWhiteSpace(predata.WebsiteID) || !string.IsNullOrWhiteSpace(predata.NewWebsiteID)))
                 {
-                    model.DifferenceValue = model.CurrentDayBalance - predata.CurrentDayBalance??0;
+                    model.DifferenceValue = model.CurrentDayBalance - predata.CurrentDayBalance ?? 0;
                 }
                 else
                 {
@@ -131,5 +133,85 @@ namespace BalanceDataSync
                 bll.Add(model);
             }
         }
+        #endregion
+
+        #region 保险导入处理
+        public void ImportPGInsuranceInfo()
+        {
+            IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains("PGInsuranceInfo"));
+            foreach (var item in filelist)
+            {
+                try
+                {
+
+                    DateTime time;
+                    if (item.FileDateTime == null)
+                    {
+                        time = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
+                    }
+                    else
+                    {
+                        time = DateTime.Parse(item.FileDateTime.Value.ToString("yyyy-MM-dd"));
+                    }
+                    ImportPGInsuranceInfoDataList = ReadPersonExcel.ReadPGInsuranceInfoData(item.FilePath + item.FileName);
+                    if (ImportPGInsuranceInfoDataList.Count == 0)
+                    {
+                        item.FileState = 2;
+                        item.FileException = "未获取到数据";
+                        return;
+                    }
+                    CalculateInsuranceInfo(time);
+                    item.FileState = 1;
+                }
+                catch (Exception ex)
+                {
+
+                    item.FileState = 2;
+                    item.FileException = ex.Message + ":\n" + ex.StackTrace;
+                    if (NotifyFileStateChange != null)
+                    {
+                        NotifyFileStateChange(item);
+                    }
+                    throw ex;
+                }
+            }
+        }
+        private void CalculateInsuranceInfo(DateTime importtime)
+        {
+            PGInsuranceInfoBLL bll = new PGInsuranceInfoBLL();
+            //前一天的保险数据
+            //List<PGInsuranceInfo> PreDataList = bll.Select(new PGInsuranceInfo() { DataTime = importtime.AddDays(-1) });
+            //bll.Delete(new PGInsuranceInfo() { DataTime = importtime });
+            foreach (var model in ImportPGInsuranceInfoDataList)
+            {
+                //PGInsuranceInfo predata = null;
+                //if (string.IsNullOrWhiteSpace(model.NewWebsiteID))
+                //{
+                //    if (!string.IsNullOrWhiteSpace(model.WebsiteID))
+                //    {
+                //        predata = PreDataList.FirstOrDefault(e => e.WebsiteID == model.WebsiteID);
+                //    }
+
+                //}
+                //else
+                //{
+                //    predata = PreDataList.FirstOrDefault(e => e.NewWebsiteID == model.NewWebsiteID);
+                //}
+
+
+                //if (predata != null && (!string.IsNullOrWhiteSpace(predata.WebsiteID) || !string.IsNullOrWhiteSpace(predata.NewWebsiteID)))
+                //{
+                //    model.DifferenceValue = model.CurrentDayBalance - predata.CurrentDayBalance ?? 0;
+                //    model.WholeBalance = model.CurrentDayBalance + predata.CurrentDayBalance ?? 0;
+                //}
+                //else
+                //{
+                //    model.DifferenceValue = 0;
+                //}
+                model.DataTime = importtime;
+                bll.Add(model);
+            }
+        }
+        #endregion
     }
 }

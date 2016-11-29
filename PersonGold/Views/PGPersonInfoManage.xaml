@@ -20,7 +20,7 @@
             <!--<TextBlock  Width="60"   Text="部门号:" VerticalAlignment="Center" />
             <TextBox  Width="120" Text="{Binding SearchDepartmentModel.DepartmentID}"  HorizontalContentAlignment="Left" VerticalAlignment="Center" />-->
             <TextBlock  Width="60"   Text="人员编号:" VerticalAlignment="Center" />
-            <TextBox  Width="120" Text="{Binding SearchModel.DepartmentName}"  HorizontalContentAlignment="Left" />
+            <TextBox  Width="120" Text="{Binding SearchInfoModel.StaffCode}"  HorizontalContentAlignment="Left" />
 
             <Button x:Name="Search" Width="60"  Content="查询" Command="{Binding SearchCommand}" HorizontalContentAlignment="Left"  />
         </ToolBar>
