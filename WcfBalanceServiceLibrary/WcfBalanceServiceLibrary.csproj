@@ -53,9 +53,11 @@
     <Compile Include="Implement\AccountAndNameLinkInfoService.cs" />
     <Compile Include="IPersonGold\IPGInsuranceInfoService.cs" />
     <Compile Include="IPersonGold\IPGDebitCardInfoService.cs" />
+    <Compile Include="IPersonGold\IPGPersonAllocateInfoService.cs" />
     <Compile Include="IPersonGold\IPGWebistePerformanceInfoService.cs" />
     <Compile Include="PersonGoldImplete\PGInsuranceInfoService.cs" />
     <Compile Include="PersonGoldImplete\PGDebitCardInfoService.cs" />
+    <Compile Include="PersonGoldImplete\PGPersonAllocateInfoService.cs" />
     <Compile Include="PersonGoldImplete\PGWebistePerformanceInfoService.cs" />
     <Compile Include="PersonGoldImplete\PGPersonInfoService.cs" />
     <Compile Include="Implement\SalaryInfoService.cs" />

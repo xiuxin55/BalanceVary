@@ -141,5 +141,11 @@ namespace PersonGold
                 WSBalanceClient.Helper.UploadFile.Upload(op.FileName, FileType.PGInsuranceInfo, s.ImportTime);
             }
         }
+
+        private void ImportTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            ImportTemplate template = new Views.ImportTemplate();
+            template.Show();
+        }
     }
 }

@@ -29,21 +29,10 @@
                     <Border BorderThickness="1" CornerRadius="3" Background="{DynamicResource AccentColorBrush}"  Margin="3">
 
                         <StackPanel Margin="2">
+                            <MenuItem x:Name="ImportTemplate" Header="导入模版查看" Click="ImportTemplate_Click"  />
                             <MenuItem Header="人员信息导入" Click="PersonInfoImportButton_Click"  />
                             <MenuItem  Header="储蓄卡数据导入" Click="DebitCardImportButton_Click"  />
                             <MenuItem  Header="保险数据导入" Click="PGInsuranceInfoImportButton_Click"  />
-                            <!--<MenuItem x:Name="ImportTemplate" Header="导入模版查看" Click="ImportTemplate_Click"  />
-                            <MenuItem x:Name="ImportButton" Header="人员信息导入" Click="ImportButton_Click"  />
-                            <MenuItem x:Name="MonthImportButton" Header="账户按月份导入" Click="MonthImportButton_Click" />
-                            --><!--<MenuItem x:Name="DepartmentImportButton" Header="部门信息导入" Click="DepartmentImportButton_Click"  />
-                                <MenuItem x:Name="ManagersImportButton" Header="客户经理信息导入" Click="ManagersImportButton_Click"  />--><!--
-                            <MenuItem x:Name="LinkImportButton" Header="客户经理关联导入" Click="LinkImportButton_Click"  />
-                            <MenuItem x:Name="AccountAndNameLinkImportButton" Header="帐号和名称关联导入" Click="AccountAndNameLinkButton_Click"  />
-                            <MenuItem x:Name="SystemSetButton" Header="系统设置" Click="SystemSetButton_Click"  />-->
-                            <!--<MenuItem x:Name="menubtnChangePWD" Header="修改密码" Click="menubtnChangePWD_Click"/>-->
-                            <!--<MenuItem Header="更 新"/>-->
-                            <!--<MenuItem Header="关 于"/>
-                                        <MenuItem Header="退 出"/>-->
                         </StackPanel>
                     </Border>
                 </Grid>

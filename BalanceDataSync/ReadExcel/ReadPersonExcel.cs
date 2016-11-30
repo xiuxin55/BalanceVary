@@ -11,9 +11,6 @@ namespace BalanceDataSync
 {
     public class ReadPersonExcel
     {
-
-
-
         #region 人员信息
         public static List<PGPersonInfo> ReadPGPersonInfoData(string filename)
         {
@@ -92,9 +89,6 @@ namespace BalanceDataSync
 
         }
         #endregion
-
-
-
         #region 储蓄卡信息
         public static List<PGDebitCardInfo> ReadPGDebitCardInfoData(string filename)
         {
@@ -105,13 +99,12 @@ namespace BalanceDataSync
             }
             return null;
         }
-
         public static List<PGDebitCardInfo> PGDebitCardInfoData(string filename)
         {
             try
             {
                 List<PGDebitCardInfo> list = new List<PGDebitCardInfo>();
-                List<DataTable> tables = NPOIHelper.Instance.ImportPersonInfo(filename,0,3);
+                List<DataTable> tables = NPOIHelper.Instance.ImportPersonInfo(filename, 0, 3);
                 List<WebsiteInfo> websites = new BalanceBLL.WebsiteInfoBLL().Select(null);
                 foreach (var dt in tables)
                 {
@@ -119,7 +112,7 @@ namespace BalanceDataSync
                     for (int j = 0; j < dt.Rows.Count; j++)
                     {
                         DataRow item = dt.Rows[j];
-                        if (string.IsNullOrWhiteSpace(item[0].ToString())&& string.IsNullOrWhiteSpace(item[1].ToString()))
+                        if (string.IsNullOrWhiteSpace(item[0].ToString()) && string.IsNullOrWhiteSpace(item[1].ToString()))
                         {
                             continue;
                         }
@@ -130,44 +123,46 @@ namespace BalanceDataSync
                         PGDebitCardInfo model = new PGDebitCardInfo();
                         model.ID = Guid.NewGuid().ToString();
                         string str = item[0].ToString().Trim();
-                        if (!string.IsNullOrWhiteSpace(str))
+                        if (!string.IsNullOrWhiteSpace(str))  
                         {
-                            WebsiteInfo oldwb = websites.FirstOrDefault(e => e.WebsiteID == str);
-                            WebsiteInfo newwb = websites.FirstOrDefault(e => e.NewWebsiteID == str);
-                            if (oldwb != null && !string.IsNullOrWhiteSpace(oldwb.WebsiteID))
-                            {
-                                model.WebsiteID = str;
-                                model.NewWebsiteID = oldwb.NewWebsiteID;
-                            }
-                            else if (newwb != null && !string.IsNullOrWhiteSpace(newwb.WebsiteID))
-                            {
-                                model.NewWebsiteID = str;
-                                model.WebsiteID = oldwb.WebsiteID;
-                            }
-                            else
-                            {
-                                model.WebsiteID = model.NewWebsiteID = str;
-                            }
-                        }
-                        else if (!string.IsNullOrWhiteSpace(item[1].ToString()))
-                        {
-                            string name = item[1].ToString();
-                            WebsiteInfo wb = websites.FirstOrDefault(e => e.WebsiteName.Replace("连云港市","").Contains(name)|| name.Contains(e.WebsiteName.Replace("连云港市", "")));
-                            if (!string.IsNullOrWhiteSpace(wb.WebsiteID))
+                            string name = item[0].ToString();
+                            WebsiteInfo wb = websites.FirstOrDefault(e => e.WebsiteName.Replace("连云港市", "").Contains(name) || name.Contains(e.WebsiteName.Replace("连云港市", "")));
+                            if (wb!=null&&!string.IsNullOrWhiteSpace(wb.WebsiteID))
                             {
                                 model.WebsiteID = wb.WebsiteID;
                                 model.NewWebsiteID = wb.NewWebsiteID;
                             }
+                            else
+                            {
+                                continue;
+                            }
                         }
                         else
                         {
-                            model.WebsiteID = model.NewWebsiteID = null;
+                            continue;
                         }
                         decimal money;
-                        decimal.TryParse(item[2].ToString().Trim(), out money);
+                        decimal.TryParse(item[1].ToString().Trim(), out money);
                         model.CurrentDayBalance = money;
                         model.DifferenceValue = 0;
-                        list.Add(model);
+                        bool ishas=false ;
+                        foreach (var temp in list)
+                        {
+                            if ((model.WebsiteID !=null&&temp.WebsiteID==model.WebsiteID)||(model.NewWebsiteID!=null&&temp.NewWebsiteID==model.NewWebsiteID))
+                            {
+                                if (money>0)
+                                {
+                                    temp.CurrentDayBalance = money;
+                                    temp.DifferenceValue = 0;
+                                }
+                                ishas = true;
+                            }
+                        }
+                        if (!ishas)
+                        {
+                            list.Add(model);
+                        }
+                      
                         //}
                     }
                 }
@@ -179,8 +174,80 @@ namespace BalanceDataSync
             }
 
         }
-        #endregion
+        //public static List<PGDebitCardInfo> PGDebitCardInfoData(string filename)
+        //{
+        //    try
+        //    {
+        //        List<PGDebitCardInfo> list = new List<PGDebitCardInfo>();
+        //        List<DataTable> tables = NPOIHelper.Instance.ImportPersonInfo(filename,0,3);
+        //        List<WebsiteInfo> websites = new BalanceBLL.WebsiteInfoBLL().Select(null);
+        //        foreach (var dt in tables)
+        //        {
+        //            // List<string> accountids = new List<string>();
+        //            for (int j = 0; j < dt.Rows.Count; j++)
+        //            {
+        //                DataRow item = dt.Rows[j];
+        //                if (string.IsNullOrWhiteSpace(item[0].ToString())&& string.IsNullOrWhiteSpace(item[1].ToString()))
+        //                {
+        //                    continue;
+        //                }
+        //                //if (!accountids.Contains(item["人员编码"].ToString().Trim()))
+        //                //{
 
+        //                //  accountids.Add(item["人员编码"].ToString().Trim());
+        //                PGDebitCardInfo model = new PGDebitCardInfo();
+        //                model.ID = Guid.NewGuid().ToString();
+        //                string str = item[0].ToString().Trim();
+        //                if (!string.IsNullOrWhiteSpace(str))
+        //                {
+        //                    WebsiteInfo oldwb = websites.FirstOrDefault(e => e.WebsiteID == str);
+        //                    WebsiteInfo newwb = websites.FirstOrDefault(e => e.NewWebsiteID == str);
+        //                    if (oldwb != null && !string.IsNullOrWhiteSpace(oldwb.WebsiteID))
+        //                    {
+        //                        model.WebsiteID = str;
+        //                        model.NewWebsiteID = oldwb.NewWebsiteID;
+        //                    }
+        //                    else if (newwb != null && !string.IsNullOrWhiteSpace(newwb.WebsiteID))
+        //                    {
+        //                        model.NewWebsiteID = str;
+        //                        model.WebsiteID = oldwb.WebsiteID;
+        //                    }
+        //                    else
+        //                    {
+        //                        continue;
+        //                    }
+        //                }
+        //                else if (!string.IsNullOrWhiteSpace(item[1].ToString()))
+        //                {
+        //                    string name = item[1].ToString();
+        //                    WebsiteInfo wb = websites.FirstOrDefault(e => e.WebsiteName.Replace("连云港市","").Contains(name)|| name.Contains(e.WebsiteName.Replace("连云港市", "")));
+        //                    if (!string.IsNullOrWhiteSpace(wb.WebsiteID))
+        //                    {
+        //                        model.WebsiteID = wb.WebsiteID;
+        //                        model.NewWebsiteID = wb.NewWebsiteID;
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    model.WebsiteID = model.NewWebsiteID = null;
+        //                }
+        //                decimal money;
+        //                decimal.TryParse(item[2].ToString().Trim(), out money);
+        //                model.CurrentDayBalance = money;
+        //                model.DifferenceValue = 0;
+        //                list.Add(model);
+        //                //}
+        //            }
+        //        }
+        //        return list;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+
+        //}
+        #endregion
         #region 保险信息
         public static List<PGInsuranceInfo> ReadPGInsuranceInfoData(string filename)
         {
@@ -202,7 +269,7 @@ namespace BalanceDataSync
                 foreach (var dt in tables)
                 {
                     // List<string> accountids = new List<string>();
-                    for (int j = 7; j < dt.Rows.Count; j++)
+                    for (int j = 0; j < dt.Rows.Count; j++)
                     {
                         DataRow item = dt.Rows[j];
                         if (string.IsNullOrWhiteSpace(item[0].ToString()) && string.IsNullOrWhiteSpace(item[1].ToString()))

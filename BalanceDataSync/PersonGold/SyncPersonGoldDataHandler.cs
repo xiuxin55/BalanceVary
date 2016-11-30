@@ -12,7 +12,8 @@ namespace BalanceDataSync
         List<PGPersonInfo> ImportPGPersonInfoDataList = new List<PGPersonInfo>();
         List<PGDebitCardInfo> ImportPGDebitCardInfoDataList = new List<PGDebitCardInfo>();
         List<PGInsuranceInfo> ImportPGInsuranceInfoDataList = new List<PGInsuranceInfo>();
-
+        List<PGCreditCardInfo> ImportPGCreditCardInfoDataList = new List<PGCreditCardInfo>();
+ 
         public void ImportPGPersonInfo()
         {
             IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains("PGPersonInfo"));
@@ -213,5 +214,63 @@ namespace BalanceDataSync
             }
         }
         #endregion
+
+
+        #region 信用卡导入处理
+        public void ImportPGCreditCardInfo()
+        {
+            IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains("PGInsuranceInfo"));
+            foreach (var item in filelist)
+            {
+                try
+                {
+
+                    DateTime time;
+                    if (item.FileDateTime == null)
+                    {
+                        time = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
+                    }
+                    else
+                    {
+                        time = DateTime.Parse(item.FileDateTime.Value.ToString("yyyy-MM-dd"));
+                    }
+                    ImportPGInsuranceInfoDataList = ReadPersonExcel.ReadPGInsuranceInfoData(item.FilePath + item.FileName);
+                    if (ImportPGInsuranceInfoDataList.Count == 0)
+                    {
+                        item.FileState = 2;
+                        item.FileException = "未获取到数据";
+                        return;
+                    }
+                    CalculateCreditCardInfo(time);
+                    item.FileState = 1;
+                }
+                catch (Exception ex)
+                {
+
+                    item.FileState = 2;
+                    item.FileException = ex.Message + ":\n" + ex.StackTrace;
+                    if (NotifyFileStateChange != null)
+                    {
+                        NotifyFileStateChange(item);
+                    }
+                    throw ex;
+                }
+            }
+        }
+        private void CalculateCreditCardInfo(DateTime importtime)
+        {
+            PGCreditCardInfoBLL bll = new PGCreditCardInfoBLL();
+    
+            //List<PGInsuranceInfo> PreDataList = bll.Select(new PGInsuranceInfo() { DataTime = importtime.AddDays(-1) });
+            //bll.Delete(new PGInsuranceInfo() { DataTime = importtime });
+            foreach (var model in ImportPGCreditCardInfoDataList)
+            {
+               
+                model.DataTime = importtime;
+                bll.Add(model);
+            }
+        }
+        #endregion
+        
     }
 }

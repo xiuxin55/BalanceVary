@@ -63,6 +63,7 @@
     <Compile Include="AccountAndNameLinkInfo.cs" />
     <Compile Include="BaseModel.cs" />
     <Compile Include="PersonGold\PersonGoldBaseModel.cs" />
+    <Compile Include="PersonGold\PGCreditCardInfo.cs" />
     <Compile Include="PersonGold\PGPersonAllocateInfo.cs" />
     <Compile Include="PersonGold\PGWebistePerformanceInfo.cs" />
     <Compile Include="PersonGold\PGInsuranceInfo.cs" />

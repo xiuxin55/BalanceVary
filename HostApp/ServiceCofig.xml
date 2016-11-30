@@ -23,6 +23,7 @@
   <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.PGDebitCardInfoService"  describe="个金服务--储蓄卡"/>
   <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.PGInsuranceInfoService"  describe="个金服务--保险"/>
   <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.PGWebistePerformanceInfoService"  describe="个金服务--网点业绩"/>
+  <service assembly="WcfBalanceServiceLibrary"  class="WcfBalanceServiceLibrary.PGPersonAllocateInfoService"  describe="个金服务--个人业绩"/>
   
 </config>
 

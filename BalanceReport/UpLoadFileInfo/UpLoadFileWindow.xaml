@@ -47,8 +47,9 @@
                         <DataGridTextColumn Header="文件实际名称" Binding="{Binding FileRealName}" Width="1*" IsReadOnly="True"  />
                         <DataGridTextColumn Header="文件名称" Binding="{Binding FileName}" Width="1*" IsReadOnly="True"  />
                         <DataGridTextColumn Header="文件类型" Binding="{Binding FileType}" Width="1*" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="当前状态" Binding="{Binding FileState,Converter={StaticResource FileStateConverter } }"  Width="1*" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="上传时间" Binding="{Binding FileUploadTime}" Width="1*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="当前状态" Binding="{Binding FileState,Converter={StaticResource FileStateConverter } }"  Width="0.5*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="上传时间" Binding="{Binding FileUploadTime,StringFormat={}{0:yyyy年MM月dd日 hh:mm:ss } }" Width="1.2*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="数据时间" Binding="{Binding FileDateTime,StringFormat={}{0:yyyy年MM月dd日} }" Width="1.1*" IsReadOnly="True"/>
                         <!--<DataGridTextColumn Header="异常" Binding="{Binding FileException}" Width="1*" IsReadOnly="True"/> ,Converter={StaticResource FileStateConverter}-->
                     </DataGrid.Columns>
                 </DataGrid>

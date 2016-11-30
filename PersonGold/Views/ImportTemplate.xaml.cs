@@ -10,12 +10,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BalanceReport.ViewModels;
 using MahApps.Metro.Controls;
 using System.IO;
 using WSBalanceClient;
 
-namespace BalanceReport
+namespace PersonGold.Views
 {
     /// <summary>
     /// ManagerAdd.xaml 的交互逻辑
@@ -78,26 +77,6 @@ namespace BalanceReport
 
         public DateTime ImportTime { get; set; }
 
-        private void btn_customer_Click(object sender, RoutedEventArgs e)
-        {
-            SaveDownloadFile("客户经理和部门关联导入模版.xls");
-        }
-
-        private void btn_dayreport_Click(object sender, RoutedEventArgs e)
-        {
-            SaveDownloadFile("日报模版.xls");
-        }
-
-        private void btn_monthreport_Click(object sender, RoutedEventArgs e)
-        {
-            SaveDownloadFile("月报模版.xls");
-        }
-
-        private void btn_salary_Click(object sender, RoutedEventArgs e)
-        {
-            SaveDownloadFile("薪资模板.xls");
-        }
-
         private void SaveDownloadFile(string filename)
         {
             System.Windows.Forms.FolderBrowserDialog folder = new System.Windows.Forms.FolderBrowserDialog();
@@ -118,13 +97,13 @@ namespace BalanceReport
             {
                 if (File.Exists(savepath + "\\" + filename))
                 {
-                    fs = File.Create(savepath + "\\" + filename.Substring(0, filename.Length - 4) + DateTime.Now.ToString("yyyyMMddhhmmss") + ".xls");
+                    fs = File.Create(savepath + "\\" + filename.Substring(0, filename.Length - 4)+DateTime.Now.ToString("yyyyMMddhhmmss")+".xls");
                 }
                 else
                 {
                     fs = File.Create(savepath + "\\" + filename);
                 }
-
+                
                 fs.Write(filebytes, 0, filebytes.Length);
                 MessageBox.Show("下载完成");
             }
@@ -140,6 +119,26 @@ namespace BalanceReport
                     fs.Close();
                 }
             }
+        }
+
+        private void btn_staff_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDownloadFile("人员导入模版.xls");
+        }
+
+        private void btn_debtcard_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDownloadFile("储蓄类模版.xls");
+        }
+
+        private void btn_Insurance_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDownloadFile("保险类模版.xls");
+        }
+
+        private void btn_creditcard_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDownloadFile("信用卡类模版.xls");
         }
     }
 }

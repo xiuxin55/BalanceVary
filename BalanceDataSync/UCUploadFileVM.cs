@@ -35,6 +35,7 @@ namespace BalanceDataSync
             CommonEvent.PersonInfoDataEvent += PersonInfoEvent;
             CommonEvent.PGDebitCardInfoDataEvent += PGDebitCardInfoData;
             CommonEvent.PGInsuranceInfoDataEvent += PGInsuranceInfoData;
+            CommonEvent.PGCreditCardInfoInfoDataEvent += PGCreditCardInfoInfoData;
             #endregion
 
         }
@@ -385,6 +386,29 @@ namespace BalanceDataSync
             
         }
 
+        private object CreditCardObj = new object();
+        /// <summary>
+        /// 保险数据导入触发事件
+        /// </summary>
+        /// <param name="obj"></param>
+        private void PGCreditCardInfoInfoData(object obj)
+        {
+            lock (CreditCardObj)
+            {
+                UploadFileInfo info = obj as UploadFileInfo;
+                if (info != null)
+                {
+                    List<UploadFileInfo> temp = new List<UploadFileInfo>();
+                    temp.Add(info);
+                    SyncDataHandler syn = new SyncDataHandler(temp);
+                    syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
+                    MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGCreditCardInfo), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+                }
+            }
+
+        }
+
+        
         #endregion
     }
 }

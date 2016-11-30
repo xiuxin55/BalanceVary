@@ -44,6 +44,12 @@ namespace Common.Server
         /// 上传保险数据后触发导入事件
         /// </summary>
         public static Action<object> PGInsuranceInfoDataEvent;
+        /// <summary>
+        /// 上传信用卡数据后触发导入事件
+        /// </summary>
+        public static Action<object> PGCreditCardInfoInfoDataEvent;
+
+        
 
     }
 }
