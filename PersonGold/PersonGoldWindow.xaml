@@ -33,6 +33,7 @@
                             <MenuItem Header="人员信息导入" Click="PersonInfoImportButton_Click"  />
                             <MenuItem  Header="储蓄卡数据导入" Click="DebitCardImportButton_Click"  />
                             <MenuItem  Header="保险数据导入" Click="PGInsuranceInfoImportButton_Click"  />
+                            <MenuItem  Header="信用卡数据导入" Click="PGCreditCardInfoImportButton_Click"  />
                         </StackPanel>
                     </Border>
                 </Grid>

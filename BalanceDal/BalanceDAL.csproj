@@ -56,6 +56,8 @@
     <Compile Include="PersonGold\PGWebistePerformanceInfoDAL.cs" />
     <Compile Include="PersonGold\PGPersonInfoDAL.cs" />
     <Compile Include="Salary\SalaryInfoDAL.cs" />
+    <Compile Include="SQLServer\BatchUpdateSQLServer.cs" />
+    <Compile Include="SQLServer\PGCreditCardInfoDAL.cs" />
     <Compile Include="SystemSetInfoDAL.cs" />
     <Compile Include="Vary\BalanceDAL.cs" />
     <Compile Include="DataConverter\ConverterTable.cs" />

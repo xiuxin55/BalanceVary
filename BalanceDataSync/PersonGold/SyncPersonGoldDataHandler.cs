@@ -219,7 +219,7 @@ namespace BalanceDataSync
         #region 信用卡导入处理
         public void ImportPGCreditCardInfo()
         {
-            IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains("PGInsuranceInfo"));
+            IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains("PGCreditCardInfo"));
             foreach (var item in filelist)
             {
                 try
@@ -234,8 +234,8 @@ namespace BalanceDataSync
                     {
                         time = DateTime.Parse(item.FileDateTime.Value.ToString("yyyy-MM-dd"));
                     }
-                    ImportPGInsuranceInfoDataList = ReadPersonExcel.ReadPGInsuranceInfoData(item.FilePath + item.FileName);
-                    if (ImportPGInsuranceInfoDataList.Count == 0)
+                    ImportPGCreditCardInfoDataList = ReadPersonExcel.ReadPGCreditCardInfoData(item.FilePath + item.FileName);
+                    if (ImportPGCreditCardInfoDataList.Count == 0)
                     {
                         item.FileState = 2;
                         item.FileException = "未获取到数据";

@@ -711,36 +711,47 @@ namespace BalanceDataSync
 
                     for (int j = row.FirstCellNum; j < cellCount; j++)
                     {
-                        if (row.GetCell(j) != null)
-                            if (row.GetCell(j).CellType == NPOI.SS.UserModel.CellType.NUMERIC)
+                        CellRangeAddress mergedRegion = null;
+                        NPOI.SS.UserModel.ICell cell = row.GetCell(j);
+                        if (cell.IsMergedCell)
+                        {
+                            mergedRegion= getMergedRegionForCell(cell);
+                            if (mergedRegion != null)
                             {
-                                int s = row.GetCell(j).CellStyle.DataFormat;
+                                cell = sheet.GetRow(mergedRegion.FirstRow).GetCell(mergedRegion.FirstColumn);
+                            }
+                    
+                        }
+                        if (cell != null)
+                            if (cell.CellType == NPOI.SS.UserModel.CellType.NUMERIC)
+                            {
+                                int s = cell.CellStyle.DataFormat;
                                 if (s == 14 || s == 31 || s == 57 || s == 58)
                                 {
-                                    DateTime date = row.GetCell(j).DateCellValue;
+                                    DateTime date = cell.DateCellValue;
                                     dataRow[j] = date.ToString();
                                 }
                                 else
                                 {
-                                    dataRow[j] = row.GetCell(j).NumericCellValue.ToString();
+                                    dataRow[j] = cell.NumericCellValue.ToString();
                                 }
                             }
-                            else if (row.GetCell(j).CellType == NPOI.SS.UserModel.CellType.FORMULA)
+                            else if (cell.CellType == NPOI.SS.UserModel.CellType.FORMULA)
                             {
                                 //double number = row.GetCell(j).NumericCellValue;
-                                if (row.GetCell(j).CachedFormulaResultType == NPOI.SS.UserModel.CellType.NUMERIC)
+                                if (cell.CachedFormulaResultType == NPOI.SS.UserModel.CellType.NUMERIC)
                                 {
-                                    dataRow[j] = row.GetCell(j).NumericCellValue.ToString();
+                                    dataRow[j] = cell.NumericCellValue.ToString();
                                 }
-                                else if (row.GetCell(j).CachedFormulaResultType == NPOI.SS.UserModel.CellType.STRING)
+                                else if (cell.CachedFormulaResultType == NPOI.SS.UserModel.CellType.STRING)
                                 {
-                                    dataRow[j] = row.GetCell(j).StringCellValue;
+                                    dataRow[j] = cell.StringCellValue;
                                 }
 
                             }
                             else
                             {
-                                dataRow[j] = row.GetCell(j).ToString();
+                                dataRow[j] = cell.ToString();
                             }
                     }
 
@@ -758,7 +769,21 @@ namespace BalanceDataSync
             }
             return tables;
 
-        } 
+        }
+        public CellRangeAddress getMergedRegionForCell(NPOI.SS.UserModel.ICell c)
+        {
+            NPOI.SS.UserModel.ISheet s = c.Sheet;
+            for (int i = 0; i < s.NumMergedRegions; i++)
+            {
+                CellRangeAddress mergedRegion = s.GetMergedRegion(i);
+                if (mergedRegion.IsInRange(c.RowIndex, c.ColumnIndex))
+                {
+                    return mergedRegion;
+                }
+            }
+            
+            return null;
+        }
         #endregion
 
 

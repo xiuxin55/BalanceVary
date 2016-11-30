@@ -31,6 +31,21 @@ namespace BalanceDAL
             }
         }
 
-       
+        /// <summary>
+        /// 批量更新数据
+        /// </summary>
+        /// <param name="list"></param>
+        public void BatchUpdate(List<PGCreditCardInfo> list)
+        {
+            try
+            {
+                //BatchInsertSQLServer bs = new BatchInsertSQLServer();
+                //bs.BatchInsertPGDebitCardInfo(list);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

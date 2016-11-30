@@ -17,6 +17,8 @@
             <Button x:Name="AddWebsite" Width="60" Content="新增" Command="{Binding AddWebsiteCommand}" HorizontalAlignment="Center" HorizontalContentAlignment="Left" />
             <Button x:Name="UpdateWebsite" Width="60"  Content="修改" Command="{Binding UpdateWebsiteCommand}" HorizontalContentAlignment="Left" />
             <Button x:Name="DeleteWebsite" Width="60"  Content="删除" Command="{Binding DeleteWebsiteCommand}" HorizontalContentAlignment="Left" />
+            <TextBlock  Width="60"   Text="新网点号:" VerticalAlignment="Center" />
+            <TextBox  Width="120" Text="{Binding SearchWebsiteInfoModel.NewWebsiteID}"  HorizontalContentAlignment="Left" VerticalAlignment="Center" />
             <TextBlock  Width="60"   Text="旧网点号:" VerticalAlignment="Center" />
             <TextBox  Width="120" Text="{Binding SearchWebsiteInfoModel.WebsiteID}"  HorizontalContentAlignment="Left" VerticalAlignment="Center" />
             <TextBlock  Width="60"   Text="网点名称:" VerticalAlignment="Center" />

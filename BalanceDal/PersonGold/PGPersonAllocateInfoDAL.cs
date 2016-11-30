@@ -30,5 +30,21 @@ namespace BalanceDAL
         //        throw ex;
         //    }
         //}
+        /// <summary>
+        /// 批量更新数据
+        /// </summary>
+        /// <param name="list"></param>
+        public void BatchUpdate(List<PGPersonAllocateInfo> list)
+        {
+            try
+            {
+                //BatchUpdateSQLServer bs = new BatchUpdateSQLServer();
+                //bs.BatchUpdatePGPersonAllocateInfo(list);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

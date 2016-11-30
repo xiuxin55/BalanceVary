@@ -115,6 +115,7 @@ namespace BalanceDataSync
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGPersonInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGDebitCardInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGInsuranceInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGCreditCardInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
             }
             catch (Exception ex)
             {

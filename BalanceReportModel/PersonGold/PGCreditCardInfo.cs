@@ -12,21 +12,14 @@ namespace BalanceModel
     public class PGCreditCardInfo : PersonGoldBaseModel
     {
         /// <summary>
-        /// 本期发生
+        /// 员工名
         /// </summary>
-        public decimal? CurrentDayBalance { get; set; }
+        public string StaffName { get; set; }
         /// <summary>
-        /// 与昨天的差值
+        /// 信用卡数
         /// </summary>
-        public decimal? DifferenceValue { get; set; }
-        /// <summary>
-        /// 累计发生
-        /// </summary>
-        public decimal? WholeBalance { get; set; }
-        /// <summary>
-        /// 当年余额均值
-        /// </summary>
-        public decimal? CurrentYearAverageBalance { get; set; }
+        public decimal? CreditCardCount { get; set; }
+       
         /// <summary>
         /// 关联的网点
         /// </summary>

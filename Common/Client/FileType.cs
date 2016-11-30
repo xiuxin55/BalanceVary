@@ -19,6 +19,7 @@ namespace Common.Client
         SalaryInfo,//薪资导入
         PGPersonInfo,//个金中的人员信息导入
         PGDebitCardInfo,//个金--储蓄卡数据导入
-        PGInsuranceInfo//个金--保险数据导入
+        PGInsuranceInfo,//个金--保险数据导入
+        PGCreditCardInfo//个金--信用卡数据导入
     }
 }

@@ -82,6 +82,26 @@ namespace SqlMaps
         }
 
         /// <summary>
+        /// 批量更新数据
+        /// </summary>
+        /// <param name="dt">数据表</param>
+        /// <returns></returns>
+        public bool BatchUpdateSQLServer(DataTable dt)
+        {
+            if (OpenSQLServer())
+            {
+                using (SqlBulkCopy bulk = new SqlBulkCopy(Connection))
+                {
+                    bulk.BatchSize = dt.Rows.Count;
+                    bulk.DestinationTableName = dt.TableName;
+                    bulk.WriteToServer(dt);
+                }
+                CloseSQLServer();
+            }
+            return true;
+        }
+
+        /// <summary>
         /// 关闭数据库连接
         /// </summary>
         private void CloseSQLServer()

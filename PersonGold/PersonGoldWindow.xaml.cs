@@ -147,5 +147,20 @@ namespace PersonGold
             ImportTemplate template = new Views.ImportTemplate();
             template.Show();
         }
+
+        private void PGCreditCardInfoImportButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog op = new OpenFileDialog();
+            if ((bool)op.ShowDialog())
+            {
+                if (!op.SafeFileName.ToLower().EndsWith(".xls"))
+                {
+                    MessageBox.Show("系统仅支持xls格式");
+                    return;
+                }
+                WSBalanceClient.Helper.UploadFile.Upload(op.FileName, FileType.PGCreditCardInfo);
+            }
+            
+        }
     }
 }

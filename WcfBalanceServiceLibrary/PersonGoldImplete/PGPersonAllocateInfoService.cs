@@ -7,6 +7,7 @@ using System.Text;
 using BalanceModel;
 using BalanceBLL;
 using Common;
+using IBatisNet.Common.Transaction;
 
 namespace WcfBalanceServiceLibrary
 {
@@ -19,7 +20,56 @@ namespace WcfBalanceServiceLibrary
         PGPersonAllocateInfoBLL bll = new PGPersonAllocateInfoBLL();
         public bool Add(PGPersonAllocateInfo info)
         {
-            return bll.Add(info);
+            if (info.DataTime ==null)
+            {
+                return false ;
+            }
+            using (TransactionScope scope = new TransactionScope())
+            {
+
+
+                PGPersonAllocateInfo temp = new PGPersonAllocateInfo() { StaffCode = info.StaffCode, StaffName = info.StaffName, DataTime = info.DataTime.Value.AddDays(-1) };
+                PGPersonAllocateInfo tempcurrentday = new PGPersonAllocateInfo() { StaffCode = info.StaffCode, StaffName = info.StaffName, DataTime = info.DataTime.Value };
+                //删除当天数据
+                List<PGPersonAllocateInfo> currentlist = bll.Select(tempcurrentday);
+                List<PGPersonAllocateInfo> prelist = bll.Select(temp);
+                PGPersonAllocateInfo premodel = prelist != null && prelist.Count > 0 ? prelist[0] : new PGPersonAllocateInfo();
+                if (DateTime.Now.Month == premodel.DataTime.Value.Month)
+                {
+                    info.CardMonthGrowth = info.CardDayGrowth + premodel.CardMonthGrowth;
+                    info.InsuranceMonthGrowth = info.InsuranceDayGrowth + premodel.InsuranceMonthGrowth;
+                    info.CreditCardMonthGrowth = info.CreditCardDayGrowth + premodel.CreditCardMonthGrowth;
+                }
+                else
+                {
+                    info.CardMonthGrowth = info.CardDayGrowth;
+                    info.InsuranceMonthGrowth = info.InsuranceDayGrowth;
+                    info.CreditCardMonthGrowth = info.CreditCardDayGrowth;
+                }
+                if (DateTime.Now.Year == premodel.DataTime.Value.Year)
+                {
+                    info.CardYearGrowth = info.CardDayGrowth + premodel.CardYearGrowth;
+                    info.InsuranceYearGrowth = info.InsuranceDayGrowth + premodel.InsuranceYearGrowth;
+                    info.CreditCardYearGrowth = info.InsuranceYearGrowth + premodel.CreditCardYearGrowth;
+                }
+                else
+                {
+                    info.CardYearGrowth = info.CardDayGrowth;
+                    info.InsuranceYearGrowth = info.InsuranceDayGrowth;
+                    info.CreditCardYearGrowth = info.InsuranceYearGrowth;
+                }
+                bool ishasvalue = false;
+                if (currentlist!=null&& currentlist.Count>0)
+                {
+                    ishasvalue = true;
+                    info.CreditCardDayGrowth = currentlist[0].CreditCardDayGrowth;
+                    info.CreditCardMonthGrowth = currentlist[0].CreditCardMonthGrowth;
+                    info.CreditCardYearGrowth = currentlist[0].CreditCardYearGrowth;
+                    
+                }
+                //计算贡献度
+                return ishasvalue?bll.Update(info):bll.Add(info);
+            }
         }
 
         public bool Delete(PGPersonAllocateInfo info)
