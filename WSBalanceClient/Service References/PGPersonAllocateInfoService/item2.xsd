@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BalanceModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BalanceModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="PGPersonAllocateInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PersonGoldBaseModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CardDayGrowth" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CardMonthGrowth" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CardYearGrowth" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CreditCardDayGrowth" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CreditCardMonthGrowth" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CreditCardYearGrowth" type="xs:decimal" />
+          <xs:element minOccurs="0" name="DayContributionDegree" type="xs:decimal" />
+          <xs:element minOccurs="0" name="InsuranceDayGrowth" type="xs:decimal" />
+          <xs:element minOccurs="0" name="InsuranceMonthGrowth" type="xs:decimal" />
+          <xs:element minOccurs="0" name="InsuranceYearGrowth" type="xs:decimal" />
+          <xs:element minOccurs="0" name="IsSelected" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MonthContributionDegree" type="xs:decimal" />
+          <xs:element minOccurs="0" name="StaffCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StaffName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="YearContributionDegree" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PGPersonAllocateInfo" nillable="true" type="tns:PGPersonAllocateInfo" />
+  <xs:complexType name="PersonGoldBaseModel">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NewWebsiteID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WebsiteID" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PersonGoldBaseModel" nillable="true" type="tns:PersonGoldBaseModel" />
+  <xs:complexType name="BaseModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="OrderbyColomnName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="StartIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="SubOrderbyColomnName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseModel" nillable="true" type="tns:BaseModel" />
+  <xs:complexType name="ArrayOfPGPersonAllocateInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PGPersonAllocateInfo" nillable="true" type="tns:PGPersonAllocateInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPGPersonAllocateInfo" nillable="true" type="tns:ArrayOfPGPersonAllocateInfo" />
+</xs:schema>

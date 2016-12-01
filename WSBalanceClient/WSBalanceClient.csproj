@@ -43,8 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\UploadFile.cs" />
+    <Compile Include="PersonGold\WSPGPersonAllocateInfoService.cs" />
     <Compile Include="PersonGold\WSPGWebistePerformanceInfoService.cs" />
     <Compile Include="PersonGold\WSPGPersonInfoService.cs" />
+    <Compile Include="Service References\PGPersonAllocateInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\PGPersonInfoService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -248,6 +254,19 @@
     <None Include="Service References\DepartmentInfoService\WSBalanceClient.DepartmentInfoService.DepartmentInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\PGPersonAllocateInfoService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PGPersonAllocateInfoService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PGPersonAllocateInfoService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PGPersonAllocateInfoService\PGPersonAllocateInfoService.wsdl" />
+    <None Include="Service References\PGPersonAllocateInfoService\WSBalanceClient.PGPersonAllocateInfoService.PGPersonAllocateInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\PGPersonInfoService\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -360,6 +379,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\PGPersonAllocateInfoService\" />
     <WCFMetadataStorage Include="Service References\PGPersonInfoService\" />
     <WCFMetadataStorage Include="Service References\PGWebistePerformanceInfoService\" />
     <WCFMetadataStorage Include="Service References\SalaryInfoService\" />
@@ -641,6 +661,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\PGWebistePerformanceInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PGPersonAllocateInfoService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PGPersonAllocateInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PGPersonAllocateInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PGPersonAllocateInfoService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

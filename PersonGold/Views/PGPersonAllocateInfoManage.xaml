@@ -1,0 +1,55 @@
+﻿<UserControl  x:Class="PersonGold.Views.PGPersonAllocateInfoManage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:tool="clr-namespace:PersonGold.Tools"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="553">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="265*" />
+        </Grid.RowDefinitions>
+        <ToolBar     x:Name="toolBar1" ScrollViewer.VerticalScrollBarVisibility="Disabled" SnapsToDevicePixels="True"  >
+            <Button Width="0"/>
+            <!--<Button x:Name="Add" Width="60" Content="新增" Command="{Binding AddCommand}" HorizontalAlignment="Center" HorizontalContentAlignment="Left" />
+            <Button x:Name="Update" Width="60"  Content="修改" Command="{Binding UpdateCommand}" HorizontalContentAlignment="Left" />
+            <Button x:Name="Delete" Width="60"  Content="删除" Command="{Binding DeleteCommand}" HorizontalContentAlignment="Left" />-->
+            <!--<TextBlock  Width="60"   Text="部门号:" VerticalAlignment="Center" />
+            <TextBox  Width="120" Text="{Binding SearchDepartmentModel.DepartmentID}"  HorizontalContentAlignment="Left" VerticalAlignment="Center" />-->
+            <TextBlock  Width="60"   Text="人员编号:" VerticalAlignment="Center" />
+            <TextBox  Width="120" Text="{Binding SearchInfoModel.StaffCode}"  HorizontalContentAlignment="Left" />
+            <TextBlock Text="日期：" VerticalAlignment="Center"  Margin="10,0,0,0"/>
+            <DatePicker SelectedDate="{Binding SearchInfoModel.DataTime}" Width="150"   Margin="10,0,0,0"/>
+            <Button x:Name="Search" Width="60"  Content="查询" Command="{Binding SearchCommand}" HorizontalContentAlignment="Left"  />
+        </ToolBar>
+        <tool:GridLineDecorator Grid.Row="1" >
+            <ListView  x:Name="listView1" ItemsSource="{Binding PGPersonInfoList}" SelectedItem="{Binding SelectedInfoModel}">
+                <ListView.View>
+                    <GridView >
+                        <GridViewColumn Width="50"  Header="序号" DisplayMemberBinding="{Binding RowNumber}" tool:ListViewBehavior.SortField="RowNumber"/>
+                        <GridViewColumn Width="100"  Header="人员编码" DisplayMemberBinding="{Binding StaffCode}" tool:ListViewBehavior.SortField="StaffCode"/>
+                        <GridViewColumn Width="100"  Header="姓名" DisplayMemberBinding="{Binding StaffName}" tool:ListViewBehavior.SortField="StaffName"/>
+                        <GridViewColumn Width="100" Header="新部门编码" DisplayMemberBinding="{Binding NewWebsiteID}" tool:ListViewBehavior.SortField="NewWebsiteID" />
+                        <GridViewColumn Width="100" Header="旧部门编码" DisplayMemberBinding="{Binding WebsiteID}" tool:ListViewBehavior.SortField="WebsiteID" />
+                        <!--<GridViewColumn Width="150" Header="所在部门" DisplayMemberBinding="{Binding WebsiteInfoObj.WebsiteName}" tool:ListViewBehavior.SortField="WebsiteInfoObj.WebsiteName"/>-->
+                        <GridViewColumn Width="130"  Header="储蓄卡日增" DisplayMemberBinding="{Binding CardDayGrowth}" tool:ListViewBehavior.SortField="CardDayGrowth" />
+                        <GridViewColumn Width="100"  Header="储蓄卡年累计" DisplayMemberBinding="{Binding CardYearGrowth}" tool:ListViewBehavior.SortField="CardYearGrowth"/>
+                        <GridViewColumn Width="100"  Header="保险日增" DisplayMemberBinding="{Binding InsuranceDayGrowth}" tool:ListViewBehavior.SortField="InsuranceDayGrowth"/>
+                        <GridViewColumn Width="100"  Header="保险年累计" DisplayMemberBinding="{Binding InsuranceYearGrowth}" tool:ListViewBehavior.SortField="InsuranceYearGrowth"/>
+                        <GridViewColumn Width="100"  Header="当前贡献度" DisplayMemberBinding="{Binding DayContributionDegree}" tool:ListViewBehavior.SortField="DayContributionDegree"/>
+                        <!--<GridViewColumn Width="100"  Header="所属机构" DisplayMemberBinding="{Binding Institution}" tool:ListViewBehavior.SortField="Institution"/>-->
+                    </GridView>
+                </ListView.View>
+                <!--<ListView.ItemTemplate>
+                <DataTemplate >
+                    
+                </DataTemplate>
+            </ListView.ItemTemplate>-->
+            </ListView>
+        </tool:GridLineDecorator>
+    </Grid>
+
+</UserControl>

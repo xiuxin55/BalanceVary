@@ -37,13 +37,27 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     </resultMap>
   </resultMaps>
   <statements>
+    <select id="SelectPGPersonAllocateInfoCount"  resultClass="int"   parameterClass="PGPersonAllocateInfo">
+      select count(*)  from  PGPersonAllocateInfo
+      where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">p.ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="NewWebsiteID">w.NewWebsiteID =#NewWebsiteID# </isNotEmpty>
+          <isNotEmpty prepend="and" property="WebsiteID">WebsiteID =#WebsiteID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="StaffCode">StaffCode =#StaffCode# </isNotEmpty>
+          <isNotEmpty prepend="and" property="StaffName">StaffName=#StaffName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="DataTime">DataTime=#DataTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
     <select id="SelectPGPersonAllocateInfo"  resultMap="PGPersonAllocateInfoMap"  parameterClass="PGPersonAllocateInfo">
       select row_number() over(order by StaffCode asc) as RowNumber,*  from PGPersonAllocateInfo where 1=1
       <dynamic>
         <isParameterPresent>
           <isNotEmpty prepend="and" property="ID">p.ID=#ID#</isNotEmpty>
           <isNotEmpty prepend="and" property="NewWebsiteID">w.NewWebsiteID =#NewWebsiteID# </isNotEmpty>
-          <isNotEmpty prepend="and" property="WebsiteID">p.WebsiteID =#WebsiteID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="WebsiteID">WebsiteID =#WebsiteID#</isNotEmpty>
           <isNotEmpty prepend="and" property="StaffCode">StaffCode =#StaffCode# </isNotEmpty>
           <isNotEmpty prepend="and" property="StaffName">StaffName=#StaffName#</isNotEmpty>
           <isNotEmpty prepend="and" property="DataTime">DataTime=#DataTime#</isNotEmpty>
