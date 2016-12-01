@@ -70,7 +70,7 @@ namespace SqlMaps
             return request.PreparedStatement.PreparedSql;
         }
 
-        protected static IDbCommand GetDbCommand(string tag, object paramObject)
+        public static IDbCommand GetDbCommand(string tag, object paramObject)
         {
             IMappedStatement statement = SqlMap.GetMappedStatement(tag);
             if (!SqlMap.IsSessionStarted)

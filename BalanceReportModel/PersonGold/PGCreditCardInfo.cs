@@ -12,13 +12,17 @@ namespace BalanceModel
     public class PGCreditCardInfo : PersonGoldBaseModel
     {
         /// <summary>
+        /// 员工编号
+        /// </summary>
+        public string StaffCode { get; set; }
+        /// <summary>
         /// 员工名
         /// </summary>
         public string StaffName { get; set; }
         /// <summary>
         /// 信用卡数
         /// </summary>
-        public decimal? CreditCardCount { get; set; }
+        public decimal CreditCardCount { get; set; }
        
         /// <summary>
         /// 关联的网点

@@ -442,5 +442,62 @@ namespace BalanceDAL
             }
             return dt;
         }
+
+
+        /// <summary>
+        ///  人员分配数据转换为DataTable
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static DataTable PersonAllocateListConvertTable(List<PGPersonAllocateInfo> list)
+        {
+            DataTable dt = new DataTable();
+            dt.TableName = "PGPersonAllocateInfo";
+            dt.Columns.Add("ID");
+            dt.Columns.Add("NewWebsiteID");
+            dt.Columns.Add("WebsiteID");
+            dt.Columns.Add("StaffCode");
+            dt.Columns.Add("StaffName");
+            dt.Columns.Add("CardDayGrowth");
+            dt.Columns.Add("CardMonthGrowth");
+            dt.Columns.Add("CardYearGrowth");
+            dt.Columns.Add("InsuranceDayGrowth");
+            dt.Columns.Add("InsuranceMonthGrowth");
+            dt.Columns.Add("InsuranceYearGrowth");
+            dt.Columns.Add("CreditCardDayGrowth");
+            dt.Columns.Add("CreditCardMonthGrowth");
+            dt.Columns.Add("CreditCardYearGrowth");
+            dt.Columns.Add("DayContributionDegree");
+            dt.Columns.Add("MonthContributionDegree");
+            dt.Columns.Add("YearContributionDegree");
+            dt.Columns.Add("DataTime");
+
+            foreach (var item in list)
+            {
+                DataRow dr = dt.NewRow();
+                dr["ID"] = item.ID;
+                dr["NewWebsiteID"] = item.NewWebsiteID;
+                dr["WebsiteID"] = item.WebsiteID;
+                dr["StaffCode"] = item.StaffCode;
+                dr["StaffName"] = item.StaffName;
+                dr["CardDayGrowth"] = item.CardDayGrowth;
+                dr["CardMonthGrowth"] = item.CardMonthGrowth;
+                dr["CardYearGrowth"] = item.CardYearGrowth;
+                dr["InsuranceDayGrowth"] = item.InsuranceDayGrowth;
+                dr["InsuranceMonthGrowth"] = item.InsuranceMonthGrowth;
+                dr["InsuranceYearGrowth"] = item.InsuranceYearGrowth;
+                dr["CreditCardDayGrowth"] = item.CreditCardDayGrowth;
+                dr["CreditCardMonthGrowth"] = item.CreditCardMonthGrowth;
+                dr["CreditCardYearGrowth"] = item.CreditCardYearGrowth;
+                dr["DayContributionDegree"] = item.DayContributionDegree;
+                dr["MonthContributionDegree"] = item.MonthContributionDegree;
+                dr["YearContributionDegree"] = item.YearContributionDegree;
+                dr["DataTime"] = item.DataTime;
+                dt.Rows.Add(dr);
+            }
+            return dt;
+        }
+
+        
     }
 }

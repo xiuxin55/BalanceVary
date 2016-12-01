@@ -357,7 +357,7 @@ namespace BalanceDataSync
                 List<PGCreditCardInfo> list = new List<PGCreditCardInfo>();
                 List<DataTable> tables = NPOIHelper.Instance.ImportPersonInfo(filename);
                 List<WebsiteInfo> websites = new BalanceBLL.WebsiteInfoBLL().Select(null);
-
+                List<PGPersonInfo> personinfos = new BalanceBLL.PGPersonInfoBLL().Select(null);
                 foreach (var dt in tables)
                 {
                     List<string> distinctstrs = new List<string>();
@@ -415,6 +415,11 @@ namespace BalanceDataSync
                             continue;
                         }
                         model.DataTime = approvaltime;
+                        PGPersonInfo tempperson= personinfos!=null? personinfos.Find(e =>( e.NewWebsiteID == model.NewWebsiteID || e.WebsiteID == model.WebsiteID) && e.StaffName == model.StaffName):null;
+                        if (tempperson !=null && !string.IsNullOrWhiteSpace(tempperson.StaffCode))
+                        {
+                            model.StaffCode = tempperson.StaffCode;
+                        }
                         PGCreditCardInfo tempmodel = list.Find(e => (e.NewWebsiteID == model.NewWebsiteID || e.WebsiteID == model.WebsiteID) && e.StaffName == model.StaffName&&e.DataTime ==model.DataTime);
                         if (tempmodel !=null&& tempmodel.CreditCardCount>0)
                         {

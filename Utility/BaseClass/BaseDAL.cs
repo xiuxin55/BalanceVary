@@ -86,7 +86,7 @@ namespace Utility
         #region 普通辅助
         protected virtual bool i(string Key, object t)
         {
-            
+            System.Data.IDbCommand db= BaseBatis.GetDbCommand(Key, t);
             string sql = ShowSQL(Key, t);
             SqlMap.Insert(Key, t);
             return true;

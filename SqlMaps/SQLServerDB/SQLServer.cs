@@ -86,16 +86,17 @@ namespace SqlMaps
         /// </summary>
         /// <param name="dt">数据表</param>
         /// <returns></returns>
-        public bool BatchUpdateSQLServer(DataTable dt)
+        public bool BatchUpdateSQLServer(DataTable dt,string selectsql,string tablename)
         {
             if (OpenSQLServer())
             {
-                using (SqlBulkCopy bulk = new SqlBulkCopy(Connection))
-                {
-                    bulk.BatchSize = dt.Rows.Count;
-                    bulk.DestinationTableName = dt.TableName;
-                    bulk.WriteToServer(dt);
-                }
+                SqlDataAdapter da = new SqlDataAdapter(selectsql, Connection);
+                SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(da);
+                //建立sql数据集 并且更新数据库
+                DataSet ds = new DataSet();
+                ds.Tables.Add(dt);
+                da.Update(ds, tablename);
+                ds.AcceptChanges();
                 CloseSQLServer();
             }
             return true;

@@ -18,13 +18,13 @@ namespace BalanceDAL
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        //public bool BatchUpdatePGPersonAllocateInfo(List<PGPersonAllocateInfo> list)
-        //{
-        //    DataTable result = ConverterTable.PersonAllocateListConvertTable(list);
-        //    SQLServer ss = new SQLServer();
-        //    return ss.BatchUpdateSQLServer(result);
-        //}
-        
+        public bool BatchUpdatePGPersonAllocateInfo(List<PGPersonAllocateInfo> list,string selectsql,string tablename)
+        {
+            DataTable result = ConverterTable.PersonAllocateListConvertTable(list);
+            SQLServer ss = new SQLServer();
+            return ss.BatchUpdateSQLServer(result, selectsql, tablename);
+        }
+
     }
 
    

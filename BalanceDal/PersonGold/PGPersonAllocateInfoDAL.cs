@@ -38,8 +38,8 @@ namespace BalanceDAL
         {
             try
             {
-                //BatchUpdateSQLServer bs = new BatchUpdateSQLServer();
-                //bs.BatchUpdatePGPersonAllocateInfo(list);
+                BatchUpdateSQLServer bs = new BatchUpdateSQLServer();
+                bs.BatchUpdatePGPersonAllocateInfo(list,"select * from "+ DefaultKey, DefaultKey);
             }
             catch (Exception ex)
             {

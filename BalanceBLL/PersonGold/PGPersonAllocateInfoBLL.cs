@@ -17,5 +17,9 @@ namespace BalanceBLL
         //{
         //    dal.BatchInsert(list, ImportTimeList);
         //}
+        public void BatchUpdate(List<PGPersonAllocateInfo> list)
+        {
+            dal.BatchUpdate(list);
+        }
     }
 }

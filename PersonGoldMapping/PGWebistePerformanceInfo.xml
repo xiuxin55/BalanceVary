@@ -51,7 +51,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
       select row_number() over(order by card.DataTime desc) as RowNumber,web.NewWebsiteID,web.WebsiteID,web.WebsiteName,
       card.CurrentDayBalance as CardCurrentDayBalance,card.DifferenceValue as CardDifferenceValue,
       insurance.CurrentDayBalance as InsuranceCurrentDayBalance,insurance.DifferenceValue as InsuranceDifferenceValue,
-      insurance.WholeBalance as InsuranceWholeBalance,card.DataTime
+      insurance.WholeBalance as InsuranceWholeBalance,card.DataTime as DataTime
       from  WebsiteInfo  web left join PGDebitCardInfo card on web.NewWebsiteID=card.NewWebsiteID or web.WebsiteID=card.WebsiteID
       left join PGInsuranceInfo insurance on web.NewWebsiteID=insurance.NewWebsiteID or web.WebsiteID=insurance.WebsiteID
       where 1=1

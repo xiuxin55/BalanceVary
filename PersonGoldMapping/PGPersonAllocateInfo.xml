@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<sqlMap namespace="PGPersonAllocateInfo" xmlns="http://ibatis.apache.org/mapping"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <alias>
+    <typeAlias alias="PGPersonAllocateInfo" type="BalanceModel.PGPersonAllocateInfo,BalanceModel" />
+  </alias>
+  <resultMaps>
+    <resultMap id="WebsiteInfoObjMap" class="WebsiteInfo">
+      <result property="WebsiteID" column="WebsiteID"/>
+      <result property="WebsiteName" column="WebsiteName"/>
+    </resultMap>
+    <resultMap id="PGPersonAllocateInfoMap" class="PGPersonAllocateInfo">
+      <result property="RowNumber" column="RowNumber"/>
+      <result property="ID" column="ID"/>
+      <result property="NewWebsiteID" column="NewWebsiteID"/>
+      <result property="WebsiteID" column="WebsiteID"/>
+      <result property="StaffCode" column="StaffCode"/>
+      <result property="StaffName" column="StaffName"/>
+      <result property="CardDayGrowth" column="CardDayGrowth"/>
+      <result property="CardMonthGrowth" column="CardMonthGrowth"/>
+      <result property="CardYearGrowth" column="CardYearGrowth"/>
+      <result property="InsuranceDayGrowth" column="InsuranceDayGrowth"/>
+
+      <result property="InsuranceMonthGrowth" column="InsuranceMonthGrowth"/>
+      <result property="InsuranceYearGrowth" column="InsuranceYearGrowth"/>
+      <result property="CreditCardDayGrowth" column="CreditCardDayGrowth"/>
+      <result property="CreditCardMonthGrowth" column="CreditCardMonthGrowth"/>
+
+
+      <result property="CreditCardYearGrowth" column="CreditCardYearGrowth"/>
+      <result property="DayContributionDegree" column="DayContributionDegree"/>
+      <result property="MonthContributionDegree" column="MonthContributionDegree"/>
+      <result property="YearContributionDegree" column="YearContributionDegree"/>
+      <result property="DataTime" column="DataTime"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <select id="SelectPGPersonAllocateInfo"  resultMap="PGPersonAllocateInfoMap"  parameterClass="PGPersonAllocateInfo">
+      select row_number() over(order by StaffCode asc) as RowNumber,*  from PGPersonAllocateInfo where 1=1
+      <dynamic>
+        <isParameterPresent>
+          <isNotEmpty prepend="and" property="ID">p.ID=#ID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="NewWebsiteID">w.NewWebsiteID =#NewWebsiteID# </isNotEmpty>
+          <isNotEmpty prepend="and" property="WebsiteID">p.WebsiteID =#WebsiteID#</isNotEmpty>
+          <isNotEmpty prepend="and" property="StaffCode">StaffCode =#StaffCode# </isNotEmpty>
+          <isNotEmpty prepend="and" property="StaffName">StaffName=#StaffName#</isNotEmpty>
+          <isNotEmpty prepend="and" property="DataTime">DataTime=#DataTime#</isNotEmpty>
+        </isParameterPresent>
+      </dynamic>
+    </select>
+    <update id="UpdatePGPersonAllocateInfo"  parameterClass="PGPersonAllocateInfo">
+      UPDATE PGPersonAllocateInfo
+      SET
+      ID = #ID#
+      
+      <isNotEmpty prepend ="," property="NewWebsiteID">
+        NewWebsiteID = #NewWebsiteID#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="WebsiteID">
+        WebsiteID = #WebsiteID#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="StaffCode">
+        StaffCode = #StaffCode#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="StaffName">
+        StaffName = #StaffName#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="CardDayGrowth">
+        CardDayGrowth = #CardDayGrowth#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="CardMonthGrowth">
+        CardMonthGrowth = #CardMonthGrowth#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="CardYearGrowth">
+        CardYearGrowth = #CardYearGrowth#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="InsuranceDayGrowth">
+        InsuranceDayGrowth = #InsuranceDayGrowth#
+      </isNotEmpty>
+
+      
+      <isNotEmpty prepend ="," property="InsuranceMonthGrowth">
+        InsuranceMonthGrowth = #InsuranceMonthGrowth#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="InsuranceYearGrowth">
+        InsuranceYearGrowth = #InsuranceYearGrowth#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="CreditCardDayGrowth">
+        CreditCardDayGrowth = #CreditCardDayGrowth#
+      </isNotEmpty>
+
+      <isNotEmpty prepend ="," property="CreditCardMonthGrowth">
+        CreditCardMonthGrowth = #CreditCardMonthGrowth#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="CreditCardYearGrowth">
+        CreditCardYearGrowth = #CreditCardYearGrowth#
+      </isNotEmpty>
+      
+      <isNotEmpty prepend ="," property="DayContributionDegree">
+        DayContributionDegree = #DayContributionDegree#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="MonthContributionDegree">
+        MonthContributionDegree = #MonthContributionDegree#
+      </isNotEmpty>
+      <isNotEmpty prepend ="," property="YearContributionDegree">
+        YearContributionDegree = #YearContributionDegree#
+      </isNotEmpty>
+
+      <isNotEmpty prepend ="," property="DataTime">
+        DataTime = #DataTime#
+      </isNotEmpty>
+      WHERE ID = #ID#
+    </update>
+    
+    <insert id="AddPGPersonAllocateInfo" parameterClass="PGPersonAllocateInfo">
+      INSERT INTO PGPersonAllocateInfo (ID,
+      NewWebsiteID,
+      WebsiteID,
+      StaffCode,
+      StaffName,
+      CardDayGrowth,
+      CardMonthGrowth,
+      CardYearGrowth,
+      InsuranceDayGrowth,
+      InsuranceMonthGrowth,
+      InsuranceYearGrowth ,
+      CreditCardDayGrowth ,
+      CreditCardMonthGrowth ,
+      CreditCardYearGrowth ,
+      DayContributionDegree ,
+      MonthContributionDegree ,
+      YearContributionDegree ,
+      DataTime
+      )
+      VALUES (#ID#,#NewWebsiteID#,#WebsiteID#,#StaffCode#,#StaffName#,#CardDayGrowth#,#CardMonthGrowth#
+      ,#CardYearGrowth#,#InsuranceDayGrowth#,#InsuranceMonthGrowth#, #InsuranceYearGrowth#,#CreditCardDayGrowth#,#CreditCardMonthGrowth#
+      ,#CreditCardYearGrowth#,#DayContributionDegree#,#MonthContributionDegree#,#YearContributionDegree#, #DataTime#);
+    </insert>
+    <delete id="DeletePGPersonAllocateInfo" parameterClass="PGPersonAllocateInfo">
+      DELETE PGPersonAllocateInfo WHERE 1=1 
+      <dynamic>
+      <isParameterPresent>
+        <isNotEmpty prepend="and" property="ID">ID=#ID#</isNotEmpty>
+      </isParameterPresent>
+    </dynamic>
+    </delete>
+  </statements>
+</sqlMap>

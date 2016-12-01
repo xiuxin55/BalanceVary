@@ -33,42 +33,71 @@ namespace WcfBalanceServiceLibrary
                 //删除当天数据
                 List<PGPersonAllocateInfo> currentlist = bll.Select(tempcurrentday);
                 List<PGPersonAllocateInfo> prelist = bll.Select(temp);
-                PGPersonAllocateInfo premodel = prelist != null && prelist.Count > 0 ? prelist[0] : new PGPersonAllocateInfo();
-                if (DateTime.Now.Month == premodel.DataTime.Value.Month)
+                PGPersonAllocateInfo premodel = prelist != null && prelist.Count > 0 ? prelist[0] : null;
+                if (premodel != null && premodel.DataTime != null)
                 {
-                    info.CardMonthGrowth = info.CardDayGrowth + premodel.CardMonthGrowth;
-                    info.InsuranceMonthGrowth = info.InsuranceDayGrowth + premodel.InsuranceMonthGrowth;
-                    info.CreditCardMonthGrowth = info.CreditCardDayGrowth + premodel.CreditCardMonthGrowth;
+
+
+                    if (DateTime.Now.Month == premodel.DataTime.Value.Month)
+                    {
+                        info.CardMonthGrowth = info.CardDayGrowth + premodel.CardMonthGrowth;
+                        info.InsuranceMonthGrowth = info.InsuranceDayGrowth + premodel.InsuranceMonthGrowth;
+                        info.CreditCardMonthGrowth = info.CreditCardDayGrowth + premodel.CreditCardMonthGrowth;
+                    }
+                    else
+                    {
+                        info.CardMonthGrowth = info.CardDayGrowth;
+                        info.InsuranceMonthGrowth = info.InsuranceDayGrowth;
+                        info.CreditCardMonthGrowth = info.CreditCardDayGrowth;
+                    }
+                    if (DateTime.Now.Year == premodel.DataTime.Value.Year)
+                    {
+                        info.CardYearGrowth = info.CardDayGrowth + premodel.CardYearGrowth;
+                        info.InsuranceYearGrowth = info.InsuranceDayGrowth + premodel.InsuranceYearGrowth;
+                        info.CreditCardYearGrowth = info.InsuranceYearGrowth + premodel.CreditCardYearGrowth;
+                    }
+                    else
+                    {
+                        info.CardYearGrowth = info.CardDayGrowth;
+                        info.InsuranceYearGrowth = info.InsuranceDayGrowth;
+                        info.CreditCardYearGrowth = info.InsuranceYearGrowth;
+                    }
                 }
                 else
                 {
                     info.CardMonthGrowth = info.CardDayGrowth;
                     info.InsuranceMonthGrowth = info.InsuranceDayGrowth;
                     info.CreditCardMonthGrowth = info.CreditCardDayGrowth;
-                }
-                if (DateTime.Now.Year == premodel.DataTime.Value.Year)
-                {
-                    info.CardYearGrowth = info.CardDayGrowth + premodel.CardYearGrowth;
-                    info.InsuranceYearGrowth = info.InsuranceDayGrowth + premodel.InsuranceYearGrowth;
-                    info.CreditCardYearGrowth = info.InsuranceYearGrowth + premodel.CreditCardYearGrowth;
-                }
-                else
-                {
                     info.CardYearGrowth = info.CardDayGrowth;
                     info.InsuranceYearGrowth = info.InsuranceDayGrowth;
                     info.CreditCardYearGrowth = info.InsuranceYearGrowth;
                 }
+
                 bool ishasvalue = false;
                 if (currentlist!=null&& currentlist.Count>0)
                 {
                     ishasvalue = true;
+                    info.ID = currentlist[0].ID;
                     info.CreditCardDayGrowth = currentlist[0].CreditCardDayGrowth;
                     info.CreditCardMonthGrowth = currentlist[0].CreditCardMonthGrowth;
                     info.CreditCardYearGrowth = currentlist[0].CreditCardYearGrowth;
                     
                 }
+                info.DayContributionDegree = (info.CardYearGrowth / (info.DataTime.Value - DateTime.Parse(info.DataTime.Value.Year + "-01-01")).Days) * Convert.ToDecimal(0.6) +
+                    info.InsuranceYearGrowth * Convert.ToDecimal(0.2);
                 //计算贡献度
-                return ishasvalue?bll.Update(info):bll.Add(info);
+                try
+                {
+                    bool result=ishasvalue ? bll.Update(info) : bll.Add(info);
+                    scope.Complete();
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.WriteLog(typeof(PGPersonAllocateInfoService), ex);
+                    return false;
+                }
+                
             }
         }
 
