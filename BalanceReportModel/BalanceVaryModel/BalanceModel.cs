@@ -8,6 +8,10 @@ namespace BalanceModel
 {
     public class BalanceBaseModel: BaseModel
     {
+        public BalanceBaseModel()
+        {
+            OrderbyColomnName = SubOrderbyColomnName = "BalanceTime";
+        }
         public string ID { get; set; }
         /// <summary>
         /// 定期余额

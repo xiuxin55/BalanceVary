@@ -15,6 +15,8 @@ namespace WcfBalanceServiceLibrary
         [OperationContract]
         bool Add(PGPersonAllocateInfo info);
         [OperationContract]
+        bool BatchAdd(List<PGPersonAllocateInfo> list);
+        [OperationContract]
         bool Update(PGPersonAllocateInfo info);
         [OperationContract]
         bool Delete(PGPersonAllocateInfo info);

@@ -30,7 +30,7 @@ namespace BalanceModel
                 _EndIndex = value;
             }
         }
-        private string _OrderbyColomnName= "BalanceTime";
+        private string _OrderbyColomnName;
         /// <summary>
         /// 主排序字段
         /// </summary>
@@ -46,7 +46,7 @@ namespace BalanceModel
             }
         }
 
-        private string _SubOrderbyColomnName = "BalanceTime";
+        private string _SubOrderbyColomnName ;
         /// <summary>
         /// 子排序列
         /// </summary>

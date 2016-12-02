@@ -27,5 +27,17 @@ namespace BalanceDAL
             IList<T> list = SqlMap.QueryForList<T>("Select" + DefaultKey + "TwoTime", t);
             return list!=null? list.ToList():new List<T>();
         }
+
+        /// <summary>
+        /// 自定义查询
+        /// </summary>
+        /// <param name="selectkey">映射文件中的id</param>
+        /// <param name="t">类型</param>
+        /// <returns></returns>
+        public List<T> SelectDataByCustom(string selectkey,T t)
+        {
+            IList<T> list = SqlMap.QueryForList<T>(selectkey, t);
+            return list != null ? list.ToList() : new List<T>();
+        }
     }
 }

@@ -82,7 +82,7 @@ namespace SqlMaps
         }
 
         /// <summary>
-        /// 批量更新数据
+        /// 批量更新数据(仅供人员业绩分配使用)
         /// </summary>
         /// <param name="dt">数据表</param>
         /// <returns></returns>
@@ -92,6 +92,36 @@ namespace SqlMaps
             {
                 SqlDataAdapter da = new SqlDataAdapter(selectsql, Connection);
                 SqlCommandBuilder cmdBuilder = new SqlCommandBuilder(da);
+                SqlCommand updatecmd = new SqlCommand(string.Format(@"UPDATE {0} SET  
+                    [CardDayGrowth] = @CardDayGrowth
+                   ,[CardMonthGrowth] = @CardMonthGrowth
+                   ,[CardYearGrowth] = @CardYearGrowth
+                   ,[InsuranceDayGrowth] = @InsuranceDayGrowth
+                   ,[InsuranceMonthGrowth] = @InsuranceMonthGrowth
+                   ,[InsuranceYearGrowth] = @InsuranceYearGrowth
+                   ,[CreditCardDayGrowth] = @CreditCardDayGrowth
+                   ,[CreditCardMonthGrowth] = @CreditCardMonthGrowth
+                   ,[CreditCardYearGrowth] = @CreditCardYearGrowth
+                   ,[DayContributionDegree] = @DayContributionDegree
+                   ,[MonthContributionDegree] = @MonthContributionDegree
+                   ,[YearContributionDegree] = @YearContributionDegree
+                    where ID=@ID",tablename));
+                //不修改源DataTable   
+                updatecmd.UpdatedRowSource = UpdateRowSource.None;
+                da.UpdateCommand = updatecmd;
+                da.UpdateCommand.Parameters.Add("@CardDayGrowth", SqlDbType.Decimal,18, "CardDayGrowth");
+                da.UpdateCommand.Parameters.Add("@CardMonthGrowth", SqlDbType.Decimal, 18, "CardMonthGrowth");
+                da.UpdateCommand.Parameters.Add("@CardYearGrowth", SqlDbType.Decimal,18, "CardYearGrowth");
+                da.UpdateCommand.Parameters.Add("@InsuranceDayGrowth", SqlDbType.Decimal, 18, "InsuranceDayGrowth");
+                da.UpdateCommand.Parameters.Add("@InsuranceMonthGrowth", SqlDbType.Decimal, 18, "InsuranceMonthGrowth");
+                da.UpdateCommand.Parameters.Add("@InsuranceYearGrowth", SqlDbType.Decimal, 18, "InsuranceYearGrowth");
+                da.UpdateCommand.Parameters.Add("@CreditCardDayGrowth", SqlDbType.Decimal, 18, "CreditCardDayGrowth");
+                da.UpdateCommand.Parameters.Add("@CreditCardMonthGrowth", SqlDbType.Decimal, 18, "CreditCardMonthGrowth");
+                da.UpdateCommand.Parameters.Add("@CreditCardYearGrowth", SqlDbType.Decimal, 18, "CreditCardYearGrowth");
+                da.UpdateCommand.Parameters.Add("@DayContributionDegree", SqlDbType.Decimal, 18, "DayContributionDegree");
+                da.UpdateCommand.Parameters.Add("@MonthContributionDegree", SqlDbType.Decimal, 18, "MonthContributionDegree");
+                da.UpdateCommand.Parameters.Add("@YearContributionDegree", SqlDbType.Decimal, 18, "YearContributionDegree");
+                da.UpdateCommand.Parameters.Add("@ID", SqlDbType.VarChar, 50, "ID");
                 //建立sql数据集 并且更新数据库
                 DataSet ds = new DataSet();
                 ds.Tables.Add(dt);

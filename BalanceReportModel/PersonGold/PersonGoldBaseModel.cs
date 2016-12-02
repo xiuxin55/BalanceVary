@@ -20,5 +20,9 @@ namespace BalanceModel
         /// 数据时间
         /// </summary>
         public DateTime? DataTime { get; set; }
+        /// <summary>
+        /// 数据状态(0:添加 1：修改 )
+        /// </summary>
+        public int  DataState { get; set; }
     }
 }

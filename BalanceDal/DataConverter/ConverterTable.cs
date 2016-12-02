@@ -493,7 +493,19 @@ namespace BalanceDAL
                 dr["MonthContributionDegree"] = item.MonthContributionDegree;
                 dr["YearContributionDegree"] = item.YearContributionDegree;
                 dr["DataTime"] = item.DataTime;
+                
                 dt.Rows.Add(dr);
+                dr.AcceptChanges();
+                if (item.DataState == 0)
+                {
+                    dr.SetAdded();
+                }
+                else
+                {
+                    dr.SetModified();
+                }
+
+
             }
             return dt;
         }
