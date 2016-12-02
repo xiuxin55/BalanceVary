@@ -49,7 +49,10 @@ namespace Common.Server
         /// </summary>
         public static Action<object> PGCreditCardInfoInfoDataEvent;
 
-        
 
+        /// <summary>
+        /// 上传个金基础数据后触发导入事件
+        /// </summary>
+        public static Action<object> PGBaseDataInfoDataEvent;
     }
 }

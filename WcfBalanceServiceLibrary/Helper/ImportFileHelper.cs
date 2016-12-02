@@ -50,8 +50,14 @@ namespace WcfBalanceServiceLibrary.Helper
             }
             if (CommonEvent.PGCreditCardInfoInfoDataEvent != null)
             {
-                //个金信用卡信息数据导入触发
+                //个金基础数据信息数据导入触发
                 CommonEvent.PGCreditCardInfoInfoDataEvent(uploadfileinfo);
+            }
+
+            if (CommonEvent.PGBaseDataInfoDataEvent != null)
+            {
+                //个金信用卡信息数据导入触发
+                CommonEvent.PGBaseDataInfoDataEvent(uploadfileinfo);
             }
 
         }
