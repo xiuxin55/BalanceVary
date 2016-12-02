@@ -67,6 +67,20 @@ namespace BalanceModel
         /// 年贡献度
         /// </summary>
         public decimal YearContributionDegree { get; set; }
+        /// <summary>
+        /// 上次排名
+        /// </summary>
+        public int PreRank { get; set; }
+
+        /// <summary>
+        /// 关联的人员信息
+        /// </summary>
+        public PGPersonInfo PGPersonInfoObj { get; set; }
+        /// <summary>
+        /// 关联的网点
+        /// </summary>
+        public WebsiteInfo WebsiteInfoObj { get; set; }
+
         private bool _IsSelected;
         public bool IsSelected
         {

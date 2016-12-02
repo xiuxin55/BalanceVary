@@ -19,27 +19,33 @@
             <Button x:Name="Delete" Width="60"  Content="删除" Command="{Binding DeleteCommand}" HorizontalContentAlignment="Left" />-->
             <!--<TextBlock  Width="60"   Text="部门号:" VerticalAlignment="Center" />
             <TextBox  Width="120" Text="{Binding SearchDepartmentModel.DepartmentID}"  HorizontalContentAlignment="Left" VerticalAlignment="Center" />-->
-            <TextBlock  Width="60"   Text="人员编号:" VerticalAlignment="Center" />
-            <TextBox  Width="120" Text="{Binding SearchInfoModel.StaffCode}"  HorizontalContentAlignment="Left" />
+            <!--<TextBlock  Width="60"   Text="人员编号:" VerticalAlignment="Center" />
+            <TextBox  Width="120" Text="{Binding SearchInfoModel.StaffCode}"  HorizontalContentAlignment="Left" />-->
             <TextBlock Text="日期：" VerticalAlignment="Center"  Margin="10,0,0,0"/>
-            <DatePicker SelectedDate="{Binding SearchInfoModel.DataTime}" Width="150"   Margin="10,0,0,0"/>
+            <DatePicker SelectedDate="{Binding SearchInfoModel.DataTime}" Width="150"   Margin="10,0,0,0" Name="datepicker"/>
+            <TextBlock Text="排名规则：" VerticalAlignment="Center"  Margin="10,0,0,0"/>
+            <ComboBox Width="130" Name="cbx_orderby" ItemsSource="{Binding OrderRuleList}" SelectedValue="{Binding SearchInfoModel.OrderbyColomnName}" DisplayMemberPath="OrderbyName" SelectedValuePath="Orderbystr"/>
             <Button x:Name="Search" Width="60"  Content="查询" Command="{Binding SearchCommand}" HorizontalContentAlignment="Left"  />
         </ToolBar>
         <tool:GridLineDecorator Grid.Row="1" >
-            <ListView  x:Name="listView1" ItemsSource="{Binding PGPersonInfoList}" SelectedItem="{Binding SelectedInfoModel}">
+            <ListView   x:Name="listView1" ItemsSource="{Binding PGPersonAllocateInfoList}" SelectedItem="{Binding SelectedInfoModel}">
                 <ListView.View>
                     <GridView >
-                        <GridViewColumn Width="50"  Header="序号" DisplayMemberBinding="{Binding RowNumber}" tool:ListViewBehavior.SortField="RowNumber"/>
+                        <GridViewColumn Width="50"  Header="当前排名" DisplayMemberBinding="{Binding RowNumber}" tool:ListViewBehavior.SortField="RowNumber"/>
                         <GridViewColumn Width="100"  Header="人员编码" DisplayMemberBinding="{Binding StaffCode}" tool:ListViewBehavior.SortField="StaffCode"/>
                         <GridViewColumn Width="100"  Header="姓名" DisplayMemberBinding="{Binding StaffName}" tool:ListViewBehavior.SortField="StaffName"/>
-                        <GridViewColumn Width="100" Header="新部门编码" DisplayMemberBinding="{Binding NewWebsiteID}" tool:ListViewBehavior.SortField="NewWebsiteID" />
-                        <GridViewColumn Width="100" Header="旧部门编码" DisplayMemberBinding="{Binding WebsiteID}" tool:ListViewBehavior.SortField="WebsiteID" />
-                        <!--<GridViewColumn Width="150" Header="所在部门" DisplayMemberBinding="{Binding WebsiteInfoObj.WebsiteName}" tool:ListViewBehavior.SortField="WebsiteInfoObj.WebsiteName"/>-->
-                        <GridViewColumn Width="130"  Header="储蓄卡日增" DisplayMemberBinding="{Binding CardDayGrowth}" tool:ListViewBehavior.SortField="CardDayGrowth" />
-                        <GridViewColumn Width="100"  Header="储蓄卡年累计" DisplayMemberBinding="{Binding CardYearGrowth}" tool:ListViewBehavior.SortField="CardYearGrowth"/>
+                        <GridViewColumn Width="100" Header="岗位" DisplayMemberBinding="{Binding PGPersonInfoObj.StaffPositionOrder}" tool:ListViewBehavior.SortField="PGPersonInfoObj.StaffPositionOrder" />
+                        <!--<GridViewColumn Width="100" Header="新部门编码" DisplayMemberBinding="{Binding NewWebsiteID}" tool:ListViewBehavior.SortField="NewWebsiteID" />-->
+                        <!--<GridViewColumn Width="100" Header="旧部门编码" DisplayMemberBinding="{Binding WebsiteID}" tool:ListViewBehavior.SortField="WebsiteID" />-->
+                        <GridViewColumn Width="150" Header="所在部门" DisplayMemberBinding="{Binding WebsiteInfoObj.WebsiteName}" tool:ListViewBehavior.SortField="WebsiteInfoObj.WebsiteName"/>
+                        <GridViewColumn Width="130"  Header="储蓄日增" DisplayMemberBinding="{Binding CardDayGrowth}" tool:ListViewBehavior.SortField="CardDayGrowth" />
+                        <GridViewColumn Width="130"  Header="储蓄月增" DisplayMemberBinding="{Binding CardMonthGrowth}" tool:ListViewBehavior.SortField="CardMonthGrowth" />
+                        <GridViewColumn Width="100"  Header="储蓄年累计" DisplayMemberBinding="{Binding CardYearGrowth}" tool:ListViewBehavior.SortField="CardYearGrowth"/>
                         <GridViewColumn Width="100"  Header="保险日增" DisplayMemberBinding="{Binding InsuranceDayGrowth}" tool:ListViewBehavior.SortField="InsuranceDayGrowth"/>
+                        <GridViewColumn Width="100"  Header="保险月增" DisplayMemberBinding="{Binding InsuranceMonthGrowth}" tool:ListViewBehavior.SortField="InsuranceMonthGrowth"/>
                         <GridViewColumn Width="100"  Header="保险年累计" DisplayMemberBinding="{Binding InsuranceYearGrowth}" tool:ListViewBehavior.SortField="InsuranceYearGrowth"/>
                         <GridViewColumn Width="100"  Header="当前贡献度" DisplayMemberBinding="{Binding DayContributionDegree}" tool:ListViewBehavior.SortField="DayContributionDegree"/>
+                        <GridViewColumn Width="100"  Header="上次排名" DisplayMemberBinding="{Binding PreRank}" tool:ListViewBehavior.SortField="PreRank"/>
                         <!--<GridViewColumn Width="100"  Header="所属机构" DisplayMemberBinding="{Binding Institution}" tool:ListViewBehavior.SortField="Institution"/>-->
                     </GridView>
                 </ListView.View>

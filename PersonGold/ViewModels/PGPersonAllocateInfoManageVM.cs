@@ -10,6 +10,7 @@ using Common;
 using WSBalanceClient;
 using WSBalanceClient.PGPersonAllocateInfoService;
 using PersonGold.Views;
+using PersonGold.LocalModel;
 
 namespace PersonGold.ViewModels
 {
@@ -22,7 +23,10 @@ namespace PersonGold.ViewModels
             UpdateCommand = new DelegateCommand(UpdateExecute);
             DeleteCommand = new DelegateCommand(DeleteExecute);
             SearchCommand = new DelegateCommand(SearchExecute);
-            SearchExecute();
+            SearchInfoModel = new PGPersonAllocateInfo();
+            SearchInfoModel.DataTime = DateTime.Now;
+            InitialOrderbyRule();
+            //SearchExecute();
         }
         #region 属性
         private  PGPersonAllocateInfo _selectedInfoModel;
@@ -53,6 +57,19 @@ namespace PersonGold.ViewModels
                 this.RaisePropertyChanged("SearchInfoModel");
             }
         }
+        private ObservableCollection<OrderRule> _OrderRuleList;
+        /// <summary>
+        /// 集合
+        /// </summary>
+        public ObservableCollection<OrderRule> OrderRuleList
+        {
+            get { return _OrderRuleList; }
+            set
+            {
+                _OrderRuleList = value;
+                this.RaisePropertyChanged("OrderRuleList");
+            }
+        }
         private ObservableCollection<PGPersonAllocateInfo> _InfoList;
         /// <summary>
         /// 集合
@@ -67,6 +84,20 @@ namespace PersonGold.ViewModels
             }
         }
 
+
+        private string _Orderbystr;
+        /// <summary>
+        /// 排序
+        /// </summary>
+        public string OrderbyStr
+        {
+            get { return _Orderbystr; }
+            set
+            {
+                _Orderbystr = value;
+                this.RaisePropertyChanged("OrderbyStr");
+            }
+        }
         #endregion
         #region 命令
         public DelegateCommand AddCommand { get; set; }
@@ -107,6 +138,16 @@ namespace PersonGold.ViewModels
             {
                 SearchInfoModel = new PGPersonAllocateInfo();
             }
+            if (SearchInfoModel.DataTime ==null)
+            {
+                MessageBox.Show("日期不能为空");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(SearchInfoModel.OrderbyColomnName))
+            {
+                MessageBox.Show("排名规则不能为空");
+                return;
+            }
             try
             {
                 PGPersonAllocateInfoList = new ObservableCollection<PGPersonAllocateInfo>(WSPGPersonAllocateInfoService.Instance.Select(SearchInfoModel));
@@ -120,7 +161,18 @@ namespace PersonGold.ViewModels
         }
         #endregion
         #region 内部方法
-
+        private void InitialOrderbyRule()
+        {
+            OrderRuleList = new ObservableCollection<LocalModel.OrderRule>();
+            OrderRuleList.Add(new LocalModel.OrderRule() { OrderbyName = "储蓄日净增排名", Orderbystr = "CardDayGrowth" });
+            OrderRuleList.Add(new LocalModel.OrderRule() { OrderbyName = "储蓄月净增排名", Orderbystr = "CardMonthGrowth" });
+            OrderRuleList.Add(new LocalModel.OrderRule() { OrderbyName = "储蓄年累计排名", Orderbystr = "CardYearGrowth" });
+            OrderRuleList.Add(new LocalModel.OrderRule() { OrderbyName = "保险日净增排名", Orderbystr = "InsuranceDayGrowth" });
+            OrderRuleList.Add(new LocalModel.OrderRule() { OrderbyName = "保险月净增排名", Orderbystr = "InsuranceMonthGrowth" });
+            OrderRuleList.Add(new LocalModel.OrderRule() { OrderbyName = "保险年累计排名", Orderbystr = "InsuranceYearGrowth" });
+            OrderRuleList.Add(new LocalModel.OrderRule() { OrderbyName = "贡献度排名", Orderbystr = "DayContributionDegree" });
+            
+        }
         #endregion
     }
 }

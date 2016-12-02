@@ -28,8 +28,8 @@ namespace WcfBalanceServiceLibrary
             {
 
 
-                PGPersonAllocateInfo temp = new PGPersonAllocateInfo() { StaffCode = info.StaffCode, StaffName = info.StaffName, DataTime = info.DataTime.Value.AddDays(-1) };
-                PGPersonAllocateInfo tempcurrentday = new PGPersonAllocateInfo() { StaffCode = info.StaffCode, StaffName = info.StaffName, DataTime = info.DataTime.Value };
+                PGPersonAllocateInfo temp = new PGPersonAllocateInfo() { StaffCode = info.StaffCode, StaffName = info.StaffName, DataTime = info.DataTime.Value.AddDays(-1),OrderbyColomnName= "StaffCode" };
+                PGPersonAllocateInfo tempcurrentday = new PGPersonAllocateInfo() { StaffCode = info.StaffCode, StaffName = info.StaffName, DataTime = info.DataTime.Value, OrderbyColomnName = "StaffCode" };
                 //删除当天数据
                 List<PGPersonAllocateInfo> currentlist = bll.Select(tempcurrentday);
                 List<PGPersonAllocateInfo> prelist = bll.Select(temp);
@@ -110,6 +110,11 @@ namespace WcfBalanceServiceLibrary
         {
             try
             {
+                if (info.DataTime != null)
+                {
+                    info.DataTime = DateTime.Parse(info.DataTime.Value.ToString("yyyy-MM-dd"));
+
+                }
                 return bll.Select(info);
             }
             catch (Exception ex)

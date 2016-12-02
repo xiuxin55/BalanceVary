@@ -24,8 +24,8 @@ namespace PersonGold.Views
         public PGPersonAllocateInfoManage()
         {
             InitializeComponent();
-
             this.DataContext = new PGPersonAllocateInfoManageVM();
+      
         }
 
         private void AddDepartment_Click(object sender, RoutedEventArgs e)

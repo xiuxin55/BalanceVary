@@ -23,27 +23,27 @@ namespace MainHome
         {
             base.OnStartup(e);
 
-            // this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+            this.DispatcherUnhandledException += App_DispatcherUnhandledException;
 
-            //try
-            //{
-            //    if (e.Args.Length == 0)
-            //    {
+            try
+            {
+                if (e.Args.Length == 0)
+                {
 
 
-            //        AutoUpdate update = new AutoUpdate();
-            //        if (update.CheckAutoUpdate())
-            //        {
-            //            Process.Start(CommonDataClient.AutoUpdatePath + CommonDataClient.AutoUpdateExeFile);
-            //            Environment.Exit(0);
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    LogHelper.WriteLog(typeof(Window), ex);
-            //    //throw ex;
-            //}
+                    AutoUpdate update = new AutoUpdate();
+                    if (update.CheckAutoUpdate())
+                    {
+                        Process.Start(CommonDataClient.AutoUpdatePath + CommonDataClient.AutoUpdateExeFile);
+                        Environment.Exit(0);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(typeof(Window), ex);
+                //throw ex;
+            }
             Login bw = new Login();
             bw.Show();
 

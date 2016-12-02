@@ -17,7 +17,9 @@ namespace WSBalanceClient.PGPersonAllocateInfoService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseModel", Namespace="http://schemas.datacontract.org/2004/07/BalanceModel")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WSBalanceClient.PGPersonAllocateInfoService.WebsiteInfo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WSBalanceClient.PGPersonAllocateInfoService.PersonGoldBaseModel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WSBalanceClient.PGPersonAllocateInfoService.PGPersonInfo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WSBalanceClient.PGPersonAllocateInfoService.PGPersonAllocateInfo))]
     public partial class BaseModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -126,8 +128,160 @@ namespace WSBalanceClient.PGPersonAllocateInfoService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="WebsiteInfo", Namespace="http://schemas.datacontract.org/2004/07/BalanceModel")]
+    [System.SerializableAttribute()]
+    public partial class WebsiteInfo : WSBalanceClient.PGPersonAllocateInfoService.BaseModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InstitutionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ManagerTelphoneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NewWebsiteIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WebsiteAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WebsiteIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WebsiteManagerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WebsiteNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WebsiteTelField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IDField, value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Institution {
+            get {
+                return this.InstitutionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InstitutionField, value) != true)) {
+                    this.InstitutionField = value;
+                    this.RaisePropertyChanged("Institution");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ManagerTelphone {
+            get {
+                return this.ManagerTelphoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ManagerTelphoneField, value) != true)) {
+                    this.ManagerTelphoneField = value;
+                    this.RaisePropertyChanged("ManagerTelphone");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NewWebsiteID {
+            get {
+                return this.NewWebsiteIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NewWebsiteIDField, value) != true)) {
+                    this.NewWebsiteIDField = value;
+                    this.RaisePropertyChanged("NewWebsiteID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WebsiteAddress {
+            get {
+                return this.WebsiteAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WebsiteAddressField, value) != true)) {
+                    this.WebsiteAddressField = value;
+                    this.RaisePropertyChanged("WebsiteAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WebsiteID {
+            get {
+                return this.WebsiteIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WebsiteIDField, value) != true)) {
+                    this.WebsiteIDField = value;
+                    this.RaisePropertyChanged("WebsiteID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WebsiteManager {
+            get {
+                return this.WebsiteManagerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WebsiteManagerField, value) != true)) {
+                    this.WebsiteManagerField = value;
+                    this.RaisePropertyChanged("WebsiteManager");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WebsiteName {
+            get {
+                return this.WebsiteNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WebsiteNameField, value) != true)) {
+                    this.WebsiteNameField = value;
+                    this.RaisePropertyChanged("WebsiteName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WebsiteTel {
+            get {
+                return this.WebsiteTelField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WebsiteTelField, value) != true)) {
+                    this.WebsiteTelField = value;
+                    this.RaisePropertyChanged("WebsiteTel");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PersonGoldBaseModel", Namespace="http://schemas.datacontract.org/2004/07/BalanceModel")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(WSBalanceClient.PGPersonAllocateInfoService.PGPersonInfo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(WSBalanceClient.PGPersonAllocateInfoService.PGPersonAllocateInfo))]
     public partial class PersonGoldBaseModel : WSBalanceClient.PGPersonAllocateInfoService.BaseModel {
         
@@ -198,6 +352,141 @@ namespace WSBalanceClient.PGPersonAllocateInfoService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PGPersonInfo", Namespace="http://schemas.datacontract.org/2004/07/BalanceModel")]
+    [System.SerializableAttribute()]
+    public partial class PGPersonInfo : WSBalanceClient.PGPersonAllocateInfoService.PersonGoldBaseModel {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CardIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsSelectedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StaffCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StaffNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StaffPositionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StaffPositionOrderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StaffTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WSBalanceClient.PGPersonAllocateInfoService.WebsiteInfo WebsiteInfoObjField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CardID {
+            get {
+                return this.CardIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardIDField, value) != true)) {
+                    this.CardIDField = value;
+                    this.RaisePropertyChanged("CardID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsSelected {
+            get {
+                return this.IsSelectedField;
+            }
+            set {
+                if ((this.IsSelectedField.Equals(value) != true)) {
+                    this.IsSelectedField = value;
+                    this.RaisePropertyChanged("IsSelected");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StaffCode {
+            get {
+                return this.StaffCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StaffCodeField, value) != true)) {
+                    this.StaffCodeField = value;
+                    this.RaisePropertyChanged("StaffCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StaffName {
+            get {
+                return this.StaffNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StaffNameField, value) != true)) {
+                    this.StaffNameField = value;
+                    this.RaisePropertyChanged("StaffName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StaffPosition {
+            get {
+                return this.StaffPositionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StaffPositionField, value) != true)) {
+                    this.StaffPositionField = value;
+                    this.RaisePropertyChanged("StaffPosition");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StaffPositionOrder {
+            get {
+                return this.StaffPositionOrderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StaffPositionOrderField, value) != true)) {
+                    this.StaffPositionOrderField = value;
+                    this.RaisePropertyChanged("StaffPositionOrder");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StaffType {
+            get {
+                return this.StaffTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StaffTypeField, value) != true)) {
+                    this.StaffTypeField = value;
+                    this.RaisePropertyChanged("StaffType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WSBalanceClient.PGPersonAllocateInfoService.WebsiteInfo WebsiteInfoObj {
+            get {
+                return this.WebsiteInfoObjField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WebsiteInfoObjField, value) != true)) {
+                    this.WebsiteInfoObjField = value;
+                    this.RaisePropertyChanged("WebsiteInfoObj");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PGPersonAllocateInfo", Namespace="http://schemas.datacontract.org/2004/07/BalanceModel")]
     [System.SerializableAttribute()]
     public partial class PGPersonAllocateInfo : WSBalanceClient.PGPersonAllocateInfoService.PersonGoldBaseModel {
@@ -239,10 +528,19 @@ namespace WSBalanceClient.PGPersonAllocateInfoService {
         private decimal MonthContributionDegreeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WSBalanceClient.PGPersonAllocateInfoService.PGPersonInfo PGPersonInfoObjField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PreRankField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StaffCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StaffNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WSBalanceClient.PGPersonAllocateInfoService.WebsiteInfo WebsiteInfoObjField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private decimal YearContributionDegreeField;
@@ -404,6 +702,32 @@ namespace WSBalanceClient.PGPersonAllocateInfoService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public WSBalanceClient.PGPersonAllocateInfoService.PGPersonInfo PGPersonInfoObj {
+            get {
+                return this.PGPersonInfoObjField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PGPersonInfoObjField, value) != true)) {
+                    this.PGPersonInfoObjField = value;
+                    this.RaisePropertyChanged("PGPersonInfoObj");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PreRank {
+            get {
+                return this.PreRankField;
+            }
+            set {
+                if ((this.PreRankField.Equals(value) != true)) {
+                    this.PreRankField = value;
+                    this.RaisePropertyChanged("PreRank");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string StaffCode {
             get {
                 return this.StaffCodeField;
@@ -425,6 +749,19 @@ namespace WSBalanceClient.PGPersonAllocateInfoService {
                 if ((object.ReferenceEquals(this.StaffNameField, value) != true)) {
                     this.StaffNameField = value;
                     this.RaisePropertyChanged("StaffName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WSBalanceClient.PGPersonAllocateInfoService.WebsiteInfo WebsiteInfoObj {
+            get {
+                return this.WebsiteInfoObjField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WebsiteInfoObjField, value) != true)) {
+                    this.WebsiteInfoObjField = value;
+                    this.RaisePropertyChanged("WebsiteInfoObj");
                 }
             }
         }

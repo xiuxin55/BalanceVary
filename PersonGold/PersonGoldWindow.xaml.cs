@@ -86,13 +86,15 @@ namespace PersonGold
                     CacheUC.Add(tb.SelectedIndex);
                     break;
                 case 1:
-                   
+                    ti.Content = new PGPersonAllocateInfoManage();
+                    CacheUC.Add(tb.SelectedIndex);
                     break;
                 case 2:
                     ti.Content = new PGWebistePerformanceInfoManage();
                     CacheUC.Add(tb.SelectedIndex);
                     break;
                 case 3:
+                   
                     
                     break;
                 case 4:

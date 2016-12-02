@@ -16,8 +16,11 @@
           <xs:element minOccurs="0" name="InsuranceYearGrowth" type="xs:decimal" />
           <xs:element minOccurs="0" name="IsSelected" type="xs:boolean" />
           <xs:element minOccurs="0" name="MonthContributionDegree" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PGPersonInfoObj" nillable="true" type="tns:PGPersonInfo" />
+          <xs:element minOccurs="0" name="PreRank" type="xs:int" />
           <xs:element minOccurs="0" name="StaffCode" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="StaffName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WebsiteInfoObj" nillable="true" type="tns:WebsiteInfo" />
           <xs:element minOccurs="0" name="YearContributionDegree" type="xs:decimal" />
         </xs:sequence>
       </xs:extension>
@@ -47,6 +50,41 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BaseModel" nillable="true" type="tns:BaseModel" />
+  <xs:complexType name="PGPersonInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PersonGoldBaseModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CardID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsSelected" type="xs:boolean" />
+          <xs:element minOccurs="0" name="StaffCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StaffName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StaffPosition" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StaffPositionOrder" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StaffType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WebsiteInfoObj" nillable="true" type="tns:WebsiteInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PGPersonInfo" nillable="true" type="tns:PGPersonInfo" />
+  <xs:complexType name="WebsiteInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Institution" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ManagerTelphone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NewWebsiteID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WebsiteAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WebsiteID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WebsiteManager" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WebsiteName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WebsiteTel" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WebsiteInfo" nillable="true" type="tns:WebsiteInfo" />
   <xs:complexType name="ArrayOfPGPersonAllocateInfo">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PGPersonAllocateInfo" nillable="true" type="tns:PGPersonAllocateInfo" />
