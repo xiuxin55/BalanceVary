@@ -386,7 +386,7 @@ namespace BalanceDataSync
                         time = DateTime.Parse(item.FileDateTime.Value.ToString("yyyy-MM-dd"));
                     }
                     ImportPGCardBaseDataList = ReadPersonExcel.ReadPGCardBaseData(item.FilePath + item.FileName);
-                    if (ImportPGInsuranceInfoDataList.Count == 0)
+                    if (ImportPGCardBaseDataList.Count == 0)
                     {
                         item.FileState = 2;
                         item.FileException = "未获取到数据";

@@ -144,7 +144,7 @@ namespace BalanceDataSync
 
                         if (!string.IsNullOrWhiteSpace(str))
                         {
-                            string name = item[0].ToString();
+                            string name = item[0].ToString().Trim();
                             WebsiteInfo wb = websites.FirstOrDefault(e => e.WebsiteName.Replace("连云港市", "").Contains(name) || name.Contains(e.WebsiteName.Replace("连云港市", "")));
                             //WebsiteInfo wb = websites.FirstOrDefault(e => e.WebsiteName==name.Trim());
                             if (wb != null && !string.IsNullOrWhiteSpace(wb.WebsiteID))
@@ -484,7 +484,7 @@ namespace BalanceDataSync
             try
             {
                 List<PGPersonAllocateInfo> list = new List<PGPersonAllocateInfo>();
-                List<DataTable> tables = NPOIHelper.Instance.ImportPersonInfo(filename, 0, 3);
+                List<DataTable> tables = NPOIHelper.Instance.ImportPersonInfo(filename, 0);
                 List<WebsiteInfo> websites = new BalanceBLL.WebsiteInfoBLL().Select(null);
                 List<PGPersonInfo> personinfos = new BalanceBLL.PGPersonInfoBLL().Select(null);
                 foreach (var dt in tables)
@@ -501,8 +501,7 @@ namespace BalanceDataSync
                         string str = item[5].ToString().Trim();
                         if (!string.IsNullOrWhiteSpace(str))
                         {
-                            string name = item[0].ToString();
-                            WebsiteInfo wb = websites.FirstOrDefault(e => e.WebsiteName.Replace("连云港市", "").Contains(name) || name.Contains(e.WebsiteName.Replace("连云港市", "")));
+                            WebsiteInfo wb = websites.FirstOrDefault(e => e.WebsiteName.Replace("连云港市", "").Contains(str) || str.Contains(e.WebsiteName.Replace("连云港市", "")));
                             //WebsiteInfo wb = websites.FirstOrDefault(e => e.WebsiteName==name);
                             if (wb != null && !string.IsNullOrWhiteSpace(wb.WebsiteID))
                             {
@@ -527,18 +526,18 @@ namespace BalanceDataSync
                             if (wb != null && !string.IsNullOrWhiteSpace(wb.StaffCode))
                             {
                                 model.StaffCode  = wb.StaffCode;
-                                model.StaffName = wb.StaffName;
+                                model.StaffName = name;
                             }
                             else
                             {
-                                continue;
+                                model.StaffName = name;
                             }
                         }
                         else
                         {
                             continue;
                         }
-                        
+
                         decimal curmoney,totalmoney;
                         decimal.TryParse(item[4].ToString().Trim(), out curmoney);
                         decimal.TryParse(item[3].ToString().Trim(), out totalmoney);

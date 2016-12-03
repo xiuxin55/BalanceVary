@@ -33,6 +33,11 @@ namespace WcfBalanceServiceLibrary
                 //删除当天数据
                 List<PGPersonAllocateInfo> currentlist = bll.Select(tempcurrentday);
                 List<PGPersonAllocateInfo> prelist = bll.Select(temp);
+                if (prelist==null || prelist.Count==0)
+                {
+                    temp = new PGPersonAllocateInfo() { NewWebsiteID = info.NewWebsiteID, StaffName = info.StaffName, DataTime = info.DataTime.Value.AddDays(-1),OrderbyColomnName= "StaffCode" };
+                    prelist = bll.Select(temp);
+                }
                 PGPersonAllocateInfo premodel = prelist != null && prelist.Count > 0 ? prelist[0] : null;
                 if (premodel != null && premodel.DataTime != null)
                 {
