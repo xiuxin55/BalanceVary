@@ -51,8 +51,12 @@ namespace Common.Server
 
 
         /// <summary>
-        /// 上传个金基础数据后触发导入事件
+        /// 上传个金储蓄类基础数据后触发导入事件
         /// </summary>
-        public static Action<object> PGBaseDataInfoDataEvent;
+        public static Action<object> PGCardBaseDataEvent;
+        /// <summary>
+        /// 上传个金保险类基础数据后触发导入事件
+        /// </summary>
+        public static Action<object> PGInsuranceBaseDataEvent;
     }
 }

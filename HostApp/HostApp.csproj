@@ -115,6 +115,9 @@
     <None Include="TemplateFile\信用卡类模版.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="TemplateFile\储蓄类基础数据模版.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="TemplateFile\储蓄类模版.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

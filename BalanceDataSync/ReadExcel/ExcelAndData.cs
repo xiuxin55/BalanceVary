@@ -366,6 +366,7 @@ namespace BalanceDataSync
                 for (int j = row.FirstCellNum; j < cellCount; j++)
                 {
                     if (row.GetCell(j) != null)
+                    {
                         if (row.GetCell(j).CellType == NPOI.SS.UserModel.CellType.NUMERIC)
                         {
                             int s = row.GetCell(j).CellStyle.DataFormat;
@@ -386,16 +387,17 @@ namespace BalanceDataSync
                             {
                                 dataRow[j] = row.GetCell(j).NumericCellValue.ToString();
                             }
-                            else if(row.GetCell(j).CachedFormulaResultType == NPOI.SS.UserModel.CellType.STRING)
+                            else if (row.GetCell(j).CachedFormulaResultType == NPOI.SS.UserModel.CellType.STRING)
                             {
                                 dataRow[j] = row.GetCell(j).StringCellValue;
                             }
-                           
+
                         }
                         else
                         {
                             dataRow[j] = row.GetCell(j).ToString();
                         }
+                    }
                 }
 
                 dt.Rows.Add(dataRow);
@@ -660,115 +662,129 @@ namespace BalanceDataSync
         {
 
 
-           
 
-            HSSFWorkbook hssfworkbook;
-            using (FileStream file = new FileStream(strFileName, FileMode.Open, FileAccess.Read))
-            {
-                hssfworkbook = new HSSFWorkbook(file);
-            }
-            int sheetcount = hssfworkbook.NumberOfSheets;
-            List<DataTable> tables = new List<DataTable>();
-            for (int k = 0; k < sheetcount; k++)
+            try
             {
 
-                DataTable dt = new DataTable();
-                HSSFSheet sheet = (HSSFSheet)hssfworkbook.GetSheetAt(k);
-                System.Collections.IEnumerator rows = sheet.GetRowEnumerator();
 
-                HSSFRow headerRow = (HSSFRow)sheet.GetRow(defaultrowhead);
-                int cellCount = 0;
-                int rowstartindex = 0;
-                if (colomns > 0)
+                HSSFWorkbook hssfworkbook;
+                using (FileStream file = new FileStream(strFileName, FileMode.Open, FileAccess.Read))
                 {
-                    cellCount = colomns;
-                    for (int j = 0; j < cellCount; j++)
-                    {
-                        dt.Columns.Add(j.ToString());
-                    }
+                    hssfworkbook = new HSSFWorkbook(file);
                 }
-                else
-                {
-                    cellCount = headerRow.LastCellNum;
-                    rowstartindex = sheet.FirstRowNum;
-                    for (int j = 0; j < cellCount; j++)
-                    {
-                        HSSFCell cell = (HSSFCell)headerRow.GetCell(j);
-                        dt.Columns.Add(cell.ToString());
-                    }
-                }
-
-                for (int i = (rowstartindex + 1); i <= sheet.LastRowNum; i++)
+                int sheetcount = hssfworkbook.NumberOfSheets;
+                List<DataTable> tables = new List<DataTable>();
+                for (int k = 0; k < sheetcount; k++)
                 {
 
+                    DataTable dt = new DataTable();
+                    HSSFSheet sheet = (HSSFSheet)hssfworkbook.GetSheetAt(k);
+                    System.Collections.IEnumerator rows = sheet.GetRowEnumerator();
 
-                    HSSFRow row = (HSSFRow)sheet.GetRow(i);
-                    if (row == null)
+                    HSSFRow headerRow = (HSSFRow)sheet.GetRow(defaultrowhead);
+                    int cellCount = 0;
+                    int rowstartindex = 0;
+                    if (colomns > 0)
                     {
-                        continue;
-                    }
-                    DataRow dataRow = dt.NewRow();
-
-                    for (int j = row.FirstCellNum; j < cellCount; j++)
-                    {
-                        CellRangeAddress mergedRegion = null;
-                        NPOI.SS.UserModel.ICell cell = row.GetCell(j);
-                        if (cell.IsMergedCell)
+                        cellCount = colomns;
+                        for (int j = 0; j < cellCount; j++)
                         {
-                            mergedRegion= getMergedRegionForCell(cell);
-                            if (mergedRegion != null)
-                            {
-                                cell = sheet.GetRow(mergedRegion.FirstRow).GetCell(mergedRegion.FirstColumn);
-                            }
-                    
+                            dt.Columns.Add(j.ToString());
                         }
-                        if (cell != null)
-                            if (cell.CellType == NPOI.SS.UserModel.CellType.NUMERIC)
+                    }
+                    else
+                    {
+                        cellCount = headerRow.LastCellNum;
+                        rowstartindex = sheet.FirstRowNum;
+                        for (int j = 0; j < cellCount; j++)
+                        {
+                            HSSFCell cell = (HSSFCell)headerRow.GetCell(j);
+                            dt.Columns.Add(cell.ToString());
+                        }
+                    }
+
+                    for (int i = (rowstartindex + 1); i <= sheet.LastRowNum; i++)
+                    {
+
+
+                        HSSFRow row = (HSSFRow)sheet.GetRow(i);
+                        if (row == null)
+                        {
+                            continue;
+                        }
+                        //if (i==74)
+                        //{
+                            
+                        //}
+                        DataRow dataRow = dt.NewRow();
+
+                        for (int j = row.FirstCellNum; j < cellCount; j++)
+                        {
+                            CellRangeAddress mergedRegion = null;
+                            NPOI.SS.UserModel.ICell cell = row.GetCell(j);
+                            if (cell != null&&cell.IsMergedCell)
                             {
-                                int s = cell.CellStyle.DataFormat;
-                                if (s == 14 || s == 31 || s == 57 || s == 58)
+                                mergedRegion = getMergedRegionForCell(cell);
+                                if (mergedRegion != null)
                                 {
-                                    DateTime date = cell.DateCellValue;
-                                    dataRow[j] = date.ToString();
+                                    cell = sheet.GetRow(mergedRegion.FirstRow).GetCell(mergedRegion.FirstColumn);
+                                }
+
+                            }
+                            if (cell != null)
+                            {
+                                if (cell.CellType == NPOI.SS.UserModel.CellType.NUMERIC)
+                                {
+                                    int s = cell.CellStyle.DataFormat;
+                                    if (s == 14 || s == 31 || s == 57 || s == 58)
+                                    {
+                                        DateTime date = cell.DateCellValue;
+                                        dataRow[j] = date.ToString();
+                                    }
+                                    else
+                                    {
+                                        dataRow[j] = cell.NumericCellValue.ToString();
+                                    }
+                                }
+                                else if (cell.CellType == NPOI.SS.UserModel.CellType.FORMULA)
+                                {
+                                    //double number = row.GetCell(j).NumericCellValue;
+                                    if (cell.CachedFormulaResultType == NPOI.SS.UserModel.CellType.NUMERIC)
+                                    {
+                                        dataRow[j] = cell.NumericCellValue.ToString();
+                                    }
+                                    else if (cell.CachedFormulaResultType == NPOI.SS.UserModel.CellType.STRING)
+                                    {
+                                        dataRow[j] = cell.StringCellValue;
+                                    }
+
                                 }
                                 else
                                 {
-                                    dataRow[j] = cell.NumericCellValue.ToString();
+                                    dataRow[j] = cell.ToString();
                                 }
                             }
-                            else if (cell.CellType == NPOI.SS.UserModel.CellType.FORMULA)
-                            {
-                                //double number = row.GetCell(j).NumericCellValue;
-                                if (cell.CachedFormulaResultType == NPOI.SS.UserModel.CellType.NUMERIC)
-                                {
-                                    dataRow[j] = cell.NumericCellValue.ToString();
-                                }
-                                else if (cell.CachedFormulaResultType == NPOI.SS.UserModel.CellType.STRING)
-                                {
-                                    dataRow[j] = cell.StringCellValue;
-                                }
+                        }
 
-                            }
-                            else
-                            {
-                                dataRow[j] = cell.ToString();
-                            }
+                        dt.Rows.Add(dataRow);
+                        //App.Current.Dispatcher.Invoke(new Action(delegate()
+                        //{
+                        //    MainWindow MW = (MainWindow)App.Current.MainWindow;
+                        //    MW.pro.progressBar.Value = MW.pro.progressBar.Value + 1;
+                        //    jinDu = MW.pro.progressBar.Value / MW.pro.progressBar.Maximum * 100;
+                        //    MW.pro.jinDu.Text = "当前进度:" + jinDu.ToString("#0.00") + "%";
+
+                        //}));
                     }
-
-                    dt.Rows.Add(dataRow);
-                    //App.Current.Dispatcher.Invoke(new Action(delegate()
-                    //{
-                    //    MainWindow MW = (MainWindow)App.Current.MainWindow;
-                    //    MW.pro.progressBar.Value = MW.pro.progressBar.Value + 1;
-                    //    jinDu = MW.pro.progressBar.Value / MW.pro.progressBar.Maximum * 100;
-                    //    MW.pro.jinDu.Text = "当前进度:" + jinDu.ToString("#0.00") + "%";
-
-                    //}));
+                    tables.Add(dt);
                 }
-                tables.Add(dt);
+                return tables;
             }
-            return tables;
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
         }
         public CellRangeAddress getMergedRegionForCell(NPOI.SS.UserModel.ICell c)
         {

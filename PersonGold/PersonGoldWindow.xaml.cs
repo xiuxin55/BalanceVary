@@ -164,5 +164,28 @@ namespace PersonGold
             }
             
         }
+        /// <summary>
+        /// 储蓄基础数据导入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CardBaseDataImportButton_Click(object sender, RoutedEventArgs e)
+        {
+            ImportSelectDate s = new ImportSelectDate();
+            if ((bool)s.ShowDialog() == false)
+            {
+                return;
+            }
+            OpenFileDialog op = new OpenFileDialog();
+            if ((bool)op.ShowDialog())
+            {
+                if (!op.SafeFileName.ToLower().EndsWith(".xls"))
+                {
+                    MessageBox.Show("系统仅支持xls格式");
+                    return;
+                }
+                WSBalanceClient.Helper.UploadFile.Upload(op.FileName, FileType.PGCardBaseDataInfo, s.ImportTime);
+            }
+        }
     }
 }

@@ -140,5 +140,10 @@ namespace PersonGold.Views
         {
             SaveDownloadFile("信用卡类模版.xls");
         }
+        private void btn_cardbasedata_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDownloadFile("储蓄类基础数据模版.xls");
+        }
+        
     }
 }

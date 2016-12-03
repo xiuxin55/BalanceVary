@@ -36,7 +36,8 @@ namespace BalanceDataSync
             CommonEvent.PGDebitCardInfoDataEvent += PGDebitCardInfoData;
             CommonEvent.PGInsuranceInfoDataEvent += PGInsuranceInfoData;
             CommonEvent.PGCreditCardInfoInfoDataEvent += PGCreditCardInfoInfoData;
-            CommonEvent.PGBaseDataInfoDataEvent += PGBaseDataInfoData;
+            CommonEvent.PGCardBaseDataEvent += PGCardBaseData;
+            CommonEvent.PGInsuranceBaseDataEvent += PGInsuranceBaseData;
             #endregion
 
         }
@@ -117,6 +118,7 @@ namespace BalanceDataSync
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGDebitCardInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGInsuranceInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGCreditCardInfo), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
+                MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGCardBaseData), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
             }
             catch (Exception ex)
             {
@@ -410,10 +412,10 @@ namespace BalanceDataSync
 
         }
         /// <summary>
-        /// 导入个金基础数据
+        /// 导入个金储蓄类基础数据
         /// </summary>
         /// <param name="obj"></param>
-        private void PGBaseDataInfoData(object obj)
+        private void PGCardBaseData(object obj)
         {
             lock (CreditCardObj)
             {
@@ -424,11 +426,33 @@ namespace BalanceDataSync
                     temp.Add(info);
                     SyncDataHandler syn = new SyncDataHandler(temp);
                     syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
-                    MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGCreditCardInfo), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+                    MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGCardBaseData), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
                 }
             }
 
         }
+
+        /// <summary>
+        /// 导入个金保险类基础数据
+        /// </summary>
+        /// <param name="obj"></param>
+        private void PGInsuranceBaseData(object obj)
+        {
+            lock (CreditCardObj)
+            {
+                UploadFileInfo info = obj as UploadFileInfo;
+                if (info != null)
+                {
+                    List<UploadFileInfo> temp = new List<UploadFileInfo>();
+                    temp.Add(info);
+                    SyncDataHandler syn = new SyncDataHandler(temp);
+                    syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
+                    MultiTask.TaskDispatcherWithUI(new Action(syn.ImportPGInsuranceBaseData), this.SynComplete, temp, Application.Current.MainWindow.Dispatcher);
+                }
+            }
+
+        }
+        
         
 
         #endregion

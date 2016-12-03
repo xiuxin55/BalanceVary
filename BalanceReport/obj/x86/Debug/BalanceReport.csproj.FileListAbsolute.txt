@@ -613,7 +613,6 @@ C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\De
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\SearchWindow.baml
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\UserControlLoading.baml
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentAdd.baml
-C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\WebsiteAdd.baml
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountAdd.baml
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\AccountLink.baml
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ImportSelectDate.baml
@@ -641,9 +640,7 @@ C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\De
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\UserControlLoading.g.cs
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\VaryGridControl.g.cs
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentAdd.g.cs
-C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\WebsiteAdd.g.cs
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentManage.g.cs
-C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\WebsiteManage.g.cs
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\CustomerManagerList.g.cs
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentSelect.g.cs
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ManagersSelect.g.cs
@@ -670,7 +667,6 @@ C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\De
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ReportUserControl.baml
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\VaryGridControl.baml
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentManage.baml
-C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\WebsiteManage.baml
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\CustomerManagerList.baml
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\DepartmentSelect.baml
 C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\Views\ManagersSelect.baml
@@ -706,3 +702,11 @@ E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWind
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WebsiteManage.g.cs
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WinWesiteWindow.baml
 E:\个人\GitHub_余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WebsiteManage.baml
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WebsiteAdd.baml
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WinWesiteWindow.g.cs
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WebsiteAdd.g.cs
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WebsiteManage.g.cs
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\bin\Debug\WSBalanceClient.dll
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\bin\Debug\WSBalanceClient.pdb
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WinWesiteWindow.baml
+C:\Users\Administrator\Desktop\余额变动\BalanceVary\BalanceReport\obj\x86\Debug\WesiteWindow\WebsiteManage.baml

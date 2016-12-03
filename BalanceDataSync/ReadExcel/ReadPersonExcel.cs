@@ -9,7 +9,7 @@ using System.Text;
 
 namespace BalanceDataSync
 {
-    public class ReadPersonExcel
+    public partial class ReadPersonExcel
     {
         #region 人员信息
         public static List<PGPersonInfo> ReadPGPersonInfoData(string filename)
@@ -123,11 +123,31 @@ namespace BalanceDataSync
                         PGDebitCardInfo model = new PGDebitCardInfo();
                         model.ID = Guid.NewGuid().ToString();
                         string str = item[0].ToString().Trim();
-                        if (!string.IsNullOrWhiteSpace(str))  
+                        //if (!string.IsNullOrWhiteSpace(str))  
+                        //{
+                        //    string name = item[0].ToString();
+                        //    WebsiteInfo wb = websites.FirstOrDefault(e => e.WebsiteName.Replace("连云港市", "").Contains(name) || name.Contains(e.WebsiteName.Replace("连云港市", "")));
+                        //    if (wb!=null&&!string.IsNullOrWhiteSpace(wb.WebsiteID))
+                        //    {
+                        //        model.WebsiteID = wb.WebsiteID;
+                        //        model.NewWebsiteID = wb.NewWebsiteID;
+                        //    }
+                        //    else
+                        //    {
+                        //        continue;
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    continue;
+                        //}
+
+                        if (!string.IsNullOrWhiteSpace(str))
                         {
                             string name = item[0].ToString();
                             WebsiteInfo wb = websites.FirstOrDefault(e => e.WebsiteName.Replace("连云港市", "").Contains(name) || name.Contains(e.WebsiteName.Replace("连云港市", "")));
-                            if (wb!=null&&!string.IsNullOrWhiteSpace(wb.WebsiteID))
+                            //WebsiteInfo wb = websites.FirstOrDefault(e => e.WebsiteName==name.Trim());
+                            if (wb != null && !string.IsNullOrWhiteSpace(wb.WebsiteID))
                             {
                                 model.WebsiteID = wb.WebsiteID;
                                 model.NewWebsiteID = wb.NewWebsiteID;
@@ -337,8 +357,6 @@ namespace BalanceDataSync
 
         }
         #endregion
-
-        
         #region 信用卡信息
         public static List<PGCreditCardInfo> ReadPGCreditCardInfoData(string filename)
         {
@@ -443,8 +461,192 @@ namespace BalanceDataSync
 
         }
         #endregion
+
+
+
     }
 
+
+    public partial class ReadPersonExcel
+    {
+        #region 储蓄卡基础数据
+        public static List<PGPersonAllocateInfo> ReadPGCardBaseData(string filename)
+        {
+            if (File.Exists(filename))
+            {
+                FileInfo fi = new FileInfo(filename);
+                return PGCardBaseData(fi.FullName);
+            }
+            return null;
+        }
+        public static List<PGPersonAllocateInfo> PGCardBaseData(string filename)
+        {
+            try
+            {
+                List<PGPersonAllocateInfo> list = new List<PGPersonAllocateInfo>();
+                List<DataTable> tables = NPOIHelper.Instance.ImportPersonInfo(filename, 0, 3);
+                List<WebsiteInfo> websites = new BalanceBLL.WebsiteInfoBLL().Select(null);
+                List<PGPersonInfo> personinfos = new BalanceBLL.PGPersonInfoBLL().Select(null);
+                foreach (var dt in tables)
+                {
+                    for (int j = 0; j < dt.Rows.Count; j++)
+                    {
+                        DataRow item = dt.Rows[j];
+                        if (string.IsNullOrWhiteSpace(item[5].ToString()))
+                        {
+                            continue;
+                        }
+                        PGPersonAllocateInfo model = new PGPersonAllocateInfo();
+                        model.ID = Guid.NewGuid().ToString();
+                        string str = item[5].ToString().Trim();
+                        if (!string.IsNullOrWhiteSpace(str))
+                        {
+                            string name = item[0].ToString();
+                            WebsiteInfo wb = websites.FirstOrDefault(e => e.WebsiteName.Replace("连云港市", "").Contains(name) || name.Contains(e.WebsiteName.Replace("连云港市", "")));
+                            //WebsiteInfo wb = websites.FirstOrDefault(e => e.WebsiteName==name);
+                            if (wb != null && !string.IsNullOrWhiteSpace(wb.WebsiteID))
+                            {
+                                model.WebsiteID = wb.WebsiteID;
+                                model.NewWebsiteID = wb.NewWebsiteID;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                        else
+                        {
+                            continue;
+                        }
+
+                        string strname = item[1].ToString().Trim();
+                        if (!string.IsNullOrWhiteSpace(strname))
+                        {
+                            string name = item[1].ToString().Trim();
+                            PGPersonInfo wb = personinfos.FirstOrDefault(e => e.StaffName == name&&e.NewWebsiteID==model.NewWebsiteID);
+                            if (wb != null && !string.IsNullOrWhiteSpace(wb.StaffCode))
+                            {
+                                model.StaffCode  = wb.StaffCode;
+                                model.StaffName = wb.StaffName;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                        
+                        decimal curmoney,totalmoney;
+                        decimal.TryParse(item[4].ToString().Trim(), out curmoney);
+                        decimal.TryParse(item[3].ToString().Trim(), out totalmoney);
+                        model.CardYearGrowth = totalmoney;
+                        model.CardDayGrowth = curmoney;
+                        model.CardMonthGrowth = curmoney;
+                        list.Add(model);
+                    }
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+       
+        #endregion
+
+        #region 储蓄卡信息
+        public static List<PGPersonAllocateInfo> ReadPGInsuranceBaseData(string filename)
+        {
+            if (File.Exists(filename))
+            {
+                FileInfo fi = new FileInfo(filename);
+                return PGInsuranceBaseData(fi.FullName);
+            }
+            return null;
+        }
+        public static List<PGPersonAllocateInfo> PGInsuranceBaseData(string filename)
+        {
+            try
+            {
+                List<PGDebitCardInfo> list = new List<PGDebitCardInfo>();
+                List<DataTable> tables = NPOIHelper.Instance.ImportPersonInfo(filename, 0, 3);
+                List<WebsiteInfo> websites = new BalanceBLL.WebsiteInfoBLL().Select(null);
+                foreach (var dt in tables)
+                {
+                    // List<string> accountids = new List<string>();
+                    for (int j = 0; j < dt.Rows.Count; j++)
+                    {
+                        DataRow item = dt.Rows[j];
+                        if (string.IsNullOrWhiteSpace(item[0].ToString()) && string.IsNullOrWhiteSpace(item[1].ToString()))
+                        {
+                            continue;
+                        }
+                        //if (!accountids.Contains(item["人员编码"].ToString().Trim()))
+                        //{
+
+                        //  accountids.Add(item["人员编码"].ToString().Trim());
+                        PGDebitCardInfo model = new PGDebitCardInfo();
+                        model.ID = Guid.NewGuid().ToString();
+                        string str = item[0].ToString().Trim();
+                        if (!string.IsNullOrWhiteSpace(str))
+                        {
+                            string name = item[0].ToString();
+                            WebsiteInfo wb = websites.FirstOrDefault(e => e.WebsiteName.Replace("连云港市", "").Contains(name) || name.Contains(e.WebsiteName.Replace("连云港市", "")));
+                            if (wb != null && !string.IsNullOrWhiteSpace(wb.WebsiteID))
+                            {
+                                model.WebsiteID = wb.WebsiteID;
+                                model.NewWebsiteID = wb.NewWebsiteID;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                        decimal money;
+                        decimal.TryParse(item[1].ToString().Trim(), out money);
+                        model.CurrentDayBalance = money;
+                        model.DifferenceValue = 0;
+                        bool ishas = false;
+                        foreach (var temp in list)
+                        {
+                            if ((model.WebsiteID != null && temp.WebsiteID == model.WebsiteID) || (model.NewWebsiteID != null && temp.NewWebsiteID == model.NewWebsiteID))
+                            {
+                                if (money > 0)
+                                {
+                                    temp.CurrentDayBalance = money;
+                                    temp.DifferenceValue = 0;
+                                }
+                                ishas = true;
+                            }
+                        }
+                        if (!ishas)
+                        {
+                            list.Add(model);
+                        }
+
+                        //}
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        #endregion
+    }
 
 
 }

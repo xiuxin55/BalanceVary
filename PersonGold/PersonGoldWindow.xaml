@@ -31,7 +31,8 @@
                         <StackPanel Margin="2">
                             <MenuItem x:Name="ImportTemplate" Header="导入模版查看" Click="ImportTemplate_Click"  />
                             <MenuItem Header="人员信息导入" Click="PersonInfoImportButton_Click"  />
-                            <MenuItem  Header="储蓄卡数据导入" Click="DebitCardImportButton_Click"  />
+                            <MenuItem Header="储蓄基础数据导入" Click="CardBaseDataImportButton_Click"  />
+                            <MenuItem  Header="储蓄数据导入" Click="DebitCardImportButton_Click"  />
                             <MenuItem  Header="保险数据导入" Click="PGInsuranceInfoImportButton_Click"  />
                             <!--<MenuItem  Header="信用卡数据导入" Click="PGCreditCardInfoImportButton_Click"  />-->
                         </StackPanel>

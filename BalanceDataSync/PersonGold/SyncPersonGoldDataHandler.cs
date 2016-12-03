@@ -366,10 +366,11 @@ namespace BalanceDataSync
         }
         #endregion
         
-        #region 个金基础数据
-        public void ImportPGBaseData()
+        #region 个金储蓄类基础数据
+        List<PGPersonAllocateInfo> ImportPGCardBaseDataList = new List<PGPersonAllocateInfo>();
+        public void ImportPGCardBaseData()
         {
-            IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains("PGInsuranceInfo"));
+            IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains(Common.Client.FileType.PGCardBaseDataInfo.ToString()));
             foreach (var item in filelist)
             {
                 try
@@ -384,14 +385,14 @@ namespace BalanceDataSync
                     {
                         time = DateTime.Parse(item.FileDateTime.Value.ToString("yyyy-MM-dd"));
                     }
-                    ImportPGInsuranceInfoDataList = ReadPersonExcel.ReadPGInsuranceInfoData(item.FilePath + item.FileName);
+                    ImportPGCardBaseDataList = ReadPersonExcel.ReadPGCardBaseData(item.FilePath + item.FileName);
                     if (ImportPGInsuranceInfoDataList.Count == 0)
                     {
                         item.FileState = 2;
                         item.FileException = "未获取到数据";
                         return;
                     }
-                    CalculatePGBaseData(time);
+                    CalculatePGCardBaseData(time);
                     item.FileState = 1;
                 }
                 catch (Exception ex)
@@ -407,10 +408,66 @@ namespace BalanceDataSync
                 }
             }
         }
-        private void CalculatePGBaseData(DateTime importtime)
+        private void CalculatePGCardBaseData(DateTime importtime)
         {
-           
-            
+
+            PGPersonAllocateInfoBLL bll = new PGPersonAllocateInfoBLL();
+            bll.Delete(new PGPersonAllocateInfo() { DataTime = importtime });
+            foreach (var info in ImportPGCardBaseDataList)
+            {
+                info.DataTime = importtime;
+                info.DayContributionDegree = (info.CardYearGrowth / (info.DataTime.Value - DateTime.Parse(info.DataTime.Value.Year + "-01-01")).Days) * Convert.ToDecimal(0.6) +
+                  info.InsuranceYearGrowth * Convert.ToDecimal(0.2);
+                bll.Add(info);
+            }
+        }
+        #endregion
+
+        #region 个金保险类基础数据
+        public void ImportPGInsuranceBaseData()
+        {
+            IEnumerable<UploadFileInfo> filelist = UploadFileInfoList.Where(p => p.FileName.Contains(Common.Client.FileType.PGInsuranceBaseDataInfo.ToString()));
+            foreach (var item in filelist)
+            {
+                try
+                {
+
+                    DateTime time;
+                    if (item.FileDateTime == null)
+                    {
+                        time = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
+                    }
+                    else
+                    {
+                        time = DateTime.Parse(item.FileDateTime.Value.ToString("yyyy-MM-dd"));
+                    }
+                    //ImportPGInsuranceInfoDataList = ReadPersonExcel.ReadPGInsuranceBaseData(item.FilePath + item.FileName);
+                    if (ImportPGInsuranceInfoDataList.Count == 0)
+                    {
+                        item.FileState = 2;
+                        item.FileException = "未获取到数据";
+                        return;
+                    }
+                    CalculatePGInsuranceBaseData(time);
+                    item.FileState = 1;
+                }
+                catch (Exception ex)
+                {
+
+                    item.FileState = 2;
+                    item.FileException = ex.Message + ":\n" + ex.StackTrace;
+                    if (NotifyFileStateChange != null)
+                    {
+                        NotifyFileStateChange(item);
+                    }
+                    throw ex;
+                }
+            }
+        }
+        private void CalculatePGInsuranceBaseData(DateTime importtime)
+        {
+
+
         }
         #endregion
     }

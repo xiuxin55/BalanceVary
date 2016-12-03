@@ -54,10 +54,17 @@ namespace WcfBalanceServiceLibrary.Helper
                 CommonEvent.PGCreditCardInfoInfoDataEvent(uploadfileinfo);
             }
 
-            if (CommonEvent.PGBaseDataInfoDataEvent != null)
+           
+
+            if (CommonEvent.PGCardBaseDataEvent != null)
             {
-                //个金信用卡信息数据导入触发
-                CommonEvent.PGBaseDataInfoDataEvent(uploadfileinfo);
+                //个金储蓄基础数据导入触发
+                CommonEvent.PGCardBaseDataEvent(uploadfileinfo);
+            }
+            if (CommonEvent.PGInsuranceBaseDataEvent != null)
+            {
+                //个金保险基础数据导入触发
+                CommonEvent.PGInsuranceBaseDataEvent(uploadfileinfo);
             }
 
         }
