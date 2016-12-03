@@ -108,7 +108,20 @@ namespace BalanceDataSync
                 {
                     item.FileException = null;
                 }
-                SyncDataHandler syn = new SyncDataHandler(UploadFileList.Where(e => e.IsSelected ).ToList());
+                List<UploadFileInfo> files = UploadFileList.ToList();
+                files.Sort(
+                    (x, y) =>
+                    {
+                        if (x.FileDateTime>y.FileDateTime)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return -1;
+                        }
+                    });
+                SyncDataHandler syn = new SyncDataHandler(files.Where(e => e.IsSelected).ToList());
                 syn.NotifyFileStateChange = NotifyCurrentCalculateFile;
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportMonthData), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);
                 MultiTask.TaskDispatcherWithUI(new Action(syn.ImportCustomerLink), this.SynComplete, UploadFileList.ToList(), Application.Current.MainWindow.Dispatcher);

@@ -32,7 +32,7 @@
                 <ListView.View>
                     <GridView >
                         <GridViewColumn Width="50"  Header="当前排名" DisplayMemberBinding="{Binding RowNumber}" tool:ListViewBehavior.SortField="RowNumber"/>
-                        <!--<GridViewColumn Width="100"  Header="人员编码" DisplayMemberBinding="{Binding StaffCode}" tool:ListViewBehavior.SortField="StaffCode"/>-->
+                        <GridViewColumn Width="100"  Header="人员编码" DisplayMemberBinding="{Binding StaffCode}" tool:ListViewBehavior.SortField="StaffCode"/>
                         <GridViewColumn Width="100"  Header="姓名" DisplayMemberBinding="{Binding StaffName}" tool:ListViewBehavior.SortField="StaffName"/>
                         <GridViewColumn Width="100" Header="岗位" DisplayMemberBinding="{Binding PGPersonInfoObj.StaffPosition}" tool:ListViewBehavior.SortField="PGPersonInfoObj.StaffPositionOrder" />
                         <!--<GridViewColumn Width="100" Header="新部门编码" DisplayMemberBinding="{Binding NewWebsiteID}" tool:ListViewBehavior.SortField="NewWebsiteID" />-->
