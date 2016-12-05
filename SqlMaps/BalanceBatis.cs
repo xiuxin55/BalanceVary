@@ -15,7 +15,7 @@ namespace SqlMaps
         {
             get
             {
-                StartBatis(CommonData.BalanceSqlConfig);
+                StartBatis(CommonData.GetSqlConfig());
                 return SqlMap;
             }
         }

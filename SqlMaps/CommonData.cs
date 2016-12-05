@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -38,6 +39,18 @@ namespace SqlMaps
                     _DBConnetionString = "";
                 }
             } 
+        }
+
+        public static string GetSqlConfig()
+        {
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory+"Develop"))
+            {
+                return @"Configure.developsqlmap.config";
+            }
+            else
+            {
+                return @"Configure.sqlmap.config"; 
+            }
         }
     }
 }
