@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -30,8 +31,16 @@ namespace BalanceModel
             {
                 _FileState = value;
                 this.RaisePropertyChanged("FileState");
+                if (FileStateChanged!=null)
+                {
+                    FileStateChanged(this);
+                }
             }
         }
+        /// <summary>
+        /// 文件状态变化触发回调
+        /// </summary>
+        public event Action<UploadFileInfo> FileStateChanged;
 
         public string FileException { get; set; }
         public string FileMD5 { get; set; }

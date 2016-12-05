@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using UserAuthorization.UserInfoService;
+
 using WSBalanceClient.ServiceFile;
 
 namespace WSBalanceClient.Helper
@@ -26,7 +27,8 @@ namespace WSBalanceClient.Helper
             {
                 string md5 = HashHelper.ComputeMD5(fileInfoIO.FullName);
                 fs = File.OpenRead(fileInfoIO.FullName);
-                client = new ServiceFileClient();
+                var context = new System.ServiceModel.InstanceContext(new UpLoadFileCallback());
+                client = new ServiceFileClient(context);
                 int maxSiz = 1024 * 100;
                 // 根据文件名获取服务器上的文件
                 UploadFileInfo search = new UploadFileInfo();
@@ -98,7 +100,8 @@ namespace WSBalanceClient.Helper
             // 要上传的文件地址
             FileStream fs = File.OpenRead(fileInfoIO.FullName);
             // 实例化服务客户的
-            ServiceFileClient client = new ServiceFileClient();
+            var context = new System.ServiceModel.InstanceContext(new UpLoadFileCallback());
+            ServiceFileClient client = new ServiceFileClient(context);
             try
             {
                 int maxSiz = 1024 * 100;

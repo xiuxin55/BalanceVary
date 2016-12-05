@@ -16,6 +16,7 @@ using System.Threading;
 using BalanceReport.Views;
 using MahApps.Metro.Controls;
 using Common.Client;
+using WSBalanceClient.Helper;
 
 namespace BalanceReport.Salary
 {

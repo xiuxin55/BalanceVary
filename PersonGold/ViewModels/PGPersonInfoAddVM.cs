@@ -63,6 +63,12 @@ namespace PersonGold.ViewModels
                     AddPGPersonInfoModel.ID = Guid.NewGuid().ToString();
                     PGPersonInfo temp = new PGPersonInfo();
                     temp.StaffCode = AddPGPersonInfoModel.StaffCode;
+                    WSWebsiteInfoService wbclient = new WSWebsiteInfoService();
+                    var websites=wbclient.Select(new WSBalanceClient.WebsiteInfoService.WebsiteInfo() { NewWebsiteID = AddPGPersonInfoModel.NewWebsiteID });
+                    if (websites!=null && websites.Length >0)
+                    {
+                        AddPGPersonInfoModel.WebsiteID = websites[0].WebsiteID;
+                    }
                     PGPersonInfo wim = WSPGPersonInfoService.Instance.Select(temp).FirstOrDefault();
                     if (wim != null && !string.IsNullOrWhiteSpace(wim.StaffCode))
                     {

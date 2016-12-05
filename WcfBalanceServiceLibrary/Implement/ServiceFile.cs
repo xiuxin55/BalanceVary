@@ -11,6 +11,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Utility;
+using WcfCallbackInterface;
 
 namespace WcfBalanceServiceLibrary
 {
@@ -22,6 +23,8 @@ namespace WcfBalanceServiceLibrary
     public class ServiceFile : IServiceFile
     {
         UploadFileInfoBLL bll = new UploadFileInfoBLL();
+        Dictionary<string, IUpLoadCallBack> DicCallBack = new Dictionary<string, IUpLoadCallBack>();
+        Dictionary<string, UploadFileInfo> DicUploadfile = new Dictionary<string, UploadFileInfo>();
         public CustomFileInfo UpLoadFileInfo(CustomFileInfo fileInfo)
         {
             try
@@ -64,9 +67,11 @@ namespace WcfBalanceServiceLibrary
                 uploadfileinfo.FilePath =  CommonDataServer.UploadFileServerPath;
                 uploadfileinfo.FileUploadTime = DateTime.Now;
                 bool result = uploadfileinfo.IsOverride ? bll.Update(uploadfileinfo) : bll.Add(uploadfileinfo);
+                //设置回调
+                SetCallBackDic(uploadfileinfo);
                 Helper.ImportFileHelper.ImportFileTrigger(uploadfileinfo);
 
-
+               
                 return true;
             }
             catch (Exception ex)
@@ -75,6 +80,34 @@ namespace WcfBalanceServiceLibrary
                 return false;
             }
         }
+
+        private void SetCallBackDic(UploadFileInfo uploadfileinfo)
+        {
+            DicCallBack[uploadfileinfo.UpLoadPersonCode] = OperationContext.Current.GetCallbackChannel<IUpLoadCallBack>();
+            DicUploadfile[uploadfileinfo.UpLoadPersonCode] = uploadfileinfo;
+            uploadfileinfo.FileStateChanged += (param) => {
+                IUpLoadCallBack uploadcallback;
+                if (!DicCallBack.TryGetValue(param.UpLoadPersonCode,out uploadcallback))
+                {
+                    return;
+                }
+                if (param.FileState == 1)
+                {
+                    //处理成功
+                    uploadcallback.ShowFileHandleState(param.FileRealName+",文件处理成功");
+                   
+                }
+                else if (param.FileState == 2)
+                {
+                    //出现异常
+                    uploadcallback.ShowFileHandleState(param.FileRealName + ",文件处理异常，请到导入文件列表中查看详细");
+                }
+
+            };
+        }
+
+       
+
         public bool ClientTriggerHandleFile(UploadFileInfo uploadfileinfo)
         {
             try

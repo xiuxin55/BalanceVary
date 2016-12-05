@@ -130,6 +130,10 @@
       <Project>{33c58cb0-1338-455f-a678-9d5be412d468}</Project>
       <Name>Utility</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WcfCallbackInterface\WcfCallbackInterface.csproj">
+      <Project>{201b29d3-476a-4b7c-99a6-55dc8c92ee80}</Project>
+      <Name>WcfCallbackInterface</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

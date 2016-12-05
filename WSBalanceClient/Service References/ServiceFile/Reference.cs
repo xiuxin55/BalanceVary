@@ -464,7 +464,7 @@ namespace WSBalanceClient.ServiceFile {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceFile.IServiceFile")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceFile.IServiceFile", CallbackContract=typeof(WSBalanceClient.ServiceFile.IServiceFileCallback))]
     public interface IServiceFile {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceFile/UpLoadFileInfo", ReplyAction="http://tempuri.org/IServiceFile/UpLoadFileInfoResponse")]
@@ -487,30 +487,38 @@ namespace WSBalanceClient.ServiceFile {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IServiceFileCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceFile/ShowFileHandleState")]
+        void ShowFileHandleState(string message);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IServiceFileChannel : WSBalanceClient.ServiceFile.IServiceFile, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceFileClient : System.ServiceModel.ClientBase<WSBalanceClient.ServiceFile.IServiceFile>, WSBalanceClient.ServiceFile.IServiceFile {
+    public partial class ServiceFileClient : System.ServiceModel.DuplexClientBase<WSBalanceClient.ServiceFile.IServiceFile>, WSBalanceClient.ServiceFile.IServiceFile {
         
-        public ServiceFileClient() {
+        public ServiceFileClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public ServiceFileClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public ServiceFileClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public ServiceFileClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ServiceFileClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceFileClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ServiceFileClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceFileClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public ServiceFileClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
         public WSBalanceClient.ServiceFile.CustomFileInfo UpLoadFileInfo(WSBalanceClient.ServiceFile.CustomFileInfo fileInfo) {

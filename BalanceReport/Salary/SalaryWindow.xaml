@@ -106,7 +106,8 @@
                         <DataGridTextColumn Binding="{Binding SalaryTime,Converter={StaticResource TimeConverter} }" Header="日期"   Width="140"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                <cc:UCPage Name="page" Background="White" Grid.Row="3" PageChangedCommand="{Binding PageChangedCommand}" PageSize="{Binding PageSize}"
+               
+                    <cc:UCPage Name="page" Background="White" Grid.Row="3" PageChangedCommand="{Binding PageChangedCommand}" PageSize="{Binding PageSize}"
                    TotalItem="{Binding Total}" 
                    />
                     </Grid>

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\UploadFile.cs" />
+    <Compile Include="Helper\UpLoadFileCallback.cs" />
     <Compile Include="PersonGold\WSPGPersonAllocateInfoService.cs" />
     <Compile Include="PersonGold\WSPGWebistePerformanceInfoService.cs" />
     <Compile Include="PersonGold\WSPGPersonInfoService.cs" />

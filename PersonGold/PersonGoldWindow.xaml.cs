@@ -17,6 +17,7 @@ using MahApps.Metro.Controls;
 using Common.Client;
 using PersonGold.Views;
 
+
 namespace PersonGold
 {
     /// <summary>
